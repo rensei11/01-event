@@ -1,0 +1,157 @@
+-07714a891599">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://events.zoho.jp/zoholics2026" target="_blank" rel="noopener">ZOHOLICS Japan 2026</a></div>
+      <div class="venue">JPタワー ホール＆カンファレンス</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料<br>約700名</td>
+<td><div class="rating">B+。規模は十分。FUZE前に内容を確認する候補として実用的。</div><div class="night"><strong>17:30～19:00</strong> Networking。前年は酒＋軽食系を確認。</div></td>
+</tr>
+<tr class="week-row"><td colspan="4">9/28～10/4</td></tr>
+
+<tr class="event-row" data-date="9/30（水）" data-event-id="evt-c8cedbcd3fdd">
+<td class="date-cell" rowspan="2"><strong>9/30（水）</strong></td>
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://stripetour.com/ja-JP/tokyo" target="_blank" rel="noopener">Stripe Tour Tokyo 2026</a></div>
+      <div class="venue">ザ・プリンス パークタワー東京</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・事前登録<br>法人メール必要</td>
+<td><div class="rating">A+。ホテル会場で、夜のReceptionもあり有力。</div><div class="night"><strong>16:45～17:45</strong> Networking Reception。</div></td>
+</tr>
+
+<tr class="event-row" data-date="9/30（水）" data-event-id="evt-5ca188fdeb8d">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://www.nexchain.or.jp/event/pages/20260930.html" target="_blank" rel="noopener">産業DX 共創交流パーティー</a></div>
+      <div class="venue">東京ビッグサイト 東7ホール</div>
+    </div>
+  </div>
+</td>
+<td class="condition">一般1,000円<br>NEXCHAIN会員無料</td>
+<td><div class="rating">B。内容は強いが、無料経路が限定されるため減点。</div><div class="night"><strong>17:00～18:30</strong>。軽食＋ドリンク明記。</div></td>
+</tr>
+<tr class="week-row"><td colspan="4">10/5～10/11</td></tr>
+
+<tr class="event-row" data-date="10/7（水）" data-event-id="evt-a09527fe753f">
+<td class="date-cell" rowspan="2"><strong>10/7（水）</strong></td>
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://www.cirium.com/jp/2026-tokyo-market-briefing-interest/" target="_blank" rel="noopener">Cirium 2026 Tokyo Market Briefing</a></div>
+      <div class="venue">東京ミッドタウン八重洲カンファレンス</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・招待制</td>
+<td><div class="rating">B。2時間のReceptionは魅力だが、対象業界がかなり限定的。</div><div class="night"><strong>17:30～19:30</strong> Networking Reception。料理詳細不明。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/7（水）" data-event-id="evt-af4b3b4a0f13">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://o9solutions.com/ja/events/o9-connect-japan-2026" target="_blank" rel="noopener">o9 Connect Japan 2026</a></div>
+      <div class="venue">日本橋三井ホール</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・審査制<br>想定180名</td>
+<td><div class="rating">B+。180名規模なら実用圏。会場・時間も悪くない。</div><div class="night"><strong>17:10～19:00</strong> 懇親会。料理詳細不明。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/9（金）" data-event-id="evt-8d2f0708c2df">
+<td class="date-cell" rowspan="2"><strong>10/9（金）</strong></td>
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://globalsummit.rikkeisoft.com/" target="_blank" rel="noopener">Rikkei Global Summit 2026</a></div>
+      <div class="venue">ヒルトン東京お台場</div>
+    </div>
+  </div>
+</td>
+<td class="condition">参加経路確認中<br>1,000名以上予定</td>
+<td><div class="rating">A※。規模・ホテル・夜内容は非常に強い。参加経路だけが最大の問題。</div><div class="night"><strong>19:00～20:30</strong> 懇親会。海外向け案内では「Gala Dinner」表記あり。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/9（金）" data-event-id="evt-00aa9ce95f7a">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://carbon-recycling2026.nedo.go.jp/" target="_blank" rel="noopener">第8回カーボンリサイクル産学官国際会議2026</a></div>
+      <div class="venue">ウェスティンホテル東京</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・一般登録可</td>
+<td><div class="rating">A。無料でホテルReceptionに参加でき、Rikkei不成立時の強い代替候補。</div><div class="night"><strong>17:40～19:00</strong> Networking Reception。料理詳細不明。</div></td>
+</tr>
+<tr class="week-row"><td colspan="4">10/12～10/18</td></tr>
+
+<tr class="event-row" data-date="10/14（水）" data-event-id="evt-7f91ed050c06">
+<td class="date-cell" rowspan="2"><strong>10/14（水）</strong></td>
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://boomi-world-tour-tokyo-2026.boomi.co.jp/" target="_blank" rel="noopener">Boomi World Tour Tokyo 2026</a></div>
+      <div class="venue">東京アメリカンクラブ B2F</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・申請済<br>多数時抽選</td>
+<td><div class="rating">A+。東京アメリカンクラブという会場価値が大きく、90分のNetworkingも十分。</div><div class="night"><strong>18:30～20:00</strong> Networking。料理・酒の詳細は未公表。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/14（水）" data-event-id="evt-783b62702f22">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://prtimes.jp/main/html/rd/p/000000002.000161163
