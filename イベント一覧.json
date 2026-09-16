@@ -1,0 +1,248 @@
+{
+  "dataVersion": "2026-09-16-1",
+  "year": 2026,
+  "events": [
+    {
+      "id": "evt-b6a0272fd890",
+      "date": "2026-09-25",
+      "name": "FUZE 2026",
+      "url": "https://fuze.wantedly.com/",
+      "venue": "東京ミッドタウンホール",
+      "conditionLines": ["無料・事前登録制", "約750名"],
+      "rating": "A+。規模・After Party・会場の総合力が高く、本命級。",
+      "nightTime": "18:25～20:10",
+      "nightText": "After Party。「飲食物を楽しみながら」と明記。"
+    },
+    {
+      "id": "evt-07714a891599",
+      "date": "2026-09-25",
+      "name": "ZOHOLICS Japan 2026",
+      "url": "https://events.zoho.jp/zoholics2026",
+      "venue": "JPタワー ホール＆カンファレンス",
+      "conditionLines": ["無料", "約700名"],
+      "rating": "B+。規模は十分。FUZE前に内容を確認する候補として実用的。",
+      "nightTime": "17:30～19:00",
+      "nightText": "Networking。前年は酒＋軽食系を確認。"
+    },
+    {
+      "id": "evt-c8cedbcd3fdd",
+      "date": "2026-09-30",
+      "name": "Stripe Tour Tokyo 2026",
+      "url": "https://stripetour.com/ja-JP/tokyo",
+      "venue": "ザ・プリンス パークタワー東京",
+      "conditionLines": ["無料・事前登録", "法人メール必要"],
+      "rating": "A+。ホテル会場で、夜のReceptionもあり有力。",
+      "nightTime": "16:45～17:45",
+      "nightText": "Networking Reception。"
+    },
+    {
+      "id": "evt-5ca188fdeb8d",
+      "date": "2026-09-30",
+      "name": "産業DX 共創交流パーティー",
+      "url": "https://www.nexchain.or.jp/event/pages/20260930.html",
+      "venue": "東京ビッグサイト 東7ホール",
+      "conditionLines": ["一般1,000円", "NEXCHAIN会員無料"],
+      "rating": "B。内容は強いが、無料経路が限定されるため減点。",
+      "nightTime": "17:00～18:30",
+      "nightText": "軽食＋ドリンク明記。"
+    },
+    {
+      "id": "evt-a09527fe753f",
+      "date": "2026-10-07",
+      "name": "Cirium 2026 Tokyo Market Briefing",
+      "url": "https://www.cirium.com/jp/2026-tokyo-market-briefing-interest/",
+      "venue": "東京ミッドタウン八重洲カンファレンス",
+      "conditionLines": ["無料・招待制"],
+      "rating": "B。2時間のReceptionは魅力だが、対象業界がかなり限定的。",
+      "nightTime": "17:30～19:30",
+      "nightText": "Networking Reception。料理詳細不明。"
+    },
+    {
+      "id": "evt-af4b3b4a0f13",
+      "date": "2026-10-07",
+      "name": "o9 Connect Japan 2026",
+      "url": "https://o9solutions.com/ja/events/o9-connect-japan-2026",
+      "venue": "日本橋三井ホール",
+      "conditionLines": ["無料・審査制", "想定180名"],
+      "rating": "B+。180名規模なら実用圏。会場・時間も悪くない。",
+      "nightTime": "17:10～19:00",
+      "nightText": "懇親会。料理詳細不明。"
+    },
+    {
+      "id": "evt-8d2f0708c2df",
+      "date": "2026-10-09",
+      "name": "Rikkei Global Summit 2026",
+      "url": "https://globalsummit.rikkeisoft.com/",
+      "venue": "ヒルトン東京お台場",
+      "conditionLines": ["参加経路確認中", "1,000名以上予定"],
+      "rating": "A※。規模・ホテル・夜内容は非常に強い。参加経路だけが最大の問題。",
+      "nightTime": "19:00～20:30",
+      "nightText": "懇親会。海外向け案内では「Gala Dinner」表記あり。"
+    },
+    {
+      "id": "evt-00aa9ce95f7a",
+      "date": "2026-10-09",
+      "name": "第8回カーボンリサイクル産学官国際会議2026",
+      "url": "https://carbon-recycling2026.nedo.go.jp/",
+      "venue": "ウェスティンホテル東京",
+      "conditionLines": ["無料・一般登録可"],
+      "rating": "A。無料でホテルReceptionに参加でき、Rikkei不成立時の強い代替候補。",
+      "nightTime": "17:40～19:00",
+      "nightText": "Networking Reception。料理詳細不明。"
+    },
+    {
+      "id": "evt-7f91ed050c06",
+      "date": "2026-10-14",
+      "name": "Boomi World Tour Tokyo 2026",
+      "url": "https://boomi-world-tour-tokyo-2026.boomi.co.jp/",
+      "venue": "東京アメリカンクラブ B2F",
+      "conditionLines": ["無料・申請済", "多数時抽選"],
+      "rating": "A+。東京アメリカンクラブという会場価値が大きく、90分のNetworkingも十分。",
+      "nightTime": "18:30～20:00",
+      "nightText": "Networking。料理・酒の詳細は未公表。"
+    },
+    {
+      "id": "evt-783b62702f22",
+      "date": "2026-10-14",
+      "name": "UK as a Gateway to Global Development",
+      "url": "https://prtimes.jp/main/html/rd/p/000000002.000161163.html",
+      "venue": "駐日英国大使公邸",
+      "conditionLines": ["無料・承認制", "約100名"],
+      "rating": "B。大使公邸は非常に魅力的だが、小規模・対象条件・短時間が減点。",
+      "nightTime": "17:35～18:30",
+      "nightText": "Networking Reception。料理詳細不明。"
+    },
+    {
+      "id": "evt-fb70e6b32aad",
+      "date": "2026-10-15",
+      "name": "primeNumber DATA SUMMIT 2026",
+      "url": "https://data-summit.primenumber.com/",
+      "venue": "天王洲 キャナルイースト（総合受付：WHAT CAFE）",
+      "conditionLines": ["無料・事前申込", "過去1,000名超実績"],
+      "rating": "A+。ビッグサイトからの移動が楽で、規模・時間・立地が非常に良い。",
+      "nightTime": "18:00～19:30",
+      "nightText": "Networking Party。過去回は軽食＋飲み物あり。"
+    },
+    {
+      "id": "evt-f773abc21d4c",
+      "date": "2026-10-15",
+      "name": "Genesys Xperience Tokyo 2026",
+      "url": "https://www.genesys.com/ja-jp/xperience-on-tour-tokyo",
+      "venue": "虎ノ門ヒルズフォーラム 4F・5F",
+      "conditionLines": ["通常10,000円", "招待コードで無料"],
+      "rating": "C+。無料コードを確保できれば再評価。通常料金のままでは候補外寄り。",
+      "nightTime": "18:00～19:30",
+      "nightText": "Networking Party。料理詳細不明。"
+    },
+    {
+      "id": "evt-4b8f79d7af95",
+      "date": "2026-10-15",
+      "name": "Saviynt UNLOCK Tokyo 2026",
+      "url": "https://saviynt.com/unlock/tokyo",
+      "venue": "会場未確定（公式：TBD）",
+      "conditionLines": ["完全招待制・申請フォームあり"],
+      "rating": "C+。90分Networkingはあるが、会場・料理とも未確定。",
+      "nightTime": "18:00～19:30",
+      "nightText": "UNLOCK Networking。"
+    },
+    {
+      "id": "evt-2996f14a8c77",
+      "date": "2026-10-15",
+      "name": "BuiltWorlds Tokyo Global Summit",
+      "url": "https://builtworlds.com/event/2026-tokyo-summit/",
+      "venue": "ヒルトン東京",
+      "conditionLines": ["メンバー中心", "無料経路未確認"],
+      "rating": "D。ホテル会場は魅力だが、現状は無料参加経路が確認できない。",
+      "nightTime": "17:10～18:30",
+      "nightText": "Closing Remarks & Networking Reception。"
+    },
+    {
+      "id": "evt-c0e2d0d0d58b",
+      "date": "2026-10-21",
+      "name": "UpdataNOW26",
+      "url": "https://corp.wingarc.com/public/202607/news3010.html",
+      "venue": "ザ・プリンス パークタワー東京",
+      "conditionLines": ["招待コード取得済", "Networking申請済"],
+      "rating": "A。参加経路を確保済みで、ホテル会場・90分Networkingとも有力。",
+      "nightTime": "17:00～18:30",
+      "nightText": "ファウンダーラウンジ＋＋ネットワーキング。"
+    },
+    {
+      "id": "evt-07582e9d572a",
+      "date": "2026-10-21",
+      "name": "Tokyo Sustainable Seafood Summit 2026",
+      "url": "https://sustainableseafoodnow.com/2026/en/",
+      "venue": "竹芝ポートホール",
+      "conditionLines": ["事前登録", "会場最大400名台規模"],
+      "rating": "B-。竹芝で動線は良いが、過去映像から料理期待値は高くない。",
+      "nightTime": "18:15～19:30",
+      "nightText": "Networking Reception Party。"
+    },
+    {
+      "id": "evt-2fb53a6ac06b",
+      "date": "2026-10-21",
+      "name": "BRIDGE FORUM 2026",
+      "url": "https://bridge-g.com/corporate-news/bridge-forum-2026-event/",
+      "venue": "品川ザ・グランドホール",
+      "conditionLines": ["無料・事前申込"],
+      "rating": "C。品川の立地は良いが、飲食内容が未確認で時間も1時間。",
+      "nightTime": "17:00～18:00",
+      "nightText": "Networking。飲食内容未確認。"
+    },
+    {
+      "id": "evt-9a68d1d17f1c",
+      "date": "2026-10-21",
+      "name": "Natixis CIB Japan Forum 2026",
+      "url": "https://www.fsa.go.jp/internationalfinancialcenter/lp/japanweeks2026/index_en.html",
+      "venue": "会場情報は台帳上未確定",
+      "conditionLines": ["招待制"],
+      "rating": "C。内容自体は強いが、金融機関等向け招待制で実用性が低い。",
+      "nightTime": "16:00～19:30",
+      "nightText": "後半はワイン・テイスティングをメインとしたNetworking Party。"
+    },
+    {
+      "id": "evt-cd9067a0fb0c",
+      "date": "2026-10-22",
+      "name": "DISCOVER KOREA",
+      "url": "https://www.japan-it.jp/hub/ja-jp/visit/feature/autumn/korea.html",
+      "venue": "幕張メッセ 2ホール",
+      "conditionLines": ["無料・来場登録必要"],
+      "rating": "C。Japan IT Week滞在時の保険候補。規模・料理期待は低め。",
+      "nightTime": "17:00～",
+      "nightText": "日韓IT企業交流会。"
+    },
+    {
+      "id": "evt-6d1db7f4d142",
+      "date": "2026-10-22",
+      "name": "NEDO Europe Immersion Program 国内ピッチイベント",
+      "url": "https://www.nedo.go.jp/events/CA_100293.html",
+      "venue": "LINK Lounge 01（高輪ゲートウェイ）",
+      "conditionLines": ["無料"],
+      "rating": "C。高輪の立地は良いが、ラウンジ開催で小規模感が強い。",
+      "nightTime": "18:30～20:00",
+      "nightText": "懇親会。軽食あり。"
+    },
+    {
+      "id": "evt-67b9a8e7b93d",
+      "date": "2026-10-22",
+      "name": "Tokyo Sustainable Finance Forum 2026",
+      "url": "https://tsfw.tokyo/2026/en/tsfw_forum/",
+      "venue": "大手町プレイス ホール＆カンファレンス",
+      "conditionLines": ["本編無料", "夜Networkingは招待者限定"],
+      "rating": "C。会場・テーマは悪くないが、夜の参加制限が大きい。",
+      "nightTime": "18:05～",
+      "nightText": "Networking。招待経路が見つかれば再評価。"
+    },
+    {
+      "id": "evt-0c37a689eaff",
+      "date": "2026-10-23",
+      "name": "ad:tech Tokyo 2026",
+      "url": "https://adtech-tokyo.com/ja/",
+      "venue": "東京ミッドタウン／ザ・リッツ・カールトン東京",
+      "conditionLines": ["Visitor無料枠はParty不可", "約16,200人規模"],
+      "rating": "D。規模・会場は最上位だが、無料でPartyに入る現実的経路が弱い。",
+      "nightTime": "",
+      "nightText": "Networking Partyあり。Party参加には対象パスまたは特別招待が必要。"
+    }
+  ]
+}
