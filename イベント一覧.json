@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-16-2",
+  "dataVersion": "2026-09-16-3",
   "year": 2026,
   "events": [
     {"id":"evt-b6a0272fd890","date":"2026-09-25","name":"FUZE 2026","url":"https://fuze.wantedly.com/","venue":"東京ミッドタウンホール","conditionLines":["無料・事前登録制","約750名"],"rating":"A+。規模・After Party・会場の総合力が高く、本命級。","nightTime":"18:25～20:10","nightText":"After Party。「飲食物を楽しみながら」と明記。"},
@@ -27,6 +27,7 @@
     {"id":"evt-9859fe1a","date":"2026-10-26","name":"Agile X Conference（第3回）","url":"https://japan-agile.org/agile-x-conference","venue":"大崎ブライトコアホール","conditionLines":["無料・事前申込","カンファレンス300名／懇親会150名"],"rating":"B-。無料・150名の懇親会だが、主催者が「簡単な軽食のみ」と明記。","nightTime":"17:30～19:00","nightText":"ネットワーキング（懇親会）。簡単な軽食のみ。"},
     {"id":"evt-61ecc365","date":"2026-10-27","name":"ServiceNow World Forum Tokyo 2026（Day 1）","url":"https://www.servicenow.com/jp/events/world-forum/tokyo.html","venue":"グランドプリンスホテル新高輪","conditionLines":["無料・事前登録","大型イベント"],"rating":"A。ホテル会場＋90分Reception。軽食中心・大型ゆえ混雑は注意。","nightTime":"16:10～17:40","nightText":"Networking Reception & Expo。ドリンク＋軽食を公式明記。"},
     {"id":"evt-5eecbeac","date":"2026-10-28","name":"ServiceNow World Forum Tokyo 2026（Day 2）","url":"https://www.servicenow.com/jp/events/world-forum/tokyo.html","venue":"グランドプリンスホテル新高輪","conditionLines":["無料・事前登録","大型イベント"],"rating":"A-。ホテル会場でReceptionあり。Day 1より1時間と短い。","nightTime":"17:30～18:30","nightText":"Networking Reception & Expo。ドリンク＋軽食を公式明記。"},
+    {"id":"evt-transcosmos-bpo-20261028","date":"2026-10-28","name":"トランスコスモスフォーラム 2026｜BPO（東京）","url":"https://transcosmos-ecx.jp/seminar/tci-forum2026","venue":"ザ・プリンス パークタワー東京 B2 コンベンションホール","conditionLines":["無料・事前登録制","法人対象／多数時抽選の場合あり"],"rating":"B※。円卓形式の懇親会で食事面は厳しめ。ただし藤巻百貨店のギフトカタログ特典があるため掲載。","nightTime":"17:30～18:30","nightText":"懇親会。来場特典として「藤巻百貨店」のギフトカタログほかを用意。"},
     {"id":"evt-dcee2ac9","date":"2026-10-29","name":"Red Hat Summit: Connect 2026 Tokyo","url":"https://www.redhat.com/en/summit/connect/apac/tokyo-2026","venue":"赤坂インターシティコンファレンス","conditionLines":["無料・要事前登録","所属先メール必要"],"rating":"B+。無料で軽食・ドリンク付き懇親会を公式確認。","nightTime":"","nightText":"懇親会。軽食＋ドリンクを公式明記。イベント終了18:30。"},
     {"id":"evt-22950179","date":"2026-10-29","name":"OUTCOME 2026","url":"https://the-outcome.jp/","venue":"TODA HALL & CONFERENCE TOKYO","conditionLines":["無料・事前登録制","定員600名／多数時抽選"],"rating":"B+。600名・90分の懇親交流会で時間条件は強い。飲食詳細は未確認。","nightTime":"19:15～20:45","nightText":"懇親・交流会（ホワイエ）。料理・ドリンク詳細は未確認。"},
     {"id":"evt-e00e8470","date":"2026-10-29","name":"企業価値経営サミット2026","url":"https://booost-ai.com/261029summit","venue":"室町三井ホール＆カンファレンス","conditionLines":["無料・審査制予定","定員300～500名"],"rating":"B。規模・90分懇親会は良いが、対象がプライム上場企業の経営・実務層中心。","nightTime":"17:00～18:30","nightText":"懇親会・ネットワーキング。飲食詳細は未確認。"},
