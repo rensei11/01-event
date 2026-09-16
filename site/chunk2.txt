@@ -1,0 +1,159 @@
+.html" target="_blank" rel="noopener">UK as a Gateway to Global Development</a></div>
+      <div class="venue">駐日英国大使公邸</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・承認制<br>約100名</td>
+<td><div class="rating">B。大使公邸は非常に魅力的だが、小規模・対象条件・短時間が減点。</div><div class="night"><strong>17:35～18:30</strong> Networking Reception。料理詳細不明。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/15（木）" data-event-id="evt-fb70e6b32aad">
+<td class="date-cell" rowspan="4"><strong>10/15（木）</strong></td>
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://data-summit.primenumber.com/" target="_blank" rel="noopener">primeNumber DATA SUMMIT 2026</a></div>
+      <div class="venue">天王洲 キャナルイースト（総合受付：WHAT CAFE）</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・事前申込<br>過去1,000名超実績</td>
+<td><div class="rating">A+。ビッグサイトからの移動が楽で、規模・時間・立地が非常に良い。</div><div class="night"><strong>18:00～19:30</strong> Networking Party。過去回は軽食＋飲み物あり。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/15（木）" data-event-id="evt-f773abc21d4c">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://www.genesys.com/ja-jp/xperience-on-tour-tokyo" target="_blank" rel="noopener">Genesys Xperience Tokyo 2026</a></div>
+      <div class="venue">虎ノ門ヒルズフォーラム 4F・5F</div>
+    </div>
+  </div>
+</td>
+<td class="condition">通常10,000円<br>招待コードで無料</td>
+<td><div class="rating">C+。無料コードを確保できれば再評価。通常料金のままでは候補外寄り。</div><div class="night"><strong>18:00～19:30</strong> Networking Party。料理詳細不明。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/15（木）" data-event-id="evt-4b8f79d7af95">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://saviynt.com/unlock/tokyo" target="_blank" rel="noopener">Saviynt UNLOCK Tokyo 2026</a></div>
+      <div class="venue">会場未確定（公式：TBD）</div>
+    </div>
+  </div>
+</td>
+<td class="condition">完全招待制・申請フォームあり</td>
+<td><div class="rating">C+。90分Networkingはあるが、会場・料理とも未確定。</div><div class="night"><strong>18:00～19:30</strong> UNLOCK Networking。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/15（木）" data-event-id="evt-2996f14a8c77">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://builtworlds.com/event/2026-tokyo-summit/" target="_blank" rel="noopener">BuiltWorlds Tokyo Global Summit</a></div>
+      <div class="venue">ヒルトン東京</div>
+    </div>
+  </div>
+</td>
+<td class="condition">メンバー中心<br>無料経路未確認</td>
+<td><div class="rating">D。ホテル会場は魅力だが、現状は無料参加経路が確認できない。</div><div class="night"><strong>17:10～18:30</strong> Closing Remarks & Networking Reception。</div></td>
+</tr>
+<tr class="week-row"><td colspan="4">10/19～10/25</td></tr>
+
+<tr class="event-row" data-date="10/21（水）" data-event-id="evt-c0e2d0d0d58b">
+<td class="date-cell" rowspan="4"><strong>10/21（水）</strong></td>
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://corp.wingarc.com/public/202607/news3010.html" target="_blank" rel="noopener">UpdataNOW26</a></div>
+      <div class="venue">ザ・プリンス パークタワー東京</div>
+    </div>
+  </div>
+</td>
+<td class="condition">招待コード取得済<br>Networking申請済</td>
+<td><div class="rating">A。参加経路を確保済みで、ホテル会場・90分Networkingとも有力。</div><div class="night"><strong>17:00～18:30</strong> ファウンダーラウンジ＋＋ネットワーキング。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/21（水）" data-event-id="evt-07582e9d572a">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://sustainableseafoodnow.com/2026/en/" target="_blank" rel="noopener">Tokyo Sustainable Seafood Summit 2026</a></div>
+      <div class="venue">竹芝ポートホール</div>
+    </div>
+  </div>
+</td>
+<td class="condition">事前登録<br>会場最大400名台規模</td>
+<td><div class="rating">B-。竹芝で動線は良いが、過去映像から料理期待値は高くない。</div><div class="night"><strong>18:15～19:30</strong> Networking Reception Party。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/21（水）" data-event-id="evt-2fb53a6ac06b">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://bridge-g.com/corporate-news/bridge-forum-2026-event/" target="_blank" rel="noopener">BRIDGE FORUM 2026</a></div>
+      <div class="venue">品川ザ・グランドホール</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・事前申込</td>
+<td><div class="rating">C。品川の立地は良いが、飲食内容が未確認で時間も1時間。</div><div class="night"><strong>17:00～18:00</strong> Networking。飲食内容未確認。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/21（水）" data-event-id="evt-9a68d1d17f1c">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://www.fsa.go.jp/internationalfinancialcenter/lp/japanweeks2026/index_en.html" target="_blank" rel="noopener">Natixis CIB Japan Forum 2026</a></div>
+      <div class="venue">会場情報は台帳上未確定</div>
+    </div>
+  </div>
+</td>
+<td class="condition">招待制</td>
+<td><div class="rating">C。内容自体は強いが、金融機関等向け招待制で実用性が低い。</div><div class="night"><strong>16:00～19:30</strong>。後半はワイン・テイスティングをメインとしたNetworking Party。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/22（木）" data-event-id="evt-cd9067a0fb0c">
+<td class="date-cell" rowspan="3"><strong>10/22（木）</strong></td>
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-
