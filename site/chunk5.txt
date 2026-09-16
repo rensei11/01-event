@@ -1,0 +1,12 @@
+ status.textContent='オンライン版ではこのボタンは使用しません';status.className='status save-warn';
+};
+
+resetBtn.onclick=()=>{
+  if(confirm('編集内容と参加予定チェックをすべて初期状態に戻しますか？')){
+    tbody.innerHTML=initialHTML;localStorage.removeItem(STORAGE_KEY);localStorage.removeItem(PLANNED_KEY);localStorage.removeItem(FLAGS_KEY);selected=null;ensureEventYears();setEditing(false);renderCalendar(true);
+    status.textContent='初期状態に戻しました';status.className='status save-warn';
+  }
+};
+</script>
+</body>
+</html>
