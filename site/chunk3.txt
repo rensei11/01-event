@@ -1,0 +1,182 @@
+-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://www.japan-it.jp/hub/ja-jp/visit/feature/autumn/korea.html" target="_blank" rel="noopener">DISCOVER KOREA</a></div>
+      <div class="venue">幕張メッセ 2ホール</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・来場登録必要</td>
+<td><div class="rating">C。Japan IT Week滞在時の保険候補。規模・料理期待は低め。</div><div class="night"><strong>17:00～</strong> 日韓IT企業交流会。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/22（木）" data-event-id="evt-6d1db7f4d142">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://www.nedo.go.jp/events/CA_100293.html" target="_blank" rel="noopener">NEDO Europe Immersion Program 国内ピッチイベント</a></div>
+      <div class="venue">LINK Lounge 01（高輪ゲートウェイ）</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料</td>
+<td><div class="rating">C。高輪の立地は良いが、ラウンジ開催で小規模感が強い。</div><div class="night"><strong>18:30～20:00</strong> 懇親会。軽食あり。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/22（木）" data-event-id="evt-67b9a8e7b93d">
+
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://tsfw.tokyo/2026/en/tsfw_forum/" target="_blank" rel="noopener">Tokyo Sustainable Finance Forum 2026</a></div>
+      <div class="venue">大手町プレイス ホール＆カンファレンス</div>
+    </div>
+  </div>
+</td>
+<td class="condition">本編無料<br>夜Networkingは招待者限定</td>
+<td><div class="rating">C。会場・テーマは悪くないが、夜の参加制限が大きい。</div><div class="night"><strong>18:05～</strong> Networking。招待経路が見つかれば再評価。</div></td>
+</tr>
+
+<tr class="event-row" data-date="10/23（金）" data-event-id="evt-0c37a689eaff">
+<td class="date-cell" rowspan="1"><strong>10/23（金）</strong></td>
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://adtech-tokyo.com/ja/" target="_blank" rel="noopener">ad:tech Tokyo 2026</a></div>
+      <div class="venue">東京ミッドタウン／ザ・リッツ・カールトン東京</div>
+    </div>
+  </div>
+</td>
+<td class="condition">Visitor無料枠はParty不可<br>約16,200人規模</td>
+<td><div class="rating">D。規模・会場は最上位だが、無料でPartyに入る現実的経路が弱い。</div><div class="night">Networking Partyあり。Party参加には対象パスまたは特別招待が必要。</div></td>
+</tr></tbody>
+    </table>
+  </div>
+  <p class="note">※ 同じ日付は1つに結合して表示します。</p>
+</div>
+
+<script>
+const STORAGE_KEY='free_food_event_ledger_2026_build_20260916_2';
+const PLANNED_KEY='free_food_event_ledger_2026_planned_v1';
+const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
+const tbody=document.getElementById('ledgerBody');
+const initialHTML=tbody.innerHTML;
+let editing=false,selected=null;
+const status=document.getElementById('status');
+const editBtn=document.getElementById('editBtn');
+const addBtn=document.getElementById('addBtn');
+const addWeekBtn=document.getElementById('addWeekBtn');
+const delBtn=document.getElementById('delBtn');
+const linkBtn=document.getElementById('linkBtn');
+const backupBtn=document.getElementById('backupBtn');
+const resetBtn=document.getElementById('resetBtn');
+const calendarMonths=document.getElementById('calendarMonths');
+const calendarNow=document.getElementById('calendarNow');
+const LEDGER_DEFAULT_YEAR=2026;
+let lastCalendarMonthKey='';
+
+function parseMonthDay(text){
+  const m=String(text||'').match(/(\d{1,2})\/(\d{1,2})/);
+  return m ? {month:Number(m[1]),day:Number(m[2])} : null;
+}
+function ensureEventYears(){
+  tbody.querySelectorAll('.event-row').forEach(row=>{
+    if(!row.dataset.year) row.dataset.year=String(LEDGER_DEFAULT_YEAR);
+    if(!row.dataset.eventId){
+      const basis=row.querySelector('.event-name a')?.getAttribute('href')||row.querySelector('.event-name')?.innerText||Math.random().toString(36);
+      let h=2166136261;
+      for(let i=0;i<basis.length;i++){h^=basis.charCodeAt(i);h=Math.imul(h,16777619);}
+      row.dataset.eventId='evt-'+(h>>>0).toString(16);
+    }
+  });
+}
+function eventKey(row){
+  ensureEventYears();
+  return row?.dataset?.eventId||'';
+}
+function applyIgnoredStyle(row){
+  if(!row)return;
+  row.classList.toggle('ignored',!!row.querySelector('.ignore-check')?.checked);
+}
+function applyAllIgnoredStyles(){
+  tbody.querySelectorAll('.event-row').forEach(applyIgnoredStyle);
+}
+function eventStatusMap(){
+  ensureEventYears();
+  const map=new Map();
+  tbody.querySelectorAll('.event-row').forEach(row=>{
+    const md=parseMonthDay(row.dataset.date);
+    if(!md)return;
+    const year=Number(row.dataset.year||LEDGER_DEFAULT_YEAR);
+    const key=`${year}-${md.month}-${md.day}`;
+    const planned=!!row.querySelector('.plan-check')?.checked;
+    const prev=map.get(key)||{exists:false,planned:false};
+    map.set(key,{exists:true,planned:prev.planned||planned});
+  });
+  return map;
+}
+function japaneseWeekday(date){
+  return ['日','月','火','水','木','金','土'][date.getDay()];
+}
+function scrollToEvent(year,month,day){
+  ensureEventYears();
+  const rows=[...tbody.querySelectorAll('.event-row')];
+  const target=rows.find(row=>{
+    const md=parseMonthDay(row.dataset.date);
+    const y=Number(row.dataset.year||LEDGER_DEFAULT_YEAR);
+    return md && y===year && md.month===month && md.day===day;
+  });
+  if(!target)return;
+  target.scrollIntoView({behavior:'smooth',block:'start'});
+  target.classList.remove('calendar-focus');
+  void target.offsetWidth;
+  target.classList.add('calendar-focus');
+  setTimeout(()=>target.classList.remove('calendar-focus'),1600);
+}
+function renderCalendar(force=false){
+  const now=new Date();
+  const monthKey=`${now.getFullYear()}-${now.getMonth()}`;
+  if(!force && monthKey===lastCalendarMonthKey && calendarMonths.children.length)return;
+  lastCalendarMonthKey=monthKey;
+
+  const statusMap=eventStatusMap();
+  calendarNow.textContent=`PC日時基準：${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}（${japaneseWeekday(now)}）`;
+  calendarMonths.innerHTML='';
+
+  const weekdayLabels=['日','月','火','水','木','金','土'];
+
+  for(let offset=0;offset<3;offset++){
+    const first=new Date(now.getFullYear(),now.getMonth()+offset,1);
+    const year=first.getFullYear();
+    const month=first.getMonth()+1;
+    const firstDow=first.getDay();
+    const daysInMonth=new Date(year,month,0).getDate();
+
+    const card=document.createElement('div');
+    card.className='month-card';
+
+    const title=document.createElement('div');
+    title.className='month-name';
+    title.textContent=`${year}年${month}月`;
+    card.appendChild(title);
+
+    const grid=document.createElement('div');
+    grid.className='month-grid';
+
+    weekdayLabels.forEach(w=>{
+      const el=document.cr
