@@ -8,5 +8,9 @@ resetBtn.onclick=()=>{
   }
 };
 </script>
+<style>
+.day.event-day{background:#8a939c;color:#fff}
+.day.planned-day{background:#2f6fda;color:#fff}
+</style>
 </body>
 </html>
