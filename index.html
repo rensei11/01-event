@@ -17,7 +17,76 @@
       if(!r.ok) throw new Error(`chunk${i} の取得に失敗しました`);
       parts.push(await r.text());
     }
-    const html=parts.join('');
+    let html=parts.join('');
+    const overrides=`<style>
+/* online UI overrides */
+.check-stack{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:5px !important;
+  flex:0 0 17px !important;
+  min-width:17px !important;
+  padding-top:2px !important;
+}
+.check-line{
+  display:flex !important;
+  align-items:center !important;
+  width:17px !important;
+  height:17px !important;
+  margin:0 !important;
+  padding:0 !important;
+  cursor:pointer !important;
+  font-size:0 !important;
+  line-height:1 !important;
+}
+.check-line span{display:none !important;}
+.plan-check{
+  appearance:auto !important;
+  -webkit-appearance:checkbox !important;
+  width:16px !important;
+  height:16px !important;
+  margin:0 !important;
+  transform:none !important;
+  cursor:pointer !important;
+  accent-color:#2f6fda !important;
+}
+.ignore-check{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  position:relative !important;
+  width:16px !important;
+  height:16px !important;
+  margin:0 !important;
+  transform:none !important;
+  border:1.5px solid #d73a49 !important;
+  border-radius:3px !important;
+  background:#fff !important;
+  cursor:pointer !important;
+}
+.ignore-check:checked{
+  background:#d73a49 !important;
+  border-color:#d73a49 !important;
+}
+.ignore-check:checked::after{
+  content:"×" !important;
+  position:absolute !important;
+  inset:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  color:#fff !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+}
+.event-row:has(.plan-check:checked) td:not(.date-cell){
+  background:#e8f4ff !important;
+}
+.event-row.ignored td:not(.date-cell){
+  background:#f7f8f9 !important;
+}
+</style>`;
+    html=html.replace('</head>',overrides+'</head>');
     document.open();
     document.write(html);
     document.close();
