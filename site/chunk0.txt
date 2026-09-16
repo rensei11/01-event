@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>無料食事イベント 調査済み台帳 2026</title>
+<style>
+:root{--bg:#f4f6f8;--panel:#fff;--line:#d6dce2;--head:#20262d;--text:#1d2329;--muted:#606a74;--week:#e8edf2;--link:#0b57d0;--select:#fff2b8;--edit:#fffbe8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
+.wrap{max-width:1500px;margin:0 auto;padding:18px}
+h1{font-size:22px;margin:0 0 4px} .meta{font-size:13px;color:var(--muted);margin:0 0 12px}
+.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.toolbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}
+button:hover{background:#f2f4f6} button.primary{background:#20262d;color:#fff;border-color:#20262d} button.danger{color:#a11b1b} button:disabled{opacity:.45;cursor:not-allowed}
+.help,.note{font-size:12px;color:var(--muted)} .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:930px} col.date{width:10%} col.event{width:27%} col.cond{width:19%} col.eval{width:44%}
+thead th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;font-size:14px;padding:10px 12px;border-right:1px solid #3d4650}
+tbody td{vertical-align:top;padding:10px 12px;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:14px}
+tbody td:last-child,thead th:last-child{border-right:0}
+.date-head{text-align:center} .date-cell{text-align:center;vertical-align:middle;font-weight:700;white-space:nowrap}
+.week-row td{background:var(--week);font-weight:700;padding:7px 12px;border-top:2px solid #aeb8c2}
+.event-top{display:flex;align-items:flex-start;gap:8px}
+.check-stack{display:flex;flex-direction:column;gap:3px;flex:0 0 auto;min-width:38px;padding-top:1px}
+.check-line{display:flex;align-items:center;gap:3px;font-size:11px;line-height:1.15;white-space:nowrap;cursor:pointer;color:#5f6872}
+.plan-check,.ignore-check{margin:0;transform:scale(1.05);cursor:pointer;flex:0 0 auto}
+.event-name{font-weight:700;font-size:15px} .event-name a{color:var(--link);text-decoration:none} .event-name a:hover{text-decoration:underline}
+.venue{margin-top:2px;color:var(--muted);font-size:13px} .condition{font-weight:600} .rating{font-weight:700;margin-bottom:3px}
+.event-row.selected td{background:var(--select)} body.editing .event-row td:not(.date-cell){background:var(--edit);outline:none} body.editing .event-row.selected td{background:var(--select)}
+.event-row.ignored td:not(.date-cell){background:#f7f8f9}
+.event-row.ignored td:not(.date-cell),
+.event-row.ignored td:not(.date-cell) *{color:#a2a8ae !important}
+.event-row.ignored td:not(.date-cell) a{text-decoration-color:#b8bdc2 !important}
+.status{font-size:12px;font-weight:700} .save-ok{color:#18794e} .save-warn{color:#9a6700}
+
+/* compact 3-month calendar */
+.calendar-panel{
+  margin:10px 0 14px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px 12px 12px;
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
+}
+.calendar-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+.calendar-title{font-size:14px;font-weight:700}
+.calendar-now{font-size:12px;color:var(--muted);white-space:nowrap}
+.calendars{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.month-card{
+  min-width:0;
+  border:1px solid #e1e5e9;
+  border-radius:8px;
+  padding:7px 8px 8px;
+  background:#fff;
+}
+.month-name{
+  text-align:center;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:4px;
+}
+.month-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:2px;
+  text-align:center;
+  font-size:11px;
+}
+.weekday{color:var(--muted);font-weight:600;padding:2px 0}
+.day{
+  position:relative;
+  width:26px;
+  height:26px;
+  min-width:26px;
+  min-height:26px;
+  box-sizing:border-box;
+  justify-self:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  user-select:none;
+}
+.day.empty{visibility:hidden}
+.day.event-day{
+  background:#2f6fda;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+.day.planned-day{
+  background:#d73a49;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+.day.today::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  border:2px solid #111;
+  border-radius:50%;
+  pointer-events:none;
+}
+.day.event-day:hover,.day.planned-day:hover{filter:brightness(.92)}
+.event-row.calendar-focus td{
+  animation:calendarFlash 1.4s ease;
+}
+@keyframes calendarFlash{
+  0%,100%{background:inherit}
+  25%,70%{background:#dff0ff}
+}
+@media(max-width:800px){
+  .calendars{grid-template-columns:repeat(3,minmax(220px,1fr));overflow-x:auto;padding-bottom:3px}
+  .calendar-panel{overflow:hidden}
+}
+
+@media(max-width:700px){.wrap{padding:9px}h1{font-size:18px}table{min-width:820px}tbody td,thead th{padding:8px;font-size:13px}.event-name{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div><h1>無料食事イベント 調査済み台帳 2026</h1><p class="meta">固定運用版／参加予定チェック付き</p></div>
+    <div id="status" class="status">閲覧モード</div>
+  </div>
+
+  <div class="toolbar">
+    <button id="editBtn" class="primary">編集開始</button>
+    <button id="addBtn" disabled>選択行の下に追加</button>
+    <button id="addWeekBtn" disabled>週区切りを追加</button>
+    <button id="delBtn" class="danger" disabled>選択行を削除</button>
+    <button id="linkBtn" disabled>リンク設定</button>
+    <button id="backupBtn">バックアップHTMLを書き出す</button>
+    <button id="resetBtn">初期状態に戻す</button>
+  </div>
+
+  <p class="help">イベント名の左の□をクリックすると「参加予定」にできます。チェック状態も自動保存されます。</p>
+
+  <section class="calendar-panel" aria-label="イベントカレンダー">
+    <div class="calendar-head">
+      <div class="calendar-title">イベントカレンダー</div>
+      <div id="calendarNow" class="calendar-now"></div>
+    </div>
+    <div id="calendarMonths" class="calendars"></div>
+  </section>
+
+  <div class="table-wrap">
+    <table>
+      <colgroup><col class="date"><col class="event"><col class="cond"><col class="eval"></colgroup>
+      <thead><tr><th class="date-head">日</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 夜の内容・食事根拠</th></tr></thead>
+      <tbody id="ledgerBody"><tr class="week-row"><td colspan="4">9/21～9/27</td></tr>
+
+<tr class="event-row" data-date="9/25（金）" data-event-id="evt-b6a0272fd890">
+<td class="date-cell" rowspan="2"><strong>9/25（金）</strong></td>
+<td class="event-cell">
+  <div class="event-top">
+    <div class="check-stack">
+      <label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label>
+      <label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label>
+    </div>
+    <div>
+      <div class="event-name"><a href="https://fuze.wantedly.com/" target="_blank" rel="noopener">FUZE 2026</a></div>
+      <div class="venue">東京ミッドタウンホール</div>
+    </div>
+  </div>
+</td>
+<td class="condition">無料・事前登録制<br>約750名</td>
+<td><div class="rating">A+。規模・After Party・会場の総合力が高く、本命級。</div><div class="night"><strong>18:25～20:10</strong> After Party。「飲食物を楽しみながら」と明記。</div></td>
+</tr>
+
+<tr class="event-row" data-date="9/25（金）" data-event-id="evt
