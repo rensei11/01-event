@@ -1,0 +1,189 @@
+eateElement('div');
+      el.className='weekday';
+      el.textContent=w;
+      grid.appendChild(el);
+    });
+
+    for(let i=0;i<firstDow;i++){
+      const blank=document.createElement('div');
+      blank.className='day empty';
+      blank.textContent='0';
+      grid.appendChild(blank);
+    }
+
+    for(let day=1;day<=daysInMonth;day++){
+      const el=document.createElement('div');
+      el.className='day';
+      el.textContent=String(day);
+
+      const key=`${year}-${month}-${day}`;
+      const st=statusMap.get(key);
+      if(st?.exists)el.classList.add('event-day');
+      if(st?.planned)el.classList.add('planned-day');
+      if(year===now.getFullYear() && month===now.getMonth()+1 && day===now.getDate()){
+        el.classList.add('today');
+      }
+      if(st?.exists){
+        el.title=st.planned?'参加予定イベントあり':'イベントあり';
+        el.addEventListener('click',()=>scrollToEvent(year,month,day));
+      }
+      grid.appendChild(el);
+    }
+
+    card.appendChild(grid);
+    calendarMonths.appendChild(card);
+  }
+}
+
+function saveLocal(msg='自動保存済み'){
+  try{
+    tbody.querySelectorAll('.plan-check,.ignore-check').forEach(cb=>cb.checked?cb.setAttribute('checked','checked'):cb.removeAttribute('checked'));
+
+    const flags={};
+    const plannedByName={};
+    tbody.querySelectorAll('.event-row').forEach(row=>{
+      const key=eventKey(row);
+      const name=row.querySelector('.event-name')?.innerText?.trim();
+      const planned=!!row.querySelector('.plan-check')?.checked;
+      const ignored=!!row.querySelector('.ignore-check')?.checked;
+      if(key)flags[key]={planned,ignored};
+      if(name)plannedByName[name]=planned;
+      applyIgnoredStyle(row);
+    });
+
+    localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));
+    // 旧版からの移行互換用として残す
+    localStorage.setItem(PLANNED_KEY,JSON.stringify(plannedByName));
+    // このHTML版の手動編集だけは同じ版の再読込時に復元
+    localStorage.setItem(STORAGE_KEY,tbody.innerHTML);
+
+    status.textContent=msg;status.className='status save-ok';
+  }catch(e){
+    status.textContent='自動保存できませんでした';status.className='status save-warn';
+  }
+}
+function restoreLocal(){
+  try{
+    // 同じHTML版で行った手動編集のみ復元。次回のHTML更新ではSTORAGE_KEYが変わるため、
+    // 古い表全体が最新版を上書きすることはない。
+    const s=localStorage.getItem(STORAGE_KEY);
+    if(s)tbody.innerHTML=s;
+
+    ensureEventYears();
+
+    const flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}');
+    const oldPlanned=JSON.parse(localStorage.getItem(PLANNED_KEY)||'{}');
+
+    tbody.querySelectorAll('.event-row').forEach(row=>{
+      const key=eventKey(row);
+      const name=row.querySelector('.event-name')?.innerText?.trim();
+      const plan=row.querySelector('.plan-check');
+      const ignore=row.querySelector('.ignore-check');
+
+      if(key && flags[key]){
+        if(plan)plan.checked=!!flags[key].planned;
+        if(ignore)ignore.checked=!!flags[key].ignored;
+      }else if(name && Object.prototype.hasOwnProperty.call(oldPlanned,name)){
+        // 旧版で付けた「参加予定」チェックを初回だけ引き継ぐ
+        if(plan)plan.checked=!!oldPlanned[name];
+      }
+
+      // 矛盾防止：×を優先
+      if(ignore?.checked && plan)plan.checked=false;
+      applyIgnoredStyle(row);
+    });
+  }catch(e){}
+}
+function setSelected(row){if(selected)selected.classList.remove('selected');selected=row;if(selected)selected.classList.add('selected');updateButtons();}
+function updateButtons(){
+  const ev=!!(selected&&selected.classList.contains('event-row'));
+  const any=!!selected;
+  addBtn.disabled=!editing||!any;addWeekBtn.disabled=!editing||!any;delBtn.disabled=!editing||!ev;linkBtn.disabled=!editing||!ev;
+}
+function setEditing(on){
+  editing=on;document.body.classList.toggle('editing',on);
+  tbody.querySelectorAll('.event-row td:not(.date-cell)').forEach(td=>td.contentEditable=on?'true':'false');
+  editBtn.textContent=on?'編集終了':'編集開始';
+  status.textContent=on?'編集中（変更は自動保存）':'閲覧モード';status.className='status';updateButtons();
+}
+restoreLocal();
+ensureEventYears();
+applyAllIgnoredStyles();
+setEditing(false);
+renderCalendar(true);
+setInterval(()=>{
+  const now=new Date();
+  const key=`${now.getFullYear()}-${now.getMonth()}`;
+  if(key!==lastCalendarMonthKey)renderCalendar(true);
+  else{
+    calendarNow.textContent=`PC日時基準：${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}（${japaneseWeekday(now)}）`;
+  }
+},60000);
+
+editBtn.onclick=()=>setEditing(!editing);
+
+tbody.addEventListener('click',e=>{
+  if(e.target.classList.contains('plan-check')||e.target.classList.contains('ignore-check'))return;
+  const row=e.target.closest('tr');
+  if(editing&&row){e.preventDefault();setSelected(row);}
+});
+
+tbody.addEventListener('change',e=>{
+  if(e.target.classList.contains('plan-check')||e.target.classList.contains('ignore-check')){
+    const row=e.target.closest('.event-row');
+    if(row){
+      const plan=row.querySelector('.plan-check');
+      const ignore=row.querySelector('.ignore-check');
+      if(e.target.classList.contains('plan-check') && plan?.checked && ignore)ignore.checked=false;
+      if(e.target.classList.contains('ignore-check') && ignore?.checked && plan)plan.checked=false;
+      applyIgnoredStyle(row);
+    }
+    saveLocal(e.target.classList.contains('ignore-check')?'考慮しない設定を保存しました':'参加予定を保存しました');
+    renderCalendar(true);
+  }
+});
+
+tbody.addEventListener('input',()=>{
+  clearTimeout(window.__saveTimer);
+  window.__saveTimer=setTimeout(()=>{saveLocal();renderCalendar(true);},250);
+});
+
+addBtn.onclick=()=>{
+  if(!selected)return;
+  const date=selected.classList.contains('event-row')?(selected.dataset.date||'10/00（曜）'):'10/00（曜）';
+  const tr=document.createElement('tr');
+  tr.className='event-row';tr.dataset.date=date;tr.dataset.year=String(new Date().getFullYear());tr.dataset.eventId='manual-'+Date.now();
+  tr.innerHTML=`<td class="date-cell"><strong>${date}</strong></td>
+<td class="event-cell"><div class="event-top"><div class="check-stack"><label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定"><span>行く</span></label><label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない"><span>×</span></label></div><div><div class="event-name"><a href="#" target="_blank" rel="noopener">新しいイベント</a></div><div class="venue">会場名</div></div></div></td>
+<td class="condition">参加条件<br>人数</td>
+<td><div class="rating">評価。短い評価理由。</div><div class="night"><strong>00:00～00:00</strong> Networking。</div></td>`;
+  selected.insertAdjacentElement('afterend',tr);
+  tr.querySelectorAll('td:not(.date-cell)').forEach(td=>td.contentEditable='true');
+  setSelected(tr);saveLocal('行を追加しました');renderCalendar(true);
+};
+
+addWeekBtn.onclick=()=>{
+  if(!selected)return;
+  const tr=document.createElement('tr');tr.className='week-row';
+  tr.innerHTML='<td colspan="4" contenteditable="true">10/00～10/00</td>';
+  selected.insertAdjacentElement('afterend',tr);setSelected(tr);saveLocal('週区切りを追加しました');
+};
+
+delBtn.onclick=()=>{
+  if(!selected||!selected.classList.contains('event-row'))return;
+  const name=selected.querySelector('.event-name')?.innerText||'この行';
+  if(confirm('「'+name+'」を削除しますか？')){selected.remove();selected=null;updateButtons();saveLocal('削除しました');renderCalendar(true);}
+};
+
+linkBtn.onclick=()=>{
+  if(!selected||!selected.classList.contains('event-row'))return;
+  const a=selected.querySelector('.event-name a');
+  const url=prompt('イベント名に設定するURL',a?.getAttribute('href')||'');
+  if(url!==null&&a){a.setAttribute('href',url.trim());saveLocal('リンクを保存しました');}
+};
+
+backupBtn.onclick=()=>{
+  if(editing)setEditing(false);
+  if(selected)selected.classList.remove('selected');
+  saveLocal();
+  
