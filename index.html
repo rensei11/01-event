@@ -3,98 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>無料食事イベント台帳 読み込み中</title>
-<style>body{font-family:"Yu Gothic UI",Meiryo,sans-serif;padding:24px;color:#222}#msg{font-size:15px}</style>
+<title>無料食事イベント 調査済み台帳 2026</title>
+<style>
+:root{--bg:#f4f6f8;--panel:#fff;--line:#d6dce2;--head:#20262d;--text:#1d2329;--muted:#606a74;--week:#e8edf2;--link:#0b57d0;--planned:#e8f4ff;--ignored:#f7f8f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
+.wrap{max-width:1500px;margin:0 auto;padding:18px}
+h1{font-size:22px;margin:0 0 4px}.meta{font-size:13px;color:var(--muted);margin:0 0 12px}.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.status{font-size:12px;font-weight:700}.save-ok{color:#18794e}.save-warn{color:#9a6700}.help,.note{font-size:12px;color:var(--muted)}
+.toolbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}button:hover{background:#f2f4f6}
+.table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:930px}col.date{width:10%}col.event{width:27%}col.cond{width:19%}col.eval{width:44%}thead th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;font-size:14px;padding:10px 12px;border-right:1px solid #3d4650}tbody td{vertical-align:top;padding:10px 12px;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:14px}tbody td:last-child,thead th:last-child{border-right:0}.date-head{text-align:center}.date-cell{text-align:center;vertical-align:middle;font-weight:700;white-space:nowrap}.week-row td{background:var(--week);font-weight:700;padding:7px 12px;border-top:2px solid #aeb8c2}
+.event-top{display:flex;align-items:flex-start;gap:8px}.check-stack{display:flex;flex-direction:column;gap:5px;flex:0 0 17px;min-width:17px;padding-top:2px}.check-line{display:flex;align-items:center;width:17px;height:17px;margin:0;padding:0;cursor:pointer;font-size:0;line-height:1}.check-line span{display:none}.plan-check{appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;margin:0;cursor:pointer;accent-color:#2f6fda}.ignore-check{appearance:none;-webkit-appearance:none;position:relative;width:16px;height:16px;margin:0;border:1.5px solid #d73a49;border-radius:3px;background:#fff;cursor:pointer}.ignore-check:checked{background:#d73a49;border-color:#d73a49}.ignore-check:checked::after{content:"×";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;line-height:1}
+.event-name{font-weight:700;font-size:15px}.event-name a{color:var(--link);text-decoration:none}.event-name a:hover{text-decoration:underline}.venue{margin-top:2px;color:var(--muted);font-size:13px}.condition{font-weight:600}.rating{font-weight:700;margin-bottom:3px}.event-row.planned td:not(.date-cell){background:var(--planned)}.event-row.ignored td:not(.date-cell){background:var(--ignored)}.event-row.ignored td:not(.date-cell),.event-row.ignored td:not(.date-cell) *{color:#a2a8ae!important}.event-row.ignored td:not(.date-cell) a{text-decoration-color:#b8bdc2!important}.event-row.calendar-focus td{animation:calendarFlash 1.4s ease}@keyframes calendarFlash{0%,100%{background:inherit}25%,70%{background:#dff0ff}}
+.calendar-panel{margin:10px 0 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px 12px;box-shadow:0 1px 4px rgba(0,0,0,.04)}.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:700}.calendar-now{font-size:12px;color:var(--muted);white-space:nowrap}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.month-card{min-width:0;border:1px solid #e1e5e9;border-radius:8px;padding:7px 8px 8px;background:#fff}.month-name{text-align:center;font-size:13px;font-weight:700;margin-bottom:4px}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:600;padding:2px 0}.day{position:relative;width:26px;height:26px;min-width:26px;min-height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none}.day.empty{visibility:hidden}.day.event-day{background:#8a939c;color:#fff;font-weight:700;cursor:pointer}.day.planned-day{background:#2f6fda;color:#fff;font-weight:700;cursor:pointer}.day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.day.event-day:hover,.day.planned-day:hover{filter:brightness(.92)}
+.loading{padding:28px;text-align:center;color:var(--muted)}
+@media(max-width:800px){.calendars{grid-template-columns:repeat(3,minmax(220px,1fr));overflow-x:auto;padding-bottom:3px}.calendar-panel{overflow:hidden}}@media(max-width:700px){.wrap{padding:9px}h1{font-size:18px}table{min-width:820px}tbody td,thead th{padding:8px;font-size:13px}.event-name{font-size:14px}}
+</style>
 </head>
 <body>
-<div id="msg">無料食事イベント台帳を読み込んでいます…</div>
+<div class="wrap">
+  <div class="top"><div><h1>無料食事イベント 調査済み台帳 2026</h1><p class="meta">JSON分離版／参加予定・除外チェック付き</p></div><div id="status" class="status">読み込み中</div></div>
+  <div class="toolbar"><button id="resetFlagsBtn">チェックを初期化</button></div>
+  <p class="help">上の□は参加予定、下の赤枠□は考慮しないイベントです。状態はこのブラウザに自動保存されます。</p>
+  <section class="calendar-panel" aria-label="イベントカレンダー"><div class="calendar-head"><div class="calendar-title">イベントカレンダー</div><div id="calendarNow" class="calendar-now"></div></div><div id="calendarMonths" class="calendars"></div></section>
+  <div class="table-wrap"><table><colgroup><col class="date"><col class="event"><col class="cond"><col class="eval"></colgroup><thead><tr><th class="date-head">日</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 夜の内容・食事根拠</th></tr></thead><tbody id="ledgerBody"><tr><td colspan="4" class="loading">イベント一覧を読み込んでいます…</td></tr></tbody></table></div>
+  <p class="note">※ イベントデータは「イベント一覧.json」から読み込んでいます。</p>
+</div>
 <script>
-(async()=>{
-  try{
-    const parts=[];
-    for(let i=0;i<=5;i++){
-      const r=await fetch(`site/chunk${i}.txt?v=${Date.now()}`,{cache:'no-store'});
-      if(!r.ok) throw new Error(`chunk${i} の取得に失敗しました`);
-      parts.push(await r.text());
-    }
-    let html=parts.join('');
-    const overrides=`<style>
-/* online UI overrides */
-.check-stack{
-  display:flex !important;
-  flex-direction:column !important;
-  gap:5px !important;
-  flex:0 0 17px !important;
-  min-width:17px !important;
-  padding-top:2px !important;
-}
-.check-line{
-  display:flex !important;
-  align-items:center !important;
-  width:17px !important;
-  height:17px !important;
-  margin:0 !important;
-  padding:0 !important;
-  cursor:pointer !important;
-  font-size:0 !important;
-  line-height:1 !important;
-}
-.check-line span{display:none !important;}
-.plan-check{
-  appearance:auto !important;
-  -webkit-appearance:checkbox !important;
-  width:16px !important;
-  height:16px !important;
-  margin:0 !important;
-  transform:none !important;
-  cursor:pointer !important;
-  accent-color:#2f6fda !important;
-}
-.ignore-check{
-  appearance:none !important;
-  -webkit-appearance:none !important;
-  position:relative !important;
-  width:16px !important;
-  height:16px !important;
-  margin:0 !important;
-  transform:none !important;
-  border:1.5px solid #d73a49 !important;
-  border-radius:3px !important;
-  background:#fff !important;
-  cursor:pointer !important;
-}
-.ignore-check:checked{
-  background:#d73a49 !important;
-  border-color:#d73a49 !important;
-}
-.ignore-check:checked::after{
-  content:"×" !important;
-  position:absolute !important;
-  inset:0 !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  color:#fff !important;
-  font-size:15px !important;
-  font-weight:800 !important;
-  line-height:1 !important;
-}
-.event-row:has(.plan-check:checked) td:not(.date-cell){
-  background:#e8f4ff !important;
-}
-.event-row.ignored td:not(.date-cell){
-  background:#f7f8f9 !important;
-}
-</style>`;
-    html=html.replace('</head>',overrides+'</head>');
-    document.open();
-    document.write(html);
-    document.close();
-  }catch(e){
-    document.getElementById('msg').textContent='台帳の読み込みに失敗しました。ページを再読み込みしてください。';
-    console.error(e);
+const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
+const PLANNED_KEY='free_food_event_ledger_2026_planned_v1';
+const tbody=document.getElementById('ledgerBody');
+const status=document.getElementById('status');
+const calendarMonths=document.getElementById('calendarMonths');
+const calendarNow=document.getElementById('calendarNow');
+const resetFlagsBtn=document.getElementById('resetFlagsBtn');
+let events=[];
+let flags={};
+
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function parseISO(s){const [y,m,d]=String(s).split('-').map(Number);return new Date(y,m-1,d)}
+function jpWeekday(d){return ['日','月','火','水','木','金','土'][d.getDay()]}
+function dateLabel(s){const d=parseISO(s);return `${d.getMonth()+1}/${d.getDate()}（${jpWeekday(d)}）`}
+function weekRangeLabel(s){const d=parseISO(s),day=(d.getDay()+6)%7;const mon=new Date(d);mon.setDate(d.getDate()-day);const sun=new Date(mon);sun.setDate(mon.getDate()+6);return `${mon.getMonth()+1}/${mon.getDate()}～${sun.getMonth()+1}/${sun.getDate()}`}
+function weekKey(s){const d=parseISO(s),day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return d.toISOString().slice(0,10)}
+function loadFlags(){try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(e){flags={}}}
+function saveFlags(){localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));status.textContent='チェック状態を保存しました';status.className='status save-ok';renderCalendar()}
+function eventFlag(id){return flags[id]||{planned:false,ignored:false}}
+function renderLedger(){
+  const sorted=[...events].sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name,'ja'));
+  let html='';let currentWeek='';let currentDate='';let i=0;
+  while(i<sorted.length){
+    const e=sorted[i];const wk=weekKey(e.date);
+    if(wk!==currentWeek){html+=`<tr class="week-row"><td colspan="4">${esc(weekRangeLabel(e.date))}</td></tr>`;currentWeek=wk;currentDate=''}
+    const sameDate=sorted.filter(x=>x.date===e.date);const firstOfDate=e.date!==currentDate;
+    const f=eventFlag(e.id);const cls=`event-row${f.planned?' planned':''}${f.ignored?' ignored':''}`;
+    html+=`<tr class="${cls}" data-date="${esc(e.date)}" data-event-id="${esc(e.id)}">`;
+    if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(dateLabel(e.date))}</strong></td>`;
+    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack"><label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定" ${f.planned?'checked':''}><span>行く</span></label><label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label></div><div><div class="event-name"><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a></div><div class="venue">${esc(e.venue)}</div></div></div></td>`;
+    html+=`<td class="condition">${(e.conditionLines||[]).map(esc).join('<br>')}</td>`;
+    html+=`<td><div class="rating">${esc(e.rating)}</div><div class="night">${e.nightTime?`<strong>${esc(e.nightTime)}</strong> `:''}${esc(e.nightText)}</div></td></tr>`;
+    currentDate=e.date;i++;
   }
-})();
+  tbody.innerHTML=html||'<tr><td colspan="4" class="loading">イベントがありません。</td></tr>';
+}
+function eventStatusMap(){const map=new Map();for(const e of events){const f=eventFlag(e.id);const prev=map.get(e.date)||{exists:true,planned:false};map.set(e.date,{exists:true,planned:prev.planned||!!f.planned})}return map}
+function renderCalendar(){
+  const now=new Date(),map=eventStatusMap();calendarNow.textContent=`PC日時基準：${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}（${jpWeekday(now)}）`;calendarMonths.innerHTML='';
+  const labels=['日','月','火','水','木','金','土'];
+  for(let offset=0;offset<3;offset++){
+    const first=new Date(now.getFullYear(),now.getMonth()+offset,1),year=first.getFullYear(),month=first.getMonth()+1,days=new Date(year,month,0).getDate();
+    const card=document.createElement('div');card.className='month-card';card.innerHTML=`<div class="month-name">${year}年${month}月</div>`;const grid=document.createElement('div');grid.className='month-grid';
+    labels.forEach(w=>{const el=document.createElement('div');el.className='weekday';el.textContent=w;grid.appendChild(el)});for(let j=0;j<first.getDay();j++){const el=document.createElement('div');el.className='day empty';grid.appendChild(el)}
+    for(let day=1;day<=days;day++){
+      const el=document.createElement('div');el.className='day';el.textContent=day;const key=`${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`,st=map.get(key);if(st?.exists)el.classList.add('event-day');if(st?.planned)el.classList.add('planned-day');if(year===now.getFullYear()&&month===now.getMonth()+1&&day===now.getDate())el.classList.add('today');if(st?.exists){el.title=st.planned?'参加予定イベントあり':'イベントあり';el.onclick=()=>scrollToDate(key)}grid.appendChild(el)
+    }
+    card.appendChild(grid);calendarMonths.appendChild(card)
+  }
+}
+function scrollToDate(date){const row=[...tbody.querySelectorAll('.event-row')].find(r=>r.dataset.date===date);if(!row)return;row.scrollIntoView({behavior:'smooth',block:'start'});row.classList.remove('calendar-focus');void row.offsetWidth;row.classList.add('calendar-focus');setTimeout(()=>row.classList.remove('calendar-focus'),1600)}
+function applyFlagToRow(row){const id=row.dataset.eventId,f=eventFlag(id);row.classList.toggle('planned',!!f.planned);row.classList.toggle('ignored',!!f.ignored)}
+tbody.addEventListener('change',e=>{if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('ignore-check'))return;const row=e.target.closest('.event-row');if(!row)return;const id=row.dataset.eventId;const f=eventFlag(id);if(e.target.classList.contains('plan-check')){f.planned=e.target.checked;if(f.planned)f.ignored=false}else{f.ignored=e.target.checked;if(f.ignored)f.planned=false}flags[id]=f;row.querySelector('.plan-check').checked=!!f.planned;row.querySelector('.ignore-check').checked=!!f.ignored;applyFlagToRow(row);saveFlags()});
+resetFlagsBtn.onclick=()=>{if(!confirm('参加予定と除外チェックをすべて外しますか？'))return;flags={};localStorage.removeItem(FLAGS_KEY);localStorage.removeItem(PLANNED_KEY);renderLedger();renderCalendar();status.textContent='チェックを初期化しました';status.className='status save-warn'};
+(async()=>{try{loadFlags();const r=await fetch(`イベント一覧.json?v=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw new Error('イベント一覧.jsonの取得に失敗');const data=await r.json();events=Array.isArray(data.events)?data.events:[];renderLedger();renderCalendar();status.textContent=`読込完了：${events.length}件`;status.className='status save-ok'}catch(err){console.error(err);tbody.innerHTML='<tr><td colspan="4" class="loading">台帳の読み込みに失敗しました。ページを再読み込みしてください。</td></tr>';status.textContent='読み込み失敗';status.className='status save-warn'}})();
+setInterval(()=>{if(events.length)renderCalendar()},60000);
 </script>
 </body>
 </html>
