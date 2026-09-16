@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-16-4",
+  "dataVersion": "2026-09-16-5",
   "year": 2026,
   "events": [
     {"id":"evt-b6a0272fd890","date":"2026-09-25","name":"FUZE 2026","url":"https://fuze.wantedly.com/","venue":"東京ミッドタウンホール","conditionLines":["無料・事前登録制","約750名"],"rating":"A+。規模・After Party・会場の総合力が高く、本命級。","nightTime":"18:25～20:10","nightText":"After Party。「飲食物を楽しみながら」と明記。"},
@@ -33,6 +33,7 @@
     {"id":"evt-e00e8470","date":"2026-10-29","name":"企業価値経営サミット2026","url":"https://booost-ai.com/261029summit","venue":"室町三井ホール＆カンファレンス","conditionLines":["無料・審査制予定","定員300～500名"],"rating":"B。規模・90分懇親会は良いが、対象がプライム上場企業の経営・実務層中心。","nightTime":"17:00～18:30","nightText":"懇親会・ネットワーキング。飲食詳細は未確認。"},
     {"id":"evt-1a4223fa","date":"2026-11-05","name":"StoryHub Ensemble 2026","url":"https://event.storyhub.jp/ensemble/2026/","venue":"日本橋三井ホール","conditionLines":["無料・抽選","会場400名"],"rating":"B。無料400名で2時間の懇親会。料理・ドリンク詳細は現時点で未確認。","nightTime":"18:00～20:00","nightText":"懇親会・デモ展示。懇親会のみの参加不可。"},
     {"id":"evt-75da917a","date":"2026-11-10","name":"Hotel Marketing Conference 2026（Day 1）","url":"https://hmc.micado.jp/","venue":"KABUTO ONE","conditionLines":["無料（宿泊施設関係者）","総勢1,000人以上"],"rating":"A※。無料懇親会・大規模で強いが、参加対象が宿泊施設関係者中心。","nightTime":"18:00～","nightText":"懇親会。公式に「どなたでも無料で参加」と案内。"},
+    {"id":"evt-meets-keiei-20261111","date":"2026-11-11","name":"Meets 第6回 経営企画部 戦略サミット","url":"https://meets.8card.net/","venue":"東京ミッドタウンホール（六本木）","conditionLines":["無料・事前審査制","定員240名","10/9までの申請は優先扱い（案内メール）"],"rating":"A-※。本来は審査制で参加可否に不確実性があるが、今回は期限内申請の優先案内あり。前回は飲み物・軽食付き大交流会あり。","nightTime":"14:30～20:00（全体）","nightText":"第6回の交流会時間・飲食は未公表。第5回は18:25～20:30のNetworkingで、飲み物・軽食あり。"},
     {"id":"evt-74da8fe7","date":"2026-11-11","name":"Hotel Marketing Conference 2026（Day 2）","url":"https://hmc.micado.jp/","venue":"KABUTO ONE","conditionLines":["無料（宿泊施設関係者）","総勢1,000人以上"],"rating":"A※。Day 2も18時から無料懇親会。参加対象条件は要確認。","nightTime":"18:00～","nightText":"懇親会。公式に両日18時から無料開催と明記。"},
     {"id":"evt-f95813dd","date":"2026-11-13","name":"Dell Technologies Forum 2026","url":"https://www.dell.com/community/ja/conversations/%E6%83%85%E5%A0%B1%E3%82%AC%E3%82%A4%E3%83%89%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9/%E9%96%8B%E5%82%AC%E5%91%8A%E7%9F%A51113%E9%87%91%E9%96%8B%E5%82%AC-%E5%BC%8A%E7%A4%BE%E5%B9%B4%E6%AC%A1%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88dell-technologies-forum-2026/6a90d77a900cc52adff00c1e","venue":"ザ・プリンス パークタワー東京","conditionLines":["参加登録制","オンライン併催"],"rating":"C※。ホテル会場は魅力だが、夜の懇親会・飲食は現時点で確認できず。","nightTime":"","nightText":"夜のReception・飲食は未確認。来場＋総合アンケート特典あり。"},
     {"id":"evt-workato-wow-20261118","date":"2026-11-18","name":"World of Workato Tokyo 2026（Day 1）","url":"https://workatowowconference.cventevents.com/event/tokyo/world-of-workato","venue":"東京マリオットホテル","conditionLines":["通常有料（一般59,000円～）","無料招待コードあり／1,000名以上"],"rating":"A※。ホテル・1,000名超の大型イベント。無料招待経路あり。Day 1の夜の飲食は未確認。","nightTime":"16:30～18:30","nightText":"Developer Conference内でAgentic AI Hackathon最終プレゼン。懇親会・飲食は未確認。"},
