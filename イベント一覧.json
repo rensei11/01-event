@@ -444,9 +444,11 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "historySource": "未参加イベント"
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-17"
+      ],
+      "historySource": "ユーザー実地確認"
     },
     {
       "id": "hist-no-607b4d0ea026",
