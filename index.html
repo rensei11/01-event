@@ -10,7 +10,7 @@
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
 h1{font-size:22px;margin:0 0 4px}.meta{font-size:13px;color:var(--muted);margin:0 0 12px}.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.status{font-size:12px;font-weight:700}.save-ok{color:#18794e}.save-warn{color:#9a6700}.help,.note{font-size:12px;color:var(--muted)}
-.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.view-tabs{display:flex;gap:6px;flex-wrap:wrap}.view-tab.active{background:#20262d;color:#fff;border-color:#20262d}.reset-btn{margin-left:auto}.subtabs{display:flex;gap:4px;flex-wrap:wrap;margin:0 0 10px}.subtab{border-radius:16px;padding:5px 12px;background:#fff}.subtab.active{background:#e8edf2;border-color:#7d8791;font-weight:700}.kind-badge{display:inline-block;margin:0 0 3px;padding:1px 6px;border-radius:10px;background:#eef1f4;color:#5d6670;font-size:11px;font-weight:700}button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}button:hover{background:#f2f4f6}
+.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.view-tabs{display:flex;gap:6px;flex-wrap:wrap}.view-tab.active{background:#20262d;color:#fff;border-color:#20262d}.reset-btn{margin-left:auto}.subtabs{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 14px}.subtab{min-width:110px;border:2px solid #9aa5b1;border-radius:9px;padding:9px 20px;background:#fff;font-size:15px;font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.06)}.subtab:hover{background:#eef3f8}.subtab.active{background:#2f6fda;border-color:#2f6fda;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.16)}.kind-badge{display:inline-block;margin:0 0 3px;padding:1px 6px;border-radius:10px;background:#eef1f4;color:#5d6670;font-size:11px;font-weight:700}button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}button:hover{background:#f2f4f6}
 .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col.date{width:7%}col.event{width:29%}col.cond{width:19%}col.eval{width:45%}col.report-date{width:10%}col.report-event{width:35%}col.report-text{width:55%}thead th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;font-size:14px;padding:10px 12px;border-right:1px solid #3d4650}tbody td{vertical-align:top;padding:10px 12px;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:14px}tbody td:last-child,thead th:last-child{border-right:0}.date-head{text-align:center}.date-cell{text-align:center;vertical-align:middle;font-weight:700;white-space:nowrap}.week-row td{background:var(--week);font-weight:700;padding:7px 12px;border-top:2px solid #aeb8c2}
 .event-top{display:flex;align-items:flex-start;gap:8px}.check-stack{display:flex;flex-direction:column;gap:5px;flex:0 0 17px;min-width:17px;padding-top:2px}.check-line{display:flex;align-items:center;width:17px;height:17px;margin:0;padding:0;cursor:pointer;font-size:0;line-height:1}.check-line span{display:none}.plan-check{appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;margin:0;cursor:pointer;accent-color:#2f6fda}.ignore-check{appearance:none;-webkit-appearance:none;position:relative;width:16px;height:16px;margin:0;border:1.5px solid #d73a49;border-radius:3px;background:#fff;cursor:pointer}.ignore-check:checked{background:#d73a49;border-color:#d73a49}.ignore-check:checked::after{content:"×";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;line-height:1}
@@ -26,7 +26,7 @@ table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col
   <div class="toolbar"><div class="view-tabs"><button id="eventsTab" class="view-tab active">イベント一覧</button><button id="plannedTab" class="view-tab">来場予定</button><button id="reportsTab" class="view-tab">実地レポート</button></div><button id="resetFlagsBtn" class="reset-btn">チェックを初期化</button></div>
   <p id="viewHelp" class="help">上の□は「行く」、下の赤枠□は「考慮しない」です。状態はこのブラウザに自動保存されます。</p>
   <section class="calendar-panel" aria-label="共通カレンダー"><div class="calendar-head"><div id="calendarTitle" class="calendar-title">共通カレンダー</div><div id="calendarNow" class="calendar-now"></div></div><div id="calendarMonths" class="calendars"></div></section>
-  <div id="eventSubtabs" class="subtabs"><button class="subtab active" data-kind="gathering">懇親会</button><button class="subtab" data-kind="exhibition">展示会</button><button class="subtab" data-kind="both">両方</button></div>
+  <div id="eventSubtabs" class="subtabs"><button class="subtab active" data-kind="exhibition">展示会</button><button class="subtab" data-kind="gathering">懇親会</button><button class="subtab" data-kind="both">両方</button></div>
   <section id="eventsView"><div class="table-wrap"><table><colgroup><col class="date"><col class="event"><col class="cond"><col class="eval"></colgroup><thead><tr><th class="date-head">日</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容・根拠</th></tr></thead><tbody id="ledgerBody"><tr><td colspan="4" class="loading">イベント一覧を読み込んでいます…</td></tr></tbody></table></div></section>
   <section id="reportsView" hidden><div class="table-wrap"><table><colgroup><col class="report-date"><col class="report-event"><col class="report-text"></colgroup><thead><tr><th class="date-head">日付</th><th>イベント / 会場</th><th>レポート</th></tr></thead><tbody id="reportBody"><tr><td colspan="3" class="loading">実地レポートを読み込んでいます…</td></tr></tbody></table></div></section>
   <p class="note">※ 懇親会は「イベント一覧.json」、展示会は「展示会一覧.json」、参加後の記録は「実地レポート.json」から読み込んでいます。</p>
@@ -35,6 +35,7 @@ table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
 const PLANNED_KEY='free_food_event_ledger_2026_planned_v1';
 const REPORT_FLAGS_KEY='free_food_event_report_flags_v1';
+const UI_STATE_KEY='free_food_event_ui_state_v1';
 
 const tbody=document.getElementById('ledgerBody');
 const reportBody=document.getElementById('reportBody');
@@ -57,7 +58,7 @@ let reports=[];
 let flags={};
 let reportFlags={};
 let currentView='events';
-let currentKind='gathering';
+let currentKind='exhibition';
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function parseISO(s){const [y,m,d]=String(s).split('-').map(Number);return new Date(y,m-1,d)}
@@ -69,6 +70,16 @@ function weekKey(s){const d=parseISO(s),day=(d.getDay()+6)%7;d.setDate(d.getDate
 function loadFlags(){
   try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(e){flags={}}
   try{reportFlags=JSON.parse(localStorage.getItem(REPORT_FLAGS_KEY)||'{}')}catch(e){reportFlags={}}
+}
+function loadUiState(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(UI_STATE_KEY)||'{}');
+    if(['events','planned','reports'].includes(saved.view))currentView=saved.view;
+    if(['exhibition','gathering','both'].includes(saved.kind))currentKind=saved.kind;
+  }catch(e){}
+}
+function saveUiState(){
+  localStorage.setItem(UI_STATE_KEY,JSON.stringify({view:currentView,kind:currentKind}));
 }
 function saveFlags(){
   localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));
@@ -243,7 +254,7 @@ function applyReportFlagToRow(row){
 function updateSubtabs(){
   eventSubtabs.querySelectorAll('.subtab').forEach(b=>b.classList.toggle('active',b.dataset.kind===currentKind));
 }
-function setView(view){
+function setView(view,persist=true){
   currentView=view;
   const isReports=view==='reports';
   eventsView.hidden=isReports;
@@ -252,9 +263,6 @@ function setView(view){
   eventsTab.classList.toggle('active',view==='events');
   plannedTab.classList.toggle('active',view==='planned');
   reportsTab.classList.toggle('active',isReports);
-
-  if(view==='planned')currentKind='both';
-  if(view==='events'&&currentKind==='both')currentKind='gathering';
   updateSubtabs();
 
   if(isReports){
@@ -266,6 +274,7 @@ function setView(view){
   }
   if(!isReports)renderLedger();
   renderCalendar();
+  if(persist)saveUiState();
 }
 
 tbody.addEventListener('change',e=>{
@@ -312,6 +321,7 @@ eventSubtabs.addEventListener('click',e=>{
   currentKind=b.dataset.kind;
   updateSubtabs();
   renderLedger();
+  saveUiState();
 });
 
 resetFlagsBtn.onclick=()=>{
@@ -331,6 +341,7 @@ resetFlagsBtn.onclick=()=>{
 (async()=>{
   try{
     loadFlags();
+    loadUiState();
     const [gr,xr,rr]=await Promise.all([
       fetch(`イベント一覧.json?v=${Date.now()}`,{cache:'no-store'}),
       fetch(`展示会一覧.json?v=${Date.now()}`,{cache:'no-store'}),
@@ -344,7 +355,7 @@ resetFlagsBtn.onclick=()=>{
     exhibitions=Array.isArray(exhibitData.events)?exhibitData.events:[];
     reports=Array.isArray(reportData.reports)?reportData.reports:[];
     renderReports();
-    setView('events');
+    setView(currentView,false);
     status.textContent=`読込完了：懇親会${gatherings.length}件 / 展示会${exhibitions.length}件 / レポート${reports.length}件`;
     status.className='status save-ok';
   }catch(err){
