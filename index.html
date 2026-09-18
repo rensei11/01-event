@@ -91,6 +91,14 @@ function expandEventRows(e,dates){
   return dates.map(d=>({...e,_displayDate:d,_dayIndex:allDays.indexOf(d)+1,_dayCount:allDays.length}));
 }
 function displayEventName(e){return e._dayCount>1?e.name+'（'+e._dayIndex+'）':e.name}
+function shortDayLabel(iso){const d=parseISO(iso);return d.getDate()+'('+jpWeekday(d)+')'}
+function visitDayControls(e){
+  if(!isMultiDay(e))return '';
+  const selected=new Set(plannedDates(e));
+  return '<div class="visit-days"><span class="visit-days-label">行く日</span>'+
+    isoDays(e.date,e.endDate).map(d=>'<label class="visit-day"><input class="day-plan-check" type="checkbox" data-day="'+esc(d)+'" '+(selected.has(d)?'checked':'')+'>'+esc(shortDayLabel(d))+'</label>').join('')+
+    '</div>';
+}
 
 function loadFlags(){
   try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(e){flags={}}
@@ -173,7 +181,7 @@ function renderLedger(){
     const shownName=displayEventName(e);
     const nameHtml=e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(shownName)}</a>`:esc(shownName);
     const planBox=`<label class="check-line"><input class="plan-check" type="checkbox" aria-label="行く" data-day="${esc(displayDate)}" ${selected?'checked':''}><span>行く</span></label>`;
-    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}<label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label></div><div>${badge}<div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div></div></div></td>`;
+    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}<label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label></div><div>${badge}<div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div>${visitDayControls(e)}</div></div></td>`;
     html+=`<td class="condition">${(e.conditionLines||[]).map(esc).join('<br>')}</td>`;
     html+=`<td><div class="rating">${esc(e.rating||'')}</div><div class="night">${e.nightTime?`<strong>${esc(e.nightTime)}</strong> `:''}${esc(e.nightText||e.detailText||'')}</div></td></tr>`;
     currentDate=displayDate;i++;
@@ -307,7 +315,7 @@ function setView(view,persist=true){
   }else if(view==='planned'){
     viewHelp.textContent='来場予定だけを表示します。複数日イベントも日ごとに別行で表示し、チェックした日の行だけ残ります。「両方」では同じ日を展示会→懇親会の順にします。';
   }else{
-    viewHelp.textContent='上の□はその日の「行く」、下の赤枠□は「考慮しない」です。複数日イベントは（1）（2）（3）のように日ごとに別行で表示します。';
+    viewHelp.textContent='左上の□はその日の「行く」、下の赤枠□は「考慮しない」です。複数日イベントは日別行に加え、会場名の下の「行く日」からも日付を選べます。どちらも同じ予定に同期します。';
   }
   if(!isReports)renderLedger();
   renderCalendar();
@@ -315,10 +323,10 @@ function setView(view,persist=true){
 }
 
 tbody.addEventListener('change',e=>{
-  if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('ignore-check'))return;
+  if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('day-plan-check')&&!e.target.classList.contains('ignore-check'))return;
   const row=e.target.closest('.event-row');if(!row)return;
   const id=row.dataset.eventId,f=eventFlag(id),ev=eventById(id);if(!ev)return;
-  if(e.target.classList.contains('plan-check')){
+  if(e.target.classList.contains('plan-check')||e.target.classList.contains('day-plan-check')){
     const set=new Set(plannedDates(ev)),day=e.target.dataset.day||row.dataset.displayDate;
     if(e.target.checked)set.add(day);else set.delete(day);
     f.visitDates=[...set].sort();f.planned=f.visitDates.length>0;
