@@ -47,6 +47,8 @@ const PLANNED_KEY='free_food_event_ledger_2026_planned_v1';
 const REPORT_FLAGS_KEY='free_food_event_report_flags_v1';
 const UI_STATE_KEY='free_food_event_ui_state_v1';
 const END_DRAFTS_KEY='free_food_event_end_process_drafts_v1';
+const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
+const END_PROCESS_API_URL=''; // Cloudflare Worker公開後にURLを設定
 
 const tbody=document.getElementById('ledgerBody');
 const reportBody=document.getElementById('reportBody');
@@ -221,7 +223,7 @@ function renderEndProcessForm(){
   endProcessFormWrap.innerHTML=`
     <div class="end-form-title">${esc(e.name)}</div>
     <div class="end-form-venue">${esc(e.venue||'会場未入力')} / ${esc(eventDateText(e))}</div>
-    <div class="end-draft-note">現在は下書き保存です。GitHub正本への確定書き込み機能はまだ接続していません。入力内容はこのブラウザに自動保存します。</div>
+    <div class="end-draft-note">${END_PROCESS_API_URL?'「GitHubへ保存」で年間台帳と実地レポートへ確定保存できます。':'入力内容はブラウザに自動下書き保存されます。GitHub直接保存は初回設定完了後に有効になります。'}</div>
     <div class="end-field"><span class="end-label">結果</span><div class="end-choice">
       <label><input type="radio" name="endAttendance" value="attended" ${d.status==='attended'?'checked':''}>参加した</label>
       <label><input type="radio" name="endAttendance" value="not_attended" ${d.status==='not_attended'?'checked':''}>行っていない</label>
@@ -229,7 +231,7 @@ function renderEndProcessForm(){
     <div class="end-field"><span class="end-label">実際に行った日</span><div class="end-visit-dates">${visits}</div></div>
     <div class="end-field"><label class="end-label" for="endRating">評価</label><select id="endRating" class="end-rating">${ratings.map(v=>`<option value="${v}" ${v===d.rating?'selected':''}>${v||'未選択'}</option>`).join('')}</select></div>
     <div class="end-field"><label class="end-label" for="endReport">実地レポート</label><textarea id="endReport" class="end-report" placeholder="どんなイベントだったか、食事、酒、混雑、特典、良かった点・悪かった点などを自由に入力">${esc(d.report||'')}</textarea></div>
-    <div class="end-actions"><button id="endDraftSave" class="end-save" type="button">下書き保存</button><button id="endDraftCopy" class="end-copy" type="button">確定用データをコピー</button><span id="endDraftSaved" class="end-saved"></span></div>`;
+    <div class="end-actions"><button id="endDraftSave" class="end-copy" type="button">下書き保存</button><button id="endGitHubSave" class="end-save" type="button">GitHubへ保存</button><button id="endDraftCopy" class="end-copy" type="button">確定用データをコピー</button><span id="endDraftSaved" class="end-saved"></span></div>`;
 }
 function collectEndDraft(){
   const e=taggedEvents().find(x=>x.id===selectedEndEventId);if(!e)return null;
@@ -245,6 +247,49 @@ function collectEndDraft(){
     updatedAt:new Date().toISOString()
   };
 }
+async function saveEndToGitHub(){
+  const d=collectEndDraft();if(!d)return;
+  if(!d.status){alert('参加した／行っていない のどちらかを選んでください。');return;}
+  if(d.status==='attended'&&!d.visitDates.length){alert('実際に行った日を選んでください。');return;}
+  if(d.status==='attended'&&!String(d.report||'').trim()){alert('参加したイベントは実地レポートを入力してください。');return;}
+  saveEndDraft(false);
+  if(!END_PROCESS_API_URL){
+    alert('初回設定がまだ完了していません。Cloudflare Workerを公開してURLを設定すると、このボタンからGitHubへ直接保存できます。');
+    return;
+  }
+  let editKey=localStorage.getItem(END_EDIT_KEY_KEY)||'';
+  if(!editKey){
+    editKey=prompt('終了処理の編集キーを入力してください。最初の1回だけ保存します。')||'';
+    if(!editKey)return;
+    localStorage.setItem(END_EDIT_KEY_KEY,editKey);
+  }
+  const btn=document.getElementById('endGitHubSave');
+  const msg=document.getElementById('endDraftSaved');
+  if(btn){btn.disabled=true;btn.textContent='保存中…';}
+  if(msg)msg.textContent='';
+  try{
+    const r=await fetch(END_PROCESS_API_URL.replace(/\/$/,'')+'/save',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Edit-Key':editKey},
+      body:JSON.stringify(d)
+    });
+    const result=await r.json().catch(()=>({ok:false,error:'保存結果を読めません'}));
+    if(r.status===401){
+      localStorage.removeItem(END_EDIT_KEY_KEY);
+      throw new Error('編集キーが違います。次回保存時にもう一度入力してください。');
+    }
+    if(!r.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
+    delete endDrafts[d.eventId];
+    localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+    if(msg)msg.textContent='GitHubへ保存しました。ページを更新します。';
+    setTimeout(()=>location.reload(),700);
+  }catch(err){
+    if(msg)msg.textContent=err.message||String(err);
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}
+  }
+}
+
 function saveEndDraft(showMessage=true){
   const d=collectEndDraft();if(!d)return;
   endDrafts[d.eventId]=d;
@@ -500,6 +545,7 @@ endProcessFormWrap.addEventListener('input',()=>saveEndDraft(false));
 endProcessFormWrap.addEventListener('change',()=>saveEndDraft(false));
 endProcessFormWrap.addEventListener('click',async e=>{
   if(e.target.id==='endDraftSave'){saveEndDraft(true);return;}
+  if(e.target.id==='endGitHubSave'){await saveEndToGitHub();return;}
   if(e.target.id==='endDraftCopy'){
     const d=collectEndDraft();if(!d)return;
     try{
