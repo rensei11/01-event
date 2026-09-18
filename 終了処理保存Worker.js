@@ -22,7 +22,7 @@ export default {
     }
     if(origin&&origin!==allowed)return json({ok:false,error:'許可されていない送信元です'},403,cors);
     const url=new URL(request.url);
-    if(request.method!=='POST'||url.pathname!=='/save')return json({ok:false,error:'Not found'},404,cors);
+    if(request.method!=='POST'||!['/save','/save-v2'].includes(url.pathname))return json({ok:false,error:'Not found'},404,cors);
     if(!env.GITHUB_TOKEN||!env.EDIT_KEY)return json({ok:false,error:'Workerの初期設定が未完了です'},500,cors);
     if(request.headers.get('X-Edit-Key')!==env.EDIT_KEY)return json({ok:false,error:'編集キーが違います'},401,cors);
 
@@ -47,7 +47,7 @@ function json(obj,status,headers){
 
 function validate(d){
   if(!d||typeof d!=='object')return 'データがありません';
-  if(!d.eventId||!d.name)return 'イベント情報がありません';
+  if(!d.eventId||!(d.eventName||d.name))return 'イベント情報がありません';
   if(!['exhibition','gathering'].includes(d.kind))return 'イベント種別が不正です';
   if(!['attended','not_attended'].includes(d.status))return '参加／未参加を選んでください';
   if(d.status==='attended'&&(!Array.isArray(d.visitDates)||!d.visitDates.length))return '実際に行った日を選んでください';
@@ -161,6 +161,19 @@ async function saveToGitHub(d,token){
   const idx=ledger.events.findIndex(e=>e.id===d.eventId);
   if(idx<0){const er=new Error('対象イベントが年間台帳に見つかりません');er.status=409;throw er}
   const e=ledger.events[idx];
+
+  // 終了処理画面で編集した年間台帳の内容も同時に確定
+  e.name=String(d.eventName||d.name||e.name).trim();
+  e.venue=String(d.venue??e.venue??'').trim();
+  e.url=String(d.url??e.url??'').trim();
+  const conditionLines=String(d.conditionText??'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean).filter(x=>!x.startsWith('名前コード：'));
+  const personName=String(d.personName||'').trim();
+  if(personName)conditionLines.push('名前コード：'+personName);
+  e.conditionLines=conditionLines;
+  e.rating=String(d.preRating??e.rating??'').trim();
+  e.nightTime=String(d.nightTime??e.nightTime??'').trim();
+  e.nightText=String(d.nightText??e.nightText??e.detailText??'').trim();
+  if('detailText' in e)delete e.detailText;
 
   const oldReportId=e.sourceReportId||'';
   let reportId=oldReportId||('rep-web-'+String(e.id).replace(/[^a-zA-Z0-9_-]/g,''));
