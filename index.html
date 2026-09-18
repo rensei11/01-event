@@ -63,7 +63,7 @@ let currentKind='exhibition';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function parseISO(s){const [y,m,d]=String(s).split('-').map(Number);return new Date(y,m-1,d)}
 function jpWeekday(d){return ['日','月','火','水','木','金','土'][d.getDay()]}
-function dateLabel(s){const d=parseISO(s);return `${d.getMonth()+1}/${d.getDate()}（${jpWeekday(d)}）`}
+function dateLabel(s){const d=parseISO(s);return `${d.getMonth()+1}/${d.getDate()}(${jpWeekday(d)})`}
 function weekRangeLabel(s){const d=parseISO(s),day=(d.getDay()+6)%7;const mon=new Date(d);mon.setDate(d.getDate()-day);const sun=new Date(mon);sun.setDate(mon.getDate()+6);return `${mon.getMonth()+1}/${mon.getDate()}～${sun.getMonth()+1}/${sun.getDate()}`}
 function weekKey(s){const d=parseISO(s),day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return d.toISOString().slice(0,10)}
 function cleanDateText(s){return String(s||'').replace(/\t/g,' ').trim()}
@@ -86,12 +86,11 @@ function plannedDates(e){
 }
 function isEventPlanned(e){return plannedDates(e).length>0}
 function eventById(id){return taggedEvents().find(e=>e.id===id)}
-function shortDayLabel(iso){const d=parseISO(iso);return `${d.getDate()}(${jpWeekday(d)})`}
-function visitDayControls(e){
-  if(!isMultiDay(e))return '';
-  const selected=new Set(plannedDates(e));
-  return `<div class="visit-days"><span class="visit-days-label">行く日</span>${isoDays(e.date,e.endDate).map(d=>`<label class="visit-day"><input class="day-plan-check" type="checkbox" data-day="${esc(d)}" ${selected.has(d)?'checked':''}>${esc(shortDayLabel(d))}</label>`).join('')}</div>`;
+function expandEventRows(e,dates){
+  const allDays=isoDays(e.date,e.endDate||e.date);
+  return dates.map(d=>({...e,_displayDate:d,_dayIndex:allDays.indexOf(d)+1,_dayCount:allDays.length}));
 }
+function displayEventName(e){return e._dayCount>1?e.name+'（'+e._dayIndex+'）':e.name}
 
 function loadFlags(){
   try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(e){flags={}}
@@ -150,31 +149,34 @@ function eventCompare(a,b){
 function visibleEvents(){
   let list=taggedEvents();
   if(currentKind!=='both')list=list.filter(e=>e._kind===currentKind);
-  if(currentView==='planned')list=list.flatMap(e=>plannedDates(e).map(d=>({...e,_displayDate:d})));
+  list=list.flatMap(e=>{
+    const days=currentView==='planned'?plannedDates(e):isoDays(e.date,e.endDate||e.date);
+    return expandEventRows(e,days);
+  });
   return list.sort(eventCompare);
 }
 
 function renderLedger(){
   const sorted=visibleEvents();
-  let html='',currentWeek='',currentRange='',i=0;
+  let html='',currentWeek='',currentDate='',i=0;
   while(i<sorted.length){
     const e=sorted[i],displayDate=e._displayDate||e.date,wk=weekKey(displayDate);
     if(wk!==currentWeek){
       html+=`<tr class="week-row"><td colspan="4">${esc(weekRangeLabel(displayDate))}</td></tr>`;
-      currentWeek=wk;currentRange='';
+      currentWeek=wk;currentDate='';
     }
-    const rkey=currentView==='planned'?displayDate:eventRangeKey(e);
-    const sameDate=sorted.filter(x=>(currentView==='planned'?(x._displayDate||x.date):eventRangeKey(x))===rkey),firstOfDate=rkey!==currentRange;
-    const f=eventFlag(e.id),cls=`event-row${isEventPlanned(e)?' planned':''}${f.ignored?' ignored':''}`;
-    html+=`<tr class="${cls}" data-date="${esc(displayDate)}" data-display-date="${esc(displayDate)}" data-start="${esc(e.date)}" data-end="${esc(e.endDate||e.date)}" data-event-id="${esc(e.id)}">`;
-    if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(currentView==='planned'?dateLabel(displayDate):eventDateText(e))}</strong></td>`;
+    const sameDate=sorted.filter(x=>(x._displayDate||x.date)===displayDate),firstOfDate=displayDate!==currentDate;
+    const f=eventFlag(e.id),selected=plannedDates(e).includes(displayDate),cls=`event-row${selected?' planned':''}${f.ignored?' ignored':''}`;
+    html+=`<tr class="${cls}" data-date="${esc(displayDate)}" data-display-date="${esc(displayDate)}" data-event-id="${esc(e.id)}">`;
+    if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(dateLabel(displayDate))}</strong></td>`;
     const badge=currentKind==='both'?`<div class="kind-badge ${e._kind}">${e._kind==='exhibition'?'展示会':'懇親会'}</div>`:'';
-    const nameHtml=e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a>`:esc(e.name);
-    const planBox=isMultiDay(e)?'<span class="check-line" aria-hidden="true"></span>':`<label class="check-line"><input class="plan-check" type="checkbox" aria-label="行く" ${isEventPlanned(e)?'checked':''}><span>行く</span></label>`;
-    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}<label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label></div><div>${badge}<div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div>${visitDayControls(e)}</div></div></td>`;
+    const shownName=displayEventName(e);
+    const nameHtml=e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(shownName)}</a>`:esc(shownName);
+    const planBox=`<label class="check-line"><input class="plan-check" type="checkbox" aria-label="行く" data-day="${esc(displayDate)}" ${selected?'checked':''}><span>行く</span></label>`;
+    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}<label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label></div><div>${badge}<div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div></div></div></td>`;
     html+=`<td class="condition">${(e.conditionLines||[]).map(esc).join('<br>')}</td>`;
     html+=`<td><div class="rating">${esc(e.rating||'')}</div><div class="night">${e.nightTime?`<strong>${esc(e.nightTime)}</strong> `:''}${esc(e.nightText||e.detailText||'')}</div></td></tr>`;
-    currentRange=rkey;i++;
+    currentDate=displayDate;i++;
   }
   const emptyText=currentView==='planned'?'「行く」にチェックしたイベントはありません。':'該当するイベントはありません。';
   tbody.innerHTML=html||`<tr><td colspan="4" class="loading">${emptyText}</td></tr>`;
@@ -269,8 +271,7 @@ function scrollToDate(date){
   const body=currentView==='reports'?reportBody:tbody,selector=currentView==='reports'?'.report-row':'.event-row';
   const row=[...body.querySelectorAll(selector)].find(r=>{
     if(currentView==='reports')return String(r.dataset.visitDates||r.dataset.date).split(',').includes(date);
-    if(currentView==='planned')return r.dataset.displayDate===date;
-    return date>=r.dataset.start&&date<=r.dataset.end;
+    return r.dataset.displayDate===date;
   });if(!row)return;
   row.scrollIntoView({behavior:'smooth',block:'start'});
   row.classList.remove('calendar-focus');void row.offsetWidth;row.classList.add('calendar-focus');
@@ -304,9 +305,9 @@ function setView(view,persist=true){
   if(isReports){
     viewHelp.textContent='上の□は良かったイベント、下の赤枠□は良くなかったイベントです。これらのチェックはカレンダーには影響しません。';
   }else if(view==='planned'){
-    viewHelp.textContent='来場予定だけを表示します。複数日開催は「行く日」で選んだ日ごとに表示します。「両方」では同じ日を展示会→懇親会の順にします。';
+    viewHelp.textContent='来場予定だけを表示します。複数日イベントも日ごとに別行で表示し、チェックした日の行だけ残ります。「両方」では同じ日を展示会→懇親会の順にします。';
   }else{
-    viewHelp.textContent='上の□は「行く」、下の赤枠□は「考慮しない」です。複数日開催はイベント名の下の「行く日」で日ごとに選べます。';
+    viewHelp.textContent='上の□はその日の「行く」、下の赤枠□は「考慮しない」です。複数日イベントは（1）（2）（3）のように日ごとに別行で表示します。';
   }
   if(!isReports)renderLedger();
   renderCalendar();
@@ -314,17 +315,13 @@ function setView(view,persist=true){
 }
 
 tbody.addEventListener('change',e=>{
-  if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('day-plan-check')&&!e.target.classList.contains('ignore-check'))return;
+  if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('ignore-check'))return;
   const row=e.target.closest('.event-row');if(!row)return;
   const id=row.dataset.eventId,f=eventFlag(id),ev=eventById(id);if(!ev)return;
-  if(e.target.classList.contains('day-plan-check')){
-    const set=new Set(plannedDates(ev)),day=e.target.dataset.day;
+  if(e.target.classList.contains('plan-check')){
+    const set=new Set(plannedDates(ev)),day=e.target.dataset.day||row.dataset.displayDate;
     if(e.target.checked)set.add(day);else set.delete(day);
     f.visitDates=[...set].sort();f.planned=f.visitDates.length>0;
-    if(f.planned)f.ignored=false;
-  }else if(e.target.classList.contains('plan-check')){
-    f.planned=e.target.checked;
-    f.visitDates=f.planned?[ev.date]:[];
     if(f.planned)f.ignored=false;
   }else{
     f.ignored=e.target.checked;
