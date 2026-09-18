@@ -450,7 +450,8 @@ function renderLedger(){
       html+=`<tr class="week-row"><td colspan="4">${esc(weekRangeLabel(displayDate))}</td></tr>`;
       currentWeek=wk;currentDate='';
     }
-    const sameDate=sorted.filter(x=>(x._displayDate||x.date)===displayDate),firstOfDate=displayDate!==currentDate;
+    const ratingSorted=['actual_rating','pre_rating'].includes(sortOrder);
+    const sameDate=ratingSorted?[e]:sorted.filter(x=>(x._displayDate||x.date)===displayDate),firstOfDate=ratingSorted||displayDate!==currentDate;
     const f=eventFlag(e.id),selected=plannedDates(e).includes(displayDate),historyStatus=rowAttendance(e,displayDate),cls=`event-row${selected?' planned':''}${f.ignored?' ignored':''}`;
     html+=`<tr class="${cls}" data-date="${esc(displayDate)}" data-display-date="${esc(displayDate)}" data-event-id="${esc(e.id)}">`;
     if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(dateLabel(displayDate))}</strong></td>`;
@@ -462,10 +463,11 @@ function renderLedger(){
     const ignoreBox=historyStatus?'':`<label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label>`;
     const person=eventPersonName(e);
     const rep=reportForEvent(e);
+    const preRatingText=rep&&/^\s*実地評価\s*[:：]/.test(String(e.rating||''))?'':(e.rating||'');
     const actualHtml=rep?`<div class="actual-block">${rep.rating?`<div class="actual-rating">実地評価：${esc(rep.rating)}</div>`:''}<div class="actual-copy"><span class="actual-label">実地レポート</span>${esc(rep.report||'')}</div></div>`:'';
     html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}${ignoreBox}</div><div class="event-main"><div class="event-meta-line"><div>${resultBadge}${badge}</div>${person?`<div class="person-name">${esc(person)}</div>`:''}</div><div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div>${historyStatus?'':visitDayControls(e)}</div></div></td>`;
     html+=`<td class="condition">${visibleConditionLines(e).map(esc).join('<br>')}</td>`;
-    html+=`<td><div class="rating">${esc(e.rating||'')}</div><div class="night">${e.nightTime?`<strong>${esc(e.nightTime)}</strong> `:''}${esc(e.nightText||e.detailText||'')}</div>${actualHtml}</td></tr>`;
+    html+=`<td><div class="rating">${esc(preRatingText)}</div><div class="night">${e.nightTime?`<strong>${esc(e.nightTime)}</strong> `:''}${esc(e.nightText||e.detailText||'')}</div>${actualHtml}</td></tr>`;
     currentDate=displayDate;i++;
   }
   const emptyText=currentView==='planned'?'「行く」にチェックしたイベントはありません。':'該当するイベントはありません。';
@@ -602,7 +604,7 @@ function jumpToDate(date){
 }
 function scrollToMonth(year,month){
   const prefix=`${year}-${String(month).padStart(2,'0')}`;
-  const body=currentView==='reports'?reportBody:tbody;
+  const body=tbody;
   const row=body.querySelector(`.month-row[data-month="${prefix}"]`);
   if(!row)return;
   row.scrollIntoView({behavior:'smooth',block:'start'});
