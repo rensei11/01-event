@@ -16,7 +16,7 @@ table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col
 .event-top{display:flex;align-items:flex-start;gap:8px}.check-stack{display:flex;flex-direction:column;gap:5px;flex:0 0 17px;min-width:17px;padding-top:2px}.check-line{display:flex;align-items:center;width:17px;height:17px;margin:0;padding:0;cursor:pointer;font-size:0;line-height:1}.check-line span{display:none}.plan-check{appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;margin:0;cursor:pointer;accent-color:#2f6fda}.ignore-check{appearance:none;-webkit-appearance:none;position:relative;width:16px;height:16px;margin:0;border:1.5px solid #d73a49;border-radius:3px;background:#fff;cursor:pointer}.ignore-check:checked{background:#d73a49;border-color:#d73a49}.ignore-check:checked::after{content:"×";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;line-height:1}
 .report-copy{white-space:pre-wrap}.report-rating{font-weight:800;margin-bottom:5px}.visit-days{display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin-top:5px}.visit-days-label{font-size:11px;color:var(--muted);font-weight:700}.visit-day{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #aeb7c0;border-radius:10px;background:#fff;font-size:11px;white-space:nowrap}.visit-day input{margin:0;accent-color:#2f6fda}.event-name{font-weight:700;font-size:15px}.event-name a{color:var(--link);text-decoration:none}.event-name a:hover{text-decoration:underline}.venue{margin-top:2px;color:var(--muted);font-size:13px}.condition{font-weight:600}.rating{font-weight:700;margin-bottom:3px}.event-row.planned td:not(.date-cell){background:var(--planned)}.event-row.ignored td:not(.date-cell){background:var(--ignored)}.event-row.ignored td:not(.date-cell),.event-row.ignored td:not(.date-cell) *{color:#a2a8ae!important}.event-row.ignored td:not(.date-cell) a{text-decoration-color:#b8bdc2!important}.report-row.report-good td:not(.date-cell){background:var(--planned)}.report-row.report-bad td:not(.date-cell){background:var(--report-bad)}.event-row.calendar-focus td,.report-row.calendar-focus td{animation:calendarFlash 1.4s ease}@keyframes calendarFlash{0%,100%{background:inherit}25%,70%{background:#dff0ff}}
 .calendar-panel{margin:10px 0 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px 12px;box-shadow:0 1px 4px rgba(0,0,0,.04)}.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:700}.calendar-now{font-size:12px;color:var(--muted);white-space:nowrap}.calendar-jump{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 9px}.calendar-year{border:1px solid #aeb7c0;border-radius:7px;padding:6px 8px;background:#fff;font:inherit;font-size:13px;font-weight:700}.month-jump{display:flex;gap:4px;flex-wrap:wrap}.month-jump button{min-width:38px;padding:5px 7px;font-size:12px}.month-jump button.active{background:#2f6fda;color:#fff;border-color:#2f6fda}.calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:stretch}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:24px;font-weight:700}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.month-card{min-width:0;border:1px solid #e1e5e9;border-radius:8px;padding:7px 8px 8px;background:#fff}.month-name{text-align:center;font-size:13px;font-weight:700;margin-bottom:4px;cursor:pointer}.month-name:hover{text-decoration:underline;color:var(--link)}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:600;padding:2px 0}.day{position:relative;width:26px;height:26px;min-width:26px;min-height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none}.day.empty{visibility:hidden}.day.event-day{background:#8a939c;color:#fff;font-weight:700;cursor:pointer}.day.planned-day{background:#2f6fda;color:#fff;font-weight:700;cursor:pointer}.day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.day.event-day:hover,.day.planned-day:hover{filter:brightness(.92)}
-.loading{padding:28px;text-align:center;color:var(--muted)}
+.loading{padding:28px;text-align:center;color:var(--muted)}.back-to-top{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:0;background:#20262d;color:#fff;font-size:26px;font-weight:800;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.28);display:none;align-items:center;justify-content:center;z-index:50;padding:0}.back-to-top:hover{background:#111820}.back-to-top.show{display:flex}
 @media(max-width:800px){.calendars{grid-template-columns:repeat(3,minmax(220px,1fr));overflow-x:auto;padding-bottom:3px}.calendar-panel{overflow:hidden}}@media(max-width:700px){.wrap{padding:9px}h1{font-size:18px}table{min-width:760px}tbody td,thead th{padding:8px;font-size:13px}.event-name{font-size:14px}}
 </style>
 </head>
@@ -31,6 +31,7 @@ table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col
   <section id="reportsView" hidden><div class="table-wrap"><table><colgroup><col class="report-date"><col class="report-event"><col class="report-text"></colgroup><thead><tr><th class="date-head">日付</th><th>イベント / 会場</th><th>レポート</th></tr></thead><tbody id="reportBody"><tr><td colspan="3" class="loading">実地レポートを読み込んでいます…</td></tr></tbody></table></div></section>
   <p class="note">※ 懇親会は「イベント一覧.json」、展示会は「展示会一覧.json」、参加後の記録は「実地レポート.json」から読み込んでいます。</p>
 </div>
+<button id="backToTop" class="back-to-top" type="button" aria-label="ページ上部へ戻る">↑</button>
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
 const PLANNED_KEY='free_food_event_ledger_2026_planned_v1';
@@ -55,6 +56,7 @@ const eventSubtabs=document.getElementById('eventSubtabs');
 const eventsView=document.getElementById('eventsView');
 const reportsView=document.getElementById('reportsView');
 const viewHelp=document.getElementById('viewHelp');
+const backToTop=document.getElementById('backToTop');
 
 let gatherings=[];
 let exhibitions=[];
@@ -367,6 +369,9 @@ function setView(view,persist=true){
   renderCalendar();
   if(persist)saveUiState();
 }
+
+window.addEventListener('scroll',()=>backToTop.classList.toggle('show',window.scrollY>500),{passive:true});
+backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 calendarPrev.addEventListener('click',()=>setCalendarBase(calendarBaseYear,calendarBaseMonth-1,false));
 calendarNext.addEventListener('click',()=>setCalendarBase(calendarBaseYear,calendarBaseMonth+1,false));
