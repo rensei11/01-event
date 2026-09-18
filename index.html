@@ -25,7 +25,7 @@ table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col
   <div class="top"><div><h1>無料食事イベント 調査済み台帳 2026</h1><p class="meta">イベント一覧 / 来場予定 / 実地レポート</p></div><div id="status" class="status">読み込み中</div></div>
   <div class="toolbar"><div class="view-tabs"><button id="eventsTab" class="view-tab active">イベント一覧</button><button id="plannedTab" class="view-tab">来場予定</button><button id="reportsTab" class="view-tab">実地レポート</button></div><button id="resetFlagsBtn" class="reset-btn">チェックを初期化</button></div>
   <p id="viewHelp" class="help">上の□は「行く」、下の赤枠□は「考慮しない」です。状態はこのブラウザに自動保存されます。</p>
-  <section class="calendar-panel" aria-label="共通カレンダー"><div class="calendar-head"><div id="calendarTitle" class="calendar-title">共通カレンダー</div><div id="calendarNow" class="calendar-now"></div></div><div class="calendar-jump"><select id="calendarYearSelect" class="calendar-year" aria-label="年を選択"></select><div id="calendarMonthButtons" class="month-jump" aria-label="一覧を月で絞り込む"></div></div><div class="calendar-slider"><button id="calendarPrev" class="calendar-arrow" type="button" aria-label="前の月">‹</button><div id="calendarMonths" class="calendars"></div><button id="calendarNext" class="calendar-arrow" type="button" aria-label="次の月">›</button></div></section>
+  <section class="calendar-panel" aria-label="共通カレンダー"><div class="calendar-head"><div id="calendarTitle" class="calendar-title">共通カレンダー</div><div id="calendarNow" class="calendar-now"></div></div><div class="calendar-jump"><select id="calendarYearSelect" class="calendar-year" aria-label="年を選択"></select><div id="calendarMonthButtons" class="month-jump" aria-label="選んだ月から12か月表示"></div></div><div class="calendar-slider"><button id="calendarPrev" class="calendar-arrow" type="button" aria-label="前の月">‹</button><div id="calendarMonths" class="calendars"></div><button id="calendarNext" class="calendar-arrow" type="button" aria-label="次の月">›</button></div></section>
   <div class="subtabs-row"><div id="eventSubtabs" class="subtabs"><button class="subtab active" data-kind="exhibition">展示会</button><button class="subtab" data-kind="gathering">懇親会</button><button class="subtab" data-kind="both">両方</button></div><button id="endProcessBtn" class="end-process-btn" type="button">終了処理 <span id="endProcessCount" class="end-process-count">0</span></button></div>
   <section id="eventsView"><div class="table-wrap"><table><colgroup><col class="date"><col class="event"><col class="cond"><col class="eval"></colgroup><thead><tr><th class="date-head">日</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容・根拠</th></tr></thead><tbody id="ledgerBody"><tr><td colspan="4" class="loading">イベント一覧を読み込んでいます…</td></tr></tbody></table></div></section>
   <section id="reportsView" hidden><div class="table-wrap"><table><colgroup><col class="report-date"><col class="report-event"><col class="report-text"></colgroup><thead><tr><th class="date-head">日付</th><th>イベント / 会場</th><th>レポート</th></tr></thead><tbody id="reportBody"><tr><td colspan="3" class="loading">実地レポートを読み込んでいます…</td></tr></tbody></table></div></section>
@@ -340,8 +340,13 @@ function visibleEvents(){
     return expandEventRows(e,days);
   });
   if(listFilterYear&&listFilterMonth){
-    const prefix=`${listFilterYear}-${String(listFilterMonth).padStart(2,'0')}`;
-    list=list.filter(e=>String(e._displayDate||e.date).startsWith(prefix));
+    const start=`${listFilterYear}-${String(listFilterMonth).padStart(2,'0')}-01`;
+    const endDate=new Date(listFilterYear,listFilterMonth-1+12,1);
+    const end=`${endDate.getFullYear()}-${String(endDate.getMonth()+1).padStart(2,'0')}-01`;
+    list=list.filter(e=>{
+      const d=String(e._displayDate||e.date);
+      return d>=start&&d<end;
+    });
   }
   return list.sort(eventCompare);
 }
@@ -382,8 +387,13 @@ function renderLedger(){
 function renderReports(){
   let sorted=[...reports];
   if(listFilterYear&&listFilterMonth){
-    const prefix=`${listFilterYear}-${String(listFilterMonth).padStart(2,'0')}`;
-    sorted=sorted.filter(r=>reportDates(r).some(d=>String(d).startsWith(prefix)));
+    const start=`${listFilterYear}-${String(listFilterMonth).padStart(2,'0')}-01`;
+    const endDate=new Date(listFilterYear,listFilterMonth-1+12,1);
+    const end=`${endDate.getFullYear()}-${String(endDate.getMonth()+1).padStart(2,'0')}-01`;
+    sorted=sorted.filter(r=>reportDates(r).some(d=>{
+      d=String(d);
+      return d>=start&&d<end;
+    }));
   }
   sorted.sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name,'ja'));
   let html='',currentReportMonth='',currentReportDate='',i=0;
