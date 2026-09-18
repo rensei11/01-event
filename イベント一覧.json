@@ -1,7 +1,471 @@
 {
-  "dataVersion": "2026-09-18-excel-1",
+  "dataVersion": "2026-09-18-history-1",
   "year": 2026,
   "events": [
+    {
+      "id": "hist-att-bf5839ea8131",
+      "date": "2026-05-20",
+      "endDate": "",
+      "dateText": "5月20日(水)",
+      "name": "Classmethod Forum| 事業会社のリアルとAIで描く未来",
+      "url": "",
+      "venue": "TODA HALL 4階",
+      "conditionLines": [],
+      "rating": "実地評価：D",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-05-20"
+      ],
+      "sourceReportId": "rep-bf5839ea8131",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-att-926d76d4440a",
+      "date": "2026-05-27",
+      "endDate": "",
+      "dateText": "5月27日(水）",
+      "name": "Meets 第5回 経営企画部 戦略サミット",
+      "url": "",
+      "venue": "グランド ハイアット 東京（六本木）",
+      "conditionLines": [],
+      "rating": "実地評価：B",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-05-27"
+      ],
+      "sourceReportId": "rep-926d76d4440a",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-att-2211baa74af5",
+      "date": "2026-06-02",
+      "endDate": "",
+      "dateText": "6/2(火)",
+      "name": "Vook |アドビ特別イベント",
+      "url": "",
+      "venue": "アドビ株式会社オフィス",
+      "conditionLines": [],
+      "rating": "実地評価：D",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-06-02"
+      ],
+      "sourceReportId": "rep-2211baa74af5",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-att-4c45dc286a3c",
+      "date": "2026-06-09",
+      "endDate": "2026-06-10",
+      "dateText": "6月9日(火)～10日(水)",
+      "name": "Agentforce World Tour Tokyo",
+      "url": "",
+      "venue": "ザ・プリンス パークタワー東京",
+      "conditionLines": [],
+      "rating": "実地評価：E",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-06-09"
+      ],
+      "sourceReportId": "rep-4c45dc286a3c",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-att-d90507bc4774",
+      "date": "2026-06-10",
+      "endDate": "",
+      "dateText": "6月10日(水)",
+      "name": "SAP Transformation Excellence Tour Tokyo 2026",
+      "url": "",
+      "venue": "虎ノ門ヒルズ森タワー 5階",
+      "conditionLines": [],
+      "rating": "実地評価：B",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-06-10"
+      ],
+      "sourceReportId": "rep-d90507bc4774",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-att-642520e80c42",
+      "date": "2026-07-01",
+      "endDate": "",
+      "dateText": "7月1日(水)",
+      "name": "SYNERGY Tokyo 2026",
+      "url": "",
+      "venue": "グランド ハイアット 東京（六本木）",
+      "conditionLines": [],
+      "rating": "実地評価：S",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-07-01"
+      ],
+      "sourceReportId": "rep-642520e80c42",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-no-d5aeb1edeb1e",
+      "date": "2026-07-02",
+      "endDate": "",
+      "dateText": "7月2日(木)",
+      "name": "Loglass 経営企画サミット 2026",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-no-c79d1162acaf",
+      "date": "2026-07-03",
+      "endDate": "",
+      "dateText": "7月3日(金)",
+      "name": "TrendAI™ Spark 2026",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-att-bd6da91ce4ef",
+      "date": "2026-07-10",
+      "endDate": "",
+      "dateText": "7月10日(金)",
+      "name": "ACCELERATE JAPAN 2026",
+      "url": "",
+      "venue": "ANAインターコンチネンタルホテル 東京",
+      "conditionLines": [],
+      "rating": "実地評価：D",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-07-10"
+      ],
+      "sourceReportId": "rep-bd6da91ce4ef",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-att-471e0dbab4e5",
+      "date": "2026-07-14",
+      "endDate": "",
+      "dateText": "7月14日(火)",
+      "name": "Alteryx on Tour : Tokyo",
+      "url": "",
+      "venue": "赤坂インターシティコンファレンス",
+      "conditionLines": [],
+      "rating": "実地評価：D",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-07-14"
+      ],
+      "sourceReportId": "rep-471e0dbab4e5",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-att-3762f859c448",
+      "date": "2026-07-29",
+      "endDate": "",
+      "dateText": "7月29日(水)",
+      "name": "SAP NOW AI Tour Tokyo",
+      "url": "",
+      "venue": "グランドプリンスホテル新高輪",
+      "conditionLines": [],
+      "rating": "実地評価：A",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-07-29"
+      ],
+      "sourceReportId": "rep-3762f859c448",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-no-c91b735183bf",
+      "date": "2026-09-02",
+      "endDate": "",
+      "dateText": "9月2日(水)",
+      "name": "HR LEADERS CONFERENCE 2026",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：増田 慎一"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-att-4900083c9011",
+      "date": "2026-09-03",
+      "endDate": "",
+      "dateText": "9月3日(木)",
+      "name": "OutSystems World Tour Japan 2026",
+      "url": "",
+      "venue": "ウェスティンホテル東京",
+      "conditionLines": [],
+      "rating": "実地評価：C",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-03"
+      ],
+      "sourceReportId": "rep-4900083c9011",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-no-7cd9aec3b797",
+      "date": "2026-09-03",
+      "endDate": "",
+      "dateText": "9月3日(木)",
+      "name": "Rubrik FORWARD TOKYO 2026",
+      "url": "",
+      "venue": "",
+      "conditionLines": [],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-att-71ede1d4ae3d",
+      "date": "2026-09-08",
+      "endDate": "",
+      "dateText": "9月9日(水)～10日(木)",
+      "name": "GROWTH 祭 TOKYO 2026",
+      "url": "",
+      "venue": "渋谷ヒカリエ",
+      "conditionLines": [],
+      "rating": "実地評価：E",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-08"
+      ],
+      "sourceReportId": "rep-71ede1d4ae3d",
+      "historySource": "実地レポート",
+      "originalScheduledDate": "2026-09-09",
+      "originalScheduledEndDate": "2026-09-10",
+      "originalScheduledDateText": "9月9日(水)～10日(木)"
+    },
+    {
+      "id": "hist-att-023781aac2ad",
+      "date": "2026-09-08",
+      "endDate": "",
+      "dateText": "9月8日(火)",
+      "name": "Nutanix .NEXT On Tour Tokyo 2026",
+      "url": "",
+      "venue": "高輪ゲートウェイ コンベンションセンター",
+      "conditionLines": [],
+      "rating": "実地評価：D",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-08"
+      ],
+      "sourceReportId": "rep-023781aac2ad",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-att-17e3d64d6ad8",
+      "date": "2026-09-08",
+      "endDate": "",
+      "dateText": "9月8日(火)",
+      "name": "PKSHA AI Summit 2026",
+      "url": "",
+      "venue": "ANAインターコンチネンタルホテル 東京",
+      "conditionLines": [],
+      "rating": "実地評価：A",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-08"
+      ],
+      "sourceReportId": "rep-17e3d64d6ad8",
+      "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-no-156a1794a9f0",
+      "date": "2026-09-10",
+      "endDate": "2026-09-11",
+      "dateText": "9月10日(木)～11日(金)",
+      "name": "Snowflake World Tour Tokyo 2026",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-no-bc0cbc6d631e",
+      "date": "2026-09-10",
+      "endDate": "",
+      "dateText": "9月10日(木)",
+      "name": "WalkMe on Tour Tokyo 2026",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-no-c1fe97adec2b",
+      "date": "2026-09-10",
+      "endDate": "",
+      "dateText": "9月10日(木)",
+      "name": "トランスコスモスフォーラム 2026｜GLOBAL",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-no-1e828e37c37b",
+      "date": "2026-09-11",
+      "endDate": "",
+      "dateText": "9月11日(金)",
+      "name": "Meets 第5回 AI戦略サミット",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：増田 慎一"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-no-3fc4390955e4",
+      "date": "2026-09-15",
+      "endDate": "",
+      "dateText": "9月15日(火)",
+      "name": "Dynatrace Innovate Roadshow Tokyo 2026",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：伊藤 聡",
+        "審査ハードル高め（過去に申請拒否あり）"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント",
+      "reviewRejected": true
+    },
+    {
+      "id": "hist-no-9f6dc2aa4a69",
+      "date": "2026-09-16",
+      "endDate": "",
+      "dateText": "9月16日(水)",
+      "name": "BtoB Growth EXPO for Sales",
+      "url": "",
+      "venue": "",
+      "conditionLines": [],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-no-e51784f1a56d",
+      "date": "2026-09-17",
+      "endDate": "",
+      "dateText": "9月17日(木)",
+      "name": "Impact World Tour Tokyo",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
+    {
+      "id": "hist-no-607b4d0ea026",
+      "date": "2026-09-17",
+      "endDate": "",
+      "dateText": "9月17日(木)",
+      "name": "L is B User Conference 2026",
+      "url": "",
+      "venue": "",
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "未参加イベント"
+    },
     {
       "id": "evt-b6a0272fd890",
       "date": "2026-09-25",

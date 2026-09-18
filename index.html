@@ -10,7 +10,7 @@
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
 h1{font-size:22px;margin:0 0 4px}.meta{font-size:13px;color:var(--muted);margin:0 0 12px}.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.status{font-size:12px;font-weight:700}.save-ok{color:#18794e}.save-warn{color:#9a6700}.help,.note{font-size:12px;color:var(--muted)}
-.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.view-tabs{display:flex;gap:6px;flex-wrap:wrap}.view-tab.active{background:#20262d;color:#fff;border-color:#20262d}.reset-btn{margin-left:auto}.subtabs{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 14px}.subtab{min-width:110px;border:2px solid #9aa5b1;border-radius:9px;padding:9px 20px;background:#fff;font-size:15px;font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.06)}.subtab:hover{background:#eef3f8}.subtab.active{background:#2f6fda;border-color:#2f6fda;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.16)}.kind-badge{display:inline-block;margin:0 0 4px;padding:2px 8px;border-radius:10px;color:#fff;font-size:11px;font-weight:800;line-height:1.35}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}button:hover{background:#f2f4f6}
+.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.view-tabs{display:flex;gap:6px;flex-wrap:wrap}.view-tab.active{background:#20262d;color:#fff;border-color:#20262d}.reset-btn{margin-left:auto}.subtabs{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 14px}.subtab{min-width:110px;border:2px solid #9aa5b1;border-radius:9px;padding:9px 20px;background:#fff;font-size:15px;font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.06)}.subtab:hover{background:#eef3f8}.subtab.active{background:#2f6fda;border-color:#2f6fda;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.16)}.kind-badge,.attendance-badge{display:inline-block;margin:0 5px 4px 0;padding:2px 8px;border-radius:10px;color:#fff;font-size:11px;font-weight:800;line-height:1.35}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.attendance-badge.attended{background:#0f766e}.attendance-badge.not-attended{background:#6b7280}button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}button:hover{background:#f2f4f6}
 .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col.date{width:7%}col.event{width:29%}col.cond{width:19%}col.eval{width:45%}col.report-date{width:10%}col.report-event{width:35%}col.report-text{width:55%}thead th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;font-size:14px;padding:10px 12px;border-right:1px solid #3d4650}tbody td{vertical-align:top;padding:10px 12px;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:14px}tbody td:last-child,thead th:last-child{border-right:0}.date-head{text-align:center}.date-cell{text-align:center;vertical-align:middle;font-weight:700;white-space:nowrap}.week-row td{background:var(--week);font-weight:700;padding:7px 12px;border-top:2px solid #aeb8c2}
 .event-top{display:flex;align-items:flex-start;gap:8px}.check-stack{display:flex;flex-direction:column;gap:5px;flex:0 0 17px;min-width:17px;padding-top:2px}.check-line{display:flex;align-items:center;width:17px;height:17px;margin:0;padding:0;cursor:pointer;font-size:0;line-height:1}.check-line span{display:none}.plan-check{appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;margin:0;cursor:pointer;accent-color:#2f6fda}.ignore-check{appearance:none;-webkit-appearance:none;position:relative;width:16px;height:16px;margin:0;border:1.5px solid #d73a49;border-radius:3px;background:#fff;cursor:pointer}.ignore-check:checked{background:#d73a49;border-color:#d73a49}.ignore-check:checked::after{content:"×";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;line-height:1}
@@ -91,6 +91,11 @@ function expandEventRows(e,dates){
   return dates.map(d=>({...e,_displayDate:d,_dayIndex:allDays.indexOf(d)+1,_dayCount:allDays.length}));
 }
 function displayEventName(e){return e._dayCount>1?e.name+'（'+e._dayIndex+'）':e.name}
+function rowAttendance(e,displayDate){
+  if(e.attendanceStatus==='not_attended')return 'not_attended';
+  if(e.attendanceStatus==='attended')return Array.isArray(e.visitDates)&&e.visitDates.includes(displayDate)?'attended':'not_attended';
+  return '';
+}
 function shortDayLabel(iso){const d=parseISO(iso);return d.getDate()+'('+jpWeekday(d)+')'}
 function visitDayControls(e){
   if(!isMultiDay(e))return '';
@@ -174,14 +179,16 @@ function renderLedger(){
       currentWeek=wk;currentDate='';
     }
     const sameDate=sorted.filter(x=>(x._displayDate||x.date)===displayDate),firstOfDate=displayDate!==currentDate;
-    const f=eventFlag(e.id),selected=plannedDates(e).includes(displayDate),cls=`event-row${selected?' planned':''}${f.ignored?' ignored':''}`;
+    const f=eventFlag(e.id),selected=plannedDates(e).includes(displayDate),historyStatus=rowAttendance(e,displayDate),cls=`event-row${selected?' planned':''}${f.ignored?' ignored':''}`;
     html+=`<tr class="${cls}" data-date="${esc(displayDate)}" data-display-date="${esc(displayDate)}" data-event-id="${esc(e.id)}">`;
     if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(dateLabel(displayDate))}</strong></td>`;
-    const badge=currentKind==='both'?`<div class="kind-badge ${e._kind}">${e._kind==='exhibition'?'展示会':'懇親会'}</div>`:'';
+    const badge=currentKind==='both'?`<span class="kind-badge ${e._kind}">${e._kind==='exhibition'?'展示会':'懇親会'}</span>`:'';
+    const resultBadge=historyStatus?`<span class="attendance-badge ${historyStatus==='attended'?'attended':'not-attended'}">${historyStatus==='attended'?'参加':'未参加'}</span>`:'';
     const shownName=displayEventName(e);
     const nameHtml=e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(shownName)}</a>`:esc(shownName);
-    const planBox=`<label class="check-line"><input class="plan-check" type="checkbox" aria-label="行く" data-day="${esc(displayDate)}" ${selected?'checked':''}><span>行く</span></label>`;
-    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}<label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label></div><div>${badge}<div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div>${visitDayControls(e)}</div></div></td>`;
+    const planBox=historyStatus?'':`<label class="check-line"><input class="plan-check" type="checkbox" aria-label="行く" data-day="${esc(displayDate)}" ${selected?'checked':''}><span>行く</span></label>`;
+    const ignoreBox=historyStatus?'':`<label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label>`;
+    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}${ignoreBox}</div><div>${resultBadge}${badge}<div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div>${historyStatus?'':visitDayControls(e)}</div></div></td>`;
     html+=`<td class="condition">${(e.conditionLines||[]).map(esc).join('<br>')}</td>`;
     html+=`<td><div class="rating">${esc(e.rating||'')}</div><div class="night">${e.nightTime?`<strong>${esc(e.nightTime)}</strong> `:''}${esc(e.nightText||e.detailText||'')}</div></td></tr>`;
     currentDate=displayDate;i++;
