@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>無料食事イベント 調査済み台帳 2026</title>
 <style>
-:root{--bg:#f4f6f8;--panel:#fff;--line:#d6dce2;--head:#20262d;--text:#1d2329;--muted:#606a74;--week:#e8edf2;--link:#0b57d0;--planned:#e8f4ff;--ignored:#f7f8f9}
+:root{--bg:#f4f6f8;--panel:#fff;--line:#d6dce2;--head:#20262d;--text:#1d2329;--muted:#606a74;--week:#e8edf2;--link:#0b57d0;--planned:#e8f4ff;--ignored:#f7f8f9;--report-bad:#fff0f0}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
 h1{font-size:22px;margin:0 0 4px}.meta{font-size:13px;color:var(--muted);margin:0 0 12px}.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.status{font-size:12px;font-weight:700}.save-ok{color:#18794e}.save-warn{color:#9a6700}.help,.note{font-size:12px;color:var(--muted)}
-.toolbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}button:hover{background:#f2f4f6}
+.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.view-tabs{display:flex;gap:6px;flex-wrap:wrap}.view-tab.active{background:#20262d;color:#fff;border-color:#20262d}.reset-btn{margin-left:auto}button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}button:hover{background:#f2f4f6}
 .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col.date{width:7%}col.event{width:29%}col.cond{width:19%}col.eval{width:45%}thead th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;font-size:14px;padding:10px 12px;border-right:1px solid #3d4650}tbody td{vertical-align:top;padding:10px 12px;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:14px}tbody td:last-child,thead th:last-child{border-right:0}.date-head{text-align:center}.date-cell{text-align:center;vertical-align:middle;font-weight:700;white-space:nowrap}.week-row td{background:var(--week);font-weight:700;padding:7px 12px;border-top:2px solid #aeb8c2}
+table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col.date{width:7%}col.event{width:29%}col.cond{width:19%}col.eval{width:45%}col.report-date{width:10%}col.report-event{width:35%}col.report-text{width:55%}thead th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;font-size:14px;padding:10px 12px;border-right:1px solid #3d4650}tbody td{vertical-align:top;padding:10px 12px;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:14px}tbody td:last-child,thead th:last-child{border-right:0}.date-head{text-align:center}.date-cell{text-align:center;vertical-align:middle;font-weight:700;white-space:nowrap}.week-row td{background:var(--week);font-weight:700;padding:7px 12px;border-top:2px solid #aeb8c2}
 .event-top{display:flex;align-items:flex-start;gap:8px}.check-stack{display:flex;flex-direction:column;gap:5px;flex:0 0 17px;min-width:17px;padding-top:2px}.check-line{display:flex;align-items:center;width:17px;height:17px;margin:0;padding:0;cursor:pointer;font-size:0;line-height:1}.check-line span{display:none}.plan-check{appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;margin:0;cursor:pointer;accent-color:#2f6fda}.ignore-check{appearance:none;-webkit-appearance:none;position:relative;width:16px;height:16px;margin:0;border:1.5px solid #d73a49;border-radius:3px;background:#fff;cursor:pointer}.ignore-check:checked{background:#d73a49;border-color:#d73a49}.ignore-check:checked::after{content:"×";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;line-height:1}
-.event-name{font-weight:700;font-size:15px}.event-name a{color:var(--link);text-decoration:none}.event-name a:hover{text-decoration:underline}.venue{margin-top:2px;color:var(--muted);font-size:13px}.condition{font-weight:600}.rating{font-weight:700;margin-bottom:3px}.event-row.planned td:not(.date-cell){background:var(--planned)}.event-row.ignored td:not(.date-cell){background:var(--ignored)}.event-row.ignored td:not(.date-cell),.event-row.ignored td:not(.date-cell) *{color:#a2a8ae!important}.event-row.ignored td:not(.date-cell) a{text-decoration-color:#b8bdc2!important}.event-row.calendar-focus td{animation:calendarFlash 1.4s ease}@keyframes calendarFlash{0%,100%{background:inherit}25%,70%{background:#dff0ff}}
+.event-name{font-weight:700;font-size:15px}.event-name a{color:var(--link);text-decoration:none}.event-name a:hover{text-decoration:underline}.venue{margin-top:2px;color:var(--muted);font-size:13px}.condition{font-weight:600}.rating{font-weight:700;margin-bottom:3px}.event-row.planned td:not(.date-cell){background:var(--planned)}.event-row.ignored td:not(.date-cell){background:var(--ignored)}.event-row.ignored td:not(.date-cell),.event-row.ignored td:not(.date-cell) *{color:#a2a8ae!important}.event-row.ignored td:not(.date-cell) a{text-decoration-color:#b8bdc2!important}.report-row.report-good td:not(.date-cell){background:var(--planned)}.report-row.report-bad td:not(.date-cell){background:var(--report-bad)}.event-row.calendar-focus td,.report-row.calendar-focus td{animation:calendarFlash 1.4s ease}@keyframes calendarFlash{0%,100%{background:inherit}25%,70%{background:#dff0ff}}
 .calendar-panel{margin:10px 0 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px 12px;box-shadow:0 1px 4px rgba(0,0,0,.04)}.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:700}.calendar-now{font-size:12px;color:var(--muted);white-space:nowrap}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.month-card{min-width:0;border:1px solid #e1e5e9;border-radius:8px;padding:7px 8px 8px;background:#fff}.month-name{text-align:center;font-size:13px;font-weight:700;margin-bottom:4px}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:600;padding:2px 0}.day{position:relative;width:26px;height:26px;min-width:26px;min-height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none}.day.empty{visibility:hidden}.day.event-day{background:#8a939c;color:#fff;font-weight:700;cursor:pointer}.day.planned-day{background:#2f6fda;color:#fff;font-weight:700;cursor:pointer}.day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.day.event-day:hover,.day.planned-day:hover{filter:brightness(.92)}
 .loading{padding:28px;text-align:center;color:var(--muted)}
 @media(max-width:800px){.calendars{grid-template-columns:repeat(3,minmax(220px,1fr));overflow-x:auto;padding-bottom:3px}.calendar-panel{overflow:hidden}}@media(max-width:700px){.wrap{padding:9px}h1{font-size:18px}table{min-width:760px}tbody td,thead th{padding:8px;font-size:13px}.event-name{font-size:14px}}
@@ -22,23 +22,35 @@ table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント 調査済み台帳 2026</h1><p class="meta">JSON分離版／参加予定・除外チェック付き</p></div><div id="status" class="status">読み込み中</div></div>
-  <div class="toolbar"><button id="resetFlagsBtn">チェックを初期化</button></div>
-  <p class="help">上の□は参加予定、下の赤枠□は考慮しないイベントです。状態はこのブラウザに自動保存されます。</p>
-  <section class="calendar-panel" aria-label="イベントカレンダー"><div class="calendar-head"><div class="calendar-title">イベントカレンダー</div><div id="calendarNow" class="calendar-now"></div></div><div id="calendarMonths" class="calendars"></div></section>
-  <div class="table-wrap"><table><colgroup><col class="date"><col class="event"><col class="cond"><col class="eval"></colgroup><thead><tr><th class="date-head">日</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 夜の内容・食事根拠</th></tr></thead><tbody id="ledgerBody"><tr><td colspan="4" class="loading">イベント一覧を読み込んでいます…</td></tr></tbody></table></div>
-  <p class="note">※ イベントデータは「イベント一覧.json」から読み込んでいます。</p>
+  <div class="top"><div><h1>無料食事イベント 調査済み台帳 2026</h1><p class="meta">予定イベント / 実地レポート</p></div><div id="status" class="status">読み込み中</div></div>
+  <div class="toolbar"><div class="view-tabs"><button id="eventsTab" class="view-tab active">予定イベント</button><button id="reportsTab" class="view-tab">実地レポート</button></div><button id="resetFlagsBtn" class="reset-btn">チェックを初期化</button></div>
+  <p id="viewHelp" class="help">上の□は参加予定、下の赤枠□は考慮しないイベントです。状態はこのブラウザに自動保存されます。</p>
+  <section class="calendar-panel" aria-label="イベントカレンダー"><div class="calendar-head"><div id="calendarTitle" class="calendar-title">イベントカレンダー</div><div id="calendarNow" class="calendar-now"></div></div><div id="calendarMonths" class="calendars"></div></section>
+  <section id="eventsView"><div class="table-wrap"><table><colgroup><col class="date"><col class="event"><col class="cond"><col class="eval"></colgroup><thead><tr><th class="date-head">日</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 夜の内容・食事根拠</th></tr></thead><tbody id="ledgerBody"><tr><td colspan="4" class="loading">イベント一覧を読み込んでいます…</td></tr></tbody></table></div></section>
+  <section id="reportsView" hidden><div class="table-wrap"><table><colgroup><col class="report-date"><col class="report-event"><col class="report-text"></colgroup><thead><tr><th class="date-head">日付</th><th>イベント / 会場</th><th>レポート</th></tr></thead><tbody id="reportBody"><tr><td colspan="3" class="loading">実地レポートを読み込んでいます…</td></tr></tbody></table></div></section>
+  <p class="note">※ 予定は「イベント一覧.json」、実地結果は「実地レポート.json」から読み込んでいます。</p>
 </div>
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
 const PLANNED_KEY='free_food_event_ledger_2026_planned_v1';
+const REPORT_FLAGS_KEY='free_food_event_report_flags_v1';
 const tbody=document.getElementById('ledgerBody');
+const reportBody=document.getElementById('reportBody');
 const status=document.getElementById('status');
 const calendarMonths=document.getElementById('calendarMonths');
 const calendarNow=document.getElementById('calendarNow');
+const calendarTitle=document.getElementById('calendarTitle');
 const resetFlagsBtn=document.getElementById('resetFlagsBtn');
+const eventsTab=document.getElementById('eventsTab');
+const reportsTab=document.getElementById('reportsTab');
+const eventsView=document.getElementById('eventsView');
+const reportsView=document.getElementById('reportsView');
+const viewHelp=document.getElementById('viewHelp');
 let events=[];
+let reports=[];
 let flags={};
+let reportFlags={};
+let currentView='events';
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function parseISO(s){const [y,m,d]=String(s).split('-').map(Number);return new Date(y,m-1,d)}
@@ -46,17 +58,20 @@ function jpWeekday(d){return ['日','月','火','水','木','金','土'][d.getDa
 function dateLabel(s){const d=parseISO(s);return `${d.getMonth()+1}/${d.getDate()}（${jpWeekday(d)}）`}
 function weekRangeLabel(s){const d=parseISO(s),day=(d.getDay()+6)%7;const mon=new Date(d);mon.setDate(d.getDate()-day);const sun=new Date(mon);sun.setDate(mon.getDate()+6);return `${mon.getMonth()+1}/${mon.getDate()}～${sun.getMonth()+1}/${sun.getDate()}`}
 function weekKey(s){const d=parseISO(s),day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return d.toISOString().slice(0,10)}
-function loadFlags(){try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(e){flags={}}}
-function saveFlags(){localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));status.textContent='チェック状態を保存しました';status.className='status save-ok';renderCalendar()}
+function loadFlags(){try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(e){flags={}}try{reportFlags=JSON.parse(localStorage.getItem(REPORT_FLAGS_KEY)||'{}')}catch(e){reportFlags={}}}
+function saveFlags(){localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));status.textContent='予定イベントのチェック状態を保存しました';status.className='status save-ok';renderCalendar()}
+function saveReportFlags(){localStorage.setItem(REPORT_FLAGS_KEY,JSON.stringify(reportFlags));status.textContent='実地レポートの評価チェックを保存しました';status.className='status save-ok'}
 function eventFlag(id){return flags[id]||{planned:false,ignored:false}}
+function reportFlag(id){return reportFlags[id]||{good:false,bad:false}}
+
 function renderLedger(){
   const sorted=[...events].sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name,'ja'));
   let html='';let currentWeek='';let currentDate='';let i=0;
   while(i<sorted.length){
-    const e=sorted[i];const wk=weekKey(e.date);
+    const e=sorted[i],wk=weekKey(e.date);
     if(wk!==currentWeek){html+=`<tr class="week-row"><td colspan="4">${esc(weekRangeLabel(e.date))}</td></tr>`;currentWeek=wk;currentDate=''}
-    const sameDate=sorted.filter(x=>x.date===e.date);const firstOfDate=e.date!==currentDate;
-    const f=eventFlag(e.id);const cls=`event-row${f.planned?' planned':''}${f.ignored?' ignored':''}`;
+    const sameDate=sorted.filter(x=>x.date===e.date),firstOfDate=e.date!==currentDate;
+    const f=eventFlag(e.id),cls=`event-row${f.planned?' planned':''}${f.ignored?' ignored':''}`;
     html+=`<tr class="${cls}" data-date="${esc(e.date)}" data-event-id="${esc(e.id)}">`;
     if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(dateLabel(e.date))}</strong></td>`;
     html+=`<td class="event-cell"><div class="event-top"><div class="check-stack"><label class="check-line"><input class="plan-check" type="checkbox" aria-label="参加予定" ${f.planned?'checked':''}><span>行く</span></label><label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label></div><div><div class="event-name"><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a></div><div class="venue">${esc(e.venue)}</div></div></div></td>`;
@@ -66,26 +81,120 @@ function renderLedger(){
   }
   tbody.innerHTML=html||'<tr><td colspan="4" class="loading">イベントがありません。</td></tr>';
 }
-function eventStatusMap(){const map=new Map();for(const e of events){const f=eventFlag(e.id);const prev=map.get(e.date)||{exists:true,planned:false};map.set(e.date,{exists:true,planned:prev.planned||!!f.planned})}return map}
-function renderCalendar(){
-  const now=new Date(),map=eventStatusMap();calendarNow.textContent=`PC日時基準：${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}（${jpWeekday(now)}）`;calendarMonths.innerHTML='';
-  const labels=['日','月','火','水','木','金','土'];
-  for(let offset=0;offset<3;offset++){
-    const first=new Date(now.getFullYear(),now.getMonth()+offset,1),year=first.getFullYear(),month=first.getMonth()+1,days=new Date(year,month,0).getDate();
-    const card=document.createElement('div');card.className='month-card';card.innerHTML=`<div class="month-name">${year}年${month}月</div>`;const grid=document.createElement('div');grid.className='month-grid';
-    labels.forEach(w=>{const el=document.createElement('div');el.className='weekday';el.textContent=w;grid.appendChild(el)});for(let j=0;j<first.getDay();j++){const el=document.createElement('div');el.className='day empty';grid.appendChild(el)}
-    for(let day=1;day<=days;day++){
-      const el=document.createElement('div');el.className='day';el.textContent=day;const key=`${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`,st=map.get(key);if(st?.exists)el.classList.add('event-day');if(st?.planned)el.classList.add('planned-day');if(year===now.getFullYear()&&month===now.getMonth()+1&&day===now.getDate())el.classList.add('today');if(st?.exists){el.title=st.planned?'参加予定イベントあり':'イベントあり';el.onclick=()=>scrollToDate(key)}grid.appendChild(el)
+
+function renderReports(){
+  const sorted=[...reports].sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name,'ja'));
+  let html='';let currentDate='';let i=0;
+  while(i<sorted.length){
+    const r=sorted[i],sameDate=sorted.filter(x=>x.date===r.date),firstOfDate=r.date!==currentDate,f=reportFlag(r.id);
+    const cls=`report-row${f.good?' report-good':''}${f.bad?' report-bad':''}`;
+    html+=`<tr class="${cls}" data-date="${esc(r.date)}" data-report-id="${esc(r.id)}">`;
+    if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(dateLabel(r.date))}</strong></td>`;
+    const nameHtml=r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>`:esc(r.name);
+    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack"><label class="check-line"><input class="plan-check" type="checkbox" aria-label="良かった" ${f.good?'checked':''}><span>良</span></label><label class="check-line"><input class="ignore-check" type="checkbox" aria-label="良くなかった" ${f.bad?'checked':''}><span>×</span></label></div><div><div class="event-name">${nameHtml}</div><div class="venue">${esc(r.venue)}</div></div></div></td>`;
+    html+=`<td>${esc(r.report)}</td></tr>`;
+    currentDate=r.date;i++;
+  }
+  reportBody.innerHTML=html||'<tr><td colspan="3" class="loading">実地レポートはまだありません。</td></tr>';
+}
+
+function eventStatusMap(){const map=new Map();for(const e of events){const f=eventFlag(e.id),prev=map.get(e.date)||{exists:true,planned:false};map.set(e.date,{exists:true,planned:prev.planned||!!f.planned})}return map}
+function reportStatusMap(){const map=new Map();for(const r of reports)map.set(r.date,{exists:true});return map}
+
+function buildMonthCard(year,month,map,reportMode){
+  const first=new Date(year,month-1,1),days=new Date(year,month,0).getDate(),now=new Date(),labels=['日','月','火','水','木','金','土'];
+  const card=document.createElement('div');card.className='month-card';card.innerHTML=`<div class="month-name">${year}年${month}月</div>`;
+  const grid=document.createElement('div');grid.className='month-grid';
+  labels.forEach(w=>{const el=document.createElement('div');el.className='weekday';el.textContent=w;grid.appendChild(el)});
+  for(let j=0;j<first.getDay();j++){const el=document.createElement('div');el.className='day empty';grid.appendChild(el)}
+  for(let day=1;day<=days;day++){
+    const el=document.createElement('div');el.className='day';el.textContent=day;
+    const key=`${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`,st=map.get(key);
+    if(reportMode){
+      if(st?.exists){el.classList.add('planned-day');el.title='実地レポートあり';el.onclick=()=>scrollToDate(key)}
+    }else{
+      if(st?.exists)el.classList.add('event-day');
+      if(st?.planned)el.classList.add('planned-day');
+      if(st?.exists){el.title=st.planned?'参加予定イベントあり':'イベントあり';el.onclick=()=>scrollToDate(key)}
     }
-    card.appendChild(grid);calendarMonths.appendChild(card)
+    if(year===now.getFullYear()&&month===now.getMonth()+1&&day===now.getDate())el.classList.add('today');
+    grid.appendChild(el);
+  }
+  card.appendChild(grid);return card;
+}
+
+function renderCalendar(){
+  const now=new Date();calendarMonths.innerHTML='';
+  if(currentView==='reports'){
+    const map=reportStatusMap();
+    const monthKeys=[...new Set(reports.map(r=>String(r.date).slice(0,7)))].sort();
+    const keys=monthKeys.length?monthKeys:[`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`];
+    calendarNow.textContent=`実地レポート：${reports.length}件`;
+    keys.forEach(k=>{const [y,m]=k.split('-').map(Number);calendarMonths.appendChild(buildMonthCard(y,m,map,true))});
+  }else{
+    const map=eventStatusMap();
+    calendarNow.textContent=`PC日時基準：${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}（${jpWeekday(now)}）`;
+    for(let offset=0;offset<3;offset++){const d=new Date(now.getFullYear(),now.getMonth()+offset,1);calendarMonths.appendChild(buildMonthCard(d.getFullYear(),d.getMonth()+1,map,false))}
   }
 }
-function scrollToDate(date){const row=[...tbody.querySelectorAll('.event-row')].find(r=>r.dataset.date===date);if(!row)return;row.scrollIntoView({behavior:'smooth',block:'start'});row.classList.remove('calendar-focus');void row.offsetWidth;row.classList.add('calendar-focus');setTimeout(()=>row.classList.remove('calendar-focus'),1600)}
+function scrollToDate(date){
+  const body=currentView==='reports'?reportBody:tbody,selector=currentView==='reports'?'.report-row':'.event-row';
+  const row=[...body.querySelectorAll(selector)].find(r=>r.dataset.date===date);if(!row)return;
+  row.scrollIntoView({behavior:'smooth',block:'start'});row.classList.remove('calendar-focus');void row.offsetWidth;row.classList.add('calendar-focus');setTimeout(()=>row.classList.remove('calendar-focus'),1600);
+}
 function applyFlagToRow(row){const id=row.dataset.eventId,f=eventFlag(id);row.classList.toggle('planned',!!f.planned);row.classList.toggle('ignored',!!f.ignored)}
-tbody.addEventListener('change',e=>{if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('ignore-check'))return;const row=e.target.closest('.event-row');if(!row)return;const id=row.dataset.eventId;const f=eventFlag(id);if(e.target.classList.contains('plan-check')){f.planned=e.target.checked;if(f.planned)f.ignored=false}else{f.ignored=e.target.checked;if(f.ignored)f.planned=false}flags[id]=f;row.querySelector('.plan-check').checked=!!f.planned;row.querySelector('.ignore-check').checked=!!f.ignored;applyFlagToRow(row);saveFlags()});
-resetFlagsBtn.onclick=()=>{if(!confirm('参加予定と除外チェックをすべて外しますか？'))return;flags={};localStorage.removeItem(FLAGS_KEY);localStorage.removeItem(PLANNED_KEY);renderLedger();renderCalendar();status.textContent='チェックを初期化しました';status.className='status save-warn'};
-(async()=>{try{loadFlags();const r=await fetch(`イベント一覧.json?v=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw new Error('イベント一覧.jsonの取得に失敗');const data=await r.json();events=Array.isArray(data.events)?data.events:[];renderLedger();renderCalendar();status.textContent=`読込完了：${events.length}件`;status.className='status save-ok'}catch(err){console.error(err);tbody.innerHTML='<tr><td colspan="4" class="loading">台帳の読み込みに失敗しました。ページを再読み込みしてください。</td></tr>';status.textContent='読み込み失敗';status.className='status save-warn'}})();
-setInterval(()=>{if(events.length)renderCalendar()},60000);
+function applyReportFlagToRow(row){const id=row.dataset.reportId,f=reportFlag(id);row.classList.toggle('report-good',!!f.good);row.classList.toggle('report-bad',!!f.bad)}
+function setView(view){
+  currentView=view;
+  const isReports=view==='reports';
+  eventsView.hidden=isReports;reportsView.hidden=!isReports;
+  eventsTab.classList.toggle('active',!isReports);reportsTab.classList.toggle('active',isReports);
+  calendarTitle.textContent=isReports?'実地レポートカレンダー':'イベントカレンダー';
+  viewHelp.textContent=isReports?'上の□は良かったイベント、下の赤枠□は良くなかったイベントです。これらのチェックはカレンダーには影響しません。':'上の□は参加予定、下の赤枠□は考慮しないイベントです。状態はこのブラウザに自動保存されます。';
+  renderCalendar();
+}
+tbody.addEventListener('change',e=>{
+  if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('ignore-check'))return;
+  const row=e.target.closest('.event-row');if(!row)return;const id=row.dataset.eventId,f=eventFlag(id);
+  if(e.target.classList.contains('plan-check')){f.planned=e.target.checked;if(f.planned)f.ignored=false}else{f.ignored=e.target.checked;if(f.ignored)f.planned=false}
+  flags[id]=f;row.querySelector('.plan-check').checked=!!f.planned;row.querySelector('.ignore-check').checked=!!f.ignored;applyFlagToRow(row);saveFlags();
+});
+reportBody.addEventListener('change',e=>{
+  if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('ignore-check'))return;
+  const row=e.target.closest('.report-row');if(!row)return;const id=row.dataset.reportId,f=reportFlag(id);
+  if(e.target.classList.contains('plan-check')){f.good=e.target.checked;if(f.good)f.bad=false}else{f.bad=e.target.checked;if(f.bad)f.good=false}
+  reportFlags[id]=f;row.querySelector('.plan-check').checked=!!f.good;row.querySelector('.ignore-check').checked=!!f.bad;applyReportFlagToRow(row);saveReportFlags();
+});
+eventsTab.onclick=()=>setView('events');
+reportsTab.onclick=()=>setView('reports');
+resetFlagsBtn.onclick=()=>{
+  if(currentView==='reports'){
+    if(!confirm('実地レポートの「良かった／良くなかった」チェックをすべて外しますか？'))return;
+    reportFlags={};localStorage.removeItem(REPORT_FLAGS_KEY);renderReports();renderCalendar();status.textContent='実地レポートのチェックを初期化しました';status.className='status save-warn';
+  }else{
+    if(!confirm('参加予定と除外チェックをすべて外しますか？'))return;
+    flags={};localStorage.removeItem(FLAGS_KEY);localStorage.removeItem(PLANNED_KEY);renderLedger();renderCalendar();status.textContent='予定イベントのチェックを初期化しました';status.className='status save-warn';
+  }
+};
+(async()=>{
+  try{
+    loadFlags();
+    const [er,rr]=await Promise.all([
+      fetch(`イベント一覧.json?v=${Date.now()}`,{cache:'no-store'}),
+      fetch(`実地レポート.json?v=${Date.now()}`,{cache:'no-store'})
+    ]);
+    if(!er.ok)throw new Error('イベント一覧.jsonの取得に失敗');
+    if(!rr.ok)throw new Error('実地レポート.jsonの取得に失敗');
+    const [eventData,reportData]=await Promise.all([er.json(),rr.json()]);
+    events=Array.isArray(eventData.events)?eventData.events:[];
+    reports=Array.isArray(reportData.reports)?reportData.reports:[];
+    renderLedger();renderReports();setView('events');
+    status.textContent=`読込完了：予定${events.length}件 / レポート${reports.length}件`;status.className='status save-ok';
+  }catch(err){
+    console.error(err);tbody.innerHTML='<tr><td colspan="4" class="loading">台帳の読み込みに失敗しました。ページを再読み込みしてください。</td></tr>';reportBody.innerHTML='<tr><td colspan="3" class="loading">実地レポートの読み込みに失敗しました。</td></tr>';status.textContent='読み込み失敗';status.className='status save-warn';
+  }
+})();
+setInterval(()=>{if(events.length||reports.length)renderCalendar()},60000);
 </script>
 </body>
 </html>
