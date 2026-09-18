@@ -1,0 +1,340 @@
+{
+  "dataVersion": "2026-09-18-excel-2",
+  "year": 2026,
+  "events": [
+    {
+      "id": "hist-8fddf0e5ddf9",
+      "date": "2026-02-27",
+      "endDate": "2026-02-28",
+      "dateText": "2月27日(金）～28日(土）",
+      "name": "第19回としまMONOづくりメッセ",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-16141a7f5e4f",
+      "date": "2026-04-03",
+      "endDate": "2026-04-05",
+      "dateText": "4月3日(金)～5日(日)",
+      "name": "マリンダイビングフェア2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-0e9d1038ab0a",
+      "date": "2026-04-08",
+      "endDate": "2026-04-10",
+      "dateText": "4月8日(水)～10日(金)",
+      "name": "第73回インターナショナル プレミアム・インセンティブショー春2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-e75e13fc24fb",
+      "date": "2026-04-16",
+      "endDate": "2026-04-17",
+      "dateText": "4月16日(木)～17日(金)",
+      "name": "健食原料・OEM展2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-f0972f089065",
+      "date": "2026-05-20",
+      "endDate": "2026-05-20",
+      "dateText": "5月20日(水)",
+      "name": "HCF食彩展2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-62b978e36b8a",
+      "date": "2026-06-10",
+      "endDate": "2026-06-10",
+      "dateText": "6月10日(水)",
+      "name": "WINE TOKYO 2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-d5aeb1edeb1e",
+      "date": "2026-07-02",
+      "endDate": "2026-07-02",
+      "dateText": "7月2日(木)",
+      "name": "Loglass 経営企画サミット 2026",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ]
+    },
+    {
+      "id": "hist-a3caed8bef69",
+      "date": "2026-07-03",
+      "endDate": "2026-07-05",
+      "dateText": "7月3日(金)～7月5日(日)",
+      "name": "TOKYO JEWELRY FES' 26",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-c79d1162acaf",
+      "date": "2026-07-03",
+      "endDate": "2026-07-03",
+      "dateText": "7月3日(金)",
+      "name": "TrendAI™ Spark 2026",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ]
+    },
+    {
+      "id": "hist-31421f56020b",
+      "date": "2026-07-11",
+      "endDate": "2026-07-12",
+      "dateText": "7月11日(土)～12日(日)",
+      "name": "東京キャンピングカーショー2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-b8b4a889c297",
+      "date": "2026-07-25",
+      "endDate": "2026-07-26",
+      "dateText": "7月25日(土)～26日(日)",
+      "name": "FIA Formula E Tokyo",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-e9e194047f1d",
+      "date": "2026-08-26",
+      "endDate": "2026-08-28",
+      "dateText": "8月26日(水)～28日(金)",
+      "name": "ジャパンジュエリーフェア2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-c91b735183bf",
+      "date": "2026-09-02",
+      "endDate": "2026-09-02",
+      "dateText": "9月2日(水)",
+      "name": "HR LEADERS CONFERENCE 2026",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "増田 慎一"
+      ]
+    },
+    {
+      "id": "hist-7cd9aec3b797",
+      "date": "2026-09-03",
+      "endDate": "2026-09-03",
+      "dateText": "9月3日(木)",
+      "name": "Rubrik FORWARD TOKYO 2026",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-aff41ec75dfa",
+      "date": "2026-09-08",
+      "endDate": "2026-09-11",
+      "dateText": "9月8日(火)～11日(金)",
+      "name": "サーモテック 2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ]
+    },
+    {
+      "id": "hist-4f257d1c7ee1",
+      "date": "2026-09-08",
+      "endDate": "2026-09-11",
+      "dateText": "9月8日(火)～11日(金)",
+      "name": "国際物流総合展 2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ]
+    },
+    {
+      "id": "hist-05942e465f13",
+      "date": "2026-09-08",
+      "endDate": "2026-09-11",
+      "dateText": "9月8日(火)～11日(金)",
+      "name": "第28回自動認識総合展",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-f36bada5fcd0",
+      "date": "2026-09-09",
+      "endDate": "2026-09-11",
+      "dateText": "9月9日(水)～11日(金)",
+      "name": "SMART ENERGY WEEK ～スマートエネルギー WEEK～【秋】2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-5f901c8d8f3e",
+      "date": "2026-09-09",
+      "endDate": "2026-09-11",
+      "dateText": "9月9日(水)～11日(金)",
+      "name": "第5回 ネプコン ジャパン [秋] -エレクトロニクス 開発・実装展-",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "村岡 隆",
+        "伊藤 聡"
+      ]
+    },
+    {
+      "id": "hist-156a1794a9f0",
+      "date": "2026-09-10",
+      "endDate": "2026-09-11",
+      "dateText": "9月10日(木)～11日(金)",
+      "name": "Snowflake World Tour Tokyo 2026",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ]
+    },
+    {
+      "id": "hist-bc0cbc6d631e",
+      "date": "2026-09-10",
+      "endDate": "2026-09-10",
+      "dateText": "9月10日(木)",
+      "name": "WalkMe on Tour Tokyo 2026",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ]
+    },
+    {
+      "id": "hist-86d35373468d",
+      "date": "2026-09-10",
+      "endDate": "2026-09-11",
+      "dateText": "9月10日(木)～11日(金)",
+      "name": "エンディング産業展2026",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-c1fe97adec2b",
+      "date": "2026-09-10",
+      "endDate": "2026-09-10",
+      "dateText": "9月10日(木)",
+      "name": "トランスコスモスフォーラム 2026｜GLOBAL",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ]
+    },
+    {
+      "id": "hist-1e828e37c37b",
+      "date": "2026-09-11",
+      "endDate": "2026-09-11",
+      "dateText": "9月11日(金)",
+      "name": "Meets 第5回 AI戦略サミット",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "増田 慎一"
+      ]
+    },
+    {
+      "id": "hist-3fc4390955e4",
+      "date": "2026-09-15",
+      "endDate": "2026-09-15",
+      "dateText": "9月15日(火)",
+      "name": "Dynatrace Innovate Roadshow Tokyo 2026",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ],
+      "reviewRejected": true,
+      "notes": [
+        "審査ハードル高め（過去に申請拒否あり）"
+      ]
+    },
+    {
+      "id": "hist-f277a8663eed",
+      "date": "2026-09-16",
+      "endDate": "2026-09-17",
+      "dateText": "9月16日(水)～9月17日(木)",
+      "name": "2026麺産業展",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-9f6dc2aa4a69",
+      "date": "2026-09-16",
+      "endDate": "2026-09-16",
+      "dateText": "9月16日(水)",
+      "name": "BtoB Growth EXPO for Sales",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": []
+    },
+    {
+      "id": "hist-e51784f1a56d",
+      "date": "2026-09-17",
+      "endDate": "2026-09-17",
+      "dateText": "9月17日(木)",
+      "name": "Impact World Tour Tokyo",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ]
+    },
+    {
+      "id": "hist-607b4d0ea026",
+      "date": "2026-09-17",
+      "endDate": "2026-09-17",
+      "dateText": "9月17日(木)",
+      "name": "L is B User Conference 2026",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": [
+        "伊藤 聡"
+      ]
+    }
+  ]
+}

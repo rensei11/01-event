@@ -14,7 +14,7 @@ h1{font-size:22px;margin:0 0 4px}.meta{font-size:13px;color:var(--muted);margin:
 .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col.date{width:7%}col.event{width:29%}col.cond{width:19%}col.eval{width:45%}col.report-date{width:10%}col.report-event{width:35%}col.report-text{width:55%}thead th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;font-size:14px;padding:10px 12px;border-right:1px solid #3d4650}tbody td{vertical-align:top;padding:10px 12px;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:14px}tbody td:last-child,thead th:last-child{border-right:0}.date-head{text-align:center}.date-cell{text-align:center;vertical-align:middle;font-weight:700;white-space:nowrap}.week-row td{background:var(--week);font-weight:700;padding:7px 12px;border-top:2px solid #aeb8c2}
 .event-top{display:flex;align-items:flex-start;gap:8px}.check-stack{display:flex;flex-direction:column;gap:5px;flex:0 0 17px;min-width:17px;padding-top:2px}.check-line{display:flex;align-items:center;width:17px;height:17px;margin:0;padding:0;cursor:pointer;font-size:0;line-height:1}.check-line span{display:none}.plan-check{appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;margin:0;cursor:pointer;accent-color:#2f6fda}.ignore-check{appearance:none;-webkit-appearance:none;position:relative;width:16px;height:16px;margin:0;border:1.5px solid #d73a49;border-radius:3px;background:#fff;cursor:pointer}.ignore-check:checked{background:#d73a49;border-color:#d73a49}.ignore-check:checked::after{content:"×";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;line-height:1}
-.event-name{font-weight:700;font-size:15px}.event-name a{color:var(--link);text-decoration:none}.event-name a:hover{text-decoration:underline}.venue{margin-top:2px;color:var(--muted);font-size:13px}.condition{font-weight:600}.rating{font-weight:700;margin-bottom:3px}.event-row.planned td:not(.date-cell){background:var(--planned)}.event-row.ignored td:not(.date-cell){background:var(--ignored)}.event-row.ignored td:not(.date-cell),.event-row.ignored td:not(.date-cell) *{color:#a2a8ae!important}.event-row.ignored td:not(.date-cell) a{text-decoration-color:#b8bdc2!important}.report-row.report-good td:not(.date-cell){background:var(--planned)}.report-row.report-bad td:not(.date-cell){background:var(--report-bad)}.event-row.calendar-focus td,.report-row.calendar-focus td{animation:calendarFlash 1.4s ease}@keyframes calendarFlash{0%,100%{background:inherit}25%,70%{background:#dff0ff}}
+.report-copy{white-space:pre-wrap}.report-rating{font-weight:800;margin-bottom:5px}.visit-days{display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin-top:5px}.visit-days-label{font-size:11px;color:var(--muted);font-weight:700}.visit-day{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #aeb7c0;border-radius:10px;background:#fff;font-size:11px;white-space:nowrap}.visit-day input{margin:0;accent-color:#2f6fda}.event-name{font-weight:700;font-size:15px}.event-name a{color:var(--link);text-decoration:none}.event-name a:hover{text-decoration:underline}.venue{margin-top:2px;color:var(--muted);font-size:13px}.condition{font-weight:600}.rating{font-weight:700;margin-bottom:3px}.event-row.planned td:not(.date-cell){background:var(--planned)}.event-row.ignored td:not(.date-cell){background:var(--ignored)}.event-row.ignored td:not(.date-cell),.event-row.ignored td:not(.date-cell) *{color:#a2a8ae!important}.event-row.ignored td:not(.date-cell) a{text-decoration-color:#b8bdc2!important}.report-row.report-good td:not(.date-cell){background:var(--planned)}.report-row.report-bad td:not(.date-cell){background:var(--report-bad)}.event-row.calendar-focus td,.report-row.calendar-focus td{animation:calendarFlash 1.4s ease}@keyframes calendarFlash{0%,100%{background:inherit}25%,70%{background:#dff0ff}}
 .calendar-panel{margin:10px 0 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px 12px;box-shadow:0 1px 4px rgba(0,0,0,.04)}.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:700}.calendar-now{font-size:12px;color:var(--muted);white-space:nowrap}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.month-card{min-width:0;border:1px solid #e1e5e9;border-radius:8px;padding:7px 8px 8px;background:#fff}.month-name{text-align:center;font-size:13px;font-weight:700;margin-bottom:4px}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:600;padding:2px 0}.day{position:relative;width:26px;height:26px;min-width:26px;min-height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none}.day.empty{visibility:hidden}.day.event-day{background:#8a939c;color:#fff;font-weight:700;cursor:pointer}.day.planned-day{background:#2f6fda;color:#fff;font-weight:700;cursor:pointer}.day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.day.event-day:hover,.day.planned-day:hover{filter:brightness(.92)}
 .loading{padding:28px;text-align:center;color:var(--muted)}
 @media(max-width:800px){.calendars{grid-template-columns:repeat(3,minmax(220px,1fr));overflow-x:auto;padding-bottom:3px}.calendar-panel{overflow:hidden}}@media(max-width:700px){.wrap{padding:9px}h1{font-size:18px}table{min-width:760px}tbody td,thead th{padding:8px;font-size:13px}.event-name{font-size:14px}}
@@ -66,6 +66,32 @@ function jpWeekday(d){return ['日','月','火','水','木','金','土'][d.getDa
 function dateLabel(s){const d=parseISO(s);return `${d.getMonth()+1}/${d.getDate()}（${jpWeekday(d)}）`}
 function weekRangeLabel(s){const d=parseISO(s),day=(d.getDay()+6)%7;const mon=new Date(d);mon.setDate(d.getDate()-day);const sun=new Date(mon);sun.setDate(mon.getDate()+6);return `${mon.getMonth()+1}/${mon.getDate()}～${sun.getMonth()+1}/${sun.getDate()}`}
 function weekKey(s){const d=parseISO(s),day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return d.toISOString().slice(0,10)}
+function cleanDateText(s){return String(s||'').replace(/\t/g,' ').trim()}
+function eventDateText(e){return cleanDateText(e.dateText)||dateLabel(e.date)}
+function eventRangeKey(e){return [e.date,e.endDate||'',eventDateText(e)].join('|')}
+function isoDays(start,end){
+  const out=[],a=parseISO(start),b=parseISO(end||start);
+  for(let d=new Date(a);d<=b;d.setDate(d.getDate()+1))out.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`);
+  return out;
+}
+function eventContainsDate(e,date){return date>=e.date&&date<=(e.endDate||e.date)}
+function reportDates(r){return Array.isArray(r.visitDates)&&r.visitDates.length?r.visitDates:[r.date]}
+function reportDateKey(r){return reportDates(r).join('|')}
+function isMultiDay(e){return !!e.endDate&&e.endDate!==e.date}
+function plannedDates(e){
+  const f=eventFlag(e.id);
+  if(Array.isArray(f.visitDates))return [...new Set(f.visitDates)].filter(d=>eventContainsDate(e,d)).sort();
+  if(f.planned)return [e.date];
+  return [];
+}
+function isEventPlanned(e){return plannedDates(e).length>0}
+function eventById(id){return taggedEvents().find(e=>e.id===id)}
+function shortDayLabel(iso){const d=parseISO(iso);return `${d.getDate()}(${jpWeekday(d)})`}
+function visitDayControls(e){
+  if(!isMultiDay(e))return '';
+  const selected=new Set(plannedDates(e));
+  return `<div class="visit-days"><span class="visit-days-label">行く日</span>${isoDays(e.date,e.endDate).map(d=>`<label class="visit-day"><input class="day-plan-check" type="checkbox" data-day="${esc(d)}" ${selected.has(d)?'checked':''}>${esc(shortDayLabel(d))}</label>`).join('')}</div>`;
+}
 
 function loadFlags(){
   try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(e){flags={}}
@@ -106,7 +132,8 @@ function startMinutes(e){
   return m?Number(m[1])*60+Number(m[2]):9999;
 }
 function eventCompare(a,b){
-  const d=a.date.localeCompare(b.date);
+  const ad=a._displayDate||a.date,bd=b._displayDate||b.date;
+  const d=ad.localeCompare(bd);
   if(d)return d;
   if(currentKind==='both'){
     if(a._kind!==b._kind)return a._kind==='exhibition'?-1:1;
@@ -123,29 +150,31 @@ function eventCompare(a,b){
 function visibleEvents(){
   let list=taggedEvents();
   if(currentKind!=='both')list=list.filter(e=>e._kind===currentKind);
-  if(currentView==='planned')list=list.filter(e=>eventFlag(e.id).planned);
+  if(currentView==='planned')list=list.flatMap(e=>plannedDates(e).map(d=>({...e,_displayDate:d})));
   return list.sort(eventCompare);
 }
 
 function renderLedger(){
   const sorted=visibleEvents();
-  let html='',currentWeek='',currentDate='',i=0;
+  let html='',currentWeek='',currentRange='',i=0;
   while(i<sorted.length){
-    const e=sorted[i],wk=weekKey(e.date);
+    const e=sorted[i],displayDate=e._displayDate||e.date,wk=weekKey(displayDate);
     if(wk!==currentWeek){
-      html+=`<tr class="week-row"><td colspan="4">${esc(weekRangeLabel(e.date))}</td></tr>`;
-      currentWeek=wk;currentDate='';
+      html+=`<tr class="week-row"><td colspan="4">${esc(weekRangeLabel(displayDate))}</td></tr>`;
+      currentWeek=wk;currentRange='';
     }
-    const sameDate=sorted.filter(x=>x.date===e.date),firstOfDate=e.date!==currentDate;
-    const f=eventFlag(e.id),cls=`event-row${f.planned?' planned':''}${f.ignored?' ignored':''}`;
-    html+=`<tr class="${cls}" data-date="${esc(e.date)}" data-event-id="${esc(e.id)}">`;
-    if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(dateLabel(e.date))}</strong></td>`;
+    const rkey=currentView==='planned'?displayDate:eventRangeKey(e);
+    const sameDate=sorted.filter(x=>(currentView==='planned'?(x._displayDate||x.date):eventRangeKey(x))===rkey),firstOfDate=rkey!==currentRange;
+    const f=eventFlag(e.id),cls=`event-row${isEventPlanned(e)?' planned':''}${f.ignored?' ignored':''}`;
+    html+=`<tr class="${cls}" data-date="${esc(displayDate)}" data-display-date="${esc(displayDate)}" data-start="${esc(e.date)}" data-end="${esc(e.endDate||e.date)}" data-event-id="${esc(e.id)}">`;
+    if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(currentView==='planned'?dateLabel(displayDate):eventDateText(e))}</strong></td>`;
     const badge=currentKind==='both'?`<div class="kind-badge ${e._kind}">${e._kind==='exhibition'?'展示会':'懇親会'}</div>`:'';
     const nameHtml=e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a>`:esc(e.name);
-    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack"><label class="check-line"><input class="plan-check" type="checkbox" aria-label="行く" ${f.planned?'checked':''}><span>行く</span></label><label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label></div><div>${badge}<div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div></div></div></td>`;
+    const planBox=isMultiDay(e)?'<span class="check-line" aria-hidden="true"></span>':`<label class="check-line"><input class="plan-check" type="checkbox" aria-label="行く" ${isEventPlanned(e)?'checked':''}><span>行く</span></label>`;
+    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}<label class="check-line"><input class="ignore-check" type="checkbox" aria-label="考慮しない" ${f.ignored?'checked':''}><span>×</span></label></div><div>${badge}<div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div>${visitDayControls(e)}</div></div></td>`;
     html+=`<td class="condition">${(e.conditionLines||[]).map(esc).join('<br>')}</td>`;
     html+=`<td><div class="rating">${esc(e.rating||'')}</div><div class="night">${e.nightTime?`<strong>${esc(e.nightTime)}</strong> `:''}${esc(e.nightText||e.detailText||'')}</div></td></tr>`;
-    currentDate=e.date;i++;
+    currentRange=rkey;i++;
   }
   const emptyText=currentView==='planned'?'「行く」にチェックしたイベントはありません。':'該当するイベントはありません。';
   tbody.innerHTML=html||`<tr><td colspan="4" class="loading">${emptyText}</td></tr>`;
@@ -153,16 +182,16 @@ function renderLedger(){
 
 function renderReports(){
   const sorted=[...reports].sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name,'ja'));
-  let html='',currentDate='',i=0;
+  let html='',currentReportDate='',i=0;
   while(i<sorted.length){
-    const r=sorted[i],sameDate=sorted.filter(x=>x.date===r.date),firstOfDate=r.date!==currentDate,f=reportFlag(r.id);
+    const r=sorted[i],rkey=reportDateKey(r),sameDate=sorted.filter(x=>reportDateKey(x)===rkey),firstOfDate=rkey!==currentReportDate,f=reportFlag(r.id);
     const cls=`report-row${f.good?' report-good':''}${f.bad?' report-bad':''}`;
-    html+=`<tr class="${cls}" data-date="${esc(r.date)}" data-report-id="${esc(r.id)}">`;
-    if(firstOfDate)html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${esc(dateLabel(r.date))}</strong></td>`;
+    html+=`<tr class="${cls}" data-date="${esc(r.date)}" data-visit-dates="${esc(reportDates(r).join(","))}" data-report-id="${esc(r.id)}">`;
+    if(firstOfDate){const dt=esc(cleanDateText(r.dateText)||dateLabel(r.date)).replace(/\n/g,"<br>");html+=`<td class="date-cell" rowspan="${sameDate.length}"><strong>${dt}</strong></td>`;}
     const nameHtml=r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>`:esc(r.name);
     html+=`<td class="event-cell"><div class="event-top"><div class="check-stack"><label class="check-line"><input class="plan-check" type="checkbox" aria-label="良かった" ${f.good?'checked':''}><span>良</span></label><label class="check-line"><input class="ignore-check" type="checkbox" aria-label="良くなかった" ${f.bad?'checked':''}><span>×</span></label></div><div><div class="event-name">${nameHtml}</div><div class="venue">${esc(r.venue)}</div></div></div></td>`;
-    html+=`<td>${esc(r.report)}</td></tr>`;
-    currentDate=r.date;i++;
+    html+=`<td>${r.rating?`<div class="report-rating">評価：${esc(r.rating)}</div>`:""}<div class="report-copy">${esc(r.report)}</div></td></tr>`;
+    currentReportDate=rkey;i++;
   }
   reportBody.innerHTML=html||'<tr><td colspan="3" class="loading">実地レポートはまだありません。</td></tr>';
 }
@@ -170,14 +199,17 @@ function renderReports(){
 function eventStatusMap(){
   const map=new Map();
   for(const e of taggedEvents()){
-    const f=eventFlag(e.id),prev=map.get(e.date)||{exists:true,planned:false};
-    map.set(e.date,{exists:true,planned:prev.planned||!!f.planned});
+    const selected=new Set(plannedDates(e));
+    for(const day of isoDays(e.date,e.endDate||e.date)){
+      const prev=map.get(day)||{exists:true,planned:false};
+      map.set(day,{exists:true,planned:prev.planned||selected.has(day)});
+    }
   }
   return map;
 }
 function reportStatusMap(){
   const map=new Map();
-  for(const r of reports)map.set(r.date,{exists:true});
+  for(const r of reports)for(const day of reportDates(r))map.set(day,{exists:true});
   return map;
 }
 
@@ -217,7 +249,7 @@ function renderCalendar(){
   const now=new Date();calendarMonths.innerHTML='';
   if(currentView==='reports'){
     const map=reportStatusMap();
-    const monthKeys=[...new Set(reports.map(r=>String(r.date).slice(0,7)))].sort();
+    const monthKeys=[...new Set(reports.flatMap(r=>reportDates(r).map(d=>String(d).slice(0,7))))].sort();
     const keys=monthKeys.length?monthKeys:[`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`];
     calendarTitle.textContent='実地レポートカレンダー';
     calendarNow.textContent=`実地レポート：${reports.length}件`;
@@ -235,7 +267,11 @@ function renderCalendar(){
 
 function scrollToDate(date){
   const body=currentView==='reports'?reportBody:tbody,selector=currentView==='reports'?'.report-row':'.event-row';
-  const row=[...body.querySelectorAll(selector)].find(r=>r.dataset.date===date);if(!row)return;
+  const row=[...body.querySelectorAll(selector)].find(r=>{
+    if(currentView==='reports')return String(r.dataset.visitDates||r.dataset.date).split(',').includes(date);
+    if(currentView==='planned')return r.dataset.displayDate===date;
+    return date>=r.dataset.start&&date<=r.dataset.end;
+  });if(!row)return;
   row.scrollIntoView({behavior:'smooth',block:'start'});
   row.classList.remove('calendar-focus');void row.offsetWidth;row.classList.add('calendar-focus');
   setTimeout(()=>row.classList.remove('calendar-focus'),1600);
@@ -268,9 +304,9 @@ function setView(view,persist=true){
   if(isReports){
     viewHelp.textContent='上の□は良かったイベント、下の赤枠□は良くなかったイベントです。これらのチェックはカレンダーには影響しません。';
   }else if(view==='planned'){
-    viewHelp.textContent='「行く」にチェックしたものだけ表示します。「両方」では同じ日を展示会→懇親会の順にし、懇親会が複数なら開始時刻が早い順です。';
+    viewHelp.textContent='来場予定だけを表示します。複数日開催は「行く日」で選んだ日ごとに表示します。「両方」では同じ日を展示会→懇親会の順にします。';
   }else{
-    viewHelp.textContent='上の□は「行く」、下の赤枠□は「考慮しない」です。懇親会・展示会を切り替えて確認できます。';
+    viewHelp.textContent='上の□は「行く」、下の赤枠□は「考慮しない」です。複数日開催はイベント名の下の「行く日」で日ごとに選べます。';
   }
   if(!isReports)renderLedger();
   renderCalendar();
@@ -278,23 +314,25 @@ function setView(view,persist=true){
 }
 
 tbody.addEventListener('change',e=>{
-  if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('ignore-check'))return;
+  if(!e.target.classList.contains('plan-check')&&!e.target.classList.contains('day-plan-check')&&!e.target.classList.contains('ignore-check'))return;
   const row=e.target.closest('.event-row');if(!row)return;
-  const id=row.dataset.eventId,f=eventFlag(id);
-  if(e.target.classList.contains('plan-check')){
-    f.planned=e.target.checked;if(f.planned)f.ignored=false;
+  const id=row.dataset.eventId,f=eventFlag(id),ev=eventById(id);if(!ev)return;
+  if(e.target.classList.contains('day-plan-check')){
+    const set=new Set(plannedDates(ev)),day=e.target.dataset.day;
+    if(e.target.checked)set.add(day);else set.delete(day);
+    f.visitDates=[...set].sort();f.planned=f.visitDates.length>0;
+    if(f.planned)f.ignored=false;
+  }else if(e.target.classList.contains('plan-check')){
+    f.planned=e.target.checked;
+    f.visitDates=f.planned?[ev.date]:[];
+    if(f.planned)f.ignored=false;
   }else{
-    f.ignored=e.target.checked;if(f.ignored)f.planned=false;
+    f.ignored=e.target.checked;
+    if(f.ignored){f.planned=false;f.visitDates=[];}
   }
   flags[id]=f;
   saveFlags();
-  if(currentView==='planned'){
-    renderLedger();
-  }else{
-    row.querySelector('.plan-check').checked=!!f.planned;
-    row.querySelector('.ignore-check').checked=!!f.ignored;
-    applyFlagToRow(row);
-  }
+  renderLedger();
 });
 
 reportBody.addEventListener('change',e=>{
@@ -354,6 +392,23 @@ resetFlagsBtn.onclick=()=>{
     gatherings=Array.isArray(gatherData.events)?gatherData.events:[];
     exhibitions=Array.isArray(exhibitData.events)?exhibitData.events:[];
     reports=Array.isArray(reportData.reports)?reportData.reports:[];
+    const reportFiles=(Array.isArray(reportData.reportFiles)&&reportData.reportFiles.length)?reportData.reportFiles:[
+      '実地レポート/2026-01-03.json',
+      '実地レポート/2026-04.json',
+      '実地レポート/2026-05.json',
+      '実地レポート/2026-06.json',
+      '実地レポート/2026-07.json',
+      '実地レポート/2026-08.json',
+      '実地レポート/2026-09.json'
+    ];
+    if(reportFiles.length){
+      const parts=await Promise.all(reportFiles.map(async p=>{
+        const r=await fetch(`${p}?v=${Date.now()}`,{cache:'no-store'});
+        if(!r.ok)throw new Error(`${p}の取得に失敗`);
+        return r.json();
+      }));
+      reports=parts.flatMap(x=>Array.isArray(x.reports)?x.reports:[]);
+    }
     renderReports();
     setView(currentView,false);
     status.textContent=`読込完了：懇親会${gatherings.length}件 / 展示会${exhibitions.length}件 / レポート${reports.length}件`;
