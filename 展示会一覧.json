@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-18-history-1",
+  "dataVersion": "2026-09-18-web",
   "year": 2026,
   "events": [
     {
@@ -2284,7 +2284,13 @@
       "nightTime": "",
       "nightText": "ただのアパレルイベ　東京駅までの無料バスを出している　珍しい",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-17"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-93be3e338024"
     },
     {
       "id": "xls-x-8551456ba9df",
