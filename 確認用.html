@@ -11,6 +11,9 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
 h1{font-size:20px;margin:0}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
 .controls{display:flex;gap:6px;margin:0 0 10px;flex-wrap:wrap;align-items:center}.edit-mode-btn{margin-left:4px}.row-edit-btn{display:none;border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:3px 8px;font-size:11px;font-weight:800;white-space:nowrap}.editing .row-edit-btn{display:inline-block}
+.edit-bar{display:none;align-items:center;gap:7px;flex-wrap:wrap;margin:-2px 0 10px;padding:8px 10px;border:1px solid #b9c7d4;border-radius:9px;background:#eef4fa}.editing .edit-bar{display:flex}.edit-change-count{font-size:12px;font-weight:900;color:#374151;margin-left:auto}.edit-save{background:#20262d;color:#fff;border-color:#20262d}.edit-danger{color:#9a3412;border-color:#d8a58d}
+.inline-edit-row td{background:#f8fbff!important;padding:12px!important;border-top:2px solid #7fa0bd!important}.edit-panel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 12px}.edit-field{min-width:0}.edit-field.wide{grid-column:span 2}.edit-field.full{grid-column:1/-1}.edit-field label{display:block;font-size:11px;font-weight:900;color:#46515c;margin-bottom:3px}.edit-field input,.edit-field select,.edit-field textarea{width:100%;border:1px solid #aeb7c0;border-radius:6px;background:#fff;padding:6px 7px;font:inherit;font-size:13px;color:#1d2329}.edit-field textarea{min-height:64px;resize:vertical;line-height:1.45}.edit-field textarea.report-editor{min-height:150px}.edit-actions{grid-column:1/-1;display:flex;gap:7px;flex-wrap:wrap;align-items:center;padding-top:3px;border-top:1px solid #d8e0e8}.edit-hint{font-size:11px;color:#606a74}.editing .event-row.active-edit td{background:#f7fbff}
+@media(max-width:900px){.edit-panel{grid-template-columns:repeat(2,minmax(0,1fr))}.edit-field.wide{grid-column:span 2}}
 button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
 button.active{background:#20262d;color:#fff;border-color:#20262d}
 .status{margin-left:auto;align-self:center;font-size:12px;color:var(--muted)}
@@ -52,8 +55,15 @@ th:last-child,td:last-child{border-right:0}
     <button data-mode="all" class="active">すべて</button>
     <button data-mode="planned">来場予定</button>
     <button data-mode="attended">参加済み</button>
-    <button id="editModeBtn" class="edit-mode-btn" type="button">編集モード</button>
+    <button id="editModeBtn" class="edit-mode-btn" type="button">編集開始</button>
     <span id="status" class="status">読み込み中</span>
+  </div>
+  <div id="editBar" class="edit-bar">
+    <button id="newEventBtn" type="button">＋ 新規イベント</button>
+    <button id="saveEditsBtn" class="edit-save" type="button">変更を保存</button>
+    <button id="discardEditsBtn" type="button">未保存変更を元に戻す</button>
+    <span class="edit-hint">確認版のブラウザ内下書きです。本番データにはまだ反映しません。</span>
+    <span id="editChangeCount" class="edit-change-count">変更 0件</span>
   </div>
   <section class="calendar-panel" aria-label="カレンダー">
     <div class="calendar-head"><div class="calendar-title">カレンダー</div><div id="calendarNote" class="calendar-note"></div></div>
@@ -67,11 +77,13 @@ th:last-child,td:last-child{border-right:0}
       <tbody id="body"><tr><td colspan="4" class="empty">読み込み中です</td></tr></tbody>
     </table>
   </div>
-  <div class="note">※ この確認版では編集・終了処理はできません。本番データは変更しません。</div>
+  <div class="note">※ 編集内容は確認版のブラウザ内に下書き保存できます。GitHub本番データと終了処理はまだ変更しません。</div>
 </div>
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
+const EDIT_DRAFT_KEY='free_food_event_ledger_2026_design_edit_v1';
 let events=[],reports=[],flags={},mode='all',editing=false;
+let baseEvents=[],baseReports=[],dirtyIds=new Set(),activeEditId='',activeEditVisitDate='';
 const calendarToday=new Date();
 let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
 let listStartYear=0,listStartMonth=0;
@@ -160,6 +172,124 @@ function weekKey(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;d.set
 function weekLabel(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;const m=new Date(d);m.setDate(d.getDate()-n);const su=new Date(m);su.setDate(m.getDate()+6);return (m.getMonth()+1)+'/'+m.getDate()+'～'+(su.getMonth()+1)+'/'+su.getDate()}
 
 
+
+function cloneData(v){return JSON.parse(JSON.stringify(v))}
+function eventById(id){return events.find(e=>e.id===id)||null}
+function baseEventById(id){return baseEvents.find(e=>e.id===id)||null}
+function reportByEvent(e){return e?reportFor(e):null}
+function refreshEditBar(){
+  const n=document.getElementById('editChangeCount');
+  if(n)n.textContent='変更 '+dirtyIds.size+'件';
+}
+function markDirty(id){dirtyIds.add(id);refreshEditBar()}
+function splitLines(v){return String(v||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean)}
+function editRowHtml(e,r,colspan,visitDate){
+  const people=personLines(e).join('\n');
+  const cond=conditionLines(e).join('\n');
+  const visits=actualDates(e).join(', ');
+  const kind=e._kind==='gathering'?'gathering':'exhibition';
+  const status=e.attendanceStatus||'';
+  return '<tr class="inline-edit-row" data-editor-id="'+esc(e.id)+'"><td colspan="'+colspan+'"><div class="edit-panel">'+
+    '<div class="edit-field"><label>区分</label><select data-f="kind"><option value="exhibition" '+(kind==='exhibition'?'selected':'')+'>展示会</option><option value="gathering" '+(kind==='gathering'?'selected':'')+'>懇親会</option></select></div>'+
+    '<div class="edit-field"><label>開始日</label><input data-f="date" type="date" value="'+esc(e.date||'')+'"></div>'+
+    '<div class="edit-field"><label>終了日</label><input data-f="endDate" type="date" value="'+esc(e.endDate||'')+'"></div>'+
+    '<div class="edit-field"><label>参加状態</label><select data-f="attendanceStatus"><option value="" '+(!status?'selected':'')+'>未確定</option><option value="attended" '+(status==='attended'?'selected':'')+'>参加済み</option><option value="not_attended" '+(status==='not_attended'?'selected':'')+'>未参加</option></select></div>'+
+    '<div class="edit-field wide"><label>イベント名</label><input data-f="name" value="'+esc(e.name||'')+'"></div>'+
+    '<div class="edit-field wide"><label>会場</label><input data-f="venue" value="'+esc(e.venue||'')+'"></div>'+
+    '<div class="edit-field full"><label>URL</label><input data-f="url" value="'+esc(e.url||'')+'"></div>'+
+    '<div class="edit-field wide"><label>名前</label><textarea data-f="people">'+esc(people)+'</textarea></div>'+
+    '<div class="edit-field wide"><label>参加条件（1行ずつ）</label><textarea data-f="conditions">'+esc(cond)+'</textarea></div>'+
+    '<div class="edit-field"><label>事前評価</label><input data-f="rating" value="'+esc(e.rating||'')+'"></div>'+
+    '<div class="edit-field"><label>夜の時間</label><input data-f="nightTime" value="'+esc(e.nightTime||'')+'"></div>'+
+    '<div class="edit-field wide"><label>夜の内容</label><textarea data-f="nightText">'+esc(e.nightText||'')+'</textarea></div>'+
+    '<div class="edit-field full"><label>実際に参加した日（カンマ区切り）</label><input data-f="visitDates" value="'+esc(visits)+'" placeholder="2026-04-15, 2026-04-16"></div>'+
+    '<div class="edit-field"><label>実地評価</label><input data-f="reportRating" value="'+esc(r?.rating||'')+'"></div>'+
+    '<div class="edit-field full"><label>実地レポート</label><textarea class="report-editor" data-f="reportText">'+esc(r?.report||'')+'</textarea></div>'+
+    '<div class="edit-actions">'+
+      '<button type="button" class="apply-row-edit" data-id="'+esc(e.id)+'">この内容を反映</button>'+
+      '<button type="button" class="undo-row-edit" data-id="'+esc(e.id)+'">このイベントを元に戻す</button>'+
+      '<button type="button" class="duplicate-row-edit" data-id="'+esc(e.id)+'">複製</button>'+
+      '<button type="button" class="delete-row-edit edit-danger" data-id="'+esc(e.id)+'">削除</button>'+
+      '<span class="edit-hint">確定済み・未確定に関係なく編集できます。</span>'+
+    '</div></div></td></tr>';
+}
+function editorValue(editor,key){return editor.querySelector('[data-f="'+key+'"]')?.value??''}
+function applyEditor(id){
+  const editor=document.querySelector('.inline-edit-row[data-editor-id="'+CSS.escape(id)+'"]');
+  const e=eventById(id);if(!editor||!e)return;
+  e._kind=editorValue(editor,'kind')==='gathering'?'gathering':'exhibition';
+  e.date=editorValue(editor,'date').trim();
+  e.endDate=editorValue(editor,'endDate').trim();
+  e.dateText='';
+  e.name=editorValue(editor,'name');
+  e.url=editorValue(editor,'url').trim();
+  e.venue=editorValue(editor,'venue');
+  e.rating=editorValue(editor,'rating');
+  e.nightTime=editorValue(editor,'nightTime');
+  e.nightText=editorValue(editor,'nightText');
+  e.attendanceStatus=editorValue(editor,'attendanceStatus');
+  const people=splitLines(editorValue(editor,'people')).map(x=>'名前コード：'+x);
+  const conditions=splitLines(editorValue(editor,'conditions'));
+  e.conditionLines=[...people,...conditions];
+  e.visitDates=String(editorValue(editor,'visitDates')).split(/[,、\s]+/).map(x=>x.trim()).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x));
+  let r=reportByEvent(e);
+  const rr=editorValue(editor,'reportRating').trim(),rt=editorValue(editor,'reportText');
+  if((rr||rt)&&!r){
+    r={id:'draft-report-'+id,date:e.visitDates[0]||e.date,visitDates:[...e.visitDates],scheduledDate:e.date,scheduledEndDate:e.endDate||e.date,scheduledDateText:'',dateText:'',name:e.name,url:e.url||'',venue:e.venue||'',rating:rr,category:e._kind,report:rt,source:'確認版編集'};
+    reports.push(r);e.sourceReportId=r.id;
+  }else if(r){
+    r.name=e.name;r.venue=e.venue;r.url=e.url||'';
+    r.scheduledDate=e.date;r.scheduledEndDate=e.endDate||e.date;
+    r.date=e.visitDates[0]||e.date;r.visitDates=[...e.visitDates];
+    r.rating=rr;r.report=rt;r.category=e._kind;
+  }
+  markDirty(id);
+  activeEditId='';activeEditVisitDate='';
+  render();
+}
+function undoEvent(id){
+  const base=baseEventById(id);
+  const cur=eventById(id);
+  if(base){
+    if(cur)Object.assign(cur,cloneData(base)); else events.push(cloneData(base));
+    reports=reports.filter(r=>r.id!==cur?.sourceReportId&&r.id!==base.sourceReportId);
+    const br=baseReports.find(r=>r.id===base.sourceReportId);if(br)reports.push(cloneData(br));
+  }else{
+    events=events.filter(e=>e.id!==id);
+    if(cur?.sourceReportId)reports=reports.filter(r=>r.id!==cur.sourceReportId);
+  }
+  dirtyIds.delete(id);activeEditId='';activeEditVisitDate='';refreshEditBar();render();
+}
+function duplicateEvent(id){
+  const e=eventById(id);if(!e)return;
+  const n=cloneData(e),stamp=Date.now();
+  n.id='draft-copy-'+stamp;n.name=(n.name||'')+'（複製）';n.sourceReportId='';
+  const r=reportByEvent(e);
+  if(r){
+    const nr=cloneData(r);nr.id='draft-report-'+stamp;nr.name=n.name;reports.push(nr);n.sourceReportId=nr.id;
+  }
+  events.push(n);markDirty(n.id);activeEditId=n.id;activeEditVisitDate='';render();
+}
+function deleteEvent(id){
+  const e=eventById(id);if(!e)return;
+  if(!confirm('このイベントを確認版から削除しますか？'))return;
+  events=events.filter(x=>x.id!==id);
+  if(e.sourceReportId)reports=reports.filter(r=>r.id!==e.sourceReportId);
+  markDirty(id);activeEditId='';activeEditVisitDate='';render();
+}
+function newEvent(){
+  const stamp=Date.now(),today=new Date().toISOString().slice(0,10);
+  const e={id:'draft-new-'+stamp,date:today,endDate:'',dateText:'',name:'新しいイベント',url:'',venue:'',conditionLines:[],rating:'',nightTime:'',nightText:'',attendanceStatus:'',visitDates:[],sourceReportId:'',_kind:'exhibition'};
+  events.push(e);markDirty(e.id);mode='all';activeEditId=e.id;activeEditVisitDate='';render();
+}
+function saveEditDraft(){
+  localStorage.setItem(EDIT_DRAFT_KEY,JSON.stringify({events,reports,savedAt:new Date().toISOString()}));
+  baseEvents=cloneData(events);baseReports=cloneData(reports);dirtyIds.clear();refreshEditBar();render();
+}
+function discardUnsaved(){
+  events=cloneData(baseEvents);reports=cloneData(baseReports);dirtyIds.clear();activeEditId='';activeEditVisitDate='';refreshEditBar();render();
+}
+
 function setTableLayout(attendedMode){
   const cols=document.getElementById('ledgerCols'),head=document.getElementById('ledgerHead');
   if(attendedMode){
@@ -200,7 +330,7 @@ function row(e){
 
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const editBtn='<button class="row-edit-btn" type="button" data-edit-id="'+esc(e.id)+'">編集</button>';
+  const editBtn='<button class="row-edit-btn" type="button" data-edit-id="'+esc(e.id)+'" data-edit-visit="">編集</button>';
   const rightTop='<div class="event-right-tools">'+personTop+editBtn+'</div>';
   const tools=r?'':'<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>';
   const dayTools=r?'':planDayChecks(e);
@@ -222,7 +352,9 @@ function row(e){
     ? '<td colspan="2">'+condHtml+detail+'</td>'
     : '<td>'+condHtml+'</td><td>'+detail+'</td>';
 
-  return '<tr class="event-row '+cls+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+esc(compactRangeText(e))+'</td><td>'+eventCell+'</td>'+right+'</tr>';
+  const isActive=editing&&activeEditId===e.id&&activeEditVisitDate==='';
+  const main='<tr class="event-row '+cls+(isActive?' active-edit':'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+esc(compactRangeText(e))+'</td><td>'+eventCell+'</td>'+right+'</tr>';
+  return main+(isActive?editRowHtml(e,r,4,''):'');
 }
 
 
@@ -235,7 +367,7 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const editBtn='<button class="row-edit-btn" type="button" data-edit-id="'+esc(e.id)+'">編集</button>';
+  const editBtn='<button class="row-edit-btn" type="button" data-edit-id="'+esc(e.id)+'" data-edit-visit="'+esc(visitDate)+'">編集</button>';
   const rightTop='<div class="event-right-tools">'+personTop+editBtn+'</div>';
 
   let schedule='';
@@ -257,7 +389,9 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   }
 
   const dateCell=showDate?'<td class="date attended-date" rowspan="'+rowspan+'"><strong>'+esc(visitDate.replace(/^\\d{4}-/,'').replace('-','/'))+'</strong><div class="visit-count">'+rowspan+'件</div></td>':'';
-  return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+  const isActive=editing&&activeEditId===e.id&&activeEditVisitDate===visitDate;
+  const main='<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+(isActive?' active-edit':'')+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+  return main+(isActive?editRowHtml(e,r,3,visitDate):'');
 }
 
 function isoDate(y,m,d){return y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
@@ -368,6 +502,7 @@ function compareVenue(a,b){
 function render(){
   document.body.classList.toggle('planned-view',mode==='planned');
   document.body.classList.toggle('editing',editing);
+  refreshEditBar();
   setTableLayout(mode==='attended');
 
   if(mode==='attended'){
@@ -434,16 +569,30 @@ document.querySelector('.controls').addEventListener('click',e=>{
 
 document.getElementById('editModeBtn').addEventListener('click',()=>{
   editing=!editing;
+  if(!editing){activeEditId='';activeEditVisitDate='';}
   document.getElementById('editModeBtn').classList.toggle('active',editing);
-  document.getElementById('editModeBtn').textContent=editing?'編集モード中':'編集モード';
+  document.getElementById('editModeBtn').textContent=editing?'編集終了':'編集開始';
   render();
 });
+document.getElementById('newEventBtn').addEventListener('click',newEvent);
+document.getElementById('saveEditsBtn').addEventListener('click',saveEditDraft);
+document.getElementById('discardEditsBtn').addEventListener('click',discardUnsaved);
 document.getElementById('body').addEventListener('click',e=>{
-  const b=e.target.closest('.row-edit-btn');if(!b)return;
-  e.preventDefault();
-  e.stopPropagation();
-  b.textContent='編集';
-  b.title='確認版では編集画面はまだ接続していません';
+  const edit=e.target.closest('.row-edit-btn');
+  if(edit){
+    e.preventDefault();e.stopPropagation();
+    activeEditId=edit.dataset.editId||'';
+    activeEditVisitDate=edit.dataset.editVisit||'';
+    render();return;
+  }
+  const apply=e.target.closest('.apply-row-edit');
+  if(apply){applyEditor(apply.dataset.id);return;}
+  const undo=e.target.closest('.undo-row-edit');
+  if(undo){undoEvent(undo.dataset.id);return;}
+  const dup=e.target.closest('.duplicate-row-edit');
+  if(dup){duplicateEvent(dup.dataset.id);return;}
+  const del=e.target.closest('.delete-row-edit');
+  if(del){deleteEvent(del.dataset.id);return;}
 });
 
 document.getElementById('body').addEventListener('change',e=>{
@@ -483,10 +632,18 @@ document.getElementById('monthJump').addEventListener('click',e=>{
     const files=(mj.reportFiles&&mj.reportFiles.length)?mj.reportFiles:['実地レポート/2026-01-03.json','実地レポート/2026-04.json','実地レポート/2026-05.json','実地レポート/2026-06.json','実地レポート/2026-07.json','実地レポート/2026-08.json','実地レポート/2026-09.json'];
     const parts=await Promise.all(files.map(async p=>(await fetch(p+'?v='+Date.now(),{cache:'no-store'})).json()));
     reports=parts.flatMap(x=>x.reports||[]);
+    try{
+      const saved=JSON.parse(localStorage.getItem(EDIT_DRAFT_KEY)||'null');
+      if(saved&&Array.isArray(saved.events)&&Array.isArray(saved.reports)){
+        events=saved.events;reports=saved.reports;
+      }
+    }catch(_){}
+    baseEvents=cloneData(events);baseReports=cloneData(reports);
+    refreshEditBar();
     render();
   }catch(err){
     console.error(err);
-    document.getElementById('body').innerHTML='<tr><td colspan="3" class="empty">読み込みに失敗しました</td></tr>';
+    document.getElementById('body').innerHTML='<tr><td colspan="4" class="empty">読み込みに失敗しました</td></tr>';
     document.getElementById('status').textContent='読み込み失敗';
   }
 })();
