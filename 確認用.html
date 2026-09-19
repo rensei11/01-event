@@ -43,7 +43,7 @@ th:last-child,td:last-child{border-right:0}
 .attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
 .planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
 .notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
-.row-planned td{background:#eaf4ff!important}.row-planned td:first-child{box-shadow:inset 4px 0 0 #7fb3e6}.row-attended td{background:#eaf7ef!important}.row-attended td:first-child{box-shadow:inset 4px 0 0 #78b894}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #7fb3e6}.attended-date{background:#e2f2e8!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#3f6955}.attended-day-row td{background:#eaf7ef!important;border-top-color:#c9dfd1}.attended-day-start td{border-top:2px solid #a9cdb7!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
+.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
 .row-notattended td{color:#777772;background:#f4f4f2!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
 .rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
@@ -71,15 +71,12 @@ th:last-child,td:last-child{border-right:0}
 .edit-date-pair{display:grid;gap:4px}.edit-date-pair input{width:100%;min-width:0;border:1px solid #aeb7c0;border-radius:5px;padding:3px 4px;font:inherit;font-size:11px;background:#fff}
 .edit-placeholder{min-height:20px}
 
-.attended-undated-title td{background:#dcefe3!important;color:#315d45;font-weight:900;border-top:3px solid #78b894!important}
-.attended-undated-row td{background:#eaf7ef!important}
-.attended-undated-note{font-size:12px;color:#456754;font-weight:800}
+.attended-undated-title td{background:#fff4d6!important;color:#7c4a03;font-weight:900;border-top:3px solid #d8a23a!important}
+.attended-undated-row td{background:#fffaf0!important}
+.attended-undated-note{font-size:12px;color:#7c4a03;font-weight:800}
 
 .planned-date{background:#dfefff!important;font-size:18px!important;overflow:hidden;vertical-align:middle!important}
 .planned-day-start td{border-top:2px solid #a9c8e5!important}
-.remembered-row td{box-shadow:inset 0 2px 0 #7d8994,inset 0 -2px 0 #7d8994!important}
-.remembered-row td:first-child{border-left:2px solid #7d8994}
-.remembered-row td:last-child{border-right:2px solid #7d8994}
 </style>
 </head>
 <body>
@@ -506,7 +503,6 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true){
   const endDay=new Date((e.endDate||e.date)+'T00:00:00');
   const done=endDay<today;
   const cls=[
-    e.attendanceStatus==='attended'?'row-attended':'',
     e.attendanceStatus==='not_attended'?'row-notattended':'',
     p.length?'row-planned':'',
     (!done&&f.ignored)?'row-ignored':''
@@ -620,10 +616,20 @@ function calendarDatesForEvent(e){
 }
 function calendarMap(){
   const map=new Map();
+  const touch=(d,type)=>{
+    if(!map.has(d))map.set(d,{count:0,event:false,planned:false,attended:false});
+    const v=map.get(d);v.count++;
+    if(type)v[type]=true;
+  };
   for(const e of events){
-    for(const d of calendarDatesForEvent(e)){
-      if(!map.has(d))map.set(d,0);
-      map.set(d,map.get(d)+1);
+    if(mode==='attended'){
+      for(const d of actualDates(e))touch(d,'attended');
+    }else if(mode==='planned'){
+      for(const d of plannedDates(e))touch(d,'planned');
+    }else{
+      for(const d of days(e.date,e.endDate||e.date))touch(d,'event');
+      for(const d of plannedDates(e))touch(d,'planned');
+      for(const d of actualDates(e))touch(d,'attended');
     }
   }
   return map;
@@ -648,8 +654,18 @@ function buildMonthCard(year,month,map){
   for(let d=1;d<=last;d++){
     const key=isoDate(year,month,d),x=document.createElement('div');x.className='cal-day';x.textContent=d;
     if(map.has(key)){
-      x.classList.add(mode==='attended'?'has-attended':mode==='planned'?'has-plan':'has-event','clickable');
-      x.title=(mode==='attended'?'参加済み ':mode==='planned'?'来場予定 ':'イベント ')+map.get(key)+'件';
+      const info=map.get(key);
+      const cls=mode==='attended'?'has-attended':mode==='planned'?'has-plan':info.attended?'has-attended':info.planned?'has-plan':'has-event';
+      x.classList.add(cls,'clickable');
+      if(mode==='all'){
+        const labels=[];
+        if(info.attended)labels.push('参加済み');
+        if(info.planned)labels.push('来場予定');
+        if(!labels.length)labels.push('イベント');
+        x.title=labels.join('・')+' '+info.count+'件';
+      }else{
+        x.title=(mode==='attended'?'参加済み ':mode==='planned'?'来場予定 ':'イベント ')+info.count+'件';
+      }
       x.onclick=()=>jumpToDate(key);
     }
     if(year===calendarToday.getFullYear()&&month===calendarToday.getMonth()+1&&d===calendarToday.getDate())x.classList.add('today');
@@ -745,19 +761,14 @@ function rowMemoryKey(row){
   return id;
 }
 function applyRememberedRow(){
-  document.querySelectorAll('tr.remembered-row').forEach(r=>r.classList.remove('remembered-row'));
-  const key=cursorMemory[mode]||'';
-  if(!key)return;
-  const rows=[...document.querySelectorAll('#body tr.event-row')];
-  const target=rows.find(r=>rowMemoryKey(r)===key);
-  if(target)target.classList.add('remembered-row');
+  // 記憶は内部だけ。見た目には枠や色を追加しない。
+  return;
 }
 function rememberRow(row){
   const key=rowMemoryKey(row);
   if(!key||cursorMemory[mode]===key)return;
   cursorMemory[mode]=key;
   localStorage.setItem(CURSOR_MEMORY_KEY,JSON.stringify(cursorMemory));
-  applyRememberedRow();
 }
 
 function setSelected(row){
