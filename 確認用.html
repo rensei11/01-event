@@ -202,7 +202,7 @@ function editRowHtml(e,r,colspan,visitDate){
     '<div class="edit-field"><label>夜の時間</label><input data-f="nightTime" value="'+esc(e.nightTime||'')+'"></div>'+
     '<div class="edit-field wide"><label>夜の内容</label><textarea data-f="nightText">'+esc(e.nightText||'')+'</textarea></div>'+
     '<div class="edit-field full"><label>実際に参加した日（カンマ区切り）</label><input data-f="visitDates" value="'+esc(visits)+'" placeholder="2026-04-15, 2026-04-16"></div>'+
-    '<div class="edit-field"><label>実地評価</label><input data-f="reportRating" value="'+esc(r?.rating||'')+'"></div>'+
+    '<div class="edit-field"><label>実地レポート 評価</label><input data-f="reportRating" value="'+esc(r?.rating||'')+'"></div>'+
     '<div class="edit-field full"><label>実地レポート</label><textarea class="report-editor" data-f="reportText">'+esc(r?.report||'')+'</textarea></div>'+
     '<div class="edit-actions">'+
       '<button type="button" class="apply-row-edit" data-id="'+esc(e.id)+'">この内容を反映</button>'+
@@ -393,13 +393,13 @@ function row(e){
     editableBlock(e.id,'venue',e.venue||'','event','venue')+
     (editing?'<div class="venue">URL: '+editableInline(e.id,'url',e.url||'','event')+'</div>':'');
 
-  const condHtml=cond.length||editing?editableLines(e.id,'conditions',cond,'event','report-cond'):'';
+  const condHtml=cond.length?editableLines(e.id,'conditions',cond,'event','report-cond'):'';
   let detail='';
-  if(!r && (e.rating||editing))detail+=editableBlock(e.id,'rating',e.rating||'','event','pre');
-  if(e.nightTime||editing)detail+='<div>時間：'+editableInline(e.id,'nightTime',e.nightTime||'','event')+'</div>';
-  if(e.nightText||editing)detail+=editableBlock(e.id,'nightText',e.nightText||'','event','');
+  if(!r && e.rating)detail+=editableBlock(e.id,'rating',String(e.rating).replace(/^実地評価[：:]?\s*/,''),'event','pre');
+  if(e.nightTime)detail+='<div>時間：'+editableInline(e.id,'nightTime',e.nightTime||'','event')+'</div>';
+  if(e.nightText)detail+=editableBlock(e.id,'nightText',e.nightText||'','event','');
   if(r){
-    detail+='<div class="rating">実地評価：'+editableInline(e.id,'rating',r.rating||'','report')+'</div>';
+    detail+='<div class="rating">実地レポート　評価：'+editableInline(e.id,'rating',String(r.rating||'').replace(/^実地評価[：:]?\s*/,''),'report')+'</div>';
     detail+=editableBlock(e.id,'report',r.report||'','report','report');
   }
   if(editing&&a.length)detail+='<div>参加日：'+editableInline(e.id,'visitDates',a.join(', '),'event')+'</div>';
@@ -438,9 +438,9 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
 
   let detail='';
   if(showReport){
-    if(cond.length||editing)detail+=editableLines(e.id,'conditions',cond,'event','report-cond');
+    if(cond.length)detail+=editableLines(e.id,'conditions',cond,'event','report-cond');
     if(r){
-      detail+='<div class="rating">実地評価：'+editableInline(e.id,'rating',r.rating||'','report')+'</div>';
+      detail+='<div class="rating">実地レポート　評価：'+editableInline(e.id,'rating',r.rating||'','report')+'</div>';
       if(visits.length>1)detail+='<div class="report-days">参加日 '+editableInline(e.id,'visitDates',visits.join(', '),'event')+'</div>';
       detail+=editableBlock(e.id,'report',r.report||'','report','report');
     }
