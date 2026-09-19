@@ -28,7 +28,7 @@ th:last-child,td:last-child{border-right:0}
 .month td{background:#e8e8e3;font-weight:900;font-size:18px;padding:8px 12px;border-top:3px solid #9ea3a7}.week td{background:#eceff1;font-weight:900;font-size:16px;padding:7px 12px;border-top:2px solid #8f989e;border-bottom:1px solid #aeb6bb;color:#30363a}
 .event-row:nth-of-type(even) td{background:#fdfdfc}
 .date,.date-head{text-align:center}.date{font-weight:800;white-space:nowrap;vertical-align:middle;font-size:13px;letter-spacing:0;padding-left:8px;padding-right:8px}
-.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#555;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:800;font-size:14px}.name a{color:#184f9c;text-decoration:none}.name a:hover{text-decoration:underline}
+.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#555;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:800;font-size:14px}.name a{color:#184f9c;text-decoration:none}.name a:hover{text-decoration:underline}
 .venue{margin-top:2px;color:var(--muted)}
 .person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}.report-cond{margin:0 0 7px;padding:5px 7px;background:#f6f6f3;border-left:3px solid #c5c5bf;color:#555}.report-cond div{margin:1px 0}
 .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
@@ -84,8 +84,28 @@ function saveFlags(){
 }
 function setPlan(e,checked){
   const f=flags[e.id]||{};
-  if(checked){f.planned=true;f.ignored=false;}
-  else{f.planned=false;if(Array.isArray(f.visitDates))delete f.visitDates;}
+  if(checked){
+    f.ignored=false;
+    if(e.endDate&&e.endDate!==e.date){
+      if(!Array.isArray(f.visitDates)||!f.visitDates.length)f.visitDates=[e.date];
+      f.planned=true;
+    }else{
+      f.planned=true;
+      delete f.visitDates;
+    }
+  }else{
+    f.planned=false;
+    if(Array.isArray(f.visitDates))delete f.visitDates;
+  }
+  flags[e.id]=f;saveFlags();render();
+}
+function setPlanDay(e,date,checked){
+  const f=flags[e.id]||{};
+  const set=new Set(Array.isArray(f.visitDates)?f.visitDates:[]);
+  if(checked)set.add(date);else set.delete(date);
+  f.visitDates=[...set].filter(d=>inRange(e,d)).sort();
+  f.planned=f.visitDates.length>0;
+  if(f.planned)f.ignored=false;
   flags[e.id]=f;saveFlags();render();
 }
 function setIgnore(e,checked){
@@ -111,9 +131,19 @@ function compactRangeText(e){
   const a=new Date(e.date+'T00:00:00'),b=new Date(e.endDate+'T00:00:00');
   const sameMonth=a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth();
   const w=['日','月','火','水','木','金','土'];
-  if(sameMonth)return (a.getMonth()+1)+'/'+a.getDate()+'('+w[a.getDay()]+')～'+b.getDate()+'('+w[b.getDay()]+')';
+  if(sameMonth)return a.getDate()+'('+w[a.getDay()]+')～'+b.getDate()+'('+w[b.getDay()]+')';
   return (a.getMonth()+1)+'/'+a.getDate()+'('+w[a.getDay()]+')～'+(b.getMonth()+1)+'/'+b.getDate()+'('+w[b.getDay()]+')';
 }
+function planDayChecks(e){
+  if(!e.endDate||e.endDate===e.date)return '';
+  const selected=new Set(plannedDates(e));
+  const w=['日','月','火','水','木','金','土'];
+  return '<div class="plan-days">'+days(e.date,e.endDate).map(d=>{
+    const x=new Date(d+'T00:00:00');
+    return '<label><input class="plan-day-toggle" type="checkbox" data-id="'+esc(e.id)+'" data-day="'+esc(d)+'" '+(selected.has(d)?'checked':'')+'>'+x.getDate()+'('+w[x.getDay()]+')</label>';
+  }).join('')+'</div>';
+}
+
 function personLines(e){return (e.conditionLines||[]).filter(x=>String(x).startsWith('名前コード：')).map(x=>String(x).replace(/^名前コード：/,'').trim())}
 function conditionLines(e){return (e.conditionLines||[]).filter(x=>!String(x).startsWith('名前コード：'))}
 function reportFor(e){
@@ -137,7 +167,7 @@ function row(e){
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
   const f=flag(e),tools='<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>';
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div>'+tools+'<div class="event-head"><div class="name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>';
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div>'+tools+planDayChecks(e)+'<div class="event-head"><div class="name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>';
   let detail='';
   if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
   if(!r && e.rating)detail+='<div class="pre">'+esc(e.rating)+'</div>';
@@ -337,12 +367,13 @@ document.querySelector('.controls').addEventListener('click',e=>{
 });
 
 document.getElementById('body').addEventListener('change',e=>{
-  const p=e.target.closest('.plan-toggle'),n=e.target.closest('.ignore-toggle');
-  if(!p&&!n)return;
-  const id=(p||n).dataset.id,event=events.find(x=>x.id===id);
+  const p=e.target.closest('.plan-toggle'),n=e.target.closest('.ignore-toggle'),d=e.target.closest('.plan-day-toggle');
+  if(!p&&!n&&!d)return;
+  const id=(p||n||d).dataset.id,event=events.find(x=>x.id===id);
   if(!event)return;
   if(p)setPlan(event,p.checked);
   if(n)setIgnore(event,n.checked);
+  if(d)setPlanDay(event,d.dataset.day,d.checked);
 });
 
 document.getElementById('calendarPrev').onclick=()=>setCalendarBase(calendarBaseYear,calendarBaseMonth-1);
