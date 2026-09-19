@@ -850,12 +850,6 @@ document.getElementById('calendarNext').onclick=()=>{
 document.getElementById('calendarYear').addEventListener('change',e=>{
   const y=parseInt(e.target.value,10);
   if(!Number.isFinite(y))return;
-  calendarBaseYear=y;
-  renderCalendar();
-});
-document.getElementById('calendarYear').addEventListener('change',e=>{
-  const y=parseInt(e.target.value,10);
-  if(!Number.isFinite(y))return;
   if(listStartMonth)listStartYear=y;
   else calendarBaseYear=y;
   render();
