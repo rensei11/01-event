@@ -146,6 +146,27 @@ function attendedRow(e,visitDate,showDate,rowspan){
   return '<tr class="event-row attended-day-row">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
 }
 
+function venueSortKey(e){
+  const v=String(e.venue||'').replace(/\s+/g,' ').trim();
+  const isBigSight=/ビッ?クサイト|東京ビッグサイト/.test(v);
+  if(isBigSight){
+    const areas=[['東',0],['西',1],['南',2]];
+    for(const [label,rank] of areas){
+      const m=v.match(new RegExp(label+'\\s*(\\d+)'));
+      if(m)return [0,rank,Number(m[1]),v];
+    }
+    return [0,9,999,v];
+  }
+  return [1,0,0,v];
+}
+function compareVenue(a,b){
+  const x=venueSortKey(a),y=venueSortKey(b);
+  for(let i=0;i<3;i++){if(x[i]!==y[i])return x[i]-y[i];}
+  const vd=String(x[3]).localeCompare(String(y[3]),'ja',{numeric:true});
+  if(vd)return vd;
+  return String(a.name||'').localeCompare(String(b.name||''),'ja',{numeric:true});
+}
+
 function render(){
   if(mode==='attended'){
     const items=[];
@@ -153,7 +174,7 @@ function render(){
       if(e.attendanceStatus!=='attended')continue;
       for(const d of actualDates(e))items.push({e,d});
     }
-    items.sort((a,b)=>a.d.localeCompare(b.d)||a.e.name.localeCompare(b.e.name,'ja'));
+    items.sort((a,b)=>a.d.localeCompare(b.d)||compareVenue(a.e,b.e));
     let html='',month='',week='',i=0;
     while(i<items.length){
       const d=items[i].d,m=d.slice(0,7),w=weekKey(d);
@@ -177,7 +198,7 @@ function render(){
 
   let list=events.slice();
   if(mode==='planned')list=list.filter(e=>plannedDates(e).length);
-  list.sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name,'ja'));
+  list.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a,b));
   let html='',month='',week='';
   for(const e of list){
     const m=e.date.slice(0,7),w=weekKey(e.date);
