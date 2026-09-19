@@ -236,6 +236,22 @@ function setIgnore(e,checked){
 function actualDates(e){return Array.isArray(e.visitDates)?e.visitDates:[]}
 function reportFlag(id){return reportFlags[id]||{good:false,bad:false}}
 function saveReportFlags(){localStorage.setItem(REPORT_FLAGS_KEY,JSON.stringify(reportFlags))}
+function autoSetReportFlags(){
+  let changed=false;
+  for(const r of reports){
+    if(!r||!r.id||Object.prototype.hasOwnProperty.call(reportFlags,r.id))continue;
+    const m=String(r.rating||'').toUpperCase().match(/A\+|A-|A|B\+|B-|B|C\+|C-|C|D|E|F/);
+    const grade=m?m[0]:'';
+    if(/^A|^B|^C/.test(grade)){
+      reportFlags[r.id]={good:true,bad:false};
+      changed=true;
+    }else if(grade==='F'){
+      reportFlags[r.id]={good:false,bad:true};
+      changed=true;
+    }
+  }
+  if(changed)saveReportFlags();
+}
 function reportFlagTools(r){
   if(!r||!r.id)return '';
   const f=reportFlag(r.id);
@@ -1131,6 +1147,7 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
     const files=(mj.reportFiles&&mj.reportFiles.length)?mj.reportFiles:['実地レポート/2026-01-03.json','実地レポート/2026-04.json','実地レポート/2026-05.json','実地レポート/2026-06.json','実地レポート/2026-07.json','実地レポート/2026-08.json','実地レポート/2026-09.json'];
     const parts=await Promise.all(files.map(async p=>(await fetch(p+'?v='+Date.now(),{cache:'no-store'})).json()));
     reports=parts.flatMap(x=>x.reports||[]);
+    autoSetReportFlags();
     localStorage.removeItem(EDIT_DRAFT_KEY);
     localStorage.removeItem(LEGACY_HTML_KEY);
     loadStructuredEditDraft();
