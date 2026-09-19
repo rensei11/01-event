@@ -26,7 +26,7 @@ table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}col
   <div class="toolbar">
     <div class="view-tabs"><button id="eventsTab" class="view-tab active">イベント一覧</button><button id="plannedTab" class="view-tab">来場予定</button></div>
     <div class="list-controls">
-      <label>表示 <select id="statusFilter"><option value="all">すべて</option><option value="attended">参加済み</option><option value="not_attended">未参加</option><option value="pending">未確定</option></select></label>
+      <label>表示 <select id="statusFilter"><option value="all">すべて</option><option value="attended">参加した日</option><option value="not_attended">未参加</option><option value="pending">未確定</option></select></label>
       <label>並び替え <select id="sortOrder"><option value="date_asc">日付：古い順</option><option value="date_desc">日付：新しい順</option><option value="actual_rating">実地評価順（月ごと）</option><option value="pre_rating">事前評価順（月ごと）</option></select></label>
     </div>
     <button id="resetFlagsBtn" class="reset-btn">チェックを初期化</button>
@@ -279,18 +279,20 @@ function renderEndProcessForm(){
   const e=taggedEvents().find(x=>x.id===selectedEndEventId);
   if(!e){endProcessFormWrap.innerHTML='<div class="end-empty">イベントを選んでください。</div>';return;}
   const d=endDraftFor(e),days=isoDays(e.date,e.endDate||e.date);
+  const contentOnly=endProcessMode==='edit'&&!e.attendanceStatus;
   const visits=days.map(day=>`<label><input class="end-visit-check" type="checkbox" value="${esc(day)}" ${d.visitDates.includes(day)?'checked':''}>${esc(dateLabel(day))}</label>`).join('');
   const ratings=['','A+','A','A-','B+','B','B-','C+','C','C-','D','E','F'];
   endProcessFormWrap.innerHTML=`
     <div class="end-form-title">${esc(e.name)}</div>
     <div class="end-form-venue">${esc(e.venue||'会場未入力')} / ${esc(eventDateText(e))}</div>
-    <div class="end-draft-note">「GitHubへ保存」で参加結果・台帳の文章・実地レポートをまとめて確定保存します。</div>
+    <div class="end-draft-note">${contentOnly?'このイベントは未処理です。ここでは文章だけをGitHubへ保存します。参加／未参加の確定は「終了処理」から行います。':'「GitHubへ保存」で参加結果・台帳の文章・実地レポートをまとめて確定保存します。'}</div>
+    ${contentOnly?'':`
     <div class="end-field"><span class="end-label">結果</span><div class="end-choice">
       <label><input type="radio" name="endAttendance" value="attended" ${d.status==='attended'?'checked':''}>参加した</label>
       <label><input type="radio" name="endAttendance" value="not_attended" ${d.status==='not_attended'?'checked':''}>行っていない</label>
     </div></div>
-    <div class="end-field"><span class="end-label">実際に行った日</span><div class="end-visit-dates">${visits}</div></div>
-    <div class="end-field"><label class="end-label" for="endRating">実地評価</label><select id="endRating" class="end-rating">${ratings.map(v=>`<option value="${v}" ${v===d.rating?'selected':''}>${v||'未選択'}</option>`).join('')}</select></div>
+    <div class="end-field"><span class="end-label">実際に行った日（複数選択可）</span><div class="end-visit-dates">${visits}</div></div>
+    <div class="end-field"><label class="end-label" for="endRating">実地評価</label><select id="endRating" class="end-rating">${ratings.map(v=>`<option value="${v}" ${v===d.rating?'selected':''}>${v||'未選択'}</option>`).join('')}</select></div>`}
     <div class="end-actions"><button id="endDraftSave" class="end-copy" type="button">下書き保存</button><button id="endGitHubSave" class="end-save" type="button">GitHubへ保存</button><button id="endDraftCopy" class="end-copy" type="button">予備：内容をコピー</button><span id="endDraftSaved" class="end-saved"></span></div>
 
     <div class="end-section-title">イベント情報を編集</div>
@@ -308,12 +310,14 @@ function renderEndProcessForm(){
     </div>
     <div class="end-field"><label class="end-label" for="endNightText">内容・根拠</label><textarea id="endNightText" class="end-small-text">${esc(d.nightText||'')}</textarea></div>
 
-    <div class="end-section-title">実地レポート</div>
-    <div class="end-field end-report-field"><textarea id="endReport" class="end-report" placeholder="料理、酒、混雑、特典、良かった点・悪かった点などを自由に入力">${esc(d.report||'')}</textarea></div>`;
+    ${contentOnly?'':`<div class="end-section-title">実地レポート</div>
+    <div class="end-field end-report-field"><textarea id="endReport" class="end-report" placeholder="料理、酒、混雑、特典、良かった点・悪かった点などを自由に入力">${esc(d.report||'')}</textarea></div>`}`;
 }
 function collectEndDraft(){
   const e=taggedEvents().find(x=>x.id===selectedEndEventId);if(!e)return null;
+  const baseDraft=endDraftFor(e);
   const statusChoice=endProcessFormWrap.querySelector('input[name="endAttendance"]:checked');
+  const contentOnly=endProcessMode==='edit'&&!e.attendanceStatus;
   const eventName=endProcessFormWrap.querySelector('#endEventName')?.value?.trim()||e.name;
   return {
     eventId:e.id,
@@ -321,7 +325,8 @@ function collectEndDraft(){
     eventName,
     kind:e._kind,
     status:statusChoice?statusChoice.value:'',
-    visitDates:[...endProcessFormWrap.querySelectorAll('.end-visit-check:checked')].map(x=>x.value).sort(),
+    editOnly:contentOnly,
+    visitDates:contentOnly?[...(e.visitDates||[])]:[...endProcessFormWrap.querySelectorAll('.end-visit-check:checked')].map(x=>x.value).sort(),
     venue:endProcessFormWrap.querySelector('#endVenue')?.value||'',
     url:endProcessFormWrap.querySelector('#endUrl')?.value||'',
     conditionText:endProcessFormWrap.querySelector('#endCondition')?.value||'',
@@ -329,17 +334,17 @@ function collectEndDraft(){
     preRating:endProcessFormWrap.querySelector('#endPreRating')?.value||'',
     nightTime:endProcessFormWrap.querySelector('#endNightTime')?.value||'',
     nightText:endProcessFormWrap.querySelector('#endNightText')?.value||'',
-    rating:endProcessFormWrap.querySelector('#endRating')?.value||'',
-    report:endProcessFormWrap.querySelector('#endReport')?.value||'',
+    rating:endProcessFormWrap.querySelector('#endRating')?.value||baseDraft.rating||'',
+    report:endProcessFormWrap.querySelector('#endReport')?.value||baseDraft.report||'',
     schemaVersion:2,
     updatedAt:new Date().toISOString()
   };
 }
 async function saveEndToGitHub(){
   const d=collectEndDraft();if(!d)return;
-  if(!d.status){alert('参加した／行っていない のどちらかを選んでください。');return;}
-  if(d.status==='attended'&&!d.visitDates.length){alert('実際に行った日を選んでください。');return;}
-  if(d.status==='attended'&&!String(d.report||'').trim()){alert('参加したイベントは実地レポートを入力してください。');return;}
+  if(!d.editOnly&&!d.status){alert('参加した／行っていない のどちらかを選んでください。');return;}
+  if(!d.editOnly&&d.status==='attended'&&!d.visitDates.length){alert('実際に行った日を選んでください。');return;}
+  if(!d.editOnly&&d.status==='attended'&&!String(d.report||'').trim()){alert('参加したイベントは実地レポートを入力してください。');return;}
   saveEndDraft(false);
   if(!END_PROCESS_API_URL){
     alert('初回設定がまだ完了していません。Cloudflare Workerを公開してURLを設定すると、このボタンからGitHubへ直接保存できます。');
@@ -440,6 +445,9 @@ function visibleEvents(){
     const days=currentView==='planned'?plannedDates(e):isoDays(e.date,e.endDate||e.date);
     return expandEventRows(e,days);
   });
+  if(statusFilter==='attended'){
+    list=list.filter(e=>rowAttendance(e,e._displayDate||e.date)==='attended');
+  }
   if(listFilterYear&&listFilterMonth){
     const start=`${listFilterYear}-${String(listFilterMonth).padStart(2,'0')}-01`;
     const endDate=new Date(listFilterYear,listFilterMonth-1+12,1);
@@ -490,7 +498,7 @@ function renderLedger(){
     const attendedDateNote=repDates.length>1?`<span class="actual-dates">参加日 ${esc(repDates.map(shortDayLabel).join('・'))}</span>`:'';
     const preRatingText=rep&&/^\s*実地評価\s*[:：]/.test(String(e.rating||''))?'':(e.rating||'');
     const actualHtml=showReportHere?`<div class="actual-block"><div class="actual-head"><span class="actual-title">実地レポート</span>${rep.rating?`<span class="actual-rating">評価 ${esc(rep.rating)}</span>`:''}${attendedDateNote}</div><div class="actual-copy">${esc(rep.report||'')}</div></div>`:'';
-    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}${ignoreBox}${grayBox}</div><div class="event-main"><div class="event-meta-line"><div>${resultBadge}${badge}</div><div class="event-right-meta">${person?`<div class="person-name">${esc(person)}</div>`:''}${historyStatus?`<button type="button" class="event-edit-btn" data-edit-id="${esc(e.id)}">編集</button>`:''}</div></div><div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div>${historyStatus?'':visitDayControls(e)}</div></div></td>`;
+    html+=`<td class="event-cell"><div class="event-top"><div class="check-stack">${planBox}${ignoreBox}${grayBox}</div><div class="event-main"><div class="event-meta-line"><div>${resultBadge}${badge}</div><div class="event-right-meta">${person?`<div class="person-name">${esc(person)}</div>`:''}<button type="button" class="event-edit-btn" data-edit-id="${esc(e.id)}">編集</button></div></div><div class="event-name">${nameHtml}</div><div class="venue">${esc(e.venue)}</div>${historyStatus?'':visitDayControls(e)}</div></div></td>`;
     html+=`<td class="condition">${visibleConditionLines(e).map(esc).join('<br>')}</td>`;
     html+=`<td><div class="rating">${esc(preRatingText)}</div><div class="night">${e.nightTime?`<strong>${esc(e.nightTime)}</strong> `:''}${esc(e.nightText||e.detailText||'')}</div>${actualHtml}</td></tr>`;
     currentDate=displayDate;i++;

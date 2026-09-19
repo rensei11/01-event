@@ -49,6 +49,7 @@ function validate(d){
   if(!d||typeof d!=='object')return 'データがありません';
   if(!d.eventId||!(d.eventName||d.name))return 'イベント情報がありません';
   if(!['exhibition','gathering'].includes(d.kind))return 'イベント種別が不正です';
+  if(d.editOnly)return '';
   if(!['attended','not_attended'].includes(d.status))return '参加／未参加を選んでください';
   if(d.status==='attended'&&(!Array.isArray(d.visitDates)||!d.visitDates.length))return '実際に行った日を選んでください';
   if(d.status==='attended'&&!String(d.report||'').trim())return '参加したイベントは実地レポートを入力してください';
@@ -174,6 +175,31 @@ async function saveToGitHub(d,token){
   e.nightTime=String(d.nightTime??e.nightTime??'').trim();
   e.nightText=String(d.nightText??e.nightText??e.detailText??'').trim();
   if('detailText' in e)delete e.detailText;
+
+  if(d.editOnly){
+    ledger.dataVersion=new Date().toISOString().slice(0,10)+'-web';
+    const blob=await gh('/repos/'+OWNER+'/'+REPO+'/git/blobs',token,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({content:JSON.stringify(ledger,null,2)+'\n',encoding:'utf-8'})
+    });
+    const newTree=await gh('/repos/'+OWNER+'/'+REPO+'/git/trees',token,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({base_tree:baseTree,tree:[{path:ledgerPath,mode:'100644',type:'blob',sha:blob.sha}]})
+    });
+    const newCommit=await gh('/repos/'+OWNER+'/'+REPO+'/git/commits',token,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        message:'イベント編集: '+e.name,
+        tree:newTree.sha,
+        parents:[parentSha]
+      })
+    });
+    await gh('/repos/'+OWNER+'/'+REPO+'/git/refs/heads/'+BRANCH,token,{
+      method:'PATCH',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({sha:newCommit.sha,force:false})
+    });
+    return {commit:newCommit.sha,eventId:e.id,status:'edited'};
+  }
 
   const oldReportId=e.sourceReportId||'';
   let reportId=oldReportId||('rep-web-'+String(e.id).replace(/[^a-zA-Z0-9_-]/g,''));
