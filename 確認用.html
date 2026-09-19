@@ -616,22 +616,22 @@ function calendarDatesForEvent(e){
 }
 function calendarMap(){
   const map=new Map();
-  const touch=(d,type)=>{
-    if(!map.has(d))map.set(d,{count:0,event:false,planned:false,attended:false});
-    const v=map.get(d);v.count++;
-    if(type)v[type]=true;
+  const get=(d)=>{
+    if(!map.has(d))map.set(d,{ids:new Set(),event:false,planned:false,attended:false});
+    return map.get(d);
   };
   for(const e of events){
     if(mode==='attended'){
-      for(const d of actualDates(e))touch(d,'attended');
+      for(const d of actualDates(e)){const v=get(d);v.ids.add(e.id);v.attended=true;}
     }else if(mode==='planned'){
-      for(const d of plannedDates(e))touch(d,'planned');
+      for(const d of plannedDates(e)){const v=get(d);v.ids.add(e.id);v.planned=true;}
     }else{
-      for(const d of days(e.date,e.endDate||e.date))touch(d,'event');
-      for(const d of plannedDates(e))touch(d,'planned');
-      for(const d of actualDates(e))touch(d,'attended');
+      for(const d of days(e.date,e.endDate||e.date)){const v=get(d);v.ids.add(e.id);v.event=true;}
+      for(const d of plannedDates(e)){const v=get(d);v.ids.add(e.id);v.planned=true;}
+      for(const d of actualDates(e)){const v=get(d);v.ids.add(e.id);v.attended=true;}
     }
   }
+  for(const v of map.values())v.count=v.ids.size;
   return map;
 }
 function availableYears(){
