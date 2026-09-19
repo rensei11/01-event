@@ -676,7 +676,9 @@ function render(){
 
 document.querySelector('.controls').addEventListener('click',e=>{
   const b=e.target.closest('button[data-mode]');if(!b)return;
+  if(editing)saveLegacyHTML();
   mode=b.dataset.mode;
+  selected=null;
   document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
   render();
 });
