@@ -289,7 +289,9 @@
       "name": "GROWTH 祭 TOKYO 2026",
       "url": "https://gmt.youtrust.jp/?utm_source=twitter&utm_medium=social&utm_campaign=gmt2026_20260818",
       "venue": "渋谷ヒカリエ",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
       "rating": "実地評価：E",
       "nightTime": "",
       "nightText": "",
