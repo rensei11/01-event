@@ -13,7 +13,7 @@ h1{font-size:20px;margin:0}.sub{margin:3px 0 12px;color:var(--muted);font-size:1
 .controls{display:flex;gap:6px;margin:0 0 8px;flex-wrap:wrap;align-items:center}
 .legacy-edit-toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:0 0 6px}.legacy-edit-toolbar button:disabled{opacity:.45;cursor:not-allowed}.legacy-edit-toolbar .primary{font-weight:800}.legacy-edit-toolbar .danger{color:#9a3412;border-color:#d8a58d}.edit-help{font-size:12px;color:var(--muted);margin:0 0 10px}
 .event-row.selected td,.week.selected td{box-shadow:inset 0 0 0 2px #d29b00!important}
-body.editing .event-row td:not(.date){background:#fffdf2!important;outline:none}
+body.editing .event-row td{background:#fffdf2!important;outline:none} body.editing .event-row .date{cursor:text}
 body.editing .week td{outline:none}
 body.editing .event-row.selected td{background:#fff4c7!important}.edit-mode-btn{margin-left:4px}.row-edit-btn{display:none}
 .edit-bar{display:none!important}.edit-change-count{font-size:12px;font-weight:900;color:#374151;margin-left:auto}.edit-save{background:#20262d;color:#fff;border-color:#20262d}.edit-hint{font-size:11px;color:#606a74}
@@ -63,14 +63,17 @@ th:last-child,td:last-child{border-right:0}
   </div>
   <div class="legacy-edit-toolbar">
     <button id="editBtn" class="primary" type="button">編集開始</button>
-    <button id="addBtn" type="button" disabled>選択行の下に追加</button>
+    <button id="addBtn" type="button" disabled>＋ 新しいイベント</button>
+    <button id="moveUpBtn" type="button" disabled>↑ 上へ</button>
+    <button id="moveDownBtn" type="button" disabled>↓ 下へ</button>
+    <button id="kindBtn" type="button" disabled>展示会／懇親会</button>
+    <button id="linkBtn" type="button" disabled>リンク設定</button>
     <button id="addWeekBtn" type="button" disabled>週区切りを追加</button>
     <button id="delBtn" class="danger" type="button" disabled>選択行を削除</button>
-    <button id="linkBtn" type="button" disabled>リンク設定</button>
     <button id="saveHtmlBtn" type="button">HTMLを保存</button>
     <button id="resetHtmlBtn" type="button">編集内容を戻す</button>
   </div>
-  <div class="edit-help">編集開始 → 行をクリックして選択 → 表の文字をそのまま書き換えます。</div>
+  <div class="edit-help">編集開始 → 表の文字を直接変更できます。行をクリックすると黄色く選択され、↑↓・分類・リンク・削除が使えます。</div>
   <section class="calendar-panel" aria-label="カレンダー">
     <div class="calendar-head"><div class="calendar-title">カレンダー</div><div id="calendarNote" class="calendar-note"></div></div>
     <div class="calendar-jump"><span class="calendar-start-label">一覧：この月以降</span><select id="calendarYear" class="calendar-year" aria-label="年"></select><div id="monthJump" class="month-jump"></div></div>
@@ -566,14 +569,19 @@ function updateEditButtons(){
   const ev=!!(selected&&selected.classList.contains('event-row'));
   const any=!!selected;
   const add=document.getElementById('addBtn'),week=document.getElementById('addWeekBtn'),del=document.getElementById('delBtn'),link=document.getElementById('linkBtn');
-  if(add)add.disabled=!editing||!any;
+  const up=document.getElementById('moveUpBtn'),down=document.getElementById('moveDownBtn'),kind=document.getElementById('kindBtn');
+  if(add)add.disabled=!editing;
   if(week)week.disabled=!editing||!any;
   if(del)del.disabled=!editing||!ev;
   if(link)link.disabled=!editing||!ev;
+  if(up)up.disabled=!editing||!ev;
+  if(down)down.disabled=!editing||!ev;
+  if(kind)kind.disabled=!editing||!ev;
 }
 function applyContentEditable(){
   const body=document.getElementById('body');
-  body.querySelectorAll('.event-row td:not(.date)').forEach(td=>td.contentEditable=editing?'true':'false');
+  body.querySelectorAll('.event-row td').forEach(td=>td.contentEditable=editing?'true':'false');
+  body.querySelectorAll('.event-row input,.event-row button').forEach(el=>el.contentEditable='false');
   body.querySelectorAll('.week td[data-manual-week="1"]').forEach(td=>td.contentEditable=editing?'true':'false');
 }
 function setLegacyEditing(on){
@@ -701,20 +709,50 @@ document.getElementById('body').addEventListener('input',()=>{
 });
 
 document.getElementById('addBtn').addEventListener('click',()=>{
-  if(!editing||!selected)return;
+  if(!editing)return;
   const colspan=mode==='attended'?3:4;
   const tr=document.createElement('tr');
   tr.className='event-row';
   tr.dataset.eventId='manual-'+Date.now();
   if(colspan===4){
-    tr.innerHTML='<td class="date">日付</td><td><div class="event-name">新しいイベント</div><div class="venue">会場名</div></td><td>参加条件</td><td>評価 / 内容</td>';
+    tr.innerHTML='<td class="date"></td><td><div class="event-meta-line"><div class="event-badges"><span class="kind-badge exhibition">展示会</span></div></div><div class="event-name"></div><div class="venue"></div></td><td></td><td></td>';
   }else{
-    tr.innerHTML='<td class="date">日付</td><td><div class="event-name">新しいイベント</div><div class="venue">会場名</div></td><td>内容 / レポート</td>';
+    tr.innerHTML='<td class="date"></td><td><div class="event-meta-line"><div class="event-badges"><span class="kind-badge exhibition">展示会</span></div></div><div class="event-name"></div><div class="venue"></div></td><td></td>';
   }
-  selected.insertAdjacentElement('afterend',tr);
-  tr.querySelectorAll('td:not(.date)').forEach(td=>td.contentEditable='true');
+  if(selected)selected.insertAdjacentElement('afterend',tr);
+  else document.getElementById('body').appendChild(tr);
+  tr.querySelectorAll('td').forEach(td=>td.contentEditable='true');
   setSelected(tr);
-  saveLegacyHTML('行を追加しました');
+  saveLegacyHTML('新しいイベントを追加しました');
+  tr.scrollIntoView({behavior:'smooth',block:'center'});
+  const name=tr.querySelector('.event-name');if(name)name.focus();
+});
+
+document.getElementById('moveUpBtn').addEventListener('click',()=>{
+  if(!editing||!selected||!selected.classList.contains('event-row'))return;
+  let prev=selected.previousElementSibling;
+  while(prev&&prev.classList.contains('month'))prev=prev.previousElementSibling;
+  if(prev){prev.insertAdjacentElement('beforebegin',selected);saveLegacyHTML('行を上へ移動しました');}
+});
+document.getElementById('moveDownBtn').addEventListener('click',()=>{
+  if(!editing||!selected||!selected.classList.contains('event-row'))return;
+  let next=selected.nextElementSibling;
+  while(next&&next.classList.contains('month'))next=next.nextElementSibling;
+  if(next){next.insertAdjacentElement('afterend',selected);saveLegacyHTML('行を下へ移動しました');}
+});
+document.getElementById('kindBtn').addEventListener('click',()=>{
+  if(!editing||!selected||!selected.classList.contains('event-row'))return;
+  let badge=selected.querySelector('.kind-badge');
+  if(!badge){
+    const box=selected.querySelector('.event-badges')||selected.querySelector('td:nth-child(2)');
+    badge=document.createElement('span');badge.className='kind-badge exhibition';badge.textContent='展示会';
+    box.prepend(badge);
+  }else if(badge.classList.contains('exhibition')){
+    badge.classList.remove('exhibition');badge.classList.add('gathering');badge.textContent='懇親会';
+  }else{
+    badge.classList.remove('gathering');badge.classList.add('exhibition');badge.textContent='展示会';
+  }
+  saveLegacyHTML('分類を変更しました');
 });
 
 document.getElementById('addWeekBtn').addEventListener('click',()=>{
@@ -741,15 +779,15 @@ document.getElementById('linkBtn').addEventListener('click',()=>{
   if(!name)return;
   let a=name.querySelector('a');
   const current=a?.getAttribute('href')||'';
-  const url=prompt('イベント名に設定するURL',current);
+  const url=prompt('このイベントのURLを貼り付けてください',current);
   if(url===null)return;
-  if(!a){
-    const text=name.textContent;
-    name.innerHTML='<a href="'+esc(url.trim())+'" target="_blank" rel="noopener">'+esc(text)+'</a>';
+  const text=(a?a.textContent:name.textContent).trim()||'イベント名';
+  if(!url.trim()){
+    name.textContent=text;
   }else{
-    a.setAttribute('href',url.trim());
+    name.innerHTML='<a href="'+esc(url.trim())+'" target="_blank" rel="noopener">'+esc(text)+'</a>';
   }
-  saveLegacyHTML('リンクを保存しました');
+  saveLegacyHTML('リンクを設定しました');
 });
 
 document.getElementById('saveHtmlBtn').addEventListener('click',()=>{
