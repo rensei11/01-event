@@ -599,7 +599,9 @@
       "nightText": "",
       "attendanceStatus": "attended",
       "visitDates": [
-        "2026-03-10"
+        "2026-03-10",
+        "2026-03-11",
+        "2026-03-13"
       ],
       "sourceReportId": "rep-91be5e3b7b3d",
       "historySource": "実地レポート"
@@ -620,7 +622,8 @@
       "nightText": "",
       "attendanceStatus": "attended",
       "visitDates": [
-        "2026-03-17"
+        "2026-03-17",
+        "2026-03-19"
       ],
       "sourceReportId": "rep-c481edd0bafa",
       "historySource": "実地レポート"
@@ -1582,7 +1585,8 @@
       "venue": "ビックサイト 南1-4",
       "conditionLines": [
         "名前コード：山本 雄太",
-        "名前コード：伊藤 聡"
+        "名前コード：伊藤 聡",
+        "名前コード：小林 直樹"
       ],
       "rating": "実地評価：B",
       "nightTime": "",
@@ -1977,7 +1981,8 @@
       "nightText": "",
       "attendanceStatus": "attended",
       "visitDates": [
-        "2026-07-29"
+        "2026-07-29",
+        "2026-07-31"
       ],
       "sourceReportId": "rep-4c46f88e00be",
       "historySource": "実地レポート"
