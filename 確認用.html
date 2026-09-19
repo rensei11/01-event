@@ -95,6 +95,7 @@ th:last-child,td:last-child{border-right:0}
     <button id="delBtn" class="danger" type="button" disabled>選択行を削除</button>
     <button id="saveHtmlBtn" type="button">編集下書き保存</button>
     <button id="resetHtmlBtn" type="button">編集下書きを破棄</button>
+    <span id="editChangeCount" class="edit-change-count">変更 0件</span>
   </div>
   <div class="edit-help">編集開始 → 表の文字を直接変更できます。日付は日付欄、区分とURLは行を選んで上のボタンから変更します。並び順は日付・区分・会場で自動です。編集はこのブラウザの下書きです。</div>
   <section class="calendar-panel" aria-label="カレンダー">
@@ -257,6 +258,7 @@ function loadStructuredEditDraft(){
   for(const n of editDraft.newEvents){
     if(!events.some(e=>e.id===n.id))events.push(cloneData(n));
   }
+  dirtyIds=new Set([...Object.keys(editDraft.patches),...editDraft.newEvents.map(e=>e.id),...editDraft.deletedIds]);
 }
 function persistStructuredEditDraft(message){
   localStorage.setItem(EDIT_PATCH_KEY,JSON.stringify(editDraft));
@@ -706,17 +708,17 @@ function applyContentEditable(){
 function setLegacyEditing(on){
   editing=on;
   document.body.classList.toggle('editing',on);
-  if(!on)selected=null;
+  selected=null;
+  if(on&&mode!=='all'){
+    mode='all';
+    document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x.dataset.mode==='all'));
+  }
   const b=document.getElementById('editBtn');
   if(b)b.textContent=on?'編集終了':'編集開始';
   render();
   const st=document.getElementById('status');
   if(st)st.textContent=on?'編集中：文字は直接編集、日付は日付欄から変更':'閲覧モード';
 }
-function saveLegacyHTML(message){
-  persistStructuredEditDraft(message||'編集下書きを保存しました');
-}
-function restoreLegacyHTML(){return false;}
 function clearLegacyHTML(){
   clearStructuredEditDraft();
   selected=null;
@@ -766,7 +768,7 @@ function render(){
       same.forEach((x,idx)=>{html+=attendedRow(x.e,d,idx===0,same.length,idx===0);});
     }
     document.getElementById('body').innerHTML=html||'<tr><td colspan="3" class="empty">参加済みイベントはありません</td></tr>';
-    restoreLegacyHTML();applyContentEditable();selected=null;updateEditButtons();
+    applyContentEditable();selected=null;updateEditButtons();
     document.getElementById('status').textContent=(items.length+undated.length)+'件';
     renderCalendar();
     return;
@@ -792,14 +794,19 @@ function render(){
     html+=row(e);
   }
   document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">該当するイベントはありません</td></tr>';
-  restoreLegacyHTML();applyContentEditable();selected=null;updateEditButtons();
+  applyContentEditable();selected=null;updateEditButtons();
   document.getElementById('status').textContent=list.length+'件';
   renderCalendar();
 }
 
 document.querySelector('.controls').addEventListener('click',e=>{
   const b=e.target.closest('button[data-mode]');if(!b)return;
-  if(editing)saveLegacyHTML();
+  if(editing){
+    persistStructuredEditDraft();
+    editing=false;
+    document.body.classList.remove('editing');
+    document.getElementById('editBtn').textContent='編集開始';
+  }
   mode=b.dataset.mode;
   selected=null;
   document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
