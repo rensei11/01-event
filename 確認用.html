@@ -17,7 +17,7 @@ button.active{background:#41474c;color:white;border-color:#41474c}
 .calendar-panel{margin:0 0 14px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px}
 .calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:900}.calendar-note{font-size:12px;color:var(--muted)}
 .calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:12px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:11px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
-.calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:stretch}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:23px;font-weight:900}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.month-card{border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none}.cal-day.empty{visibility:hidden}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#5d8fc5;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.cal-day.clickable:hover{filter:brightness(.92)}
+.calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:stretch}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:23px;font-weight:900}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.month-card{border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px;cursor:pointer}.month-name:hover{text-decoration:underline}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none}.cal-day.empty{visibility:hidden}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#5d8fc5;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.cal-day.clickable:hover{filter:brightness(.92)}
 .calendar-focus td{animation:calFlash 1.2s ease}@keyframes calFlash{0%,100%{background:inherit}35%,70%{background:#fff1b8}}
 .table-wrap{background:var(--paper);border:1px solid var(--line);overflow:auto}
 table{border-collapse:collapse;width:100%;table-layout:fixed;min-width:940px}
@@ -240,7 +240,7 @@ function availableYears(){
 }
 function buildMonthCard(year,month,map){
   const card=document.createElement('div');card.className='month-card';
-  const title=document.createElement('div');title.className='month-name';title.textContent=year+'年'+month+'月';card.appendChild(title);
+  const title=document.createElement('div');title.className='month-name';title.textContent=year+'年'+month+'月';title.title=year+'年'+month+'月の一覧へ移動';title.onclick=()=>jumpToMonth(year,month);card.appendChild(title);
   const grid=document.createElement('div');grid.className='month-grid';
   ['日','月','火','水','木','金','土'].forEach(w=>{const x=document.createElement('div');x.className='weekday';x.textContent=w;grid.appendChild(x)});
   const first=new Date(year,month-1,1),last=new Date(year,month,0).getDate();
@@ -272,6 +272,14 @@ function renderCalendar(){
 function setCalendarBase(year,month){
   const d=new Date(year,month-1,1);calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;renderCalendar();
 }
+function jumpToMonth(year,month){
+  const key=year+'-'+String(month).padStart(2,'0');
+  const row=document.querySelector('tr.month[data-month="'+key+'"]');
+  if(!row)return;
+  row.scrollIntoView({behavior:'smooth',block:'start'});
+  row.classList.remove('calendar-focus');void row.offsetWidth;row.classList.add('calendar-focus');
+  setTimeout(()=>row.classList.remove('calendar-focus'),1400);
+}
 function jumpToDate(date){
   let rows=[...document.querySelectorAll('tr.event-row')],target=null;
   if(mode==='attended')target=rows.find(r=>r.dataset.visitDate===date);
@@ -299,6 +307,8 @@ function venueSortKey(e){
   return [1,0,0,v];
 }
 function compareVenue(a,b){
+  const kindA=a._kind==='gathering'?1:0,kindB=b._kind==='gathering'?1:0;
+  if(kindA!==kindB)return kindA-kindB;
   const x=venueSortKey(a),y=venueSortKey(b);
   for(let i=0;i<3;i++){if(x[i]!==y[i])return x[i]-y[i];}
   const vd=String(x[3]).localeCompare(String(y[3]),'ja',{numeric:true});
@@ -320,7 +330,7 @@ function render(){
       const d=items[i].d,m=d.slice(0,7),w=weekKey(d);
       if(m!==month){
         const [y,mm]=m.split('-');
-        html+='<tr class="month"><td colspan="3">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+        html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="3">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
         month=m;week='';
       }
       if(w!==week){
@@ -345,7 +355,7 @@ function render(){
     const m=e.date.slice(0,7),w=weekKey(e.date);
     if(m!==month){
       const [y,mm]=m.split('-');
-      html+='<tr class="month"><td colspan="3">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+      html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="3">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
       month=m;week='';
     }
     if(w!==week){
