@@ -133,7 +133,7 @@ const END_DRAFTS_KEY='free_food_event_end_process_drafts_v1';
 const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
 const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
 let events=[],reports=[],flags={},mode='all',editing=false;
-let baseEvents=[],baseReports=[],dirtyIds=new Set(),activeEditId='',activeEditVisitDate='';
+let dirtyIds=new Set();
 let editDraft={patches:{},newEvents:[],deletedIds:[]};
 let selected=null;
 const calendarToday=new Date();
@@ -236,8 +236,6 @@ function weekLabel(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;con
 
 function cloneData(v){return JSON.parse(JSON.stringify(v))}
 function eventById(id){return events.find(e=>e.id===id)||null}
-function baseEventById(id){return baseEvents.find(e=>e.id===id)||null}
-function reportByEvent(e){return e?reportFor(e):null}
 function refreshEditBar(){
   const n=document.getElementById('editChangeCount');
   if(n)n.textContent='変更 '+dirtyIds.size+'件';
@@ -300,118 +298,8 @@ function clearStructuredEditDraft(){
 }
 
 function splitLines(v){return String(v||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean)}
-function editRowHtml(e,r,colspan,visitDate){
-  const people=personLines(e).join('\n');
-  const cond=conditionLines(e).join('\n');
-  const visits=actualDates(e).join(', ');
-  const kind=e._kind==='gathering'?'gathering':'exhibition';
-  const status=e.attendanceStatus||'';
-  return '<tr class="inline-edit-row" data-editor-id="'+esc(e.id)+'"><td colspan="'+colspan+'"><div class="edit-panel">'+
-    '<div class="edit-field"><label>区分</label><select data-f="kind"><option value="exhibition" '+(kind==='exhibition'?'selected':'')+'>展示会</option><option value="gathering" '+(kind==='gathering'?'selected':'')+'>懇親会</option></select></div>'+
-    '<div class="edit-field"><label>開始日</label><input data-f="date" type="date" value="'+esc(e.date||'')+'"></div>'+
-    '<div class="edit-field"><label>終了日</label><input data-f="endDate" type="date" value="'+esc(e.endDate||'')+'"></div>'+
-    '<div class="edit-field"><label>参加状態</label><select data-f="attendanceStatus"><option value="" '+(!status?'selected':'')+'>未確定</option><option value="attended" '+(status==='attended'?'selected':'')+'>参加済み</option><option value="not_attended" '+(status==='not_attended'?'selected':'')+'>未参加</option></select></div>'+
-    '<div class="edit-field wide"><label>イベント名</label><input data-f="name" value="'+esc(e.name||'')+'"></div>'+
-    '<div class="edit-field wide"><label>会場</label><input data-f="venue" value="'+esc(e.venue||'')+'"></div>'+
-    '<div class="edit-field full"><label>URL</label><input data-f="url" value="'+esc(e.url||'')+'"></div>'+
-    '<div class="edit-field wide"><label>名前</label><textarea data-f="people">'+esc(people)+'</textarea></div>'+
-    '<div class="edit-field wide"><label>参加条件（1行ずつ）</label><textarea data-f="conditions">'+esc(cond)+'</textarea></div>'+
-    '<div class="edit-field"><label>事前評価</label><input data-f="rating" value="'+esc(e.rating||'')+'"></div>'+
-    '<div class="edit-field"><label>夜の時間</label><input data-f="nightTime" value="'+esc(e.nightTime||'')+'"></div>'+
-    '<div class="edit-field wide"><label>夜の内容</label><textarea data-f="nightText">'+esc(e.nightText||'')+'</textarea></div>'+
-    '<div class="edit-field full"><label>実際に参加した日（カンマ区切り）</label><input data-f="visitDates" value="'+esc(visits)+'" placeholder="2026-04-15, 2026-04-16"></div>'+
-    '<div class="edit-field"><label>実地レポート 評価</label><input data-f="reportRating" value="'+esc(r?.rating||'')+'"></div>'+
-    '<div class="edit-field full"><label>実地レポート</label><textarea class="report-editor" data-f="reportText">'+esc(r?.report||'')+'</textarea></div>'+
-    '<div class="edit-actions">'+
-      '<button type="button" class="apply-row-edit" data-id="'+esc(e.id)+'">この内容を反映</button>'+
-      '<button type="button" class="undo-row-edit" data-id="'+esc(e.id)+'">このイベントを元に戻す</button>'+
-      '<button type="button" class="duplicate-row-edit" data-id="'+esc(e.id)+'">複製</button>'+
-      '<button type="button" class="delete-row-edit edit-danger" data-id="'+esc(e.id)+'">削除</button>'+
-      '<span class="edit-hint">確定済み・未確定に関係なく編集できます。</span>'+
-    '</div></div></td></tr>';
-}
-function editorValue(editor,key){return editor.querySelector('[data-f="'+key+'"]')?.value??''}
-function applyEditor(id){
-  const editor=document.querySelector('.inline-edit-row[data-editor-id="'+CSS.escape(id)+'"]');
-  const e=eventById(id);if(!editor||!e)return;
-  e._kind=editorValue(editor,'kind')==='gathering'?'gathering':'exhibition';
-  e.date=editorValue(editor,'date').trim();
-  e.endDate=editorValue(editor,'endDate').trim();
-  e.dateText='';
-  e.name=editorValue(editor,'name');
-  e.url=editorValue(editor,'url').trim();
-  e.venue=editorValue(editor,'venue');
-  e.rating=editorValue(editor,'rating');
-  e.nightTime=editorValue(editor,'nightTime');
-  e.nightText=editorValue(editor,'nightText');
-  e.attendanceStatus=editorValue(editor,'attendanceStatus');
-  const people=splitLines(editorValue(editor,'people')).map(x=>'名前コード：'+x);
-  const conditions=splitLines(editorValue(editor,'conditions'));
-  e.conditionLines=[...people,...conditions];
-  e.visitDates=String(editorValue(editor,'visitDates')).split(/[,、\s]+/).map(x=>x.trim()).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x));
-  let r=reportByEvent(e);
-  const rr=editorValue(editor,'reportRating').trim(),rt=editorValue(editor,'reportText');
-  if((rr||rt)&&!r){
-    r={id:'draft-report-'+id,date:e.visitDates[0]||e.date,visitDates:[...e.visitDates],scheduledDate:e.date,scheduledEndDate:e.endDate||e.date,scheduledDateText:'',dateText:'',name:e.name,url:e.url||'',venue:e.venue||'',rating:rr,category:e._kind,report:rt,source:'確認版編集'};
-    reports.push(r);e.sourceReportId=r.id;
-  }else if(r){
-    r.name=e.name;r.venue=e.venue;r.url=e.url||'';
-    r.scheduledDate=e.date;r.scheduledEndDate=e.endDate||e.date;
-    r.date=e.visitDates[0]||e.date;r.visitDates=[...e.visitDates];
-    r.rating=rr;r.report=rt;r.category=e._kind;
-  }
-  markDirty(id);
-  activeEditId='';activeEditVisitDate='';
-  render();
-}
-function undoEvent(id){
-  const base=baseEventById(id);
-  const cur=eventById(id);
-  if(base){
-    if(cur)Object.assign(cur,cloneData(base)); else events.push(cloneData(base));
-    reports=reports.filter(r=>r.id!==cur?.sourceReportId&&r.id!==base.sourceReportId);
-    const br=baseReports.find(r=>r.id===base.sourceReportId);if(br)reports.push(cloneData(br));
-  }else{
-    events=events.filter(e=>e.id!==id);
-    if(cur?.sourceReportId)reports=reports.filter(r=>r.id!==cur.sourceReportId);
-  }
-  dirtyIds.delete(id);activeEditId='';activeEditVisitDate='';refreshEditBar();render();
-}
-function duplicateEvent(id){
-  const e=eventById(id);if(!e)return;
-  const n=cloneData(e),stamp=Date.now();
-  n.id='draft-copy-'+stamp;n.name=(n.name||'')+'（複製）';n.sourceReportId='';
-  const r=reportByEvent(e);
-  if(r){
-    const nr=cloneData(r);nr.id='draft-report-'+stamp;nr.name=n.name;reports.push(nr);n.sourceReportId=nr.id;
-  }
-  events.push(n);markDirty(n.id);activeEditId=n.id;activeEditVisitDate='';render();
-}
-function deleteEvent(id){
-  const e=eventById(id);if(!e)return;
-  if(!confirm('このイベントを確認版から削除しますか？'))return;
-  events=events.filter(x=>x.id!==id);
-  if(e.sourceReportId)reports=reports.filter(r=>r.id!==e.sourceReportId);
-  markDirty(id);activeEditId='';activeEditVisitDate='';render();
-}
-function newEvent(){
-  const stamp=Date.now(),today=new Date().toISOString().slice(0,10);
-  const e={id:'draft-new-'+stamp,date:today,endDate:'',dateText:'',name:'新しいイベント',url:'',venue:'',conditionLines:[],rating:'',nightTime:'',nightText:'',attendanceStatus:'',visitDates:[],sourceReportId:'',_kind:'exhibition'};
-  events.push(e);markDirty(e.id);mode='all';listStartYear=0;listStartMonth=0;render();
-  requestAnimationFrame(()=>{const rows=[...document.querySelectorAll('tr.event-row')];const row=rows.find(x=>x.textContent.includes('新しいイベント'));if(row){row.scrollIntoView({behavior:'smooth',block:'center'});const n=row.querySelector('[data-direct-field="name"]');if(n)n.focus();}});
-}
-function saveEditDraft(){
-  localStorage.setItem(EDIT_DRAFT_KEY,JSON.stringify({events,reports,savedAt:new Date().toISOString()}));
-  baseEvents=cloneData(events);baseReports=cloneData(reports);dirtyIds.clear();refreshEditBar();render();
-}
-function discardUnsaved(){
-  events=cloneData(baseEvents);reports=cloneData(baseReports);dirtyIds.clear();activeEditId='';activeEditVisitDate='';refreshEditBar();render();
-}
 
 
-function editAttr(id,field,target='event'){
-  return editing?' contenteditable="true" spellcheck="false" class="editable editable-block" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'';
-}
 function editableInline(id,field,value,target='event',extraClass=''){
   const cls=editing?'editable '+extraClass:extraClass;
   return '<span'+(cls?' class="'+cls.trim()+'"':'')+(editing?' contenteditable="true" spellcheck="false" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'')+'>'+esc(value||'')+'</span>';
@@ -800,7 +688,6 @@ function compareVenue(a,b){
 }
 
 
-function htmlStorageKey(){return LEGACY_HTML_KEY+':'+mode}
 function setSelected(row){
   if(selected)selected.classList.remove('selected');
   selected=row;
@@ -839,36 +726,6 @@ function saveLegacyHTML(message){
   persistStructuredEditDraft(message||'編集下書きを保存しました');
 }
 function restoreLegacyHTML(){return false;}
-function rowMonthKey(row){
-  if(row.classList.contains('month'))return row.dataset.month||'';
-  const d=row.dataset.visitDate||row.dataset.startDate||'';
-  if(/^\d{4}-\d{2}/.test(d))return d.slice(0,7);
-  return '';
-}
-function applyTableMonthFilter(){
-  const body=document.getElementById('body');
-  if(!body)return;
-  if(!listStartMonth){
-    [...body.rows].forEach(r=>r.style.display='');
-    return;
-  }
-  const key=(listStartYear||calendarBaseYear)+'-'+String(listStartMonth).padStart(2,'0');
-  let currentMonth='',show=false;
-  [...body.rows].forEach(row=>{
-    if(row.classList.contains('month')){
-      currentMonth=row.dataset.month||'';
-      show=currentMonth>=key;
-      row.style.display=show?'':'none';
-      return;
-    }
-    if(row.classList.contains('week')){
-      row.style.display=show?'':'none';
-      return;
-    }
-    const own=rowMonthKey(row);
-    row.style.display=((own?own>=key:show)?'':'none');
-  });
-}
 function clearLegacyHTML(){
   clearStructuredEditDraft();
   selected=null;
@@ -1094,7 +951,6 @@ document.getElementById('monthJump').addEventListener('click',e=>{
     localStorage.removeItem(EDIT_DRAFT_KEY);
     localStorage.removeItem(LEGACY_HTML_KEY);
     loadStructuredEditDraft();
-    baseEvents=cloneData(events);baseReports=cloneData(reports);
     refreshEditBar();
     render();
   }catch(err){
