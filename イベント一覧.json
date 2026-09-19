@@ -31,7 +31,9 @@
       "name": "Meets 第5回 経営企画部 戦略サミット",
       "url": "https://eight-event.8card.net/meets/summit_cp/",
       "venue": "グランド ハイアット 東京（六本木）",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：増田 慎一"
+      ],
       "rating": "実地評価：B",
       "nightTime": "",
       "nightText": "",
@@ -69,7 +71,10 @@
       "name": "Agentforce World Tour Tokyo",
       "url": "https://www.salesforce.com/jp/events/world-tour/tokyo/?d=7013y0000025oOlAAI&nc=701ed0000147fd8AAA&utm_source=sfdc&utm_medium=sales_email&utm_campaign=jp-alllobcon&utm_content=all-ipevent-7013y0000025oOlAAI&utm_id=1&utm_medium=email&utm_source=marketing_em",
       "venue": "ザ・プリンス パークタワー東京",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：伊藤 聡",
+        "名前コード：村岡 隆"
+      ],
       "rating": "実地評価：E",
       "nightTime": "",
       "nightText": "",
@@ -88,7 +93,9 @@
       "name": "SAP Transformation Excellence Tour Tokyo 2026",
       "url": "https://www.signavio.com/jp/events/sap-transformation-excellence-tour-tokyo-2026/",
       "venue": "虎ノ門ヒルズ森タワー 5階",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：増田 慎一"
+      ],
       "rating": "実地評価：B",
       "nightTime": "",
       "nightText": "",
@@ -107,7 +114,9 @@
       "name": "SYNERGY Tokyo 2026",
       "url": "https://www.thomsonreuters.co.jp/ja/events/synergy-tokyo-2026/trade.html",
       "venue": "グランド ハイアット 東京（六本木）",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：増田 慎一"
+      ],
       "rating": "実地評価：S",
       "nightTime": "",
       "nightText": "",
@@ -162,7 +171,9 @@
       "name": "ACCELERATE JAPAN 2026",
       "url": "https://www.fortinet.com/jp/promos/accelerate-japan",
       "venue": "ANAインターコンチネンタルホテル 東京",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
       "rating": "実地評価：D",
       "nightTime": "",
       "nightText": "",
@@ -181,7 +192,9 @@
       "name": "Alteryx on Tour : Tokyo",
       "url": "https://alteryx.event-web.jp/",
       "venue": "赤坂インターシティコンファレンス",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
       "rating": "実地評価：D",
       "nightTime": "",
       "nightText": "",
@@ -200,7 +213,9 @@
       "name": "SAP NOW AI Tour Tokyo",
       "url": "https://www.sap.com/japan/events/sapnowtokyo.html",
       "venue": "グランドプリンスホテル新高輪",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
       "rating": "実地評価：A",
       "nightTime": "",
       "nightText": "",
@@ -237,7 +252,9 @@
       "name": "OutSystems World Tour Japan 2026",
       "url": "https://events.outsystems.com/event/owt-japan-26/Homepage",
       "venue": "ウェスティンホテル東京",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
       "rating": "実地評価：C",
       "nightTime": "",
       "nightText": "",
@@ -294,7 +311,9 @@
       "name": "Nutanix .NEXT On Tour Tokyo 2026",
       "url": "https://www.bs-event.jp/nextontourtokyo/",
       "venue": "高輪ゲートウェイ コンベンションセンター",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
       "rating": "実地評価：D",
       "nightTime": "",
       "nightText": "",
@@ -313,7 +332,9 @@
       "name": "PKSHA AI Summit 2026",
       "url": "https://aisummit.pkshatech.com/?utm_source=chatgpt.com",
       "venue": "ANAインターコンチネンタルホテル 東京",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
       "rating": "実地評価：A",
       "nightTime": "",
       "nightText": "",
