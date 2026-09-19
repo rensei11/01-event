@@ -49,6 +49,24 @@ th:last-child,td:last-child{border-right:0}
 .empty{padding:28px;text-align:center;color:var(--muted)}
 .note{font-size:11px;color:var(--muted);margin-top:8px}
 @media(max-width:700px){.wrap{padding:10px}h1{font-size:17px}td,th{padding:6px 8px}.status{width:100%;margin-left:0}.calendars{grid-template-columns:repeat(3,minmax(220px,1fr));overflow-x:auto}.calendar-slider{overflow:hidden}}
+
+.end-process-row{display:flex;justify-content:flex-end;margin:0 0 8px}
+.end-process-btn{border:2px solid #b45309;background:#fff7ed;color:#9a3412;font-weight:900;padding:8px 14px}
+.end-process-count{display:inline-flex;min-width:20px;height:20px;padding:0 5px;margin-left:5px;border-radius:10px;align-items:center;justify-content:center;background:#9a3412;color:#fff;font-size:11px}
+.end-row-btn{margin-left:6px;padding:2px 7px;font-size:11px;font-weight:900;border-color:#c7895f;background:#fff7ed;color:#8a3b12}
+.end-modal[hidden]{display:none}.end-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:18px}
+.end-dialog{width:min(900px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.end-dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:#20262d;color:#fff}
+.end-dialog-title{font-size:17px;font-weight:800}.end-close{background:#fff;font-size:18px;padding:3px 9px}
+.end-dialog-body{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:420px}
+.end-list{border-right:1px solid var(--line);padding:12px;background:#f7f8fa}.end-list-note{font-size:12px;color:var(--muted);margin:0 0 8px}
+.end-event-btn{width:100%;text-align:left;margin:0 0 7px;padding:9px 10px;border:1px solid #cbd2d9;background:#fff}.end-event-btn.active{border-color:#2f6fda;background:#e8f4ff}
+.end-event-date{font-size:11px;color:var(--muted);font-weight:700}.end-event-name{font-size:13px;font-weight:800}
+.end-form-wrap{padding:16px}.end-empty{padding:30px 12px;color:var(--muted);text-align:center}.end-form-title{font-size:18px;font-weight:800}.end-form-venue{font-size:13px;color:var(--muted);margin-bottom:14px}
+.end-field{margin:0 0 14px}.end-label{display:block;font-size:13px;font-weight:800;margin-bottom:5px}.end-choice,.end-visit-dates{display:flex;gap:10px;flex-wrap:wrap}.end-choice label,.end-visit-dates label{display:inline-flex;align-items:center;gap:4px}
+.end-rating{padding:6px 8px;border:1px solid #aeb7c0;border-radius:6px}.end-report{width:100%;min-height:200px;resize:vertical;border:1px solid #aeb7c0;border-radius:7px;padding:9px;font:inherit;line-height:1.55}
+.end-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}.end-save{background:#20262d;color:#fff;border-color:#20262d;font-weight:800}.end-saved{font-size:12px;color:#18794e;font-weight:700}
+@media(max-width:760px){.end-dialog-body{grid-template-columns:1fr}.end-list{border-right:0;border-bottom:1px solid var(--line)}}
 </style>
 </head>
 <body>
@@ -61,6 +79,7 @@ th:last-child,td:last-child{border-right:0}
     <button data-mode="attended">参加済み</button>
     <span id="status" class="status">読み込み中</span>
   </div>
+  <div class="end-process-row"><button id="endProcessBtn" class="end-process-btn" type="button">終了処理 <span id="endProcessCount" class="end-process-count">0</span></button></div>
   <div class="legacy-edit-toolbar">
     <button id="editBtn" class="primary" type="button">編集開始</button>
     <button id="addBtn" type="button" disabled>＋ 新しいイベント</button>
@@ -86,18 +105,39 @@ th:last-child,td:last-child{border-right:0}
       <tbody id="body"><tr><td colspan="4" class="empty">読み込み中です</td></tr></tbody>
     </table>
   </div>
-  <div class="note">※ 初期版と同じHTML直接編集方式です。保存先はこの確認版のブラウザ内で、本番GitHubにはまだ反映しません。</div>
+  <div class="note">※ 表の直接編集は確認用です。「終了処理」の保存だけはGitHubへ正式反映します。</div>
+</div>
+<div id="endProcessModal" class="end-modal" hidden>
+  <div class="end-dialog" role="dialog" aria-modal="true" aria-labelledby="endProcessTitle">
+    <div class="end-dialog-head"><div id="endProcessTitle" class="end-dialog-title">終了処理</div><button id="endProcessClose" class="end-close" type="button">×</button></div>
+    <div class="end-dialog-body">
+      <div class="end-list"><p id="endProcessNote" class="end-list-note">終了処理待ちのイベントです。</p><div id="endProcessList"></div></div>
+      <div id="endProcessFormWrap" class="end-form-wrap"><div class="end-empty">左からイベントを選んでください。</div></div>
+    </div>
+  </div>
 </div>
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
 const EDIT_DRAFT_KEY='free_food_event_ledger_2026_design_edit_v1';
 const LEGACY_HTML_KEY='free_food_event_ledger_2026_legacy_html_v1';
+const END_DRAFTS_KEY='free_food_event_end_process_drafts_v1';
+const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
+const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
 let events=[],reports=[],flags={},mode='all',editing=false;
 let baseEvents=[],baseReports=[],dirtyIds=new Set(),activeEditId='',activeEditVisitDate='';
 let selected=null;
 const calendarToday=new Date();
 let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
 let listStartYear=0,listStartMonth=0;
+let endDrafts={},selectedEndEventId='',endProcessSingle=false;
+const endProcessBtn=document.getElementById('endProcessBtn');
+const endProcessCount=document.getElementById('endProcessCount');
+const endProcessModal=document.getElementById('endProcessModal');
+const endProcessTitle=document.getElementById('endProcessTitle');
+const endProcessClose=document.getElementById('endProcessClose');
+const endProcessList=document.getElementById('endProcessList');
+const endProcessFormWrap=document.getElementById('endProcessFormWrap');
+const endProcessNote=document.getElementById('endProcessNote');
 
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™®【】\[\]（）()‐\-–—'’:"：～〜]/g,'')}
@@ -379,6 +419,121 @@ function passesListStart(date){
   return String(date||'').slice(0,7)>=key;
 }
 
+
+function todayISO(){
+  const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function isEndedEvent(e){return String(e.endDate||e.date||'')<todayISO()}
+function needsEndProcessing(e){
+  if(!isEndedEvent(e))return false;
+  if(!e.attendanceStatus)return true;
+  if(e.attendanceStatus==='attended'){
+    if(!actualDates(e).length)return true;
+    const r=reportFor(e);
+    if(!r||!String(r.report||'').trim())return true;
+  }
+  return false;
+}
+function endProcessingEvents(){
+  return events.filter(needsEndProcessing).sort((a,b)=>String(b.endDate||b.date).localeCompare(String(a.endDate||a.date))||String(a.name).localeCompare(String(b.name),'ja'));
+}
+function updateEndProcessButton(){
+  const n=endProcessingEvents().length;
+  if(endProcessCount)endProcessCount.textContent=String(n);
+  if(endProcessBtn)endProcessBtn.title=n?'終了処理待ち '+n+'件':'終了処理待ちはありません';
+}
+function endDayLabel(iso){
+  const d=new Date(iso+'T00:00:00'),w=['日','月','火','水','木','金','土'];
+  return (d.getMonth()+1)+'/'+d.getDate()+'('+w[d.getDay()]+')';
+}
+function endDraftFor(e){
+  const rr=reportFor(e);
+  const base={
+    status:e.attendanceStatus||'',
+    visitDates:[...actualDates(e)],
+    rating:rr?.rating||'',
+    report:rr?.report||''
+  };
+  return Object.assign(base,endDrafts[e.id]||{});
+}
+function renderEndProcessList(){
+  const list=endProcessSingle?events.filter(e=>e.id===selectedEndEventId):endProcessingEvents();
+  updateEndProcessButton();
+  if(endProcessNote)endProcessNote.textContent=endProcessSingle?'このイベントの参加記録を修正します。':'終了済みで、参加結果または実地レポートが未確定のイベントです。';
+  if(!list.length){
+    endProcessList.innerHTML='<div class="end-empty">'+(endProcessSingle?'対象イベントが見つかりません。':'現在、終了処理待ちはありません。')+'</div>';
+    endProcessFormWrap.innerHTML='<div class="end-empty">'+(endProcessSingle?'編集できません。':'すべて処理済みです。')+'</div>';
+    return;
+  }
+  if(!selectedEndEventId||!list.some(e=>e.id===selectedEndEventId))selectedEndEventId=list[0].id;
+  endProcessList.innerHTML=list.map(e=>'<button type="button" class="end-event-btn '+(e.id===selectedEndEventId?'active':'')+'" data-end-id="'+esc(e.id)+'"><div class="end-event-date">'+esc(endDayLabel(e.endDate||e.date))+'終了・'+(e._kind==='exhibition'?'展示会':'懇親会')+'</div><div class="end-event-name">'+esc(e.name)+'</div></button>').join('');
+  renderEndProcessForm();
+}
+function renderEndProcessForm(){
+  const e=events.find(x=>x.id===selectedEndEventId);
+  if(!e){endProcessFormWrap.innerHTML='<div class="end-empty">イベントを選んでください。</div>';return;}
+  const d=endDraftFor(e);
+  const visits=days(e.date,e.endDate||e.date).map(day=>'<label><input class="end-visit-check" type="checkbox" value="'+esc(day)+'" '+(d.visitDates.includes(day)?'checked':'')+'>'+esc(endDayLabel(day))+'</label>').join('');
+  const ratings=['','A+','A','A-','B+','B','B-','C+','C','C-','D','E','F'];
+  endProcessFormWrap.innerHTML=
+    '<div class="end-form-title">'+esc(e.name)+'</div>'+
+    '<div class="end-form-venue">'+esc(e.venue||'会場未入力')+' / '+esc(compactRangeText(e))+'</div>'+
+    '<div class="end-field"><span class="end-label">結果</span><div class="end-choice">'+
+      '<label><input type="radio" name="endAttendance" value="attended" '+(d.status==='attended'?'checked':'')+'>参加した</label>'+
+      '<label><input type="radio" name="endAttendance" value="not_attended" '+(d.status==='not_attended'?'checked':'')+'>行っていない</label>'+
+    '</div></div>'+
+    '<div class="end-field"><span class="end-label">実際に行った日</span><div class="end-visit-dates">'+visits+'</div></div>'+
+    '<div class="end-field"><label class="end-label" for="endRating">実地レポート 評価</label><select id="endRating" class="end-rating">'+ratings.map(v=>'<option value="'+v+'" '+(v===d.rating?'selected':'')+'>'+(v||'未選択')+'</option>').join('')+'</select></div>'+
+    '<div class="end-field"><label class="end-label" for="endReport">実地レポート</label><textarea id="endReport" class="end-report">'+esc(d.report||'')+'</textarea></div>'+
+    '<div class="end-actions"><button id="endDraftSave" type="button">下書き保存</button><button id="endGitHubSave" class="end-save" type="button">GitHubへ保存</button><span id="endDraftSaved" class="end-saved"></span></div>';
+}
+function collectEndDraft(){
+  const e=events.find(x=>x.id===selectedEndEventId);if(!e)return null;
+  const d=endDraftFor(e),choice=endProcessFormWrap.querySelector('input[name="endAttendance"]:checked');
+  return {
+    eventId:e.id,name:e.name,eventName:e.name,kind:e._kind,status:choice?choice.value:'',
+    visitDates:[...endProcessFormWrap.querySelectorAll('.end-visit-check:checked')].map(x=>x.value).sort(),
+    venue:e.venue||'',url:e.url||'',conditionText:conditionLines(e).join('\n'),personName:personLines(e).join(' / '),
+    preRating:e.rating||'',nightTime:e.nightTime||'',nightText:e.nightText||'',
+    rating:endProcessFormWrap.querySelector('#endRating')?.value||d.rating||'',
+    report:endProcessFormWrap.querySelector('#endReport')?.value||d.report||'',
+    schemaVersion:2,updatedAt:new Date().toISOString()
+  };
+}
+function saveEndDraft(showMessage){
+  const d=collectEndDraft();if(!d)return;
+  endDrafts[d.eventId]=d;localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+  if(showMessage){const el=document.getElementById('endDraftSaved');if(el){el.textContent='下書きを保存しました';setTimeout(()=>{if(el)el.textContent=''},1800);}}
+}
+async function saveEndToGitHub(){
+  const d=collectEndDraft();if(!d)return;
+  if(!d.status){alert('参加した／行っていない のどちらかを選んでください。');return;}
+  if(d.status==='attended'&&!d.visitDates.length){alert('実際に行った日を選んでください。');return;}
+  if(d.status==='attended'&&!String(d.report||'').trim()){alert('参加したイベントは実地レポートを入力してください。');return;}
+  saveEndDraft(false);
+  let editKey=localStorage.getItem(END_EDIT_KEY_KEY)||'';
+  if(!editKey){editKey=prompt('終了処理の編集キーを入力してください。最初の1回だけ保存します。')||'';if(!editKey)return;localStorage.setItem(END_EDIT_KEY_KEY,editKey);}
+  const btn=document.getElementById('endGitHubSave'),msg=document.getElementById('endDraftSaved');
+  if(btn){btn.disabled=true;btn.textContent='保存中…';}if(msg)msg.textContent='';
+  try{
+    const rr=await fetch(END_PROCESS_API_URL.replace(/\/$/,'')+'/save-v2',{method:'POST',headers:{'Content-Type':'application/json','X-Edit-Key':editKey},body:JSON.stringify(d)});
+    const result=await rr.json().catch(()=>({ok:false,error:'保存結果を読めません'}));
+    if(rr.status===401){localStorage.removeItem(END_EDIT_KEY_KEY);throw new Error('編集キーが違います。次回保存時にもう一度入力してください。');}
+    if(!rr.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
+    delete endDrafts[d.eventId];localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+    location.reload();
+  }catch(err){if(msg)msg.textContent=err.message||String(err);}
+  finally{if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}}
+}
+function openEndProcess(eventId){
+  endProcessSingle=!!eventId;selectedEndEventId=eventId||'';
+  endProcessTitle.textContent=endProcessSingle?'記録修正':'終了処理';
+  endProcessModal.hidden=false;document.body.style.overflow='hidden';renderEndProcessList();
+}
+function closeEndProcess(){
+  saveEndDraft(false);endProcessModal.hidden=true;document.body.style.overflow='';endProcessSingle=false;selectedEndEventId='';
+}
+
 function row(e){
   const r=reportFor(e), p=plannedDates(e), a=actualDates(e), people=personLines(e), cond=conditionLines(e);
   const badges=[];
@@ -402,7 +557,9 @@ function row(e){
   const dayTools=(!done&&!r)?planDayChecks(e):'';
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div>'+tools+dayTools+
+  const endButton=done?'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">'+(needsEndProcessing(e)?'終了処理':'記録修正')+'</button>':'';
+  const rightTop='<div class="event-right-tools">'+personTop+endButton+'</div>';
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
     '<div class="event-head"><div class="name event-name">'+link+'</div></div>'+
     '<div class="venue">'+esc(e.venue||'')+'</div>';
 
@@ -429,12 +586,13 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
+  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">記録修正</button></div>';
 
   let schedule='';
   if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(compactRangeText(e))+'</div>';
   else if(e.date!==visitDate) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
 
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div>'+
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+
     '<div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+schedule;
 
   let detail='';
@@ -647,6 +805,7 @@ function clearLegacyHTML(){
 }
 
 function render(){
+  updateEndProcessButton();
   document.body.classList.toggle('planned-view',mode==='planned');
   document.body.classList.toggle('editing',editing);
   refreshEditBar();
@@ -717,6 +876,17 @@ document.querySelector('.controls').addEventListener('click',e=>{
   document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
   render();
 });
+
+
+endProcessBtn.addEventListener('click',()=>openEndProcess(''));
+endProcessClose.addEventListener('click',closeEndProcess);
+endProcessModal.addEventListener('click',e=>{if(e.target===endProcessModal)closeEndProcess();});
+endProcessList.addEventListener('click',e=>{const b=e.target.closest('.end-event-btn');if(!b)return;saveEndDraft(false);selectedEndEventId=b.dataset.endId;renderEndProcessList();});
+endProcessFormWrap.addEventListener('input',()=>saveEndDraft(false));
+endProcessFormWrap.addEventListener('change',()=>saveEndDraft(false));
+endProcessFormWrap.addEventListener('click',async e=>{if(e.target.id==='endDraftSave'){saveEndDraft(true);return;}if(e.target.id==='endGitHubSave'){await saveEndToGitHub();return;}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!endProcessModal.hidden)closeEndProcess();});
+document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.end-row-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEndProcess(b.dataset.endEdit||'');});
 
 document.getElementById('editBtn').addEventListener('click',()=>setLegacyEditing(!editing));
 
@@ -863,6 +1033,7 @@ document.getElementById('monthJump').addEventListener('click',e=>{
 (async()=>{
   try{
     try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(_){flags={}}
+    try{endDrafts=JSON.parse(localStorage.getItem(END_DRAFTS_KEY)||'{}')}catch(_){endDrafts={}}
     const [g,x,m]=await Promise.all([
       fetch('イベント一覧.json?v='+Date.now(),{cache:'no-store'}),
       fetch('展示会一覧.json?v='+Date.now(),{cache:'no-store'}),
