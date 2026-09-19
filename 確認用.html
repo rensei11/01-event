@@ -605,11 +605,11 @@ function saveLegacyHTML(message){
   if(st&&message)st.textContent=message;
 }
 function restoreLegacyHTML(){
+  if(listStartMonth)return false;
   const saved=localStorage.getItem(htmlStorageKey());
   if(!saved)return false;
   document.getElementById('body').innerHTML=saved;
   applyContentEditable();
-  applyTableMonthFilter();
   return true;
 }
 function rowMonthKey(row){
@@ -682,7 +682,7 @@ function render(){
       same.forEach((x,idx)=>{html+=attendedRow(x.e,d,idx===0,same.length,idx===0);});
     }
     document.getElementById('body').innerHTML=html||'<tr><td colspan="3" class="empty">参加済みイベントはありません</td></tr>';
-    restoreLegacyHTML();applyContentEditable();applyTableMonthFilter();selected=null;updateEditButtons();
+    restoreLegacyHTML();applyContentEditable();selected=null;updateEditButtons();
     document.getElementById('status').textContent=items.length+'件';
     renderCalendar();
     return;
@@ -708,7 +708,7 @@ function render(){
     html+=row(e);
   }
   document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">該当するイベントはありません</td></tr>';
-  restoreLegacyHTML();applyContentEditable();applyTableMonthFilter();selected=null;updateEditButtons();
+  restoreLegacyHTML();applyContentEditable();selected=null;updateEditButtons();
   document.getElementById('status').textContent=list.length+'件';
   renderCalendar();
 }
@@ -861,10 +861,7 @@ document.getElementById('monthJump').addEventListener('click',e=>{
   const y=parseInt(document.getElementById('calendarYear').value,10)||calendarBaseYear;
   if(m===0){listStartYear=0;listStartMonth=0;}
   else{listStartYear=y;listStartMonth=m;}
-  applyTableMonthFilter();
-  renderCalendar();
-  const first=[...document.querySelectorAll('#body tr.month')].find(r=>r.style.display!=='none');
-  if(first)first.scrollIntoView({behavior:'smooth',block:'start'});
+  render();
 });
 
 (async()=>{
