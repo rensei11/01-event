@@ -504,8 +504,8 @@ function renderCalendar(){
   const ys=availableYears();
   const shownYear=calendarBaseYear;
   yearSel.innerHTML=ys.map(y=>'<option value="'+y+'" '+(y===shownYear?'selected':'')+'>'+y+'</option>').join('');
-  jump.innerHTML=Array.from({length:12},(_,i)=>'<button type="button" data-month="'+(i+1)+'" title="'+(i+1)+'月を表示" class="'+(calendarBaseMonth===i+1?'active':'')+'">'+(i+1)+'月</button>').join('');
-  note.textContent=mode==='attended'?'緑＝実際に参加した日':mode==='planned'?'青＝来場予定日':'灰＝イベント開催日';
+  jump.innerHTML=Array.from({length:12},(_,i)=>'<button type="button" data-month="'+(i+1)+'" data-year="'+calendarBaseYear+'" title="'+(i+1)+'月を表示" class="'+(calendarBaseMonth===i+1?'active':'')+'">'+(i+1)+'月</button>').join('');
+  note.textContent=calendarBaseYear+'年'+calendarBaseMonth+'月から3か月　｜　'+(mode==='attended'?'緑＝実際に参加した日':mode==='planned'?'青＝来場予定日':'灰＝イベント開催日');
   for(let off=0;off<3;off++){
     const d=new Date(calendarBaseYear,calendarBaseMonth-1+off,1);
     months.appendChild(buildMonthCard(d.getFullYear(),d.getMonth()+1,map));
@@ -810,16 +810,29 @@ document.getElementById('body').addEventListener('change',e=>{
   if(d)setPlanDay(event,d.dataset.day,d.checked);
 });
 
-document.getElementById('calendarPrev').onclick=()=>setCalendarBase(calendarBaseYear,calendarBaseMonth-1);
-document.getElementById('calendarNext').onclick=()=>setCalendarBase(calendarBaseYear,calendarBaseMonth+1);
+document.getElementById('calendarPrev').onclick=()=>{
+  const d=new Date(calendarBaseYear,calendarBaseMonth-2,1);
+  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;renderCalendar();
+};
+document.getElementById('calendarNext').onclick=()=>{
+  const d=new Date(calendarBaseYear,calendarBaseMonth,1);
+  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;renderCalendar();
+};
 document.getElementById('calendarYear').addEventListener('change',e=>{
-  const y=Number(e.target.value);
-  setCalendarBase(y,calendarBaseMonth);
+  const y=parseInt(e.target.value,10);
+  if(!Number.isFinite(y))return;
+  calendarBaseYear=y;
+  renderCalendar();
 });
 document.getElementById('monthJump').addEventListener('click',e=>{
   const b=e.target.closest('button[data-month]');if(!b)return;
-  const m=Number(b.dataset.month),y=Number(document.getElementById('calendarYear').value||calendarBaseYear);
-  setCalendarBase(y,m);
+  e.preventDefault();
+  const m=parseInt(b.dataset.month,10);
+  const y=parseInt(document.getElementById('calendarYear').value,10)||calendarBaseYear;
+  if(!Number.isFinite(m)||m<1||m>12)return;
+  calendarBaseYear=y;
+  calendarBaseMonth=m;
+  renderCalendar();
 });
 document.getElementById('listStartSelect').addEventListener('change',e=>{
   listStartMonth=Number(e.target.value)||0;
