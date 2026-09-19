@@ -384,6 +384,7 @@ function row(e){
   const badges=[];
   badges.push('<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>');
   if(a.length)badges.push('<span class="tag attended">参加 '+esc(fmtDates(a))+'</span>');
+  else if(e.attendanceStatus==='attended')badges.push('<span class="tag attended">参加済み（日付未入力）</span>');
   if(p.length)badges.push('<span class="tag planned">予定 '+esc(fmtDates(p))+'</span>');
   if(e.attendanceStatus==='not_attended')badges.push('<span class="tag notattended">未参加</span>');
 
