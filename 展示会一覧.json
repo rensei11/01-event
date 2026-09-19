@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-19-links",
+  "dataVersion": "2026-09-19-repair",
   "year": 2026,
   "events": [
     {
@@ -493,9 +493,11 @@
       "endDate": "2026-02-27",
       "dateText": "2月25日(水）～27日(金）",
       "name": "東京ケアウィーク’26",
-      "url": "",
+      "url": "https://caretex.jp/",
       "venue": "ビックサイト 西1-2,4",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：青井 瑛治"
+      ],
       "rating": "実地評価：D",
       "nightTime": "",
       "nightText": "",
@@ -608,9 +610,11 @@
       "endDate": "2026-03-19",
       "dateText": "3月17日(火)～19日(木)",
       "name": "SMART ENERGY WEEK 【春】2026",
-      "url": "",
+      "url": "https://www.wsew.jp/spring/ja-jp.html",
       "venue": "ビックサイト 東4-8,西1-4,南1-4",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：山本 雄太"
+      ],
       "rating": "実地評価：B",
       "nightTime": "",
       "nightText": "",
@@ -2336,9 +2340,12 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "historySource": "未参加イベント"
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-09",
+        "2026-09-10"
+      ],
+      "historySource": "ユーザー実地確認"
     },
     {
       "id": "hist-no-05942e465f13",
@@ -3260,7 +3267,7 @@
       "endDate": "2026-12-18",
       "dateText": "12月16日(水)～18日(金)",
       "name": "東京ケアウィーク’26",
-      "url": "",
+      "url": "http://careweek.jp/",
       "venue": "東1-3ホール",
       "conditionLines": [],
       "rating": "",

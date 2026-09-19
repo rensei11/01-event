@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-19-links",
+  "dataVersion": "2026-09-19-repair",
   "year": 2026,
   "events": [
     {
@@ -283,8 +283,8 @@
     },
     {
       "id": "hist-att-71ede1d4ae3d",
-      "date": "2026-09-08",
-      "endDate": "",
+      "date": "2026-09-09",
+      "endDate": "2026-09-10",
       "dateText": "9月9日(水)～10日(木)",
       "name": "GROWTH 祭 TOKYO 2026",
       "url": "https://gmt.youtrust.jp/?utm_source=twitter&utm_medium=social&utm_campaign=gmt2026_20260818",
@@ -297,10 +297,10 @@
       "nightText": "",
       "attendanceStatus": "attended",
       "visitDates": [
-        "2026-09-08"
+        "2026-09-09"
       ],
       "sourceReportId": "rep-71ede1d4ae3d",
-      "historySource": "実地レポート",
+      "historySource": "ユーザー実地確認",
       "originalScheduledDate": "2026-09-09",
       "originalScheduledEndDate": "2026-09-10",
       "originalScheduledDateText": "9月9日(水)～10日(木)"
@@ -1138,6 +1138,7 @@
       "url": "https://workatowowconference.cventevents.com/event/tokyo/world-of-workato",
       "venue": "東京マリオットホテル",
       "conditionLines": [
+        "名前コード：久保 直輝",
         "通常有料（一般59,000円～）",
         "無料招待コードあり／1,000名以上"
       ],
