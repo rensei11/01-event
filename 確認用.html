@@ -509,7 +509,8 @@ function row(e){
   );
   const personHtml=editing?editableBlock(e.id,'people',people.join('\n')):(people.length?esc(people.join(' / ')):'');
   const personTop=(editing||people.length)?'<div class="person-top">'+personHtml+'</div>':'';
-  const endButton=(!editing&&done&&!String(e.id).startsWith('draft-new-'))?'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">'+(needsEndProcessing(e)?'終了処理':'記録修正')+'</button>':'';
+  const canOfficialEnd=!String(e.id).startsWith('draft-new-')&&isEndedEvent(officialEvent(e));
+  const endButton=(!editing&&canOfficialEnd)?'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">'+(needsEndProcessing(e)?'終了処理':'記録修正')+'</button>':'';
   const rightTop='<div class="event-right-tools">'+personTop+endButton+'</div>';
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
     '<div class="event-head"><div class="name event-name">'+nameHtml+'</div></div>'+
