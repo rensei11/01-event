@@ -2327,7 +2327,7 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "not_attended",
+      "attendanceStatus": "attended",
       "visitDates": [],
       "historySource": "未参加イベント"
     },
@@ -2364,7 +2364,7 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "not_attended",
+      "attendanceStatus": "attended",
       "visitDates": [],
       "historySource": "未参加イベント"
     },
@@ -2380,7 +2380,7 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "not_attended",
+      "attendanceStatus": "attended",
       "visitDates": [],
       "historySource": "未参加イベント"
     },
@@ -2399,7 +2399,7 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "not_attended",
+      "attendanceStatus": "attended",
       "visitDates": [],
       "historySource": "未参加イベント"
     },
