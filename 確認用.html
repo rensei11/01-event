@@ -20,14 +20,14 @@ button.active{background:#41474c;color:white;border-color:#41474c}
 .calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:stretch}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:23px;font-weight:900}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}.month-card{border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0;align-self:start}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px;cursor:pointer}.month-name:hover{text-decoration:underline}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none}.cal-day.empty{visibility:hidden}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#5d8fc5;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.cal-day.clickable:hover{filter:brightness(.92)}
 .calendar-focus td{animation:calFlash 1.2s ease}@keyframes calFlash{0%,100%{background:inherit}35%,70%{background:#fff1b8}}
 .table-wrap{background:var(--paper);border:1px solid var(--line);overflow:auto}
-table{border-collapse:collapse;width:100%;table-layout:fixed;min-width:940px}
-col.date{width:11%}col.event{width:29%}col.cond{width:24%}col.detail{width:36%}
+table{border-collapse:collapse;width:100%;table-layout:fixed;min-width:980px}
+col.date{width:13%}col.event{width:27%}col.cond{width:24%}col.detail{width:36%}col.attended-date-col{width:9%}col.attended-event-col{width:31%}col.attended-detail-col{width:60%}
 th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;padding:8px 10px;font-size:13px;border-right:1px solid #5a6065}
 td{vertical-align:top;padding:7px 10px;border-top:1px solid var(--line);border-right:1px solid #e7e7e2;font-size:13px}
 th:last-child,td:last-child{border-right:0}
 .month td{background:#e8e8e3;font-weight:900;font-size:18px;padding:8px 12px;border-top:3px solid #9ea3a7}.week td{background:#eceff1;font-weight:900;font-size:16px;padding:7px 12px;border-top:2px solid #8f989e;border-bottom:1px solid #aeb6bb;color:#30363a}
 .event-row:nth-of-type(even) td{background:#fdfdfc}
-.date,.date-head{text-align:center}.date{font-weight:800;white-space:nowrap;vertical-align:middle;font-size:13px;letter-spacing:0;padding-left:8px;padding-right:8px}
+.date,.date-head{text-align:center}.date{font-weight:800;white-space:nowrap;vertical-align:middle;font-size:12px;letter-spacing:0;padding-left:6px;padding-right:6px;overflow:hidden;text-overflow:clip}
 .event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#555;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:800;font-size:14px}.name a{color:#184f9c;text-decoration:none}.name a:hover{text-decoration:underline}
 .venue{margin-top:2px;color:var(--muted)}
 .person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}.report-cond{margin:0 0 7px;padding:5px 7px;background:#f6f6f3;border-left:3px solid #c5c5bf;color:#555}.report-cond div{margin:1px 0}
@@ -36,7 +36,7 @@ th:last-child,td:last-child{border-right:0}
 .attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
 .planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
 .notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
-.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
+.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
 .row-notattended td{color:#777772;background:#f4f4f2!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
 .rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.pre{color:#555;margin-bottom:5px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
@@ -128,13 +128,15 @@ function dateText(e){
   return e.endDate&&e.endDate!==e.date ? e.date+'～'+e.endDate : e.date;
 }
 function compactRangeText(e){
-  if(!e.endDate||e.endDate===e.date)return dateText(e);
-  const a=new Date(e.date+'T00:00:00'),b=new Date(e.endDate+'T00:00:00');
-  const sameMonth=a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth();
+  const a=new Date(e.date+'T00:00:00'),b=new Date((e.endDate||e.date)+'T00:00:00');
   const w=['日','月','火','水','木','金','土'];
-  if(sameMonth)return a.getDate()+'('+w[a.getDay()]+')～'+b.getDate()+'('+w[b.getDay()]+')';
-  return (a.getMonth()+1)+'/'+a.getDate()+'('+w[a.getDay()]+')～'+(b.getMonth()+1)+'/'+b.getDate()+'('+w[b.getDay()]+')';
+  const left=(a.getMonth()+1)+'/'+a.getDate()+'('+w[a.getDay()]+')';
+  if(!e.endDate||e.endDate===e.date)return left;
+  const sameMonth=a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth();
+  const right=(sameMonth?'':(b.getMonth()+1)+'/')+b.getDate()+'('+w[b.getDay()]+')';
+  return left+'～'+right;
 }
+
 function planDayChecks(e){
   if(!e.endDate||e.endDate===e.date)return '';
   const selected=new Set(plannedDates(e));
@@ -160,7 +162,7 @@ function weekLabel(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;con
 function setTableLayout(attendedMode){
   const cols=document.getElementById('ledgerCols'),head=document.getElementById('ledgerHead');
   if(attendedMode){
-    cols.innerHTML='<col class="date"><col class="event"><col class="detail">';
+    cols.innerHTML='<col class="attended-date-col"><col class="attended-event-col"><col class="attended-detail-col">';
     head.innerHTML='<tr><th class="date-head">日付</th><th>イベント / 会場</th><th>条件 / 評価 / 内容・実地レポート</th></tr>';
   }else{
     cols.innerHTML='<col class="date"><col class="event"><col class="cond"><col class="detail">';
@@ -216,7 +218,7 @@ function row(e){
     ? '<td colspan="2">'+condHtml+detail+'</td>'
     : '<td>'+condHtml+'</td><td>'+detail+'</td>';
 
-  return '<tr class="event-row '+cls+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+esc(dateText(e))+'</td><td>'+eventCell+'</td>'+right+'</tr>';
+  return '<tr class="event-row '+cls+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+esc(compactRangeText(e))+'</td><td>'+eventCell+'</td>'+right+'</tr>';
 }
 
 
