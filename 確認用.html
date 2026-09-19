@@ -70,7 +70,6 @@ th:last-child,td:last-child{border-right:0}
 
 .edit-date-pair{display:grid;gap:4px}.edit-date-pair input{width:100%;min-width:0;border:1px solid #aeb7c0;border-radius:5px;padding:3px 4px;font:inherit;font-size:11px;background:#fff}
 .edit-placeholder{min-height:20px}
-#moveUpBtn,#moveDownBtn,#addWeekBtn{display:none}
 
 .attended-undated-title td{background:#fff4d6!important;color:#7c4a03;font-weight:900;border-top:3px solid #d8a23a!important}
 .attended-undated-row td{background:#fffaf0!important}
@@ -91,16 +90,13 @@ th:last-child,td:last-child{border-right:0}
   <div class="legacy-edit-toolbar">
     <button id="editBtn" class="primary" type="button">編集開始</button>
     <button id="addBtn" type="button" disabled>＋ 新しいイベント</button>
-    <button id="moveUpBtn" type="button" disabled>↑ 上へ</button>
-    <button id="moveDownBtn" type="button" disabled>↓ 下へ</button>
     <button id="kindBtn" type="button" disabled>展示会／懇親会</button>
     <button id="linkBtn" type="button" disabled>リンク設定</button>
-    <button id="addWeekBtn" type="button" disabled>週区切りを追加</button>
     <button id="delBtn" class="danger" type="button" disabled>選択行を削除</button>
     <button id="saveHtmlBtn" type="button">編集下書き保存</button>
     <button id="resetHtmlBtn" type="button">編集下書きを破棄</button>
   </div>
-  <div class="edit-help">編集開始 → 表の文字を直接変更できます。日付は日付欄、区分とURLは行を選んで上のボタンから変更します。編集はこのブラウザの下書きです。</div>
+  <div class="edit-help">編集開始 → 表の文字を直接変更できます。日付は日付欄、区分とURLは行を選んで上のボタンから変更します。並び順は日付・区分・会場で自動です。編集はこのブラウザの下書きです。</div>
   <section class="calendar-panel" aria-label="カレンダー">
     <div class="calendar-head"><div class="calendar-title">カレンダー</div><div id="calendarNote" class="calendar-note"></div></div>
     <div class="calendar-jump"><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div><span class="calendar-note">※ 下のカレンダーとは別</span></div>
@@ -497,7 +493,7 @@ function row(e){
   const nameHtml=editing?editableInline(e.id,'name',e.name):(
     e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name)
   );
-  const personHtml=editing?editableInline(e.id,'people',people.join('\n')):(people.length?esc(people.join(' / ')):'');
+  const personHtml=editing?editableBlock(e.id,'people',people.join('\n')):(people.length?esc(people.join(' / ')):'');
   const personTop=(editing||people.length)?'<div class="person-top">'+personHtml+'</div>':'';
   const endButton=(!editing&&done)?'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">'+(needsEndProcessing(e)?'終了処理':'記録修正')+'</button>':'';
   const rightTop='<div class="event-right-tools">'+personTop+endButton+'</div>';
@@ -696,15 +692,10 @@ function setSelected(row){
 }
 function updateEditButtons(){
   const ev=!!(selected&&selected.classList.contains('event-row'));
-  const any=!!selected;
-  const add=document.getElementById('addBtn'),week=document.getElementById('addWeekBtn'),del=document.getElementById('delBtn'),link=document.getElementById('linkBtn');
-  const up=document.getElementById('moveUpBtn'),down=document.getElementById('moveDownBtn'),kind=document.getElementById('kindBtn');
+  const add=document.getElementById('addBtn'),del=document.getElementById('delBtn'),link=document.getElementById('linkBtn'),kind=document.getElementById('kindBtn');
   if(add)add.disabled=!editing;
-  if(week)week.disabled=!editing||!any;
   if(del)del.disabled=!editing||!ev;
   if(link)link.disabled=!editing||!ev;
-  if(up)up.disabled=!editing||!ev;
-  if(down)down.disabled=!editing||!ev;
   if(kind)kind.disabled=!editing||!ev;
 }
 function applyContentEditable(){
@@ -841,8 +832,7 @@ document.getElementById('body').addEventListener('input',e=>{
   if(!editing)return;
   const el=e.target.closest('[data-direct-id]');
   if(!el)return;
-  clearTimeout(window.__directEditTimer);
-  window.__directEditTimer=setTimeout(()=>applyDirectEdit(el),180);
+  applyDirectEdit(el);
 });
 
 document.getElementById('addBtn').addEventListener('click',()=>{
@@ -854,8 +844,6 @@ document.getElementById('addBtn').addEventListener('click',()=>{
   requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(e.id)+'"]');if(row){setSelected(row);row.querySelector('[data-direct-field="name"]')?.focus();}});
 });
 
-document.getElementById('moveUpBtn').addEventListener('click',()=>{});
-document.getElementById('moveDownBtn').addEventListener('click',()=>{});
 document.getElementById('kindBtn').addEventListener('click',()=>{
   if(!editing||!selected||!selected.classList.contains('event-row'))return;
   const id=selected.dataset.eventId,e=eventById(id);if(!e)return;
@@ -864,8 +852,6 @@ document.getElementById('kindBtn').addEventListener('click',()=>{
   render();
   requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(id)+'"]');if(row)setSelected(row);});
 });
-
-document.getElementById('addWeekBtn').addEventListener('click',()=>{});
 
 document.getElementById('delBtn').addEventListener('click',()=>{
   if(!editing||!selected||!selected.classList.contains('event-row'))return;
@@ -896,9 +882,12 @@ document.getElementById('body').addEventListener('change',e=>{
   const ds=e.target.closest('.direct-date-start'),de=e.target.closest('.direct-date-end');
   if(ds||de){
     const el=ds||de,eve=eventById(el.dataset.id);if(!eve)return;
+    const rowId=eve.id;
     if(ds){eve.date=ds.value;if(eve.endDate&&eve.endDate<eve.date)eve.endDate='';recordPatch(eve,['date','endDate']);}
     else{eve.endDate=de.value;recordPatch(eve,['endDate']);}
-    render();return;
+    render();
+    requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(rowId)+'"]');if(row)setSelected(row);});
+    return;
   }
   const p=e.target.closest('.plan-toggle'),n=e.target.closest('.ignore-toggle'),d=e.target.closest('.plan-day-toggle');
   if(!p&&!n&&!d)return;
