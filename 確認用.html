@@ -388,14 +388,17 @@ function row(e){
   if(e.attendanceStatus==='not_attended')badges.push('<span class="tag notattended">未参加</span>');
 
   const f=flag(e);
+  const today=new Date();today.setHours(0,0,0,0);
+  const endDay=new Date((e.endDate||e.date)+'T00:00:00');
+  const done=endDay<today;
   const cls=[
     e.attendanceStatus==='not_attended'?'row-notattended':'',
     p.length?'row-planned':'',
     f.ignored?'row-ignored':''
   ].filter(Boolean).join(' ');
 
-  const tools=r?'':'<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>';
-  const dayTools=r?'':planDayChecks(e);
+  const tools=(!done&&!r)?'<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>':'';
+  const dayTools=(!done&&!r)?planDayChecks(e):'';
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div>'+tools+dayTools+
@@ -411,9 +414,6 @@ function row(e){
     detail+='<div class="report">'+esc(r.report||'')+'</div>';
   }
 
-  const today=new Date();today.setHours(0,0,0,0);
-  const endDay=new Date((e.endDate||e.date)+'T00:00:00');
-  const done=endDay<today;
   const right=done?'<td colspan="2">'+condHtml+detail+'</td>':'<td>'+condHtml+'</td><td>'+detail+'</td>';
   return '<tr class="event-row '+cls+'" data-event-id="'+esc(e.id)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+esc(compactRangeText(e))+'</td><td>'+eventCell+'</td>'+right+'</tr>';
 }
