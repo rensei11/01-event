@@ -71,6 +71,10 @@ th:last-child,td:last-child{border-right:0}
 .edit-date-pair{display:grid;gap:4px}.edit-date-pair input{width:100%;min-width:0;border:1px solid #aeb7c0;border-radius:5px;padding:3px 4px;font:inherit;font-size:11px;background:#fff}
 .edit-placeholder{min-height:20px}
 #moveUpBtn,#moveDownBtn,#addWeekBtn{display:none}
+
+.attended-undated-title td{background:#fff4d6!important;color:#7c4a03;font-weight:900;border-top:3px solid #d8a23a!important}
+.attended-undated-row td{background:#fffaf0!important}
+.attended-undated-note{font-size:12px;color:#7c4a03;font-weight:800}
 </style>
 </head>
 <body>
@@ -641,6 +645,21 @@ function row(e){
   return '<tr class="event-row '+cls+'" data-event-id="'+esc(e.id)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+dateHtml+'</td><td>'+eventCell+'</td>'+right+'</tr>';
 }
 
+function attendedUndatedRow(e){
+  const r=reportFor(e),people=personLines(e),cond=conditionLines(e);
+  const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>','<span class="tag attended">参加済み（日付未入力）</span>'];
+  const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
+  const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
+  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">終了処理</button></div>';
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>';
+  let detail='<div class="attended-undated-note">終了処理で「実際に行った日」を入力してください。</div>';
+  if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
+  if(r&&String(r.report||'').trim()){
+    detail+='<div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div><div class="report">'+esc(r.report||'')+'</div>';
+  }
+  return '<tr class="event-row attended-undated-row" data-event-id="'+esc(e.id)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">未入力</td><td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+}
+
 function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   const r=reportFor(e), people=personLines(e), cond=conditionLines(e);
   const visits=actualDates(e).slice().sort();
@@ -864,15 +883,25 @@ function render(){
   setTableLayout(mode==='attended');
 
   if(mode==='attended'){
-    const items=[];
+    const items=[],undated=[];
     for(const e of events){
       if(e.attendanceStatus!=='attended')continue;
-      for(const d of actualDates(e)){
+      const actual=actualDates(e);
+      if(!actual.length){
+        if(passesListStart(e.date))undated.push(e);
+        continue;
+      }
+      for(const d of actual){
         if(passesListStart(d))items.push({e,d});
       }
     }
     items.sort((a,b)=>a.d.localeCompare(b.d)||compareVenue(a.e,b.e));
+    undated.sort((a,b)=>String(a.date).localeCompare(String(b.date))||compareVenue(a,b));
     let html='',month='',week='',i=0;
+    if(undated.length){
+      html+='<tr class="attended-undated-title"><td colspan="3">参加済み・実際に行った日が未入力　'+undated.length+'件</td></tr>';
+      for(const e of undated)html+=attendedUndatedRow(e);
+    }
     while(i<items.length){
       const d=items[i].d,m=d.slice(0,7),w=weekKey(d);
       if(m!==month){
@@ -890,7 +919,7 @@ function render(){
     }
     document.getElementById('body').innerHTML=html||'<tr><td colspan="3" class="empty">参加済みイベントはありません</td></tr>';
     restoreLegacyHTML();applyContentEditable();selected=null;updateEditButtons();
-    document.getElementById('status').textContent=items.length+'件';
+    document.getElementById('status').textContent=(items.length+undated.length)+'件';
     renderCalendar();
     return;
   }
