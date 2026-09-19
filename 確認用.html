@@ -132,6 +132,7 @@ const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
 let events=[],reports=[],flags={},mode='all',editing=false;
 let dirtyIds=new Set();
 let editDraft={patches:{},newEvents:[],deletedIds:[]};
+let officialEventsById=new Map();
 let selected=null;
 const calendarToday=new Date();
 let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
@@ -233,6 +234,7 @@ function weekLabel(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;con
 
 function cloneData(v){return JSON.parse(JSON.stringify(v))}
 function eventById(id){return events.find(e=>e.id===id)||null}
+function officialEvent(e){return e?(officialEventsById.get(e.id)||e):null}
 function refreshEditBar(){
   const n=document.getElementById('editChangeCount');
   if(n)n.textContent='変更 '+dirtyIds.size+'件';
@@ -361,17 +363,19 @@ function todayISO(){
 }
 function isEndedEvent(e){return String(e.endDate||e.date||'')<todayISO()}
 function needsEndProcessing(e){
-  if(!isEndedEvent(e))return false;
-  if(!e.attendanceStatus)return true;
-  if(e.attendanceStatus==='attended'){
-    if(!actualDates(e).length)return true;
-    const r=reportFor(e);
+  if(!e||String(e.id||'').startsWith('draft-new-'))return false;
+  const o=officialEvent(e);
+  if(!isEndedEvent(o))return false;
+  if(!o.attendanceStatus)return true;
+  if(o.attendanceStatus==='attended'){
+    if(!actualDates(o).length)return true;
+    const r=reportFor(o);
     if(!r||!String(r.report||'').trim())return true;
   }
   return false;
 }
 function endProcessingEvents(){
-  return events.filter(needsEndProcessing).sort((a,b)=>String(b.endDate||b.date).localeCompare(String(a.endDate||a.date))||String(a.name).localeCompare(String(b.name),'ja'));
+  return events.filter(needsEndProcessing).sort((a,b)=>{const ao=officialEvent(a),bo=officialEvent(b);return String(bo.endDate||bo.date).localeCompare(String(ao.endDate||ao.date))||String(ao.name).localeCompare(String(bo.name),'ja');});
 }
 function updateEndProcessButton(){
   const n=endProcessingEvents().length;
@@ -383,10 +387,10 @@ function endDayLabel(iso){
   return (d.getMonth()+1)+'/'+d.getDate()+'('+w[d.getDay()]+')';
 }
 function endDraftFor(e){
-  const rr=reportFor(e);
+  const o=officialEvent(e),rr=reportFor(o);
   const base={
-    status:e.attendanceStatus||'',
-    visitDates:[...actualDates(e)],
+    status:o.attendanceStatus||'',
+    visitDates:[...actualDates(o)],
     rating:rr?.rating||'',
     report:rr?.report||''
   };
@@ -402,18 +406,18 @@ function renderEndProcessList(){
     return;
   }
   if(!selectedEndEventId||!list.some(e=>e.id===selectedEndEventId))selectedEndEventId=list[0].id;
-  endProcessList.innerHTML=list.map(e=>'<button type="button" class="end-event-btn '+(e.id===selectedEndEventId?'active':'')+'" data-end-id="'+esc(e.id)+'"><div class="end-event-date">'+esc(endDayLabel(e.endDate||e.date))+'終了・'+(e._kind==='exhibition'?'展示会':'懇親会')+'</div><div class="end-event-name">'+esc(e.name)+'</div></button>').join('');
+  endProcessList.innerHTML=list.map(e=>{const o=officialEvent(e);return '<button type="button" class="end-event-btn '+(e.id===selectedEndEventId?'active':'')+'" data-end-id="'+esc(e.id)+'"><div class="end-event-date">'+esc(endDayLabel(o.endDate||o.date))+'終了・'+(o._kind==='exhibition'?'展示会':'懇親会')+'</div><div class="end-event-name">'+esc(o.name)+'</div></button>';}).join('');
   renderEndProcessForm();
 }
 function renderEndProcessForm(){
   const e=events.find(x=>x.id===selectedEndEventId);
   if(!e){endProcessFormWrap.innerHTML='<div class="end-empty">イベントを選んでください。</div>';return;}
-  const d=endDraftFor(e);
-  const visits=days(e.date,e.endDate||e.date).map(day=>'<label><input class="end-visit-check" type="checkbox" value="'+esc(day)+'" '+(d.visitDates.includes(day)?'checked':'')+'>'+esc(endDayLabel(day))+'</label>').join('');
+  const o=officialEvent(e),d=endDraftFor(e);
+  const visits=days(o.date,o.endDate||o.date).map(day=>'<label><input class="end-visit-check" type="checkbox" value="'+esc(day)+'" '+(d.visitDates.includes(day)?'checked':'')+'>'+esc(endDayLabel(day))+'</label>').join('');
   const ratings=['','A+','A','A-','B+','B','B-','C+','C','C-','D','E','F'];
   endProcessFormWrap.innerHTML=
-    '<div class="end-form-title">'+esc(e.name)+'</div>'+
-    '<div class="end-form-venue">'+esc(e.venue||'会場未入力')+' / '+esc(compactRangeText(e))+'</div>'+
+    '<div class="end-form-title">'+esc(o.name)+'</div>'+
+    '<div class="end-form-venue">'+esc(o.venue||'会場未入力')+' / '+esc(compactRangeText(o))+'</div>'+
     '<div class="end-field"><span class="end-label">結果</span><div class="end-choice">'+
       '<label><input type="radio" name="endAttendance" value="attended" '+(d.status==='attended'?'checked':'')+'>参加した</label>'+
       '<label><input type="radio" name="endAttendance" value="not_attended" '+(d.status==='not_attended'?'checked':'')+'>行っていない</label>'+
@@ -425,12 +429,12 @@ function renderEndProcessForm(){
 }
 function collectEndDraft(){
   const e=events.find(x=>x.id===selectedEndEventId);if(!e)return null;
-  const d=endDraftFor(e),choice=endProcessFormWrap.querySelector('input[name="endAttendance"]:checked');
+  const o=officialEvent(e),d=endDraftFor(e),choice=endProcessFormWrap.querySelector('input[name="endAttendance"]:checked');
   return {
-    eventId:e.id,name:e.name,eventName:e.name,kind:e._kind,status:choice?choice.value:'',
+    eventId:o.id,name:o.name,eventName:o.name,kind:o._kind,status:choice?choice.value:'',
     visitDates:[...endProcessFormWrap.querySelectorAll('.end-visit-check:checked')].map(x=>x.value).sort(),
-    venue:e.venue||'',url:e.url||'',conditionText:conditionLines(e).join('\n'),personName:personLines(e).join(' / '),
-    preRating:e.rating||'',nightTime:e.nightTime||'',nightText:e.nightText||'',
+    venue:o.venue||'',url:o.url||'',conditionText:conditionLines(o).join('\n'),personName:personLines(o).join(' / '),
+    preRating:o.rating||'',nightTime:o.nightTime||'',nightText:o.nightText||'',
     rating:endProcessFormWrap.querySelector('#endRating')?.value||d.rating||'',
     report:endProcessFormWrap.querySelector('#endReport')?.value||d.report||'',
     schemaVersion:2,updatedAt:new Date().toISOString()
@@ -457,7 +461,6 @@ async function saveEndToGitHub(){
     if(rr.status===401){localStorage.removeItem(END_EDIT_KEY_KEY);throw new Error('編集キーが違います。次回保存時にもう一度入力してください。');}
     if(!rr.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
     delete endDrafts[d.eventId];localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
-    if(editDraft.patches[d.eventId]){delete editDraft.patches[d.eventId];persistStructuredEditDraft();}
     location.reload();
   }catch(err){if(msg)msg.textContent=err.message||String(err);}
   finally{if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}}
@@ -497,7 +500,7 @@ function row(e){
   );
   const personHtml=editing?editableBlock(e.id,'people',people.join('\n')):(people.length?esc(people.join(' / ')):'');
   const personTop=(editing||people.length)?'<div class="person-top">'+personHtml+'</div>':'';
-  const endButton=(!editing&&done)?'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">'+(needsEndProcessing(e)?'終了処理':'記録修正')+'</button>':'';
+  const endButton=(!editing&&done&&!String(e.id).startsWith('draft-new-'))?'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">'+(needsEndProcessing(e)?'終了処理':'記録修正')+'</button>':'';
   const rightTop='<div class="event-right-tools">'+personTop+endButton+'</div>';
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
     '<div class="event-head"><div class="name event-name">'+nameHtml+'</div></div>'+
@@ -944,6 +947,7 @@ document.getElementById('monthJump').addEventListener('click',e=>{
     ]);
     const [gj,xj,mj]=await Promise.all([g.json(),x.json(),m.json()]);
     events=[...(gj.events||[]).map(e=>({...e,_kind:'gathering'})),...(xj.events||[]).map(e=>({...e,_kind:'exhibition'}))];
+    officialEventsById=new Map(events.map(e=>[e.id,cloneData(e)]));
     const files=(mj.reportFiles&&mj.reportFiles.length)?mj.reportFiles:['実地レポート/2026-01-03.json','実地レポート/2026-04.json','実地レポート/2026-05.json','実地レポート/2026-06.json','実地レポート/2026-07.json','実地レポート/2026-08.json','実地レポート/2026-09.json'];
     const parts=await Promise.all(files.map(async p=>(await fetch(p+'?v='+Date.now(),{cache:'no-store'})).json()));
     reports=parts.flatMap(x=>x.reports||[]);
