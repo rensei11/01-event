@@ -584,7 +584,6 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true){
     detail+='<div><strong>時間</strong> '+editableInline(e.id,'nightTime',e.nightTime||'')+'</div>';
     detail+='<div>'+editableBlock(e.id,'nightText',e.nightText||'')+'</div>';
     if(r){
-      detail+=reportFlagTools(r);
       detail+='<div class="report-rating-line"><div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>'+reportFlagTools(r)+'</div>';
       detail+='<div class="report">'+esc(r.report||'')+'</div>';
     }
@@ -592,7 +591,7 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true){
     if(!r && e.rating)detail+=preRatingHtml(e.rating);
     if(e.nightTime||e.nightText)detail+='<div>'+esc([e.nightTime,e.nightText].filter(Boolean).join('　'))+'</div>';
     if(r){
-      detail+='<div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>';
+      detail+='<div class="report-rating-line"><div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>'+reportFlagTools(r)+'</div>';
       detail+='<div class="report">'+esc(r.report||'')+'</div>';
     }
   }
