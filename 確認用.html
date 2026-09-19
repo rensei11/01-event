@@ -28,7 +28,7 @@ th:last-child,td:last-child{border-right:0}
 .month td{background:#e8e8e3;font-weight:900;font-size:18px;padding:8px 12px;border-top:3px solid #9ea3a7}.week td{background:#eceff1;font-weight:900;font-size:16px;padding:7px 12px;border-top:2px solid #8f989e;border-bottom:1px solid #aeb6bb;color:#30363a}
 .event-row:nth-of-type(even) td{background:#fdfdfc}
 .date,.date-head{text-align:center}.date{font-weight:800;white-space:nowrap;vertical-align:middle;font-size:13px;letter-spacing:0;padding-left:8px;padding-right:8px}
-.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#555;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:800;font-size:14px}.name a{color:#184f9c;text-decoration:none}.name a:hover{text-decoration:underline}
+.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#555;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:800;font-size:14px}.name a{color:#184f9c;text-decoration:none}.name a:hover{text-decoration:underline}
 .venue{margin-top:2px;color:var(--muted)}
 .person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}.report-cond{margin:0 0 7px;padding:5px 7px;background:#f6f6f3;border-left:3px solid #c5c5bf;color:#555}.report-cond div{margin:1px 0}
 .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
@@ -36,7 +36,7 @@ th:last-child,td:last-child{border-right:0}
 .attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
 .planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
 .notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
-.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
+.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
 .row-notattended td{color:#777772;background:#f4f4f2!important}
 .rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.pre{color:#555;margin-bottom:5px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
@@ -79,6 +79,21 @@ function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™
 function days(a,b){const out=[],x=new Date(a+'T00:00:00'),y=new Date((b||a)+'T00:00:00');for(let d=new Date(x);d<=y;d.setDate(d.getDate()+1))out.push(d.toISOString().slice(0,10));return out}
 function inRange(e,d){return d>=e.date&&d<=(e.endDate||e.date)}
 function flag(e){return flags[e.id]||{}}
+function saveFlags(){
+  localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));
+}
+function setPlan(e,checked){
+  const f=flags[e.id]||{};
+  if(checked){f.planned=true;f.ignored=false;}
+  else{f.planned=false;if(Array.isArray(f.visitDates))delete f.visitDates;}
+  flags[e.id]=f;saveFlags();render();
+}
+function setIgnore(e,checked){
+  const f=flags[e.id]||{};
+  f.ignored=checked;
+  if(checked){f.planned=false;if(Array.isArray(f.visitDates))delete f.visitDates;}
+  flags[e.id]=f;saveFlags();render();
+}
 function actualDates(e){return Array.isArray(e.visitDates)?e.visitDates:[]}
 function plannedDates(e){
   const f=flag(e); let x=[];
@@ -90,6 +105,14 @@ function plannedDates(e){
 function dateText(e){
   if(e.dateText)return e.dateText.replace(/\t/g,' ').trim();
   return e.endDate&&e.endDate!==e.date ? e.date+'～'+e.endDate : e.date;
+}
+function compactRangeText(e){
+  if(!e.endDate||e.endDate===e.date)return dateText(e);
+  const a=new Date(e.date+'T00:00:00'),b=new Date(e.endDate+'T00:00:00');
+  const sameMonth=a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth();
+  const w=['日','月','火','水','木','金','土'];
+  if(sameMonth)return (a.getMonth()+1)+'/'+a.getDate()+'('+w[a.getDay()]+')～'+b.getDate()+'('+w[b.getDay()]+')';
+  return (a.getMonth()+1)+'/'+a.getDate()+'('+w[a.getDay()]+')～'+(b.getMonth()+1)+'/'+b.getDate()+'('+w[b.getDay()]+')';
 }
 function personLines(e){return (e.conditionLines||[]).filter(x=>String(x).startsWith('名前コード：')).map(x=>String(x).replace(/^名前コード：/,'').trim())}
 function conditionLines(e){return (e.conditionLines||[]).filter(x=>!String(x).startsWith('名前コード：'))}
@@ -113,7 +136,8 @@ function row(e){
   const cls=e.attendanceStatus==='not_attended'?'row-notattended':(p.length?'row-planned':'');
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div><div class="event-head"><div class="name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>';
+  const f=flag(e),tools='<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>';
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div>'+tools+'<div class="event-head"><div class="name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>';
   let detail='';
   if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
   if(!r && e.rating)detail+='<div class="pre">'+esc(e.rating)+'</div>';
@@ -137,7 +161,7 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
 
   let schedule='';
-  if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
+  if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(compactRangeText(e))+'</div>';
   else if(e.date!==visitDate) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
 
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div><div class="event-head"><div class="name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+schedule;
@@ -253,6 +277,7 @@ function compareVenue(a,b){
 }
 
 function render(){
+  document.body.classList.toggle('planned-view',mode==='planned');
   if(mode==='attended'){
     const items=[];
     for(const e of events){
@@ -309,6 +334,15 @@ document.querySelector('.controls').addEventListener('click',e=>{
   mode=b.dataset.mode;
   document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
   render();
+});
+
+document.getElementById('body').addEventListener('change',e=>{
+  const p=e.target.closest('.plan-toggle'),n=e.target.closest('.ignore-toggle');
+  if(!p&&!n)return;
+  const id=(p||n).dataset.id,event=events.find(x=>x.id===id);
+  if(!event)return;
+  if(p)setPlan(event,p.checked);
+  if(n)setIgnore(event,n.checked);
 });
 
 document.getElementById('calendarPrev').onclick=()=>setCalendarBase(calendarBaseYear,calendarBaseMonth-1);
