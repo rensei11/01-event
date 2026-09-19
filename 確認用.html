@@ -51,9 +51,9 @@ th:last-child,td:last-child{border-right:0}
 @media(max-width:700px){.wrap{padding:10px}h1{font-size:17px}td,th{padding:6px 8px}.status{width:100%;margin-left:0}.calendars{grid-template-columns:repeat(3,minmax(220px,1fr));overflow-x:auto}.calendar-slider{overflow:hidden}}
 
 .end-process-row{display:flex;justify-content:flex-end;margin:0 0 8px}
-.end-process-btn{border:2px solid #b45309;background:#fff7ed;color:#9a3412;font-weight:900;padding:8px 14px}
-.end-process-count{display:inline-flex;min-width:20px;height:20px;padding:0 5px;margin-left:5px;border-radius:10px;align-items:center;justify-content:center;background:#9a3412;color:#fff;font-size:11px}
-.end-row-btn{margin-left:6px;padding:2px 7px;font-size:11px;font-weight:900;border-color:#c7895f;background:#fff7ed;color:#8a3b12}
+.end-process-btn{border:2px solid #c62828;background:#fff5f5;color:#b91c1c;font-weight:900;padding:8px 14px}
+.end-process-count{display:inline-flex;min-width:20px;height:20px;padding:0 5px;margin-left:5px;border-radius:10px;align-items:center;justify-content:center;background:#b91c1c;color:#fff;font-size:11px}
+.end-row-btn{margin-left:6px;padding:2px 7px;font-size:11px;font-weight:800}.end-row-btn.end-pending{border-color:#d76a6a;background:#fff5f5;color:#b91c1c}.end-row-btn.end-correction{border-color:#c4c8cc;background:#f7f8f9;color:#555;font-weight:700}.end-row-btn.end-correction:hover{background:#eef0f2;color:#333}
 .end-modal[hidden]{display:none}.end-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:18px}
 .end-dialog{width:min(900px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
 .end-dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:#20262d;color:#fff}
@@ -371,11 +371,11 @@ function passesListStart(date){
 function todayISO(){
   const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
-function isEndedEvent(e){return String(e.endDate||e.date||'')<todayISO()}
+function isEndProcessAvailable(e){return String(e.date||'')<=todayISO()}
 function needsEndProcessing(e){
   if(!e||String(e.id||'').startsWith('draft-new-'))return false;
   const o=officialEvent(e);
-  if(!isEndedEvent(o))return false;
+  if(!isEndProcessAvailable(o))return false;
   if(!o.attendanceStatus)return true;
   if(o.attendanceStatus==='attended'){
     if(!actualDates(o).length)return true;
@@ -409,7 +409,7 @@ function endDraftFor(e){
 function renderEndProcessList(){
   const list=endProcessSingle?events.filter(e=>e.id===selectedEndEventId):endProcessingEvents();
   updateEndProcessButton();
-  if(endProcessNote)endProcessNote.textContent=endProcessSingle?'このイベントの参加記録を修正します。':'終了済みで、参加結果または実地レポートが未確定のイベントです。';
+  if(endProcessNote)endProcessNote.textContent=endProcessSingle?'このイベントの参加記録を修正します。':'開催日を迎え、参加結果または実地レポートが未確定のイベントです。';
   if(!list.length){
     endProcessList.innerHTML='<div class="end-empty">'+(endProcessSingle?'対象イベントが見つかりません。':'現在、終了処理待ちはありません。')+'</div>';
     endProcessFormWrap.innerHTML='<div class="end-empty">'+(endProcessSingle?'編集できません。':'すべて処理済みです。')+'</div>';
@@ -510,8 +510,9 @@ function row(e){
   );
   const personHtml=editing?editableBlock(e.id,'people',people.join('\n')):(people.length?esc(people.join(' / ')):'');
   const personTop=(editing||people.length)?'<div class="person-top">'+personHtml+'</div>':'';
-  const canOfficialEnd=!String(e.id).startsWith('draft-new-')&&isEndedEvent(officialEvent(e));
-  const endButton=(!editing&&canOfficialEnd)?'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">'+(needsEndProcessing(e)?'終了処理':'記録修正')+'</button>':'';
+  const canOfficialEnd=!String(e.id).startsWith('draft-new-')&&isEndProcessAvailable(officialEvent(e));
+  const pendingEnd=needsEndProcessing(e);
+  const endButton=(!editing&&canOfficialEnd)?'<button type="button" class="end-row-btn '+(pendingEnd?'end-pending':'end-correction')+'" data-end-edit="'+esc(e.id)+'">'+(pendingEnd?'終了処理':'記録修正')+'</button>':'';
   const rightTop='<div class="event-right-tools">'+personTop+endButton+'</div>';
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
     '<div class="event-head"><div class="name event-name">'+nameHtml+'</div></div>'+
@@ -550,7 +551,7 @@ function attendedUndatedRow(e){
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>','<span class="tag attended">参加済み（日付未入力）</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">終了処理</button></div>';
+  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn end-pending" data-end-edit="'+esc(e.id)+'">終了処理</button></div>';
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>';
   let detail='<div class="attended-undated-note">終了処理で「実際に行った日」を入力してください。</div>';
   if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
@@ -569,8 +570,8 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const endLabel=needsEndProcessing(e)?'終了処理':'記録修正';
-  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">'+endLabel+'</button></div>';
+  const pendingEnd=needsEndProcessing(e),endLabel=pendingEnd?'終了処理':'記録修正';
+  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn '+(pendingEnd?'end-pending':'end-correction')+'" data-end-edit="'+esc(e.id)+'">'+endLabel+'</button></div>';
 
   let schedule='';
   if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(compactRangeText(e))+'</div>';
