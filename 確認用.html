@@ -149,7 +149,8 @@ const endProcessNote=document.getElementById('endProcessNote');
 
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™®【】\[\]（）()‐\-–—'’:"：～〜]/g,'')}
-function days(a,b){const out=[],x=new Date(a+'T00:00:00'),y=new Date((b||a)+'T00:00:00');for(let d=new Date(x);d<=y;d.setDate(d.getDate()+1))out.push(d.toISOString().slice(0,10));return out}
+function localYmd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function days(a,b){const out=[],x=new Date(a+'T00:00:00'),y=new Date((b||a)+'T00:00:00');for(let d=new Date(x);d<=y;d.setDate(d.getDate()+1))out.push(localYmd(d));return out}
 function inRange(e,d){return d>=e.date&&d<=(e.endDate||e.date)}
 function flag(e){return flags[e.id]||{}}
 function saveFlags(){
@@ -236,7 +237,7 @@ function reportFor(e){
   return reports.find(r=>norm(r.name)===nn && (r.scheduledDate===e.date || inRange(e,r.date))) || null;
 }
 function fmtDates(xs){return xs.map(x=>{const d=new Date(x+'T00:00:00');return (d.getMonth()+1)+'/'+d.getDate()}).join('・')}
-function weekKey(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;d.setDate(d.getDate()-n);return d.toISOString().slice(0,10)}
+function weekKey(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;d.setDate(d.getDate()-n);return localYmd(d)}
 function weekLabel(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;const m=new Date(d);m.setDate(d.getDate()-n);const su=new Date(m);su.setDate(m.getDate()+6);return (m.getMonth()+1)+'/'+m.getDate()+'～'+(su.getMonth()+1)+'/'+su.getDate()}
 
 
