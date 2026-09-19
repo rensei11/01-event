@@ -126,6 +126,7 @@ th:last-child,td:last-child{border-right:0}
 </div>
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
+const UI_STATE_KEY='free_food_event_ledger_2026_ui_state_v1';
 const EDIT_DRAFT_KEY='free_food_event_ledger_2026_design_edit_v1';
 const EDIT_PATCH_KEY='free_food_event_ledger_2026_structured_edit_v2';
 const LEGACY_HTML_KEY='free_food_event_ledger_2026_legacy_html_v1';
@@ -155,6 +156,29 @@ function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™
 function localYmd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function days(a,b){const out=[],x=new Date(a+'T00:00:00'),y=new Date((b||a)+'T00:00:00');for(let d=new Date(x);d<=y;d.setDate(d.getDate()+1))out.push(localYmd(d));return out}
 function inRange(e,d){return d>=e.date&&d<=(e.endDate||e.date)}
+function saveUiState(){
+  localStorage.setItem(UI_STATE_KEY,JSON.stringify({
+    mode,
+    listStartYear,
+    listStartMonth,
+    calendarBaseYear,
+    calendarBaseMonth
+  }));
+}
+function loadUiState(){
+  try{
+    const v=JSON.parse(localStorage.getItem(UI_STATE_KEY)||'null');
+    if(!v||typeof v!=='object')return;
+    if(['all','planned','attended'].includes(v.mode))mode=v.mode;
+    if(Number.isInteger(v.listStartYear)&&v.listStartYear>=2000&&v.listStartYear<=2100)listStartYear=v.listStartYear;
+    if(Number.isInteger(v.listStartMonth)&&v.listStartMonth>=0&&v.listStartMonth<=12)listStartMonth=v.listStartMonth;
+    if(Number.isInteger(v.calendarBaseYear)&&v.calendarBaseYear>=2000&&v.calendarBaseYear<=2100)calendarBaseYear=v.calendarBaseYear;
+    if(Number.isInteger(v.calendarBaseMonth)&&v.calendarBaseMonth>=1&&v.calendarBaseMonth<=12)calendarBaseMonth=v.calendarBaseMonth;
+  }catch(_){}
+}
+function syncModeButtons(){
+  document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x.dataset.mode===mode));
+}
 function flag(e){return flags[e.id]||{}}
 function saveFlags(){
   localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));
@@ -677,6 +701,7 @@ function setTableStartMonth(year,month){
   }else{
     listStartYear=year;listStartMonth=month;
   }
+  saveUiState();
   render();
 }
 function renderCalendar(){
@@ -701,7 +726,7 @@ function renderCalendar(){
   }
 }
 function setCalendarBase(year,month){
-  const d=new Date(year,month-1,1);calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;renderCalendar();
+  const d=new Date(year,month-1,1);calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar();
 }
 function jumpToMonth(year,month){
   const key=year+'-'+String(month).padStart(2,'0');
@@ -774,7 +799,8 @@ function setLegacyEditing(on){
   selected=null;
   if(on&&mode!=='all'){
     mode='all';
-    document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x.dataset.mode==='all'));
+    syncModeButtons();
+    saveUiState();
   }
   const b=document.getElementById('editBtn');
   if(b)b.textContent=on?'編集終了':'編集開始';
@@ -901,7 +927,8 @@ document.querySelector('.controls').addEventListener('click',e=>{
   }
   mode=b.dataset.mode;
   selected=null;
-  document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
+  syncModeButtons();
+  saveUiState();
   render();
 });
 
@@ -939,7 +966,7 @@ document.getElementById('addBtn').addEventListener('click',()=>{
   const stamp=Date.now(),today=todayISO();
   const e={id:'draft-new-'+stamp,date:today,endDate:'',dateText:'',name:'新しいイベント',url:'',venue:'',conditionLines:[],rating:'',nightTime:'',nightText:'',attendanceStatus:'',visitDates:[],sourceReportId:'',_kind:'exhibition'};
   events.push(e);editDraft.newEvents.push(cloneData(e));markDirty(e.id);persistStructuredEditDraft('新しいイベントを下書き追加しました');
-  mode='all';listStartYear=0;listStartMonth=0;render();
+  mode='all';listStartYear=0;listStartMonth=0;syncModeButtons();saveUiState();render();
   requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(e.id)+'"]');if(row){setSelected(row);row.querySelector('[data-direct-field="name"]')?.focus();}});
 });
 
@@ -999,22 +1026,24 @@ document.getElementById('body').addEventListener('change',e=>{
 
 document.getElementById('calendarPrev').onclick=()=>{
   const d=new Date(calendarBaseYear,calendarBaseMonth-2,1);
-  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;renderCalendar();
+  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar();
 };
 document.getElementById('calendarNext').onclick=()=>{
   const d=new Date(calendarBaseYear,calendarBaseMonth,1);
-  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;renderCalendar();
+  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar();
 };
 document.getElementById('calendarYear').addEventListener('change',e=>{
   const y=parseInt(e.target.value,10);
   if(!Number.isFinite(y))return;
   if(listStartMonth)setTableStartMonth(y,listStartMonth);
-  else renderCalendar();
+  else{listStartYear=y;saveUiState();renderCalendar();}
 });
 
 (async()=>{
   try{
     try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(_){flags={}}
+    loadUiState();
+    syncModeButtons();
     try{endDrafts=JSON.parse(localStorage.getItem(END_DRAFTS_KEY)||'{}')}catch(_){endDrafts={}}
     const [g,x,m]=await Promise.all([
       fetch('イベント一覧.json?v='+Date.now(),{cache:'no-store'}),
