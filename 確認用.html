@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>見やすさ確認版</title>
+<style>
+:root{--bg:#f7f7f5;--paper:#fff;--line:#d8d8d3;--text:#252525;--muted:#6d6d68;--head:#3f4448}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Yu Gothic UI","Meiryo",sans-serif;line-height:1.45}
+.wrap{max-width:1420px;margin:auto;padding:16px}
+h1{font-size:20px;margin:0}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
+.controls{display:flex;gap:7px;margin:0 0 10px;flex-wrap:wrap}
+button{border:1px solid #b9b9b4;background:#fff;border-radius:6px;padding:7px 15px;font:inherit;font-weight:700;cursor:pointer}
+button.active{background:#41474c;color:white;border-color:#41474c}
+.status{margin-left:auto;align-self:center;font-size:12px;color:var(--muted)}
+.table-wrap{background:var(--paper);border:1px solid var(--line);overflow:auto}
+table{border-collapse:collapse;width:100%;table-layout:fixed;min-width:940px}
+col.date{width:11%}col.event{width:31%}col.cond{width:20%}col.detail{width:38%}
+th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;padding:8px 10px;font-size:13px;border-right:1px solid #5a6065}
+td{vertical-align:top;padding:7px 10px;border-top:1px solid var(--line);border-right:1px solid #e7e7e2;font-size:13px}
+th:last-child,td:last-child{border-right:0}
+.month td{background:#e8e8e3;font-weight:800;font-size:14px;padding:6px 10px;border-top:2px solid #b8b8b2}
+.event-row:nth-of-type(even) td{background:#fdfdfc}
+.date{font-weight:800;white-space:nowrap}
+.name{font-weight:800;font-size:14px}.name a{color:#184f9c;text-decoration:none}.name a:hover{text-decoration:underline}
+.venue{margin-top:2px;color:var(--muted)}
+.person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
+.tag{display:inline-block;border:1px solid #c8c8c2;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800;background:#fff}
+.attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
+.planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
+.notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
+.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}
+.row-notattended td{color:#777772;background:#f4f4f2!important}
+.rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.pre{color:#555;margin-bottom:5px}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+.note{font-size:11px;color:var(--muted);margin-top:8px}
+@media(max-width:700px){.wrap{padding:8px}h1{font-size:17px}td,th{padding:6px 8px}.status{width:100%;margin-left:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>無料食事イベント台帳　見やすさ確認版</h1>
+  <div class="sub">本番画面とは別です。1イベントを1行にまとめ、見ることだけに絞っています。</div>
+  <div class="controls">
+    <button data-mode="all" class="active">すべて</button>
+    <button data-mode="planned">来場予定</button>
+    <button data-mode="attended">参加済み</button>
+    <span id="status" class="status">読み込み中</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col class="date"><col class="event"><col class="cond"><col class="detail"></colgroup>
+      <thead><tr><th>日付</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容・実地レポート</th></tr></thead>
+      <tbody id="body"><tr><td colspan="4" class="empty">読み込み中です</td></tr></tbody>
+    </table>
+  </div>
+  <div class="note">※ この確認版では編集・終了処理はできません。本番データは変更しません。</div>
+</div>
+<script>
+const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
+let events=[],reports=[],flags={},mode='all';
+
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™®【】\[\]（）()‐\-–—'’:"：～〜]/g,'')}
+function days(a,b){const out=[],x=new Date(a+'T00:00:00'),y=new Date((b||a)+'T00:00:00');for(let d=new Date(x);d<=y;d.setDate(d.getDate()+1))out.push(d.toISOString().slice(0,10));return out}
+function inRange(e,d){return d>=e.date&&d<=(e.endDate||e.date)}
+function flag(e){return flags[e.id]||{}}
+function actualDates(e){return Array.isArray(e.visitDates)?e.visitDates:[]}
+function plannedDates(e){
+  const f=flag(e); let x=[];
+  if(Array.isArray(f.visitDates))x=[...new Set(f.visitDates)].filter(d=>inRange(e,d));
+  else if(f.planned)x=[e.date];
+  const done=new Set(actualDates(e));
+  return x.filter(d=>!done.has(d)).sort();
+}
+function dateText(e){
+  if(e.dateText)return e.dateText.replace(/\t/g,' ').trim();
+  return e.endDate&&e.endDate!==e.date ? e.date+'～'+e.endDate : e.date;
+}
+function personLines(e){return (e.conditionLines||[]).filter(x=>String(x).startsWith('名前コード：')).map(x=>String(x).replace(/^名前コード：/,'').trim())}
+function conditionLines(e){return (e.conditionLines||[]).filter(x=>!String(x).startsWith('名前コード：'))}
+function reportFor(e){
+  if(e.sourceReportId){const x=reports.find(r=>r.id===e.sourceReportId);if(x)return x}
+  const nn=norm(e.name);
+  return reports.find(r=>norm(r.name)===nn && (r.scheduledDate===e.date || inRange(e,r.date))) || null;
+}
+function fmtDates(xs){return xs.map(x=>{const d=new Date(x+'T00:00:00');return (d.getMonth()+1)+'/'+d.getDate()}).join('・')}
+
+function row(e){
+  const r=reportFor(e), p=plannedDates(e), a=actualDates(e), people=personLines(e), cond=conditionLines(e);
+  const tags=[];
+  if(a.length)tags.push('<span class="tag attended">参加 '+esc(fmtDates(a))+'</span>');
+  if(p.length)tags.push('<span class="tag planned">予定 '+esc(fmtDates(p))+'</span>');
+  if(e.attendanceStatus==='not_attended')tags.push('<span class="tag notattended">未参加</span>');
+  const cls=e.attendanceStatus==='not_attended'?'row-notattended':(p.length?'row-planned':'');
+  const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
+  const person=people.length?'<div class="person">'+esc(people.join(' / '))+'</div>':'';
+  const condHtml=cond.map(x=>'<div class="condline">'+esc(x)+'</div>').join('');
+  let detail='';
+  if(e.rating)detail+='<div class="pre">'+esc(e.rating)+'</div>';
+  if(e.nightTime||e.nightText)detail+='<div>'+esc([e.nightTime,e.nightText].filter(Boolean).join('　'))+'</div>';
+  if(r){
+    detail+='<div class="rating">実地評価：'+esc(r.rating||'')+'</div>';
+    detail+='<div class="report">'+esc(r.report||'')+'</div>';
+  }
+  return '<tr class="event-row '+cls+'"><td class="date">'+esc(dateText(e))+'</td><td><div class="tags">'+tags.join('')+'</div><div class="name">'+link+'</div><div class="venue">'+esc(e.venue||'')+'</div></td><td>'+person+condHtml+'</td><td>'+detail+'</td></tr>';
+}
+
+function render(){
+  let list=events.slice();
+  if(mode==='planned')list=list.filter(e=>plannedDates(e).length);
+  if(mode==='attended')list=list.filter(e=>e.attendanceStatus==='attended'&&actualDates(e).length);
+  list.sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name,'ja'));
+  let html='',month='';
+  for(const e of list){
+    const m=e.date.slice(0,7);
+    if(m!==month){
+      const [y,mm]=m.split('-');
+      html+='<tr class="month"><td colspan="4">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+      month=m;
+    }
+    html+=row(e);
+  }
+  document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">該当するイベントはありません</td></tr>';
+  document.getElementById('status').textContent=list.length+'件';
+}
+document.querySelector('.controls').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-mode]');if(!b)return;
+  mode=b.dataset.mode;
+  document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
+  render();
+});
+
+(async()=>{
+  try{
+    try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(_){flags={}}
+    const [g,x,m]=await Promise.all([
+      fetch('イベント一覧.json?v='+Date.now(),{cache:'no-store'}),
+      fetch('展示会一覧.json?v='+Date.now(),{cache:'no-store'}),
+      fetch('実地レポート.json?v='+Date.now(),{cache:'no-store'})
+    ]);
+    const [gj,xj,mj]=await Promise.all([g.json(),x.json(),m.json()]);
+    events=[...(gj.events||[]),...(xj.events||[])];
+    const files=(mj.reportFiles&&mj.reportFiles.length)?mj.reportFiles:['実地レポート/2026-01-03.json','実地レポート/2026-04.json','実地レポート/2026-05.json','実地レポート/2026-06.json','実地レポート/2026-07.json','実地レポート/2026-08.json','実地レポート/2026-09.json'];
+    const parts=await Promise.all(files.map(async p=>(await fetch(p+'?v='+Date.now(),{cache:'no-store'})).json()));
+    reports=parts.flatMap(x=>x.reports||[]);
+    render();
+  }catch(err){
+    console.error(err);
+    document.getElementById('body').innerHTML='<tr><td colspan="4" class="empty">読み込みに失敗しました</td></tr>';
+    document.getElementById('status').textContent='読み込み失敗';
+  }
+})();
+</script>
+</body>
+</html>
