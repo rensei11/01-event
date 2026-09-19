@@ -43,7 +43,7 @@ th:last-child,td:last-child{border-right:0}
 .attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
 .planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
 .notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
-.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
+.row-planned td{background:#eaf4ff!important}.row-planned td:first-child{box-shadow:inset 4px 0 0 #7fb3e6}.row-attended td{background:#eaf7ef!important}.row-attended td:first-child{box-shadow:inset 4px 0 0 #78b894}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #7fb3e6}.attended-date{background:#e2f2e8!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#3f6955}.attended-day-row td{background:#eaf7ef!important;border-top-color:#c9dfd1}.attended-day-start td{border-top:2px solid #a9cdb7!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
 .row-notattended td{color:#777772;background:#f4f4f2!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
 .rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
@@ -71,9 +71,9 @@ th:last-child,td:last-child{border-right:0}
 .edit-date-pair{display:grid;gap:4px}.edit-date-pair input{width:100%;min-width:0;border:1px solid #aeb7c0;border-radius:5px;padding:3px 4px;font:inherit;font-size:11px;background:#fff}
 .edit-placeholder{min-height:20px}
 
-.attended-undated-title td{background:#fff4d6!important;color:#7c4a03;font-weight:900;border-top:3px solid #d8a23a!important}
-.attended-undated-row td{background:#fffaf0!important}
-.attended-undated-note{font-size:12px;color:#7c4a03;font-weight:800}
+.attended-undated-title td{background:#dcefe3!important;color:#315d45;font-weight:900;border-top:3px solid #78b894!important}
+.attended-undated-row td{background:#eaf7ef!important}
+.attended-undated-note{font-size:12px;color:#456754;font-weight:800}
 </style>
 </head>
 <body>
@@ -498,6 +498,7 @@ function row(e){
   const endDay=new Date((e.endDate||e.date)+'T00:00:00');
   const done=endDay<today;
   const cls=[
+    e.attendanceStatus==='attended'?'row-attended':'',
     e.attendanceStatus==='not_attended'?'row-notattended':'',
     p.length?'row-planned':'',
     (!done&&f.ignored)?'row-ignored':''
