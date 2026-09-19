@@ -74,6 +74,12 @@ th:last-child,td:last-child{border-right:0}
 .attended-undated-title td{background:#dcefe3!important;color:#315d45;font-weight:900;border-top:3px solid #78b894!important}
 .attended-undated-row td{background:#eaf7ef!important}
 .attended-undated-note{font-size:12px;color:#456754;font-weight:800}
+
+.planned-date{background:#dfefff!important;font-size:18px!important;overflow:hidden;vertical-align:middle!important}
+.planned-day-start td{border-top:2px solid #a9c8e5!important}
+.remembered-row td{box-shadow:inset 0 2px 0 #7d8994,inset 0 -2px 0 #7d8994!important}
+.remembered-row td:first-child{border-left:2px solid #7d8994}
+.remembered-row td:last-child{border-right:2px solid #7d8994}
 </style>
 </head>
 <body>
@@ -123,6 +129,7 @@ th:last-child,td:last-child{border-right:0}
 </div>
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
+const CURSOR_MEMORY_KEY='free_food_event_ledger_2026_cursor_memory_v1';
 const EDIT_DRAFT_KEY='free_food_event_ledger_2026_design_edit_v1';
 const EDIT_PATCH_KEY='free_food_event_ledger_2026_structured_edit_v2';
 const LEGACY_HTML_KEY='free_food_event_ledger_2026_legacy_html_v1';
@@ -131,6 +138,7 @@ const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
 const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
 let events=[],reports=[],flags={},mode='all',editing=false;
 let dirtyIds=new Set();
+let cursorMemory={};
 let editDraft={patches:{},newEvents:[],deletedIds:[]};
 let officialEventsById=new Map();
 let selected=null;
@@ -484,7 +492,7 @@ function closeEndProcess(){
   saveEndDraft(false);endProcessModal.hidden=true;document.body.style.overflow='';endProcessSingle=false;selectedEndEventId='';
 }
 
-function row(e,plannedDate=''){
+function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true){
   const r=reportFor(e), p=plannedDates(e), a=actualDates(e), people=personLines(e), cond=conditionLines(e);
   const badges=[];
   badges.push('<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>');
@@ -547,8 +555,9 @@ function row(e,plannedDate=''){
   const dateHtml=editing
     ? '<div class="edit-date-pair"><input class="direct-date-start" type="date" data-id="'+esc(e.id)+'" value="'+esc(e.date||'')+'"><input class="direct-date-end" type="date" data-id="'+esc(e.id)+'" value="'+esc(e.endDate||'')+'" title="終了日（1日なら空欄）"></div>'
     : esc(plannedDate?endDayLabel(plannedDate):compactRangeText(e));
+  const dateCell=showDate?'<td class="date'+(plannedDate?' planned-date':'')+'" rowspan="'+rowspan+'">'+dateHtml+(plannedDate&&rowspan>1?'<div class="visit-count">'+rowspan+'件</div>':'')+'</td>':'';
   const right=done?'<td colspan="2">'+condHtml+detail+'</td>':'<td>'+condHtml+'</td><td>'+detail+'</td>';
-  return '<tr class="event-row '+cls+'" data-event-id="'+esc(e.id)+'" data-planned-date="'+esc(plannedDate||'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+dateHtml+'</td><td>'+eventCell+'</td>'+right+'</tr>';
+  return '<tr class="event-row '+cls+(plannedDate?(isFirstOfDate?' planned-day-start':''):'')+'" data-event-id="'+esc(e.id)+'" data-planned-date="'+esc(plannedDate||'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td>'+right+'</tr>';
 }
 
 function attendedUndatedRow(e){
@@ -698,6 +707,7 @@ function jumpToDate(date){
   });
   if(!target)return;
   target.scrollIntoView({behavior:'smooth',block:'center'});
+  rememberRow(target);
   target.classList.remove('calendar-focus');void target.offsetWidth;target.classList.add('calendar-focus');
   setTimeout(()=>target.classList.remove('calendar-focus'),1400);
 }
@@ -725,6 +735,30 @@ function compareVenue(a,b){
   return String(a.name||'').localeCompare(String(b.name||''),'ja',{numeric:true});
 }
 
+
+function rowMemoryKey(row){
+  if(!row)return '';
+  const id=row.dataset.eventId||'';
+  if(!id)return '';
+  if(mode==='planned')return id+'|'+(row.dataset.plannedDate||'');
+  if(mode==='attended')return id+'|'+(row.dataset.visitDate||'');
+  return id;
+}
+function applyRememberedRow(){
+  document.querySelectorAll('tr.remembered-row').forEach(r=>r.classList.remove('remembered-row'));
+  const key=cursorMemory[mode]||'';
+  if(!key)return;
+  const rows=[...document.querySelectorAll('#body tr.event-row')];
+  const target=rows.find(r=>rowMemoryKey(r)===key);
+  if(target)target.classList.add('remembered-row');
+}
+function rememberRow(row){
+  const key=rowMemoryKey(row);
+  if(!key||cursorMemory[mode]===key)return;
+  cursorMemory[mode]=key;
+  localStorage.setItem(CURSOR_MEMORY_KEY,JSON.stringify(cursorMemory));
+  applyRememberedRow();
+}
 
 function setSelected(row){
   if(selected)selected.classList.remove('selected');
@@ -808,7 +842,7 @@ function render(){
       same.forEach((x,idx)=>{html+=attendedRow(x.e,d,idx===0,same.length,idx===0);});
     }
     document.getElementById('body').innerHTML=html||'<tr><td colspan="3" class="empty">参加済みイベントはありません</td></tr>';
-    applyContentEditable();selected=null;updateEditButtons();
+    applyContentEditable();selected=null;updateEditButtons();applyRememberedRow();
     document.getElementById('status').textContent=(items.length+undated.length)+'件';
     renderCalendar();
     return;
@@ -822,9 +856,9 @@ function render(){
       }
     }
     items.sort((a,b)=>a.d.localeCompare(b.d)||compareVenue(a.e,b.e));
-    let html='',month='',week='';
-    for(const x of items){
-      const d=x.d,m=d.slice(0,7),w=weekKey(d);
+    let html='',month='',week='',i=0;
+    while(i<items.length){
+      const d=items[i].d,m=d.slice(0,7),w=weekKey(d);
       if(m!==month){
         const [y,mm]=m.split('-');
         html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="4">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
@@ -834,10 +868,12 @@ function render(){
         html+='<tr class="week"><td colspan="4">'+esc(weekLabel(d))+'</td></tr>';
         week=w;
       }
-      html+=row(x.e,d);
+      const same=[];
+      while(i<items.length&&items[i].d===d){same.push(items[i]);i++;}
+      same.forEach((x,idx)=>{html+=row(x.e,d,idx===0,same.length,idx===0);});
     }
     document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">来場予定はありません</td></tr>';
-    applyContentEditable();selected=null;updateEditButtons();
+    applyContentEditable();selected=null;updateEditButtons();applyRememberedRow();
     document.getElementById('status').textContent=items.length+'件';
     renderCalendar();
     return;
@@ -861,7 +897,7 @@ function render(){
     html+=row(e);
   }
   document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">該当するイベントはありません</td></tr>';
-  applyContentEditable();selected=null;updateEditButtons();
+  applyContentEditable();selected=null;updateEditButtons();applyRememberedRow();
   document.getElementById('status').textContent=list.length+'件';
   renderCalendar();
 }
@@ -892,6 +928,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!endProcessModal.hi
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.end-row-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEndProcess(b.dataset.endEdit||'');});
 
 document.getElementById('editBtn').addEventListener('click',()=>setLegacyEditing(!editing));
+
+document.getElementById('body').addEventListener('mouseover',e=>{
+  const row=e.target.closest('tr.event-row');
+  if(row)rememberRow(row);
+});
 
 document.getElementById('body').addEventListener('click',e=>{
   if(!editing)return;
@@ -990,6 +1031,7 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
 (async()=>{
   try{
     try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(_){flags={}}
+    try{cursorMemory=JSON.parse(localStorage.getItem(CURSOR_MEMORY_KEY)||'{}')}catch(_){cursorMemory={}}
     try{endDrafts=JSON.parse(localStorage.getItem(END_DRAFTS_KEY)||'{}')}catch(_){endDrafts={}}
     const [g,x,m]=await Promise.all([
       fetch('イベント一覧.json?v='+Date.now(),{cache:'no-store'}),
