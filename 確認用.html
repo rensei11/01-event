@@ -666,6 +666,7 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   if(showReport){
     if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
     if(r){
+      detail+=reportFlagTools(r);
       detail+='<div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>';
       if(visits.length>1)detail+='<div class="report-days">参加日 '+esc(fmtDates(visits))+'</div>';
       detail+='<div class="report">'+esc(r.report||'')+'</div>';
@@ -677,7 +678,7 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   }
 
   const dateCell=showDate?'<td class="date attended-date" rowspan="'+rowspan+'"><strong>'+esc(visitDate.replace(/^\\d{4}-/,'').replace('-','/'))+'</strong><div class="visit-count">'+rowspan+'件</div></td>':'';
-  const rf=r?reportFlag(r.id):{good:false,bad:false};
+  const rf=(showReport&&r)?reportFlag(r.id):{good:false,bad:false};
   return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+(rf.good?' report-good':'')+(rf.bad?' report-bad':'')+'" data-event-id="'+esc(e.id)+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
 }
 
