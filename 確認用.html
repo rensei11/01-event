@@ -10,7 +10,8 @@
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
 h1{font-size:20px;margin:0}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
-.controls{display:flex;gap:6px;margin:0 0 8px;flex-wrap:wrap;align-items:center}
+.controls{display:flex;gap:6px;margin:0 0 6px;flex-wrap:wrap;align-items:center}
+.subfilters{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:0 0 8px}.subfilters button{padding:5px 10px;font-size:12px}.subfilters select{border:1px solid #aeb7c0;border-radius:7px;background:#fff;padding:5px 8px;font:inherit;font-size:12px;font-weight:700;color:var(--text)}.subfilter-label{font-size:12px;font-weight:800;color:#555;margin-left:4px}
 .legacy-edit-toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:0 0 6px}.legacy-edit-toolbar button:disabled{opacity:.45;cursor:not-allowed}.legacy-edit-toolbar .primary{font-weight:800}.legacy-edit-toolbar .danger{color:#9a3412;border-color:#d8a58d}.edit-help{font-size:12px;color:var(--muted);margin:0 0 10px}
 .event-row.selected td,.week.selected td{box-shadow:inset 0 0 0 2px #d29b00!important}
 body.editing .event-row td{background:#fffdf2!important;outline:none} body.editing .event-row .date{cursor:text}
@@ -24,7 +25,7 @@ button.active{background:#20262d;color:#fff;border-color:#20262d}
 .calendar-panel{margin:0 0 14px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px}
 .calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:900}.calendar-note{font-size:12px;color:var(--muted)}
 .calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.list-filter-bar{display:flex;align-items:center;gap:7px;margin:0 0 8px;font-size:12px;font-weight:800;color:#555}.list-filter-bar select{border:1px solid #aeb7c0;border-radius:7px;background:#fff;padding:5px 8px;font:inherit;font-size:12px}.calendar-start-label{font-size:12px;font-weight:900;color:#555}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:12px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:11px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
-.calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:stretch}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:23px;font-weight:900}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}.month-card{border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0;align-self:start}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px;cursor:pointer}.month-name:hover{text-decoration:underline}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none;font-weight:800}.cal-day.other-month{font-size:9px;font-weight:400;color:#9aa1a8;opacity:.68}.cal-day.other-month.has-event,.cal-day.other-month.has-plan,.cal-day.other-month.has-attended{opacity:.62;font-weight:600}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#5d8fc5;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.cal-day.clickable:hover{filter:brightness(.92)}
+.calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:stretch}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:23px;font-weight:900}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}.month-card{border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0;align-self:start}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px;cursor:pointer}.month-name:hover{text-decoration:underline}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none;font-weight:800;font-size:12px}.cal-day.other-month{font-size:9px;font-weight:400;color:#9aa1a8;opacity:.68}.cal-day.other-month.has-event,.cal-day.other-month.has-plan,.cal-day.other-month.has-attended{opacity:.62;font-weight:600}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#5d8fc5;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.cal-day.clickable:hover{filter:brightness(.92)}
 .calendar-focus td{animation:calFlash 1.2s ease}@keyframes calFlash{0%,100%{background:inherit}35%,70%{background:#fff1b8}}
 .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}
@@ -35,7 +36,7 @@ th:last-child,td:last-child{border-right:0}
 .month td{background:#d7e2ee;font-weight:800;font-size:15px;padding:8px 12px;border-top:3px solid #8fa2b5}.week td{background:var(--week);font-weight:700;font-size:14px;padding:7px 12px;border-top:2px solid #aeb8c2;color:var(--text)}
 .event-row:nth-of-type(even) td{background:#fdfdfc}
 .date,.date-head{text-align:center}.date{font-weight:700;white-space:normal;vertical-align:middle;font-size:12px;line-height:1.35;padding-left:6px;padding-right:6px;overflow:hidden}
-.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-right-tools{margin-left:auto;display:flex;align-items:center;gap:7px}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#46515c;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:700;font-size:15px}.name a{color:var(--link);text-decoration:none}.name a:hover{text-decoration:underline}
+.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-right-tools{margin-left:auto;display:flex;align-items:center;gap:7px}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.gray-toggle{appearance:none;-webkit-appearance:none;width:14px;height:14px;border:1.5px solid #8b949e;border-radius:3px;background:#fff;position:relative}.gray-toggle:checked{background:#8b949e}.gray-toggle:checked::after{content:"";position:absolute;inset:3px;background:#fff;border-radius:1px}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#46515c;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:700;font-size:15px}.name a{color:var(--link);text-decoration:none}.name a:hover{text-decoration:underline}
 .venue{margin-top:2px;color:var(--muted)}
 .person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}.report-cond{margin:0 0 7px;padding:5px 7px;background:#f6f6f3;border-left:3px solid #c5c5bf;color:#555}.report-cond div{margin:1px 0}
 .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
@@ -44,8 +45,8 @@ th:last-child,td:last-child{border-right:0}
 .planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
 .notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
 .row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
-.row-notattended td{color:#777772;background:#f4f4f2!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
-.rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px}
+.row-notattended td{color:#777772;background:#f4f4f2!important}.row-manual-gray td{background:#eef0f2!important;color:#7b848d!important}.row-manual-gray td *:not(.kind-badge):not(.tag):not(button){color:#7b848d!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
+.rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.report-flag-tools{display:flex;gap:8px;align-items:center;margin:0 0 5px;font-size:11px;font-weight:800;color:#555}.report-flag-tools label{display:inline-flex;align-items:center;gap:3px}.report-flag-tools input{margin:0}.report-good td{background:#f3f9ff!important}.report-bad td{background:#fff3f3!important}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
 .note{font-size:11px;color:var(--muted);margin-top:8px}
 @media(max-width:700px){.wrap{padding:10px}h1{font-size:17px}td,th{padding:6px 8px}.status{width:100%;margin-left:0}.calendars{grid-template-columns:repeat(3,minmax(220px,1fr));overflow-x:auto}.calendar-slider{overflow:hidden}}
@@ -85,10 +86,22 @@ th:last-child,td:last-child{border-right:0}
   <h1>無料食事イベント台帳　見やすさ確認版</h1>
   <div class="sub">本番画面とは別の確認版です。閲覧・来場予定・参加記録・終了処理・編集を、この画面で確認できます。</div>
   <div class="controls">
-    <button data-mode="all" class="active">すべて</button>
+    <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="planned">来場予定</button>
     <button data-mode="attended">参加済み</button>
     <span id="status" class="status">読み込み中</span>
+  </div>
+  <div class="subfilters">
+    <button type="button" class="kind-filter active" data-kind-filter="both">両方</button>
+    <button type="button" class="kind-filter" data-kind-filter="exhibition">展示会</button>
+    <button type="button" class="kind-filter" data-kind-filter="gathering">懇親会</button>
+    <span class="subfilter-label">状態</span>
+    <select id="statusFilter" aria-label="状態で絞り込み">
+      <option value="all">すべて</option>
+      <option value="attended">参加済み</option>
+      <option value="not_attended">未参加</option>
+      <option value="pending">未確定</option>
+    </select>
   </div>
   <div class="end-process-row"><button id="endProcessBtn" class="end-process-btn" type="button">終了処理 <span id="endProcessCount" class="end-process-count">0</span></button></div>
   <div class="legacy-edit-toolbar">
@@ -128,6 +141,7 @@ th:last-child,td:last-child{border-right:0}
 </div>
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
+const REPORT_FLAGS_KEY='free_food_event_report_flags_v1';
 const UI_STATE_KEY='free_food_event_ledger_2026_ui_state_v1';
 const EDIT_DRAFT_KEY='free_food_event_ledger_2026_design_edit_v1';
 const EDIT_PATCH_KEY='free_food_event_ledger_2026_structured_edit_v2';
@@ -135,7 +149,7 @@ const LEGACY_HTML_KEY='free_food_event_ledger_2026_legacy_html_v1';
 const END_DRAFTS_KEY='free_food_event_end_process_drafts_v1';
 const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
 const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
-let events=[],reports=[],flags={},mode='all',editing=false;
+let events=[],reports=[],flags={},reportFlags={},mode='all',kindFilter='both',statusFilter='all',editing=false;
 let dirtyIds=new Set();
 let editDraft={patches:{},newEvents:[],deletedIds:[]};
 let officialEventsById=new Map();
@@ -161,6 +175,8 @@ function inRange(e,d){return d>=e.date&&d<=(e.endDate||e.date)}
 function saveUiState(){
   localStorage.setItem(UI_STATE_KEY,JSON.stringify({
     mode,
+    kindFilter,
+    statusFilter,
     listStartYear,
     listStartMonth,
     calendarBaseYear,
@@ -172,6 +188,8 @@ function loadUiState(){
     const v=JSON.parse(localStorage.getItem(UI_STATE_KEY)||'null');
     if(!v||typeof v!=='object')return;
     if(['all','planned','attended'].includes(v.mode))mode=v.mode;
+    if(['both','exhibition','gathering'].includes(v.kindFilter))kindFilter=v.kindFilter;
+    if(['all','attended','not_attended','pending'].includes(v.statusFilter))statusFilter=v.statusFilter;
     if(Number.isInteger(v.listStartYear)&&v.listStartYear>=2000&&v.listStartYear<=2100)listStartYear=v.listStartYear;
     if(Number.isInteger(v.listStartMonth)&&v.listStartMonth>=0&&v.listStartMonth<=12)listStartMonth=v.listStartMonth;
     if(Number.isInteger(v.calendarBaseYear)&&v.calendarBaseYear>=2000&&v.calendarBaseYear<=2100)calendarBaseYear=v.calendarBaseYear;
@@ -180,6 +198,17 @@ function loadUiState(){
 }
 function syncModeButtons(){
   document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x.dataset.mode===mode));
+}
+function syncFilterControls(){
+  document.querySelectorAll('button[data-kind-filter]').forEach(x=>x.classList.toggle('active',x.dataset.kindFilter===kindFilter));
+  const st=document.getElementById('statusFilter');if(st)st.value=statusFilter;
+}
+function passesCommonFilters(e){
+  if(kindFilter!=='both'&&e._kind!==kindFilter)return false;
+  if(statusFilter==='attended'&&e.attendanceStatus!=='attended')return false;
+  if(statusFilter==='not_attended'&&e.attendanceStatus!=='not_attended')return false;
+  if(statusFilter==='pending'&&e.attendanceStatus)return false;
+  return true;
 }
 function flag(e){return flags[e.id]||{}}
 function saveFlags(){
@@ -217,7 +246,20 @@ function setIgnore(e,checked){
   if(checked){f.planned=false;if(Array.isArray(f.visitDates))delete f.visitDates;}
   flags[e.id]=f;saveFlags();render();
 }
+function setManualGray(e,checked){
+  const f=flags[e.id]||{};
+  f.manualGray=checked;
+  flags[e.id]=f;saveFlags();render();
+}
+
 function actualDates(e){return Array.isArray(e.visitDates)?e.visitDates:[]}
+function reportFlag(id){return reportFlags[id]||{good:false,bad:false}}
+function saveReportFlags(){localStorage.setItem(REPORT_FLAGS_KEY,JSON.stringify(reportFlags))}
+function reportFlagTools(r){
+  if(!r||!r.id)return '';
+  const f=reportFlag(r.id);
+  return '<div class="report-flag-tools"><label><input class="report-good-toggle" type="checkbox" data-report-id="'+esc(r.id)+'" '+(f.good?'checked':'')+'>良い</label><label><input class="report-bad-toggle" type="checkbox" data-report-id="'+esc(r.id)+'" '+(f.bad?'checked':'')+'>悪い</label></div>';
+}
 function plannedDates(e){
   const f=flag(e); let x=[];
   if(Array.isArray(f.visitDates))x=[...new Set(f.visitDates)].filter(d=>inRange(e,d));
@@ -528,11 +570,14 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true){
   const done=endDay<today;
   const cls=[
     e.attendanceStatus==='not_attended'?'row-notattended':'',
+    f.manualGray?'row-manual-gray':'',
     p.length?'row-planned':'',
     (!done&&f.ignored)?'row-ignored':''
   ].filter(Boolean).join(' ');
 
-  const tools=(!done&&!r&&!editing)?'<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>':'';
+  const planTools=(!done&&!r&&!editing)?'<label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label>':'';
+  const grayTool=!editing?'<label title="このイベントを手動で灰色にする"><input class="gray-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.manualGray?'checked':'')+'>灰色</label>':'';
+  const tools=(planTools||grayTool)?'<div class="event-tools">'+planTools+grayTool+'</div>':'';
   const dayTools=(!done&&!r&&!editing)?planDayChecks(e):'';
   const multiDay=!!(e.endDate&&e.endDate!==e.date);
   const plannedDayNo=(plannedDate&&multiDay)?days(e.date,plannedDate).length:0;
@@ -560,6 +605,8 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true){
     detail+='<div><strong>時間</strong> '+editableInline(e.id,'nightTime',e.nightTime||'')+'</div>';
     detail+='<div>'+editableBlock(e.id,'nightText',e.nightText||'')+'</div>';
     if(r){
+      detail+=reportFlagTools(r);
+      detail+=reportFlagTools(r);
       detail+='<div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>';
       detail+='<div class="report">'+esc(r.report||'')+'</div>';
     }
@@ -590,9 +637,10 @@ function attendedUndatedRow(e){
   let detail='<div class="attended-undated-note">終了処理で「実際に行った日」を入力してください。</div>';
   if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
   if(r&&String(r.report||'').trim()){
-    detail+='<div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div><div class="report">'+esc(r.report||'')+'</div>';
+    detail+=reportFlagTools(r)+'<div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div><div class="report">'+esc(r.report||'')+'</div>';
   }
-  return '<tr class="event-row attended-undated-row" data-event-id="'+esc(e.id)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">未入力</td><td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+  const rf=r?reportFlag(r.id):{good:false,bad:false};
+  return '<tr class="event-row attended-undated-row'+(rf.good?' report-good':'')+(rf.bad?' report-bad':'')+'" data-event-id="'+esc(e.id)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">未入力</td><td>'+eventCell+'</td><td>'+detail+'</td></tr>';
 }
 
 function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
@@ -629,7 +677,8 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   }
 
   const dateCell=showDate?'<td class="date attended-date" rowspan="'+rowspan+'"><strong>'+esc(visitDate.replace(/^\\d{4}-/,'').replace('-','/'))+'</strong><div class="visit-count">'+rowspan+'件</div></td>':'';
-  return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+'" data-event-id="'+esc(e.id)+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+  const rf=r?reportFlag(r.id):{good:false,bad:false};
+  return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+(rf.good?' report-good':'')+(rf.bad?' report-bad':'')+'" data-event-id="'+esc(e.id)+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
 }
 
 function isoDate(y,m,d){return y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
@@ -848,7 +897,7 @@ function render(){
   if(mode==='attended'){
     const items=[],undated=[];
     for(const e of events){
-      if(e.attendanceStatus!=='attended')continue;
+      if(e.attendanceStatus!=='attended'||!passesCommonFilters(e))continue;
       const actual=actualDates(e);
       if(!actual.length){
         if(passesListStart(e.date))undated.push(e);
@@ -890,6 +939,7 @@ function render(){
   if(mode==='planned'){
     const items=[];
     for(const e of events){
+      if(!passesCommonFilters(e))continue;
       for(const d of plannedDates(e)){
         if(passesListStart(d))items.push({e,d});
       }
@@ -918,7 +968,7 @@ function render(){
     return;
   }
 
-  let list=events.slice().filter(e=>passesListStart(e.date));
+  let list=events.slice().filter(e=>passesCommonFilters(e)&&passesListStart(e.date));
   list.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a,b));
 
   let html='',month='',week='';
@@ -957,6 +1007,16 @@ document.querySelector('.controls').addEventListener('click',e=>{
 });
 
 
+document.querySelector('.subfilters').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-kind-filter]');if(!b)return;
+  kindFilter=b.dataset.kindFilter;
+  syncFilterControls();saveUiState();render();
+});
+document.getElementById('statusFilter').addEventListener('change',e=>{
+  statusFilter=e.target.value;
+  syncFilterControls();saveUiState();render();
+});
+
 endProcessBtn.addEventListener('click',()=>openEndProcess(''));
 endProcessClose.addEventListener('click',closeEndProcess);
 endProcessModal.addEventListener('click',e=>{if(e.target===endProcessModal)closeEndProcess();});
@@ -976,6 +1036,17 @@ document.getElementById('body').addEventListener('click',e=>{
   if(!row)return;
   if(e.target.closest('a'))e.preventDefault();
   setSelected(row);
+});
+
+document.getElementById('body').addEventListener('change',e=>{
+  const gray=e.target.closest('.gray-toggle');
+  if(gray){const ev=eventById(gray.dataset.id);if(ev)setManualGray(ev,gray.checked);return;}
+  const good=e.target.closest('.report-good-toggle'),bad=e.target.closest('.report-bad-toggle');
+  if(!good&&!bad)return;
+  const el=good||bad,id=el.dataset.reportId,f=reportFlag(id);
+  if(good){f.good=good.checked;if(f.good)f.bad=false;}
+  else{f.bad=bad.checked;if(f.bad)f.good=false;}
+  reportFlags[id]=f;saveReportFlags();render();
 });
 
 document.getElementById('body').addEventListener('input',e=>{
@@ -1070,8 +1141,10 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
 (async()=>{
   try{
     try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(_){flags={}}
+    try{reportFlags=JSON.parse(localStorage.getItem(REPORT_FLAGS_KEY)||'{}')}catch(_){reportFlags={}}
     loadUiState();
     syncModeButtons();
+    syncFilterControls();
     try{endDrafts=JSON.parse(localStorage.getItem(END_DRAFTS_KEY)||'{}')}catch(_){endDrafts={}}
     const [g,x,m]=await Promise.all([
       fetch('イベント一覧.json?v='+Date.now(),{cache:'no-store'}),
