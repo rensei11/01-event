@@ -10,10 +10,9 @@
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
 h1{font-size:20px;margin:0}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
-.controls{display:flex;gap:6px;margin:0 0 10px;flex-wrap:wrap;align-items:center}.edit-mode-btn{margin-left:4px}.row-edit-btn{display:none;border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:3px 8px;font-size:11px;font-weight:800;white-space:nowrap}.editing .row-edit-btn{display:inline-block}
-.edit-bar{display:none;align-items:center;gap:7px;flex-wrap:wrap;margin:-2px 0 10px;padding:8px 10px;border:1px solid #b9c7d4;border-radius:9px;background:#eef4fa}.editing .edit-bar{display:flex}.edit-change-count{font-size:12px;font-weight:900;color:#374151;margin-left:auto}.edit-save{background:#20262d;color:#fff;border-color:#20262d}.edit-danger{color:#9a3412;border-color:#d8a58d}
-.inline-edit-row td{background:#f8fbff!important;padding:12px!important;border-top:2px solid #7fa0bd!important}.edit-panel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 12px}.edit-field{min-width:0}.edit-field.wide{grid-column:span 2}.edit-field.full{grid-column:1/-1}.edit-field label{display:block;font-size:11px;font-weight:900;color:#46515c;margin-bottom:3px}.edit-field input,.edit-field select,.edit-field textarea{width:100%;border:1px solid #aeb7c0;border-radius:6px;background:#fff;padding:6px 7px;font:inherit;font-size:13px;color:#1d2329}.edit-field textarea{min-height:64px;resize:vertical;line-height:1.45}.edit-field textarea.report-editor{min-height:150px}.edit-actions{grid-column:1/-1;display:flex;gap:7px;flex-wrap:wrap;align-items:center;padding-top:3px;border-top:1px solid #d8e0e8}.edit-hint{font-size:11px;color:#606a74}.editing .event-row.active-edit td{background:#f7fbff}
-@media(max-width:900px){.edit-panel{grid-template-columns:repeat(2,minmax(0,1fr))}.edit-field.wide{grid-column:span 2}}
+.controls{display:flex;gap:6px;margin:0 0 10px;flex-wrap:wrap;align-items:center}.edit-mode-btn{margin-left:4px}.row-edit-btn{display:none}
+.edit-bar{display:none;align-items:center;gap:7px;flex-wrap:wrap;margin:-2px 0 10px;padding:8px 10px;border:1px solid #b9c7d4;border-radius:9px;background:#eef4fa}.editing .edit-bar{display:flex}.edit-change-count{font-size:12px;font-weight:900;color:#374151;margin-left:auto}.edit-save{background:#20262d;color:#fff;border-color:#20262d}.edit-hint{font-size:11px;color:#606a74}
+.editable{outline:0}.editing .editable{cursor:text;border-radius:4px;box-shadow:inset 0 0 0 1px #b9c7d4;background:#fffdf4;padding:1px 3px}.editing .editable:focus{box-shadow:inset 0 0 0 2px #5d8fc5;background:#fff}.editing .editable-block{display:block;min-height:20px}.editing .edit-delete-btn{display:inline-block}.edit-delete-btn{display:none;margin-left:6px;padding:2px 7px;font-size:11px;color:#9a3412;border-color:#d8a58d}.edit-mode-note{font-size:12px;font-weight:800;color:#374151}
 button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
 button.active{background:#20262d;color:#fff;border-color:#20262d}
 .status{margin-left:auto;align-self:center;font-size:12px;color:var(--muted)}
@@ -62,7 +61,7 @@ th:last-child,td:last-child{border-right:0}
     <button id="newEventBtn" type="button">＋ 新規イベント</button>
     <button id="saveEditsBtn" class="edit-save" type="button">変更を保存</button>
     <button id="discardEditsBtn" type="button">未保存変更を元に戻す</button>
-    <span class="edit-hint">確認版のブラウザ内下書きです。本番データにはまだ反映しません。</span>
+    <span class="edit-mode-note">表の文字を直接クリックして書き換えます。</span><span class="edit-hint">確認版のブラウザ内下書きです。本番データにはまだ反映しません。</span>
     <span id="editChangeCount" class="edit-change-count">変更 0件</span>
   </div>
   <section class="calendar-panel" aria-label="カレンダー">
@@ -280,7 +279,8 @@ function deleteEvent(id){
 function newEvent(){
   const stamp=Date.now(),today=new Date().toISOString().slice(0,10);
   const e={id:'draft-new-'+stamp,date:today,endDate:'',dateText:'',name:'新しいイベント',url:'',venue:'',conditionLines:[],rating:'',nightTime:'',nightText:'',attendanceStatus:'',visitDates:[],sourceReportId:'',_kind:'exhibition'};
-  events.push(e);markDirty(e.id);mode='all';activeEditId=e.id;activeEditVisitDate='';render();
+  events.push(e);markDirty(e.id);mode='all';listStartYear=0;listStartMonth=0;render();
+  requestAnimationFrame(()=>{const rows=[...document.querySelectorAll('tr.event-row')];const row=rows.find(x=>x.textContent.includes('新しいイベント'));if(row){row.scrollIntoView({behavior:'smooth',block:'center'});const n=row.querySelector('[data-direct-field="name"]');if(n)n.focus();}});
 }
 function saveEditDraft(){
   localStorage.setItem(EDIT_DRAFT_KEY,JSON.stringify({events,reports,savedAt:new Date().toISOString()}));
@@ -288,6 +288,60 @@ function saveEditDraft(){
 }
 function discardUnsaved(){
   events=cloneData(baseEvents);reports=cloneData(baseReports);dirtyIds.clear();activeEditId='';activeEditVisitDate='';refreshEditBar();render();
+}
+
+
+function editAttr(id,field,target='event'){
+  return editing?' contenteditable="true" spellcheck="false" class="editable editable-block" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'';
+}
+function editableInline(id,field,value,target='event',extraClass=''){
+  const cls=editing?'editable '+extraClass:extraClass;
+  return '<span'+(cls?' class="'+cls.trim()+'"':'')+(editing?' contenteditable="true" spellcheck="false" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'')+'>'+esc(value||'')+'</span>';
+}
+function editableBlock(id,field,value,target='event',extraClass=''){
+  const cls=(editing?'editable editable-block ':'')+extraClass;
+  return '<div class="'+cls.trim()+'"'+(editing?' contenteditable="true" spellcheck="false" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'')+'>'+esc(value||'')+'</div>';
+}
+function editableLines(id,field,lines,target='event',extraClass=''){
+  return editableBlock(id,field,(lines||[]).join('\n'),target,extraClass);
+}
+function applyDirectEdit(el){
+  const id=el.dataset.directId,field=el.dataset.directField,target=el.dataset.directTarget;
+  const e=eventById(id);if(!e)return;
+  const text=el.innerText.replace(/\u00a0/g,' ').trim();
+  if(target==='report'){
+    let r=reportByEvent(e);
+    if(!r){
+      r={id:'draft-report-'+id,date:e.visitDates?.[0]||e.date,visitDates:[...(e.visitDates||[])],scheduledDate:e.date,scheduledEndDate:e.endDate||e.date,name:e.name,url:e.url||'',venue:e.venue||'',rating:'',category:e._kind,report:'',source:'確認版編集'};
+      reports.push(r);e.sourceReportId=r.id;
+    }
+    if(field==='rating')r.rating=text;
+    if(field==='report')r.report=el.innerText.replace(/\u00a0/g,' ').trim();
+  }else{
+    if(field==='name')e.name=text;
+    else if(field==='venue')e.venue=text;
+    else if(field==='url')e.url=text;
+    else if(field==='date')e.date=text;
+    else if(field==='endDate')e.endDate=text;
+    else if(field==='rating')e.rating=text;
+    else if(field==='nightTime')e.nightTime=text;
+    else if(field==='nightText')e.nightText=el.innerText.replace(/\u00a0/g,' ').trim();
+    else if(field==='people'){
+      const cond=conditionLines(e);
+      const people=splitLines(el.innerText).map(x=>'名前コード：'+x);
+      e.conditionLines=[...people,...cond];
+    }else if(field==='conditions'){
+      const people=personLines(e).map(x=>'名前コード：'+x);
+      e.conditionLines=[...people,...splitLines(el.innerText)];
+    }else if(field==='visitDates'){
+      e.visitDates=String(text).split(/[,、\s]+/).map(x=>x.trim()).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x));
+      const r=reportByEvent(e);if(r){r.visitDates=[...e.visitDates];r.date=e.visitDates[0]||e.date;}
+    }
+  }
+  markDirty(id);
+}
+function directDeleteButton(e){
+  return editing?'<button type="button" class="edit-delete-btn" data-direct-delete="'+esc(e.id)+'">削除</button>':'';
 }
 
 function setTableLayout(attendedMode){
@@ -328,33 +382,36 @@ function row(e){
     f.ignored?'row-ignored':''
   ].filter(Boolean).join(' ');
 
-  const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
-  const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const editBtn='<button class="row-edit-btn" type="button" data-edit-id="'+esc(e.id)+'" data-edit-visit="">編集</button>';
-  const rightTop='<div class="event-right-tools">'+personTop+editBtn+'</div>';
   const tools=r?'':'<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>';
   const dayTools=r?'':planDayChecks(e);
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+'<div class="event-head"><div class="name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>';
 
-  const condHtml=cond.length?'<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>':'';
+  const nameHtml=editing?editableBlock(e.id,'name',e.name,'event','name'):(e.url?'<div class="name"><a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a></div>':'<div class="name">'+esc(e.name)+'</div>');
+  const peopleHtml=people.length?editableLines(e.id,'people',people,'event','person-top'):'';
+  const rightTop='<div class="event-right-tools">'+peopleHtml+directDeleteButton(e)+'</div>';
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
+    nameHtml+
+    editableBlock(e.id,'venue',e.venue||'','event','venue')+
+    (editing?'<div class="venue">URL: '+editableInline(e.id,'url',e.url||'','event')+'</div>':'');
+
+  const condHtml=cond.length||editing?editableLines(e.id,'conditions',cond,'event','report-cond'):'';
   let detail='';
-  if(!r && e.rating)detail+='<div class="pre">'+esc(e.rating)+'</div>';
-  if(e.nightTime||e.nightText)detail+='<div>'+esc([e.nightTime,e.nightText].filter(Boolean).join('　'))+'</div>';
+  if(!r && (e.rating||editing))detail+=editableBlock(e.id,'rating',e.rating||'','event','pre');
+  if(e.nightTime||editing)detail+='<div>時間：'+editableInline(e.id,'nightTime',e.nightTime||'','event')+'</div>';
+  if(e.nightText||editing)detail+=editableBlock(e.id,'nightText',e.nightText||'','event','');
   if(r){
-    detail+='<div class="rating">実地評価：'+esc(r.rating||'')+'</div>';
-    detail+='<div class="report">'+esc(r.report||'')+'</div>';
+    detail+='<div class="rating">実地評価：'+editableInline(e.id,'rating',r.rating||'','report')+'</div>';
+    detail+=editableBlock(e.id,'report',r.report||'','report','report');
   }
+  if(editing&&a.length)detail+='<div>参加日：'+editableInline(e.id,'visitDates',a.join(', '),'event')+'</div>';
 
   const today=new Date();today.setHours(0,0,0,0);
   const endDay=new Date((e.endDate||e.date)+'T00:00:00');
   const done=endDay<today;
-  const right=done
-    ? '<td colspan="2">'+condHtml+detail+'</td>'
-    : '<td>'+condHtml+'</td><td>'+detail+'</td>';
-
-  const isActive=editing&&activeEditId===e.id&&activeEditVisitDate==='';
-  const main='<tr class="event-row '+cls+(isActive?' active-edit':'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+esc(compactRangeText(e))+'</td><td>'+eventCell+'</td>'+right+'</tr>';
-  return main+(isActive?editRowHtml(e,r,4,''):'');
+  const right=done?'<td colspan="2">'+condHtml+detail+'</td>':'<td>'+condHtml+'</td><td>'+detail+'</td>';
+  const dateCell=editing
+    ? '<td class="date"><div>'+editableInline(e.id,'date',e.date,'event')+'</div><div>～'+editableInline(e.id,'endDate',e.endDate||'','event')+'</div></td>'
+    : '<td class="date">'+esc(compactRangeText(e))+'</td>';
+  return '<tr class="event-row '+cls+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td>'+right+'</tr>';
 }
 
 
@@ -365,33 +422,34 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   const showReport=visitDate===firstVisit;
 
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>'];
-  const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
-  const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const editBtn='<button class="row-edit-btn" type="button" data-edit-id="'+esc(e.id)+'" data-edit-visit="'+esc(visitDate)+'">編集</button>';
-  const rightTop='<div class="event-right-tools">'+personTop+editBtn+'</div>';
+  const peopleHtml=people.length?editableLines(e.id,'people',people,'event','person-top'):'';
+  const rightTop='<div class="event-right-tools">'+peopleHtml+directDeleteButton(e)+'</div>';
+  const nameHtml=editing?editableBlock(e.id,'name',e.name,'event','name'):(e.url?'<div class="name"><a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a></div>':'<div class="name">'+esc(e.name)+'</div>');
 
   let schedule='';
   if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(compactRangeText(e))+'</div>';
   else if(e.date!==visitDate) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
 
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+schedule;
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+
+    nameHtml+
+    editableBlock(e.id,'venue',e.venue||'','event','venue')+
+    (editing?'<div class="venue">URL: '+editableInline(e.id,'url',e.url||'','event')+'</div>':'')+
+    schedule;
 
   let detail='';
   if(showReport){
-    if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
+    if(cond.length||editing)detail+=editableLines(e.id,'conditions',cond,'event','report-cond');
     if(r){
-      detail+='<div class="rating">実地評価：'+esc(r.rating||'')+'</div>';
-      if(visits.length>1)detail+='<div class="report-days">参加日 '+esc(fmtDates(visits))+'</div>';
-      detail+='<div class="report">'+esc(r.report||'')+'</div>';
+      detail+='<div class="rating">実地評価：'+editableInline(e.id,'rating',r.rating||'','report')+'</div>';
+      if(visits.length>1)detail+='<div class="report-days">参加日 '+editableInline(e.id,'visitDates',visits.join(', '),'event')+'</div>';
+      detail+=editableBlock(e.id,'report',r.report||'','report','report');
     }
   }else{
     detail+='<div class="report-reference">レポートは '+esc(fmtDates([firstVisit]))+' に表示</div>';
   }
 
   const dateCell=showDate?'<td class="date attended-date" rowspan="'+rowspan+'"><strong>'+esc(visitDate.replace(/^\\d{4}-/,'').replace('-','/'))+'</strong><div class="visit-count">'+rowspan+'件</div></td>':'';
-  const isActive=editing&&activeEditId===e.id&&activeEditVisitDate===visitDate;
-  const main='<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+(isActive?' active-edit':'')+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
-  return main+(isActive?editRowHtml(e,r,3,visitDate):'');
+  return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
 }
 
 function isoDate(y,m,d){return y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
@@ -578,22 +636,14 @@ document.getElementById('newEventBtn').addEventListener('click',newEvent);
 document.getElementById('saveEditsBtn').addEventListener('click',saveEditDraft);
 document.getElementById('discardEditsBtn').addEventListener('click',discardUnsaved);
 document.getElementById('body').addEventListener('click',e=>{
-  const edit=e.target.closest('.row-edit-btn');
-  if(edit){
-    e.preventDefault();e.stopPropagation();
-    activeEditId=edit.dataset.editId||'';
-    activeEditVisitDate=edit.dataset.editVisit||'';
-    render();return;
-  }
-  const apply=e.target.closest('.apply-row-edit');
-  if(apply){applyEditor(apply.dataset.id);return;}
-  const undo=e.target.closest('.undo-row-edit');
-  if(undo){undoEvent(undo.dataset.id);return;}
-  const dup=e.target.closest('.duplicate-row-edit');
-  if(dup){duplicateEvent(dup.dataset.id);return;}
-  const del=e.target.closest('.delete-row-edit');
-  if(del){deleteEvent(del.dataset.id);return;}
+  const del=e.target.closest('.edit-delete-btn');
+  if(del){deleteEvent(del.dataset.directDelete);return;}
 });
+document.getElementById('body').addEventListener('blur',e=>{
+  const el=e.target.closest('[data-direct-field]');
+  if(!el)return;
+  applyDirectEdit(el);
+},true);
 
 document.getElementById('body').addEventListener('change',e=>{
   const p=e.target.closest('.plan-toggle'),n=e.target.closest('.ignore-toggle'),d=e.target.closest('.plan-day-toggle');
