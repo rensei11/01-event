@@ -10,20 +10,13 @@
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
 h1{font-size:20px;margin:0}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
-.controls{display:flex;gap:6px;margin:0 0 8px;flex-wrap:wrap;align-items:center}
-.legacy-edit-toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:0 0 6px}.legacy-edit-toolbar button:disabled{opacity:.45;cursor:not-allowed}.legacy-edit-toolbar .primary{font-weight:800}.legacy-edit-toolbar .danger{color:#9a3412;border-color:#d8a58d}.edit-help{font-size:12px;color:var(--muted);margin:0 0 10px}
-.event-row.selected td,.week.selected td{box-shadow:inset 0 0 0 2px #d29b00!important}
-body.editing .event-row td{background:#fffdf2!important;outline:none} body.editing .event-row .date{cursor:text}
-body.editing .week td{outline:none}
-body.editing .event-row.selected td{background:#fff4c7!important}.edit-mode-btn{margin-left:4px}.row-edit-btn{display:none}
-.edit-bar{display:none!important}.edit-change-count{font-size:12px;font-weight:900;color:#374151;margin-left:auto}.edit-save{background:#20262d;color:#fff;border-color:#20262d}.edit-hint{font-size:11px;color:#606a74}
-.editable{outline:0}.editing .editable{cursor:text;border-radius:4px;box-shadow:inset 0 0 0 1px #b9c7d4;background:#fffdf4;padding:1px 3px}.editing .editable:focus{box-shadow:inset 0 0 0 2px #5d8fc5;background:#fff}.editing .editable-block{display:block;min-height:20px}.editing .edit-delete-btn{display:inline-block}.edit-delete-btn{display:none;margin-left:6px;padding:2px 7px;font-size:11px;color:#9a3412;border-color:#d8a58d}.edit-mode-note{font-size:12px;font-weight:800;color:#374151}
+.controls{display:flex;gap:6px;margin:0 0 10px;flex-wrap:wrap;align-items:center}
 button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
 button.active{background:#20262d;color:#fff;border-color:#20262d}
 .status{margin-left:auto;align-self:center;font-size:12px;color:var(--muted)}
 .calendar-panel{margin:0 0 14px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px}
 .calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:900}.calendar-note{font-size:12px;color:var(--muted)}
-.calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.list-filter-bar{display:flex;align-items:center;gap:7px;margin:0 0 8px;font-size:12px;font-weight:800;color:#555}.list-filter-bar select{border:1px solid #aeb7c0;border-radius:7px;background:#fff;padding:5px 8px;font:inherit;font-size:12px}.calendar-start-label{font-size:12px;font-weight:900;color:#555}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:12px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:11px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
+.calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.calendar-start-label{font-size:12px;font-weight:900;color:#555}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:12px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:11px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
 .calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:stretch}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:23px;font-weight:900}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}.month-card{border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0;align-self:start}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px;cursor:pointer}.month-name:hover{text-decoration:underline}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none}.cal-day.empty{visibility:hidden}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#5d8fc5;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.cal-day.clickable:hover{filter:brightness(.92)}
 .calendar-focus td{animation:calFlash 1.2s ease}@keyframes calFlash{0%,100%{background:inherit}35%,70%{background:#fff1b8}}
 .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
@@ -35,7 +28,7 @@ th:last-child,td:last-child{border-right:0}
 .month td{background:#d7e2ee;font-weight:800;font-size:15px;padding:8px 12px;border-top:3px solid #8fa2b5}.week td{background:var(--week);font-weight:700;font-size:14px;padding:7px 12px;border-top:2px solid #aeb8c2;color:var(--text)}
 .event-row:nth-of-type(even) td{background:#fdfdfc}
 .date,.date-head{text-align:center}.date{font-weight:700;white-space:normal;vertical-align:middle;font-size:12px;line-height:1.35;padding-left:6px;padding-right:6px;overflow:hidden}
-.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-right-tools{margin-left:auto;display:flex;align-items:center;gap:7px}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#46515c;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:700;font-size:15px}.name a{color:var(--link);text-decoration:none}.name a:hover{text-decoration:underline}
+.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#46515c;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:700;font-size:15px}.name a{color:var(--link);text-decoration:none}.name a:hover{text-decoration:underline}
 .venue{margin-top:2px;color:var(--muted)}
 .person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}.report-cond{margin:0 0 7px;padding:5px 7px;background:#f6f6f3;border-left:3px solid #c5c5bf;color:#555}.report-cond div{margin:1px 0}
 .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
@@ -61,40 +54,23 @@ th:last-child,td:last-child{border-right:0}
     <button data-mode="attended">参加済み</button>
     <span id="status" class="status">読み込み中</span>
   </div>
-  <div class="legacy-edit-toolbar">
-    <button id="editBtn" class="primary" type="button">編集開始</button>
-    <button id="addBtn" type="button" disabled>＋ 新しいイベント</button>
-    <button id="moveUpBtn" type="button" disabled>↑ 上へ</button>
-    <button id="moveDownBtn" type="button" disabled>↓ 下へ</button>
-    <button id="kindBtn" type="button" disabled>展示会／懇親会</button>
-    <button id="linkBtn" type="button" disabled>リンク設定</button>
-    <button id="addWeekBtn" type="button" disabled>週区切りを追加</button>
-    <button id="delBtn" class="danger" type="button" disabled>選択行を削除</button>
-    <button id="saveHtmlBtn" type="button">HTMLを保存</button>
-    <button id="resetHtmlBtn" type="button">編集内容を戻す</button>
-  </div>
-  <div class="edit-help">編集開始 → 表の文字を直接変更できます。行をクリックすると黄色く選択され、↑↓・分類・リンク・削除が使えます。</div>
   <section class="calendar-panel" aria-label="カレンダー">
     <div class="calendar-head"><div class="calendar-title">カレンダー</div><div id="calendarNote" class="calendar-note"></div></div>
     <div class="calendar-jump"><span class="calendar-start-label">一覧：この月以降</span><select id="calendarYear" class="calendar-year" aria-label="年"></select><div id="monthJump" class="month-jump"></div></div>
     <div class="calendar-slider"><button id="calendarPrev" class="calendar-arrow" type="button" aria-label="前の月">‹</button><div id="calendarMonths" class="calendars"></div><button id="calendarNext" class="calendar-arrow" type="button" aria-label="次の月">›</button></div>
   </section>
-<div class="table-wrap">
+  <div class="table-wrap">
     <table id="ledgerTable">
       <colgroup id="ledgerCols"><col class="date"><col class="event"><col class="cond"><col class="detail"></colgroup>
       <thead id="ledgerHead"><tr><th class="date-head">日付</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容</th></tr></thead>
       <tbody id="body"><tr><td colspan="4" class="empty">読み込み中です</td></tr></tbody>
     </table>
   </div>
-  <div class="note">※ 初期版と同じHTML直接編集方式です。保存先はこの確認版のブラウザ内で、本番GitHubにはまだ反映しません。</div>
+  <div class="note">※ この確認版では編集・終了処理はできません。本番データは変更しません。</div>
 </div>
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
-const EDIT_DRAFT_KEY='free_food_event_ledger_2026_design_edit_v1';
-const LEGACY_HTML_KEY='free_food_event_ledger_2026_legacy_html_v1';
-let events=[],reports=[],flags={},mode='all',editing=false;
-let baseEvents=[],baseReports=[],dirtyIds=new Set(),activeEditId='',activeEditVisitDate='';
-let selected=null;
+let events=[],reports=[],flags={},mode='all';
 const calendarToday=new Date();
 let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
 let listStartYear=0,listStartMonth=0;
@@ -183,179 +159,6 @@ function weekKey(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;d.set
 function weekLabel(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;const m=new Date(d);m.setDate(d.getDate()-n);const su=new Date(m);su.setDate(m.getDate()+6);return (m.getMonth()+1)+'/'+m.getDate()+'～'+(su.getMonth()+1)+'/'+su.getDate()}
 
 
-
-function cloneData(v){return JSON.parse(JSON.stringify(v))}
-function eventById(id){return events.find(e=>e.id===id)||null}
-function baseEventById(id){return baseEvents.find(e=>e.id===id)||null}
-function reportByEvent(e){return e?reportFor(e):null}
-function refreshEditBar(){
-  const n=document.getElementById('editChangeCount');
-  if(n)n.textContent='変更 '+dirtyIds.size+'件';
-}
-function markDirty(id){dirtyIds.add(id);refreshEditBar()}
-function splitLines(v){return String(v||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean)}
-function editRowHtml(e,r,colspan,visitDate){
-  const people=personLines(e).join('\n');
-  const cond=conditionLines(e).join('\n');
-  const visits=actualDates(e).join(', ');
-  const kind=e._kind==='gathering'?'gathering':'exhibition';
-  const status=e.attendanceStatus||'';
-  return '<tr class="inline-edit-row" data-editor-id="'+esc(e.id)+'"><td colspan="'+colspan+'"><div class="edit-panel">'+
-    '<div class="edit-field"><label>区分</label><select data-f="kind"><option value="exhibition" '+(kind==='exhibition'?'selected':'')+'>展示会</option><option value="gathering" '+(kind==='gathering'?'selected':'')+'>懇親会</option></select></div>'+
-    '<div class="edit-field"><label>開始日</label><input data-f="date" type="date" value="'+esc(e.date||'')+'"></div>'+
-    '<div class="edit-field"><label>終了日</label><input data-f="endDate" type="date" value="'+esc(e.endDate||'')+'"></div>'+
-    '<div class="edit-field"><label>参加状態</label><select data-f="attendanceStatus"><option value="" '+(!status?'selected':'')+'>未確定</option><option value="attended" '+(status==='attended'?'selected':'')+'>参加済み</option><option value="not_attended" '+(status==='not_attended'?'selected':'')+'>未参加</option></select></div>'+
-    '<div class="edit-field wide"><label>イベント名</label><input data-f="name" value="'+esc(e.name||'')+'"></div>'+
-    '<div class="edit-field wide"><label>会場</label><input data-f="venue" value="'+esc(e.venue||'')+'"></div>'+
-    '<div class="edit-field full"><label>URL</label><input data-f="url" value="'+esc(e.url||'')+'"></div>'+
-    '<div class="edit-field wide"><label>名前</label><textarea data-f="people">'+esc(people)+'</textarea></div>'+
-    '<div class="edit-field wide"><label>参加条件（1行ずつ）</label><textarea data-f="conditions">'+esc(cond)+'</textarea></div>'+
-    '<div class="edit-field"><label>事前評価</label><input data-f="rating" value="'+esc(e.rating||'')+'"></div>'+
-    '<div class="edit-field"><label>夜の時間</label><input data-f="nightTime" value="'+esc(e.nightTime||'')+'"></div>'+
-    '<div class="edit-field wide"><label>夜の内容</label><textarea data-f="nightText">'+esc(e.nightText||'')+'</textarea></div>'+
-    '<div class="edit-field full"><label>実際に参加した日（カンマ区切り）</label><input data-f="visitDates" value="'+esc(visits)+'" placeholder="2026-04-15, 2026-04-16"></div>'+
-    '<div class="edit-field"><label>実地レポート 評価</label><input data-f="reportRating" value="'+esc(r?.rating||'')+'"></div>'+
-    '<div class="edit-field full"><label>実地レポート</label><textarea class="report-editor" data-f="reportText">'+esc(r?.report||'')+'</textarea></div>'+
-    '<div class="edit-actions">'+
-      '<button type="button" class="apply-row-edit" data-id="'+esc(e.id)+'">この内容を反映</button>'+
-      '<button type="button" class="undo-row-edit" data-id="'+esc(e.id)+'">このイベントを元に戻す</button>'+
-      '<button type="button" class="duplicate-row-edit" data-id="'+esc(e.id)+'">複製</button>'+
-      '<button type="button" class="delete-row-edit edit-danger" data-id="'+esc(e.id)+'">削除</button>'+
-      '<span class="edit-hint">確定済み・未確定に関係なく編集できます。</span>'+
-    '</div></div></td></tr>';
-}
-function editorValue(editor,key){return editor.querySelector('[data-f="'+key+'"]')?.value??''}
-function applyEditor(id){
-  const editor=document.querySelector('.inline-edit-row[data-editor-id="'+CSS.escape(id)+'"]');
-  const e=eventById(id);if(!editor||!e)return;
-  e._kind=editorValue(editor,'kind')==='gathering'?'gathering':'exhibition';
-  e.date=editorValue(editor,'date').trim();
-  e.endDate=editorValue(editor,'endDate').trim();
-  e.dateText='';
-  e.name=editorValue(editor,'name');
-  e.url=editorValue(editor,'url').trim();
-  e.venue=editorValue(editor,'venue');
-  e.rating=editorValue(editor,'rating');
-  e.nightTime=editorValue(editor,'nightTime');
-  e.nightText=editorValue(editor,'nightText');
-  e.attendanceStatus=editorValue(editor,'attendanceStatus');
-  const people=splitLines(editorValue(editor,'people')).map(x=>'名前コード：'+x);
-  const conditions=splitLines(editorValue(editor,'conditions'));
-  e.conditionLines=[...people,...conditions];
-  e.visitDates=String(editorValue(editor,'visitDates')).split(/[,、\s]+/).map(x=>x.trim()).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x));
-  let r=reportByEvent(e);
-  const rr=editorValue(editor,'reportRating').trim(),rt=editorValue(editor,'reportText');
-  if((rr||rt)&&!r){
-    r={id:'draft-report-'+id,date:e.visitDates[0]||e.date,visitDates:[...e.visitDates],scheduledDate:e.date,scheduledEndDate:e.endDate||e.date,scheduledDateText:'',dateText:'',name:e.name,url:e.url||'',venue:e.venue||'',rating:rr,category:e._kind,report:rt,source:'確認版編集'};
-    reports.push(r);e.sourceReportId=r.id;
-  }else if(r){
-    r.name=e.name;r.venue=e.venue;r.url=e.url||'';
-    r.scheduledDate=e.date;r.scheduledEndDate=e.endDate||e.date;
-    r.date=e.visitDates[0]||e.date;r.visitDates=[...e.visitDates];
-    r.rating=rr;r.report=rt;r.category=e._kind;
-  }
-  markDirty(id);
-  activeEditId='';activeEditVisitDate='';
-  render();
-}
-function undoEvent(id){
-  const base=baseEventById(id);
-  const cur=eventById(id);
-  if(base){
-    if(cur)Object.assign(cur,cloneData(base)); else events.push(cloneData(base));
-    reports=reports.filter(r=>r.id!==cur?.sourceReportId&&r.id!==base.sourceReportId);
-    const br=baseReports.find(r=>r.id===base.sourceReportId);if(br)reports.push(cloneData(br));
-  }else{
-    events=events.filter(e=>e.id!==id);
-    if(cur?.sourceReportId)reports=reports.filter(r=>r.id!==cur.sourceReportId);
-  }
-  dirtyIds.delete(id);activeEditId='';activeEditVisitDate='';refreshEditBar();render();
-}
-function duplicateEvent(id){
-  const e=eventById(id);if(!e)return;
-  const n=cloneData(e),stamp=Date.now();
-  n.id='draft-copy-'+stamp;n.name=(n.name||'')+'（複製）';n.sourceReportId='';
-  const r=reportByEvent(e);
-  if(r){
-    const nr=cloneData(r);nr.id='draft-report-'+stamp;nr.name=n.name;reports.push(nr);n.sourceReportId=nr.id;
-  }
-  events.push(n);markDirty(n.id);activeEditId=n.id;activeEditVisitDate='';render();
-}
-function deleteEvent(id){
-  const e=eventById(id);if(!e)return;
-  if(!confirm('このイベントを確認版から削除しますか？'))return;
-  events=events.filter(x=>x.id!==id);
-  if(e.sourceReportId)reports=reports.filter(r=>r.id!==e.sourceReportId);
-  markDirty(id);activeEditId='';activeEditVisitDate='';render();
-}
-function newEvent(){
-  const stamp=Date.now(),today=new Date().toISOString().slice(0,10);
-  const e={id:'draft-new-'+stamp,date:today,endDate:'',dateText:'',name:'新しいイベント',url:'',venue:'',conditionLines:[],rating:'',nightTime:'',nightText:'',attendanceStatus:'',visitDates:[],sourceReportId:'',_kind:'exhibition'};
-  events.push(e);markDirty(e.id);mode='all';listStartYear=0;listStartMonth=0;render();
-  requestAnimationFrame(()=>{const rows=[...document.querySelectorAll('tr.event-row')];const row=rows.find(x=>x.textContent.includes('新しいイベント'));if(row){row.scrollIntoView({behavior:'smooth',block:'center'});const n=row.querySelector('[data-direct-field="name"]');if(n)n.focus();}});
-}
-function saveEditDraft(){
-  localStorage.setItem(EDIT_DRAFT_KEY,JSON.stringify({events,reports,savedAt:new Date().toISOString()}));
-  baseEvents=cloneData(events);baseReports=cloneData(reports);dirtyIds.clear();refreshEditBar();render();
-}
-function discardUnsaved(){
-  events=cloneData(baseEvents);reports=cloneData(baseReports);dirtyIds.clear();activeEditId='';activeEditVisitDate='';refreshEditBar();render();
-}
-
-
-function editAttr(id,field,target='event'){
-  return editing?' contenteditable="true" spellcheck="false" class="editable editable-block" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'';
-}
-function editableInline(id,field,value,target='event',extraClass=''){
-  const cls=editing?'editable '+extraClass:extraClass;
-  return '<span'+(cls?' class="'+cls.trim()+'"':'')+(editing?' contenteditable="true" spellcheck="false" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'')+'>'+esc(value||'')+'</span>';
-}
-function editableBlock(id,field,value,target='event',extraClass=''){
-  const cls=(editing?'editable editable-block ':'')+extraClass;
-  return '<div class="'+cls.trim()+'"'+(editing?' contenteditable="true" spellcheck="false" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'')+'>'+esc(value||'')+'</div>';
-}
-function editableLines(id,field,lines,target='event',extraClass=''){
-  return editableBlock(id,field,(lines||[]).join('\n'),target,extraClass);
-}
-function applyDirectEdit(el){
-  const id=el.dataset.directId,field=el.dataset.directField,target=el.dataset.directTarget;
-  const e=eventById(id);if(!e)return;
-  const text=el.innerText.replace(/\u00a0/g,' ').trim();
-  if(target==='report'){
-    let r=reportByEvent(e);
-    if(!r){
-      r={id:'draft-report-'+id,date:e.visitDates?.[0]||e.date,visitDates:[...(e.visitDates||[])],scheduledDate:e.date,scheduledEndDate:e.endDate||e.date,name:e.name,url:e.url||'',venue:e.venue||'',rating:'',category:e._kind,report:'',source:'確認版編集'};
-      reports.push(r);e.sourceReportId=r.id;
-    }
-    if(field==='rating')r.rating=text;
-    if(field==='report')r.report=el.innerText.replace(/\u00a0/g,' ').trim();
-  }else{
-    if(field==='name')e.name=text;
-    else if(field==='venue')e.venue=text;
-    else if(field==='url')e.url=text;
-    else if(field==='date')e.date=text;
-    else if(field==='endDate')e.endDate=text;
-    else if(field==='rating')e.rating=text;
-    else if(field==='nightTime')e.nightTime=text;
-    else if(field==='nightText')e.nightText=el.innerText.replace(/\u00a0/g,' ').trim();
-    else if(field==='people'){
-      const cond=conditionLines(e);
-      const people=splitLines(el.innerText).map(x=>'名前コード：'+x);
-      e.conditionLines=[...people,...cond];
-    }else if(field==='conditions'){
-      const people=personLines(e).map(x=>'名前コード：'+x);
-      e.conditionLines=[...people,...splitLines(el.innerText)];
-    }else if(field==='visitDates'){
-      e.visitDates=String(text).split(/[,、\s]+/).map(x=>x.trim()).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x));
-      const r=reportByEvent(e);if(r){r.visitDates=[...e.visitDates];r.date=e.visitDates[0]||e.date;}
-    }
-  }
-  markDirty(id);
-}
-function directDeleteButton(e){
-  return editing?'<button type="button" class="edit-delete-btn" data-direct-delete="'+esc(e.id)+'">削除</button>':'';
-}
-
 function setTableLayout(attendedMode){
   const cols=document.getElementById('ledgerCols'),head=document.getElementById('ledgerHead');
   if(attendedMode){
@@ -394,28 +197,28 @@ function row(e){
     f.ignored?'row-ignored':''
   ].filter(Boolean).join(' ');
 
-  const tools=r?'':'<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>';
-  const dayTools=r?'':planDayChecks(e);
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div>'+tools+dayTools+
-    '<div class="event-head"><div class="name event-name">'+link+'</div></div>'+
-    '<div class="venue">'+esc(e.venue||'')+'</div>';
+  const tools='<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>';
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div>'+tools+planDayChecks(e)+'<div class="event-head"><div class="name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>';
 
   const condHtml=cond.length?'<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>':'';
   let detail='';
-  if(!r && e.rating)detail+='<div class="pre">'+esc(String(e.rating).replace(/^実地評価[：:]?\s*/,''))+'</div>';
+  if(!r && e.rating)detail+='<div class="pre">'+esc(e.rating)+'</div>';
   if(e.nightTime||e.nightText)detail+='<div>'+esc([e.nightTime,e.nightText].filter(Boolean).join('　'))+'</div>';
   if(r){
-    detail+='<div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>';
+    detail+='<div class="rating">実地評価：'+esc(r.rating||'')+'</div>';
     detail+='<div class="report">'+esc(r.report||'')+'</div>';
   }
 
   const today=new Date();today.setHours(0,0,0,0);
   const endDay=new Date((e.endDate||e.date)+'T00:00:00');
   const done=endDay<today;
-  const right=done?'<td colspan="2">'+condHtml+detail+'</td>':'<td>'+condHtml+'</td><td>'+detail+'</td>';
-  return '<tr class="event-row '+cls+'" data-event-id="'+esc(e.id)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+esc(compactRangeText(e))+'</td><td>'+eventCell+'</td>'+right+'</tr>';
+  const right=done
+    ? '<td colspan="2">'+condHtml+detail+'</td>'
+    : '<td>'+condHtml+'</td><td>'+detail+'</td>';
+
+  return '<tr class="event-row '+cls+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+esc(compactRangeText(e))+'</td><td>'+eventCell+'</td>'+right+'</tr>';
 }
 
 
@@ -433,14 +236,13 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(compactRangeText(e))+'</div>';
   else if(e.date!==visitDate) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
 
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div>'+
-    '<div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+schedule;
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+personTop+'</div><div class="event-head"><div class="name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+schedule;
 
   let detail='';
   if(showReport){
     if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
     if(r){
-      detail+='<div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>';
+      detail+='<div class="rating">実地評価：'+esc(r.rating||'')+'</div>';
       if(visits.length>1)detail+='<div class="report-days">参加日 '+esc(fmtDates(visits))+'</div>';
       detail+='<div class="report">'+esc(r.report||'')+'</div>';
     }
@@ -449,7 +251,7 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   }
 
   const dateCell=showDate?'<td class="date attended-date" rowspan="'+rowspan+'"><strong>'+esc(visitDate.replace(/^\\d{4}-/,'').replace('-','/'))+'</strong><div class="visit-count">'+rowspan+'件</div></td>':'';
-  return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+'" data-event-id="'+esc(e.id)+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+  return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
 }
 
 function isoDate(y,m,d){return y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
@@ -503,7 +305,7 @@ function renderCalendar(){
   const ys=availableYears();
   const shownYear=listStartYear||calendarBaseYear;
   yearSel.innerHTML=ys.map(y=>'<option value="'+y+'" '+(y===shownYear?'selected':'')+'>'+y+'</option>').join('');
-  jump.innerHTML='<button type="button" data-month="0" class="'+(!listStartMonth?'active':'')+'">全期間</button>'+Array.from({length:12},(_,i)=>'<button type="button" data-month="'+(i+1)+'" title="'+(i+1)+'月以降を表に表示" class="'+(listStartMonth===i+1?'active':'')+'">'+(i+1)+'月</button>').join('');
+  jump.innerHTML='<button type="button" data-month="0" class="'+(!listStartMonth?'active':'')+'">全期間</button>'+Array.from({length:12},(_,i)=>'<button type="button" data-month="'+(i+1)+'" title="'+(i+1)+'月以降を一覧表示" class="'+(listStartMonth===i+1?'active':'')+'">'+(i+1)+'月</button>').join('');
   note.textContent=mode==='attended'?'緑＝実際に参加した日':mode==='planned'?'青＝来場予定日':'灰＝イベント開催日';
   for(let off=0;off<3;off++){
     const d=new Date(calendarBaseYear,calendarBaseMonth-1+off,1);
@@ -557,103 +359,8 @@ function compareVenue(a,b){
   return String(a.name||'').localeCompare(String(b.name||''),'ja',{numeric:true});
 }
 
-
-function htmlStorageKey(){return LEGACY_HTML_KEY+':'+mode}
-function setSelected(row){
-  if(selected)selected.classList.remove('selected');
-  selected=row;
-  if(selected)selected.classList.add('selected');
-  updateEditButtons();
-}
-function updateEditButtons(){
-  const ev=!!(selected&&selected.classList.contains('event-row'));
-  const any=!!selected;
-  const add=document.getElementById('addBtn'),week=document.getElementById('addWeekBtn'),del=document.getElementById('delBtn'),link=document.getElementById('linkBtn');
-  const up=document.getElementById('moveUpBtn'),down=document.getElementById('moveDownBtn'),kind=document.getElementById('kindBtn');
-  if(add)add.disabled=!editing;
-  if(week)week.disabled=!editing||!any;
-  if(del)del.disabled=!editing||!ev;
-  if(link)link.disabled=!editing||!ev;
-  if(up)up.disabled=!editing||!ev;
-  if(down)down.disabled=!editing||!ev;
-  if(kind)kind.disabled=!editing||!ev;
-}
-function applyContentEditable(){
-  const body=document.getElementById('body');
-  body.querySelectorAll('.event-row td').forEach(td=>td.contentEditable=editing?'true':'false');
-  body.querySelectorAll('.event-row input,.event-row button').forEach(el=>el.contentEditable='false');
-  body.querySelectorAll('.week td[data-manual-week="1"]').forEach(td=>td.contentEditable=editing?'true':'false');
-}
-function setLegacyEditing(on){
-  editing=on;
-  document.body.classList.toggle('editing',on);
-  if(!on&&selected){selected.classList.remove('selected');selected=null;}
-  applyContentEditable();
-  const b=document.getElementById('editBtn');
-  if(b)b.textContent=on?'編集終了':'編集開始';
-  const st=document.getElementById('status');
-  if(st)st.textContent=on?'編集中：行を選び、セルの文字を直接編集':'閲覧モード';
-  updateEditButtons();
-}
-function saveLegacyHTML(message){
-  const body=document.getElementById('body');
-  const clone=body.cloneNode(true);
-  clone.querySelectorAll('.selected').forEach(x=>x.classList.remove('selected'));
-  clone.querySelectorAll('[contenteditable]').forEach(x=>x.removeAttribute('contenteditable'));
-  localStorage.setItem(htmlStorageKey(),clone.innerHTML);
-  const st=document.getElementById('status');
-  if(st&&message)st.textContent=message;
-}
-function restoreLegacyHTML(){
-  const saved=localStorage.getItem(htmlStorageKey());
-  if(!saved)return false;
-  document.getElementById('body').innerHTML=saved;
-  applyContentEditable();
-  applyTableMonthFilter();
-  return true;
-}
-function rowMonthKey(row){
-  if(row.classList.contains('month'))return row.dataset.month||'';
-  const d=row.dataset.visitDate||row.dataset.startDate||'';
-  if(/^\d{4}-\d{2}/.test(d))return d.slice(0,7);
-  return '';
-}
-function applyTableMonthFilter(){
-  const body=document.getElementById('body');
-  if(!body)return;
-  if(!listStartMonth){
-    [...body.rows].forEach(r=>r.style.display='');
-    return;
-  }
-  const key=(listStartYear||calendarBaseYear)+'-'+String(listStartMonth).padStart(2,'0');
-  let currentMonth='',show=false;
-  [...body.rows].forEach(row=>{
-    if(row.classList.contains('month')){
-      currentMonth=row.dataset.month||'';
-      show=currentMonth>=key;
-      row.style.display=show?'':'none';
-      return;
-    }
-    if(row.classList.contains('week')){
-      row.style.display=show?'':'none';
-      return;
-    }
-    const own=rowMonthKey(row);
-    row.style.display=((own?own>=key:show)?'':'none');
-  });
-}
-function clearLegacyHTML(){
-  localStorage.removeItem(htmlStorageKey());
-  selected=null;
-  render();
-  const st=document.getElementById('status');
-  if(st)st.textContent='この画面の編集内容を元に戻しました';
-}
-
 function render(){
   document.body.classList.toggle('planned-view',mode==='planned');
-  document.body.classList.toggle('editing',editing);
-  refreshEditBar();
   setTableLayout(mode==='attended');
 
   if(mode==='attended'){
@@ -682,7 +389,6 @@ function render(){
       same.forEach((x,idx)=>{html+=attendedRow(x.e,d,idx===0,same.length,idx===0);});
     }
     document.getElementById('body').innerHTML=html||'<tr><td colspan="3" class="empty">参加済みイベントはありません</td></tr>';
-    restoreLegacyHTML();applyContentEditable();applyTableMonthFilter();selected=null;updateEditButtons();
     document.getElementById('status').textContent=items.length+'件';
     renderCalendar();
     return;
@@ -708,125 +414,15 @@ function render(){
     html+=row(e);
   }
   document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">該当するイベントはありません</td></tr>';
-  restoreLegacyHTML();applyContentEditable();applyTableMonthFilter();selected=null;updateEditButtons();
   document.getElementById('status').textContent=list.length+'件';
   renderCalendar();
 }
 
 document.querySelector('.controls').addEventListener('click',e=>{
   const b=e.target.closest('button[data-mode]');if(!b)return;
-  if(editing)saveLegacyHTML();
   mode=b.dataset.mode;
-  selected=null;
   document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
   render();
-});
-
-document.getElementById('editBtn').addEventListener('click',()=>setLegacyEditing(!editing));
-
-document.getElementById('body').addEventListener('click',e=>{
-  if(!editing)return;
-  if(e.target.closest('input,button'))return;
-  const row=e.target.closest('tr');
-  if(!row)return;
-  if(e.target.closest('a'))e.preventDefault();
-  setSelected(row);
-});
-
-document.getElementById('body').addEventListener('input',()=>{
-  if(!editing)return;
-  clearTimeout(window.__legacySaveTimer);
-  window.__legacySaveTimer=setTimeout(()=>saveLegacyHTML('編集中（自動保存）'),250);
-});
-
-document.getElementById('addBtn').addEventListener('click',()=>{
-  if(!editing)return;
-  const colspan=mode==='attended'?3:4;
-  const tr=document.createElement('tr');
-  tr.className='event-row';
-  tr.dataset.eventId='manual-'+Date.now();
-  if(colspan===4){
-    tr.innerHTML='<td class="date"></td><td><div class="event-meta-line"><div class="event-badges"><span class="kind-badge exhibition">展示会</span></div></div><div class="event-name"></div><div class="venue"></div></td><td></td><td></td>';
-  }else{
-    tr.innerHTML='<td class="date"></td><td><div class="event-meta-line"><div class="event-badges"><span class="kind-badge exhibition">展示会</span></div></div><div class="event-name"></div><div class="venue"></div></td><td></td>';
-  }
-  if(selected)selected.insertAdjacentElement('afterend',tr);
-  else document.getElementById('body').appendChild(tr);
-  tr.querySelectorAll('td').forEach(td=>td.contentEditable='true');
-  setSelected(tr);
-  saveLegacyHTML('新しいイベントを追加しました');
-  tr.scrollIntoView({behavior:'smooth',block:'center'});
-  const name=tr.querySelector('.event-name');if(name)name.focus();
-});
-
-document.getElementById('moveUpBtn').addEventListener('click',()=>{
-  if(!editing||!selected||!selected.classList.contains('event-row'))return;
-  let prev=selected.previousElementSibling;
-  while(prev&&prev.classList.contains('month'))prev=prev.previousElementSibling;
-  if(prev){prev.insertAdjacentElement('beforebegin',selected);saveLegacyHTML('行を上へ移動しました');}
-});
-document.getElementById('moveDownBtn').addEventListener('click',()=>{
-  if(!editing||!selected||!selected.classList.contains('event-row'))return;
-  let next=selected.nextElementSibling;
-  while(next&&next.classList.contains('month'))next=next.nextElementSibling;
-  if(next){next.insertAdjacentElement('afterend',selected);saveLegacyHTML('行を下へ移動しました');}
-});
-document.getElementById('kindBtn').addEventListener('click',()=>{
-  if(!editing||!selected||!selected.classList.contains('event-row'))return;
-  let badge=selected.querySelector('.kind-badge');
-  if(!badge){
-    const box=selected.querySelector('.event-badges')||selected.querySelector('td:nth-child(2)');
-    badge=document.createElement('span');badge.className='kind-badge exhibition';badge.textContent='展示会';
-    box.prepend(badge);
-  }else if(badge.classList.contains('exhibition')){
-    badge.classList.remove('exhibition');badge.classList.add('gathering');badge.textContent='懇親会';
-  }else{
-    badge.classList.remove('gathering');badge.classList.add('exhibition');badge.textContent='展示会';
-  }
-  saveLegacyHTML('分類を変更しました');
-});
-
-document.getElementById('addWeekBtn').addEventListener('click',()=>{
-  if(!editing||!selected)return;
-  const colspan=mode==='attended'?3:4;
-  const tr=document.createElement('tr');
-  tr.className='week';
-  tr.innerHTML='<td colspan="'+colspan+'" data-manual-week="1" contenteditable="true">週区切り</td>';
-  selected.insertAdjacentElement('afterend',tr);
-  setSelected(tr);
-  saveLegacyHTML('週区切りを追加しました');
-});
-
-document.getElementById('delBtn').addEventListener('click',()=>{
-  if(!editing||!selected||!selected.classList.contains('event-row'))return;
-  const name=selected.querySelector('.event-name,.name')?.innerText?.trim()||'この行';
-  if(!confirm('「'+name+'」を削除しますか？'))return;
-  selected.remove();selected=null;updateEditButtons();saveLegacyHTML('削除しました');
-});
-
-document.getElementById('linkBtn').addEventListener('click',()=>{
-  if(!editing||!selected||!selected.classList.contains('event-row'))return;
-  let name=selected.querySelector('.event-name,.name');
-  if(!name)return;
-  let a=name.querySelector('a');
-  const current=a?.getAttribute('href')||'';
-  const url=prompt('このイベントのURLを貼り付けてください',current);
-  if(url===null)return;
-  const text=(a?a.textContent:name.textContent).trim()||'イベント名';
-  if(!url.trim()){
-    name.textContent=text;
-  }else{
-    name.innerHTML='<a href="'+esc(url.trim())+'" target="_blank" rel="noopener">'+esc(text)+'</a>';
-  }
-  saveLegacyHTML('リンクを設定しました');
-});
-
-document.getElementById('saveHtmlBtn').addEventListener('click',()=>{
-  saveLegacyHTML('このブラウザにHTMLを保存しました（本番未反映）');
-});
-
-document.getElementById('resetHtmlBtn').addEventListener('click',()=>{
-  if(confirm('この画面で行ったHTML編集を元に戻しますか？'))clearLegacyHTML();
 });
 
 document.getElementById('body').addEventListener('change',e=>{
@@ -839,32 +435,18 @@ document.getElementById('body').addEventListener('change',e=>{
   if(d)setPlanDay(event,d.dataset.day,d.checked);
 });
 
-document.getElementById('calendarPrev').onclick=()=>{
-  const d=new Date(calendarBaseYear,calendarBaseMonth-2,1);
-  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;renderCalendar();
-};
-document.getElementById('calendarNext').onclick=()=>{
-  const d=new Date(calendarBaseYear,calendarBaseMonth,1);
-  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;renderCalendar();
-};
+document.getElementById('calendarPrev').onclick=()=>setCalendarBase(calendarBaseYear,calendarBaseMonth-1);
+document.getElementById('calendarNext').onclick=()=>setCalendarBase(calendarBaseYear,calendarBaseMonth+1);
 document.getElementById('calendarYear').addEventListener('change',e=>{
-  const y=parseInt(e.target.value,10);
-  if(!Number.isFinite(y))return;
-  if(listStartMonth)listStartYear=y;
-  else calendarBaseYear=y;
-  render();
+  const y=Number(e.target.value);
+  if(listStartMonth){listStartYear=y;render();}else{calendarBaseYear=y;renderCalendar();}
 });
 document.getElementById('monthJump').addEventListener('click',e=>{
   const b=e.target.closest('button[data-month]');if(!b)return;
-  e.preventDefault();
-  const m=parseInt(b.dataset.month,10);
-  const y=parseInt(document.getElementById('calendarYear').value,10)||calendarBaseYear;
+  const m=Number(b.dataset.month),y=Number(document.getElementById('calendarYear').value||calendarBaseYear);
   if(m===0){listStartYear=0;listStartMonth=0;}
   else{listStartYear=y;listStartMonth=m;}
-  applyTableMonthFilter();
-  renderCalendar();
-  const first=[...document.querySelectorAll('#body tr.month')].find(r=>r.style.display!=='none');
-  if(first)first.scrollIntoView({behavior:'smooth',block:'start'});
+  render();
 });
 
 (async()=>{
@@ -880,18 +462,10 @@ document.getElementById('monthJump').addEventListener('click',e=>{
     const files=(mj.reportFiles&&mj.reportFiles.length)?mj.reportFiles:['実地レポート/2026-01-03.json','実地レポート/2026-04.json','実地レポート/2026-05.json','実地レポート/2026-06.json','実地レポート/2026-07.json','実地レポート/2026-08.json','実地レポート/2026-09.json'];
     const parts=await Promise.all(files.map(async p=>(await fetch(p+'?v='+Date.now(),{cache:'no-store'})).json()));
     reports=parts.flatMap(x=>x.reports||[]);
-    try{
-      const saved=JSON.parse(localStorage.getItem(EDIT_DRAFT_KEY)||'null');
-      if(saved&&Array.isArray(saved.events)&&Array.isArray(saved.reports)){
-        events=saved.events;reports=saved.reports;
-      }
-    }catch(_){}
-    baseEvents=cloneData(events);baseReports=cloneData(reports);
-    refreshEditBar();
     render();
   }catch(err){
     console.error(err);
-    document.getElementById('body').innerHTML='<tr><td colspan="4" class="empty">読み込みに失敗しました</td></tr>';
+    document.getElementById('body').innerHTML='<tr><td colspan="3" class="empty">読み込みに失敗しました</td></tr>';
     document.getElementById('status').textContent='読み込み失敗';
   }
 })();
