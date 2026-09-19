@@ -361,7 +361,7 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "not_attended",
+      "attendanceStatus": "attended",
       "visitDates": [],
       "historySource": "未参加イベント"
     },
@@ -379,8 +379,10 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-10"
+      ],
       "historySource": "未参加イベント"
     },
     {
@@ -397,8 +399,10 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-10"
+      ],
       "historySource": "未参加イベント"
     },
     {
