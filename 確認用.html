@@ -191,8 +191,8 @@ function plannedDates(e){
   const f=flag(e); let x=[];
   if(Array.isArray(f.visitDates))x=[...new Set(f.visitDates)].filter(d=>inRange(e,d));
   else if(f.planned)x=[e.date];
-  const done=new Set(actualDates(e));
-  return x.filter(d=>!done.has(d)).sort();
+  const done=new Set(actualDates(e)),today=todayISO();
+  return x.filter(d=>!done.has(d)&&d>=today).sort();
 }
 function dateText(e){
   if(e.dateText)return e.dateText.replace(/\t/g,' ').trim();
@@ -487,7 +487,7 @@ function row(e){
   const cls=[
     e.attendanceStatus==='not_attended'?'row-notattended':'',
     p.length?'row-planned':'',
-    f.ignored?'row-ignored':''
+    (!done&&f.ignored)?'row-ignored':''
   ].filter(Boolean).join(' ');
 
   const tools=(!done&&!r&&!editing)?'<div class="event-tools"><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label></div>':'';
