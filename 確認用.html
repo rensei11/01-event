@@ -14,6 +14,11 @@ h1{font-size:20px;margin:0}.sub{margin:3px 0 12px;color:var(--muted);font-size:1
 button{border:1px solid #b9b9b4;background:#fff;border-radius:6px;padding:7px 15px;font:inherit;font-weight:700;cursor:pointer}
 button.active{background:#41474c;color:white;border-color:#41474c}
 .status{margin-left:auto;align-self:center;font-size:12px;color:var(--muted)}
+.calendar-panel{margin:0 0 14px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px}
+.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:900}.calendar-note{font-size:12px;color:var(--muted)}
+.calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:12px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:11px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
+.calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:stretch}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:23px;font-weight:900}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.month-card{border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none}.cal-day.empty{visibility:hidden}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#5d8fc5;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today::after{content:"";position:absolute;inset:1px;border:2px solid #111;border-radius:50%;pointer-events:none}.cal-day.clickable:hover{filter:brightness(.92)}
+.calendar-focus td{animation:calFlash 1.2s ease}@keyframes calFlash{0%,100%{background:inherit}35%,70%{background:#fff1b8}}
 .table-wrap{background:var(--paper);border:1px solid var(--line);overflow:auto}
 table{border-collapse:collapse;width:100%;table-layout:fixed;min-width:940px}
 col.date{width:11%}col.event{width:32%}col.detail{width:57%}
@@ -36,7 +41,7 @@ th:last-child,td:last-child{border-right:0}
 .rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.pre{color:#555;margin-bottom:5px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
 .note{font-size:11px;color:var(--muted);margin-top:8px}
-@media(max-width:700px){.wrap{padding:8px}h1{font-size:17px}td,th{padding:6px 8px}.status{width:100%;margin-left:0}}
+@media(max-width:700px){.wrap{padding:8px}h1{font-size:17px}td,th{padding:6px 8px}.status{width:100%;margin-left:0}.calendars{grid-template-columns:repeat(3,minmax(220px,1fr));overflow-x:auto}.calendar-slider{overflow:hidden}}
 </style>
 </head>
 <body>
@@ -49,6 +54,11 @@ th:last-child,td:last-child{border-right:0}
     <button data-mode="attended">参加済み</button>
     <span id="status" class="status">読み込み中</span>
   </div>
+  <section class="calendar-panel" aria-label="カレンダー">
+    <div class="calendar-head"><div class="calendar-title">カレンダー</div><div id="calendarNote" class="calendar-note"></div></div>
+    <div class="calendar-jump"><select id="calendarYear" class="calendar-year" aria-label="年"></select><div id="monthJump" class="month-jump"></div></div>
+    <div class="calendar-slider"><button id="calendarPrev" class="calendar-arrow" type="button" aria-label="前の月">‹</button><div id="calendarMonths" class="calendars"></div><button id="calendarNext" class="calendar-arrow" type="button" aria-label="次の月">›</button></div>
+  </section>
   <div class="table-wrap">
     <table>
       <colgroup><col class="date"><col class="event"><col class="detail"></colgroup>
@@ -61,6 +71,8 @@ th:last-child,td:last-child{border-right:0}
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
 let events=[],reports=[],flags={},mode='all';
+const calendarToday=new Date();
+let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
 
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™®【】\[\]（）()‐\-–—'’:"：～〜]/g,'')}
@@ -110,7 +122,7 @@ function row(e){
     detail+='<div class="rating">実地評価：'+esc(r.rating||'')+'</div>';
     detail+='<div class="report">'+esc(r.report||'')+'</div>';
   }
-  return '<tr class="event-row '+cls+'"><td class="date">'+esc(dateText(e))+'</td><td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+  return '<tr class="event-row '+cls+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">'+esc(dateText(e))+'</td><td>'+eventCell+'</td><td>'+detail+'</td></tr>';
 }
 
 
@@ -143,7 +155,80 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   }
 
   const dateCell=showDate?'<td class="date attended-date" rowspan="'+rowspan+'"><strong>'+esc(visitDate.replace(/^\\d{4}-/,'').replace('-','/'))+'</strong><div class="visit-count">'+rowspan+'件</div></td>':'';
-  return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+  return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+}
+
+function isoDate(y,m,d){return y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
+function calendarDatesForEvent(e){
+  if(mode==='attended')return actualDates(e);
+  if(mode==='planned')return plannedDates(e);
+  return days(e.date,e.endDate||e.date);
+}
+function calendarMap(){
+  const map=new Map();
+  for(const e of events){
+    for(const d of calendarDatesForEvent(e)){
+      if(!map.has(d))map.set(d,0);
+      map.set(d,map.get(d)+1);
+    }
+  }
+  return map;
+}
+function availableYears(){
+  const ys=new Set([calendarToday.getFullYear()]);
+  for(const e of events){
+    if(e.date)ys.add(Number(e.date.slice(0,4)));
+    if(e.endDate)ys.add(Number(e.endDate.slice(0,4)));
+    for(const d of actualDates(e))ys.add(Number(d.slice(0,4)));
+    for(const d of plannedDates(e))ys.add(Number(d.slice(0,4)));
+  }
+  return [...ys].filter(Number.isFinite).sort((a,b)=>a-b);
+}
+function buildMonthCard(year,month,map){
+  const card=document.createElement('div');card.className='month-card';
+  const title=document.createElement('div');title.className='month-name';title.textContent=year+'年'+month+'月';card.appendChild(title);
+  const grid=document.createElement('div');grid.className='month-grid';
+  ['日','月','火','水','木','金','土'].forEach(w=>{const x=document.createElement('div');x.className='weekday';x.textContent=w;grid.appendChild(x)});
+  const first=new Date(year,month-1,1),last=new Date(year,month,0).getDate();
+  for(let i=0;i<first.getDay();i++){const x=document.createElement('div');x.className='cal-day empty';grid.appendChild(x)}
+  for(let d=1;d<=last;d++){
+    const key=isoDate(year,month,d),x=document.createElement('div');x.className='cal-day';x.textContent=d;
+    if(map.has(key)){
+      x.classList.add(mode==='attended'?'has-attended':mode==='planned'?'has-plan':'has-event','clickable');
+      x.title=(mode==='attended'?'参加済み ':mode==='planned'?'来場予定 ':'イベント ')+map.get(key)+'件';
+      x.onclick=()=>jumpToDate(key);
+    }
+    if(year===calendarToday.getFullYear()&&month===calendarToday.getMonth()+1&&d===calendarToday.getDate())x.classList.add('today');
+    grid.appendChild(x);
+  }
+  card.appendChild(grid);return card;
+}
+function renderCalendar(){
+  const months=document.getElementById('calendarMonths'),yearSel=document.getElementById('calendarYear'),jump=document.getElementById('monthJump'),note=document.getElementById('calendarNote');
+  const map=calendarMap();months.innerHTML='';
+  const ys=availableYears();
+  yearSel.innerHTML=ys.map(y=>'<option value="'+y+'" '+(y===calendarBaseYear?'selected':'')+'>'+y+'</option>').join('');
+  jump.innerHTML=Array.from({length:12},(_,i)=>'<button type="button" data-month="'+(i+1)+'" class="'+(i+1===calendarBaseMonth?'active':'')+'">'+(i+1)+'月</button>').join('');
+  note.textContent=mode==='attended'?'緑＝実際に参加した日':mode==='planned'?'青＝来場予定日':'灰＝イベント開催日';
+  for(let off=0;off<3;off++){
+    const d=new Date(calendarBaseYear,calendarBaseMonth-1+off,1);
+    months.appendChild(buildMonthCard(d.getFullYear(),d.getMonth()+1,map));
+  }
+}
+function setCalendarBase(year,month){
+  const d=new Date(year,month-1,1);calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;renderCalendar();
+}
+function jumpToDate(date){
+  let rows=[...document.querySelectorAll('tr.event-row')],target=null;
+  if(mode==='attended')target=rows.find(r=>r.dataset.visitDate===date);
+  else target=rows.find(r=>{
+    const a=r.dataset.startDate,b=r.dataset.endDate||a;
+    return a&&date>=a&&date<=b;
+  });
+  if(!target)return;
+  target.scrollIntoView({behavior:'smooth',block:'center'});
+  target.classList.remove('calendar-focus');void target.offsetWidth;target.classList.add('calendar-focus');
+  setTimeout(()=>target.classList.remove('calendar-focus'),1400);
 }
 
 function venueSortKey(e){
@@ -193,6 +278,7 @@ function render(){
     }
     document.getElementById('body').innerHTML=html||'<tr><td colspan="3" class="empty">参加済みイベントはありません</td></tr>';
     document.getElementById('status').textContent=items.length+'件';
+    renderCalendar();
     return;
   }
 
@@ -215,6 +301,7 @@ function render(){
   }
   document.getElementById('body').innerHTML=html||'<tr><td colspan="3" class="empty">該当するイベントはありません</td></tr>';
   document.getElementById('status').textContent=list.length+'件';
+  renderCalendar();
 }
 
 document.querySelector('.controls').addEventListener('click',e=>{
@@ -223,6 +310,11 @@ document.querySelector('.controls').addEventListener('click',e=>{
   document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
   render();
 });
+
+document.getElementById('calendarPrev').onclick=()=>setCalendarBase(calendarBaseYear,calendarBaseMonth-1);
+document.getElementById('calendarNext').onclick=()=>setCalendarBase(calendarBaseYear,calendarBaseMonth+1);
+document.getElementById('calendarYear').addEventListener('change',e=>setCalendarBase(Number(e.target.value),calendarBaseMonth));
+document.getElementById('monthJump').addEventListener('click',e=>{const b=e.target.closest('button[data-month]');if(b)setCalendarBase(calendarBaseYear,Number(b.dataset.month));});
 
 (async()=>{
   try{
