@@ -555,7 +555,8 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">記録修正</button></div>';
+  const endLabel=needsEndProcessing(e)?'終了処理':'記録修正';
+  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn" data-end-edit="'+esc(e.id)+'">'+endLabel+'</button></div>';
 
   let schedule='';
   if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(compactRangeText(e))+'</div>';
@@ -571,6 +572,8 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
       detail+='<div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>';
       if(visits.length>1)detail+='<div class="report-days">参加日 '+esc(fmtDates(visits))+'</div>';
       detail+='<div class="report">'+esc(r.report||'')+'</div>';
+    }else{
+      detail+='<div class="attended-undated-note">実地レポート未入力</div>';
     }
   }else{
     detail+='<div class="report-reference">レポートは '+esc(fmtDates([firstVisit]))+' に表示</div>';
