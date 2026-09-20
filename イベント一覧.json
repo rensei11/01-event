@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-19-repair",
+  "dataVersion": "2026-09-20-refresh",
   "year": 2026,
   "events": [
     {
@@ -282,30 +282,6 @@
       "historySource": "未参加イベント"
     },
     {
-      "id": "hist-att-71ede1d4ae3d",
-      "date": "2026-09-09",
-      "endDate": "2026-09-10",
-      "dateText": "9月9日(水)～10日(木)",
-      "name": "GROWTH 祭 TOKYO 2026",
-      "url": "https://gmt.youtrust.jp/?utm_source=twitter&utm_medium=social&utm_campaign=gmt2026_20260818",
-      "venue": "渋谷ヒカリエ",
-      "conditionLines": [
-        "名前コード：伊藤 聡"
-      ],
-      "rating": "実地評価：E",
-      "nightTime": "",
-      "nightText": "",
-      "attendanceStatus": "attended",
-      "visitDates": [
-        "2026-09-09"
-      ],
-      "sourceReportId": "rep-71ede1d4ae3d",
-      "historySource": "ユーザー実地確認",
-      "originalScheduledDate": "2026-09-09",
-      "originalScheduledEndDate": "2026-09-10",
-      "originalScheduledDateText": "9月9日(水)～10日(木)"
-    },
-    {
       "id": "hist-att-023781aac2ad",
       "date": "2026-09-08",
       "endDate": "",
@@ -346,6 +322,30 @@
       ],
       "sourceReportId": "rep-17e3d64d6ad8",
       "historySource": "実地レポート"
+    },
+    {
+      "id": "hist-att-71ede1d4ae3d",
+      "date": "2026-09-09",
+      "endDate": "2026-09-10",
+      "dateText": "9月9日(水)～10日(木)",
+      "name": "GROWTH 祭 TOKYO 2026",
+      "url": "https://gmt.youtrust.jp/?utm_source=twitter&utm_medium=social&utm_campaign=gmt2026_20260818",
+      "venue": "渋谷ヒカリエ",
+      "conditionLines": [
+        "名前コード：伊藤 聡"
+      ],
+      "rating": "実地評価：E",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-09"
+      ],
+      "sourceReportId": "rep-71ede1d4ae3d",
+      "historySource": "ユーザー実地確認",
+      "originalScheduledDate": "2026-09-09",
+      "originalScheduledEndDate": "2026-09-10",
+      "originalScheduledDateText": "9月9日(水)～10日(木)"
     },
     {
       "id": "hist-no-156a1794a9f0",
@@ -515,6 +515,21 @@
       "sourceExcel": true
     },
     {
+      "id": "evt-mendix-community-20260925",
+      "date": "2026-09-25",
+      "name": "Mendix Japan Community FY26 懇親会",
+      "url": "https://techplay.jp/event/999286",
+      "venue": "シーメンス株式会社 新宿オフィス セミナールーム",
+      "conditionLines": [
+        "無料・先着順",
+        "ハンズオンセミナー参加者向け",
+        "Mendix Japan Community未参加者も参加可"
+      ],
+      "rating": "C。無料の懇親会だが、飲食内容・終了時刻が未確認。同日はFUZE/ZOHOLICSが有力。",
+      "nightTime": "18:00～",
+      "nightText": "FY26 Mendix Japan Community懇親会。MJC未参加者も参加可。飲食内容・終了時刻は未確認。"
+    },
+    {
       "id": "evt-07714a891599",
       "date": "2026-09-25",
       "name": "ZOHOLICS Japan 2026",
@@ -540,7 +555,8 @@
       "conditionLines": [
         "名前コード：伊藤 聡",
         "無料・事前登録",
-        "法人メール必要"
+        "法人メール必要（Gmail・Yahoo!等のフリーメール不可）",
+        "申込締切：9月28日(月) 9:00"
       ],
       "rating": "A+。ホテル会場で、夜のReceptionもあり有力。",
       "nightTime": "16:45～17:45",
@@ -555,12 +571,14 @@
       "url": "https://www.nexchain.or.jp/event/pages/20260930.html",
       "venue": "東京ビッグサイト 東7ホール",
       "conditionLines": [
-        "一般1,000円",
-        "NEXCHAIN会員無料"
+        "無料・事前申込",
+        "どなたでも参加可（会員・非会員不問）",
+        "産業DX総合展の来場登録も別途必要",
+        "Peatixアカウント必要"
       ],
-      "rating": "B。内容は強いが、無料経路が限定されるため減点。",
+      "rating": "A-。無料・90分・軽食＋ドリンクが公式明記。展示会と同会場で動線も良い。",
       "nightTime": "17:00～18:30",
-      "nightText": "軽食＋ドリンク明記。"
+      "nightText": "共創交流パーティー。軽食＋ドリンク付き。展示会来場登録とパーティー申込は別々に必要。"
     },
     {
       "id": "xls-g-e5e424627804",
@@ -598,12 +616,17 @@
       "endDate": "",
       "dateText": "10月7日 (水)",
       "name": "ADVENTUREClusterユーザー会 2026",
-      "url": "https://scsk.seminarone.com/advc_20261007/event",
+      "url": "https://www.scsk.jp/event/2026/20261007.html",
       "venue": "東京コンファレンスセンター・品川",
-      "conditionLines": [],
+      "conditionLines": [
+        "無料・要事前登録",
+        "定員250名",
+        "ADVENTUREClusterユーザー／導入検討者向け",
+        "昼食に弁当あり"
+      ],
       "rating": "",
-      "nightTime": "",
-      "nightText": "定員250名という設定と品川という立地がいくかどうかを迷わせる。",
+      "nightTime": "17:10～18:40",
+      "nightText": "5階ホワイエで懇親会。昼食は弁当を用意。懇親会の飲食詳細は未記載。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
     },
@@ -614,11 +637,13 @@
       "url": "https://www.cirium.com/jp/2026-tokyo-market-briefing-interest/",
       "venue": "東京ミッドタウン八重洲カンファレンス",
       "conditionLines": [
-        "無料・招待制"
+        "無料・招待制",
+        "1社2名まで",
+        "招待希望は主催者へ問い合わせ"
       ],
       "rating": "B。2時間のReceptionは魅力だが、対象業界がかなり限定的。",
       "nightTime": "17:30～19:30",
-      "nightText": "Networking Reception。料理詳細不明。"
+      "nightText": "17:30～19:30 Networking Reception。12:45～Networking Lunchもあり。料理内容の詳細は未確認。"
     },
     {
       "id": "evt-af4b3b4a0f13",
@@ -692,8 +717,8 @@
         "無料・一般登録可"
       ],
       "rating": "A。無料でホテルReceptionに参加でき、Rikkei不成立時の強い代替候補。",
-      "nightTime": "17:40～19:00",
-      "nightText": "Networking Reception。料理詳細不明。 Excelメモ：現地参加の締切は9月30日17時 / 17:40～19:00 Networking Reception",
+      "nightTime": "18:20～19:30",
+      "nightText": "Networking Reception。2026年9月18日更新の公式プログラムで18:20～19:30に変更。現地参加締切は9月30日17:00。料理詳細不明。",
       "dateText": "10月9日 (金)",
       "sourceExcel": true
     },
@@ -708,9 +733,9 @@
         "無料・申請済",
         "多数時抽選"
       ],
-      "rating": "A+。東京アメリカンクラブという会場価値が大きく、90分のNetworkingも十分。",
-      "nightTime": "18:30～20:00",
-      "nightText": "Networking。料理・酒の詳細は未公表。 Excelメモ：18:30～ネットワーキング / ご参加確定のご連絡につきましては、9月末までに、順次、ご案内",
+      "rating": "A+。東京アメリカンクラブという会場価値が大きく、Networkingも有力。",
+      "nightTime": "18:30～19:30",
+      "nightText": "Networking。公式最新日程では18:30～19:30。料理・酒の詳細は未公表。 Excelメモ：ご参加確定の連絡は9月末までに順次案内。",
       "dateText": "10月14日(水)",
       "sourceExcel": true
     },
@@ -784,7 +809,7 @@
       ],
       "rating": "A+。ビッグサイトからの移動が楽で、規模・時間・立地が非常に良い。",
       "nightTime": "18:00～19:30",
-      "nightText": "Networking Party。過去回は軽食＋飲み物あり。 Excelメモ：18:00 - 19:30　Networking Party / 天王洲アイル駅から徒歩数分、近い",
+      "nightText": "18:00～19:30 Networking Party。イベント来場者は自由参加可。過去回は軽食＋飲み物あり。 Excelメモ：天王洲アイル駅から徒歩数分。",
       "dateText": "10月15日(木)",
       "sourceExcel": true
     },
@@ -795,11 +820,11 @@
       "url": "https://saviynt.com/unlock/tokyo",
       "venue": "会場未確定（公式：TBD）",
       "conditionLines": [
-        "完全招待制・申請フォームあり"
+        "完全招待制"
       ],
-      "rating": "C+。90分Networkingはあるが、会場・料理とも未確定。",
+      "rating": "D。90分Networkingはあるが完全招待制。会場も公式上TBD。",
       "nightTime": "18:00～19:30",
-      "nightText": "UNLOCK Networking。"
+      "nightText": "18:00～19:30 UNLOCK Networking。本イベントは完全招待制。"
     },
     {
       "id": "xls-g-65f210450a5f",
@@ -817,6 +842,22 @@
       "sourceExcel": true
     },
     {
+      "id": "evt-msiism-conference-20261016",
+      "date": "2026-10-16",
+      "name": "MSIISM Conference 2026",
+      "url": "https://www.msi.co.jp/event/conference/mc2026/lp/index.html",
+      "venue": "CITY HALL & GALLERY GOTANDA",
+      "conditionLines": [
+        "無料・事前登録",
+        "懇親会は事前申込制",
+        "申込期日：10月14日",
+        "名刺2枚必要"
+      ],
+      "rating": "B。無料で90分の懇親会。五反田で使いやすいが、料理・酒の内容は未確認。",
+      "nightTime": "18:00～19:30",
+      "nightText": "懇親会。来場者・講演者・NTTデータ数理システムメンバーの交流。飲食内容は未確認。"
+    },
+    {
       "id": "xls-g-5eb96f25c875",
       "date": "2026-10-20",
       "endDate": "",
@@ -824,10 +865,13 @@
       "name": "Docusign Japan Summit 2026",
       "url": "https://events.docusign.com/docusign-japan-summit",
       "venue": "虎ノ門ヒルズフォーラム",
-      "conditionLines": [],
+      "conditionLines": [
+        "無料・事前登録",
+        "会場参加のみ"
+      ],
       "rating": "",
       "nightTime": "17:00～18:30",
-      "nightText": "あんまり期待できないかも。これ単独のために行くようなもんじゃない / 17:00～18:30 ネットワーキング",
+      "nightText": "17:00～18:30 ネットワーキング。公式プログラムで確認。飲食内容は未確認。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
     },
@@ -925,8 +969,22 @@
         "夜Networkingは招待者限定"
       ],
       "rating": "C。会場・テーマは悪くないが、夜の参加制限が大きい。",
-      "nightTime": "18:05～",
-      "nightText": "Networking。招待経路が見つかれば再評価。"
+      "nightTime": "18:05～19:40",
+      "nightText": "Networking。隣接会場で開催、招待者限定。一般登録だけでは夜のNetworkingには参加不可。"
+    },
+    {
+      "id": "evt-autonomy-summit-20261022",
+      "date": "2026-10-22",
+      "name": "第6回 自治体サミット -副市長&DX推進担当者会議-",
+      "url": "https://eight-event.8card.net/local-government-summit/",
+      "venue": "会場詳細は公式ページ参照",
+      "conditionLines": [
+        "自治体関係者中心の限定イベント",
+        "参加条件・申込可否は要確認"
+      ],
+      "rating": "C※。交流会は軽食＋ドリンクを公式明記。ただし自治体関係者中心で参加条件が厳しそう。",
+      "nightTime": "",
+      "nightText": "限定交流会。登壇者・参加者と交流しながら軽食・ドリンクあり。交流会の時刻は公式ページ上で明記を確認できず。"
     },
     {
       "id": "evt-0c37a689eaff",
@@ -957,6 +1015,21 @@
       "nightText": "ネットワーキング（懇親会）。簡単な軽食のみ。"
     },
     {
+      "id": "evt-engineering-leaders-day-20261027",
+      "date": "2026-10-27",
+      "name": "Engineering Leaders Day 2026",
+      "url": "https://jp.findy-team.io/eld2026/",
+      "venue": "ファインディ株式会社イベントスペース（東京・大崎）",
+      "conditionLines": [
+        "無料・事前登録",
+        "懇親会は抽選制",
+        "チームリーダー以上を目安とするリーダー／マネジメント職向け"
+      ],
+      "rating": "C+。2時間の懇親会は長いが抽選制かつ対象職位が限定。飲食内容は未確認。",
+      "nightTime": "19:00～21:00",
+      "nightText": "懇親会（抽選制）。飲食内容は未確認。"
+    },
+    {
       "id": "evt-61ecc365",
       "date": "2026-10-27",
       "name": "ServiceNow World Forum Tokyo 2026（1）",
@@ -968,7 +1041,35 @@
       ],
       "rating": "A。ホテル会場＋90分Reception。軽食中心・大型ゆえ混雑は注意。",
       "nightTime": "16:10～17:40",
-      "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。"
+      "nightText": "16:10～17:40 Networking Reception & Expo。ドリンク＋軽食を公式明記。11:30～13:00にはランチもあり。17:40～18:40は持田香織スペシャルライブ。"
+    },
+    {
+      "id": "evt-growth-dx-marketing-20261027",
+      "date": "2026-10-27",
+      "name": "マーケティングの新成長戦略 特別懇親会",
+      "url": "https://growth-dx.com/seminar/btobgrowthexpo_20261027meetup/",
+      "venue": "品川ザ・グランドホール",
+      "conditionLines": [
+        "無料",
+        "オフラインイベント申込"
+      ],
+      "rating": "A。無料・80分で、食事と飲み物を公式明記。品川会場で実用性が高い。",
+      "nightTime": "18:40～20:00",
+      "nightText": "特別懇親会。公式に「お食事、お飲み物などもご用意」と明記。"
+    },
+    {
+      "id": "evt-satobito-summit-20261027",
+      "date": "2026-10-27",
+      "name": "人起点サミット ― 人がさとをつくり、さとが人をつくる",
+      "url": "https://satoyume.com/topics/7354/",
+      "venue": "シティラボ東京（東京スクエアガーデン6階）",
+      "conditionLines": [
+        "無料",
+        "企業経営層・人事・新規事業・自治体関係者等が対象"
+      ],
+      "rating": "C+。無料で90分の懇親会。京橋で行きやすいが、飲食内容は未確認。",
+      "nightTime": "16:30～18:00",
+      "nightText": "懇親会。飲食内容は未確認。"
     },
     {
       "id": "evt-5eecbeac",
@@ -982,7 +1083,7 @@
       ],
       "rating": "A-。ホテル会場でReceptionあり。Day 1より1時間と短い。",
       "nightTime": "17:30～18:30",
-      "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。"
+      "nightText": "17:30～18:30 Networking Reception & Expo。ドリンク＋軽食を公式明記。9:00～10:00のモーニングセッション参加者には軽食、11:30～13:00にはランチもあり。"
     },
     {
       "id": "evt-transcosmos-bpo-20261028",
@@ -1027,7 +1128,7 @@
       ],
       "rating": "B+。無料で軽食・ドリンク付き懇親会を公式確認。",
       "nightTime": "",
-      "nightText": "懇親会。軽食＋ドリンクを公式明記。イベント終了18:30。",
+      "nightText": "懇親会。軽食＋ドリンクを公式明記。先着300名にRed Hatオリジナルハット。イベント終了18:30。",
       "dateText": "10月29日(木)",
       "sourceExcel": true
     },
@@ -1038,12 +1139,14 @@
       "url": "https://booost-ai.com/261029summit",
       "venue": "室町三井ホール＆カンファレンス",
       "conditionLines": [
-        "無料・審査制予定",
+        "無料",
+        "懇親会は審査制",
+        "対象：プライム上場企業の経営者・役員・CSO・経営企画・IR等",
         "定員300～500名"
       ],
       "rating": "B。規模・90分懇親会は良いが、対象がプライム上場企業の経営・実務層中心。",
       "nightTime": "17:00～18:30",
-      "nightText": "懇親会・ネットワーキング。飲食詳細は未確認。"
+      "nightText": "17:00～18:30 交流会・情報交換。審査制で、参加対象者へ詳細案内。飲食詳細は未確認。"
     },
     {
       "id": "xls-g-3b210485c510",
