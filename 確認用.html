@@ -792,17 +792,31 @@ function jumpToMonth(year,month){
   setTimeout(()=>row.classList.remove('calendar-focus'),1400);
 }
 function jumpToDate(date){
-  let rows=[...document.querySelectorAll('tr.event-row')],target=null;
-  if(mode==='attended')target=rows.find(r=>r.dataset.visitDate===date);
-  else if(mode==='planned')target=rows.find(r=>r.dataset.plannedDate===date);
-  else target=rows.find(r=>{
-    const a=r.dataset.startDate,b=r.dataset.endDate||a;
-    return a&&date>=a&&date<=b;
-  });
-  if(!target)return;
-  target.scrollIntoView({behavior:'smooth',block:'center'});
-  target.classList.remove('calendar-focus');void target.offsetWidth;target.classList.add('calendar-focus');
-  setTimeout(()=>target.classList.remove('calendar-focus'),1400);
+  const find=()=>{
+    const rows=[...document.querySelectorAll('tr.event-row')];
+    if(mode==='attended')return rows.find(r=>r.dataset.visitDate===date)||null;
+    if(mode==='planned')return rows.find(r=>r.dataset.plannedDate===date)||null;
+    return rows.find(r=>{
+      const a=r.dataset.startDate,b=r.dataset.endDate||a;
+      return a&&date>=a&&date<=b;
+    })||null;
+  };
+  const go=()=>{
+    const target=find();if(!target)return false;
+    target.scrollIntoView({behavior:'smooth',block:'center'});
+    target.classList.remove('calendar-focus');void target.offsetWidth;target.classList.add('calendar-focus');
+    setTimeout(()=>target.classList.remove('calendar-focus'),1400);
+    return true;
+  };
+  if(go())return;
+  let reveal=date;
+  if(mode==='all'){
+    const found=events.filter(e=>passesCommonFilters(e)&&e.date&&date>=e.date&&date<=(e.endDate||e.date));
+    if(found.length)reveal=found.map(e=>e.date).sort()[0];
+  }
+  listStartYear=Number(reveal.slice(0,4));listStartMonth=Number(reveal.slice(5,7));
+  saveUiState();render();
+  requestAnimationFrame(go);
 }
 
 function venueSortKey(e){
