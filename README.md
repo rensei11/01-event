@@ -10,7 +10,7 @@ https://rensei11.github.io/chatgpt-test/
 
 - `index.html`：表示画面、3か月カレンダー、参加予定チェック、除外チェック等のプログラム
 - `イベント一覧.json`：イベント名、日付、会場、参加条件、評価、夜の内容、公式URLなどの実データ
-- `引き継ぎ.md`：ChatGPT等のAI向け案件説明書
+- `引き継ぎ.md`：ChatGPT等のAI向けの短い入口\n- `現在の仕様.md`：UI・終了処理・データ運用などの詳細仕様
 - `README.md`：この案内板
 - `site/chunk0.txt` ～ `site/chunk5.txt`：旧版HTMLの退避用。現在の公開ページでは使用しない
 
