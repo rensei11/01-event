@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-19-repair",
+  "dataVersion": "2026-09-20-hidden-event-research",
   "year": 2026,
   "events": [
     {
@@ -2573,6 +2573,22 @@
       "nightText": "一見有料だがネットに腐るほどある紹介コードを入れれば無料。というかビジネスはタダのようだ。 / 去年SCAJに行ったときに西館で設営してたやつ",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
+    },
+    {
+      "id": "evt-itochu-familyfair-20260925",
+      "date": "2026-09-25",
+      "endDate": "2026-09-27",
+      "dateText": "9月25日(金)～27日(日)",
+      "name": "第14回 東京 伊藤忠ファミリーフェア ～秋の大感謝祭～",
+      "url": "https://netshop.zygospec.com/news.php?blog_id2=441",
+      "venue": "東京ビッグサイト 南1・2ホール",
+      "conditionLines": [
+        "会員・関係者向け",
+        "招待状必要"
+      ],
+      "rating": "対象外。無料食事イベントではないが、公式イベント一覧で拾いにくい南ホール利用催事として記録。",
+      "nightTime": "",
+      "nightText": "大手商社系ファミリーセール。求人情報を手掛かりに逆引きし、出店企業AirFly公式ニュースで日程・南1・2ホール・招待状必要を確認。"
     },
     {
       "id": "xls-x-2acdbc798c83",
