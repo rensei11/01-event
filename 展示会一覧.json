@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-20-invite-digital-check",
+  "dataVersion": "2026-09-20-west-hall-check",
   "year": 2026,
   "events": [
     {
@@ -2667,6 +2667,22 @@
       "nightText": "2026年12月25日(金)までにAmazon ギフトカードのギフトコードを送付",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
+    },
+    {
+      "id": "evt-model-hobbyshow-20261002",
+      "date": "2026-10-02",
+      "endDate": "2026-10-04",
+      "dateText": "10月2日(金)～4日(日)",
+      "name": "第64回 全日本模型ホビーショー",
+      "url": "https://hobbyshow.co.jp/info",
+      "venue": "東京ビッグサイト 西3・4ホール",
+      "conditionLines": [
+        "10/2は業者招待日（一般入場不可）",
+        "10/3～4は一般公開・有料"
+      ],
+      "rating": "対象外。無料食事イベントではないが、西3・4ホール利用状況として重要。",
+      "nightTime": "",
+      "nightText": "10/2 9:00～17:00は業者招待日。10/3 9:30～17:30、10/4 9:30～16:30は一般公開。9/30・10/1の設営・搬入利用は可能性が高いが、公開資料では日程未確認。"
     },
     {
       "id": "xls-x-6f171988c4d1",
