@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-20-west-hall-check",
+  "dataVersion": "2026-09-20-west2-investigation",
   "year": 2026,
   "events": [
     {
@@ -2649,7 +2649,7 @@
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
-      "nightText": "BEYOND BEAUTY Tokyo2026も同時開催",
+      "nightText": "BEYOND BEAUTY Tokyo2026も同時開催 / 2026-09-20再調査：東京ビッグサイト公式は健康博覧会［秋］・BEYOND BEAUTY TOKYOとも利用施設を西1ホールと明記。FiNC公式告知ではウェルビーイングゾーン内特設ステージも西1ホール内、ブースW-01。Health & BEAUTY DX TOKYOは18セッションを開催するが、西2利用を示す公開情報は未発見。西2は現時点で公開情報上空白。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
     },
