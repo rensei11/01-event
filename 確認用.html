@@ -110,7 +110,7 @@ th:last-child,td:last-child{border-right:0}
   <div class="edit-help">編集開始 → 表の文字を直接変更できます。日付は日付欄、区分とURLは行を選んで上のボタンから変更します。並び順は日付・区分・会場で自動です。編集はこのブラウザの下書きです。</div>
   <section class="calendar-panel" aria-label="カレンダー">
     <div class="calendar-head"><div class="calendar-title">カレンダー</div><div id="calendarNote" class="calendar-note"></div></div>
-    <div class="calendar-jump"><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div><span id="listRangeStatus" class="calendar-note"></span><span class="calendar-note">※ 下のカレンダーとは別</span></div>
+    <div class="calendar-jump"><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div><span id="listRangeStatus" class="calendar-note"></span><span class="calendar-note">※ 月ボタンで表とカレンダーを同じ月へ移動</span></div>
     <div class="calendar-slider"><button id="calendarPrev" class="calendar-arrow" type="button" aria-label="前の月">‹</button><div id="calendarMonths" class="calendars"></div><button id="calendarNext" class="calendar-arrow" type="button" aria-label="次の月">›</button></div>
   </section>
 <div class="table-wrap">
@@ -674,6 +674,7 @@ function calendarMap(){
     return map.get(d);
   };
   for(const e of events){
+    if(!passesCommonFilters(e))continue;
     if(mode==='attended'){
       for(const d of actualDates(e)){const v=get(d);v.ids.add(e.id);v.attended=true;}
     }else if(mode==='planned'){
@@ -753,6 +754,7 @@ function setTableStartMonth(year,month){
     listStartYear=0;listStartMonth=0;
   }else{
     listStartYear=year;listStartMonth=month;
+    calendarBaseYear=year;calendarBaseMonth=month;
   }
   saveUiState();
   render();
