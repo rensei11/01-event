@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-20-refresh",
+  "dataVersion": "2026-09-20-dedup",
   "year": 2026,
   "events": [
     {
@@ -591,7 +591,7 @@
       "conditionLines": [],
       "rating": "",
       "nightTime": "18:20～19:15",
-      "nightText": "18:20～19:15 ネットワーキング（懇親会） / 去年の写真を見る限りフィンガーフード　優先順位低そう",
+      "nightText": "ネットワーキング（懇親会）。去年の写真を見る限りフィンガーフードで、優先順位は低そう。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
     },
@@ -606,7 +606,7 @@
       "conditionLines": [],
       "rating": "",
       "nightTime": "17:45～19:15",
-      "nightText": "17:45～19:15 Networking Reception / 行くならこっち、しかしこの日は展示会が無い　紹介者コード取得済",
+      "nightText": "Networking Reception。行くならこちら。ただしこの日は展示会がない。紹介者コード取得済。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
     },
@@ -643,7 +643,7 @@
       ],
       "rating": "B。2時間のReceptionは魅力だが、対象業界がかなり限定的。",
       "nightTime": "17:30～19:30",
-      "nightText": "17:30～19:30 Networking Reception。12:45～Networking Lunchもあり。料理内容の詳細は未確認。"
+      "nightText": "Networking Reception。12:45～Networking Lunchもあり。料理内容の詳細は未確認。"
     },
     {
       "id": "evt-af4b3b4a0f13",
@@ -687,7 +687,7 @@
       ],
       "rating": "",
       "nightTime": "18:00～19:30",
-      "nightText": "懇親会　18:00～19:30　抽選制　おそらく当選しない / 9月9日までに申し込むとグッズがもらえるが現地先着順なので多分無くなる",
+      "nightText": "懇親会。抽選制で当選可能性は低そう。9月9日までの申込特典グッズは現地先着順。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
     },
@@ -718,7 +718,7 @@
       ],
       "rating": "A。無料でホテルReceptionに参加でき、Rikkei不成立時の強い代替候補。",
       "nightTime": "18:20～19:30",
-      "nightText": "Networking Reception。2026年9月18日更新の公式プログラムで18:20～19:30に変更。現地参加締切は9月30日17:00。料理詳細不明。",
+      "nightText": "Networking Reception。2026年9月18日更新の公式プログラムで時刻変更を確認。現地参加締切は9月30日17:00。料理詳細不明。",
       "dateText": "10月9日 (金)",
       "sourceExcel": true
     },
@@ -735,7 +735,7 @@
       ],
       "rating": "A+。東京アメリカンクラブという会場価値が大きく、Networkingも有力。",
       "nightTime": "18:30～19:30",
-      "nightText": "Networking。公式最新日程では18:30～19:30。料理・酒の詳細は未公表。 Excelメモ：ご参加確定の連絡は9月末までに順次案内。",
+      "nightText": "Networking。公式最新日程へ更新済み。料理・酒の詳細は未公表。 Excelメモ：ご参加確定の連絡は9月末までに順次案内。",
       "dateText": "10月14日(水)",
       "sourceExcel": true
     },
@@ -809,7 +809,7 @@
       ],
       "rating": "A+。ビッグサイトからの移動が楽で、規模・時間・立地が非常に良い。",
       "nightTime": "18:00～19:30",
-      "nightText": "18:00～19:30 Networking Party。イベント来場者は自由参加可。過去回は軽食＋飲み物あり。 Excelメモ：天王洲アイル駅から徒歩数分。",
+      "nightText": "Networking Party。イベント来場者は自由参加可。過去回は軽食＋飲み物あり。 Excelメモ：天王洲アイル駅から徒歩数分。",
       "dateText": "10月15日(木)",
       "sourceExcel": true
     },
@@ -824,7 +824,7 @@
       ],
       "rating": "D。90分Networkingはあるが完全招待制。会場も公式上TBD。",
       "nightTime": "18:00～19:30",
-      "nightText": "18:00～19:30 UNLOCK Networking。本イベントは完全招待制。"
+      "nightText": "UNLOCK Networking。本イベントは完全招待制。"
     },
     {
       "id": "xls-g-65f210450a5f",
@@ -871,7 +871,7 @@
       ],
       "rating": "",
       "nightTime": "17:00～18:30",
-      "nightText": "17:00～18:30 ネットワーキング。公式プログラムで確認。飲食内容は未確認。",
+      "nightText": "ネットワーキング。公式プログラムで確認。飲食内容は未確認。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
     },
@@ -928,7 +928,7 @@
       ],
       "rating": "A。参加経路を確保済みで、ホテル会場・90分Networkingとも有力。",
       "nightTime": "17:00～18:30",
-      "nightText": "ファウンダーラウンジ＋＋ネットワーキング。 Excelメモ：ネットワーキングは招待コードが必要。しかしAIにソースを探らせたら発掘できた。 / 時間は17:00～18:30だが、対談時間が最初に入るので食えるのは多分17:30くらいからかも。",
+      "nightText": "ファウンダーラウンジ＋＋ネットワーキング。 Excelメモ：ネットワーキングは招待コードが必要。冒頭に対談時間があるため、飲食開始は後ろにずれる可能性あり。",
       "dateText": "10月21日(水)",
       "sourceExcel": true
     },
@@ -1041,7 +1041,7 @@
       ],
       "rating": "A。ホテル会場＋90分Reception。軽食中心・大型ゆえ混雑は注意。",
       "nightTime": "16:10～17:40",
-      "nightText": "16:10～17:40 Networking Reception & Expo。ドリンク＋軽食を公式明記。11:30～13:00にはランチもあり。17:40～18:40は持田香織スペシャルライブ。"
+      "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。11:30～13:00にはランチもあり。17:40～18:40は持田香織スペシャルライブ。"
     },
     {
       "id": "evt-growth-dx-marketing-20261027",
@@ -1083,7 +1083,7 @@
       ],
       "rating": "A-。ホテル会場でReceptionあり。Day 1より1時間と短い。",
       "nightTime": "17:30～18:30",
-      "nightText": "17:30～18:30 Networking Reception & Expo。ドリンク＋軽食を公式明記。9:00～10:00のモーニングセッション参加者には軽食、11:30～13:00にはランチもあり。"
+      "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。9:00～10:00のモーニングセッション参加者には軽食、11:30～13:00にはランチもあり。"
     },
     {
       "id": "evt-transcosmos-bpo-20261028",
@@ -1146,7 +1146,7 @@
       ],
       "rating": "B。規模・90分懇親会は良いが、対象がプライム上場企業の経営・実務層中心。",
       "nightTime": "17:00～18:30",
-      "nightText": "17:00～18:30 交流会・情報交換。審査制で、参加対象者へ詳細案内。飲食詳細は未確認。"
+      "nightText": "交流会・情報交換。審査制で、参加対象者へ詳細案内。飲食詳細は未確認。"
     },
     {
       "id": "xls-g-3b210485c510",
@@ -1281,7 +1281,7 @@
       ],
       "rating": "B。ドリンク＋軽食は確定。ただし17時以降は30分のみ。",
       "nightTime": "16:20～17:30",
-      "nightText": "懇親会。ドリンク＋軽食を公式明記。抽選会は17:00開始予定。 Excelメモ：定員埋まるまでは速そう　来場でamazon500 + アンケートで500 / 16:20～17:30 懇親会",
+      "nightText": "懇親会。ドリンク＋軽食を公式明記。抽選会は17:00開始予定。 Excelメモ：定員埋まるまでは速そう。来場でAmazon 500円＋アンケートで500円。",
       "dateText": "11月26日(木)",
       "sourceExcel": true
     },
