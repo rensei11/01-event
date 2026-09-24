@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-24-researched-events-sync",
+  "dataVersion": "2026-09-24-oct15-nov4-6-networking-scan",
   "year": 2026,
   "events": [
     {
@@ -947,6 +947,23 @@
       "sourceExcel": true
     },
     {
+      "id": "evt-2996f14a8c77",
+      "date": "2026-10-13",
+      "name": "BuiltWorlds Tokyo Global Summit",
+      "url": "https://builtworlds.com/event/2026-tokyo-summit/",
+      "venue": "ヒルトン東京（10/15メイン会場）",
+      "conditionLines": [
+        "Member Registration または Non-member Ticket",
+        "一般向け無料参加経路は未確認",
+        "公式2026ページのNon-member購入ボタンは現在2027年版$3,000ページへ誤リンクしており、2026料金は確認不能"
+      ],
+      "rating": "D。10/13～15にNetworking Receptionがあるが、一般向け無料参加経路は確認できない。Speaker/Demo Day応募経路はあるが、無料一般参加につながるとは確認できない。",
+      "nightTime": "10/13 17:00～18:30 / 10/14 17:00～19:00 / 10/15 17:10～18:30",
+      "nightText": "各日Networking Reception。10/13はCBRE Japan本社、10/15はヒルトン東京。",
+      "endDate": "2026-10-15",
+      "dateText": "10月13日(火)～15日(木)"
+    },
+    {
       "id": "evt-7f91ed050c06",
       "date": "2026-10-14",
       "name": "Boomi World Tour Tokyo 2026",
@@ -993,20 +1010,6 @@
       "nightText": "Networking Reception。料理詳細不明。"
     },
     {
-      "id": "evt-2996f14a8c77",
-      "date": "2026-10-15",
-      "name": "BuiltWorlds Tokyo Global Summit",
-      "url": "https://builtworlds.com/event/2026-tokyo-summit/",
-      "venue": "ヒルトン東京",
-      "conditionLines": [
-        "メンバー中心",
-        "無料経路未確認"
-      ],
-      "rating": "D。ホテル会場は魅力だが、現状は無料参加経路が確認できない。",
-      "nightTime": "17:10～18:30",
-      "nightText": "Closing Remarks & Networking Reception。"
-    },
-    {
       "id": "evt-f773abc21d4c",
       "date": "2026-10-15",
       "name": "Genesys Xperience Tokyo 2026",
@@ -1042,13 +1045,18 @@
       "date": "2026-10-15",
       "name": "Saviynt UNLOCK Tokyo 2026",
       "url": "https://saviynt.com/unlock/tokyo",
-      "venue": "会場未確定（公式：TBD）",
+      "venue": "アニヴェルセル表参道",
       "conditionLines": [
-        "完全招待制"
+        "東京ページ表記：完全招待制",
+        "公式ページに公開の「Register now」申込導線あり",
+        "UNLOCK全体FAQ：参加無料・席数制限のため登録は承認制",
+        "対象はCISO・セキュリティリーダー・ITエグゼクティブ等"
       ],
-      "rating": "D。90分Networkingはあるが完全招待制。会場も公式上TBD。",
+      "rating": "B-。アニヴェルセル表参道で90分Networking。完全招待制表記だが公開申込経路があり、承認されれば無料。規模未確認・対象層は狭い。",
       "nightTime": "18:00～19:30",
-      "nightText": "UNLOCK Networking。本イベントは完全招待制。"
+      "nightText": "UNLOCK Networking。参加は無料だが承認制。",
+      "endDate": "",
+      "dateText": "10月15日(木)"
     },
     {
       "id": "xls-g-65f210450a5f",
@@ -1373,6 +1381,58 @@
       "nightText": "交流会・情報交換。審査制で、参加対象者へ詳細案内。飲食詳細は未確認。"
     },
     {
+      "id": "evt-business-lawyers-award-20261104",
+      "date": "2026-11-04",
+      "endDate": "",
+      "dateText": "11月4日(水)",
+      "name": "BUSINESS LAWYERS AWARD 2026 表彰式・懇親会",
+      "url": "https://www.businesslawyers.jp/seminars/619",
+      "venue": "東京會舘 3階 ローズ",
+      "conditionLines": [
+        "無料・事前登録制・先着順",
+        "弁護士・企業関係者をはじめ、どなたでも参加可",
+        "同業者・競合等は主催判断で申込を断る場合あり",
+        "申込締切11/2 17:00（定員で早期終了あり）"
+      ],
+      "rating": "A-。東京會舘ローズで無料の夜懇親会。一般申込可能・先着順で有力。規模は未公表。",
+      "nightTime": "20:00～21:00",
+      "nightText": "表彰式後の懇親会。"
+    },
+    {
+      "id": "evt-mentorfor-diversity-20261104",
+      "date": "2026-11-04",
+      "endDate": "",
+      "dateText": "11月4日(水)",
+      "name": "Mentor For ダイバーシティカンファレンス 2026 懇親会",
+      "url": "https://mentorfor.jp/seminar_event/mentor-for-diversity-conference-2026/",
+      "venue": "学研ビル 13階（五反田）",
+      "conditionLines": [
+        "無料・事前申込制・懇親会は人数制限あり",
+        "対象：企業の人事・人材育成・DE&I担当／責任者",
+        "HR・研修・メンタリング等の同業他社は参加不可の場合あり",
+        "申込締切10/30"
+      ],
+      "rating": "B。無料2時間の立食懇親会。軽食あり。ただし対象職種が狭く、規模未公表。",
+      "nightTime": "16:30～18:30",
+      "nightText": "カンファレンス終了後の立食懇親会。軽食あり。申込フォームで懇親会参加を選択。"
+    },
+    {
+      "id": "evt-mento-mss-20261105",
+      "date": "2026-11-05",
+      "endDate": "",
+      "dateText": "11月5日(木)",
+      "name": "Management Success Summit 2026 懇親会（HR Meet Up）",
+      "url": "https://www.mento.jp/mss/2026",
+      "venue": "TRUNK BY SHOTO GALLERY 1F・3F",
+      "conditionLines": [
+        "無料・申込制",
+        "対象：人事担当・人事責任者・管理職育成施策を検討する担当者等"
+      ],
+      "rating": "B+。渋谷のTRUNK BY SHOTO GALLERYで無料の夜懇親会。会場価値は高いが、対象職種限定・規模未公表。",
+      "nightTime": "18:00～19:00",
+      "nightText": "懇親会（HR Meet Up）。業界ごとに人事担当者同士が交流。"
+    },
+    {
       "id": "xls-g-3b210485c510",
       "date": "2026-11-05",
       "endDate": "",
@@ -1380,10 +1440,14 @@
       "name": "NETSHOP EXPO 2026",
       "url": "https://pay.amazon.co.jp/event/expo2026",
       "venue": "品川インターシティホール",
-      "conditionLines": [],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "エバーリッジを2日で切り上げるなら寄れないことも無いが・・・",
+      "conditionLines": [
+        "無料・事前登録制",
+        "定員300名・申込多数時は抽選",
+        "対象：ECサイト運営責任者、オンライン／デジタルマーケティング担当者"
+      ],
+      "rating": "A-。無料300名で90分の立食パーティ形式懇親会。抽選制だが条件は強い。",
+      "nightTime": "18:00～19:30",
+      "nightText": "第二部 懇親会。立食パーティ形式・ネットワーキング・抽選会あり。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
     },
@@ -1400,6 +1464,59 @@
       "rating": "B。無料400名で2時間の懇親会。料理・ドリンク詳細は現時点で未確認。",
       "nightTime": "18:00～20:00",
       "nightText": "懇親会・デモ展示。懇親会のみの参加不可。"
+    },
+    {
+      "id": "evt-space-realty-20261105",
+      "date": "2026-11-05",
+      "endDate": "2026-11-06",
+      "dateText": "11月5日(木)～6日(金)",
+      "name": "宇宙×不動産カンファレンス2026（SPACE REALTY CONFERENCE 2026）",
+      "url": "https://srconf.com/",
+      "venue": "東京大学 大講堂（安田講堂）",
+      "conditionLines": [
+        "無料・事前登録制",
+        "11/5～6の2日間・ハイブリッド開催",
+        "2025年は申込1,350名（2026年定員は未公表）"
+      ],
+      "rating": "B+※。無料大型候補で公式アフターパーティー「Gravity Night」開催を明記。2026年の日時・会場・参加条件はまだ未発表。",
+      "nightTime": "詳細未発表",
+      "nightText": "公式アフターパーティー「Gravity Night」開催予定。登壇者・スポンサー・参加者が交流。日時・会場等は今後発表。"
+    },
+    {
+      "id": "evt-libcon-mobility-energy-20261106",
+      "date": "2026-11-06",
+      "endDate": "",
+      "dateText": "11月6日(金)",
+      "name": "AI×共創が変える、モビリティ×エネルギー事業開発の新常識 懇親会",
+      "url": "https://www.libcon.co.jp/mobility/event/20261106/",
+      "venue": "ベルサール神田 HALL A・B",
+      "conditionLines": [
+        "無料・抽選制",
+        "定員150名",
+        "対象：大企業の新規事業・経営企画、モビリティ／エネルギー責任者、優良スタートアップ経営層"
+      ],
+      "rating": "B+。無料150名で19時から1時間の懇親会。規模は基準下限を満たすが対象層・抽選条件あり。",
+      "nightTime": "19:00～20:00",
+      "nightText": "第5部 ネットワーキング（懇親会）。登壇者・事業責任者・スタートアップ経営層が交流。"
+    },
+    {
+      "id": "evt-techlead-20261106",
+      "date": "2026-11-06",
+      "endDate": "",
+      "dateText": "11月6日(金)",
+      "name": "TechLead Conference 2026 Autumn エンジニア大交流会",
+      "url": "https://eight-event.8card.net/techlead-conference/?code=top",
+      "venue": "有明セントラルタワーホール&カンファレンス 3F・4F",
+      "conditionLines": [
+        "無料・事前申込制",
+        "定員500名",
+        "事前審査制",
+        "対象：テックリード、技術選定・組織マネジメントに関わるエンジニア等",
+        "営業・調査目的の参加不可"
+      ],
+      "rating": "A-。無料500名で夜の大交流会。公式に酒・食事あり。事前審査制で対象職種は限定。",
+      "nightTime": "19:30～20:20",
+      "nightText": "エンジニア大交流会。お酒や食事を楽しみながら交流。"
     },
     {
       "id": "evt-75da917a",
