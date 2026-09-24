@@ -198,12 +198,28 @@ function passesCommonFilters(e){
   return true;
 }
 function flag(e){return flags[e.id]||{}}
+function isVisitCandidate(e){
+  const f=flag(e);
+  return !!(f.planned||f.interested);
+}
 function saveFlags(){
   localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));
 }
 function setInterested(e,checked){
   const f=flags[e.id]||{};
-  f.interested=checked;
+  if(checked){
+    f.interested=true;
+    f.planned=false;
+    f.ignored=false;
+    if(e.endDate&&e.endDate!==e.date){
+      if(!Array.isArray(f.visitDates))f.visitDates=[];
+    }else{
+      delete f.visitDates;
+    }
+  }else{
+    f.interested=false;
+    if(!f.planned&&Array.isArray(f.visitDates))delete f.visitDates;
+  }
   flags[e.id]=f;saveFlags();render();
 }
 function setPlan(e,checked){
@@ -211,6 +227,7 @@ function setPlan(e,checked){
   if(checked){
     f.ignored=false;
     f.planned=true;
+    f.interested=false;
     if(e.endDate&&e.endDate!==e.date){
       if(!Array.isArray(f.visitDates))f.visitDates=[];
     }else{
@@ -218,7 +235,7 @@ function setPlan(e,checked){
     }
   }else{
     f.planned=false;
-    if(Array.isArray(f.visitDates))delete f.visitDates;
+    if(!f.interested&&Array.isArray(f.visitDates))delete f.visitDates;
   }
   flags[e.id]=f;saveFlags();render();
 }
@@ -227,14 +244,18 @@ function setPlanDay(e,date,checked){
   const set=new Set(Array.isArray(f.visitDates)?f.visitDates:[]);
   if(checked)set.add(date);else set.delete(date);
   f.visitDates=[...set].filter(d=>inRange(e,d)).sort();
-  f.planned=true;
+  if(!f.planned&&!f.interested)f.planned=true;
   f.ignored=false;
   flags[e.id]=f;saveFlags();render();
 }
 function setIgnore(e,checked){
   const f=flags[e.id]||{};
   f.ignored=checked;
-  if(checked){f.planned=false;if(Array.isArray(f.visitDates))delete f.visitDates;}
+  if(checked){
+    f.planned=false;
+    f.interested=false;
+    if(Array.isArray(f.visitDates))delete f.visitDates;
+  }
   flags[e.id]=f;saveFlags();render();
 }
 function actualDates(e){return Array.isArray(e.visitDates)?e.visitDates:[]}
@@ -250,7 +271,7 @@ function plannedDates(e){
   const multiDay=!!(e.endDate&&e.endDate!==e.date);
   if(multiDay){
     if(Array.isArray(f.visitDates))x=[...new Set(f.visitDates)].filter(d=>inRange(e,d));
-  }else if(f.planned){
+  }else if(f.planned||f.interested){
     x=[e.date];
   }
   const done=new Set(actualDates(e)),today=todayISO();
@@ -546,14 +567,15 @@ function closeEndProcess(){
 
 function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,plannedUnknown=false){
   const r=reportFor(e), p=plannedDates(e), a=actualDates(e), people=personLines(e), cond=conditionLines(e);
-  const f=flag(e),multiDay=!!(e.endDate&&e.endDate!==e.date);
+  const f=flag(e),multiDay=!!(e.endDate&&e.endDate!==e.date),candidate=!!(f.planned||f.interested);
+  const candidateText=f.interested?'興味あり':'予定';
   const badges=[];
   badges.push('<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>');
   if(a.length)badges.push('<span class="tag attended">参加 '+esc(fmtDates(a))+'</span>');
   else if(e.attendanceStatus==='attended')badges.push('<span class="tag attended">参加済み（日付未入力）</span>');
-  if(f.planned){
-    if(p.length)badges.push('<span class="tag planned">予定 '+esc(fmtDates(plannedDate?[plannedDate]:p))+'</span>');
-    else if(multiDay)badges.push('<span class="tag planned">予定 未定</span>');
+  if(candidate){
+    if(p.length)badges.push('<span class="tag planned">'+candidateText+' '+esc(fmtDates(plannedDate?[plannedDate]:p))+'</span>');
+    else if(multiDay)badges.push('<span class="tag planned">'+candidateText+' 未定</span>');
   }
   if(e.attendanceStatus==='not_attended')badges.push('<span class="tag notattended">未参加</span>');
 
@@ -566,11 +588,11 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,planned
     e.attendanceStatus==='not_attended'?'row-notattended':'',
     rf.good?'report-good':'',
     rf.bad?'report-bad':'',
-    f.planned?'row-planned':'',
+    candidate?'row-planned':'',
     (!done&&f.ignored)?'row-ignored':''
   ].filter(Boolean).join(' ');
 
-  const planTools=(!done&&!r&&!editing)?'<label><input class="interest-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.interested?'checked':'')+'>興味あり</label><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.planned?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label>':'';
+  const planTools=(!done&&!r&&!editing)?'<label><input class="interest-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.interested&&!f.planned?'checked':'')+'>興味あり</label><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.planned?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label>':'';
   const tools=planTools?'<div class="event-tools">'+planTools+'</div>':'';
   const dayTools=(!done&&!r&&!editing)?planDayChecks(e):'';
   const plannedDayNo=(plannedDate&&multiDay)?days(e.date,plannedDate).length:0;
@@ -984,7 +1006,7 @@ function render(){
     for(const e of events){
       if(!passesCommonFilters(e))continue;
       const f=flag(e);
-      if(!f.planned)continue;
+      if(!f.planned&&!f.interested)continue;
       const ds=plannedDates(e);
       if(ds.length){
         for(const d of ds)if(passesListStart(d))items.push({e,d,sortDate:d,unknown:false});
@@ -1189,6 +1211,11 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
 (async()=>{
   try{
     try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(_){flags={}}
+    let normalizedFlags=false;
+    Object.values(flags).forEach(f=>{
+      if(f&&f.planned&&f.interested){f.interested=false;normalizedFlags=true;}
+    });
+    if(normalizedFlags)saveFlags();
     try{reportFlags=JSON.parse(localStorage.getItem(REPORT_FLAGS_KEY)||'{}')}catch(_){reportFlags={}}
     loadUiState();
     syncModeButtons();
