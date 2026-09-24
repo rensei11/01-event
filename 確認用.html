@@ -58,7 +58,7 @@ th:last-child,td:last-child{border-right:0}
 .end-modal[hidden]{display:none}.end-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:18px}
 .end-dialog{width:min(900px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
 .end-dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:#20262d;color:#fff}
-.end-dialog-title{font-size:17px;font-weight:800}.end-close{width:32px;height:32px;min-width:32px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;color:#20262d;font-size:20px;line-height:1}
+.end-dialog-title{font-size:17px;font-weight:800}.end-close{position:relative;width:32px;height:32px;min-width:32px;padding:0;border:0;border-radius:4px;background:transparent;color:#fff;font-size:0}.end-close::before,.end-close::after{content:"";position:absolute;left:50%;top:50%;width:18px;height:2px;background:#fff;transform-origin:center}.end-close::before{transform:translate(-50%,-50%) rotate(45deg)}.end-close::after{transform:translate(-50%,-50%) rotate(-45deg)}.end-close:hover{background:rgba(255,255,255,.12)}
 .end-dialog-body{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:420px}
 .end-list{border-right:1px solid var(--line);padding:12px;background:#f7f8fa}.end-list-note{font-size:12px;color:var(--muted);margin:0 0 8px}
 .end-event-btn{width:100%;text-align:left;margin:0 0 7px;padding:9px 10px;border:1px solid #cbd2d9;background:#fff;color:#20262d}.end-event-btn.active{border-color:#2f6fda;background:#e8f4ff;color:#20262d}
@@ -551,8 +551,9 @@ async function saveEndToGitHub(){
     const result=await rr.json().catch(()=>({ok:false,error:'保存結果を読めません'}));
     if(rr.status===401){localStorage.removeItem(END_EDIT_KEY_KEY);throw new Error('編集キーが違います。次回保存時にもう一度入力してください。');}
     if(!rr.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
-    delete endDrafts[d.eventId];localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
-    location.reload();
+    endDrafts[d.eventId]=d;
+    localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+    if(msg)msg.textContent='GitHubへ保存しました。公開画面への反映確認まで下書きを保持します。';
   }catch(err){if(msg)msg.textContent=err.message||String(err);}
   finally{if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}}
 }
