@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-19-repair",
+  "dataVersion": "2026-09-24-web",
   "year": 2026,
   "events": [
     {
@@ -233,19 +233,6 @@
       "category": "exhibition",
       "attendanceStatus": "not_attended",
       "visitDates": []
-    },
-    {
-      "id": "hist-c1fe97adec2b",
-      "date": "2026-09-10",
-      "endDate": "2026-09-10",
-      "dateText": "9月10日(木)",
-      "name": "トランスコスモスフォーラム 2026｜GLOBAL",
-      "category": "gathering",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "nameCodes": [
-        "伊藤 聡"
-      ]
     },
     {
       "id": "hist-1e828e37c37b",

@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-24-redhat-2025-swag-research",
+  "dataVersion": "2026-09-24-web",
   "year": 2026,
   "events": [
     {
@@ -403,7 +403,8 @@
       "visitDates": [
         "2026-09-10"
       ],
-      "historySource": "未参加イベント"
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-hist-no-c1fe97adec2b"
     },
     {
       "id": "hist-no-1e828e37c37b",
