@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-24-food-events",
+  "dataVersion": "2026-09-24-three-day-scan",
   "year": 2026,
   "events": [
     {
@@ -578,6 +578,22 @@
       "nightText": "懇親会。参加無料。料理・ドリンク内容は未確認。"
     },
     {
+      "id": "evt-material-matters-20260930",
+      "date": "2026-09-30",
+      "dateText": "9月30日(水)",
+      "name": "Material Matters",
+      "url": "https://lingble.jp/event",
+      "venue": "渋谷PARCO DGビル18階",
+      "conditionLines": [
+        "無料・事前登録",
+        "承認制",
+        "繊維・素材・アパレル・地域産業・金融・投資・AI/EC関係者向け"
+      ],
+      "rating": "C。無料でドリンク＋軽食付きだが、Networkingが17時までで夜条件に弱く、承認制。",
+      "nightTime": "16:00～17:00",
+      "nightText": "Networking。ドリンク＋軽食を公式明記。"
+    },
+    {
       "id": "evt-c8cedbcd3fdd",
       "date": "2026-09-30",
       "name": "Stripe Tour Tokyo 2026",
@@ -596,6 +612,22 @@
       "sourceExcel": true
     },
     {
+      "id": "evt-jmec-social-20260930",
+      "date": "2026-09-30",
+      "dateText": "9月30日(水)",
+      "name": "The JMEC Social: Build Your Network, Build Your Business Skills",
+      "url": "https://blccj.or.jp/news/ready-for-a-new-challenge-build-a-business-plan-get-mentored-pitch-and-learn/",
+      "venue": "Meltwater offices（恵比寿・東急不動産恵比寿ビル5F）",
+      "conditionLines": [
+        "無料・事前登録必須",
+        "若手プロフェッショナル／JMECに関心のある参加者向け",
+        "規模未確認"
+      ],
+      "rating": "C+。無料でドリンク＋軽食付き。規模は未確認だが、Stripe Tour終了後に追加で寄れる時間帯。",
+      "nightTime": "19:30～20:30",
+      "nightText": "Networking。ドリンク＋軽食を公式明記。"
+    },
+    {
       "id": "evt-5ca188fdeb8d",
       "date": "2026-09-30",
       "name": "産業DX 共創交流パーティー",
@@ -610,6 +642,89 @@
       "rating": "A-。無料・90分・軽食＋ドリンクが公式明記。展示会と同会場で動線も良い。",
       "nightTime": "17:00～18:30",
       "nightText": "共創交流パーティー。軽食＋ドリンク付き。展示会来場登録とパーティー申込は別々に必要。"
+    },
+    {
+      "id": "evt-jetro-coolwater-networking-20261001",
+      "date": "2026-10-01",
+      "dateText": "10月1日(木)",
+      "name": "3rd Annual Investor Networking Night by JETRO & Coolwater Capital",
+      "url": "https://luma.com/avdtjof1",
+      "venue": "JETRO Innovation Garden（ARK森ビル）",
+      "conditionLines": [
+        "無料掲載あり",
+        "Private Event・主催者承認制",
+        "VC・CVC・事業会社・PE投資家・サービスプロバイダー向け",
+        "9/24確認時点で69名参加表示"
+      ],
+      "rating": "C。ドリンク＋軽食付きの2時間Networkingだが、69名規模かつPrivate Event・承認制でユーザー基準では大幅減点。",
+      "nightTime": "18:00～20:00",
+      "nightText": "Investor Networking Night。ドリンク＋軽食を明記。"
+    },
+    {
+      "id": "evt-medigo-20261001",
+      "date": "2026-10-01",
+      "dateText": "10月1日(木)",
+      "name": "MediGO -Medical Market Gateway-",
+      "url": "https://www.eventbrite.com/e/medigo-medical-market-gateway--tickets-1999003625656",
+      "venue": "Tokyo Innovation Base",
+      "conditionLines": [
+        "無料",
+        "医療機器スタートアップ・事業開発・医療従事者・VC/CVC等が主対象",
+        "規模未確認"
+      ],
+      "rating": "C+。無料で夜開催、Networking中のアルコール提供を確認。ただし交流時間は30分、対象業界が狭く規模未確認。",
+      "nightTime": "20:00～20:30",
+      "nightText": "Networking＆スタートアップ展示。アルコール提供あり。"
+    },
+    {
+      "id": "evt-memoq-day-tokyo-20261002",
+      "date": "2026-10-02",
+      "dateText": "10月2日(金)",
+      "name": "memoQ Day Tokyo 2026",
+      "url": "https://memoq.doorkeeper.jp/events/198095",
+      "venue": "ワテラスコモンホール",
+      "conditionLines": [
+        "無料・事前登録",
+        "申込締切：9月30日(水) 21:00",
+        "定員85名相当（9/24確認時：56名参加・残29枠）",
+        "memoQ TMS利用者・翻訳/LSP/企業関係者等が対象"
+      ],
+      "rating": "C+。無料で2時間のNetworking Partyだが、85名程度でユーザー基準では大幅減点。",
+      "nightTime": "17:30～19:30",
+      "nightText": "Networking Party。ハンガリーワインを公式明記。"
+    },
+    {
+      "id": "evt-terraskyday-20261002",
+      "date": "2026-10-02",
+      "dateText": "10月2日(金)",
+      "name": "TerraSkyDay 2026",
+      "url": "https://www.terraskyday.com/",
+      "venue": "ANAインターコンチネンタルホテル東京",
+      "conditionLines": [
+        "無料・事前登録制",
+        "ランチセッションは満席・まもなく満席の枠あり",
+        "主催競合企業・個人は参加不可との案内あり"
+      ],
+      "rating": "B。ホテル会場で無料、ランチセッションに弁当提供あり。ただし夜の懇親会・Networkingは確認できず。",
+      "nightTime": "12:10～12:40",
+      "nightText": "ランチセッションで弁当提供。コーヒーサービスあり。夜の懇親会は確認できず。"
+    },
+    {
+      "id": "evt-jcas-20261002",
+      "date": "2026-10-02",
+      "dateText": "10月2日(金)",
+      "name": "気候変動アクション日本サミット（JCAS）2026",
+      "url": "https://japanclimate.org/news-topics/jcas2026/",
+      "venue": "国連大学 ウ・タント国際会議場",
+      "conditionLines": [
+        "無料・要事前登録",
+        "会場参加申込締切：9月29日(火)正午、または定員到達まで",
+        "Networkingのみの参加不可",
+        "規模未確認"
+      ],
+      "rating": "B-。国連大学会場＋本編終了後Networkingは魅力。無料だが規模と飲食提供は未確認。",
+      "nightTime": "18:00～（本編終了後）",
+      "nightText": "名刺交換・Networking。本編の現地参加者のみ参加可能。"
     },
     {
       "id": "evt-bengo4-paradigm-20261002",
