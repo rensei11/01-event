@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-20-dedup",
+  "dataVersion": "2026-09-24-food-events",
   "year": 2026,
   "events": [
     {
@@ -547,6 +547,37 @@
       "sourceExcel": true
     },
     {
+      "id": "evt-pagerduty-techhub-20260929",
+      "date": "2026-09-29",
+      "name": "PagerDuty Tech Hub 2026",
+      "url": "https://techhub.pagerduty.co.jp/",
+      "venue": "東京ポートシティ竹芝 ポートホール",
+      "conditionLines": [
+        "無料・事前登録",
+        "先着300名",
+        "PagerDuty未導入者・一人参加も可"
+      ],
+      "rating": "B+。無料300名・18:30からAfter Partyで規模条件は良い。料理提供は未確認。",
+      "nightTime": "18:30～",
+      "nightText": "After Party。テーマ別テーブルで交流。飲み物を持つ交流写真は確認済みだが、料理提供は未確認。"
+    },
+    {
+      "id": "evt-human-ai-transformation-20260930",
+      "date": "2026-09-30",
+      "name": "Human×AI Transformation 2026",
+      "url": "https://hubble-docs.com/event/2026-09-30",
+      "venue": "渋谷ストリームホール",
+      "conditionLines": [
+        "無料・事前登録制",
+        "定員100名・多数時抽選",
+        "対象：CIO/CDO/CAIO・DX推進責任者・法務責任者/担当者・企業経営者",
+        "同業他社・関係企業等、従業員10名未満の企業は参加不可"
+      ],
+      "rating": "C。19:50～21:00の懇親会は魅力だが、定員100名でユーザー基準では大幅減点。飲食内容は未確認。",
+      "nightTime": "19:50～21:00",
+      "nightText": "懇親会。参加無料。料理・ドリンク内容は未確認。"
+    },
+    {
       "id": "evt-c8cedbcd3fdd",
       "date": "2026-09-30",
       "name": "Stripe Tour Tokyo 2026",
@@ -558,9 +589,9 @@
         "法人メール必要（Gmail・Yahoo!等のフリーメール不可）",
         "申込締切：9月28日(月) 9:00"
       ],
-      "rating": "A+。ホテル会場で、夜のReceptionもあり有力。",
-      "nightTime": "16:45～17:45",
-      "nightText": "Networking Reception。 Excelメモ：ヴィーガン用のメニュー出すとか言ってる。期待できないかも。 / 16:45～　ネットワーキングレセプション",
+      "rating": "A+。ホテル会場で、朝食・ネットワーキングランチ・ネットワーキングレセプションの3回があり、直近の有力候補。",
+      "nightTime": "8:30～10:00／12:00～13:30／16:45～17:45",
+      "nightText": "受付・朝食／ネットワーキングランチ／ネットワーキングレセプション。 Excelメモ：ヴィーガン用のメニュー出すとか言ってる。期待できないかも。",
       "dateText": "9月30日(水)",
       "sourceExcel": true
     },
@@ -579,6 +610,35 @@
       "rating": "A-。無料・90分・軽食＋ドリンクが公式明記。展示会と同会場で動線も良い。",
       "nightTime": "17:00～18:30",
       "nightText": "共創交流パーティー。軽食＋ドリンク付き。展示会来場登録とパーティー申込は別々に必要。"
+    },
+    {
+      "id": "evt-bengo4-paradigm-20261002",
+      "date": "2026-10-02",
+      "name": "弁護士ドットコム PARADIGM 2026",
+      "url": "https://paradigm.bengo4.com/",
+      "venue": "虎ノ門ヒルズフォーラム",
+      "conditionLines": [
+        "無料・事前登録",
+        "申込締切：10月1日(木) 12:00",
+        "対象：弁護士・税理士・企業法務・総務・DX推進等"
+      ],
+      "rating": "B。19時からの「業界最大級」Networkingは強いが、具体的参加人数と飲食内容は未確認。",
+      "nightTime": "19:00～20:00",
+      "nightText": "懇親会を兼ねたNetworking。料理・ドリンク内容は未確認。"
+    },
+    {
+      "id": "evt-teachers-day-gathering-20261004",
+      "date": "2026-10-04",
+      "name": "教師の日ギャザリング2026",
+      "url": "https://teachforjapan.org/32639/",
+      "venue": "大手町プレイス ホール＆カンファレンス 2Fホール",
+      "conditionLines": [
+        "無料・要事前申込",
+        "定員300名"
+      ],
+      "rating": "B-。無料300名で規模条件は良いが、17時から1時間のNetworkingで飲食提供は未確認。",
+      "nightTime": "17:00～18:00",
+      "nightText": "全体会終了後にNetworking予定。料理・ドリンク提供は未確認。"
     },
     {
       "id": "xls-g-e5e424627804",
