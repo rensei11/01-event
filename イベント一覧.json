@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-24-lunch-rating-rule",
+  "dataVersion": "2026-09-24-researched-events-sync",
   "year": 2026,
   "events": [
     {
@@ -562,6 +562,39 @@
       "nightText": "After Party。テーマ別テーブルで交流。飲み物を持つ交流写真は確認済みだが、料理提供は未確認。"
     },
     {
+      "id": "evt-techtouch-ai-summit-20260929",
+      "date": "2026-09-29",
+      "dateText": "9月29日(火)",
+      "name": "Techtouch AI Summit 2026",
+      "url": "https://conf.techtouch.com/ai-summit-2026",
+      "venue": "大手町三井ホール",
+      "conditionLines": [
+        "無料",
+        "定員400名",
+        "受付終了"
+      ],
+      "rating": "D。400名・Networkingありだが、すでに定員到達で受付終了。",
+      "nightTime": "17:25～18:25",
+      "nightText": "Networking。料理・ドリンク内容は未確認。"
+    },
+    {
+      "id": "evt-japan-korea-content-week-20260929",
+      "date": "2026-09-29",
+      "endDate": "2026-10-02",
+      "dateText": "9月29日(火)～10月2日(金)",
+      "name": "日韓コンテンツ共創ウィーク2026",
+      "url": "https://www.dcaj.or.jp/jkcw/",
+      "venue": "KOCCA CKL TOKYO（虎ノ門）",
+      "conditionLines": [
+        "無料・事前申込制",
+        "会場定員各100名",
+        "ネットワーキング交流会は満員・受付終了"
+      ],
+      "rating": "D。会期は9/29～10/2だが、Networking交流会は9/29のみで満員・受付終了。規模も100名。",
+      "nightTime": "9/29 17:45～20:00",
+      "nightText": "ネットワーキング交流会。立食スタイル。9/30・10/1は企業ピッチ＋商談、10/2はワークショップ等。"
+    },
+    {
       "id": "evt-human-ai-transformation-20260930",
       "date": "2026-09-30",
       "name": "Human×AI Transformation 2026",
@@ -675,6 +708,22 @@
       "rating": "C+。無料で夜開催、Networking中のアルコール提供を確認。ただし交流時間は30分、対象業界が狭く規模未確認。",
       "nightTime": "20:00～20:30",
       "nightText": "Networking＆スタートアップ展示。アルコール提供あり。"
+    },
+    {
+      "id": "evt-akamai-ai-summit-20261002",
+      "date": "2026-10-02",
+      "dateText": "10月2日(金)",
+      "name": "Akamai AI Summit Japan",
+      "url": "https://web.cvent.com/event/74fb720b-7542-4e4c-94bb-ca5d426a817e/summary",
+      "venue": "大手町プレイス ホール＆カンファレンス",
+      "conditionLines": [
+        "無料・事前登録制",
+        "現地参加は満席・受付終了",
+        "オンデマンド配信申込のみ受付中"
+      ],
+      "rating": "D。現地参加はすでに満席。夜の懇親会・Networkingも確認できず。",
+      "nightTime": "13:30～17:30",
+      "nightText": "現地カンファレンス。夜の懇親会・Networkingは確認できず。"
     },
     {
       "id": "evt-memoq-day-tokyo-20261002",
