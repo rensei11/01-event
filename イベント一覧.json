@@ -528,7 +528,10 @@
       ],
       "rating": "C。無料の懇親会だが、飲食内容・終了時刻が未確認。同日はFUZE/ZOHOLICSが有力。",
       "nightTime": "18:00～",
-      "nightText": "FY26 Mendix Japan Community懇親会。MJC未参加者も参加可。飲食内容・終了時刻は未確認。"
+      "nightText": "FY26 Mendix Japan Community懇親会。MJC未参加者も参加可。飲食内容・終了時刻は未確認。",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-07714a891599",

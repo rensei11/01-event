@@ -296,6 +296,19 @@
       "nameCodes": [
         "伊藤 聡"
       ]
+    },
+    {
+      "id": "evt-mendix-community-20260925",
+      "date": "2026-09-25",
+      "endDate": "",
+      "dateText": "",
+      "name": "Mendix Japan Community FY26 懇親会",
+      "url": "https://techplay.jp/event/999286",
+      "venue": "シーメンス株式会社 新宿オフィス セミナールーム",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
     }
   ]
 }
