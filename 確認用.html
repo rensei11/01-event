@@ -201,15 +201,19 @@ function flag(e){return flags[e.id]||{}}
 function saveFlags(){
   localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));
 }
+function setInterested(e,checked){
+  const f=flags[e.id]||{};
+  f.interested=checked;
+  flags[e.id]=f;saveFlags();render();
+}
 function setPlan(e,checked){
   const f=flags[e.id]||{};
   if(checked){
     f.ignored=false;
+    f.planned=true;
     if(e.endDate&&e.endDate!==e.date){
-      if(!Array.isArray(f.visitDates)||!f.visitDates.length)f.visitDates=[e.date];
-      f.planned=true;
+      if(!Array.isArray(f.visitDates))f.visitDates=[];
     }else{
-      f.planned=true;
       delete f.visitDates;
     }
   }else{
@@ -223,8 +227,8 @@ function setPlanDay(e,date,checked){
   const set=new Set(Array.isArray(f.visitDates)?f.visitDates:[]);
   if(checked)set.add(date);else set.delete(date);
   f.visitDates=[...set].filter(d=>inRange(e,d)).sort();
-  f.planned=f.visitDates.length>0;
-  if(f.planned)f.ignored=false;
+  f.planned=true;
+  f.ignored=false;
   flags[e.id]=f;saveFlags();render();
 }
 function setIgnore(e,checked){
@@ -243,8 +247,12 @@ function reportFlagTools(r){
 }
 function plannedDates(e){
   const f=flag(e); let x=[];
-  if(Array.isArray(f.visitDates))x=[...new Set(f.visitDates)].filter(d=>inRange(e,d));
-  else if(f.planned)x=[e.date];
+  const multiDay=!!(e.endDate&&e.endDate!==e.date);
+  if(multiDay){
+    if(Array.isArray(f.visitDates))x=[...new Set(f.visitDates)].filter(d=>inRange(e,d));
+  }else if(f.planned){
+    x=[e.date];
+  }
   const done=new Set(actualDates(e)),today=todayISO();
   return x.filter(d=>!done.has(d)&&d>=today).sort();
 }
@@ -536,16 +544,20 @@ function closeEndProcess(){
   saveEndDraft(false);endProcessModal.hidden=true;document.body.style.overflow='';endProcessSingle=false;selectedEndEventId='';
 }
 
-function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true){
+function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,plannedUnknown=false){
   const r=reportFor(e), p=plannedDates(e), a=actualDates(e), people=personLines(e), cond=conditionLines(e);
+  const f=flag(e),multiDay=!!(e.endDate&&e.endDate!==e.date);
   const badges=[];
   badges.push('<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>');
   if(a.length)badges.push('<span class="tag attended">参加 '+esc(fmtDates(a))+'</span>');
   else if(e.attendanceStatus==='attended')badges.push('<span class="tag attended">参加済み（日付未入力）</span>');
-  if(p.length)badges.push('<span class="tag planned">予定 '+esc(fmtDates(plannedDate?[plannedDate]:p))+'</span>');
+  if(f.planned){
+    if(p.length)badges.push('<span class="tag planned">予定 '+esc(fmtDates(plannedDate?[plannedDate]:p))+'</span>');
+    else if(multiDay)badges.push('<span class="tag planned">予定 未定</span>');
+  }
   if(e.attendanceStatus==='not_attended')badges.push('<span class="tag notattended">未参加</span>');
 
-  const f=flag(e);
+
   const today=new Date();today.setHours(0,0,0,0);
   const endDay=new Date((e.endDate||e.date)+'T00:00:00');
   const done=endDay<today;
@@ -554,14 +566,13 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true){
     e.attendanceStatus==='not_attended'?'row-notattended':'',
     rf.good?'report-good':'',
     rf.bad?'report-bad':'',
-    p.length?'row-planned':'',
+    f.planned?'row-planned':'',
     (!done&&f.ignored)?'row-ignored':''
   ].filter(Boolean).join(' ');
 
-  const planTools=(!done&&!r&&!editing)?'<label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(plannedDates(e).length?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label>':'';
+  const planTools=(!done&&!r&&!editing)?'<label><input class="interest-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.interested?'checked':'')+'>興味あり</label><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.planned?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label>':'';
   const tools=planTools?'<div class="event-tools">'+planTools+'</div>':'';
   const dayTools=(!done&&!r&&!editing)?planDayChecks(e):'';
-  const multiDay=!!(e.endDate&&e.endDate!==e.date);
   const plannedDayNo=(plannedDate&&multiDay)?days(e.date,plannedDate).length:0;
   const plannedSuffix=plannedDayNo?'（'+plannedDayNo+'日目）':'';
   const shownName=e.name+plannedSuffix;
@@ -601,10 +612,10 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true){
 
   const dateHtml=editing
     ? '<div class="edit-date-pair"><input class="direct-date-start" type="date" data-id="'+esc(e.id)+'" value="'+esc(e.date||'')+'"><input class="direct-date-end" type="date" data-id="'+esc(e.id)+'" value="'+esc(e.endDate||'')+'" title="終了日（1日なら空欄）"></div>'
-    : esc(plannedDate?endDayLabel(plannedDate):compactRangeText(e));
-  const dateCell=showDate?'<td class="date'+(plannedDate?' planned-date':'')+'" rowspan="'+rowspan+'">'+dateHtml+(plannedDate&&rowspan>1?'<div class="visit-count">'+rowspan+'件</div>':'')+'</td>':'';
+    : esc(plannedUnknown?'未定':(plannedDate?endDayLabel(plannedDate):compactRangeText(e)));
+  const dateCell=showDate?'<td class="date'+((plannedDate||plannedUnknown)?' planned-date':'')+'" rowspan="'+rowspan+'">'+dateHtml+(plannedDate&&rowspan>1?'<div class="visit-count">'+rowspan+'件</div>':'')+'</td>':'';
   const right=done?'<td colspan="2">'+condHtml+detail+'</td>':'<td>'+condHtml+'</td><td>'+detail+'</td>';
-  return '<tr class="event-row '+cls+(plannedDate?(isFirstOfDate?' planned-day-start':''):'')+'" data-event-id="'+esc(e.id)+'" data-planned-date="'+esc(plannedDate||'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td>'+right+'</tr>';
+  return '<tr class="event-row '+cls+((plannedDate||plannedUnknown)?(isFirstOfDate?' planned-day-start':''):'')+'" data-event-id="'+esc(e.id)+'" data-planned-date="'+esc(plannedDate||'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td>'+right+'</tr>';
 }
 
 function attendedUndatedRow(e){
@@ -972,26 +983,36 @@ function render(){
     const items=[];
     for(const e of events){
       if(!passesCommonFilters(e))continue;
-      for(const d of plannedDates(e)){
-        if(passesListStart(d))items.push({e,d});
+      const f=flag(e);
+      if(!f.planned)continue;
+      const ds=plannedDates(e);
+      if(ds.length){
+        for(const d of ds)if(passesListStart(d))items.push({e,d,sortDate:d,unknown:false});
+      }else if(e.endDate&&e.endDate!==e.date&&(e.endDate||e.date)>=todayISO()&&passesListStart(e.endDate||e.date)){
+        items.push({e,d:'',sortDate:e.date,unknown:true});
       }
     }
-    items.sort((a,b)=>a.d.localeCompare(b.d)||compareVenue(a.e,b.e));
+    items.sort((a,b)=>a.sortDate.localeCompare(b.sortDate)||Number(a.unknown)-Number(b.unknown)||compareVenue(a.e,b.e));
     let html='',month='',week='',i=0;
     while(i<items.length){
-      const d=items[i].d,m=d.slice(0,7),w=weekKey(d);
+      const sortDate=items[i].sortDate,m=sortDate.slice(0,7),w=weekKey(sortDate);
       if(m!==month){
         const [y,mm]=m.split('-');
         html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="4">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
         month=m;week='';
       }
       if(w!==week){
-        html+='<tr class="week"><td colspan="4">'+esc(weekLabel(d))+'</td></tr>';
+        html+='<tr class="week"><td colspan="4">'+esc(weekLabel(sortDate))+'</td></tr>';
         week=w;
       }
-      const same=[];
-      while(i<items.length&&items[i].d===d){same.push(items[i]);i++;}
-      same.forEach((x,idx)=>{html+=row(x.e,d,idx===0,same.length,idx===0);});
+      if(items[i].unknown){
+        html+=row(items[i].e,'',true,1,true,true);
+        i++;
+        continue;
+      }
+      const d=items[i].d,same=[];
+      while(i<items.length&&!items[i].unknown&&items[i].d===d){same.push(items[i]);i++;}
+      same.forEach((x,idx)=>{html+=row(x.e,d,idx===0,same.length,idx===0,false);});
     }
     document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">来場予定はありません</td></tr>';
     applyContentEditable();selected=null;updateEditButtons();
@@ -1136,10 +1157,11 @@ document.getElementById('body').addEventListener('change',e=>{
     requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(rowId)+'"]');if(row)setSelected(row);});
     return;
   }
-  const p=e.target.closest('.plan-toggle'),n=e.target.closest('.ignore-toggle'),d=e.target.closest('.plan-day-toggle');
-  if(!p&&!n&&!d)return;
-  const id=(p||n||d).dataset.id,event=events.find(x=>x.id===id);
+  const i=e.target.closest('.interest-toggle'),p=e.target.closest('.plan-toggle'),n=e.target.closest('.ignore-toggle'),d=e.target.closest('.plan-day-toggle');
+  if(!i&&!p&&!n&&!d)return;
+  const id=(i||p||n||d).dataset.id,event=events.find(x=>x.id===id);
   if(!event)return;
+  if(i)setInterested(event,i.checked);
   if(p)setPlan(event,p.checked);
   if(n)setIgnore(event,n.checked);
   if(d)setPlanDay(event,d.dataset.day,d.checked);
