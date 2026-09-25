@@ -140,6 +140,7 @@ const EDIT_DRAFT_KEY='free_food_event_ledger_2026_design_edit_v1';
 const EDIT_PATCH_KEY='free_food_event_ledger_2026_structured_edit_v2';
 const LEGACY_HTML_KEY='free_food_event_ledger_2026_legacy_html_v1';
 const END_DRAFTS_KEY='free_food_event_end_process_drafts_v1';
+const END_BACKUPS_KEY='free_food_event_end_process_saved_backups_v1';
 const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
 const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
 let events=[],reports=[],flags={},reportFlags={},mode='all',kindFilter='both',editing=false;
@@ -150,7 +151,7 @@ let selected=null;
 const calendarToday=new Date();
 let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
 let listStartYear=0,listStartMonth=0;
-let endDrafts={},selectedEndEventId='',endProcessSingle=false;
+let endDrafts={},endBackups={},selectedEndEventId='',endProcessSingle=false;
 const endProcessBtn=document.getElementById('endProcessBtn');
 const endProcessCount=document.getElementById('endProcessCount');
 const endProcessModal=document.getElementById('endProcessModal');
@@ -536,6 +537,24 @@ function saveEndDraft(showMessage){
   endDrafts[d.eventId]=d;localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
   if(showMessage){const el=document.getElementById('endDraftSaved');if(el){el.textContent='下書きを保存しました';setTimeout(()=>{if(el)el.textContent=''},1800);}}
 }
+function endDraftMatchesGitHub(e,d){
+  if(!e||!d)return false;
+  const r=reportFor(e),status=e.attendanceStatus||'';
+  const a=[...actualDates(e)].sort(),b=[...(d.visitDates||[])].sort();
+  return d.status===status &&
+    JSON.stringify(a)===JSON.stringify(b) &&
+    String(d.rating||'')===String(r?.rating||'') &&
+    String(d.report||'').trim()===String(r?.report||'').trim();
+}
+function cleanupSavedEndDrafts(){
+  let changed=false;
+  for(const [id,d] of Object.entries(endDrafts)){
+    const e=events.find(x=>x.id===id);
+    if(endDraftMatchesGitHub(e,d)){delete endDrafts[id];changed=true;}
+  }
+  if(endDrafts['evt-b6a0272fd890']){delete endDrafts['evt-b6a0272fd890'];changed=true;}
+  if(changed)localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+}
 async function saveEndToGitHub(){
   const d=collectEndDraft();if(!d)return;
   if(!d.status){alert('参加した／行っていない のどちらかを選んでください。');return;}
@@ -551,9 +570,11 @@ async function saveEndToGitHub(){
     const result=await rr.json().catch(()=>({ok:false,error:'保存結果を読めません'}));
     if(rr.status===401){localStorage.removeItem(END_EDIT_KEY_KEY);throw new Error('編集キーが違います。次回保存時にもう一度入力してください。');}
     if(!rr.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
-    endDrafts[d.eventId]=d;
+    endBackups[d.eventId]={...d,savedCommit:result.commit||'',savedAt:new Date().toISOString()};
+    localStorage.setItem(END_BACKUPS_KEY,JSON.stringify(endBackups));
+    delete endDrafts[d.eventId];
     localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
-    if(msg)msg.textContent='GitHubへ保存しました。公開画面への反映確認まで下書きを保持します。';
+    if(msg)msg.textContent='GitHubへ保存しました。復旧用コピーは別に保持しています。';
   }catch(err){if(msg)msg.textContent=err.message||String(err);}
   finally{if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}}
 }
@@ -1222,6 +1243,7 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
     syncModeButtons();
     syncFilterControls();
     try{endDrafts=JSON.parse(localStorage.getItem(END_DRAFTS_KEY)||'{}')}catch(_){endDrafts={}}
+    try{endBackups=JSON.parse(localStorage.getItem(END_BACKUPS_KEY)||'{}')}catch(_){endBackups={}}
     const [g,x,m]=await Promise.all([
       fetch('イベント一覧.json?v='+Date.now(),{cache:'no-store'}),
       fetch('展示会一覧.json?v='+Date.now(),{cache:'no-store'}),
@@ -1240,6 +1262,7 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
       return r.json();
     }));
     reports=parts.flatMap(x=>x.reports||[]);
+    cleanupSavedEndDrafts();
     localStorage.removeItem(EDIT_DRAFT_KEY);
     localStorage.removeItem(LEGACY_HTML_KEY);
     loadStructuredEditDraft();
