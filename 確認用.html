@@ -532,10 +532,29 @@ function collectEndDraft(){
     schemaVersion:2,updatedAt:new Date().toISOString()
   };
 }
+function endDraftContentKey(d){
+  if(!d)return '';
+  return JSON.stringify({
+    eventId:d.eventId||'',
+    status:d.status||'',
+    visitDates:[...(d.visitDates||[])].sort(),
+    rating:String(d.rating||''),
+    report:String(d.report||'')
+  });
+}
 function saveEndDraft(showMessage){
   const d=collectEndDraft();if(!d)return;
   endDrafts[d.eventId]=d;localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
   if(showMessage){const el=document.getElementById('endDraftSaved');if(el){el.textContent='下書きを保存しました';setTimeout(()=>{if(el)el.textContent=''},1800);}}
+}
+function saveEndDraftIfNeeded(){
+  const d=collectEndDraft();if(!d)return;
+  const b=endBackups[d.eventId];
+  if(b&&endDraftContentKey(b)===endDraftContentKey(d)){
+    if(endDrafts[d.eventId]){delete endDrafts[d.eventId];localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));}
+    return;
+  }
+  endDrafts[d.eventId]=d;localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
 }
 function endDraftMatchesGitHub(e,d){
   if(!e||!d)return false;
@@ -584,7 +603,7 @@ function openEndProcess(eventId){
   endProcessModal.hidden=false;document.body.style.overflow='hidden';renderEndProcessList();
 }
 function closeEndProcess(){
-  saveEndDraft(false);endProcessModal.hidden=true;document.body.style.overflow='';endProcessSingle=false;selectedEndEventId='';
+  saveEndDraftIfNeeded();endProcessModal.hidden=true;document.body.style.overflow='';endProcessSingle=false;selectedEndEventId='';
 }
 
 function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,plannedUnknown=false){
@@ -1113,7 +1132,7 @@ document.querySelector('.subfilters').addEventListener('click',e=>{
 endProcessBtn.addEventListener('click',()=>openEndProcess(''));
 endProcessClose.addEventListener('click',closeEndProcess);
 endProcessModal.addEventListener('click',e=>{if(e.target===endProcessModal)closeEndProcess();});
-endProcessList.addEventListener('click',e=>{const b=e.target.closest('.end-event-btn');if(!b)return;saveEndDraft(false);selectedEndEventId=b.dataset.endId;renderEndProcessList();});
+endProcessList.addEventListener('click',e=>{const b=e.target.closest('.end-event-btn');if(!b)return;saveEndDraftIfNeeded();selectedEndEventId=b.dataset.endId;renderEndProcessList();});
 endProcessFormWrap.addEventListener('input',()=>saveEndDraft(false));
 endProcessFormWrap.addEventListener('change',()=>saveEndDraft(false));
 endProcessFormWrap.addEventListener('click',async e=>{if(e.target.id==='endDraftSave'){saveEndDraft(true);return;}if(e.target.id==='endGitHubSave'){await saveEndToGitHub();return;}});
