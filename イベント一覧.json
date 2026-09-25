@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-25-web",
+  "dataVersion": "2026-09-25-fuze-await-user-report",
   "year": 2026,
   "events": [
     {
@@ -518,8 +518,7 @@
       "visitDates": [
         "2026-09-25"
       ],
-      "historySource": "実地レポート",
-      "sourceReportId": "rep-web-evt-b6a0272fd890"
+      "historySource": "実地レポート"
     },
     {
       "id": "evt-mendix-community-20260925",
