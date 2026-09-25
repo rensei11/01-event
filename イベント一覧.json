@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-25-field-report-zoholics-fuze",
+  "dataVersion": "2026-09-25-web",
   "year": 2026,
   "events": [
     {
@@ -546,9 +546,9 @@
       "url": "https://events.zoho.jp/zoholics2026",
       "venue": "JPタワー ホール＆カンファレンス",
       "conditionLines": [
-        "名前コード：久保 直輝",
         "無料",
-        "約700名"
+        "約700名",
+        "名前コード：久保 直輝"
       ],
       "rating": "B+。規模は十分。FUZE前に内容を確認する候補として実用的。",
       "nightTime": "17:30～19:00",
@@ -559,7 +559,7 @@
       "visitDates": [
         "2026-09-25"
       ],
-      "historySource": "実地レポート",
+      "historySource": "終了処理",
       "sourceReportId": "rep-web-evt-07714a891599"
     },
     {
