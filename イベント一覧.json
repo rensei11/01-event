@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-24-web",
+  "dataVersion": "2026-09-25-field-report-zoholics-fuze",
   "year": 2026,
   "events": [
     {
@@ -513,7 +513,13 @@
       "nightTime": "18:25～20:10",
       "nightText": "After Party。「飲食物を楽しみながら」と明記。 Excelメモ：18:25〜 After Party / JPタワー → 徒歩約2分 → 二重橋前 → 千代田線 → 乃木坂 → 徒歩約3分 → 東京ミッドタウン",
       "dateText": "9月25日(金)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-25"
+      ],
+      "historySource": "実地レポート",
+      "sourceReportId": "rep-web-evt-b6a0272fd890"
     },
     {
       "id": "evt-mendix-community-20260925",
@@ -548,7 +554,13 @@
       "nightTime": "17:30～19:00",
       "nightText": "Networking。前年は酒＋軽食系を確認。 Excelメモ：Networking 17:30開始　内容は期待できないので15分くらいでFUZEに行く",
       "dateText": "9月25日(金)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-25"
+      ],
+      "historySource": "実地レポート",
+      "sourceReportId": "rep-web-evt-07714a891599"
     },
     {
       "id": "evt-pagerduty-techhub-20260929",
