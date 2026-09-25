@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-25-fuze-await-user-report",
+  "dataVersion": "2026-09-25-web",
   "year": 2026,
   "events": [
     {
@@ -505,9 +505,9 @@
       "url": "https://fuze.wantedly.com/",
       "venue": "東京ミッドタウンホール",
       "conditionLines": [
-        "名前コード：久保 直輝",
         "無料・事前登録制",
-        "約750名"
+        "約750名",
+        "名前コード：久保 直輝"
       ],
       "rating": "A+。規模・After Party・会場の総合力が高く、本命級。",
       "nightTime": "18:25～20:10",
@@ -518,7 +518,8 @@
       "visitDates": [
         "2026-09-25"
       ],
-      "historySource": "実地レポート"
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-b6a0272fd890"
     },
     {
       "id": "evt-mendix-community-20260925",
