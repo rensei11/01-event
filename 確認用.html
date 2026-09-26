@@ -968,7 +968,8 @@ function jumpToDate(date){
 
 function venueSortKey(e){
   const v=String(e.venue||'').replace(/\s+/g,' ').trim();
-  const isBigSight=/ビッ?クサイト|東京ビッグサイト/.test(v);
+  const hallOnly=v.match(/^(東|西|南)\s*(\d+)/);
+  const isBigSight=/ビッ?クサイト|東京ビッグサイト/.test(v)||!!hallOnly;
   if(isBigSight){
     const areas=[['東',0],['西',1],['南',2]];
     for(const [label,rank] of areas){
