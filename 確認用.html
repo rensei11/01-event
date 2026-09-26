@@ -785,8 +785,8 @@ function availableYears(){
 }
 function nextPlannedItems(){
   const today=todayISO(),items=[];
-  const rangeStart=isoDate(calendarBaseYear,calendarBaseMonth,1);
-  const rangeEndDate=new Date(calendarBaseYear,calendarBaseMonth+1,0);
+  const rangeStart=isoDate(calendarToday.getFullYear(),calendarToday.getMonth()+1,1);
+  const rangeEndDate=new Date(calendarToday.getFullYear(),calendarToday.getMonth()+2,0);
   const rangeEnd=localYmd(rangeEndDate);
   for(const e of events){
     const ds=plannedDates(e).filter(d=>d>today&&d>=rangeStart&&d<=rangeEnd);
@@ -898,7 +898,7 @@ function setTableStartMonth(year,month){
 }
 function shiftCalendar(dir){
   const d=new Date(calendarBaseYear,calendarBaseMonth-1+dir,1);
-  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;nextPlanIndex=0;saveUiState();renderCalendar(dir);
+  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar(dir);
 }
 function renderCalendar(slideDir=0){
   const months=document.getElementById('calendarMonths'),nextHost=document.getElementById('nextPlanHost'),yearSel=document.getElementById('calendarYear'),jump=document.getElementById('monthJump'),note=document.getElementById('calendarNote'),range=document.getElementById('listRangeStatus');
