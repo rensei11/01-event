@@ -9,7 +9,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
-h1{font-size:20px;margin:0}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.top .status{flex:0 0 auto;padding-top:4px;white-space:nowrap}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
+h1{font-size:20px;margin:0}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.top .status{flex:0 0 auto;padding-top:4px;white-space:nowrap}.version-info{margin:2px 0 0;font-size:11px;font-weight:800;color:#68727c}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
 .controls{display:flex;gap:6px;margin:0 0 6px;flex-wrap:wrap;align-items:center}
 .subfilters{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:0 0 8px}.subfilters button{padding:5px 10px;font-size:12px}
 .legacy-edit-toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:0 0 6px}.legacy-edit-toolbar button:disabled{opacity:.45;cursor:not-allowed}.legacy-edit-toolbar .primary{font-weight:800}.legacy-edit-toolbar .danger{color:#9a3412;border-color:#d8a58d}.edit-help{font-size:12px;color:var(--muted);margin:0 0 10px}
@@ -25,7 +25,7 @@ button.active{background:#20262d;color:#fff;border-color:#20262d}
 .calendar-panel{margin:0 0 14px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px}
 .calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:900}.calendar-note{font-size:12px;color:var(--muted)}
 .calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.list-filter-bar{display:flex;align-items:center;gap:7px;margin:0 0 8px;font-size:12px;font-weight:800;color:#555}.list-filter-bar select{border:1px solid #aeb7c0;border-radius:7px;background:#fff;padding:5px 8px;font:inherit;font-size:12px}.calendar-start-label{font-size:12px;font-weight:900;color:#555}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:12px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:11px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
-.calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:stretch}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:23px;font-weight:900}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}.month-card{border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0;align-self:start}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px;cursor:pointer}.month-name:hover{text-decoration:underline}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none;font-weight:800;font-size:12px}.cal-day.other-month{font-size:9px;font-weight:400;color:#9aa1a8;opacity:.32}.cal-day.other-month.has-event,.cal-day.other-month.has-plan,.cal-day.other-month.has-attended{opacity:.22;font-weight:600}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#3f78b6;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today{background:#d32f2f!important;color:#fff!important;font-weight:900}.cal-day.today::after{content:none}.cal-day.clickable:hover{filter:brightness(.92)}
+.calendar-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:7px;align-items:stretch;overflow:hidden}.calendar-arrow{align-self:stretch;min-width:34px;padding:0 7px;font-size:23px;font-weight:900}.calendars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start;min-width:0}.calendars.slide-from-right{animation:calendarSlideFromRight .28s ease}.calendars.slide-from-left{animation:calendarSlideFromLeft .28s ease}@keyframes calendarSlideFromRight{from{transform:translateX(14%);opacity:.55}to{transform:translateX(0);opacity:1}}@keyframes calendarSlideFromLeft{from{transform:translateX(-14%);opacity:.55}to{transform:translateX(0);opacity:1}}.month-card,.next-plan-card{border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0;align-self:start}.month-name,.next-plan-title{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px}.month-name{cursor:pointer}.month-name:hover{text-decoration:underline}.next-plan-date{text-align:center;font-size:12px;font-weight:900;color:#315d87;padding:2px 0 7px;border-bottom:1px solid #e3e6e8;margin-bottom:5px}.next-plan-empty{padding:20px 8px;text-align:center;font-size:12px;color:var(--muted)}.next-plan-item{padding:7px 3px;border-top:1px solid #eceeed}.next-plan-item:first-child{border-top:0}.next-plan-name{font-size:12px;font-weight:900;line-height:1.35;overflow-wrap:anywhere}.next-plan-name a{color:var(--link);text-decoration:none}.next-plan-name a:hover{text-decoration:underline}.next-plan-meta{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.45fr);gap:6px;margin-top:4px;font-size:10px;line-height:1.35;color:#606a74}.next-plan-person,.next-plan-venue{min-width:0;overflow-wrap:anywhere}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none;font-weight:800;font-size:12px}.cal-day.other-month{font-size:9px;font-weight:400;color:#9aa1a8;opacity:.32}.cal-day.other-month.has-event,.cal-day.other-month.has-plan,.cal-day.other-month.has-attended{opacity:.22;font-weight:600}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#3f78b6;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today{background:#d32f2f!important;color:#fff!important;font-weight:900}.cal-day.today::after{content:none}.cal-day.clickable:hover{filter:brightness(.92)}
 .calendar-focus td{animation:calFlash 1.2s ease}@keyframes calFlash{0%,100%{background:inherit}35%,70%{background:#fff1b8}}
 .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}
@@ -83,11 +83,11 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="sub">本番画面とは別の確認版です。閲覧・来場予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">2026-09-26-v1</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
-    <button data-mode="planned">来場予定</button>
+    <button data-mode="planned">参加予定</button>
     <button data-mode="attended">参加済み</button>
     <button id="endProcessBtn" class="end-process-btn" type="button">終了処理 <span id="endProcessCount" class="end-process-count">0</span></button>
     <span id="status" class="status"></span>
@@ -782,6 +782,38 @@ function availableYears(){
   }
   return [...ys].filter(Number.isFinite).sort((a,b)=>a-b);
 }
+function nextPlannedGroup(){
+  const today=todayISO(),items=[];
+  for(const e of events){
+    const ds=plannedDates(e).filter(d=>d>today);
+    if(!ds.length)continue;
+    items.push({e,date:ds[0]});
+  }
+  if(!items.length)return {date:'',items:[]};
+  items.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a.e,b.e)||String(a.e.name||'').localeCompare(String(b.e.name||''),'ja'));
+  const date=items[0].date;
+  return {date,items:items.filter(x=>x.date===date)};
+}
+function buildNextPlannedCard(){
+  const card=document.createElement('div');card.className='next-plan-card';
+  const title=document.createElement('div');title.className='next-plan-title';title.textContent='次回参加予定イベント';card.appendChild(title);
+  const group=nextPlannedGroup();
+  if(!group.date){
+    const empty=document.createElement('div');empty.className='next-plan-empty';empty.textContent='明日以降の参加予定はありません';card.appendChild(empty);return card;
+  }
+  const date=document.createElement('div');date.className='next-plan-date';date.textContent=endDayLabel(group.date);card.appendChild(date);
+  const list=document.createElement('div');list.className='next-plan-list';
+  for(const x of group.items){
+    const e=x.e,item=document.createElement('div');item.className='next-plan-item';
+    const name=document.createElement('div');name.className='next-plan-name';
+    if(e.url){const a=document.createElement('a');a.href=e.url;a.target='_blank';a.rel='noopener';a.textContent=e.name;name.appendChild(a);}else{name.textContent=e.name;}
+    const meta=document.createElement('div');meta.className='next-plan-meta';
+    const person=document.createElement('span');person.className='next-plan-person';person.textContent='参加名義：'+(personLines(e).join(' / ')||'—');
+    const venue=document.createElement('span');venue.className='next-plan-venue';venue.textContent='場所：'+(e.venue||'—');
+    meta.appendChild(person);meta.appendChild(venue);item.appendChild(name);item.appendChild(meta);list.appendChild(item);
+  }
+  card.appendChild(list);return card;
+}
 function buildMonthCard(year,month,map){
   const card=document.createElement('div');card.className='month-card';
   const title=document.createElement('div');title.className='month-name';title.textContent=year+'年'+month+'月';title.title=year+'年'+month+'月の一覧へ移動';title.onclick=()=>jumpToMonth(year,month);card.appendChild(title);
@@ -796,11 +828,11 @@ function buildMonthCard(year,month,map){
     if(mode==='all'||mode==='upcoming'){
       const labels=[];
       if(info.attended)labels.push('参加済み');
-      if(info.planned)labels.push('来場予定');
+      if(info.planned)labels.push('参加予定');
       if(!labels.length)labels.push('イベント');
       x.title=labels.join('・')+' '+info.count+'件';
     }else{
-      x.title=(mode==='attended'?'参加済み ':mode==='planned'?'来場予定 ':'イベント ')+info.count+'件';
+      x.title=(mode==='attended'?'参加済み ':mode==='planned'?'参加予定 ':'イベント ')+info.count+'件';
     }
     x.onclick=()=>jumpToDate(key);
   };
@@ -843,9 +875,9 @@ function setTableStartMonth(year,month){
   saveUiState();
   render();
 }
-function renderCalendar(){
+function renderCalendar(slideDir=0){
   const months=document.getElementById('calendarMonths'),yearSel=document.getElementById('calendarYear'),jump=document.getElementById('monthJump'),note=document.getElementById('calendarNote'),range=document.getElementById('listRangeStatus');
-  const map=calendarMap();months.innerHTML='';
+  const map=calendarMap();months.innerHTML='';months.classList.remove('slide-from-right','slide-from-left');
   const ys=availableYears();
   const shownYear=listStartYear||calendarToday.getFullYear();
   yearSel.innerHTML=ys.map(y=>'<option value="'+y+'" '+(y===shownYear?'selected':'')+'>'+y+'</option>').join('');
@@ -858,10 +890,16 @@ function renderCalendar(){
       setTableStartMonth(y,m);
     };
   });
-  note.textContent=mode==='attended'?'緑＝実際に参加した日':mode==='planned'?'青＝来場予定日':mode==='upcoming'?'灰＝今日以降のイベント開催日':'灰＝イベント開催日';
-  for(let off=0;off<3;off++){
+  note.textContent=mode==='attended'?'緑＝実際に参加した日':mode==='planned'?'青＝参加予定日':mode==='upcoming'?'灰＝今日以降のイベント開催日':'灰＝イベント開催日';
+  for(let off=0;off<2;off++){
     const d=new Date(calendarBaseYear,calendarBaseMonth-1+off,1);
     months.appendChild(buildMonthCard(d.getFullYear(),d.getMonth()+1,map));
+  }
+  months.appendChild(buildNextPlannedCard());
+  if(slideDir){
+    void months.offsetWidth;
+    months.classList.add(slideDir>0?'slide-from-right':'slide-from-left');
+    setTimeout(()=>months.classList.remove('slide-from-right','slide-from-left'),320);
   }
 }
 function setCalendarBase(year,month){
@@ -1077,7 +1115,7 @@ function render(){
       while(i<items.length&&!items[i].unknown&&items[i].d===d){same.push(items[i]);i++;}
       same.forEach((x,idx)=>{html+=row(x.e,d,idx===0,same.length,idx===0,false);});
     }
-    document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">来場予定はありません</td></tr>';
+    document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">参加予定はありません</td></tr>';
     applyContentEditable();selected=null;updateEditButtons();
     document.getElementById('status').textContent=items.length+'件';
     renderCalendar();
@@ -1232,11 +1270,11 @@ document.getElementById('body').addEventListener('change',e=>{
 
 document.getElementById('calendarPrev').onclick=()=>{
   const d=new Date(calendarBaseYear,calendarBaseMonth-2,1);
-  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar();
+  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar(-1);
 };
 document.getElementById('calendarNext').onclick=()=>{
   const d=new Date(calendarBaseYear,calendarBaseMonth,1);
-  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar();
+  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar(1);
 };
 const backToTop=document.getElementById('backToTop');
 window.addEventListener('scroll',()=>backToTop.classList.toggle('show',window.scrollY>500),{passive:true});
