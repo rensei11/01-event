@@ -83,7 +83,7 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作4</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作5</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
@@ -783,7 +783,7 @@ function availableYears(){
   }
   return [...ys].filter(Number.isFinite).sort((a,b)=>a-b);
 }
-function nextPlannedItems(){
+function nextPlannedGroups(){
   const today=todayISO(),items=[];
   const rangeStart=isoDate(calendarToday.getFullYear(),calendarToday.getMonth()+1,1);
   const rangeEndDate=new Date(calendarToday.getFullYear(),calendarToday.getMonth()+2,0);
@@ -793,7 +793,13 @@ function nextPlannedItems(){
     for(const d of ds)items.push({e,date:d});
   }
   items.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a.e,b.e)||String(a.e.name||'').localeCompare(String(b.e.name||''),'ja'));
-  return items;
+  const groups=[];
+  for(const x of items){
+    let g=groups[groups.length-1];
+    if(!g||g.date!==x.date){g={date:x.date,items:[]};groups.push(g);}
+    g.items.push(x);
+  }
+  return groups;
 }
 function renderNextPlannedCard(){
   const host=document.getElementById('nextPlanHost');if(!host)return;
@@ -801,28 +807,14 @@ function renderNextPlannedCard(){
 }
 function buildNextPlanNav(dir,enabled){
   if(!enabled){const sp=document.createElement('span');sp.className='next-plan-nav-spacer';return sp;}
-  const btn=document.createElement('button');btn.type='button';btn.className='next-plan-nav '+(dir<0?'prev':'next');btn.setAttribute('aria-label',dir<0?'前の参加予定':'次の参加予定');
+  const btn=document.createElement('button');btn.type='button';btn.className='next-plan-nav '+(dir<0?'prev':'next');btn.setAttribute('aria-label',dir<0?'前の参加予定日':'次の参加予定日');
   const sym=document.createElement('span');sym.className='nav-symbol';sym.textContent=dir<0?'‹':'›';btn.appendChild(sym);
   btn.onclick=()=>{nextPlanIndex+=dir;renderNextPlannedCard();};
   return btn;
 }
-function buildNextPlannedCard(){
-  const card=document.createElement('div');card.className='next-plan-card';
-  const items=nextPlannedItems();
-  if(nextPlanIndex>=items.length)nextPlanIndex=Math.max(0,items.length-1);
-  if(nextPlanIndex<0)nextPlanIndex=0;
-  const head=document.createElement('div');head.className='next-plan-head';
-  head.appendChild(buildNextPlanNav(-1,items.length>0&&nextPlanIndex>0));
-  const center=document.createElement('div');center.className='next-plan-heading-center';
-  const title=document.createElement('strong');title.className='next-plan-title';title.textContent='次回参加予定イベント';center.appendChild(title);
-  if(items.length){const date=document.createElement('span');date.className='next-plan-date';date.textContent=endDayLabel(items[nextPlanIndex].date);center.appendChild(date);}
-  head.appendChild(center);
-  head.appendChild(buildNextPlanNav(1,items.length>0&&nextPlanIndex<items.length-1));
-  card.appendChild(head);
-  if(!items.length){
-    const empty=document.createElement('div');empty.className='next-plan-empty';empty.textContent='表示中の2か月に参加予定はありません';card.appendChild(empty);return card;
-  }
-  const x=items[nextPlanIndex],e=x.e,item=document.createElement('div');item.className='next-plan-item';
+function appendNextPlannedItem(card,x,index){
+  const e=x.e,item=document.createElement('div');item.className='next-plan-item';
+  if(index>0)item.style.borderTop='1px solid #eceeed';
   const name=document.createElement('div');name.className='next-plan-name';
   if(e.url){const a=document.createElement('a');a.href=e.url;a.target='_blank';a.rel='noopener';a.textContent=e.name;name.appendChild(a);}else{name.textContent=e.name;}
   const meta=document.createElement('div');meta.className='next-plan-meta';
@@ -830,6 +822,24 @@ function buildNextPlannedCard(){
   const person=document.createElement('span');person.className='next-plan-person';person.textContent='参加名義：'+(personLines(e).join(' / ')||'—');
   const venue=document.createElement('span');venue.className='next-plan-venue';venue.textContent='場所：'+(e.venue||'—');
   meta.appendChild(kind);meta.appendChild(person);meta.appendChild(venue);item.appendChild(name);item.appendChild(meta);card.appendChild(item);
+}
+function buildNextPlannedCard(){
+  const card=document.createElement('div');card.className='next-plan-card';
+  const groups=nextPlannedGroups();
+  if(nextPlanIndex>=groups.length)nextPlanIndex=Math.max(0,groups.length-1);
+  if(nextPlanIndex<0)nextPlanIndex=0;
+  const head=document.createElement('div');head.className='next-plan-head';
+  head.appendChild(buildNextPlanNav(-1,groups.length>0&&nextPlanIndex>0));
+  const center=document.createElement('div');center.className='next-plan-heading-center';
+  const title=document.createElement('strong');title.className='next-plan-title';title.textContent='次回参加予定イベント';center.appendChild(title);
+  if(groups.length){const date=document.createElement('span');date.className='next-plan-date';date.textContent=endDayLabel(groups[nextPlanIndex].date);center.appendChild(date);}
+  head.appendChild(center);
+  head.appendChild(buildNextPlanNav(1,groups.length>0&&nextPlanIndex<groups.length-1));
+  card.appendChild(head);
+  if(!groups.length){
+    const empty=document.createElement('div');empty.className='next-plan-empty';empty.textContent='当月・来月に参加予定はありません';card.appendChild(empty);return card;
+  }
+  groups[nextPlanIndex].items.forEach((x,index)=>appendNextPlannedItem(card,x,index));
   return card;
 }
 function buildMonthCard(year,month,map,nav=''){
