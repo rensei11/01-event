@@ -83,7 +83,7 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作9</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作10</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
@@ -152,6 +152,7 @@ const LEGACY_HTML_KEY='free_food_event_ledger_2026_legacy_html_v1';
 const END_DRAFTS_KEY='free_food_event_end_process_drafts_v1';
 const END_BACKUPS_KEY='free_food_event_end_process_saved_backups_v1';
 const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
+const EVENT_EDIT_DRAFTS_KEY='free_food_event_edit_drafts_v1';
 const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
 let events=[],reports=[],flags={},reportFlags={},mode='all',kindFilter='both',editing=false;
 let dirtyIds=new Set();
@@ -162,7 +163,7 @@ const calendarToday=new Date();
 let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
 let listStartYear=0,listStartMonth=0;
 let nextPlanIndex=0;
-let endDrafts={},endBackups={},selectedEndEventId='',endProcessSingle=false,selectedEventEditId='';
+let endDrafts={},endBackups={},eventEditDrafts={},selectedEndEventId='',endProcessSingle=false,selectedEventEditId='';
 const endProcessBtn=document.getElementById('endProcessBtn');
 const endProcessCount=document.getElementById('endProcessCount');
 const endProcessModal=document.getElementById('endProcessModal');
@@ -641,31 +642,37 @@ function openEventEdit(eventId){
   const e=events.find(x=>x.id===eventId);
   if(!e||String(e.id||'').startsWith('draft-new-'))return;
   selectedEventEditId=e.id;
-  const o=officialEvent(e);
+  const saved=eventEditDrafts[e.id]||{};
+  const people=('personName' in saved)?saved.personName:personLines(e).join(' / ');
+  const val=(k,fallback)=>k in saved?saved[k]:fallback;
   eventEditTitle.textContent='イベント編集';
-  const people=personLines(o).join(' / ');
   eventEditFormWrap.innerHTML=
-    '<div class="event-edit-kind kind-badge '+esc(o._kind)+'">'+(o._kind==='exhibition'?'展示会':'懇親会')+'</div>'+
-    '<div class="event-edit-note">実地レポートはここでは変更しません。イベント本体の情報だけをGitHubへ保存します。</div>'+
+    '<div class="event-edit-kind kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</div>'+
+    '<div class="event-edit-note">入力内容は自動でブラウザ下書き保存されます。現在Cloudflare Worker更新待ちのため、ここから終了処理用保存は行いません。</div>'+
     '<div class="event-edit-grid">'+
-      '<label class="wide">イベント名<input id="eventEditName" type="text" value="'+esc(o.name||'')+'"></label>'+
-      '<label>開始日<input id="eventEditDate" type="date" value="'+esc(o.date||'')+'"></label>'+
-      '<label>終了日<input id="eventEditEndDate" type="date" value="'+esc((o.endDate&&o.endDate!==o.date)?o.endDate:'')+'" placeholder="1日開催なら空欄"></label>'+
-      '<label class="wide">会場<input id="eventEditVenue" type="text" value="'+esc(o.venue||'')+'"></label>'+
-      '<label class="wide">参加名義<input id="eventEditPerson" type="text" value="'+esc(people)+'" placeholder="例：山本 雄太"></label>'+
-      '<label class="wide">URL<input id="eventEditUrl" type="url" value="'+esc(o.url||'')+'"></label>'+
-      '<label class="wide">参加条件<textarea id="eventEditConditions">'+esc(conditionLines(o).join('\n'))+'</textarea></label>'+
-      '<label>事前評価<input id="eventEditPreRating" type="text" value="'+esc(o.rating||'')+'"></label>'+
-      '<label>時間<input id="eventEditNightTime" type="text" value="'+esc(o.nightTime||'')+'"></label>'+
-      '<label class="wide">内容・根拠<textarea id="eventEditNightText" class="event-edit-long">'+esc(o.nightText||'')+'</textarea></label>'+
+      '<label class="wide">イベント名<input id="eventEditName" type="text" value="'+esc(val('eventName',e.name||''))+'"></label>'+
+      '<label>開始日<input id="eventEditDate" type="date" value="'+esc(val('date',e.date||''))+'"></label>'+
+      '<label>終了日<input id="eventEditEndDate" type="date" value="'+esc(val('endDate',(e.endDate&&e.endDate!==e.date)?e.endDate:''))+'" placeholder="1日開催なら空欄"></label>'+
+      '<label class="wide">会場<input id="eventEditVenue" type="text" value="'+esc(val('venue',e.venue||''))+'"></label>'+
+      '<label class="wide">参加名義<input id="eventEditPerson" type="text" value="'+esc(people)+'"></label>'+
+      '<label class="wide">URL<input id="eventEditUrl" type="url" value="'+esc(val('url',e.url||''))+'"></label>'+
+      '<label class="wide">参加条件<textarea id="eventEditConditions">'+esc(val('conditionText',conditionLines(e).join('\n')))+'</textarea></label>'+
+      '<label>事前評価<input id="eventEditPreRating" type="text" value="'+esc(val('preRating',e.rating||''))+'"></label>'+
+      '<label>時間<input id="eventEditNightTime" type="text" value="'+esc(val('nightTime',e.nightTime||''))+'"></label>'+
+      '<label class="wide">内容・根拠<textarea id="eventEditNightText" class="event-edit-long">'+esc(val('nightText',e.nightText||''))+'</textarea></label>'+
     '</div>'+
-    '<div class="event-edit-actions"><button id="eventEditSave" class="end-save" type="button">GitHubへ保存</button><span id="eventEditStatus" class="event-edit-status"></span></div>';
+    '<div class="event-edit-actions"><button id="eventEditSave" class="end-save" type="button">下書きを反映</button><span id="eventEditStatus" class="event-edit-status">GitHub確定はWorker更新後</span></div>';
   eventEditModal.hidden=false;
   document.body.style.overflow='hidden';
 }
 function closeEventEdit(){
   eventEditModal.hidden=true;selectedEventEditId='';
   if(endProcessModal.hidden)document.body.style.overflow='';
+}
+function saveEventEditDraft(){
+  const d=collectEventEdit();if(!d)return;
+  eventEditDrafts[d.eventId]=d;
+  localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
 }
 function collectEventEdit(){
   const e=events.find(x=>x.id===selectedEventEditId);if(!e)return null;
@@ -744,38 +751,39 @@ async function postEventOnlyEdit(d,{quiet=false}={}){
 }
 async function clearParticipantNameForIgnored(e){
   if(!e||!personLines(e).length)return true;
+  e.conditionLines=[...conditionLines(e)];
+  recordPatch(e,['conditionLines']);
   const d=eventEditPayloadFromEvent(e,'');
-  const result=await postEventOnlyEdit(d,{quiet:false});
-  if(!result.ok)return false;
-  const cond=conditionLines(e);
-  e.conditionLines=[...cond];
-  const o=officialEvent(e);
-  if(o){o.conditionLines=[...cond];officialEventsById.set(e.id,cloneData(o));}
-  const st=document.getElementById('status');if(st)st.textContent='行かない：参加名義を削除しました';
+  eventEditDrafts[e.id]=d;
+  localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
+  const st=document.getElementById('status');if(st)st.textContent='行かない：参加名義を下書きから削除しました';
   return true;
 }
 async function saveEventEditToGitHub(){
   const d=collectEventEdit();if(!d)return;
-  const status=eventEditFormWrap.querySelector('#eventEditStatus'),btn=eventEditFormWrap.querySelector('#eventEditSave');
+  const status=eventEditFormWrap.querySelector('#eventEditStatus');
   if(!d.eventName){if(status)status.textContent='イベント名を入力してください。';return;}
   if(!d.date){if(status)status.textContent='開始日を入力してください。';return;}
   if(d.endDate&&d.endDate<d.date){if(status)status.textContent='終了日は開始日以降にしてください。';return;}
-  let editKey=localStorage.getItem(END_EDIT_KEY_KEY)||'';
-  if(!editKey){editKey=prompt('編集キーを入力してください。最初の1回だけ保存します。')||'';if(!editKey)return;localStorage.setItem(END_EDIT_KEY_KEY,editKey);}
-  if(btn){btn.disabled=true;btn.textContent='保存中…';}if(status)status.textContent='';
-  try{
-    const rr=await fetch(END_PROCESS_API_URL.replace(/\/$/,'')+'/save-v2',{method:'POST',headers:{'Content-Type':'application/json','X-Edit-Key':editKey},body:JSON.stringify(d)});
-    const result=await rr.json().catch(()=>({ok:false,error:'保存結果を読めません'}));
-    if(rr.status===401){localStorage.removeItem(END_EDIT_KEY_KEY);throw new Error('編集キーが違います。次回保存時にもう一度入力してください。');}
-    if(!rr.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
-    const dateSaved=result.savedDate===d.date && String(result.savedEndDate||result.savedDate||'')===String(d.endDate||d.date);
-    applyEventEditLocally(d,dateSaved);
-    render();
-    if(status)status.textContent=dateSaved?'GitHubへ保存しました。':'GitHubへ保存しました。ただし日付保存用Workerが未反映です。日付以外は保存済みです。';
-  }catch(err){if(status)status.textContent=err.message||String(err);}
-  finally{if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}}
+  const e=events.find(x=>x.id===d.eventId);if(!e)return;
+  e.name=d.eventName;
+  e.date=d.date;
+  e.endDate=d.endDate||d.date;
+  e.dateText='';
+  e.venue=d.venue;
+  e.url=d.url;
+  const cond=splitLines(d.conditionText).filter(x=>!x.startsWith('名前コード：'));
+  if(d.personName)cond.unshift('名前コード：'+d.personName);
+  e.conditionLines=cond;
+  e.rating=d.preRating;
+  e.nightTime=d.nightTime;
+  e.nightText=d.nightText;
+  recordPatch(e,['name','date','endDate','dateText','venue','url','conditionLines','rating','nightTime','nightText']);
+  eventEditDrafts[e.id]=d;
+  localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
+  if(status)status.textContent='ブラウザ下書きへ反映しました。GitHub確定はWorker更新後です。';
+  render();
 }
-
 function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,plannedUnknown=false){
   const r=reportFor(e), p=plannedDates(e), a=actualDates(e), people=personLines(e), cond=conditionLines(e);
   const f=flag(e),multiDay=!!(e.endDate&&e.endDate!==e.date),candidate=!!(f.planned||f.interested);
@@ -1388,6 +1396,8 @@ document.getElementById('body').addEventListener('click',e=>{const b=e.target.cl
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.event-edit-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEventEdit(b.dataset.eventEdit||'');});
 eventEditClose.addEventListener('click',closeEventEdit);
 eventEditModal.addEventListener('click',e=>{if(e.target===eventEditModal)closeEventEdit();});
+eventEditFormWrap.addEventListener('input',()=>saveEventEditDraft());
+eventEditFormWrap.addEventListener('change',()=>saveEventEditDraft());
 eventEditFormWrap.addEventListener('click',async e=>{if(e.target.id==='eventEditSave')await saveEventEditToGitHub();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!eventEditModal.hidden)closeEventEdit();});
 
@@ -1522,6 +1532,7 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
     syncFilterControls();
     try{endDrafts=JSON.parse(localStorage.getItem(END_DRAFTS_KEY)||'{}')}catch(_){endDrafts={}}
     try{endBackups=JSON.parse(localStorage.getItem(END_BACKUPS_KEY)||'{}')}catch(_){endBackups={}}
+    try{eventEditDrafts=JSON.parse(localStorage.getItem(EVENT_EDIT_DRAFTS_KEY)||'{}')}catch(_){eventEditDrafts={}}
     const [g,x,m]=await Promise.all([
       fetch('イベント一覧.json?v='+Date.now(),{cache:'no-store'}),
       fetch('展示会一覧.json?v='+Date.now(),{cache:'no-store'}),
