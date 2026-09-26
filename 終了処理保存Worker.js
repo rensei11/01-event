@@ -49,7 +49,12 @@ function validate(d){
   if(!d||typeof d!=='object')return 'データがありません';
   if(!d.eventId||!(d.eventName||d.name))return 'イベント情報がありません';
   if(!['exhibition','gathering'].includes(d.kind))return 'イベント種別が不正です';
-  if(d.editOnly)return '';
+  if(d.editOnly){
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(String(d.date||'')))return '開始日が不正です';
+    if(d.endDate&&!/^\d{4}-\d{2}-\d{2}$/.test(String(d.endDate)))return '終了日が不正です';
+    if(d.endDate&&d.endDate<d.date)return '終了日は開始日以降にしてください';
+    return '';
+  }
   if(!['attended','not_attended'].includes(d.status))return '参加／未参加を選んでください';
   if(d.status==='attended'&&(!Array.isArray(d.visitDates)||!d.visitDates.length))return '実際に行った日を選んでください';
   if(d.status==='attended'&&!String(d.report||'').trim())return '参加したイベントは実地レポートを入力してください';
@@ -99,6 +104,15 @@ function reportPathFor(date){
 function reportMonthValue(path){
   const m=path.match(/(\d{4})-(\d{2})(?:-03)?\.json$/);
   return m?Number(m[2]):0;
+}
+function scheduleDateText(start,end){
+  const w=['日','月','火','水','木','金','土'];
+  const fmt=(iso)=>{
+    const d=new Date(iso+'T00:00:00Z');
+    return (d.getUTCMonth()+1)+'月'+d.getUTCDate()+'日('+w[d.getUTCDay()]+')';
+  };
+  if(!end||end===start)return fmt(start);
+  return fmt(start)+'～'+fmt(end);
 }
 function eventNameCodes(e){
   return (e.conditionLines||[]).filter(x=>String(x).startsWith('名前コード：')).map(x=>String(x).replace(/^名前コード：/,''));
@@ -163,7 +177,14 @@ async function saveToGitHub(d,token){
   if(idx<0){const er=new Error('対象イベントが年間台帳に見つかりません');er.status=409;throw er}
   const e=ledger.events[idx];
 
-  // 終了処理画面で編集した年間台帳の内容も同時に確定
+  // イベント編集では開催日も年間台帳へ確定
+  if(d.editOnly){
+    e.date=String(d.date||e.date||'').trim();
+    e.endDate=String(d.endDate||d.date||e.endDate||e.date).trim();
+    e.dateText=scheduleDateText(e.date,e.endDate);
+  }
+
+  // 終了処理画面・イベント編集画面で年間台帳の基本情報を確定
   e.name=String(d.eventName||d.name||e.name).trim();
   e.venue=String(d.venue??e.venue??'').trim();
   e.url=String(d.url??e.url??'').trim();
@@ -177,14 +198,25 @@ async function saveToGitHub(d,token){
   if('detailText' in e)delete e.detailText;
 
   if(d.editOnly){
-    ledger.dataVersion=new Date().toISOString().slice(0,10)+'-web';
-    const blob=await gh('/repos/'+OWNER+'/'+REPO+'/git/blobs',token,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({content:JSON.stringify(ledger,null,2)+'\n',encoding:'utf-8'})
-    });
+    const stamp=new Date().toISOString().slice(0,10)+'-web';
+    ledger.dataVersion=stamp;
+    const changed=[[ledgerPath,ledger]];
+    if(e.attendanceStatus==='not_attended'){
+      upsertUnattended(unattended,e,d.kind);
+      unattended.dataVersion=stamp;
+      changed.push(['未参加イベント.json',unattended]);
+    }
+    const tree=[];
+    for(const [path,obj] of changed){
+      const blob=await gh('/repos/'+OWNER+'/'+REPO+'/git/blobs',token,{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({content:JSON.stringify(obj,null,2)+'\n',encoding:'utf-8'})
+      });
+      tree.push({path,mode:'100644',type:'blob',sha:blob.sha});
+    }
     const newTree=await gh('/repos/'+OWNER+'/'+REPO+'/git/trees',token,{
       method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({base_tree:baseTree,tree:[{path:ledgerPath,mode:'100644',type:'blob',sha:blob.sha}]})
+      body:JSON.stringify({base_tree:baseTree,tree})
     });
     const newCommit=await gh('/repos/'+OWNER+'/'+REPO+'/git/commits',token,{
       method:'POST',headers:{'Content-Type':'application/json'},
@@ -198,7 +230,7 @@ async function saveToGitHub(d,token){
       method:'PATCH',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({sha:newCommit.sha,force:false})
     });
-    return {commit:newCommit.sha,eventId:e.id,status:'edited'};
+    return {commit:newCommit.sha,eventId:e.id,status:'edited',savedDate:e.date,savedEndDate:e.endDate};
   }
 
   const oldReportId=e.sourceReportId||'';
