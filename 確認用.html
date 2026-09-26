@@ -730,25 +730,6 @@ function eventEditPayloadFromEvent(e,personNameOverride=null){
     updatedAt:new Date().toISOString()
   };
 }
-async function postEventOnlyEdit(d,{quiet=false}={}){
-  let editKey=localStorage.getItem(END_EDIT_KEY_KEY)||'';
-  if(!editKey){
-    editKey=prompt('編集キーを入力してください。最初の1回だけ保存します。')||'';
-    if(!editKey)return {ok:false,cancelled:true};
-    localStorage.setItem(END_EDIT_KEY_KEY,editKey);
-  }
-  try{
-    const rr=await fetch(END_PROCESS_API_URL.replace(/\/$/,'')+'/save-v2',{method:'POST',headers:{'Content-Type':'application/json','X-Edit-Key':editKey},body:JSON.stringify(d)});
-    const result=await rr.json().catch(()=>({ok:false,error:'保存結果を読めません'}));
-    if(rr.status===401)localStorage.removeItem(END_EDIT_KEY_KEY);
-    if(!rr.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
-    return {ok:true,result};
-  }catch(err){
-    if(!quiet)alert(err.message||String(err));
-    const st=document.getElementById('status');if(st)st.textContent='参加名義のGitHub更新に失敗：'+(err.message||String(err));
-    return {ok:false,error:err};
-  }
-}
 async function clearParticipantNameForIgnored(e){
   if(!e||!personLines(e).length)return true;
   e.conditionLines=[...conditionLines(e)];
@@ -759,7 +740,7 @@ async function clearParticipantNameForIgnored(e){
   const st=document.getElementById('status');if(st)st.textContent='行かない：参加名義を下書きから削除しました';
   return true;
 }
-async function saveEventEditToGitHub(){
+async function saveEventEditDraftToBrowser(){
   const d=collectEventEdit();if(!d)return;
   const status=eventEditFormWrap.querySelector('#eventEditStatus');
   if(!d.eventName){if(status)status.textContent='イベント名を入力してください。';return;}
@@ -1398,7 +1379,7 @@ eventEditClose.addEventListener('click',closeEventEdit);
 eventEditModal.addEventListener('click',e=>{if(e.target===eventEditModal)closeEventEdit();});
 eventEditFormWrap.addEventListener('input',()=>saveEventEditDraft());
 eventEditFormWrap.addEventListener('change',()=>saveEventEditDraft());
-eventEditFormWrap.addEventListener('click',async e=>{if(e.target.id==='eventEditSave')await saveEventEditToGitHub();});
+eventEditFormWrap.addEventListener('click',async e=>{if(e.target.id==='eventEditSave')await saveEventEditDraftToBrowser();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!eventEditModal.hidden)closeEventEdit();});
 
 document.getElementById('editBtn').addEventListener('click',()=>setLegacyEditing(!editing));
