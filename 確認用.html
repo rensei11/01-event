@@ -37,7 +37,7 @@ th:last-child,td:last-child{border-right:0}
 .event-row:nth-of-type(even) td{background:#fdfdfc}
 .date,.date-head{text-align:center}.date{font-weight:700;white-space:normal;vertical-align:middle;font-size:12px;line-height:1.35;padding-left:6px;padding-right:6px;overflow:hidden}
 .event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-right-tools{margin-left:auto;display:flex;align-items:flex-start;gap:7px}.event-action-stack{margin-left:auto;display:flex;flex-direction:column;align-items:stretch;gap:4px;min-width:82px}.event-edit-btn{padding:3px 7px;font-size:11px;font-weight:800;border-color:#7fa2c7;background:#f5f9fd;color:#315d87}.event-edit-btn:hover{background:#e9f2fa}.event-action-stack .end-row-btn{margin-left:0;width:100%}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#46515c;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:700;font-size:15px}.name a{color:var(--link);text-decoration:underline;text-underline-offset:2px}.name a:hover{text-decoration:underline}
-.venue{margin-top:2px;color:var(--muted)}.participant-line{margin-top:2px;font-size:11px;font-weight:800;color:#46515c;line-height:1.35}.participant-label{color:#6c7680;font-weight:700}
+.venue{margin-top:2px;color:var(--muted)}.venue-participant-line{display:flex;align-items:baseline;gap:.5em;margin-top:2px;color:var(--muted);font-size:14px;line-height:1.55;min-width:0}.venue-participant-line .venue{margin-top:0;min-width:0;overflow-wrap:anywhere}.participant-inline{font-size:inherit;font-weight:700;color:#46515c;white-space:normal;overflow-wrap:anywhere}.participant-label{color:#6c7680;font-weight:700}
 .person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}.report-cond{margin:0 0 7px;padding:5px 7px;background:#f6f6f3;border-left:3px solid #c5c5bf;color:#555}.report-cond div{margin:1px 0}
 .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
 .tag{border:1px solid #c8c8c2;background:#fff}
@@ -84,7 +84,7 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作6</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作7</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
@@ -625,10 +625,14 @@ function eventEditButton(e){
 function participantDisplay(e,editingValue=''){
   const people=personLines(e);
   if(editing){
-    const html=editingValue||editableBlock(e.id,'people',people.join('\n'));
-    return '<div class="participant-line"><span class="participant-label">参加名義：</span>'+html+'</div>';
+    const html=editingValue||editableInline(e.id,'people',people.join(' / '));
+    return '<span class="participant-inline"><span class="participant-label">参加名義：</span>'+html+'</span>';
   }
-  return people.length?'<div class="participant-line"><span class="participant-label">参加名義：</span>'+esc(people.join(' / '))+'</div>':'';
+  const shown=flag(e).ignored?'':people.join(' / ');
+  return '<span class="participant-inline"><span class="participant-label">参加名義：</span>'+esc(shown)+'</span>';
+}
+function venueParticipantLine(e,venueHtml,editingValue=''){
+  return '<div class="venue-participant-line"><span class="venue">'+venueHtml+'</span>'+participantDisplay(e,editingValue)+'</div>';
 }
 function openEventEdit(eventId){
   const e=events.find(x=>x.id===eventId);
@@ -695,6 +699,58 @@ function applyEventEditLocally(d,includeDate){
   }
   officialEventsById.set(e.id,cloneData(e));
 }
+function eventEditPayloadFromEvent(e,personNameOverride=null){
+  const o=officialEvent(e);
+  return {
+    editOnly:true,
+    eventId:o.id,
+    kind:o._kind,
+    eventName:o.name||'',
+    name:o.name||'',
+    date:o.date||'',
+    endDate:(o.endDate&&o.endDate!==o.date)?o.endDate:'',
+    venue:o.venue||'',
+    personName:personNameOverride===null?personLines(o).join(' / '):personNameOverride,
+    url:o.url||'',
+    conditionText:conditionLines(o).join('\n'),
+    preRating:o.rating||'',
+    nightTime:o.nightTime||'',
+    nightText:o.nightText||'',
+    schemaVersion:2,
+    updatedAt:new Date().toISOString()
+  };
+}
+async function postEventOnlyEdit(d,{quiet=false}={}){
+  let editKey=localStorage.getItem(END_EDIT_KEY_KEY)||'';
+  if(!editKey){
+    editKey=prompt('編集キーを入力してください。最初の1回だけ保存します。')||'';
+    if(!editKey)return {ok:false,cancelled:true};
+    localStorage.setItem(END_EDIT_KEY_KEY,editKey);
+  }
+  try{
+    const rr=await fetch(END_PROCESS_API_URL.replace(/\/$/,'')+'/save-v2',{method:'POST',headers:{'Content-Type':'application/json','X-Edit-Key':editKey},body:JSON.stringify(d)});
+    const result=await rr.json().catch(()=>({ok:false,error:'保存結果を読めません'}));
+    if(rr.status===401)localStorage.removeItem(END_EDIT_KEY_KEY);
+    if(!rr.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
+    return {ok:true,result};
+  }catch(err){
+    if(!quiet)alert(err.message||String(err));
+    const st=document.getElementById('status');if(st)st.textContent='参加名義のGitHub更新に失敗：'+(err.message||String(err));
+    return {ok:false,error:err};
+  }
+}
+async function clearParticipantNameForIgnored(e){
+  if(!e||!personLines(e).length)return true;
+  const d=eventEditPayloadFromEvent(e,'');
+  const result=await postEventOnlyEdit(d,{quiet:false});
+  if(!result.ok)return false;
+  const cond=conditionLines(e);
+  e.conditionLines=[...cond];
+  const o=officialEvent(e);
+  if(o){o.conditionLines=[...cond];officialEventsById.set(e.id,cloneData(o));}
+  const st=document.getElementById('status');if(st)st.textContent='行かない：参加名義を削除しました';
+  return true;
+}
 async function saveEventEditToGitHub(){
   const d=collectEventEdit();if(!d)return;
   const status=eventEditFormWrap.querySelector('#eventEditStatus'),btn=eventEditFormWrap.querySelector('#eventEditSave');
@@ -760,9 +816,10 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,planned
   const endButton=(!editing&&canOfficialEnd)?'<button type="button" class="end-row-btn '+(pendingEnd?'end-pending':'end-correction')+'" data-end-edit="'+esc(e.id)+'">'+(pendingEnd?'終了処理':'記録修正')+'</button>':'';
   const actions=eventEditButton(e)+endButton;
   const rightTop=actions?'<div class="event-action-stack">'+actions+'</div>':'';
+  const venueHtml=editing?editableInline(e.id,'venue',e.venue||''):esc(e.venue||'');
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
     '<div class="event-head"><div class="name event-name">'+nameHtml+'</div></div>'+
-    '<div class="venue">'+(editing?editableBlock(e.id,'venue',e.venue||''):esc(e.venue||''))+'</div>'+participantLine;
+    venueParticipantLine(e,venueHtml,personHtml);
 
   const condHtml=editing
     ? '<div class="report-cond">'+editableLines(e.id,'conditions',cond)+'</div>'
@@ -797,9 +854,8 @@ function attendedUndatedRow(e){
   const r=reportFor(e),people=personLines(e),cond=conditionLines(e);
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>','<span class="tag attended">参加済み（日付未入力）</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
-  const participantLine=participantDisplay(e);
   const rightTop='<div class="event-action-stack">'+eventEditButton(e)+'<button type="button" class="end-row-btn end-pending" data-end-edit="'+esc(e.id)+'">終了処理</button></div>';
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+participantLine;
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantLine(e,esc(e.venue||''));
   let detail='<div class="attended-undated-note">終了処理で「実際に行った日」を入力してください。</div>';
   if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
   if(r&&String(r.report||'').trim()){
@@ -817,7 +873,6 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
 
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
-  const participantLine=participantDisplay(e);
   const pendingEnd=needsEndProcessing(e),endLabel=pendingEnd?'終了処理':'記録修正';
   const rightTop='<div class="event-action-stack">'+eventEditButton(e)+'<button type="button" class="end-row-btn '+(pendingEnd?'end-pending':'end-correction')+'" data-end-edit="'+esc(e.id)+'">'+endLabel+'</button></div>';
 
@@ -826,7 +881,7 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   else if(e.date!==visitDate) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
 
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+
-    '<div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+participantLine+schedule;
+    '<div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantLine(e,esc(e.venue||''))+schedule;
 
   let detail='';
   if(showReport){
@@ -900,6 +955,8 @@ function nextPlannedGroups(){
   const rangeEndDate=new Date(calendarToday.getFullYear(),calendarToday.getMonth()+2,0);
   const rangeEnd=localYmd(rangeEndDate);
   for(const e of events){
+    const f=flag(e);
+    if(!f.planned)continue;
     const ds=plannedDates(e).filter(d=>d>today&&d>=rangeStart&&d<=rangeEnd);
     for(const d of ds)items.push({e,date:d});
   }
@@ -1403,7 +1460,7 @@ document.getElementById('resetHtmlBtn').addEventListener('click',()=>{
   if(confirm('このブラウザの編集下書きをすべて破棄して、GitHubの最新データに戻しますか？'))clearLegacyHTML();
 });
 
-document.getElementById('body').addEventListener('change',e=>{
+document.getElementById('body').addEventListener('change',async e=>{
   const ds=e.target.closest('.direct-date-start'),de=e.target.closest('.direct-date-end');
   if(ds||de){
     const el=ds||de,eve=eventById(el.dataset.id);if(!eve)return;
@@ -1420,7 +1477,13 @@ document.getElementById('body').addEventListener('change',e=>{
   if(!event)return;
   if(i)setInterested(event,i.checked);
   if(p)setPlan(event,p.checked);
-  if(n)setIgnore(event,n.checked);
+  if(n){
+    if(n.checked&&personLines(event).length){
+      const ok=await clearParticipantNameForIgnored(event);
+      if(!ok){n.checked=false;return;}
+    }
+    setIgnore(event,n.checked);
+  }
   if(d)setPlanDay(event,d.dataset.day,d.checked);
 });
 
