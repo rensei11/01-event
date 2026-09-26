@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-25-web",
+  "dataVersion": "2026-09-26-web",
   "year": 2026,
   "events": [
     {
@@ -204,19 +204,6 @@
       "endDate": "2026-09-11",
       "dateText": "9月10日(木)～11日(金)",
       "name": "Snowflake World Tour Tokyo 2026",
-      "category": "gathering",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "nameCodes": [
-        "伊藤 聡"
-      ]
-    },
-    {
-      "id": "hist-bc0cbc6d631e",
-      "date": "2026-09-10",
-      "endDate": "2026-09-10",
-      "dateText": "9月10日(木)",
-      "name": "WalkMe on Tour Tokyo 2026",
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],

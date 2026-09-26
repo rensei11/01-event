@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-25-web",
+  "dataVersion": "2026-09-26-web",
   "year": 2026,
   "events": [
     {
@@ -383,7 +383,8 @@
       "visitDates": [
         "2026-09-10"
       ],
-      "historySource": "未参加イベント"
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-hist-no-bc0cbc6d631e"
     },
     {
       "id": "hist-no-c1fe97adec2b",
