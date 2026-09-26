@@ -1,0 +1,1574 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>見やすさ確認版</title>
+<style>
+:root{--bg:#f4f6f8;--paper:#fff;--panel:#fff;--line:#d6dce2;--head:#20262d;--text:#1d2329;--muted:#606a74;--week:#e8edf2;--link:#0b57d0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
+.wrap{max-width:1320px;margin:0 auto;padding:18px}
+h1{font-size:20px;margin:0}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.top .status{flex:0 0 auto;padding-top:4px;white-space:nowrap}.version-info{margin:2px 0 0;font-size:11px;font-weight:800;color:#68727c}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
+.controls{display:flex;gap:6px;margin:0 0 6px;flex-wrap:wrap;align-items:center}
+.subfilters{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:0 0 8px}.subfilters button{padding:5px 10px;font-size:12px}.hide-ignored-label{display:inline-flex;align-items:center;gap:4px;margin-left:4px;font-size:12px;font-weight:800;color:#555;cursor:pointer}.hide-ignored-label input{margin:0;width:15px;height:15px}
+.legacy-edit-toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:0 0 6px}.legacy-edit-toolbar button:disabled{opacity:.45;cursor:not-allowed}.legacy-edit-toolbar .primary{font-weight:800}.legacy-edit-toolbar .danger{color:#9a3412;border-color:#d8a58d}.edit-help{font-size:12px;color:var(--muted);margin:0 0 10px}
+.event-row.selected td,.week.selected td{box-shadow:inset 0 0 0 2px #d29b00!important}
+body.editing .event-row td{background:#fffdf2!important;outline:none} body.editing .event-row .date{cursor:text}
+body.editing .week td{outline:none}
+body.editing .event-row.selected td{background:#fff4c7!important}.edit-mode-btn{margin-left:4px}.row-edit-btn{display:none}
+.edit-bar{display:none!important}.edit-change-count{font-size:12px;font-weight:900;color:#374151;margin-left:auto}.edit-save{background:#20262d;color:#fff;border-color:#20262d}.edit-hint{font-size:11px;color:#606a74}
+.editable{outline:0}.editing .editable{cursor:text;border-radius:4px;box-shadow:inset 0 0 0 1px #b9c7d4;background:#fffdf4;padding:1px 3px}.editing .editable:focus{box-shadow:inset 0 0 0 2px #5d8fc5;background:#fff}.editing .editable-block{display:block;min-height:20px}.editing .edit-delete-btn{display:inline-block}.edit-delete-btn{display:none;margin-left:6px;padding:2px 7px;font-size:11px;color:#9a3412;border-color:#d8a58d}.edit-mode-note{font-size:12px;font-weight:800;color:#374151}
+button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+button.active{background:#20262d;color:#fff;border-color:#20262d}
+.status{margin-left:auto;align-self:center;font-size:12px;color:var(--muted)}.save-ok{color:#18794e;font-weight:700}.save-warn{color:#9a6700;font-weight:700}
+.calendar-panel{margin:0 0 14px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px}
+.calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.calendar-title-inline{font-size:19px;font-weight:900;color:#20262d;margin-right:5px}.list-filter-bar{display:flex;align-items:center;gap:7px;margin:0 0 8px;font-size:12px;font-weight:800;color:#555}.list-filter-bar select{border:1px solid #aeb7c0;border-radius:7px;background:#fff;padding:5px 8px;font:inherit;font-size:12px}.calendar-start-label{font-size:14px;font-weight:900;color:#555}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:14px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:13px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
+.calendar-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:10px;align-items:stretch;min-width:0}.calendar-left{display:flex;flex-direction:column;min-width:0}.calendar-left .calendar-jump{margin-bottom:9px}.calendar-months-viewport{overflow:hidden;min-width:0}.calendar-months{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start;min-width:0}#nextPlanHost{display:flex;min-width:0;align-self:stretch}.calendar-months.slide-from-right{animation:calendarSlideFromRight .28s ease}.calendar-months.slide-from-left{animation:calendarSlideFromLeft .28s ease}@keyframes calendarSlideFromRight{from{transform:translateX(12%);opacity:.55}to{transform:translateX(0);opacity:1}}@keyframes calendarSlideFromLeft{from{transform:translateX(-12%);opacity:.55}to{transform:translateX(0);opacity:1}}.month-card,.next-plan-card{position:relative;border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0}.month-card{align-self:start}.next-plan-card{align-self:stretch;flex:1;box-sizing:border-box}.month-nav{position:absolute;top:5px;width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.month-nav.prev{left:5px}.month-nav.next{right:5px}.month-nav:hover{background:#f0f2f4}.nav-symbol{display:block;font-family:Arial,sans-serif;font-size:27px;font-weight:700;line-height:1;transform:translateY(-2px)}.month-name{text-align:center;font-size:16px;font-weight:900;margin-bottom:4px;cursor:pointer;padding:0 34px}.month-name:hover{text-decoration:underline}.next-plan-head{display:grid;grid-template-columns:28px minmax(0,1fr) 28px;align-items:center;gap:6px;margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid #e3e6e8}.next-plan-heading-center{display:flex;align-items:center;justify-content:center;gap:1em;min-width:0;font-size:15px;line-height:1.3;text-align:center}.next-plan-title{font-size:15px;font-weight:900!important;line-height:1.3;white-space:nowrap}.next-plan-date{font-size:15px;font-weight:900;color:#315d87;white-space:nowrap}.next-plan-nav{width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.next-plan-nav:hover{background:#f0f2f4}.next-plan-nav-spacer{width:28px;height:28px}.next-plan-empty{padding:20px 8px;text-align:center;font-size:12px;color:var(--muted)}.next-plan-item{padding:7px 3px}.next-plan-name{font-size:14px;font-weight:900!important;line-height:1.35;overflow-wrap:anywhere}.next-plan-name a{color:var(--link);font-weight:900!important;text-decoration:underline;text-underline-offset:2px}.next-plan-name a:hover{text-decoration:underline}.next-plan-meta{display:grid;grid-template-columns:auto minmax(0,.85fr) minmax(0,1.45fr);gap:6px;align-items:center;margin-top:4px;font-size:12px;line-height:1.35;color:rgba(29,35,41,.9)}.next-plan-meta .kind-badge{align-self:center}.next-plan-person,.next-plan-venue{min-width:0;overflow-wrap:anywhere;font-weight:400}.next-plan-meta-label{font-weight:900;color:#111}.next-plan-meta-value{font-weight:400}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{font-size:13px;color:var(--muted);font-weight:800;padding:2px 0}.weekday:first-child{color:#8b0000}.weekday:nth-child(7){color:#003f7f}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none;font-weight:800;font-size:12px}.cal-day.sunday{color:#8b0000}.cal-day.saturday{color:#003f7f}.cal-day.other-month{font-size:9px;font-weight:400;color:#9aa1a8;opacity:.32}.cal-day.other-month.sunday{color:#8b0000}.cal-day.other-month.saturday{color:#003f7f}.cal-day.other-month.has-event,.cal-day.other-month.has-plan,.cal-day.other-month.has-attended{opacity:.22;font-weight:600}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#3f78b6;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today{background:#d32f2f!important;color:#fff!important;font-weight:900}.cal-day.sunday.has-event,.cal-day.sunday.has-plan,.cal-day.sunday.has-attended,.cal-day.sunday.today{color:#8b0000!important;border:2px solid #fff;box-shadow:0 0 0 1px rgba(139,0,0,.35)}.cal-day.saturday.has-event,.cal-day.saturday.has-plan,.cal-day.saturday.has-attended,.cal-day.saturday.today{color:#003f7f!important;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,63,127,.35)}.cal-day.today::after{content:none}.cal-day.clickable:hover{filter:brightness(.92)}
+.calendar-focus td{animation:calFlash 1.2s ease}@keyframes calFlash{0%,100%{background:inherit}35%,70%{background:#fff1b8}}
+.table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}
+col.date{width:9%}col.event{width:29%}col.cond{width:19%}col.detail{width:43%}col.attended-date-col{width:10%}col.attended-event-col{width:35%}col.attended-detail-col{width:55%}
+th{position:sticky;top:0;z-index:2;background:var(--head);color:#fff;text-align:left;font-size:14px;padding:10px 12px;border-right:1px solid #3d4650}
+td{vertical-align:top;padding:10px 12px;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:14px}
+th:last-child,td:last-child{border-right:0}
+.month td{background:#d7e2ee;font-weight:800;font-size:18px;padding:8px 12px 8px calc(12px + .5em);border-top:3px solid #8fa2b5}.week td{background:var(--week);font-weight:700;font-size:14px;padding:7px 12px 7px calc(12px + .5em);border-top:2px solid #aeb8c2;color:var(--text)}
+.event-row:nth-of-type(even) td{background:#fdfdfc}
+.date,.date-head{text-align:center}.date{font-weight:700;white-space:normal;vertical-align:middle;font-size:12px;line-height:1.35;padding-left:6px;padding-right:6px;overflow:hidden}
+.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-right-tools{margin-left:auto;display:flex;align-items:flex-start;gap:7px}.event-action-stack{margin-left:auto;display:flex;flex-direction:column;align-items:stretch;gap:4px;min-width:74px}.event-edit-btn{padding:3px 4px;font-size:11px;font-weight:800;border-color:#7fa2c7;background:#f5f9fd;color:#315d87}.event-edit-btn:hover{background:#e9f2fa}.event-action-stack .end-row-btn{margin-left:0;width:100%}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#46515c;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:700;font-size:15px}.name a{color:var(--link);text-decoration:underline;text-underline-offset:2px}.name a:hover{text-decoration:underline}
+.venue{margin-top:2px;color:var(--muted)}.participant-line{margin-top:0;margin-left:.5em;font-size:14px;line-height:1.55;color:#46515c;font-weight:700;overflow-wrap:anywhere}.participant-label{color:#46515c;font-weight:900}
+.person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}.report-cond{margin:0 0 7px;padding:5px 7px;background:#f6f6f3;border-left:3px solid #c5c5bf;color:#555}.report-cond div{margin:1px 0}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
+.tag{border:1px solid #c8c8c2;background:#fff}
+.attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
+.planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
+.notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
+.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
+.row-notattended td{color:#777772;background:#f4f4f2!important}.row-notattended .event-name,.row-notattended .event-name a{color:#777772!important}.row-notattended .event-name a{text-decoration-color:#999!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
+.rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.report-rating-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.report-flag-tools{display:inline-flex;gap:6px;align-items:center;font-size:11px;font-weight:800}.report-flag-tools label{display:inline-flex;align-items:center;gap:3px;border-radius:10px;padding:2px 7px;cursor:pointer}.report-high-label{background:#f5fbf6;color:#356744;border:1px solid #bfd8c6}.report-low-label{background:#f4f5f6;color:#666;border:1px solid #cfd3d6}.report-flag-tools input{appearance:none;-webkit-appearance:none;width:14px;height:14px;min-width:14px;min-height:14px;margin:0;border-radius:3px;background:#fff;position:relative;overflow:hidden}.report-high-toggle{border:1.5px solid #6da27c}.report-low-toggle{border:1.5px solid #cf6b7e}.report-high-toggle:checked{background:#568f66}.report-high-toggle:checked::after,.report-low-toggle:checked::after{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;line-height:1}.report-high-toggle:checked::after{content:"✓";font-size:10px}.report-low-toggle:checked{background:#c65369}.report-low-toggle:checked::after{content:"×";font-size:12px}.report-good td{background:#f5fbf6!important}.report-bad td{background:#f1f2f3!important}.report-bad .event-name a{color:#7b848d!important;text-decoration-color:#aeb4b9!important}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+.note{font-size:11px;color:var(--muted);margin-top:8px}
+@media(max-width:700px){.wrap{padding:10px}h1{font-size:17px}td,th{padding:6px 8px}.status{width:100%;margin-left:0}.calendar-layout{grid-template-columns:1fr}.calendar-left{min-width:0}.calendar-months{grid-template-columns:repeat(2,minmax(220px,1fr));overflow-x:auto}.calendar-months-viewport{overflow-x:auto}#nextPlanHost{display:block}.next-plan-card{height:auto}}
+
+.end-process-row{display:none}
+.end-process-btn{border:1px solid #d76a6a;background:#fff5f5;color:#b91c1c;font-weight:800;padding:7px 11px}
+.end-process-count{display:inline-flex;min-width:20px;height:20px;padding:0 5px;margin-left:5px;border-radius:10px;align-items:center;justify-content:center;background:#b91c1c;color:#fff;font-size:11px}
+.end-row-btn{margin-left:6px;padding:2px 5px;font-size:11px;font-weight:800}.end-row-btn.end-pending{border-color:#d76a6a;background:#fff5f5;color:#b91c1c}.end-row-btn.end-correction{border-color:#c4c8cc;background:#f7f8f9;color:#555;font-weight:700}.end-row-btn.end-correction:hover{background:#eef0f2;color:#333}
+.end-modal[hidden]{display:none}.end-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:18px}
+.end-dialog{width:min(900px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.end-dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:#20262d;color:#fff}
+.end-dialog-title{font-size:17px;font-weight:800}.end-close{position:relative;width:32px;height:32px;min-width:32px;padding:0;border:0;border-radius:4px;background:transparent;color:#fff;font-size:0}.end-close::before,.end-close::after{content:"";position:absolute;left:50%;top:50%;width:18px;height:2px;background:#fff;transform-origin:center}.end-close::before{transform:translate(-50%,-50%) rotate(45deg)}.end-close::after{transform:translate(-50%,-50%) rotate(-45deg)}.end-close:hover{background:rgba(255,255,255,.12)}
+.end-dialog-body{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:420px}
+.end-list{border-right:1px solid var(--line);padding:12px;background:#f7f8fa}.end-list-note{font-size:12px;color:var(--muted);margin:0 0 8px}
+.end-event-btn{width:100%;text-align:left;margin:0 0 7px;padding:9px 10px;border:1px solid #cbd2d9;background:#fff;color:#20262d}.end-event-btn.active{border-color:#2f6fda;background:#e8f4ff;color:#20262d}
+.end-event-date{font-size:11px;color:var(--muted);font-weight:700}.end-event-name{font-size:13px;font-weight:800}
+.end-form-wrap{padding:16px}.end-empty{padding:30px 12px;color:var(--muted);text-align:center}.end-form-title{font-size:18px;font-weight:800}.end-form-venue{font-size:13px;color:var(--muted);margin-bottom:14px}
+.end-field{margin:0 0 14px}.end-label{display:block;font-size:13px;font-weight:800;margin-bottom:5px}.end-choice,.end-visit-dates{display:flex;gap:10px;flex-wrap:wrap}.end-choice label,.end-visit-dates label{display:inline-flex;align-items:center;gap:4px}
+.end-rating{padding:6px 8px;border:1px solid #aeb7c0;border-radius:6px}.end-report{width:100%;min-height:200px;resize:vertical;border:1px solid #aeb7c0;border-radius:7px;padding:9px;font:inherit;line-height:1.55}
+.end-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}.end-save{background:#20262d;color:#fff;border-color:#20262d;font-weight:800}.end-saved{font-size:12px;color:#18794e;font-weight:700}
+.event-edit-dialog{width:min(760px,96vw)}.event-edit-form{padding:16px}.event-edit-kind{display:inline-block;margin:0 0 12px}.event-edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.event-edit-grid .wide{grid-column:1/-1}.event-edit-form label{display:block;font-size:12px;font-weight:800;color:#444}.event-edit-form input,.event-edit-form textarea{width:100%;margin-top:4px;border:1px solid #aeb7c0;border-radius:6px;padding:7px 8px;font:inherit;font-size:13px;background:#fff}.event-edit-form textarea{min-height:72px;resize:vertical;line-height:1.45}.event-edit-form .event-edit-long{min-height:110px}.event-edit-note{font-size:11px;color:var(--muted);margin:0 0 10px}.event-edit-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.event-edit-status{font-size:12px;font-weight:800;color:#18794e}
+@media(max-width:760px){.end-dialog-body{grid-template-columns:1fr}.end-list{border-right:0;border-bottom:1px solid var(--line)}.event-edit-grid{grid-template-columns:1fr}}
+
+.edit-date-pair{display:grid;gap:4px}.edit-date-pair input{width:100%;min-width:0;border:1px solid #aeb7c0;border-radius:5px;padding:3px 4px;font:inherit;font-size:11px;background:#fff}
+.edit-placeholder{min-height:20px}
+
+.attended-undated-title td{background:#fff4d6!important;color:#7c4a03;font-weight:900;border-top:3px solid #d8a23a!important}
+.attended-undated-row td{background:#fffaf0!important}
+.attended-undated-note{font-size:12px;color:#7c4a03;font-weight:800}
+
+.planned-date{background:#dfefff!important;font-size:18px!important;overflow:hidden;vertical-align:middle!important}
+.planned-day-start td{border-top:2px solid #a9c8e5!important}
+.back-to-top{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:0;background:#20262d;color:#fff;font-size:26px;font-weight:800;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.28);display:none;align-items:center;justify-content:center;z-index:50;padding:0}.back-to-top:hover{background:#111820}.back-to-top.show{display:flex}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作13</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="controls">
+    <button data-mode="all" class="active">すべてのイベント</button>
+    <button data-mode="upcoming">今後のイベント</button>
+    <button data-mode="planned">参加予定</button>
+    <button data-mode="attended">参加済み</button>
+    <button id="endProcessBtn" class="end-process-btn" type="button">終了処理 <span id="endProcessCount" class="end-process-count">0</span></button>
+    <span id="status" class="status"></span>
+  </div>
+  <div class="subfilters">
+    <button type="button" class="kind-filter active" data-kind-filter="both">両方</button>
+    <button type="button" class="kind-filter" data-kind-filter="exhibition">展示会</button>
+    <button type="button" class="kind-filter" data-kind-filter="gathering">懇親会</button>
+    <label class="hide-ignored-label"><input id="hideIgnoredToggle" type="checkbox">行かないを非表示</label>
+  </div>
+  <div class="legacy-edit-toolbar">
+    <button id="editBtn" type="button">一覧直接編集（旧）</button>
+    <button id="addBtn" type="button" disabled>＋ 新しいイベント</button>
+    <button id="kindBtn" type="button" disabled>展示会／懇親会</button>
+    <button id="linkBtn" type="button" disabled>リンク設定</button>
+    <button id="delBtn" class="danger" type="button" disabled>選択行を削除</button>
+    <button id="saveHtmlBtn" type="button">編集下書き保存</button>
+    <button id="resetHtmlBtn" type="button">編集下書きを破棄</button>
+    <span id="editChangeCount" class="edit-change-count">変更 0件</span>
+  </div>
+  <div class="edit-help">通常の情報修正は各イベント右上の「イベント編集」を使用します。「一覧直接編集（旧）」は複数箇所をまとめて直すための旧方式です。</div>
+  <section class="calendar-panel" aria-label="カレンダー">
+    <div class="calendar-layout">
+      <div class="calendar-left">
+        <div class="calendar-jump"><span class="calendar-title-inline">カレンダー</span><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div></div>
+        <div id="calendarMonthsViewport" class="calendar-months-viewport"><div id="calendarMonths" class="calendar-months"></div></div>
+      </div>
+      <div id="nextPlanHost"></div>
+    </div>
+  </section>
+<div class="table-wrap">
+    <table id="ledgerTable">
+      <colgroup id="ledgerCols"><col class="date"><col class="event"><col class="cond"><col class="detail"></colgroup>
+      <thead id="ledgerHead"><tr><th class="date-head">日付</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容</th></tr></thead>
+      <tbody id="body"><tr><td colspan="4" class="empty">読み込み中です</td></tr></tbody>
+    </table>
+  </div>
+  <div class="note">※ 「編集開始」で直した内容はこのブラウザの編集下書きです。「終了処理 → GitHubへ保存」は正式データへ反映します。</div>
+</div>
+<button id="backToTop" class="back-to-top" type="button" aria-label="ページ上部へ戻る">↑</button>
+<div id="endProcessModal" class="end-modal" hidden>
+  <div class="end-dialog" role="dialog" aria-modal="true" aria-labelledby="endProcessTitle">
+    <div class="end-dialog-head"><div id="endProcessTitle" class="end-dialog-title">終了処理</div><button id="endProcessClose" class="end-close" type="button">×</button></div>
+    <div class="end-dialog-body">
+      <div class="end-list"><p id="endProcessNote" class="end-list-note">終了処理待ちのイベントです。</p><div id="endProcessList"></div></div>
+      <div id="endProcessFormWrap" class="end-form-wrap"><div class="end-empty">左からイベントを選んでください。</div></div>
+    </div>
+  </div>
+</div>
+<div id="eventEditModal" class="end-modal" hidden>
+  <div class="end-dialog event-edit-dialog" role="dialog" aria-modal="true" aria-labelledby="eventEditTitle">
+    <div class="end-dialog-head"><div id="eventEditTitle" class="end-dialog-title">イベント編集</div><button id="eventEditClose" class="end-close" type="button">×</button></div>
+    <div id="eventEditFormWrap" class="event-edit-form"></div>
+  </div>
+</div>
+<script>
+const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
+const REPORT_FLAGS_KEY='free_food_event_report_flags_v1';
+const UI_STATE_KEY='free_food_event_ledger_2026_ui_state_v1';
+const EDIT_DRAFT_KEY='free_food_event_ledger_2026_design_edit_v1';
+const EDIT_PATCH_KEY='free_food_event_ledger_2026_structured_edit_v2';
+const LEGACY_HTML_KEY='free_food_event_ledger_2026_legacy_html_v1';
+const END_DRAFTS_KEY='free_food_event_end_process_drafts_v1';
+const END_BACKUPS_KEY='free_food_event_end_process_saved_backups_v1';
+const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
+const EVENT_EDIT_DRAFTS_KEY='free_food_event_edit_drafts_v1';
+const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
+let events=[],reports=[],flags={},reportFlags={},mode='all',kindFilter='both',hideIgnored=false,editing=false;
+let dirtyIds=new Set();
+let editDraft={patches:{},newEvents:[],deletedIds:[]};
+let officialEventsById=new Map();
+let selected=null;
+const calendarToday=new Date();
+let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
+let listStartYear=0,listStartMonth=0;
+let nextPlanIndex=0;
+let endDrafts={},endBackups={},eventEditDrafts={},selectedEndEventId='',endProcessSingle=false,selectedEventEditId='';
+const endProcessBtn=document.getElementById('endProcessBtn');
+const endProcessCount=document.getElementById('endProcessCount');
+const endProcessModal=document.getElementById('endProcessModal');
+const endProcessTitle=document.getElementById('endProcessTitle');
+const endProcessClose=document.getElementById('endProcessClose');
+const endProcessList=document.getElementById('endProcessList');
+const endProcessFormWrap=document.getElementById('endProcessFormWrap');
+const endProcessNote=document.getElementById('endProcessNote');
+const eventEditModal=document.getElementById('eventEditModal');
+const eventEditTitle=document.getElementById('eventEditTitle');
+const eventEditClose=document.getElementById('eventEditClose');
+const eventEditFormWrap=document.getElementById('eventEditFormWrap');
+
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™®【】\[\]（）()‐\-–—'’:"：～〜]/g,'')}
+function localYmd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function days(a,b){const out=[],x=new Date(a+'T00:00:00'),y=new Date((b||a)+'T00:00:00');for(let d=new Date(x);d<=y;d.setDate(d.getDate()+1))out.push(localYmd(d));return out}
+function inRange(e,d){return d>=e.date&&d<=(e.endDate||e.date)}
+function saveUiState(){
+  localStorage.setItem(UI_STATE_KEY,JSON.stringify({
+    mode,
+    kindFilter,
+    hideIgnored,
+    listStartYear,
+    listStartMonth,
+    calendarBaseYear,
+    calendarBaseMonth
+  }));
+}
+function loadUiState(){
+  try{
+    const v=JSON.parse(localStorage.getItem(UI_STATE_KEY)||'null');
+    if(!v||typeof v!=='object')return;
+    if(['all','upcoming','planned','attended'].includes(v.mode))mode=v.mode;
+    if(['both','exhibition','gathering'].includes(v.kindFilter))kindFilter=v.kindFilter;
+    if(typeof v.hideIgnored==='boolean')hideIgnored=v.hideIgnored;
+    if(Number.isInteger(v.listStartYear)&&v.listStartYear>=2000&&v.listStartYear<=2100)listStartYear=v.listStartYear;
+    if(Number.isInteger(v.listStartMonth)&&v.listStartMonth>=0&&v.listStartMonth<=12)listStartMonth=v.listStartMonth;
+    if(Number.isInteger(v.calendarBaseYear)&&v.calendarBaseYear>=2000&&v.calendarBaseYear<=2100)calendarBaseYear=v.calendarBaseYear;
+    if(Number.isInteger(v.calendarBaseMonth)&&v.calendarBaseMonth>=1&&v.calendarBaseMonth<=12)calendarBaseMonth=v.calendarBaseMonth;
+  }catch(_){}
+}
+function syncModeButtons(){
+  document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('active',x.dataset.mode===mode));
+}
+function syncFilterControls(){
+  document.querySelectorAll('button[data-kind-filter]').forEach(x=>x.classList.toggle('active',x.dataset.kindFilter===kindFilter));
+  const h=document.getElementById('hideIgnoredToggle');if(h)h.checked=hideIgnored;
+}
+function passesCommonFilters(e){
+  if(kindFilter!=='both'&&e._kind!==kindFilter)return false;
+  if(hideIgnored&&flag(e).ignored)return false;
+  return true;
+}
+function flag(e){return flags[e.id]||{}}
+function isVisitCandidate(e){
+  const f=flag(e);
+  return !!(f.planned||f.interested);
+}
+function saveFlags(){
+  localStorage.setItem(FLAGS_KEY,JSON.stringify(flags));
+}
+function setInterested(e,checked){
+  const f=flags[e.id]||{};
+  if(checked){
+    f.interested=true;
+    f.planned=false;
+    f.ignored=false;
+    if(e.endDate&&e.endDate!==e.date){
+      if(!Array.isArray(f.visitDates))f.visitDates=[];
+    }else{
+      delete f.visitDates;
+    }
+  }else{
+    f.interested=false;
+    if(!f.planned&&Array.isArray(f.visitDates))delete f.visitDates;
+  }
+  flags[e.id]=f;saveFlags();render();
+}
+function setPlan(e,checked){
+  const f=flags[e.id]||{};
+  if(checked){
+    f.ignored=false;
+    f.planned=true;
+    f.interested=false;
+    if(e.endDate&&e.endDate!==e.date){
+      if(!Array.isArray(f.visitDates))f.visitDates=[];
+    }else{
+      delete f.visitDates;
+    }
+  }else{
+    f.planned=false;
+    if(!f.interested&&Array.isArray(f.visitDates))delete f.visitDates;
+  }
+  flags[e.id]=f;saveFlags();render();
+}
+function setPlanDay(e,date,checked){
+  const f=flags[e.id]||{};
+  const set=new Set(Array.isArray(f.visitDates)?f.visitDates:[]);
+  if(checked)set.add(date);else set.delete(date);
+  f.visitDates=[...set].filter(d=>inRange(e,d)).sort();
+  if(!f.planned&&!f.interested)f.planned=true;
+  f.ignored=false;
+  flags[e.id]=f;saveFlags();render();
+}
+function setIgnore(e,checked){
+  const f=flags[e.id]||{};
+  f.ignored=checked;
+  if(checked){
+    f.planned=false;
+    f.interested=false;
+    if(Array.isArray(f.visitDates))delete f.visitDates;
+  }
+  flags[e.id]=f;saveFlags();render();
+}
+function actualDates(e){return Array.isArray(e.visitDates)?e.visitDates:[]}
+function reportFlag(id){return reportFlags[id]||{good:false,bad:false}}
+function saveReportFlags(){localStorage.setItem(REPORT_FLAGS_KEY,JSON.stringify(reportFlags))}
+function reportFlagTools(r){
+  if(!r||!r.id)return '';
+  const f=reportFlag(r.id);
+  return '<div class="report-flag-tools"><label class="report-high-label"><input class="report-high-toggle" type="checkbox" data-report-id="'+esc(r.id)+'" '+(f.good?'checked':'')+'>高評価</label><label class="report-low-label"><input class="report-low-toggle" type="checkbox" data-report-id="'+esc(r.id)+'" '+(f.bad?'checked':'')+'>低評価</label></div>';
+}
+function plannedDates(e){
+  const f=flag(e); let x=[];
+  const multiDay=!!(e.endDate&&e.endDate!==e.date);
+  if(multiDay){
+    if(Array.isArray(f.visitDates))x=[...new Set(f.visitDates)].filter(d=>inRange(e,d));
+  }else if(f.planned||f.interested){
+    x=[e.date];
+  }
+  const done=new Set(actualDates(e)),today=todayISO();
+  return x.filter(d=>!done.has(d)&&d>=today).sort();
+}
+function dateText(e){
+  if(e.dateText)return e.dateText.replace(/\t/g,' ').trim();
+  return e.endDate&&e.endDate!==e.date ? e.date+'～'+e.endDate : e.date;
+}
+function compactRangeText(e){
+  const a=new Date(e.date+'T00:00:00'),b=new Date((e.endDate||e.date)+'T00:00:00');
+  const w=['日','月','火','水','木','金','土'];
+  const left=(a.getMonth()+1)+'/'+a.getDate()+'('+w[a.getDay()]+')';
+  if(!e.endDate||e.endDate===e.date)return left;
+  const sameMonth=a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth();
+  const right=(sameMonth?'':(b.getMonth()+1)+'/')+b.getDate()+'('+w[b.getDay()]+')';
+  return left+'～'+right;
+}
+
+function planDayChecks(e){
+  if(!e.endDate||e.endDate===e.date)return '';
+  const selected=new Set(plannedDates(e));
+  const w=['日','月','火','水','木','金','土'];
+  return '<div class="plan-days">'+days(e.date,e.endDate).map(d=>{
+    const x=new Date(d+'T00:00:00');
+    return '<label><input class="plan-day-toggle" type="checkbox" data-id="'+esc(e.id)+'" data-day="'+esc(d)+'" '+(selected.has(d)?'checked':'')+'>'+x.getDate()+'('+w[x.getDay()]+')</label>';
+  }).join('')+'</div>';
+}
+
+function preRatingHtml(value){
+  const t=String(value||'').replace(/^実地評価[：:]?\s*/,'').trim();
+  if(!t)return '';
+  const i=t.indexOf('。');
+  if(i<0)return '<div class="pre"><strong>'+esc(t)+'</strong></div>';
+  const head=t.slice(0,i).trim(),rest=t.slice(i+1).trim();
+  return '<div class="pre"><strong>'+esc(head)+'</strong>'+(rest?'<div class="pre-reason">'+esc(rest)+'</div>':'')+'</div>';
+}
+
+function personLines(e){return (e.conditionLines||[]).filter(x=>String(x).startsWith('名前コード：')).map(x=>String(x).replace(/^名前コード：/,'').trim())}
+function conditionLines(e){return (e.conditionLines||[]).filter(x=>!String(x).startsWith('名前コード：'))}
+function reportFor(e){
+  if(e.sourceReportId){const x=reports.find(r=>r.id===e.sourceReportId);if(x)return x}
+  const nn=norm(e.name);
+  return reports.find(r=>norm(r.name)===nn && (r.scheduledDate===e.date || inRange(e,r.date))) || null;
+}
+function fmtDates(xs){return xs.map(x=>{const d=new Date(x+'T00:00:00');return (d.getMonth()+1)+'/'+d.getDate()}).join('・')}
+function weekKey(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;d.setDate(d.getDate()-n);return localYmd(d)}
+function weekLabel(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;const m=new Date(d);m.setDate(d.getDate()-n);const su=new Date(m);su.setDate(m.getDate()+6);return (m.getMonth()+1)+'/'+m.getDate()+'～'+(su.getMonth()+1)+'/'+su.getDate()}
+
+
+
+function cloneData(v){return JSON.parse(JSON.stringify(v))}
+function eventById(id){return events.find(e=>e.id===id)||null}
+function officialEvent(e){return e?(officialEventsById.get(e.id)||e):null}
+function refreshEditBar(){
+  const n=document.getElementById('editChangeCount');
+  if(n)n.textContent='変更 '+dirtyIds.size+'件';
+}
+function markDirty(id){dirtyIds.add(id);refreshEditBar()}
+function emptyEditDraft(){return {patches:{},newEvents:[],deletedIds:[]}}
+function normalizeEditDraft(v){
+  if(!v||typeof v!=='object')return emptyEditDraft();
+  return {
+    patches:v.patches&&typeof v.patches==='object'?v.patches:{},
+    newEvents:Array.isArray(v.newEvents)?v.newEvents:[],
+    deletedIds:Array.isArray(v.deletedIds)?v.deletedIds:[]
+  };
+}
+function loadStructuredEditDraft(){
+  try{editDraft=normalizeEditDraft(JSON.parse(localStorage.getItem(EDIT_PATCH_KEY)||'null'))}catch(_){editDraft=emptyEditDraft()}
+  const deleted=new Set(editDraft.deletedIds);
+  events=events.filter(e=>!deleted.has(e.id));
+  for(const e of events){
+    const p=editDraft.patches[e.id];
+    if(p)Object.assign(e,cloneData(p));
+  }
+  for(const n of editDraft.newEvents){
+    if(!events.some(e=>e.id===n.id))events.push(cloneData(n));
+  }
+  dirtyIds=new Set([...Object.keys(editDraft.patches),...editDraft.newEvents.map(e=>e.id),...editDraft.deletedIds]);
+}
+function persistStructuredEditDraft(message){
+  localStorage.setItem(EDIT_PATCH_KEY,JSON.stringify(editDraft));
+  const st=document.getElementById('status');
+  if(st&&message)st.textContent=message;
+}
+function recordPatch(e,fields){
+  if(!e)return;
+  if(String(e.id).startsWith('draft-new-')){
+    const i=editDraft.newEvents.findIndex(x=>x.id===e.id);
+    if(i>=0)editDraft.newEvents[i]=cloneData(e);else editDraft.newEvents.push(cloneData(e));
+  }else{
+    const p=editDraft.patches[e.id]||{};
+    for(const f of fields)p[f]=cloneData(e[f]);
+    editDraft.patches[e.id]=p;
+  }
+  markDirty(e.id);
+  persistStructuredEditDraft('編集中（下書き自動保存）');
+}
+function deleteFromDraft(e){
+  if(!e)return;
+  if(String(e.id).startsWith('draft-new-')){
+    editDraft.newEvents=editDraft.newEvents.filter(x=>x.id!==e.id);
+  }else{
+    if(!editDraft.deletedIds.includes(e.id))editDraft.deletedIds.push(e.id);
+    delete editDraft.patches[e.id];
+  }
+  persistStructuredEditDraft('削除を下書き保存しました');
+}
+function clearStructuredEditDraft(){
+  editDraft=emptyEditDraft();
+  localStorage.removeItem(EDIT_PATCH_KEY);
+  localStorage.removeItem(EDIT_DRAFT_KEY);
+  localStorage.removeItem(LEGACY_HTML_KEY);
+}
+
+function splitLines(v){return String(v||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean)}
+
+
+function editableInline(id,field,value,target='event',extraClass=''){
+  const cls=editing?'editable '+extraClass:extraClass;
+  return '<span'+(cls?' class="'+cls.trim()+'"':'')+(editing?' contenteditable="true" spellcheck="false" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'')+'>'+esc(value||'')+'</span>';
+}
+function editableBlock(id,field,value,target='event',extraClass=''){
+  const cls=(editing?'editable editable-block edit-placeholder ':'')+extraClass;
+  return '<div class="'+cls.trim()+'"'+(editing?' contenteditable="true" spellcheck="false" data-direct-id="'+esc(id)+'" data-direct-field="'+esc(field)+'" data-direct-target="'+target+'"':'')+'>'+esc(value||'')+'</div>';
+}
+function editableLines(id,field,lines,target='event',extraClass=''){
+  return editableBlock(id,field,(lines||[]).join('\n'),target,extraClass);
+}
+function applyDirectEdit(el){
+  const id=el.dataset.directId,field=el.dataset.directField;
+  const e=eventById(id);if(!e)return;
+  const text=el.innerText.replace(/\u00a0/g,' ').trim();
+  const changed=[];
+  if(field==='name'){e.name=text;changed.push('name');}
+  else if(field==='venue'){e.venue=text;changed.push('venue');}
+  else if(field==='rating'){e.rating=text;changed.push('rating');}
+  else if(field==='nightTime'){e.nightTime=text;changed.push('nightTime');}
+  else if(field==='nightText'){e.nightText=el.innerText.replace(/\u00a0/g,' ').trim();changed.push('nightText');}
+  else if(field==='people'){
+    const cond=conditionLines(e),people=splitLines(el.innerText).map(x=>'名前コード：'+x);
+    e.conditionLines=[...people,...cond];changed.push('conditionLines');
+  }else if(field==='conditions'){
+    const people=personLines(e).map(x=>'名前コード：'+x);
+    e.conditionLines=[...people,...splitLines(el.innerText)];changed.push('conditionLines');
+  }
+  if(changed.length)recordPatch(e,changed);
+}
+function directDeleteButton(e){
+  return editing?'<button type="button" class="edit-delete-btn" data-direct-delete="'+esc(e.id)+'">削除</button>':'';
+}
+
+function setTableLayout(attendedMode){
+  const cols=document.getElementById('ledgerCols'),head=document.getElementById('ledgerHead');
+  if(attendedMode){
+    cols.innerHTML='<col class="attended-date-col"><col class="attended-event-col"><col class="attended-detail-col">';
+    head.innerHTML='<tr><th class="date-head">日付</th><th>イベント / 会場</th><th>条件 / 評価 / 内容・実地レポート</th></tr>';
+  }else{
+    cols.innerHTML='<col class="date"><col class="event"><col class="cond"><col class="detail">';
+    head.innerHTML='<tr><th class="date-head">日付</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容</th></tr>';
+  }
+}
+function listDateForEvent(e){
+  if(mode==='planned'){
+    const p=plannedDates(e);
+    return p[0]||e.date;
+  }
+  return e.date;
+}
+function passesListStart(date){
+  if(!listStartYear||!listStartMonth)return true;
+  const key=listStartYear+'-'+String(listStartMonth).padStart(2,'0');
+  return String(date||'').slice(0,7)>=key;
+}
+
+
+function todayISO(){
+  const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function isEndProcessAvailable(e){return String(e.date||'')<=todayISO()}
+function needsEndProcessing(e){
+  if(!e||String(e.id||'').startsWith('draft-new-'))return false;
+  const o=officialEvent(e);
+  if(!isEndProcessAvailable(o))return false;
+  if(!o.attendanceStatus)return true;
+  if(o.attendanceStatus==='attended'){
+    if(!actualDates(o).length)return true;
+    const r=reportFor(o);
+    if(!r||!String(r.report||'').trim())return true;
+  }
+  return false;
+}
+function endProcessingEvents(){
+  return events.filter(needsEndProcessing).sort((a,b)=>{const ao=officialEvent(a),bo=officialEvent(b);return String(bo.endDate||bo.date).localeCompare(String(ao.endDate||ao.date))||String(ao.name).localeCompare(String(bo.name),'ja');});
+}
+function updateEndProcessButton(){
+  const n=endProcessingEvents().length;
+  if(endProcessCount)endProcessCount.textContent=String(n);
+  if(endProcessBtn)endProcessBtn.title=n?'終了処理待ち '+n+'件':'終了処理待ちはありません';
+}
+function endDayLabel(iso){
+  const d=new Date(iso+'T00:00:00'),w=['日','月','火','水','木','金','土'];
+  return (d.getMonth()+1)+'/'+d.getDate()+'('+w[d.getDay()]+')';
+}
+function endDraftFor(e){
+  const o=officialEvent(e),rr=reportFor(o);
+  const base={
+    status:o.attendanceStatus||'',
+    visitDates:[...actualDates(o)],
+    rating:rr?.rating||'',
+    report:rr?.report||''
+  };
+  return Object.assign(base,endDrafts[e.id]||{});
+}
+function renderEndProcessList(){
+  const list=endProcessSingle?events.filter(e=>e.id===selectedEndEventId):endProcessingEvents();
+  updateEndProcessButton();
+  if(endProcessNote)endProcessNote.textContent=endProcessSingle?'このイベントの参加記録を修正します。':'開催日を迎え、参加結果または実地レポートが未確定のイベントです。';
+  if(!list.length){
+    endProcessList.innerHTML='<div class="end-empty">'+(endProcessSingle?'対象イベントが見つかりません。':'現在、終了処理待ちはありません。')+'</div>';
+    endProcessFormWrap.innerHTML='<div class="end-empty">'+(endProcessSingle?'編集できません。':'すべて処理済みです。')+'</div>';
+    return;
+  }
+  if(!selectedEndEventId||!list.some(e=>e.id===selectedEndEventId))selectedEndEventId=list[0].id;
+  endProcessList.innerHTML=list.map(e=>{const o=officialEvent(e);return '<button type="button" class="end-event-btn '+(e.id===selectedEndEventId?'active':'')+'" data-end-id="'+esc(e.id)+'"><div class="end-event-date">'+esc(endDayLabel(o.endDate||o.date))+'終了・'+(o._kind==='exhibition'?'展示会':'懇親会')+'</div><div class="end-event-name">'+esc(o.name)+'</div></button>';}).join('');
+  renderEndProcessForm();
+}
+function renderEndProcessForm(){
+  const e=events.find(x=>x.id===selectedEndEventId);
+  if(!e){endProcessFormWrap.innerHTML='<div class="end-empty">イベントを選んでください。</div>';return;}
+  const o=officialEvent(e),d=endDraftFor(e);
+  const visits=days(o.date,o.endDate||o.date).map(day=>'<label><input class="end-visit-check" type="checkbox" value="'+esc(day)+'" '+(d.visitDates.includes(day)?'checked':'')+'>'+esc(endDayLabel(day))+'</label>').join('');
+  const ratings=['','A+','A','A-','B+','B','B-','C+','C','C-','D','E','F'];
+  endProcessFormWrap.innerHTML=
+    '<div class="end-form-title">'+esc(o.name)+'</div>'+
+    '<div class="end-form-venue">'+esc(o.venue||'会場未入力')+' / '+esc(compactRangeText(o))+'</div>'+
+    '<div class="end-field"><span class="end-label">結果</span><div class="end-choice">'+
+      '<label><input type="radio" name="endAttendance" value="attended" '+(d.status==='attended'?'checked':'')+'>参加した</label>'+
+      '<label><input type="radio" name="endAttendance" value="not_attended" '+(d.status==='not_attended'?'checked':'')+'>行っていない</label>'+
+    '</div></div>'+
+    '<div class="end-field"><span class="end-label">実際に行った日</span><div class="end-visit-dates">'+visits+'</div></div>'+
+    '<div class="end-field"><label class="end-label" for="endRating">実地レポート 評価</label><select id="endRating" class="end-rating">'+ratings.map(v=>'<option value="'+v+'" '+(v===d.rating?'selected':'')+'>'+(v||'未選択')+'</option>').join('')+'</select></div>'+
+    '<div class="end-field"><label class="end-label" for="endReport">実地レポート</label><textarea id="endReport" class="end-report">'+esc(d.report||'')+'</textarea></div>'+
+    '<div class="end-actions"><button id="endDraftSave" type="button">下書き保存</button><button id="endGitHubSave" class="end-save" type="button">GitHubへ保存</button><span id="endDraftSaved" class="end-saved"></span></div>';
+}
+function collectEndDraft(){
+  const e=events.find(x=>x.id===selectedEndEventId);if(!e)return null;
+  const o=officialEvent(e),d=endDraftFor(e),choice=endProcessFormWrap.querySelector('input[name="endAttendance"]:checked');
+  return {
+    eventId:o.id,name:o.name,eventName:o.name,kind:o._kind,status:choice?choice.value:'',
+    visitDates:[...endProcessFormWrap.querySelectorAll('.end-visit-check:checked')].map(x=>x.value).sort(),
+    venue:o.venue||'',url:o.url||'',conditionText:conditionLines(o).join('\n'),personName:personLines(o).join(' / '),
+    preRating:o.rating||'',nightTime:o.nightTime||'',nightText:o.nightText||'',
+    rating:endProcessFormWrap.querySelector('#endRating')?.value||d.rating||'',
+    report:endProcessFormWrap.querySelector('#endReport')?.value||d.report||'',
+    schemaVersion:2,updatedAt:new Date().toISOString()
+  };
+}
+function endDraftContentKey(d){
+  if(!d)return '';
+  return JSON.stringify({
+    eventId:d.eventId||'',
+    status:d.status||'',
+    visitDates:[...(d.visitDates||[])].sort(),
+    rating:String(d.rating||''),
+    report:String(d.report||'')
+  });
+}
+function saveEndDraft(showMessage){
+  const d=collectEndDraft();if(!d)return;
+  endDrafts[d.eventId]=d;localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+  if(showMessage){const el=document.getElementById('endDraftSaved');if(el){el.textContent='下書きを保存しました';setTimeout(()=>{if(el)el.textContent=''},1800);}}
+}
+function saveEndDraftIfNeeded(){
+  const d=collectEndDraft();if(!d)return;
+  const b=endBackups[d.eventId];
+  if(b&&endDraftContentKey(b)===endDraftContentKey(d)){
+    if(endDrafts[d.eventId]){delete endDrafts[d.eventId];localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));}
+    return;
+  }
+  endDrafts[d.eventId]=d;localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+}
+function endDraftMatchesGitHub(e,d){
+  if(!e||!d)return false;
+  const r=reportFor(e),status=e.attendanceStatus||'';
+  const a=[...actualDates(e)].sort(),b=[...(d.visitDates||[])].sort();
+  return d.status===status &&
+    JSON.stringify(a)===JSON.stringify(b) &&
+    String(d.rating||'')===String(r?.rating||'') &&
+    String(d.report||'').trim()===String(r?.report||'').trim();
+}
+function cleanupSavedEndDrafts(){
+  let changed=false;
+  for(const [id,d] of Object.entries(endDrafts)){
+    const e=events.find(x=>x.id===id);
+    if(endDraftMatchesGitHub(e,d)){delete endDrafts[id];changed=true;}
+  }
+  if(endDrafts['evt-b6a0272fd890']){delete endDrafts['evt-b6a0272fd890'];changed=true;}
+  if(changed)localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+}
+async function saveEndToGitHub(){
+  const d=collectEndDraft();if(!d)return;
+  if(!d.status){alert('参加した／行っていない のどちらかを選んでください。');return;}
+  if(d.status==='attended'&&!d.visitDates.length){alert('実際に行った日を選んでください。');return;}
+  if(d.status==='attended'&&!String(d.report||'').trim()){alert('参加したイベントは実地レポートを入力してください。');return;}
+  saveEndDraft(false);
+  let editKey=localStorage.getItem(END_EDIT_KEY_KEY)||'';
+  if(!editKey){editKey=prompt('終了処理の編集キーを入力してください。最初の1回だけ保存します。')||'';if(!editKey)return;localStorage.setItem(END_EDIT_KEY_KEY,editKey);}
+  const btn=document.getElementById('endGitHubSave'),msg=document.getElementById('endDraftSaved');
+  if(btn){btn.disabled=true;btn.textContent='保存中…';}if(msg)msg.textContent='';
+  try{
+    const rr=await fetch(END_PROCESS_API_URL.replace(/\/$/,'')+'/save-v2',{method:'POST',headers:{'Content-Type':'application/json','X-Edit-Key':editKey},body:JSON.stringify(d)});
+    const result=await rr.json().catch(()=>({ok:false,error:'保存結果を読めません'}));
+    if(rr.status===401){localStorage.removeItem(END_EDIT_KEY_KEY);throw new Error('編集キーが違います。次回保存時にもう一度入力してください。');}
+    if(!rr.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
+    endBackups[d.eventId]={...d,savedCommit:result.commit||'',savedAt:new Date().toISOString()};
+    localStorage.setItem(END_BACKUPS_KEY,JSON.stringify(endBackups));
+    delete endDrafts[d.eventId];
+    localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+    if(msg)msg.textContent='GitHubへ保存しました。復旧用コピーは別に保持しています。';
+  }catch(err){if(msg)msg.textContent=err.message||String(err);}
+  finally{if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}}
+}
+function openEndProcess(eventId){
+  endProcessSingle=!!eventId;selectedEndEventId=eventId||'';
+  endProcessTitle.textContent=endProcessSingle?'記録修正':'終了処理';
+  endProcessModal.hidden=false;document.body.style.overflow='hidden';renderEndProcessList();
+}
+function closeEndProcess(){
+  saveEndDraftIfNeeded();endProcessModal.hidden=true;document.body.style.overflow='';endProcessSingle=false;selectedEndEventId='';
+}
+
+function eventEditButton(e){
+  if(editing||!e||String(e.id||'').startsWith('draft-new-'))return '';
+  return '<button type="button" class="event-edit-btn" data-event-edit="'+esc(e.id)+'">イベント編集</button>';
+}
+function participantDisplay(e,editingValue=''){
+  if(flag(e).ignored&&!editing)return '';
+  const people=personLines(e);
+  if(editing){
+    const html=editingValue||editableInline(e.id,'people',people.join(' / '));
+    return '<div class="participant-line"><span class="participant-label">参加名義：</span>'+html+'</div>';
+  }
+  return '<div class="participant-line"><span class="participant-label">参加名義：</span>'+esc(people.join(' / '))+'</div>';
+}
+function venueParticipantBlock(e,venueHtml,editingValue=''){
+  return '<div class="venue">'+venueHtml+'</div>'+participantDisplay(e,editingValue);
+}
+function openEventEdit(eventId){
+  const e=events.find(x=>x.id===eventId);
+  if(!e||String(e.id||'').startsWith('draft-new-'))return;
+  selectedEventEditId=e.id;
+  const saved=eventEditDrafts[e.id]||{};
+  const people=('personName' in saved)?saved.personName:personLines(e).join(' / ');
+  const val=(k,fallback)=>k in saved?saved[k]:fallback;
+  eventEditTitle.textContent='イベント編集';
+  eventEditFormWrap.innerHTML=
+    '<div class="event-edit-kind kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</div>'+
+    '<div class="event-edit-note">入力内容は自動でブラウザ下書き保存されます。現在Cloudflare Worker更新待ちのため、ここから終了処理用保存は行いません。</div>'+
+    '<div class="event-edit-grid">'+
+      '<label class="wide">イベント名<input id="eventEditName" type="text" value="'+esc(val('eventName',e.name||''))+'"></label>'+
+      '<label>開始日<input id="eventEditDate" type="date" value="'+esc(val('date',e.date||''))+'"></label>'+
+      '<label>終了日<input id="eventEditEndDate" type="date" value="'+esc(val('endDate',(e.endDate&&e.endDate!==e.date)?e.endDate:''))+'" placeholder="1日開催なら空欄"></label>'+
+      '<label class="wide">会場<input id="eventEditVenue" type="text" value="'+esc(val('venue',e.venue||''))+'"></label>'+
+      '<label class="wide">参加名義<input id="eventEditPerson" type="text" value="'+esc(people)+'"></label>'+
+      '<label class="wide">URL<input id="eventEditUrl" type="url" value="'+esc(val('url',e.url||''))+'"></label>'+
+      '<label class="wide">参加条件<textarea id="eventEditConditions">'+esc(val('conditionText',conditionLines(e).join('\n')))+'</textarea></label>'+
+      '<label>事前評価<input id="eventEditPreRating" type="text" value="'+esc(val('preRating',e.rating||''))+'"></label>'+
+      '<label>時間<input id="eventEditNightTime" type="text" value="'+esc(val('nightTime',e.nightTime||''))+'"></label>'+
+      '<label class="wide">内容・根拠<textarea id="eventEditNightText" class="event-edit-long">'+esc(val('nightText',e.nightText||''))+'</textarea></label>'+
+    '</div>'+
+    '<div class="event-edit-actions"><button id="eventEditSave" class="end-save" type="button">下書きを反映</button><span id="eventEditStatus" class="event-edit-status">GitHub確定はWorker更新後</span></div>';
+  eventEditModal.hidden=false;
+  document.body.style.overflow='hidden';
+}
+function closeEventEdit(){
+  eventEditModal.hidden=true;selectedEventEditId='';
+  if(endProcessModal.hidden)document.body.style.overflow='';
+}
+function saveEventEditDraft(){
+  const d=collectEventEdit();if(!d)return;
+  eventEditDrafts[d.eventId]=d;
+  localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
+}
+function collectEventEdit(){
+  const e=events.find(x=>x.id===selectedEventEditId);if(!e)return null;
+  const o=officialEvent(e);
+  return {
+    editOnly:true,
+    eventId:o.id,
+    kind:o._kind,
+    eventName:eventEditFormWrap.querySelector('#eventEditName')?.value.trim()||'',
+    name:eventEditFormWrap.querySelector('#eventEditName')?.value.trim()||'',
+    date:eventEditFormWrap.querySelector('#eventEditDate')?.value||'',
+    endDate:eventEditFormWrap.querySelector('#eventEditEndDate')?.value||'',
+    venue:eventEditFormWrap.querySelector('#eventEditVenue')?.value.trim()||'',
+    personName:eventEditFormWrap.querySelector('#eventEditPerson')?.value.trim()||'',
+    url:eventEditFormWrap.querySelector('#eventEditUrl')?.value.trim()||'',
+    conditionText:eventEditFormWrap.querySelector('#eventEditConditions')?.value||'',
+    preRating:eventEditFormWrap.querySelector('#eventEditPreRating')?.value.trim()||'',
+    nightTime:eventEditFormWrap.querySelector('#eventEditNightTime')?.value.trim()||'',
+    nightText:eventEditFormWrap.querySelector('#eventEditNightText')?.value||'',
+    schemaVersion:2,
+    updatedAt:new Date().toISOString()
+  };
+}
+function applyEventEditLocally(d,includeDate){
+  const e=events.find(x=>x.id===d.eventId);if(!e)return;
+  e.name=d.eventName;e.venue=d.venue;e.url=d.url;
+  const cond=splitLines(d.conditionText).filter(x=>!x.startsWith('名前コード：'));
+  if(d.personName)cond.unshift('名前コード：'+d.personName);
+  e.conditionLines=cond;e.rating=d.preRating;e.nightTime=d.nightTime;e.nightText=d.nightText;
+  if(includeDate){
+    e.date=d.date;
+    e.endDate=d.endDate||d.date;
+    e.dateText='';
+  }
+  officialEventsById.set(e.id,cloneData(e));
+}
+function eventEditPayloadFromEvent(e,personNameOverride=null){
+  const o=officialEvent(e);
+  return {
+    editOnly:true,
+    eventId:o.id,
+    kind:o._kind,
+    eventName:o.name||'',
+    name:o.name||'',
+    date:o.date||'',
+    endDate:(o.endDate&&o.endDate!==o.date)?o.endDate:'',
+    venue:o.venue||'',
+    personName:personNameOverride===null?personLines(o).join(' / '):personNameOverride,
+    url:o.url||'',
+    conditionText:conditionLines(o).join('\n'),
+    preRating:o.rating||'',
+    nightTime:o.nightTime||'',
+    nightText:o.nightText||'',
+    schemaVersion:2,
+    updatedAt:new Date().toISOString()
+  };
+}
+async function clearParticipantNameForIgnored(e){
+  if(!e||!personLines(e).length)return true;
+  e.conditionLines=[...conditionLines(e)];
+  recordPatch(e,['conditionLines']);
+  const d=eventEditPayloadFromEvent(e,'');
+  eventEditDrafts[e.id]=d;
+  localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
+  const st=document.getElementById('status');if(st)st.textContent='行かない：参加名義を下書きから削除しました';
+  return true;
+}
+async function saveEventEditDraftToBrowser(){
+  const d=collectEventEdit();if(!d)return;
+  const status=eventEditFormWrap.querySelector('#eventEditStatus');
+  if(!d.eventName){if(status)status.textContent='イベント名を入力してください。';return;}
+  if(!d.date){if(status)status.textContent='開始日を入力してください。';return;}
+  if(d.endDate&&d.endDate<d.date){if(status)status.textContent='終了日は開始日以降にしてください。';return;}
+  const e=events.find(x=>x.id===d.eventId);if(!e)return;
+  e.name=d.eventName;
+  e.date=d.date;
+  e.endDate=d.endDate||d.date;
+  e.dateText='';
+  e.venue=d.venue;
+  e.url=d.url;
+  const cond=splitLines(d.conditionText).filter(x=>!x.startsWith('名前コード：'));
+  if(d.personName)cond.unshift('名前コード：'+d.personName);
+  e.conditionLines=cond;
+  e.rating=d.preRating;
+  e.nightTime=d.nightTime;
+  e.nightText=d.nightText;
+  recordPatch(e,['name','date','endDate','dateText','venue','url','conditionLines','rating','nightTime','nightText']);
+  eventEditDrafts[e.id]=d;
+  localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
+  if(status)status.textContent='ブラウザ下書きへ反映しました。GitHub確定はWorker更新後です。';
+  render();
+}
+function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,plannedUnknown=false){
+  const r=reportFor(e), p=plannedDates(e), a=actualDates(e), people=personLines(e), cond=conditionLines(e);
+  const f=flag(e),multiDay=!!(e.endDate&&e.endDate!==e.date),candidate=!!(f.planned||f.interested);
+  const candidateText=f.interested?'興味あり':'予定';
+  const badges=[];
+  badges.push('<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>');
+  if(a.length)badges.push('<span class="tag attended">参加 '+esc(fmtDates(a))+'</span>');
+  else if(e.attendanceStatus==='attended')badges.push('<span class="tag attended">参加済み（日付未入力）</span>');
+  if(candidate){
+    if(p.length)badges.push('<span class="tag planned">'+candidateText+' '+esc(fmtDates(plannedDate?[plannedDate]:p))+'</span>');
+    else if(multiDay)badges.push('<span class="tag planned">'+candidateText+' 未定</span>');
+  }
+  if(e.attendanceStatus==='not_attended')badges.push('<span class="tag notattended">未参加</span>');
+
+
+  const today=new Date();today.setHours(0,0,0,0);
+  const endDay=new Date((e.endDate||e.date)+'T00:00:00');
+  const done=endDay<today;
+  const rf=r?reportFlag(r.id):{good:false,bad:false};
+  const cls=[
+    e.attendanceStatus==='not_attended'?'row-notattended':'',
+    rf.good?'report-good':'',
+    rf.bad?'report-bad':'',
+    candidate?'row-planned':'',
+    (!done&&f.ignored)?'row-ignored':''
+  ].filter(Boolean).join(' ');
+
+  const planTools=(!done&&!r&&!editing)?'<label><input class="interest-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.interested&&!f.planned?'checked':'')+'>興味あり</label><label><input class="plan-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.planned?'checked':'')+'>行く</label><label><input class="ignore-toggle" type="checkbox" data-id="'+esc(e.id)+'" '+(f.ignored?'checked':'')+'>行かない</label>':'';
+  const tools=planTools?'<div class="event-tools">'+planTools+'</div>':'';
+  const dayTools=(!done&&!r&&!editing)?planDayChecks(e):'';
+  const plannedDayNo=(plannedDate&&multiDay)?days(e.date,plannedDate).length:0;
+  const plannedSuffix=plannedDayNo?'（'+plannedDayNo+'日目）':'';
+  const shownName=e.name+plannedSuffix;
+  const nameHtml=editing?editableInline(e.id,'name',e.name):(
+    e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(shownName)+'</a>':esc(shownName)
+  );
+  const personHtml=editing?editableBlock(e.id,'people',people.join('\n')):'';
+  const participantLine=participantDisplay(e,personHtml);
+  const canOfficialEnd=!String(e.id).startsWith('draft-new-')&&isEndProcessAvailable(officialEvent(e));
+  const pendingEnd=needsEndProcessing(e);
+  const endButton=(!editing&&canOfficialEnd)?'<button type="button" class="end-row-btn '+(pendingEnd?'end-pending':'end-correction')+'" data-end-edit="'+esc(e.id)+'">'+(pendingEnd?'終了処理':'記録修正')+'</button>':'';
+  const actions=eventEditButton(e)+endButton;
+  const rightTop=actions?'<div class="event-action-stack">'+actions+'</div>':'';
+  const venueHtml=editing?editableInline(e.id,'venue',e.venue||''):esc(e.venue||'');
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
+    '<div class="event-head"><div class="name event-name">'+nameHtml+'</div></div>'+
+    venueParticipantBlock(e,venueHtml,personHtml);
+
+  const condHtml=editing
+    ? '<div class="report-cond">'+editableLines(e.id,'conditions',cond)+'</div>'
+    : (cond.length?'<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>':'');
+  let detail='';
+  if(editing){
+    detail+='<div class="pre">'+editableBlock(e.id,'rating',e.rating||'')+'</div>';
+    detail+='<div><strong>時間</strong> '+editableInline(e.id,'nightTime',e.nightTime||'')+'</div>';
+    detail+='<div>'+editableBlock(e.id,'nightText',e.nightText||'')+'</div>';
+    if(r){
+      detail+='<div class="report-rating-line"><div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>'+reportFlagTools(r)+'</div>';
+      detail+='<div class="report">'+esc(r.report||'')+'</div>';
+    }
+  }else{
+    if(!r && e.rating)detail+=preRatingHtml(e.rating);
+    if(e.nightTime||e.nightText)detail+='<div>'+esc([e.nightTime,e.nightText].filter(Boolean).join('　'))+'</div>';
+    if(r){
+      detail+='<div class="report-rating-line"><div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>'+reportFlagTools(r)+'</div>';
+      detail+='<div class="report">'+esc(r.report||'')+'</div>';
+    }
+  }
+
+  const dateHtml=editing
+    ? '<div class="edit-date-pair"><input class="direct-date-start" type="date" data-id="'+esc(e.id)+'" value="'+esc(e.date||'')+'"><input class="direct-date-end" type="date" data-id="'+esc(e.id)+'" value="'+esc(e.endDate||'')+'" title="終了日（1日なら空欄）"></div>'
+    : esc(plannedUnknown?'未定':(plannedDate?endDayLabel(plannedDate):compactRangeText(e)));
+  const dateCell=showDate?'<td class="date'+((plannedDate||plannedUnknown)?' planned-date':'')+'" rowspan="'+rowspan+'">'+dateHtml+(plannedDate&&rowspan>1?'<div class="visit-count">'+rowspan+'件</div>':'')+'</td>':'';
+  const right=done?'<td colspan="2">'+condHtml+detail+'</td>':'<td>'+condHtml+'</td><td>'+detail+'</td>';
+  return '<tr class="event-row '+cls+((plannedDate||plannedUnknown)?(isFirstOfDate?' planned-day-start':''):'')+'" data-event-id="'+esc(e.id)+'" data-planned-date="'+esc(plannedDate||'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td>'+right+'</tr>';
+}
+
+function attendedUndatedRow(e){
+  const r=reportFor(e),people=personLines(e),cond=conditionLines(e);
+  const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>','<span class="tag attended">参加済み（日付未入力）</span>'];
+  const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
+  const rightTop='<div class="event-action-stack">'+eventEditButton(e)+'<button type="button" class="end-row-btn end-pending" data-end-edit="'+esc(e.id)+'">終了処理</button></div>';
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantBlock(e,esc(e.venue||''));
+  let detail='<div class="attended-undated-note">終了処理で「実際に行った日」を入力してください。</div>';
+  if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
+  if(r&&String(r.report||'').trim()){
+    detail+='<div class="report-rating-line"><div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>'+reportFlagTools(r)+'</div><div class="report">'+esc(r.report||'')+'</div>';
+  }
+  const rf=r?reportFlag(r.id):{good:false,bad:false};
+  return '<tr class="event-row attended-undated-row'+(rf.good?' report-good':'')+(rf.bad?' report-bad':'')+'" data-event-id="'+esc(e.id)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'"><td class="date">未入力</td><td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+}
+
+function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
+  const r=reportFor(e), people=personLines(e), cond=conditionLines(e);
+  const visits=actualDates(e).slice().sort();
+  const firstVisit=visits[0]||visitDate;
+  const showReport=visitDate===firstVisit;
+
+  const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>'];
+  const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
+  const pendingEnd=needsEndProcessing(e),endLabel=pendingEnd?'終了処理':'記録修正';
+  const rightTop='<div class="event-action-stack">'+eventEditButton(e)+'<button type="button" class="end-row-btn '+(pendingEnd?'end-pending':'end-correction')+'" data-end-edit="'+esc(e.id)+'">'+endLabel+'</button></div>';
+
+  let schedule='';
+  if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(compactRangeText(e))+'</div>';
+  else if(e.date!==visitDate) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
+
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+
+    '<div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantBlock(e,esc(e.venue||''))+schedule;
+
+  let detail='';
+  if(showReport){
+    if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
+    if(r){
+      detail+='<div class="report-rating-line"><div class="rating">実地レポート　評価：'+esc(String(r.rating||'').replace(/^実地評価[：:]?\s*/,''))+'</div>'+reportFlagTools(r)+'</div>';
+      if(visits.length>1)detail+='<div class="report-days">参加日 '+esc(fmtDates(visits))+'</div>';
+      detail+='<div class="report">'+esc(r.report||'')+'</div>';
+    }else{
+      detail+='<div class="attended-undated-note">実地レポート未入力</div>';
+    }
+  }else{
+    detail+='<div class="report-reference">レポートは '+esc(fmtDates([firstVisit]))+' に表示</div>';
+  }
+
+  const dateCell=showDate?'<td class="date attended-date" rowspan="'+rowspan+'"><strong>'+esc(visitDate.replace(/^\\d{4}-/,'').replace('-','/'))+'</strong><div class="visit-count">'+rowspan+'件</div></td>':'';
+  const rf=(showReport&&r)?reportFlag(r.id):{good:false,bad:false};
+  return '<tr class="event-row attended-day-row'+(isFirstOfDate?' attended-day-start':'')+(rf.good?' report-good':'')+(rf.bad?' report-bad':'')+'" data-event-id="'+esc(e.id)+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+}
+
+function isoDate(y,m,d){return y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
+function calendarDatesForEvent(e){
+  if(mode==='attended')return actualDates(e);
+  if(mode==='planned')return plannedDates(e);
+  return days(e.date,e.endDate||e.date);
+}
+function calendarMap(){
+  const map=new Map(),today=todayISO();
+  const get=(d)=>{
+    if(!map.has(d))map.set(d,{ids:new Set(),event:false,planned:false,attended:false});
+    return map.get(d);
+  };
+  for(const e of events){
+    if(!passesCommonFilters(e))continue;
+    if(mode==='upcoming'&&String(e.endDate||e.date)<today)continue;
+    if(mode==='attended'){
+      for(const d of actualDates(e)){const v=get(d);v.ids.add(e.id);v.attended=true;}
+    }else if(mode==='planned'){
+      for(const d of plannedDates(e)){const v=get(d);v.ids.add(e.id);v.planned=true;}
+    }else if(mode==='upcoming'){
+      for(const d of days(e.date,e.endDate||e.date)){
+        if(d<today)continue;
+        const v=get(d);v.ids.add(e.id);v.event=true;
+      }
+      for(const d of plannedDates(e)){
+        if(d<today)continue;
+        const v=get(d);v.ids.add(e.id);v.planned=true;
+      }
+    }else{
+      for(const d of days(e.date,e.endDate||e.date)){const v=get(d);v.ids.add(e.id);v.event=true;}
+      for(const d of plannedDates(e)){const v=get(d);v.ids.add(e.id);v.planned=true;}
+      for(const d of actualDates(e)){const v=get(d);v.ids.add(e.id);v.attended=true;}
+    }
+  }
+  for(const v of map.values())v.count=v.ids.size;
+  return map;
+}
+function availableYears(){
+  const ys=new Set([calendarToday.getFullYear()]);
+  for(const e of events){
+    if(e.date)ys.add(Number(e.date.slice(0,4)));
+    if(e.endDate)ys.add(Number(e.endDate.slice(0,4)));
+    for(const d of actualDates(e))ys.add(Number(d.slice(0,4)));
+    for(const d of plannedDates(e))ys.add(Number(d.slice(0,4)));
+  }
+  return [...ys].filter(Number.isFinite).sort((a,b)=>a-b);
+}
+function nextPlannedGroups(){
+  const today=todayISO(),items=[];
+  const rangeStart=isoDate(calendarToday.getFullYear(),calendarToday.getMonth()+1,1);
+  const rangeEndDate=new Date(calendarToday.getFullYear(),calendarToday.getMonth()+2,0);
+  const rangeEnd=localYmd(rangeEndDate);
+  for(const e of events){
+    const f=flag(e);
+    if(!f.planned)continue;
+    const ds=plannedDates(e).filter(d=>d>today&&d>=rangeStart&&d<=rangeEnd);
+    for(const d of ds)items.push({e,date:d});
+  }
+  items.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a.e,b.e)||String(a.e.name||'').localeCompare(String(b.e.name||''),'ja'));
+  const groups=[];
+  for(const x of items){
+    let g=groups[groups.length-1];
+    if(!g||g.date!==x.date){g={date:x.date,items:[]};groups.push(g);}
+    g.items.push(x);
+  }
+  return groups;
+}
+function renderNextPlannedCard(){
+  const host=document.getElementById('nextPlanHost');if(!host)return;
+  host.innerHTML='';host.appendChild(buildNextPlannedCard());
+}
+function buildNextPlanNav(dir,enabled){
+  if(!enabled){const sp=document.createElement('span');sp.className='next-plan-nav-spacer';return sp;}
+  const btn=document.createElement('button');btn.type='button';btn.className='next-plan-nav '+(dir<0?'prev':'next');btn.setAttribute('aria-label',dir<0?'前の参加予定日':'次の参加予定日');
+  const sym=document.createElement('span');sym.className='nav-symbol';sym.textContent=dir<0?'‹':'›';btn.appendChild(sym);
+  btn.onclick=()=>{nextPlanIndex+=dir;renderNextPlannedCard();};
+  return btn;
+}
+function appendNextPlannedItem(card,x,index){
+  const e=x.e,item=document.createElement('div');item.className='next-plan-item';
+  if(index>0)item.style.borderTop='1px solid #eceeed';
+  const name=document.createElement('div');name.className='next-plan-name';
+  if(e.url){const a=document.createElement('a');a.href=e.url;a.target='_blank';a.rel='noopener';a.textContent=e.name;name.appendChild(a);}else{name.textContent=e.name;}
+  const meta=document.createElement('div');meta.className='next-plan-meta';
+  const kind=document.createElement('span');kind.className='kind-badge '+e._kind;kind.textContent=e._kind==='exhibition'?'展示会':'懇親会';
+  const person=document.createElement('span');person.className='next-plan-person';
+  const personLabel=document.createElement('span');personLabel.className='next-plan-meta-label';personLabel.textContent='参加名義：';
+  const personValue=document.createElement('span');personValue.className='next-plan-meta-value';personValue.textContent=personLines(e).join(' / ')||'—';
+  person.appendChild(personLabel);person.appendChild(personValue);
+  const venue=document.createElement('span');venue.className='next-plan-venue';
+  const venueLabel=document.createElement('span');venueLabel.className='next-plan-meta-label';venueLabel.textContent='場所：';
+  const venueValue=document.createElement('span');venueValue.className='next-plan-meta-value';venueValue.textContent=e.venue||'—';
+  venue.appendChild(venueLabel);venue.appendChild(venueValue);
+  meta.appendChild(kind);meta.appendChild(person);meta.appendChild(venue);item.appendChild(name);item.appendChild(meta);card.appendChild(item);
+}
+function buildNextPlannedCard(){
+  const card=document.createElement('div');card.className='next-plan-card';
+  const groups=nextPlannedGroups();
+  if(nextPlanIndex>=groups.length)nextPlanIndex=Math.max(0,groups.length-1);
+  if(nextPlanIndex<0)nextPlanIndex=0;
+  const head=document.createElement('div');head.className='next-plan-head';
+  head.appendChild(buildNextPlanNav(-1,groups.length>0&&nextPlanIndex>0));
+  const center=document.createElement('div');center.className='next-plan-heading-center';
+  const title=document.createElement('strong');title.className='next-plan-title';title.textContent='次回参加予定イベント';center.appendChild(title);
+  if(groups.length){const date=document.createElement('span');date.className='next-plan-date';date.textContent=endDayLabel(groups[nextPlanIndex].date);center.appendChild(date);}
+  head.appendChild(center);
+  head.appendChild(buildNextPlanNav(1,groups.length>0&&nextPlanIndex<groups.length-1));
+  card.appendChild(head);
+  if(!groups.length){
+    const empty=document.createElement('div');empty.className='next-plan-empty';empty.textContent='当月・来月に参加予定はありません';card.appendChild(empty);return card;
+  }
+  groups[nextPlanIndex].items.forEach((x,index)=>appendNextPlannedItem(card,x,index));
+  return card;
+}
+function buildMonthCard(year,month,map,nav=''){
+  const card=document.createElement('div');card.className='month-card';
+  if(nav){
+    const btn=document.createElement('button');btn.type='button';btn.className='month-nav '+nav;btn.setAttribute('aria-label',nav==='prev'?'前の月':'次の月');const sym=document.createElement('span');sym.className='nav-symbol';sym.textContent=nav==='prev'?'‹':'›';btn.appendChild(sym);btn.onclick=e=>{e.stopPropagation();shiftCalendar(nav==='prev'?-1:1);};card.appendChild(btn);
+  }
+  const title=document.createElement('div');title.className='month-name';title.textContent=year+'年'+month+'月';title.title=year+'年'+month+'月の一覧へ移動';title.onclick=()=>jumpToMonth(year,month);card.appendChild(title);
+  const grid=document.createElement('div');grid.className='month-grid';
+  ['日','月','火','水','木','金','土'].forEach(w=>{const x=document.createElement('div');x.className='weekday';x.textContent=w;grid.appendChild(x)});
+
+  const applyInfo=(x,key)=>{
+    if(!map.has(key))return;
+    const info=map.get(key);
+    const cls=mode==='attended'?'has-attended':mode==='planned'?'has-plan':info.attended?'has-attended':info.planned?'has-plan':'has-event';
+    x.classList.add(cls,'clickable');
+    if(mode==='all'||mode==='upcoming'){
+      const labels=[];
+      if(info.attended)labels.push('参加済み');
+      if(info.planned)labels.push('参加予定');
+      if(!labels.length)labels.push('イベント');
+      x.title=labels.join('・')+' '+info.count+'件';
+    }else{
+      x.title=(mode==='attended'?'参加済み ':mode==='planned'?'参加予定 ':'イベント ')+info.count+'件';
+    }
+    x.onclick=()=>jumpToDate(key);
+  };
+  const markToday=(x,y,m,d)=>{
+    if(y===calendarToday.getFullYear()&&m===calendarToday.getMonth()+1&&d===calendarToday.getDate())x.classList.add('today');
+  };
+
+  const first=new Date(year,month-1,1),last=new Date(year,month,0).getDate();
+  const lead=first.getDay();
+  const prevLast=new Date(year,month-1,0).getDate();
+  const prevDate=new Date(year,month-2,1),prevYear=prevDate.getFullYear(),prevMonth=prevDate.getMonth()+1;
+  for(let i=lead;i>0;i--){
+    const d=prevLast-i+1,key=isoDate(prevYear,prevMonth,d),x=document.createElement('div');
+    x.className='cal-day other-month';x.textContent=(i===lead?prevMonth+'/':'')+d;x.title='前月 '+prevMonth+'/'+d;
+    const dow=new Date(prevYear,prevMonth-1,d).getDay();if(dow===0)x.classList.add('sunday');if(dow===6)x.classList.add('saturday');
+    applyInfo(x,key);grid.appendChild(x);
+  }
+
+  for(let d=1;d<=last;d++){
+    const key=isoDate(year,month,d),x=document.createElement('div');x.className='cal-day';x.textContent=d;
+    const dow=new Date(year,month-1,d).getDay();if(dow===0)x.classList.add('sunday');if(dow===6)x.classList.add('saturday');
+    applyInfo(x,key);markToday(x,year,month,d);grid.appendChild(x);
+  }
+
+  const used=lead+last,trailing=42-used;
+  const nextDate=new Date(year,month,1),nextYear=nextDate.getFullYear(),nextMonth=nextDate.getMonth()+1;
+  for(let d=1;d<=trailing;d++){
+    const key=isoDate(nextYear,nextMonth,d),x=document.createElement('div');
+    x.className='cal-day other-month';x.textContent=(d===1?nextMonth+'/':'')+d;x.title='翌月 '+nextMonth+'/'+d;
+    const dow=new Date(nextYear,nextMonth-1,d).getDay();if(dow===0)x.classList.add('sunday');if(dow===6)x.classList.add('saturday');
+    applyInfo(x,key);grid.appendChild(x);
+  }
+
+  card.appendChild(grid);return card;
+}
+function setTableStartMonth(year,month){
+  if(month===0){
+    listStartYear=0;listStartMonth=0;
+  }else{
+    listStartYear=year;listStartMonth=month;
+    calendarBaseYear=year;calendarBaseMonth=month;
+  }
+  saveUiState();
+  render();
+}
+function shiftCalendar(dir){
+  const d=new Date(calendarBaseYear,calendarBaseMonth-1+dir,1);
+  calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar(dir);
+}
+function renderCalendar(slideDir=0){
+  const months=document.getElementById('calendarMonths'),nextHost=document.getElementById('nextPlanHost'),yearSel=document.getElementById('calendarYear'),jump=document.getElementById('monthJump');
+  const map=calendarMap();months.innerHTML='';months.classList.remove('slide-from-right','slide-from-left');
+  const ys=availableYears();
+  const shownYear=listStartYear||calendarToday.getFullYear();
+  yearSel.innerHTML=ys.map(y=>'<option value="'+y+'" '+(y===shownYear?'selected':'')+'>'+y+'</option>').join('');
+  jump.innerHTML='<button type="button" data-month="0" class="'+(!listStartMonth?'active':'')+'">全期間</button>'+Array.from({length:12},(_,i)=>'<button type="button" data-month="'+(i+1)+'" title="'+(i+1)+'月以降を表に表示" class="'+(listStartMonth===i+1?'active':'')+'">'+(i+1)+'月</button>').join('');
+  jump.querySelectorAll('button[data-month]').forEach(btn=>{
+    btn.onclick=()=>{
+      const m=parseInt(btn.dataset.month,10);
+      const y=parseInt(yearSel.value,10)||calendarToday.getFullYear();
+      setTableStartMonth(y,m);
+    };
+  });
+  for(let off=0;off<2;off++){
+    const d=new Date(calendarBaseYear,calendarBaseMonth-1+off,1);
+    months.appendChild(buildMonthCard(d.getFullYear(),d.getMonth()+1,map,off===0?'prev':'next'));
+  }
+  nextPlanIndex=Math.max(0,nextPlanIndex);nextHost.innerHTML='';nextHost.appendChild(buildNextPlannedCard());
+  if(slideDir){
+    void months.offsetWidth;
+    months.classList.add(slideDir>0?'slide-from-right':'slide-from-left');
+    setTimeout(()=>months.classList.remove('slide-from-right','slide-from-left'),320);
+  }
+}
+function setCalendarBase(year,month){
+  const d=new Date(year,month-1,1);calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar();
+}
+function jumpToMonth(year,month){
+  const key=year+'-'+String(month).padStart(2,'0');
+  const row=document.querySelector('tr.month[data-month="'+key+'"]');
+  if(!row)return;
+  row.scrollIntoView({behavior:'smooth',block:'start'});
+  row.classList.remove('calendar-focus');void row.offsetWidth;row.classList.add('calendar-focus');
+  setTimeout(()=>row.classList.remove('calendar-focus'),1400);
+}
+function jumpToDate(date){
+  const find=()=>{
+    const rows=[...document.querySelectorAll('tr.event-row')];
+    if(mode==='attended')return rows.find(r=>r.dataset.visitDate===date)||null;
+    if(mode==='planned')return rows.find(r=>r.dataset.plannedDate===date)||null;
+    return rows.find(r=>{
+      const a=r.dataset.startDate,b=r.dataset.endDate||a;
+      return a&&date>=a&&date<=b;
+    })||null;
+  };
+  const go=()=>{
+    const target=find();if(!target)return false;
+    target.scrollIntoView({behavior:'smooth',block:'center'});
+    target.classList.remove('calendar-focus');void target.offsetWidth;target.classList.add('calendar-focus');
+    setTimeout(()=>target.classList.remove('calendar-focus'),1400);
+    return true;
+  };
+  if(go())return;
+  let reveal=date;
+  if(mode==='all'||mode==='upcoming'){
+    const found=events.filter(e=>passesCommonFilters(e)&&e.date&&date>=e.date&&date<=(e.endDate||e.date)&&(mode!=='upcoming'||String(e.endDate||e.date)>=todayISO()));
+    if(found.length)reveal=found.map(e=>e.date).sort()[0];
+  }
+  listStartYear=Number(reveal.slice(0,4));listStartMonth=Number(reveal.slice(5,7));
+  saveUiState();render();
+  requestAnimationFrame(go);
+}
+
+function venueSortKey(e){
+  const v=String(e.venue||'').replace(/\s+/g,' ').trim();
+  const hallOnly=v.match(/^(東|西|南)\s*(\d+)/);
+  const isBigSight=/ビッ?クサイト|東京ビッグサイト/.test(v)||!!hallOnly;
+  if(isBigSight){
+    const areas=[['東',0],['西',1],['南',2]];
+    for(const [label,rank] of areas){
+      const m=v.match(new RegExp(label+'\\s*(\\d+)'));
+      if(m)return [0,rank,Number(m[1]),v];
+    }
+    return [0,9,999,v];
+  }
+  return [1,0,0,v];
+}
+function compareVenue(a,b){
+  const x=venueSortKey(a),y=venueSortKey(b);
+  if(x[0]===0&&y[0]===0){
+    for(let i=1;i<3;i++){if(x[i]!==y[i])return x[i]-y[i];}
+  }else if(x[0]!==y[0]){
+    return x[0]-y[0];
+  }
+  const kindA=a._kind==='gathering'?1:0,kindB=b._kind==='gathering'?1:0;
+  if(kindA!==kindB)return kindA-kindB;
+  const vd=String(x[3]).localeCompare(String(y[3]),'ja',{numeric:true});
+  if(vd)return vd;
+  return String(a.name||'').localeCompare(String(b.name||''),'ja',{numeric:true});
+}
+
+
+function setSelected(row){
+  if(selected)selected.classList.remove('selected');
+  selected=row;
+  if(selected)selected.classList.add('selected');
+  updateEditButtons();
+}
+function updateEditButtons(){
+  const ev=!!(selected&&selected.classList.contains('event-row'));
+  const add=document.getElementById('addBtn'),del=document.getElementById('delBtn'),link=document.getElementById('linkBtn'),kind=document.getElementById('kindBtn');
+  if(add)add.disabled=!editing;
+  if(del)del.disabled=!editing||!ev;
+  if(link)link.disabled=!editing||!ev;
+  if(kind)kind.disabled=!editing||!ev;
+}
+function applyContentEditable(){
+  const body=document.getElementById('body');
+  body.querySelectorAll('[data-direct-id]').forEach(el=>el.contentEditable=editing?'true':'false');
+  body.querySelectorAll('input,button,a').forEach(el=>el.contentEditable='false');
+}
+function setLegacyEditing(on){
+  editing=on;
+  document.body.classList.toggle('editing',on);
+  selected=null;
+  if(on&&mode!=='all'){
+    mode='all';
+    syncModeButtons();
+    saveUiState();
+  }
+  const b=document.getElementById('editBtn');
+  if(b)b.textContent=on?'一覧直接編集を終了':'一覧直接編集（旧）';
+  render();
+  const st=document.getElementById('status');
+  if(st)st.textContent=on?'編集中：文字は直接編集、日付は日付欄から変更':'閲覧モード';
+}
+function clearLegacyHTML(){
+  clearStructuredEditDraft();
+  selected=null;
+  location.reload();
+}
+
+function render(){
+  updateEndProcessButton();
+  document.body.classList.toggle('planned-view',mode==='planned');
+  document.body.classList.toggle('editing',editing);
+  refreshEditBar();
+  setTableLayout(mode==='attended');
+
+  if(mode==='attended'){
+    const items=[],undated=[];
+    for(const e of events){
+      if(e.attendanceStatus!=='attended'||!passesCommonFilters(e))continue;
+      const actual=actualDates(e);
+      if(!actual.length){
+        if(passesListStart(e.date))undated.push(e);
+        continue;
+      }
+      for(const d of actual){
+        if(passesListStart(d))items.push({e,d});
+      }
+    }
+    items.sort((a,b)=>a.d.localeCompare(b.d)||compareVenue(a.e,b.e));
+    undated.sort((a,b)=>String(a.date).localeCompare(String(b.date))||compareVenue(a,b));
+    let html='',month='',week='',i=0;
+    if(undated.length){
+      html+='<tr class="attended-undated-title"><td colspan="3">参加済み・実際に行った日が未入力　'+undated.length+'件</td></tr>';
+      for(const e of undated)html+=attendedUndatedRow(e);
+    }
+    while(i<items.length){
+      const d=items[i].d,m=d.slice(0,7),w=weekKey(d);
+      if(m!==month){
+        const [y,mm]=m.split('-');
+        html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="3">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+        month=m;week='';
+      }
+      if(w!==week){
+        html+='<tr class="week"><td colspan="3">'+esc(weekLabel(d))+'</td></tr>';
+        week=w;
+      }
+      const same=[];
+      while(i<items.length&&items[i].d===d){same.push(items[i]);i++;}
+      same.forEach((x,idx)=>{html+=attendedRow(x.e,d,idx===0,same.length,idx===0);});
+    }
+    document.getElementById('body').innerHTML=html||'<tr><td colspan="3" class="empty">参加済みイベントはありません</td></tr>';
+    applyContentEditable();selected=null;updateEditButtons();
+    document.getElementById('status').textContent=(items.length+undated.length)+'件';
+    renderCalendar();
+    return;
+  }
+
+  if(mode==='upcoming'){
+    const today=todayISO();
+    let list=events.slice().filter(e=>passesCommonFilters(e)&&String(e.endDate||e.date)>=today&&passesListStart(e.endDate||e.date));
+    list.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a,b));
+
+    let html='',month='',week='';
+    for(const e of list){
+      const d=e.date,m=d.slice(0,7),w=weekKey(d);
+      if(m!==month){
+        const [y,mm]=m.split('-');
+        html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="4">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+        month=m;week='';
+      }
+      if(w!==week){
+        html+='<tr class="week"><td colspan="4">'+esc(weekLabel(d))+'</td></tr>';
+        week=w;
+      }
+      html+=row(e);
+    }
+    document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">今後のイベントはありません</td></tr>';
+    applyContentEditable();selected=null;updateEditButtons();
+    document.getElementById('status').textContent=list.length+'件';
+    renderCalendar();
+    return;
+  }
+
+  if(mode==='planned'){
+    const items=[];
+    for(const e of events){
+      if(!passesCommonFilters(e))continue;
+      const f=flag(e);
+      if(!f.planned&&!f.interested)continue;
+      const ds=plannedDates(e);
+      if(ds.length){
+        for(const d of ds)if(passesListStart(d))items.push({e,d,sortDate:d,unknown:false});
+      }else if(e.endDate&&e.endDate!==e.date&&(e.endDate||e.date)>=todayISO()&&passesListStart(e.endDate||e.date)){
+        items.push({e,d:'',sortDate:e.date,unknown:true});
+      }
+    }
+    items.sort((a,b)=>a.sortDate.localeCompare(b.sortDate)||Number(a.unknown)-Number(b.unknown)||compareVenue(a.e,b.e));
+    let html='',month='',week='',i=0;
+    while(i<items.length){
+      const sortDate=items[i].sortDate,m=sortDate.slice(0,7),w=weekKey(sortDate);
+      if(m!==month){
+        const [y,mm]=m.split('-');
+        html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="4">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+        month=m;week='';
+      }
+      if(w!==week){
+        html+='<tr class="week"><td colspan="4">'+esc(weekLabel(sortDate))+'</td></tr>';
+        week=w;
+      }
+      if(items[i].unknown){
+        html+=row(items[i].e,'',true,1,true,true);
+        i++;
+        continue;
+      }
+      const d=items[i].d,same=[];
+      while(i<items.length&&!items[i].unknown&&items[i].d===d){same.push(items[i]);i++;}
+      same.forEach((x,idx)=>{html+=row(x.e,d,idx===0,same.length,idx===0,false);});
+    }
+    document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">参加予定はありません</td></tr>';
+    applyContentEditable();selected=null;updateEditButtons();
+    document.getElementById('status').textContent=items.length+'件';
+    renderCalendar();
+    return;
+  }
+
+  let list=events.slice().filter(e=>passesCommonFilters(e)&&passesListStart(e.date));
+  list.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a,b));
+
+  let html='',month='',week='';
+  for(const e of list){
+    const d=e.date,m=d.slice(0,7),w=weekKey(d);
+    if(m!==month){
+      const [y,mm]=m.split('-');
+      html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="4">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+      month=m;week='';
+    }
+    if(w!==week){
+      html+='<tr class="week"><td colspan="4">'+esc(weekLabel(d))+'</td></tr>';
+      week=w;
+    }
+    html+=row(e);
+  }
+  document.getElementById('body').innerHTML=html||'<tr><td colspan="4" class="empty">該当するイベントはありません</td></tr>';
+  applyContentEditable();selected=null;updateEditButtons();
+  document.getElementById('status').textContent=list.length+'件';
+  renderCalendar();
+}
+
+document.querySelector('.controls').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-mode]');if(!b)return;
+  if(editing){
+    persistStructuredEditDraft();
+    editing=false;
+    document.body.classList.remove('editing');
+    document.getElementById('editBtn').textContent='一覧直接編集（旧）';
+  }
+  mode=b.dataset.mode;
+  selected=null;
+  syncModeButtons();
+  saveUiState();
+  render();
+});
+
+
+document.querySelector('.subfilters').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-kind-filter]');if(!b)return;
+  kindFilter=b.dataset.kindFilter;
+  syncFilterControls();saveUiState();render();
+});
+document.getElementById('hideIgnoredToggle').addEventListener('change',e=>{
+  hideIgnored=e.target.checked;
+  saveUiState();
+  render();
+});
+
+endProcessBtn.addEventListener('click',()=>openEndProcess(''));
+endProcessClose.addEventListener('click',closeEndProcess);
+endProcessModal.addEventListener('click',e=>{if(e.target===endProcessModal)closeEndProcess();});
+endProcessList.addEventListener('click',e=>{const b=e.target.closest('.end-event-btn');if(!b)return;saveEndDraftIfNeeded();selectedEndEventId=b.dataset.endId;renderEndProcessList();});
+endProcessFormWrap.addEventListener('input',()=>saveEndDraft(false));
+endProcessFormWrap.addEventListener('change',()=>saveEndDraft(false));
+endProcessFormWrap.addEventListener('click',async e=>{if(e.target.id==='endDraftSave'){saveEndDraft(true);return;}if(e.target.id==='endGitHubSave'){await saveEndToGitHub();return;}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!endProcessModal.hidden)closeEndProcess();});
+document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.end-row-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEndProcess(b.dataset.endEdit||'');});
+document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.event-edit-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEventEdit(b.dataset.eventEdit||'');});
+eventEditClose.addEventListener('click',closeEventEdit);
+eventEditModal.addEventListener('click',e=>{if(e.target===eventEditModal)closeEventEdit();});
+eventEditFormWrap.addEventListener('input',()=>saveEventEditDraft());
+eventEditFormWrap.addEventListener('change',()=>saveEventEditDraft());
+eventEditFormWrap.addEventListener('click',async e=>{if(e.target.id==='eventEditSave')await saveEventEditDraftToBrowser();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!eventEditModal.hidden)closeEventEdit();});
+
+document.getElementById('editBtn').addEventListener('click',()=>setLegacyEditing(!editing));
+
+document.getElementById('body').addEventListener('click',e=>{
+  if(!editing)return;
+  if(e.target.closest('input,button'))return;
+  const row=e.target.closest('tr.event-row');
+  if(!row)return;
+  if(e.target.closest('a'))e.preventDefault();
+  setSelected(row);
+});
+
+document.getElementById('body').addEventListener('change',e=>{
+  const good=e.target.closest('.report-high-toggle'),bad=e.target.closest('.report-low-toggle');
+  if(!good&&!bad)return;
+  const el=good||bad,id=el.dataset.reportId,f=reportFlag(id);
+  if(good){f.good=good.checked;if(f.good)f.bad=false;}
+  else{f.bad=bad.checked;if(f.bad)f.good=false;}
+  reportFlags[id]=f;saveReportFlags();render();
+});
+
+document.getElementById('body').addEventListener('input',e=>{
+  if(!editing)return;
+  const el=e.target.closest('[data-direct-id]');
+  if(!el)return;
+  applyDirectEdit(el);
+});
+
+document.getElementById('addBtn').addEventListener('click',()=>{
+  if(!editing)return;
+  const stamp=Date.now(),today=todayISO();
+  const e={id:'draft-new-'+stamp,date:today,endDate:'',dateText:'',name:'新しいイベント',url:'',venue:'',conditionLines:[],rating:'',nightTime:'',nightText:'',attendanceStatus:'',visitDates:[],sourceReportId:'',_kind:'exhibition'};
+  events.push(e);editDraft.newEvents.push(cloneData(e));markDirty(e.id);persistStructuredEditDraft('新しいイベントを下書き追加しました');
+  mode='all';listStartYear=0;listStartMonth=0;syncModeButtons();saveUiState();render();
+  requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(e.id)+'"]');if(row){setSelected(row);row.querySelector('[data-direct-field="name"]')?.focus();}});
+});
+
+document.getElementById('kindBtn').addEventListener('click',()=>{
+  if(!editing||!selected||!selected.classList.contains('event-row'))return;
+  const id=selected.dataset.eventId,e=eventById(id);if(!e)return;
+  e._kind=e._kind==='exhibition'?'gathering':'exhibition';
+  recordPatch(e,['_kind']);
+  render();
+  requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(id)+'"]');if(row)setSelected(row);});
+});
+
+document.getElementById('delBtn').addEventListener('click',()=>{
+  if(!editing||!selected||!selected.classList.contains('event-row'))return;
+  const id=selected.dataset.eventId,e=eventById(id);if(!e)return;
+  if(!confirm('「'+(e.name||'このイベント')+'」を編集下書きから削除しますか？'))return;
+  deleteFromDraft(e);events=events.filter(x=>x.id!==id);dirtyIds.add(id);selected=null;render();
+});
+
+document.getElementById('linkBtn').addEventListener('click',()=>{
+  if(!editing||!selected||!selected.classList.contains('event-row'))return;
+  const id=selected.dataset.eventId,e=eventById(id);if(!e)return;
+  const url=prompt('このイベントのURLを貼り付けてください',e.url||'');
+  if(url===null)return;
+  e.url=url.trim();recordPatch(e,['url']);
+  const rowId=id;render();
+  requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(rowId)+'"]');if(row)setSelected(row);});
+});
+
+document.getElementById('saveHtmlBtn').addEventListener('click',()=>{
+  persistStructuredEditDraft('編集下書きを保存しました');
+});
+
+document.getElementById('resetHtmlBtn').addEventListener('click',()=>{
+  if(confirm('このブラウザの編集下書きをすべて破棄して、GitHubの最新データに戻しますか？'))clearLegacyHTML();
+});
+
+document.getElementById('body').addEventListener('change',async e=>{
+  const ds=e.target.closest('.direct-date-start'),de=e.target.closest('.direct-date-end');
+  if(ds||de){
+    const el=ds||de,eve=eventById(el.dataset.id);if(!eve)return;
+    const rowId=eve.id;
+    if(ds){eve.date=ds.value;if(eve.endDate&&eve.endDate<eve.date)eve.endDate='';recordPatch(eve,['date','endDate']);}
+    else{eve.endDate=de.value;recordPatch(eve,['endDate']);}
+    render();
+    requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(rowId)+'"]');if(row)setSelected(row);});
+    return;
+  }
+  const i=e.target.closest('.interest-toggle'),p=e.target.closest('.plan-toggle'),n=e.target.closest('.ignore-toggle'),d=e.target.closest('.plan-day-toggle');
+  if(!i&&!p&&!n&&!d)return;
+  const id=(i||p||n||d).dataset.id,event=events.find(x=>x.id===id);
+  if(!event)return;
+  if(i)setInterested(event,i.checked);
+  if(p)setPlan(event,p.checked);
+  if(n){
+    if(n.checked&&personLines(event).length){
+      const ok=await clearParticipantNameForIgnored(event);
+      if(!ok){n.checked=false;return;}
+    }
+    setIgnore(event,n.checked);
+  }
+  if(d)setPlanDay(event,d.dataset.day,d.checked);
+});
+
+let calendarWheelLock=false;
+document.getElementById('calendarMonthsViewport').addEventListener('wheel',e=>{
+  const amount=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
+  if(Math.abs(amount)<4||calendarWheelLock)return;
+  e.preventDefault();
+  calendarWheelLock=true;
+  shiftCalendar(amount>0?1:-1);
+  setTimeout(()=>{calendarWheelLock=false;},320);
+},{passive:false});
+const backToTop=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>backToTop.classList.toggle('show',window.scrollY>500),{passive:true});
+backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+document.getElementById('calendarYear').addEventListener('change',e=>{
+  const y=parseInt(e.target.value,10);
+  if(!Number.isFinite(y))return;
+  if(listStartMonth)setTableStartMonth(y,listStartMonth);
+  else{listStartYear=y;saveUiState();renderCalendar();}
+});
+
+(async()=>{
+  try{
+    try{flags=JSON.parse(localStorage.getItem(FLAGS_KEY)||'{}')}catch(_){flags={}}
+    let normalizedFlags=false;
+    Object.values(flags).forEach(f=>{
+      if(f&&f.planned&&f.interested){f.interested=false;normalizedFlags=true;}
+    });
+    if(normalizedFlags)saveFlags();
+    try{reportFlags=JSON.parse(localStorage.getItem(REPORT_FLAGS_KEY)||'{}')}catch(_){reportFlags={}}
+    loadUiState();
+    syncModeButtons();
+    syncFilterControls();
+    try{endDrafts=JSON.parse(localStorage.getItem(END_DRAFTS_KEY)||'{}')}catch(_){endDrafts={}}
+    try{endBackups=JSON.parse(localStorage.getItem(END_BACKUPS_KEY)||'{}')}catch(_){endBackups={}}
+    try{eventEditDrafts=JSON.parse(localStorage.getItem(EVENT_EDIT_DRAFTS_KEY)||'{}')}catch(_){eventEditDrafts={}}
+    const [g,x,m]=await Promise.all([
+      fetch('イベント一覧.json?v='+Date.now(),{cache:'no-store'}),
+      fetch('展示会一覧.json?v='+Date.now(),{cache:'no-store'}),
+      fetch('実地レポート.json?v='+Date.now(),{cache:'no-store'})
+    ]);
+    if(!g.ok)throw new Error('イベント一覧.jsonの取得に失敗');
+    if(!x.ok)throw new Error('展示会一覧.jsonの取得に失敗');
+    if(!m.ok)throw new Error('実地レポート.jsonの取得に失敗');
+    const [gj,xj,mj]=await Promise.all([g.json(),x.json(),m.json()]);
+    events=[...(gj.events||[]).map(e=>({...e,_kind:'gathering'})),...(xj.events||[]).map(e=>({...e,_kind:'exhibition'}))];
+    officialEventsById=new Map(events.map(e=>[e.id,cloneData(e)]));
+    const files=(mj.reportFiles&&mj.reportFiles.length)?mj.reportFiles:['実地レポート/2026-01-03.json','実地レポート/2026-04.json','実地レポート/2026-05.json','実地レポート/2026-06.json','実地レポート/2026-07.json','実地レポート/2026-08.json','実地レポート/2026-09.json'];
+    const parts=await Promise.all(files.map(async p=>{
+      const r=await fetch(p+'?v='+Date.now(),{cache:'no-store'});
+      if(!r.ok)throw new Error(p+'の取得に失敗');
+      return r.json();
+    }));
+    reports=parts.flatMap(x=>x.reports||[]);
+    cleanupSavedEndDrafts();
+    localStorage.removeItem(EDIT_DRAFT_KEY);
+    localStorage.removeItem(LEGACY_HTML_KEY);
+    loadStructuredEditDraft();
+    refreshEditBar();
+    render();
+    const loadStatus=document.getElementById('loadStatus');
+    if(loadStatus){
+      loadStatus.textContent='読込完了：懇親会'+((gj.events||[]).length)+'件 / 展示会'+((xj.events||[]).length)+'件 / レポート'+reports.length+'件';
+      loadStatus.className='status save-ok';
+    }
+  }catch(err){
+    console.error(err);
+    document.getElementById('body').innerHTML='<tr><td colspan="4" class="empty">読み込みに失敗しました</td></tr>';
+    const loadStatus=document.getElementById('loadStatus');if(loadStatus){loadStatus.textContent='読み込み失敗';loadStatus.className='status save-warn';}
+    document.getElementById('status').textContent='読み込み失敗';
+  }
+})();
+</script>
+</body>
+</html>
