@@ -36,8 +36,8 @@ th:last-child,td:last-child{border-right:0}
 .month td{background:#d7e2ee;font-weight:800;font-size:15px;padding:8px 12px;border-top:3px solid #8fa2b5}.week td{background:var(--week);font-weight:700;font-size:14px;padding:7px 12px;border-top:2px solid #aeb8c2;color:var(--text)}
 .event-row:nth-of-type(even) td{background:#fdfdfc}
 .date,.date-head{text-align:center}.date{font-weight:700;white-space:normal;vertical-align:middle;font-size:12px;line-height:1.35;padding-left:6px;padding-right:6px;overflow:hidden}
-.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-right-tools{margin-left:auto;display:flex;align-items:center;gap:7px}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#46515c;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:700;font-size:15px}.name a{color:var(--link);text-decoration:underline;text-underline-offset:2px}.name a:hover{text-decoration:underline}
-.venue{margin-top:2px;color:var(--muted)}
+.event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-right-tools{margin-left:auto;display:flex;align-items:flex-start;gap:7px}.event-action-stack{margin-left:auto;display:flex;flex-direction:column;align-items:stretch;gap:4px;min-width:82px}.event-edit-btn{padding:3px 7px;font-size:11px;font-weight:800;border-color:#7fa2c7;background:#f5f9fd;color:#315d87}.event-edit-btn:hover{background:#e9f2fa}.event-action-stack .end-row-btn{margin-left:0;width:100%}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#46515c;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:700;font-size:15px}.name a{color:var(--link);text-decoration:underline;text-underline-offset:2px}.name a:hover{text-decoration:underline}
+.venue{margin-top:2px;color:var(--muted)}.participant-line{margin-top:2px;font-size:11px;font-weight:800;color:#46515c;line-height:1.35}.participant-label{color:#6c7680;font-weight:700}
 .person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}.report-cond{margin:0 0 7px;padding:5px 7px;background:#f6f6f3;border-left:3px solid #c5c5bf;color:#555}.report-cond div{margin:1px 0}
 .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
 .tag{border:1px solid #c8c8c2;background:#fff}
@@ -67,7 +67,8 @@ th:last-child,td:last-child{border-right:0}
 .end-field{margin:0 0 14px}.end-label{display:block;font-size:13px;font-weight:800;margin-bottom:5px}.end-choice,.end-visit-dates{display:flex;gap:10px;flex-wrap:wrap}.end-choice label,.end-visit-dates label{display:inline-flex;align-items:center;gap:4px}
 .end-rating{padding:6px 8px;border:1px solid #aeb7c0;border-radius:6px}.end-report{width:100%;min-height:200px;resize:vertical;border:1px solid #aeb7c0;border-radius:7px;padding:9px;font:inherit;line-height:1.55}
 .end-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}.end-save{background:#20262d;color:#fff;border-color:#20262d;font-weight:800}.end-saved{font-size:12px;color:#18794e;font-weight:700}
-@media(max-width:760px){.end-dialog-body{grid-template-columns:1fr}.end-list{border-right:0;border-bottom:1px solid var(--line)}}
+.event-edit-dialog{width:min(760px,96vw)}.event-edit-form{padding:16px}.event-edit-kind{display:inline-block;margin:0 0 12px}.event-edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.event-edit-grid .wide{grid-column:1/-1}.event-edit-form label{display:block;font-size:12px;font-weight:800;color:#444}.event-edit-form input,.event-edit-form textarea{width:100%;margin-top:4px;border:1px solid #aeb7c0;border-radius:6px;padding:7px 8px;font:inherit;font-size:13px;background:#fff}.event-edit-form textarea{min-height:72px;resize:vertical;line-height:1.45}.event-edit-form .event-edit-long{min-height:110px}.event-edit-note{font-size:11px;color:var(--muted);margin:0 0 10px}.event-edit-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.event-edit-status{font-size:12px;font-weight:800;color:#18794e}
+@media(max-width:760px){.end-dialog-body{grid-template-columns:1fr}.end-list{border-right:0;border-bottom:1px solid var(--line)}.event-edit-grid{grid-template-columns:1fr}}
 
 .edit-date-pair{display:grid;gap:4px}.edit-date-pair input{width:100%;min-width:0;border:1px solid #aeb7c0;border-radius:5px;padding:3px 4px;font:inherit;font-size:11px;background:#fff}
 .edit-placeholder{min-height:20px}
@@ -83,7 +84,7 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作5</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作6</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
@@ -98,7 +99,7 @@ th:last-child,td:last-child{border-right:0}
     <button type="button" class="kind-filter" data-kind-filter="gathering">懇親会</button>
   </div>
   <div class="legacy-edit-toolbar">
-    <button id="editBtn" class="primary" type="button">編集開始</button>
+    <button id="editBtn" type="button">一覧直接編集（旧）</button>
     <button id="addBtn" type="button" disabled>＋ 新しいイベント</button>
     <button id="kindBtn" type="button" disabled>展示会／懇親会</button>
     <button id="linkBtn" type="button" disabled>リンク設定</button>
@@ -107,7 +108,7 @@ th:last-child,td:last-child{border-right:0}
     <button id="resetHtmlBtn" type="button">編集下書きを破棄</button>
     <span id="editChangeCount" class="edit-change-count">変更 0件</span>
   </div>
-  <div class="edit-help">編集開始 → 表の文字を直接変更できます。日付は日付欄、区分とURLは行を選んで上のボタンから変更します。並び順は日付・区分・会場で自動です。編集はこのブラウザの下書きです。</div>
+  <div class="edit-help">通常の情報修正は各イベント右上の「イベント編集」を使用します。「一覧直接編集（旧）」は複数箇所をまとめて直すための旧方式です。</div>
   <section class="calendar-panel" aria-label="カレンダー">
     <div class="calendar-head"><div class="calendar-title">カレンダー</div><div id="calendarNote" class="calendar-note"></div></div>
     <div class="calendar-jump"><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div><span id="listRangeStatus" class="calendar-note"></span><span class="calendar-note">※ 月ボタンで表とカレンダーを同じ月へ移動</span></div>
@@ -132,6 +133,12 @@ th:last-child,td:last-child{border-right:0}
     </div>
   </div>
 </div>
+<div id="eventEditModal" class="end-modal" hidden>
+  <div class="end-dialog event-edit-dialog" role="dialog" aria-modal="true" aria-labelledby="eventEditTitle">
+    <div class="end-dialog-head"><div id="eventEditTitle" class="end-dialog-title">イベント編集</div><button id="eventEditClose" class="end-close" type="button">×</button></div>
+    <div id="eventEditFormWrap" class="event-edit-form"></div>
+  </div>
+</div>
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
 const REPORT_FLAGS_KEY='free_food_event_report_flags_v1';
@@ -152,7 +159,7 @@ const calendarToday=new Date();
 let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
 let listStartYear=0,listStartMonth=0;
 let nextPlanIndex=0;
-let endDrafts={},endBackups={},selectedEndEventId='',endProcessSingle=false;
+let endDrafts={},endBackups={},selectedEndEventId='',endProcessSingle=false,selectedEventEditId='';
 const endProcessBtn=document.getElementById('endProcessBtn');
 const endProcessCount=document.getElementById('endProcessCount');
 const endProcessModal=document.getElementById('endProcessModal');
@@ -161,6 +168,10 @@ const endProcessClose=document.getElementById('endProcessClose');
 const endProcessList=document.getElementById('endProcessList');
 const endProcessFormWrap=document.getElementById('endProcessFormWrap');
 const endProcessNote=document.getElementById('endProcessNote');
+const eventEditModal=document.getElementById('eventEditModal');
+const eventEditTitle=document.getElementById('eventEditTitle');
+const eventEditClose=document.getElementById('eventEditClose');
+const eventEditFormWrap=document.getElementById('eventEditFormWrap');
 
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™®【】\[\]（）()‐\-–—'’:"：～〜]/g,'')}
@@ -607,6 +618,105 @@ function closeEndProcess(){
   saveEndDraftIfNeeded();endProcessModal.hidden=true;document.body.style.overflow='';endProcessSingle=false;selectedEndEventId='';
 }
 
+function eventEditButton(e){
+  if(editing||!e||String(e.id||'').startsWith('draft-new-'))return '';
+  return '<button type="button" class="event-edit-btn" data-event-edit="'+esc(e.id)+'">イベント編集</button>';
+}
+function participantDisplay(e,editingValue=''){
+  const people=personLines(e);
+  if(editing){
+    const html=editingValue||editableBlock(e.id,'people',people.join('\n'));
+    return '<div class="participant-line"><span class="participant-label">参加名義：</span>'+html+'</div>';
+  }
+  return people.length?'<div class="participant-line"><span class="participant-label">参加名義：</span>'+esc(people.join(' / '))+'</div>':'';
+}
+function openEventEdit(eventId){
+  const e=events.find(x=>x.id===eventId);
+  if(!e||String(e.id||'').startsWith('draft-new-'))return;
+  selectedEventEditId=e.id;
+  const o=officialEvent(e);
+  eventEditTitle.textContent='イベント編集';
+  const people=personLines(o).join(' / ');
+  eventEditFormWrap.innerHTML=
+    '<div class="event-edit-kind kind-badge '+esc(o._kind)+'">'+(o._kind==='exhibition'?'展示会':'懇親会')+'</div>'+
+    '<div class="event-edit-note">実地レポートはここでは変更しません。イベント本体の情報だけをGitHubへ保存します。</div>'+
+    '<div class="event-edit-grid">'+
+      '<label class="wide">イベント名<input id="eventEditName" type="text" value="'+esc(o.name||'')+'"></label>'+
+      '<label>開始日<input id="eventEditDate" type="date" value="'+esc(o.date||'')+'"></label>'+
+      '<label>終了日<input id="eventEditEndDate" type="date" value="'+esc((o.endDate&&o.endDate!==o.date)?o.endDate:'')+'" placeholder="1日開催なら空欄"></label>'+
+      '<label class="wide">会場<input id="eventEditVenue" type="text" value="'+esc(o.venue||'')+'"></label>'+
+      '<label class="wide">参加名義<input id="eventEditPerson" type="text" value="'+esc(people)+'" placeholder="例：山本 雄太"></label>'+
+      '<label class="wide">URL<input id="eventEditUrl" type="url" value="'+esc(o.url||'')+'"></label>'+
+      '<label class="wide">参加条件<textarea id="eventEditConditions">'+esc(conditionLines(o).join('\n'))+'</textarea></label>'+
+      '<label>事前評価<input id="eventEditPreRating" type="text" value="'+esc(o.rating||'')+'"></label>'+
+      '<label>時間<input id="eventEditNightTime" type="text" value="'+esc(o.nightTime||'')+'"></label>'+
+      '<label class="wide">内容・根拠<textarea id="eventEditNightText" class="event-edit-long">'+esc(o.nightText||'')+'</textarea></label>'+
+    '</div>'+
+    '<div class="event-edit-actions"><button id="eventEditSave" class="end-save" type="button">GitHubへ保存</button><span id="eventEditStatus" class="event-edit-status"></span></div>';
+  eventEditModal.hidden=false;
+  document.body.style.overflow='hidden';
+}
+function closeEventEdit(){
+  eventEditModal.hidden=true;selectedEventEditId='';
+  if(endProcessModal.hidden)document.body.style.overflow='';
+}
+function collectEventEdit(){
+  const e=events.find(x=>x.id===selectedEventEditId);if(!e)return null;
+  const o=officialEvent(e);
+  return {
+    editOnly:true,
+    eventId:o.id,
+    kind:o._kind,
+    eventName:eventEditFormWrap.querySelector('#eventEditName')?.value.trim()||'',
+    name:eventEditFormWrap.querySelector('#eventEditName')?.value.trim()||'',
+    date:eventEditFormWrap.querySelector('#eventEditDate')?.value||'',
+    endDate:eventEditFormWrap.querySelector('#eventEditEndDate')?.value||'',
+    venue:eventEditFormWrap.querySelector('#eventEditVenue')?.value.trim()||'',
+    personName:eventEditFormWrap.querySelector('#eventEditPerson')?.value.trim()||'',
+    url:eventEditFormWrap.querySelector('#eventEditUrl')?.value.trim()||'',
+    conditionText:eventEditFormWrap.querySelector('#eventEditConditions')?.value||'',
+    preRating:eventEditFormWrap.querySelector('#eventEditPreRating')?.value.trim()||'',
+    nightTime:eventEditFormWrap.querySelector('#eventEditNightTime')?.value.trim()||'',
+    nightText:eventEditFormWrap.querySelector('#eventEditNightText')?.value||'',
+    schemaVersion:2,
+    updatedAt:new Date().toISOString()
+  };
+}
+function applyEventEditLocally(d,includeDate){
+  const e=events.find(x=>x.id===d.eventId);if(!e)return;
+  e.name=d.eventName;e.venue=d.venue;e.url=d.url;
+  const cond=splitLines(d.conditionText).filter(x=>!x.startsWith('名前コード：'));
+  if(d.personName)cond.unshift('名前コード：'+d.personName);
+  e.conditionLines=cond;e.rating=d.preRating;e.nightTime=d.nightTime;e.nightText=d.nightText;
+  if(includeDate){
+    e.date=d.date;
+    e.endDate=d.endDate||d.date;
+    e.dateText='';
+  }
+  officialEventsById.set(e.id,cloneData(e));
+}
+async function saveEventEditToGitHub(){
+  const d=collectEventEdit();if(!d)return;
+  const status=eventEditFormWrap.querySelector('#eventEditStatus'),btn=eventEditFormWrap.querySelector('#eventEditSave');
+  if(!d.eventName){if(status)status.textContent='イベント名を入力してください。';return;}
+  if(!d.date){if(status)status.textContent='開始日を入力してください。';return;}
+  if(d.endDate&&d.endDate<d.date){if(status)status.textContent='終了日は開始日以降にしてください。';return;}
+  let editKey=localStorage.getItem(END_EDIT_KEY_KEY)||'';
+  if(!editKey){editKey=prompt('編集キーを入力してください。最初の1回だけ保存します。')||'';if(!editKey)return;localStorage.setItem(END_EDIT_KEY_KEY,editKey);}
+  if(btn){btn.disabled=true;btn.textContent='保存中…';}if(status)status.textContent='';
+  try{
+    const rr=await fetch(END_PROCESS_API_URL.replace(/\/$/,'')+'/save-v2',{method:'POST',headers:{'Content-Type':'application/json','X-Edit-Key':editKey},body:JSON.stringify(d)});
+    const result=await rr.json().catch(()=>({ok:false,error:'保存結果を読めません'}));
+    if(rr.status===401){localStorage.removeItem(END_EDIT_KEY_KEY);throw new Error('編集キーが違います。次回保存時にもう一度入力してください。');}
+    if(!rr.ok||!result.ok)throw new Error(result.error||'GitHubへの保存に失敗しました');
+    const dateSaved=result.savedDate===d.date && String(result.savedEndDate||result.savedDate||'')===String(d.endDate||d.date);
+    applyEventEditLocally(d,dateSaved);
+    render();
+    if(status)status.textContent=dateSaved?'GitHubへ保存しました。':'GitHubへ保存しました。ただし日付保存用Workerが未反映です。日付以外は保存済みです。';
+  }catch(err){if(status)status.textContent=err.message||String(err);}
+  finally{if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}}
+}
+
 function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,plannedUnknown=false){
   const r=reportFor(e), p=plannedDates(e), a=actualDates(e), people=personLines(e), cond=conditionLines(e);
   const f=flag(e),multiDay=!!(e.endDate&&e.endDate!==e.date),candidate=!!(f.planned||f.interested);
@@ -643,15 +753,16 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,planned
   const nameHtml=editing?editableInline(e.id,'name',e.name):(
     e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(shownName)+'</a>':esc(shownName)
   );
-  const personHtml=editing?editableBlock(e.id,'people',people.join('\n')):(people.length?esc(people.join(' / ')):'');
-  const personTop=(editing||people.length)?'<div class="person-top">'+personHtml+'</div>':'';
+  const personHtml=editing?editableBlock(e.id,'people',people.join('\n')):'';
+  const participantLine=participantDisplay(e,personHtml);
   const canOfficialEnd=!String(e.id).startsWith('draft-new-')&&isEndProcessAvailable(officialEvent(e));
   const pendingEnd=needsEndProcessing(e);
   const endButton=(!editing&&canOfficialEnd)?'<button type="button" class="end-row-btn '+(pendingEnd?'end-pending':'end-correction')+'" data-end-edit="'+esc(e.id)+'">'+(pendingEnd?'終了処理':'記録修正')+'</button>':'';
-  const rightTop='<div class="event-right-tools">'+personTop+endButton+'</div>';
+  const actions=eventEditButton(e)+endButton;
+  const rightTop=actions?'<div class="event-action-stack">'+actions+'</div>':'';
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
     '<div class="event-head"><div class="name event-name">'+nameHtml+'</div></div>'+
-    '<div class="venue">'+(editing?editableBlock(e.id,'venue',e.venue||''):esc(e.venue||''))+'</div>';
+    '<div class="venue">'+(editing?editableBlock(e.id,'venue',e.venue||''):esc(e.venue||''))+'</div>'+participantLine;
 
   const condHtml=editing
     ? '<div class="report-cond">'+editableLines(e.id,'conditions',cond)+'</div>'
@@ -686,9 +797,9 @@ function attendedUndatedRow(e){
   const r=reportFor(e),people=personLines(e),cond=conditionLines(e);
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>','<span class="tag attended">参加済み（日付未入力）</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
-  const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
-  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn end-pending" data-end-edit="'+esc(e.id)+'">終了処理</button></div>';
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>';
+  const participantLine=participantDisplay(e);
+  const rightTop='<div class="event-action-stack">'+eventEditButton(e)+'<button type="button" class="end-row-btn end-pending" data-end-edit="'+esc(e.id)+'">終了処理</button></div>';
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+participantLine;
   let detail='<div class="attended-undated-note">終了処理で「実際に行った日」を入力してください。</div>';
   if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
   if(r&&String(r.report||'').trim()){
@@ -706,16 +817,16 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
 
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
-  const personTop=people.length?'<div class="person-top">'+esc(people.join(' / '))+'</div>':'';
+  const participantLine=participantDisplay(e);
   const pendingEnd=needsEndProcessing(e),endLabel=pendingEnd?'終了処理':'記録修正';
-  const rightTop='<div class="event-right-tools">'+personTop+'<button type="button" class="end-row-btn '+(pendingEnd?'end-pending':'end-correction')+'" data-end-edit="'+esc(e.id)+'">'+endLabel+'</button></div>';
+  const rightTop='<div class="event-action-stack">'+eventEditButton(e)+'<button type="button" class="end-row-btn '+(pendingEnd?'end-pending':'end-correction')+'" data-end-edit="'+esc(e.id)+'">'+endLabel+'</button></div>';
 
   let schedule='';
   if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(compactRangeText(e))+'</div>';
   else if(e.date!==visitDate) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
 
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+
-    '<div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+schedule;
+    '<div class="event-head"><div class="name event-name">'+link+'</div></div><div class="venue">'+esc(e.venue||'')+'</div>'+participantLine+schedule;
 
   let detail='';
   if(showReport){
@@ -1034,7 +1145,7 @@ function setLegacyEditing(on){
     saveUiState();
   }
   const b=document.getElementById('editBtn');
-  if(b)b.textContent=on?'編集終了':'編集開始';
+  if(b)b.textContent=on?'一覧直接編集を終了':'一覧直接編集（旧）';
   render();
   const st=document.getElementById('status');
   if(st)st.textContent=on?'編集中：文字は直接編集、日付は日付欄から変更':'閲覧モード';
@@ -1191,7 +1302,7 @@ document.querySelector('.controls').addEventListener('click',e=>{
     persistStructuredEditDraft();
     editing=false;
     document.body.classList.remove('editing');
-    document.getElementById('editBtn').textContent='編集開始';
+    document.getElementById('editBtn').textContent='一覧直接編集（旧）';
   }
   mode=b.dataset.mode;
   selected=null;
@@ -1216,6 +1327,11 @@ endProcessFormWrap.addEventListener('change',()=>saveEndDraft(false));
 endProcessFormWrap.addEventListener('click',async e=>{if(e.target.id==='endDraftSave'){saveEndDraft(true);return;}if(e.target.id==='endGitHubSave'){await saveEndToGitHub();return;}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!endProcessModal.hidden)closeEndProcess();});
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.end-row-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEndProcess(b.dataset.endEdit||'');});
+document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.event-edit-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEventEdit(b.dataset.eventEdit||'');});
+eventEditClose.addEventListener('click',closeEventEdit);
+eventEditModal.addEventListener('click',e=>{if(e.target===eventEditModal)closeEventEdit();});
+eventEditFormWrap.addEventListener('click',async e=>{if(e.target.id==='eventEditSave')await saveEventEditToGitHub();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!eventEditModal.hidden)closeEventEdit();});
 
 document.getElementById('editBtn').addEventListener('click',()=>setLegacyEditing(!editing));
 
