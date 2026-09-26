@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-25-web",
+  "dataVersion": "2026-09-26-tokyo-nigiwai-added",
   "year": 2026,
   "events": [
     {
@@ -2511,6 +2511,14 @@
       "sourceExcel": true
     },
     {
+      "id": "evt-tokyo-nigiwai-20260917",
+      "date": "2026-09-17",
+      "endDate": "2026-09-18",
+      "dateText": "9月17日(木)～18日(金)",
+      "name": "2026 東京にぎわい市",
+      "venue": "東京ビッグサイト 東8ホール"
+    },
+    {
       "id": "xls-x-10531eea7fc9",
       "date": "2026-09-24",
       "endDate": "",
@@ -2967,21 +2975,6 @@
       "sourceExcel": true
     },
     {
-      "id": "xls-x-0ecaee0f21e5",
-      "date": "2026-11-12",
-      "endDate": "2026-11-13",
-      "dateText": "11月12日(木)～13日(金)",
-      "name": "60th FISMA TOKYO（第60回 東京ファッション産業機器展）",
-      "url": "https://www.fisma.tokyo/",
-      "venue": "西3ホール",
-      "conditionLines": [],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "",
-      "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
-    },
-    {
       "id": "xls-x-e1d02a762201",
       "date": "2026-11-11",
       "endDate": "2026-11-13",
@@ -3019,6 +3012,21 @@
       "name": "産業交流展2026",
       "url": "https://www.sangyo-koryuten.tokyo/",
       "venue": "西1・2ホール",
+      "conditionLines": [],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "source": "2026年 企業展示会簡易レポ.xlsx",
+      "sourceExcel": true
+    },
+    {
+      "id": "xls-x-0ecaee0f21e5",
+      "date": "2026-11-12",
+      "endDate": "2026-11-13",
+      "dateText": "11月12日(木)～13日(金)",
+      "name": "60th FISMA TOKYO（第60回 東京ファッション産業機器展）",
+      "url": "https://www.fisma.tokyo/",
+      "venue": "西3ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
