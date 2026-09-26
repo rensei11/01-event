@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-26-tokyo-nigiwai-added",
+  "dataVersion": "2026-09-26-big-sight-venue-normalized",
   "year": 2026,
   "events": [
     {
@@ -9,7 +9,7 @@
       "dateText": "1月14日(水）～16日(金）",
       "name": "COSME Week 【東京】2026",
       "url": "https://www.cosme-week.jp/tokyo/ja-jp.html",
-      "venue": "ビックサイト 西1-4",
+      "venue": "東京ビッグサイト 西1-4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -30,7 +30,7 @@
       "dateText": "1月14日(水）～16日(金）",
       "name": "事業拡大・経営支援WEEK【東京】2026",
       "url": "https://www.mgmt-expo.jp/tokyo/ja-jp.html",
-      "venue": "ビックサイト 南1,2",
+      "venue": "東京ビッグサイト 南1,2",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -51,7 +51,7 @@
       "dateText": "1月14日(水）～16日(金）",
       "name": "第37回国際宝飾展",
       "url": "https://www.ijt.jp/tokyo/ja-jp.html",
-      "venue": "ビックサイト 東4-6・8",
+      "venue": "東京ビッグサイト 東4-6・8",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -72,7 +72,7 @@
       "dateText": "1月14日(水）～16日(金）",
       "name": "第9回資産運用EXPO【春】",
       "url": "https://www.am-expo.jp/tokyo-1/ja-jp/about/visitorcount.html",
-      "venue": "ビックサイト 南3,4",
+      "venue": "東京ビッグサイト 南3,4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -93,7 +93,7 @@
       "dateText": "1月21日(水）～22日(木）",
       "name": "ネプコンジャパン　エレクトロニクス開発・実装展",
       "url": "https://www.nepconjapan.jp/tokyo/ja-jp.html",
-      "venue": "ビックサイト 東4-8,西1-4,南1-4",
+      "venue": "東京ビッグサイト 東4-8,西1-4,南1-4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -156,7 +156,7 @@
       "dateText": "1月27日(火）～30日(金）",
       "name": "ヒーバック＆アール ジャパン2026 第44回冷凍・空調・暖房展",
       "url": "https://www.jraia.or.jp/hvacr/",
-      "venue": "ビックサイト 東4-6",
+      "venue": "東京ビッグサイト 東4-6",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -198,7 +198,7 @@
       "dateText": "1月28日(水）～30日(金）",
       "name": "エネルギーイノベーション総合展2026(13展合同)",
       "url": "https://www.low-cf.jp/east/index.html",
-      "venue": "ビックサイト 西1-4,南1-4",
+      "venue": "東京ビッグサイト 西1-4,南1-4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -219,7 +219,7 @@
       "dateText": "1月28日(水）～30日(金）",
       "name": "防災産業展2026（4展合同）",
       "url": "https://biz.nikkan.co.jp/eve/bousai/",
-      "venue": "ビックサイト 東7.8",
+      "venue": "東京ビッグサイト 東7.8",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -261,7 +261,7 @@
       "dateText": "2月4日(水）～6日(金）",
       "name": "第101回東京インターナショナル・ギフト・ショー春2026",
       "url": "https://www.giftshow.co.jp/tigs/101tigs/",
-      "venue": "ビックサイト 東4-8,西1-4,南3-4",
+      "venue": "東京ビッグサイト 東4-8,西1-4,南3-4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -282,7 +282,7 @@
       "dateText": "2月12日(木）～13日(金）",
       "name": "WOODコレクション（モクコレ）2026",
       "url": "https://www.mokucolle.com/",
-      "venue": "ビックサイト 西1,2",
+      "venue": "東京ビッグサイト 西1,2",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -303,7 +303,7 @@
       "dateText": "2月12日(木）～13日(金）",
       "name": "ロジスティクスソリューションフェア2026",
       "url": "https://jils-lsfair.jp/",
-      "venue": "ビックサイト 西4",
+      "venue": "東京ビッグサイト 西4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -324,7 +324,7 @@
       "dateText": "2月12日(木）～13日(金）",
       "name": "第23回国際オートアフターマーケットEXPO2026",
       "url": "https://www.iaae-jp.com/",
-      "venue": "ビックサイト 東7,8",
+      "venue": "東京ビッグサイト 東7,8",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -345,7 +345,7 @@
       "dateText": "2月12日(木）～13日(金）",
       "name": "第46回ジャパン建材フェア",
       "url": "https://jkfair02.jkenzai.co.jp/",
-      "venue": "ビックサイト 東4-6",
+      "venue": "東京ビッグサイト 東4-6",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -366,7 +366,7 @@
       "dateText": "2月17日(火）～20日(金）",
       "name": "HCJ2026 第54回国際ホテル・レストラン・ショー",
       "url": "https://hcj.jma.or.jp/",
-      "venue": "ビックサイト 東4-6,西1-4",
+      "venue": "東京ビッグサイト 東4-6,西1-4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -388,7 +388,7 @@
       "dateText": "2月18日(水)～19日(木)",
       "name": "EightEXPO2026",
       "url": "https://eight-event.8card.net/eightexpo/?code=eightexpo2026_bigsight&",
-      "venue": "ビックサイト 南3,4",
+      "venue": "東京ビッグサイト 南3,4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -410,7 +410,7 @@
       "dateText": "2月18日(水）～20日(金）",
       "name": "ProLight&ProVisual2026",
       "url": "https://prolight-provisual.jp/index.html",
-      "venue": "ビックサイト 東7",
+      "venue": "東京ビッグサイト 東7",
       "conditionLines": [],
       "rating": "実地評価：F",
       "nightTime": "",
@@ -473,7 +473,7 @@
       "dateText": "2月25日(水）～27日(金）",
       "name": "健康博覧会2026 春",
       "url": "https://www.this.ne.jp/",
-      "venue": "ビックサイト 東4-6",
+      "venue": "東京ビッグサイト 東4-6",
       "conditionLines": [
         "名前コード：山本 雄太"
       ],
@@ -494,7 +494,7 @@
       "dateText": "2月25日(水）～27日(金）",
       "name": "東京ケアウィーク’26",
       "url": "https://caretex.jp/",
-      "venue": "ビックサイト 西1-2,4",
+      "venue": "東京ビッグサイト 西1-2,4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -515,7 +515,7 @@
       "dateText": "2月26日(木）～27日(金）",
       "name": "イーコマースフェア東京2026（第19回）",
       "url": "https://www.ecfair.jp/",
-      "venue": "ビックサイト 東7",
+      "venue": "東京ビッグサイト 東7",
       "conditionLines": [],
       "rating": "実地評価：E",
       "nightTime": "",
@@ -534,7 +534,7 @@
       "dateText": "2月26日(木）～28日(土）",
       "name": "東京マラソンEXPO2026",
       "url": "https://www.marathon.tokyo/expo/",
-      "venue": "ビックサイト 南1-4",
+      "venue": "東京ビッグサイト 南1-4",
       "conditionLines": [],
       "rating": "実地評価：E",
       "nightTime": "",
@@ -569,7 +569,7 @@
       "dateText": "3月3日(火）～6日(金）",
       "name": "日経メッセ2026 街づくり・店づくり総合展",
       "url": "https://messe.nikkei.co.jp/",
-      "venue": "ビックサイト 東4-7、西1-4 南1,2,4",
+      "venue": "東京ビッグサイト 東4-7、西1-4 南1,2,4",
       "conditionLines": [
         "名前コード：青井 瑛治"
       ],
@@ -590,7 +590,7 @@
       "dateText": "3月10日(火)～13日(金）",
       "name": "FOODEX JAPAN 2026 - 第51回国際食品・飲料展",
       "url": "https://foodex.jma.or.jp/",
-      "venue": "ビックサイト 東4-8,西1-4,南1-4",
+      "venue": "東京ビッグサイト 東4-8,西1-4,南1-4",
       "conditionLines": [
         "名前コード：山本 雄太"
       ],
@@ -613,7 +613,7 @@
       "dateText": "3月17日(火)～19日(木)",
       "name": "SMART ENERGY WEEK 【春】2026",
       "url": "https://www.wsew.jp/spring/ja-jp.html",
-      "venue": "ビックサイト 東4-8,西1-4,南1-4",
+      "venue": "東京ビッグサイト 東4-8,西1-4,南1-4",
       "conditionLines": [
         "名前コード：山本 雄太"
       ],
@@ -635,7 +635,7 @@
       "dateText": "3月24日(火)～25日(水)",
       "name": "AI/DX営業・マーケティング展 2026 Spring",
       "url": "https://expo.ipros.jp/event/14277",
-      "venue": "ビックサイト 東4",
+      "venue": "東京ビッグサイト 東4",
       "conditionLines": [
         "名前コード：村岡 隆"
       ],
@@ -656,7 +656,7 @@
       "dateText": "3月24日(火)～25日(水)",
       "name": "CGC合同商談会 2026",
       "url": "https://www.cgcjapan.co.jp/cgcgroups/csr/report/digital/2026/pageindices/index29.html",
-      "venue": "ビックサイト 南3,4",
+      "venue": "東京ビッグサイト 南3,4",
       "conditionLines": [],
       "rating": "実地評価：C",
       "nightTime": "",
@@ -696,7 +696,7 @@
       "dateText": "3月24日(火)",
       "name": "Microsoft AI Tour 2026 Tokyo",
       "url": "https://www.microsoft.com/ja-jp/local/events/msaitour-ondemand/",
-      "venue": "ビックサイト 東6-8",
+      "venue": "東京ビッグサイト 東6-8",
       "conditionLines": [],
       "rating": "実地評価：D",
       "nightTime": "",
@@ -734,7 +734,7 @@
       "dateText": "4月2日(木)",
       "name": "SEVEN‐ELEVEN Innovation Expo 2026",
       "url": "https://www.sej.co.jp/company/news_release/news/2026/202604011400.html",
-      "venue": "ビックサイト 西1,2",
+      "venue": "東京ビッグサイト 西1,2",
       "conditionLines": [],
       "rating": "実地評価：D",
       "nightTime": "",
@@ -753,7 +753,7 @@
       "dateText": "4月2日(木)～5日(日)",
       "name": "インターペット東京2026",
       "url": "https://interpets.jp/public/",
-      "venue": "ビックサイト 東1-3,7,8",
+      "venue": "東京ビッグサイト 東1-3,7,8",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -790,7 +790,7 @@
       "dateText": "4月8日(水)～10日(金)",
       "name": "FaW TOKYO-第13回ファッションワールド春",
       "url": "https://www.fashion-tokyo.jp/spring/ja-jp.html",
-      "venue": "ビックサイト 南1-4",
+      "venue": "東京ビッグサイト 南1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -811,7 +811,7 @@
       "dateText": "4月8日(水)～10日(金)",
       "name": "Japan IT Week 春 2026",
       "url": "https://www.japan-it.jp/spring/ja-jp.html",
-      "venue": "ビックサイト 東1-3,7,8、西1-4",
+      "venue": "東京ビッグサイト 東1-3,7,8、西1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -848,7 +848,7 @@
       "dateText": "4月15日(水)～17日(金)",
       "name": "FABEX東京2026",
       "url": "https://www.fabex.jp/",
-      "venue": "ビックサイト 東1-3,8",
+      "venue": "東京ビッグサイト 東1-3,8",
       "conditionLines": [
         "名前コード：山本 雄太"
       ],
@@ -871,7 +871,7 @@
       "dateText": "4月15日(水)～17日(金)",
       "name": "NexTech Week 2026【春】",
       "url": "https://www.nextech-week.jp/hub/ja-jp.html",
-      "venue": "ビックサイト 西1,2,4",
+      "venue": "東京ビッグサイト 西1,2,4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -916,7 +916,7 @@
       "dateText": "4月15日(水)～17日(金)",
       "name": "スポーツチーム・アスリート向け総合展2026",
       "url": "https://www.sportsexpo.jp/ja-jp.html",
-      "venue": "ビックサイト 南1,2",
+      "venue": "東京ビッグサイト 南1,2",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -975,7 +975,7 @@
       "dateText": "4月17日(金)～18日(土)",
       "name": "ジャンボびっくり見本市",
       "url": "https://www.jumbo-fair.jp/",
-      "venue": "ビックサイト 東7",
+      "venue": "東京ビッグサイト 東7",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -996,7 +996,7 @@
       "dateText": "4月21日(火)～23日(木)",
       "name": "CPHI Japan 2026",
       "url": "https://www.cphijapan.com/",
-      "venue": "ビックサイト 東1-3,7,8",
+      "venue": "東京ビッグサイト 東1-3,7,8",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1017,7 +1017,7 @@
       "dateText": "4月22日(水)～24日(金)",
       "name": "Sea Japan 2026",
       "url": "https://www.seajapan.ne.jp/",
-      "venue": "ビックサイト 西1-4",
+      "venue": "東京ビッグサイト 西1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1038,7 +1038,7 @@
       "dateText": "4月22日(水)～24日(金)",
       "name": "第9回 マーケティングWeek -春 2026-",
       "url": "https://www.marketing-week.jp/hub/ja-jp.html",
-      "venue": "ビックサイト 南1-4",
+      "venue": "東京ビッグサイト 南1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1059,7 +1059,7 @@
       "dateText": "5月13日(水)～15日(金)",
       "name": "EDIX（教育総合展）東京 2026",
       "url": "https://www.edix-expo.jp/tokyo/ja-jp.html",
-      "venue": "ビックサイト 東1-3・8",
+      "venue": "東京ビッグサイト 東1-3・8",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1080,7 +1080,7 @@
       "dateText": "5月13日(水)～15日(金)",
       "name": "自治体・公共 Week 2026",
       "url": "https://www.publicweek.jp/ja-jp.html",
-      "venue": "ビックサイト 西1-2",
+      "venue": "東京ビッグサイト 西1-2",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1101,7 +1101,7 @@
       "dateText": "5月13日(水)～15日(金)",
       "name": "住まい・建築・不動産の総合展【BREX】2026",
       "url": "https://housing-biz.jp/",
-      "venue": "ビックサイト 西3-4 南1-4",
+      "venue": "東京ビッグサイト 西3-4 南1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1122,7 +1122,7 @@
       "dateText": "5月15日(金)～17日(日)",
       "name": "資産運用 EXPO",
       "url": "https://www.am-expo.jp/tokyo-2/ja-jp.html",
-      "venue": "ビックサイト 東7",
+      "venue": "東京ビッグサイト 東7",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1143,7 +1143,7 @@
       "dateText": "5月18日(月)～5月20日(水)",
       "name": "ビューティーワールド ジャパン 東京",
       "url": "https://beautyworld-japan.jp.messefrankfurt.com/tokyo/ja.html",
-      "venue": "ビックサイト 西1-4、南1-4",
+      "venue": "東京ビッグサイト 西1-4、南1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1164,7 +1164,7 @@
       "dateText": "5月20日(水)～22日(金)",
       "name": "2026NEW環境展",
       "url": "https://www.n-expo.jp/",
-      "venue": "ビックサイト 東1-3・7・8",
+      "venue": "東京ビッグサイト 東1-3・7・8",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1201,7 +1201,7 @@
       "dateText": "5月27日(水）～29日(金）",
       "name": "ifia JAPAN2026 第31回国際食品素材/添加物展・会議",
       "url": "https://www.ifiajapan.com/outline",
-      "venue": "ビックサイト 西1,2",
+      "venue": "東京ビッグサイト 西1,2",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1222,7 +1222,7 @@
       "dateText": "5月27日(水）～29日(金）",
       "name": "JECA FAIR 2026 ～第74回電設工業展～",
       "url": "https://www.jecafair.jp/",
-      "venue": "ビックサイト 東1-3,8",
+      "venue": "東京ビッグサイト 東1-3,8",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1243,7 +1243,7 @@
       "dateText": "5月27日(水）～29日(金）",
       "name": "ワイヤレスジャパン×ワイヤレス・テクノロジー・パーク2026",
       "url": "https://wjwtp.jp/2026/",
-      "venue": "ビックサイト 西3,4",
+      "venue": "東京ビッグサイト 西3,4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1264,7 +1264,7 @@
       "dateText": "5月27日(水）～29日(金）",
       "name": "第3回SPEXA -SPACE BUSINESS EXPO-",
       "url": "https://www.spexa.jp/tokyo/ja-jp.html",
-      "venue": "ビックサイト 南1,2",
+      "venue": "東京ビッグサイト 南1,2",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1285,7 +1285,7 @@
       "dateText": "6月2日(火)～5日(金)",
       "name": "FOOMA JAPAN 2026",
       "url": "https://www.foomajapan.jp/",
-      "venue": "ビックサイト 東1-3,7,8、西1-4",
+      "venue": "東京ビッグサイト 東1-3,7,8、西1-4",
       "conditionLines": [
         "名前コード：山本 雄太"
       ],
@@ -1307,7 +1307,7 @@
       "dateText": "6月2日(火)～4日(木)",
       "name": "オルガテック東京2026",
       "url": "https://www.orgatec-tokyo.jp/",
-      "venue": "ビックサイト 南1-4",
+      "venue": "東京ビッグサイト 南1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1350,7 +1350,7 @@
       "dateText": "6月9日(火)～10日(水)",
       "name": "BEYOND FORUM2026",
       "url": "https://eight-event.8card.net/lp/feature/2026-06/",
-      "venue": "ビックサイト 南1,2",
+      "venue": "東京ビッグサイト 南1,2",
       "conditionLines": [
         "名前コード：村岡 隆"
       ],
@@ -1372,7 +1372,7 @@
       "dateText": "6月9日(火)～10日(水)",
       "name": "RICOH Value Presentation 2026",
       "url": "https://vpre.ricoh.co.jp/tokyo/lp/",
-      "venue": "ビックサイト 南4",
+      "venue": "東京ビッグサイト 南4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1417,7 +1417,7 @@
       "dateText": "6月9日(火)～10日(水)",
       "name": "ブライダル産業フェア2026",
       "url": "https://bridalnews.co.jp/fair/",
-      "venue": "ビックサイト 南3",
+      "venue": "東京ビッグサイト 南3",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1439,7 +1439,7 @@
       "dateText": "6月10日(水)～12日(金)",
       "name": "Smart Sensing2026/SEMISOL2026",
       "url": "https://www.smartsensingexpo.com/",
-      "venue": "ビックサイト 西3",
+      "venue": "東京ビッグサイト 西3",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1476,7 +1476,7 @@
       "dateText": "6月10日(水)～12日(金)",
       "name": "インテリア ライフスタイル",
       "url": "https://interiorlifestyle-tokyo.jp.messefrankfurt.com/tokyo/ja.html",
-      "venue": "ビックサイト 西1,2",
+      "venue": "東京ビッグサイト 西1,2",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1497,7 +1497,7 @@
       "dateText": "6月10日(水)～12日(金)",
       "name": "電子機器トータルソリューション展2026",
       "url": "https://www.jpcashow.com/show2026/index.html",
-      "venue": "ビックサイト 東1-3,7",
+      "venue": "東京ビッグサイト 東1-3,7",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1518,7 +1518,7 @@
       "dateText": "6月17日(水)～19日(金)",
       "name": "総務・人事・経理Week",
       "url": "https://www.office-expo.jp/tokyo/ja-jp.html",
-      "venue": "ビックサイト 東1-3,7,8、南1-4",
+      "venue": "東京ビッグサイト 東1-3,7,8、南1-4",
       "conditionLines": [
         "名前コード：伊藤 聡",
         "名前コード：広瀬 隆則"
@@ -1541,7 +1541,7 @@
       "dateText": "6月17日(水)～19日(金)",
       "name": "第19回 コンテンツ東京",
       "url": "https://www.content-tokyo.jp/hub/ja-jp.html",
-      "venue": "ビックサイト 西1-4",
+      "venue": "東京ビッグサイト 西1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1582,7 +1582,7 @@
       "dateText": "6月24日(水)～26日(金)",
       "name": "JFEX SUMMER 第8回 [国際]食品・飲料 商談Week",
       "url": "https://www.jfex.jp/jfex/ja-jp.html",
-      "venue": "ビックサイト 南1-4",
+      "venue": "東京ビッグサイト 南1-4",
       "conditionLines": [
         "名前コード：山本 雄太",
         "名前コード：伊藤 聡",
@@ -1606,7 +1606,7 @@
       "dateText": "6月24日(水)～26日(金)",
       "name": "ライフスタイルWeek TOKYO【夏】",
       "url": "https://www.lifestyle-expo.jp/summer/ja-jp.html",
-      "venue": "ビックサイト 東1-3,7,8",
+      "venue": "東京ビッグサイト 東1-3,7,8",
       "conditionLines": [
         "名前コード：村岡 隆",
         "名前コード：伊藤 聡"
@@ -1629,7 +1629,7 @@
       "dateText": "6月24日(水)～26日(金)",
       "name": "第18回 マーケティングWeek -夏 2026-",
       "url": "https://www.marketing-week.jp/hub/ja-jp.html",
-      "venue": "ビックサイト 西1-4",
+      "venue": "東京ビッグサイト 西1-4",
       "conditionLines": [],
       "rating": "実地評価：E",
       "nightTime": "",
@@ -1691,7 +1691,7 @@
       "dateText": "7月1日(水)～7月3日(金)",
       "name": "第38回 ものづくり ワールド [東京]",
       "url": "https://www.manufacturing-world.jp/tokyo/ja-jp.html",
-      "venue": "ビックサイト 東1-3,7,8、西1-4、南1,2",
+      "venue": "東京ビッグサイト 東1-3,7,8、西1-4、南1,2",
       "conditionLines": [
         "名前コード：村岡 隆",
         "名前コード：伊藤 聡"
@@ -1729,7 +1729,7 @@
       "dateText": "7月8日(水)～10日(金)",
       "name": "SPORTEC2026",
       "url": "https://sports-st.com/",
-      "venue": "ビックサイト 東1-3,8",
+      "venue": "東京ビッグサイト 東1-3,8",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1752,7 +1752,7 @@
       "dateText": "7月8日(水)～10日(金)",
       "name": "バックオフィス World 2026 夏 東京",
       "url": "https://www.bizcrew.jp/expo/back-office-tokyo",
-      "venue": "ビックサイト 南1-4",
+      "venue": "東京ビッグサイト 南1-4",
       "conditionLines": [],
       "rating": "実地評価：C",
       "nightTime": "",
@@ -1773,7 +1773,7 @@
       "dateText": "7月8日(水)～10日(金)",
       "name": "国際モダンホスピタルショウ",
       "url": "https://www.noma-hs.com/",
-      "venue": "ビックサイト 西1,2",
+      "venue": "東京ビッグサイト 西1,2",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1796,7 +1796,7 @@
       "dateText": "7月8日(水)～10日(金)",
       "name": "自治体総合フェア2026",
       "url": "https://www.noma-lgf.com/",
-      "venue": "ビックサイト 西3,4",
+      "venue": "東京ビッグサイト 西3,4",
       "conditionLines": [],
       "rating": "実地評価：E",
       "nightTime": "",
@@ -1875,7 +1875,7 @@
       "dateText": "7月15日(水)～17日(金)",
       "name": "TECHNO-FRONTIER 2026",
       "url": "https://tf.jma.or.jp/index.html",
-      "venue": "ビックサイト 西1-3",
+      "venue": "東京ビッグサイト 西1-3",
       "conditionLines": [],
       "rating": "実地評価：F",
       "nightTime": "",
@@ -1894,7 +1894,7 @@
       "dateText": "7月15日(水)～17日(金)",
       "name": "アクアポニックス・陸上養殖設備展2026",
       "url": "https://www.gpec.jp/aqua/",
-      "venue": "ビックサイト 南1,2",
+      "venue": "東京ビッグサイト 南1,2",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -1915,7 +1915,7 @@
       "dateText": "7月15日(水)～17日(金)",
       "name": "メンテナンス・レジリエンスTOKYO 2026",
       "url": "https://mente.jma.or.jp/",
-      "venue": "ビックサイト 東1-3,7,8",
+      "venue": "東京ビッグサイト 東1-3,7,8",
       "conditionLines": [
         "名前コード：伊藤 聡",
         "名前コード：村岡 隆"
@@ -1994,7 +1994,7 @@
       "dateText": "7月29日(水)～30日(木)",
       "name": "リフォーム産業フェア2026",
       "url": "https://the-bars.com/",
-      "venue": "ビックサイト 西3,4",
+      "venue": "東京ビッグサイト 西3,4",
       "conditionLines": [],
       "rating": "実地評価：E",
       "nightTime": "",
@@ -2013,7 +2013,7 @@
       "dateText": "7月29日(水)～30日(木)",
       "name": "賃貸住宅フェア2026 in東京",
       "url": "https://zenchin-fair.com/2026/tokyo/",
-      "venue": "ビックサイト 西1,2",
+      "venue": "東京ビッグサイト 西1,2",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2034,7 +2034,7 @@
       "dateText": "7月30日(木)～31日(金)",
       "name": "Google Cloud Next Tokyo",
       "url": "https://www.googlecloudevents.com/next-tokyo?utm_source=sateraito&utm_medium=partner&utm_campaign=FY26-Q3-JAPAN-JAP39615-physicalevent-er-NextTokyo26-153029&utm_content=0014M00001h30pPQAQ&utm_term=-&i=Q5ORDm4FyxeIOs03o39BsbGaHYpfq08B",
-      "venue": "ビックサイト 南1-4",
+      "venue": "東京ビッグサイト 南1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2055,7 +2055,7 @@
       "dateText": "7月31日(金)～8月2日(日)",
       "name": "第26回 JAPANドラッグストアショー",
       "url": "https://www.drugstoreshow.jp/",
-      "venue": "ビックサイト 東1-3,7,8",
+      "venue": "東京ビッグサイト 東1-3,7,8",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2076,7 +2076,7 @@
       "dateText": "8月4日(火)～6日(木)",
       "name": "CAFERES JAPAN 2026",
       "url": "https://hakkoexpo.jp/",
-      "venue": "ビックサイト 南1-4",
+      "venue": "東京ビッグサイト 南1-4",
       "conditionLines": [
         "名前コード：伊藤 聡",
         "名前コード：小林 直樹"
@@ -2098,7 +2098,7 @@
       "dateText": "8月4日(火)～7日(金)",
       "name": "下水道展’26 東京",
       "url": "https://www.gesuidouten.jp/",
-      "venue": "ビックサイト 西1-4",
+      "venue": "東京ビッグサイト 西1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2119,7 +2119,7 @@
       "dateText": "8月18日(火)～22日(土)",
       "name": "DXPO東京'26【夏】",
       "url": "https://dxpo.jp/real/box/tokyo/",
-      "venue": "ビックサイト 西1-3",
+      "venue": "東京ビッグサイト 西1-3",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2140,7 +2140,7 @@
       "dateText": "8月19日(水)～20日(木)",
       "name": "アグリフードEXPO東京2026",
       "url": "https://agrifood-expo.jp/",
-      "venue": "ビックサイト 東1",
+      "venue": "東京ビッグサイト 東1",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2161,7 +2161,7 @@
       "dateText": "8月19日(水)～21日(金)",
       "name": "ジャパンインターナショナルシーフードショー2026",
       "url": "https://seafoodshow-japan.com/tokyo/",
-      "venue": "ビックサイト 東2,3",
+      "venue": "東京ビッグサイト 東2,3",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2182,7 +2182,7 @@
       "dateText": "8月19日(水)～21日(金)",
       "name": "第3回CareTEX東京’26【夏】",
       "url": "https://summer.caretex.jp/",
-      "venue": "ビックサイト 西4",
+      "venue": "東京ビッグサイト 西4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2219,7 +2219,7 @@
       "dateText": "8月27日(木)～30日(火)",
       "name": "TOKYOおもちゃショー2026",
       "url": "https://tokyotoyshow.com/2026/",
-      "venue": "ビックサイト 西1-4",
+      "venue": "東京ビッグサイト 西1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2240,7 +2240,7 @@
       "dateText": "8月27日(木)～28日(金)",
       "name": "大学見本市2026",
       "url": "https://innovationjapan.jst.go.jp/",
-      "venue": "ビックサイト 南1",
+      "venue": "東京ビッグサイト 南1",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2261,7 +2261,7 @@
       "dateText": "8月28日(金)～29日(土)",
       "name": "日経・東証IRフェア2026",
       "url": "https://ps.nikkei.com/irfair/",
-      "venue": "ビックサイト 南3,4",
+      "venue": "東京ビッグサイト 南3,4",
       "conditionLines": [],
       "rating": "実地評価：E",
       "nightTime": "",
@@ -2280,7 +2280,7 @@
       "dateText": "9月2日(水)～4日(金)",
       "name": "第102回東京インターナショナル・ギフト・ショー秋2026",
       "url": "https://www.giftshow.co.jp/tigs/102tigs/outline.htm",
-      "venue": "ビックサイト 東1-3,7,8 西1-4 南1-2",
+      "venue": "東京ビッグサイト 東1-3,7,8 西1-4 南1-2",
       "conditionLines": [],
       "rating": "実地評価：E",
       "nightTime": "",
@@ -2426,7 +2426,7 @@
       "dateText": "9月16日(水)～9月19日(土)",
       "name": "2026国際ウエルディングショー",
       "url": "https://weldingshow.jp/2026/",
-      "venue": "西1-2ホール",
+      "venue": "東京ビッグサイト 西1-2ホール",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2459,7 +2459,7 @@
       "dateText": "9月16日(水)～9月18日(金)",
       "name": "AFF・東京2026 AUTUMN",
       "url": "https://www.asiafashionfair.jp/",
-      "venue": "西3・4ホール",
+      "venue": "東京ビッグサイト 西3・4ホール",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2482,7 +2482,7 @@
       "dateText": "9月16日(水)～9月18日(金)",
       "name": "JIMA2026 総合検査機器(+4展)",
       "url": "https://www.jima-show.jp/index.html",
-      "venue": "東1-3ホール",
+      "venue": "東京ビッグサイト 東1-3ホール",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2499,7 +2499,7 @@
       "dateText": "9月16日(水)～9月18日(金)",
       "name": "第26回 総務・人事・経理Week【東京｜9月】",
       "url": "https://www.office-expo.jp/tokyo/ja-jp.html",
-      "venue": "東7ホール 南1-4ホール",
+      "venue": "東京ビッグサイト 東7ホール 南1-4ホール",
       "conditionLines": [
         "名前コード：伊藤 聡",
         "名前コード：広瀬 隆則"
@@ -2540,7 +2540,7 @@
       "dateText": "9月24日(木)～9月26日(土)",
       "name": "VISIT JAPAN トラベル＆MICEマート2026",
       "url": "https://www.vjtm.jp/j/",
-      "venue": "西1ホール",
+      "venue": "東京ビッグサイト 西1ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2558,7 +2558,7 @@
       "dateText": "9月24日(木)～9月27日(日)",
       "name": "ツーリズムEXPOジャパン2026",
       "url": "https://www.t-expo.jp/",
-      "venue": "東1-3・7・8ホール",
+      "venue": "東京ビッグサイト 東1-3・7・8ホール",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2581,7 +2581,7 @@
       "dateText": "9月25日(金)～9月27日(日)",
       "name": "GOOD LIFE フェア2026",
       "url": "https://goodlife-fair.jp/",
-      "venue": "西2-4ホール",
+      "venue": "東京ビッグサイト 西2-4ホール",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -2632,7 +2632,7 @@
       "dateText": "9月30日(水)～10月2日\t(金)",
       "name": "FOOD STYLE Japan 2026",
       "url": "https://foodstyle.jp/tokyo/",
-      "venue": "東1-3ホール",
+      "venue": "東京ビッグサイト 東1-3ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2647,7 +2647,7 @@
       "dateText": "9月30日(水)～10月2日\t(金)",
       "name": "危機管理産業展 (RISCON TOKYO) 2026",
       "url": "https://www.kikikanri.biz/",
-      "venue": "南1-4ホール",
+      "venue": "東京ビッグサイト 南1-4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2662,7 +2662,7 @@
       "dateText": "9月30日(水)～10月2日\t(金)",
       "name": "健康博覧会2026 秋",
       "url": "https://www.this.ne.jp/",
-      "venue": "西1ホール",
+      "venue": "東京ビッグサイト 西1ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2677,7 +2677,7 @@
       "dateText": "9月30日(水)～10月2日\t(金)",
       "name": "産業DX 総合展 2026 夏 東京",
       "url": "https://www.bizcrew.jp/expo/industrial-dx-tokyo",
-      "venue": "東7・8ホール",
+      "venue": "東京ビッグサイト 東7・8ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2709,7 +2709,7 @@
       "dateText": "10月7日(水)～9日(金)",
       "name": "FaW TOKYO秋 ファッションワールド秋 2026",
       "url": "https://www.fashion-tokyo.jp/autumn/ja-jp.html",
-      "venue": "西1-4ホール",
+      "venue": "東京ビッグサイト 西1-4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2724,7 +2724,7 @@
       "dateText": "10月7日(水)～9日(金)",
       "name": "H.C.R.2026　第53回国際福祉機器展＆フォーラム",
       "url": "https://hcr.or.jp/",
-      "venue": "東1-3・7・8ホール",
+      "venue": "東京ビッグサイト 東1-3・7・8ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2739,7 +2739,7 @@
       "dateText": "10月7日(水)～9日(金)",
       "name": "ライフスタイルWeek【秋】",
       "url": "https://www.lifestyle-expo.jp/autumn/ja-jp.html",
-      "venue": "南1・2ホール",
+      "venue": "東京ビッグサイト 南1・2ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2754,7 +2754,7 @@
       "dateText": "10月7日(水)～9日(金)",
       "name": "第28回 マーケティングWeek-秋-",
       "url": "https://www.lifestyle-expo.jp/autumn/ja-jp.html",
-      "venue": "南3・4ホール",
+      "venue": "東京ビッグサイト 南3・4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2769,7 +2769,7 @@
       "dateText": "10月14日(水)〜17日(土)",
       "name": "SCAJ2026",
       "url": "https://scajconference.jp/",
-      "venue": "南1-4ホール",
+      "venue": "東京ビッグサイト 南1-4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2784,7 +2784,7 @@
       "dateText": "10月14日(水)〜16日(金)",
       "name": "TOKYO PACK 2026",
       "url": "https://www.tokyo-pack.jp/event/13994/",
-      "venue": "東1～3, 7, 8",
+      "venue": "東京ビッグサイト 東1～3, 7, 8",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2799,7 +2799,7 @@
       "dateText": "10月14日(水)〜16日(金)",
       "name": "食品開発展2026",
       "url": "https://hijapan.info/",
-      "venue": "西1,2,4ホール",
+      "venue": "東京ビッグサイト 西1,2,4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2844,7 +2844,7 @@
       "dateText": "10月26日(月)〜31日(土)",
       "name": "JIMTOF2026",
       "url": "https://www.jimtof.org/jp/index.html",
-      "venue": "ビックサイト",
+      "venue": "東京ビッグサイト",
       "conditionLines": [
         "名前コード：久保 直輝"
       ],
@@ -2891,7 +2891,7 @@
       "dateText": "11月5日(木)～6日(金)",
       "name": "レジャー＆サービス産業展",
       "url": "https://www.sogo-unicom.co.jp/lsi/",
-      "venue": "東3ホール",
+      "venue": "東京ビッグサイト 東3ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2906,7 +2906,7 @@
       "dateText": "11月6日(金)～7日(土)",
       "name": "アミューズメントエキスポ2026",
       "url": "https://amusementexpo.jp/",
-      "venue": "南1-4ホール",
+      "venue": "東京ビッグサイト 南1-4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2951,7 +2951,7 @@
       "dateText": "11月10日(火)～13日(金)",
       "name": "アグリビジネス創出フェア2026",
       "url": "https://agribiz.maff.go.jp/",
-      "venue": "西4ホール",
+      "venue": "東京ビッグサイト 西4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2966,7 +2966,7 @@
       "dateText": "11月10日(火)～11日\t(水)",
       "name": "地方銀行フードセレクション2026",
       "url": "https://food-selection.com/",
-      "venue": "南1-4ホール",
+      "venue": "東京ビッグサイト 南1-4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2981,7 +2981,7 @@
       "dateText": "11月11日(水)～13日(金)",
       "name": "FOOD展2026",
       "url": "https://www.food-exhibition.info/",
-      "venue": "東2,3ホール",
+      "venue": "東京ビッグサイト 東2,3ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -2996,7 +2996,7 @@
       "dateText": "11月11日(水)～13日(金)",
       "name": "JFEX WINTER 第9回 [国際] 食品・飲料 商談Week",
       "url": "https://www.jfex.jp/jfex/ja-jp.html",
-      "venue": "東7,8ホール",
+      "venue": "東京ビッグサイト 東7,8ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3011,7 +3011,7 @@
       "dateText": "11月11日(水)～13日(金)",
       "name": "産業交流展2026",
       "url": "https://www.sangyo-koryuten.tokyo/",
-      "venue": "西1・2ホール",
+      "venue": "東京ビッグサイト 西1・2ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3026,7 +3026,7 @@
       "dateText": "11月12日(木)～13日(金)",
       "name": "60th FISMA TOKYO（第60回 東京ファッション産業機器展）",
       "url": "https://www.fisma.tokyo/",
-      "venue": "西3ホール",
+      "venue": "東京ビッグサイト 西3ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3146,7 +3146,7 @@
       "dateText": "11月25日(水)～27日(金)",
       "name": "POWTEX®2026 第46回国際粉体工業展",
       "url": "https://powtex.com/tokyo/",
-      "venue": "東1-3ホール",
+      "venue": "東京ビッグサイト 東1-3ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3161,7 +3161,7 @@
       "dateText": "11月25日(水)～27日(金)",
       "name": "レジャー＆アウトドアジャパン2026",
       "url": "https://leisure-japan.jp/",
-      "venue": "東7,8ホール",
+      "venue": "東京ビッグサイト 東7,8ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3191,7 +3191,7 @@
       "dateText": "12月2日(水)～12月4日(金)",
       "name": "COMNEXT 2026",
       "url": "https://www.cbw-expo.jp/",
-      "venue": "西3・4ホール",
+      "venue": "東京ビッグサイト 西3・4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3206,7 +3206,7 @@
       "dateText": "12月2日(水)～12月4日(金)",
       "name": "JAPAN BUILD TOKYO 2026",
       "url": "https://www.japan-build.jp/tokyo/ja-jp.html",
-      "venue": "西1・2 南1-4ホール",
+      "venue": "東京ビッグサイト 西1・2 南1-4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3236,7 +3236,7 @@
       "dateText": "12月9日(水)～11日(金)",
       "name": "2026“よい仕事おこし”フェア",
       "url": "https://yoishigotookoshifair.jp/exhibition-detail/c8axqjqrc9mdqo4e6obto5d5y",
-      "venue": "南3・4ホール",
+      "venue": "東京ビッグサイト 南3・4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3251,7 +3251,7 @@
       "dateText": "12月9日(水)～11日(金)",
       "name": "SEMICON Japan 2026",
       "url": "https://www.semiconjapan.org/jp",
-      "venue": "東1-3・7・8ホール、西1-4ホール",
+      "venue": "東京ビッグサイト 東1-3・7・8ホール、西1-4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3296,7 +3296,7 @@
       "dateText": "12月16日(水)～17日(木)",
       "name": "Eight EXPO 2026 冬",
       "url": "https://eight-event.8card.net/eightexpo/?code=eightexpo202612_eehousemail_0826_sangyo&utm_source=mail&utm_medium=eehousemail_0826_sangyo",
-      "venue": "東7,8ホール",
+      "venue": "東京ビッグサイト 東7,8ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3326,7 +3326,7 @@
       "dateText": "12月16日(水)～18日(金)",
       "name": "東京ケアウィーク’26",
       "url": "http://careweek.jp/",
-      "venue": "東1-3ホール",
+      "venue": "東京ビッグサイト 東1-3ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
