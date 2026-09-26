@@ -23,9 +23,8 @@ button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11
 button.active{background:#20262d;color:#fff;border-color:#20262d}
 .status{margin-left:auto;align-self:center;font-size:12px;color:var(--muted)}.save-ok{color:#18794e;font-weight:700}.save-warn{color:#9a6700;font-weight:700}
 .calendar-panel{margin:0 0 14px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px}
-.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.calendar-title{font-size:14px;font-weight:900}.calendar-note{font-size:12px;color:var(--muted)}
-.calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.list-filter-bar{display:flex;align-items:center;gap:7px;margin:0 0 8px;font-size:12px;font-weight:800;color:#555}.list-filter-bar select{border:1px solid #aeb7c0;border-radius:7px;background:#fff;padding:5px 8px;font:inherit;font-size:12px}.calendar-start-label{font-size:12px;font-weight:900;color:#555}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:12px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:11px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
-.calendar-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:10px;align-items:start;min-width:0}.calendar-months-viewport{overflow:hidden;min-width:0}.calendar-months{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start;min-width:0}.calendar-months.slide-from-right{animation:calendarSlideFromRight .28s ease}.calendar-months.slide-from-left{animation:calendarSlideFromLeft .28s ease}@keyframes calendarSlideFromRight{from{transform:translateX(12%);opacity:.55}to{transform:translateX(0);opacity:1}}@keyframes calendarSlideFromLeft{from{transform:translateX(-12%);opacity:.55}to{transform:translateX(0);opacity:1}}.month-card,.next-plan-card{position:relative;border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0;align-self:start}.month-nav{position:absolute;top:5px;width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.month-nav.prev{left:5px}.month-nav.next{right:5px}.month-nav:hover{background:#f0f2f4}.nav-symbol{display:block;font-family:Arial,sans-serif;font-size:27px;font-weight:700;line-height:1;transform:translateY(-2px)}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px;cursor:pointer;padding:0 34px}.month-name:hover{text-decoration:underline}.next-plan-head{display:grid;grid-template-columns:28px minmax(0,1fr) 28px;align-items:center;gap:6px;margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid #e3e6e8}.next-plan-heading-center{display:flex;align-items:center;justify-content:center;gap:1em;min-width:0;font-size:13px;line-height:1.3;text-align:center}.next-plan-title{font-size:13px;font-weight:900;line-height:1.3;white-space:nowrap}.next-plan-date{font-size:13px;font-weight:800;color:#315d87;white-space:nowrap}.next-plan-nav{width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.next-plan-nav:hover{background:#f0f2f4}.next-plan-nav-spacer{width:28px;height:28px}.next-plan-empty{padding:20px 8px;text-align:center;font-size:12px;color:var(--muted)}.next-plan-item{padding:7px 3px}.next-plan-name{font-size:12px;font-weight:900;line-height:1.35;overflow-wrap:anywhere}.next-plan-name a{color:var(--link);text-decoration:underline;text-underline-offset:2px}.next-plan-name a:hover{text-decoration:underline}.next-plan-meta{display:grid;grid-template-columns:auto minmax(0,.85fr) minmax(0,1.45fr);gap:6px;align-items:start;margin-top:4px;font-size:10px;line-height:1.35;color:#606a74}.next-plan-meta .kind-badge{align-self:start}.next-plan-person,.next-plan-venue{min-width:0;overflow-wrap:anywhere}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none;font-weight:800;font-size:12px}.cal-day.other-month{font-size:9px;font-weight:400;color:#9aa1a8;opacity:.32}.cal-day.other-month.has-event,.cal-day.other-month.has-plan,.cal-day.other-month.has-attended{opacity:.22;font-weight:600}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#3f78b6;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today{background:#d32f2f!important;color:#fff!important;font-weight:900}.cal-day.today::after{content:none}.cal-day.clickable:hover{filter:brightness(.92)}
+.calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.calendar-title-inline{font-size:17px;font-weight:900;color:#20262d;margin-right:5px}.list-filter-bar{display:flex;align-items:center;gap:7px;margin:0 0 8px;font-size:12px;font-weight:800;color:#555}.list-filter-bar select{border:1px solid #aeb7c0;border-radius:7px;background:#fff;padding:5px 8px;font:inherit;font-size:12px}.calendar-start-label{font-size:12px;font-weight:900;color:#555}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:12px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:11px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
+.calendar-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:10px;align-items:start;min-width:0}.calendar-months-viewport{overflow:hidden;min-width:0}.calendar-months{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start;min-width:0}.calendar-months.slide-from-right{animation:calendarSlideFromRight .28s ease}.calendar-months.slide-from-left{animation:calendarSlideFromLeft .28s ease}@keyframes calendarSlideFromRight{from{transform:translateX(12%);opacity:.55}to{transform:translateX(0);opacity:1}}@keyframes calendarSlideFromLeft{from{transform:translateX(-12%);opacity:.55}to{transform:translateX(0);opacity:1}}.month-card,.next-plan-card{position:relative;border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0;align-self:start}.month-nav{position:absolute;top:5px;width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.month-nav.prev{left:5px}.month-nav.next{right:5px}.month-nav:hover{background:#f0f2f4}.nav-symbol{display:block;font-family:Arial,sans-serif;font-size:27px;font-weight:700;line-height:1;transform:translateY(-2px)}.month-name{text-align:center;font-size:13px;font-weight:900;margin-bottom:4px;cursor:pointer;padding:0 34px}.month-name:hover{text-decoration:underline}.next-plan-head{display:grid;grid-template-columns:28px minmax(0,1fr) 28px;align-items:center;gap:6px;margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid #e3e6e8}.next-plan-heading-center{display:flex;align-items:center;justify-content:center;gap:1em;min-width:0;font-size:13px;line-height:1.3;text-align:center}.next-plan-title{font-size:13px;font-weight:900;line-height:1.3;white-space:nowrap}.next-plan-date{font-size:13px;font-weight:800;color:#315d87;white-space:nowrap}.next-plan-nav{width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.next-plan-nav:hover{background:#f0f2f4}.next-plan-nav-spacer{width:28px;height:28px}.next-plan-empty{padding:20px 8px;text-align:center;font-size:12px;color:var(--muted)}.next-plan-item{padding:7px 3px}.next-plan-name{font-size:14px;font-weight:900;line-height:1.35;overflow-wrap:anywhere}.next-plan-name a{color:var(--link);text-decoration:underline;text-underline-offset:2px}.next-plan-name a:hover{text-decoration:underline}.next-plan-meta{display:grid;grid-template-columns:auto minmax(0,.85fr) minmax(0,1.45fr);gap:6px;align-items:center;margin-top:4px;font-size:11px;line-height:1.35;color:#606a74}.next-plan-meta .kind-badge{align-self:center}.next-plan-person,.next-plan-venue{min-width:0;overflow-wrap:anywhere}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{color:var(--muted);font-weight:800;padding:2px 0}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none;font-weight:800;font-size:12px}.cal-day.other-month{font-size:9px;font-weight:400;color:#9aa1a8;opacity:.32}.cal-day.other-month.has-event,.cal-day.other-month.has-plan,.cal-day.other-month.has-attended{opacity:.22;font-weight:600}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#3f78b6;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today{background:#d32f2f!important;color:#fff!important;font-weight:900}.cal-day.today::after{content:none}.cal-day.clickable:hover{filter:brightness(.92)}
 .calendar-focus td{animation:calFlash 1.2s ease}@keyframes calFlash{0%,100%{background:inherit}35%,70%{background:#fff1b8}}
 .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}
@@ -37,7 +36,7 @@ th:last-child,td:last-child{border-right:0}
 .event-row:nth-of-type(even) td{background:#fdfdfc}
 .date,.date-head{text-align:center}.date{font-weight:700;white-space:normal;vertical-align:middle;font-size:12px;line-height:1.35;padding-left:6px;padding-right:6px;overflow:hidden}
 .event-meta-line{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-height:20px}.event-right-tools{margin-left:auto;display:flex;align-items:flex-start;gap:7px}.event-action-stack{margin-left:auto;display:flex;flex-direction:column;align-items:stretch;gap:4px;min-width:82px}.event-edit-btn{padding:3px 7px;font-size:11px;font-weight:800;border-color:#7fa2c7;background:#f5f9fd;color:#315d87}.event-edit-btn:hover{background:#e9f2fa}.event-action-stack .end-row-btn{margin-left:0;width:100%}.event-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:2px 0 5px}.event-tools label{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:800;color:#555}.event-tools input{margin:0}.plan-days{display:flex;gap:5px;flex-wrap:wrap;margin:-1px 0 5px 2px}.plan-days label{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;border:1px solid #c5c9cc;border-radius:9px;background:#fff;font-size:10px;font-weight:800;color:#555}.plan-days input{margin:0}.event-badges{display:flex;gap:5px;flex-wrap:wrap}.kind-badge,.tag{display:inline-block;border-radius:10px;padding:1px 7px;font-size:11px;font-weight:800}.kind-badge{color:#fff}.kind-badge.exhibition{background:#166534}.kind-badge.gathering{background:#9a3412}.person-top{text-align:right;font-size:12px;font-weight:800;color:#46515c;white-space:nowrap;margin-left:auto}.event-head{display:block}.name{font-weight:700;font-size:15px}.name a{color:var(--link);text-decoration:underline;text-underline-offset:2px}.name a:hover{text-decoration:underline}
-.venue{margin-top:2px;color:var(--muted)}.venue-participant-line{display:flex;align-items:baseline;gap:.5em;margin-top:2px;color:var(--muted);font-size:14px;line-height:1.55;min-width:0}.venue-participant-line .venue{margin-top:0;min-width:0;overflow-wrap:anywhere}.participant-inline{font-size:inherit;font-weight:700;color:#46515c;white-space:normal;overflow-wrap:anywhere}.participant-label{color:#6c7680;font-weight:700}
+.venue{margin-top:2px;color:var(--muted)}.participant-line{margin-top:0;margin-left:.5em;font-size:14px;line-height:1.55;color:#46515c;font-weight:700;overflow-wrap:anywhere}.participant-label{color:#46515c;font-weight:900}
 .person{font-weight:800;margin-bottom:3px}.condline{margin:1px 0}.report-cond{margin:0 0 7px;padding:5px 7px;background:#f6f6f3;border-left:3px solid #c5c5bf;color:#555}.report-cond div{margin:1px 0}
 .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
 .tag{border:1px solid #c8c8c2;background:#fff}
@@ -84,7 +83,7 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作7</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作8</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
@@ -110,8 +109,7 @@ th:last-child,td:last-child{border-right:0}
   </div>
   <div class="edit-help">通常の情報修正は各イベント右上の「イベント編集」を使用します。「一覧直接編集（旧）」は複数箇所をまとめて直すための旧方式です。</div>
   <section class="calendar-panel" aria-label="カレンダー">
-    <div class="calendar-head"><div class="calendar-title">カレンダー</div><div id="calendarNote" class="calendar-note"></div></div>
-    <div class="calendar-jump"><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div><span id="listRangeStatus" class="calendar-note"></span><span class="calendar-note">※ 月ボタンで表とカレンダーを同じ月へ移動</span></div>
+    <div class="calendar-jump"><span class="calendar-title-inline">カレンダー</span><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div></div>
     <div class="calendar-layout"><div id="calendarMonthsViewport" class="calendar-months-viewport"><div id="calendarMonths" class="calendar-months"></div></div><div id="nextPlanHost"></div></div>
   </section>
 <div class="table-wrap">
@@ -623,16 +621,16 @@ function eventEditButton(e){
   return '<button type="button" class="event-edit-btn" data-event-edit="'+esc(e.id)+'">イベント編集</button>';
 }
 function participantDisplay(e,editingValue=''){
+  if(flag(e).ignored&&!editing)return '';
   const people=personLines(e);
   if(editing){
     const html=editingValue||editableInline(e.id,'people',people.join(' / '));
-    return '<span class="participant-inline"><span class="participant-label">参加名義：</span>'+html+'</span>';
+    return '<div class="participant-line"><span class="participant-label">参加名義：</span>'+html+'</div>';
   }
-  const shown=flag(e).ignored?'':people.join(' / ');
-  return '<span class="participant-inline"><span class="participant-label">参加名義：</span>'+esc(shown)+'</span>';
+  return '<div class="participant-line"><span class="participant-label">参加名義：</span>'+esc(people.join(' / '))+'</div>';
 }
-function venueParticipantLine(e,venueHtml,editingValue=''){
-  return '<div class="venue-participant-line"><span class="venue">'+venueHtml+'</span>'+participantDisplay(e,editingValue)+'</div>';
+function venueParticipantBlock(e,venueHtml,editingValue=''){
+  return '<div class="venue">'+venueHtml+'</div>'+participantDisplay(e,editingValue);
 }
 function openEventEdit(eventId){
   const e=events.find(x=>x.id===eventId);
@@ -819,7 +817,7 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,planned
   const venueHtml=editing?editableInline(e.id,'venue',e.venue||''):esc(e.venue||'');
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
     '<div class="event-head"><div class="name event-name">'+nameHtml+'</div></div>'+
-    venueParticipantLine(e,venueHtml,personHtml);
+    venueParticipantBlock(e,venueHtml,personHtml);
 
   const condHtml=editing
     ? '<div class="report-cond">'+editableLines(e.id,'conditions',cond)+'</div>'
@@ -855,7 +853,7 @@ function attendedUndatedRow(e){
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>','<span class="tag attended">参加済み（日付未入力）</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const rightTop='<div class="event-action-stack">'+eventEditButton(e)+'<button type="button" class="end-row-btn end-pending" data-end-edit="'+esc(e.id)+'">終了処理</button></div>';
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantLine(e,esc(e.venue||''));
+  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantBlock(e,esc(e.venue||''));
   let detail='<div class="attended-undated-note">終了処理で「実際に行った日」を入力してください。</div>';
   if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
   if(r&&String(r.report||'').trim()){
@@ -881,7 +879,7 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   else if(e.date!==visitDate) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
 
   const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+
-    '<div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantLine(e,esc(e.venue||''))+schedule;
+    '<div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantBlock(e,esc(e.venue||''))+schedule;
 
   let detail='';
   if(showReport){
@@ -1079,13 +1077,12 @@ function shiftCalendar(dir){
   calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar(dir);
 }
 function renderCalendar(slideDir=0){
-  const months=document.getElementById('calendarMonths'),nextHost=document.getElementById('nextPlanHost'),yearSel=document.getElementById('calendarYear'),jump=document.getElementById('monthJump'),note=document.getElementById('calendarNote'),range=document.getElementById('listRangeStatus');
+  const months=document.getElementById('calendarMonths'),nextHost=document.getElementById('nextPlanHost'),yearSel=document.getElementById('calendarYear'),jump=document.getElementById('monthJump');
   const map=calendarMap();months.innerHTML='';months.classList.remove('slide-from-right','slide-from-left');
   const ys=availableYears();
   const shownYear=listStartYear||calendarToday.getFullYear();
   yearSel.innerHTML=ys.map(y=>'<option value="'+y+'" '+(y===shownYear?'selected':'')+'>'+y+'</option>').join('');
   jump.innerHTML='<button type="button" data-month="0" class="'+(!listStartMonth?'active':'')+'">全期間</button>'+Array.from({length:12},(_,i)=>'<button type="button" data-month="'+(i+1)+'" title="'+(i+1)+'月以降を表に表示" class="'+(listStartMonth===i+1?'active':'')+'">'+(i+1)+'月</button>').join('');
-  if(range)range.textContent=listStartMonth?'表：'+shownYear+'年'+listStartMonth+'月以降':'表：全期間';
   jump.querySelectorAll('button[data-month]').forEach(btn=>{
     btn.onclick=()=>{
       const m=parseInt(btn.dataset.month,10);
@@ -1093,7 +1090,6 @@ function renderCalendar(slideDir=0){
       setTableStartMonth(y,m);
     };
   });
-  note.textContent=mode==='attended'?'緑＝実際に参加した日':mode==='planned'?'青＝参加予定日':mode==='upcoming'?'灰＝今日以降のイベント開催日':'灰＝イベント開催日';
   for(let off=0;off<2;off++){
     const d=new Date(calendarBaseYear,calendarBaseMonth-1+off,1);
     months.appendChild(buildMonthCard(d.getFullYear(),d.getMonth()+1,map,off===0?'prev':'next'));
