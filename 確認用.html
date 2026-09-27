@@ -83,7 +83,7 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作17</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作18</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
@@ -474,7 +474,7 @@ function passesListStart(date){
 function todayISO(){
   const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
-function isEndProcessAvailable(e){return String(e.date||'')<=todayISO()}
+function isEndProcessAvailable(e){return String(e.endDate||e.date||'')<todayISO()}
 function needsEndProcessing(e){
   if(!e||String(e.id||'').startsWith('draft-new-'))return false;
   const o=officialEvent(e);
