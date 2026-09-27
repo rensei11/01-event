@@ -43,7 +43,7 @@ th:last-child,td:last-child{border-right:0}
 .attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
 .planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
 .notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
-.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
+.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.attended-event-content{position:relative;padding-right:78px}.attended-event-content .event-meta-line{min-height:0}.attended-event-content .event-action-stack{position:absolute;top:0;right:0}.attended-event-content .event-head{margin-top:1px}.attended-event-content .participant-line{margin-top:0}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
 .row-notattended td{color:#777772;background:#f4f4f2!important}.row-notattended .event-name,.row-notattended .event-name a{color:#777772!important}.row-notattended .event-name a{text-decoration-color:#999!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
 .rating{font-weight:900;margin-bottom:3px}.report{white-space:pre-wrap}.report-rating-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.report-flag-tools{display:inline-flex;gap:6px;align-items:center;font-size:11px;font-weight:800}.report-flag-tools label{display:inline-flex;align-items:center;gap:3px;border-radius:10px;padding:2px 7px;cursor:pointer}.report-high-label{background:#f5fbf6;color:#356744;border:1px solid #bfd8c6}.report-low-label{background:#f4f5f6;color:#666;border:1px solid #cfd3d6}.report-flag-tools input{appearance:none;-webkit-appearance:none;width:14px;height:14px;min-width:14px;min-height:14px;margin:0;border-radius:3px;background:#fff;position:relative;overflow:hidden}.report-high-toggle{border:1.5px solid #6da27c}.report-low-toggle{border:1.5px solid #cf6b7e}.report-high-toggle:checked{background:#568f66}.report-high-toggle:checked::after,.report-low-toggle:checked::after{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;line-height:1}.report-high-toggle:checked::after{content:"✓";font-size:10px}.report-low-toggle:checked{background:#c65369}.report-low-toggle:checked::after{content:"×";font-size:12px}.report-good td{background:#f5fbf6!important}.report-bad td{background:#f1f2f3!important}.report-bad .event-name a{color:#7b848d!important;text-decoration-color:#aeb4b9!important}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
@@ -83,7 +83,7 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作14</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作15</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
@@ -847,12 +847,20 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,planned
   return '<tr class="event-row '+cls+((plannedDate||plannedUnknown)?(isFirstOfDate?' planned-day-start':''):'')+'" data-event-id="'+esc(e.id)+'" data-planned-date="'+esc(plannedDate||'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+'<td>'+eventCell+'</td>'+right+'</tr>';
 }
 
+function attendedEventInfoBlock(e,schedule=''){
+  const venue=String(e.venue||'').trim();
+  let html=venue?'<div class="venue">'+esc(venue)+'</div>':'';
+  if(schedule)html+=schedule;
+  html+=participantDisplay(e);
+  return html;
+}
+
 function attendedUndatedRow(e){
   const r=reportFor(e),people=personLines(e),cond=conditionLines(e);
   const badges=['<span class="kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</span>','<span class="tag attended">参加済み（日付未入力）</span>'];
   const link=e.url?'<a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.name)+'</a>':esc(e.name);
   const rightTop='<div class="event-action-stack">'+eventEditButton(e)+'<button type="button" class="end-row-btn end-pending" data-end-edit="'+esc(e.id)+'">終了処理</button></div>';
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantBlock(e,esc(e.venue||''));
+  const eventCell='<div class="attended-event-content"><div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div><div class="event-head"><div class="name event-name">'+link+'</div></div>'+attendedEventInfoBlock(e)+'</div>';
   let detail='<div class="attended-undated-note">終了処理で「実際に行った日」を入力してください。</div>';
   if(cond.length)detail+='<div class="report-cond">'+cond.map(x=>'<div>'+esc(x)+'</div>').join('')+'</div>';
   if(r&&String(r.report||'').trim()){
@@ -877,8 +885,8 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   if(e.endDate&&e.endDate!==e.date) schedule='<div class="venue">開催 '+esc(compactRangeText(e))+'</div>';
   else if(e.date!==visitDate) schedule='<div class="venue">開催 '+esc(dateText(e))+'</div>';
 
-  const eventCell='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+
-    '<div class="event-head"><div class="name event-name">'+link+'</div></div>'+venueParticipantBlock(e,esc(e.venue||''))+schedule;
+  const eventCell='<div class="attended-event-content"><div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+
+    '<div class="event-head"><div class="name event-name">'+link+'</div></div>'+attendedEventInfoBlock(e,schedule)+'</div>';
 
   let detail='';
   if(showReport){
