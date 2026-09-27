@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-26-big-sight-venue-normalized",
+  "dataVersion": "2026-09-27-attended-venue-restored",
   "year": 2026,
   "events": [
     {
@@ -354,7 +354,7 @@
       "dateText": "9月10日(木)～11日(金)",
       "name": "Snowflake World Tour Tokyo 2026",
       "url": "https://www.snowflake.com/ja/world-tour/tokyo/",
-      "venue": "",
+      "venue": "グランドプリンスホテル新高輪 国際館パミール",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -372,7 +372,7 @@
       "dateText": "9月10日(木)",
       "name": "WalkMe on Tour Tokyo 2026",
       "url": "https://www.bs-event.jp/walkme-tour-tokyo26/",
-      "venue": "",
+      "venue": "高輪ゲートウェイ コンベンションセンター",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -393,7 +393,7 @@
       "dateText": "9月10日(木)",
       "name": "トランスコスモスフォーラム 2026｜GLOBAL",
       "url": "https://www.trans-cosmos.co.jp/forum2026/gl_timetable/",
-      "venue": "",
+      "venue": "ザ・プリンス パークタワー東京",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -468,7 +468,7 @@
       "dateText": "9月17日(木)",
       "name": "Impact World Tour Tokyo",
       "url": "https://cognite.swoogo.com/tokyo2026",
-      "venue": "",
+      "venue": "パレスホテル東京",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
