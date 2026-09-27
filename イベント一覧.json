@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-27-attended-venue-restored",
+  "dataVersion": "2026-09-27-attendance-sync",
   "year": 2026,
   "events": [
     {
@@ -361,7 +361,7 @@
       "rating": "",
       "nightTime": "",
       "nightText": "",
-      "attendanceStatus": "attended",
+      "attendanceStatus": "not_attended",
       "visitDates": [],
       "historySource": "未参加イベント"
     },
