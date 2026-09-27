@@ -152,14 +152,17 @@
       "visitDates": []
     },
     {
-      "id": "hist-86d35373468d",
+      "id": "hist-no-86d35373468d",
       "date": "2026-09-10",
       "endDate": "2026-09-11",
       "dateText": "9月10日(木)～11日(金)",
       "name": "エンディング産業展2026",
       "category": "exhibition",
       "attendanceStatus": "not_attended",
-      "visitDates": []
+      "visitDates": [],
+      "url": "https://www.tokyohakuzen.co.jp/endex-exhibition/",
+      "venue": "",
+      "nameCodes": []
     },
     {
       "id": "hist-1e828e37c37b",

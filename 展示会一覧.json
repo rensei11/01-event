@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-27-unconfirmed-restored",
+  "dataVersion": "2026-09-27-web",
   "year": 2026,
   "events": [
     {
@@ -2405,7 +2405,7 @@
       "nightText": "",
       "attendanceStatus": "not_attended",
       "visitDates": [],
-      "historySource": "未参加イベント"
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-eb7ebbdd728e",
