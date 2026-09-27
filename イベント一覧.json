@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-27-unconfirmed-restored",
+  "dataVersion": "2026-09-27-web",
   "year": 2026,
   "events": [
     {
@@ -360,7 +360,13 @@
       ],
       "rating": "",
       "nightTime": "",
-      "nightText": ""
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-10"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-hist-no-156a1794a9f0"
     },
     {
       "id": "hist-no-bc0cbc6d631e",
