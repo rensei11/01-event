@@ -62,7 +62,7 @@ th:last-child,td:last-child{border-right:0}
 .end-list{border-right:1px solid var(--line);padding:12px;background:#f7f8fa}.end-list-note{font-size:12px;color:var(--muted);margin:0 0 8px}
 .end-event-btn{width:100%;text-align:left;margin:0 0 7px;padding:9px 10px;border:1px solid #cbd2d9;background:#fff;color:#20262d}.end-event-btn.active{border-color:#2f6fda;background:#e8f4ff;color:#20262d}
 .end-event-date{font-size:11px;color:var(--muted);font-weight:700}.end-event-name{font-size:13px;font-weight:800}
-.end-form-wrap{padding:16px}.end-empty{padding:30px 12px;color:var(--muted);text-align:center}.end-form-title{font-size:18px;font-weight:800}.end-form-venue{font-size:13px;color:var(--muted);margin-bottom:14px}
+.end-form-wrap{padding:16px}.end-empty{padding:30px 12px;color:var(--muted);text-align:center}.end-form-title{font-size:18px;font-weight:800}.end-form-venue{font-size:13px;color:var(--muted);margin-bottom:14px}.end-saved-backup-note{margin:-7px 0 14px;padding:6px 8px;border-radius:6px;background:#eef7f1;color:#246355;font-size:12px;font-weight:800}
 .end-field{margin:0 0 14px}.end-label{display:block;font-size:13px;font-weight:800;margin-bottom:5px}.end-choice,.end-visit-dates{display:flex;gap:10px;flex-wrap:wrap}.end-choice label,.end-visit-dates label{display:inline-flex;align-items:center;gap:4px}
 .end-rating{padding:6px 8px;border:1px solid #aeb7c0;border-radius:6px}.end-report{width:100%;min-height:200px;resize:vertical;border:1px solid #aeb7c0;border-radius:7px;padding:9px;font:inherit;line-height:1.55}
 .end-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}.end-save{background:#20262d;color:#fff;border-color:#20262d;font-weight:800}.end-saved{font-size:12px;color:#18794e;font-weight:700}
@@ -83,7 +83,7 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作16</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作17</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
@@ -507,6 +507,8 @@ function endDraftFor(e){
     rating:rr?.rating||'',
     report:rr?.report||''
   };
+  const saved=endBackups[e.id];
+  if(saved&&!endDraftMatchesGitHub(o,saved))Object.assign(base,saved);
   return Object.assign(base,endDrafts[e.id]||{});
 }
 function renderEndProcessList(){
@@ -526,11 +528,13 @@ function renderEndProcessForm(){
   const e=events.find(x=>x.id===selectedEndEventId);
   if(!e){endProcessFormWrap.innerHTML='<div class="end-empty">イベントを選んでください。</div>';return;}
   const o=officialEvent(e),d=endDraftFor(e);
+  const saved=endBackups[e.id],usingSavedBackup=!!(saved&&!endDraftMatchesGitHub(o,saved)&&!endDrafts[e.id]);
   const visits=days(o.date,o.endDate||o.date).map(day=>'<label><input class="end-visit-check" type="checkbox" value="'+esc(day)+'" '+(d.visitDates.includes(day)?'checked':'')+'>'+esc(endDayLabel(day))+'</label>').join('');
   const ratings=['','A+','A','A-','B+','B','B-','C+','C','C-','D','E','F'];
   endProcessFormWrap.innerHTML=
     '<div class="end-form-title">'+esc(o.name)+'</div>'+
     '<div class="end-form-venue">'+esc(o.venue||'会場未入力')+' / '+esc(compactRangeText(o))+'</div>'+
+    (usingSavedBackup?'<div class="end-saved-backup-note">GitHub公開反映待ちのため、保存済みの復旧用コピーを表示しています。</div>':'')+
     '<div class="end-field"><span class="end-label">結果</span><div class="end-choice">'+
       '<label><input type="radio" name="endAttendance" value="attended" '+(d.status==='attended'?'checked':'')+'>参加した</label>'+
       '<label><input type="radio" name="endAttendance" value="not_attended" '+(d.status==='not_attended'?'checked':'')+'>行っていない</label>'+
