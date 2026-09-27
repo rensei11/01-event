@@ -2516,7 +2516,18 @@
       "endDate": "2026-09-18",
       "dateText": "9月17日(木)～18日(金)",
       "name": "2026 東京にぎわい市",
-      "venue": "東京ビッグサイト 東8ホール"
+      "venue": "東京ビッグサイト 東8ホール",
+      "url": "",
+      "conditionLines": [],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-17"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-tokyo-nigiwai-20260917"
     },
     {
       "id": "xls-x-10531eea7fc9",
