@@ -278,6 +278,7 @@ async function saveToGitHub(d,token){
     e.attendanceStatus='not_attended';
     e.visitDates=[];
     e.historySource='終了処理';
+    e.conditionLines=(e.conditionLines||[]).filter(x=>!String(x).startsWith('名前コード：'));
     delete e.sourceReportId;
     upsertUnattended(unattended,e,d.kind);
     if(oldReportPath){

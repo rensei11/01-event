@@ -83,7 +83,7 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作20</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作19</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
   <div class="controls">
     <button data-mode="all" class="active">すべてのイベント</button>
     <button data-mode="upcoming">今後のイベント</button>
@@ -548,7 +548,7 @@ function collectEndDraft(){
   return {
     eventId:o.id,name:o.name,eventName:o.name,kind:o._kind,status:choice?choice.value:'',
     visitDates:[...endProcessFormWrap.querySelectorAll('.end-visit-check:checked')].map(x=>x.value).sort(),
-    venue:o.venue||'',url:o.url||'',conditionText:conditionLines(o).join('\n'),personName:(choice&&choice.value==='not_attended')?'':personLines(o).join(' / '),
+    venue:o.venue||'',url:o.url||'',conditionText:conditionLines(o).join('\n'),personName:personLines(o).join(' / '),
     preRating:o.rating||'',nightTime:o.nightTime||'',nightText:o.nightText||'',
     rating:endProcessFormWrap.querySelector('#endRating')?.value||d.rating||'',
     report:endProcessFormWrap.querySelector('#endReport')?.value||d.report||'',
@@ -633,7 +633,7 @@ function eventEditButton(e){
   return '<button type="button" class="event-edit-btn" data-event-edit="'+esc(e.id)+'">イベント編集</button>';
 }
 function participantDisplay(e,editingValue=''){
-  if((flag(e).ignored||e.attendanceStatus==='not_attended')&&!editing)return '';
+  if(flag(e).ignored&&!editing)return '';
   const people=personLines(e);
   if(editing){
     const html=editingValue||editableInline(e.id,'people',people.join(' / '));
