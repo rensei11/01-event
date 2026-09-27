@@ -9,7 +9,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
-h1{font-size:20px;margin:0}.overview-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:10px;align-items:start;margin:0 0 14px}.overview-left{min-width:0}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.top .status{flex:0 0 auto;padding-top:4px;white-space:nowrap}.version-info{margin:2px 0 0;font-size:11px;font-weight:800;color:#68727c}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
+h1{font-size:20px;margin:0}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.top .status{flex:0 0 auto;padding-top:4px;white-space:nowrap}.version-info{margin:2px 0 0;font-size:11px;font-weight:800;color:#68727c}.sub{margin:3px 0 12px;color:var(--muted);font-size:12px}
 .controls{display:flex;gap:6px;margin:0 0 6px;flex-wrap:wrap;align-items:center}
 .subfilters{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:0 0 8px}.subfilters button{padding:5px 10px;font-size:12px}.hide-ignored-label{display:inline-flex;align-items:center;gap:4px;margin-left:4px;font-size:12px;font-weight:800;color:#555;cursor:pointer}.hide-ignored-label input{margin:0;width:15px;height:15px}
 .legacy-edit-toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:0 0 6px}.legacy-edit-toolbar button:disabled{opacity:.45;cursor:not-allowed}.legacy-edit-toolbar .primary{font-weight:800}.legacy-edit-toolbar .danger{color:#9a3412;border-color:#d8a58d}.edit-help{font-size:12px;color:var(--muted);margin:0 0 10px}
@@ -17,14 +17,14 @@ h1{font-size:20px;margin:0}.overview-grid{display:grid;grid-template-columns:min
 body.editing .event-row td{background:#fffdf2!important;outline:none} body.editing .event-row .date{cursor:text}
 body.editing .week td{outline:none}
 body.editing .event-row.selected td{background:#fff4c7!important}.edit-mode-btn{margin-left:4px}.row-edit-btn{display:none}
-.edit-bar{display:none!important}.edit-change-count{font-size:12px;font-weight:900;color:#374151;margin-left:0;padding:5px 8px;border-radius:6px;background:#eef1f4}.edit-save{background:#20262d;color:#fff;border-color:#20262d}.edit-hint{font-size:11px;color:#606a74}
+.edit-bar{display:none!important}.edit-change-count{font-size:12px;font-weight:900;color:#374151;margin-left:auto}.edit-save{background:#20262d;color:#fff;border-color:#20262d}.edit-hint{font-size:11px;color:#606a74}
 .editable{outline:0}.editing .editable{cursor:text;border-radius:4px;box-shadow:inset 0 0 0 1px #b9c7d4;background:#fffdf4;padding:1px 3px}.editing .editable:focus{box-shadow:inset 0 0 0 2px #5d8fc5;background:#fff}.editing .editable-block{display:block;min-height:20px}.editing .edit-delete-btn{display:inline-block}.edit-delete-btn{display:none;margin-left:6px;padding:2px 7px;font-size:11px;color:#9a3412;border-color:#d8a58d}.edit-mode-note{font-size:12px;font-weight:800;color:#374151}
 button{border:1px solid #aeb7c0;background:#fff;border-radius:7px;padding:7px 11px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
-button.active{background:#20262d;color:#fff;border-color:#20262d}.mode-count{margin-left:5px;font-size:11px;font-weight:900;opacity:.78}.controls button.active .mode-count{opacity:1}.current-list-status{display:none!important}
+button.active{background:#20262d;color:#fff;border-color:#20262d}
 .status{margin-left:auto;align-self:center;font-size:12px;color:var(--muted)}.save-ok{color:#18794e;font-weight:700}.save-warn{color:#9a6700;font-weight:700}
-.calendar-panel{margin:0;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px}
+.calendar-panel{margin:0 0 14px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 12px 12px}
 .calendar-jump{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}.calendar-title-inline{font-size:19px;font-weight:900;color:#20262d;margin-right:5px}.list-filter-bar{display:flex;align-items:center;gap:7px;margin:0 0 8px;font-size:12px;font-weight:800;color:#555}.list-filter-bar select{border:1px solid #aeb7c0;border-radius:7px;background:#fff;padding:5px 8px;font:inherit;font-size:12px}.calendar-start-label{font-size:14px;font-weight:900;color:#555}.calendar-year{border:1px solid #b9b9b4;border-radius:6px;background:#fff;padding:5px 7px;font:inherit;font-size:14px;font-weight:800}.month-jump{display:flex;gap:3px;flex-wrap:wrap}.month-jump button{min-width:35px;padding:4px 6px;font-size:13px}.month-jump button.active{background:#41474c;color:#fff;border-color:#41474c}
-.calendar-left{display:flex;flex-direction:column;min-width:0}.calendar-left .calendar-jump{margin-bottom:9px}.calendar-months-viewport{overflow:hidden;min-width:0}.calendar-months{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start;min-width:0}#nextPlanHost{display:flex;min-width:0;align-self:start}.calendar-months.slide-from-right{animation:calendarSlideFromRight .28s ease}.calendar-months.slide-from-left{animation:calendarSlideFromLeft .28s ease}@keyframes calendarSlideFromRight{from{transform:translateX(12%);opacity:.55}to{transform:translateX(0);opacity:1}}@keyframes calendarSlideFromLeft{from{transform:translateX(-12%);opacity:.55}to{transform:translateX(0);opacity:1}}.month-card,.next-plan-card{position:relative;border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0}.month-card{align-self:start}.next-plan-card{width:100%;box-sizing:border-box;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.04)}.month-nav{position:absolute;top:5px;width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.month-nav.prev{left:5px}.month-nav.next{right:5px}.month-nav:hover{background:#f0f2f4}.nav-symbol{display:block;font-family:Arial,sans-serif;font-size:27px;font-weight:700;line-height:1;transform:translateY(-2px)}.month-name{text-align:center;font-size:16px;font-weight:900;margin-bottom:4px;cursor:pointer;padding:0 34px}.month-name:hover{text-decoration:underline}.next-plan-head{display:grid;grid-template-columns:28px minmax(0,1fr) 28px;align-items:center;gap:6px;margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid #e3e6e8}.next-plan-heading-center{display:flex;align-items:center;justify-content:center;gap:1em;min-width:0;font-size:18px;line-height:1.3;text-align:center}.next-plan-title{font-size:18px;font-weight:900!important;line-height:1.3;white-space:nowrap}.next-plan-date{font-size:17px;font-weight:900;color:#315d87;white-space:nowrap;text-decoration:underline;text-underline-offset:2px}.next-plan-nav{width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.next-plan-nav:hover{background:#f0f2f4}.next-plan-nav-spacer{width:28px;height:28px}.next-plan-empty{padding:22px 8px;text-align:center;font-size:14px;color:var(--muted)}.next-plan-item{padding:9px 4px}.next-plan-item-head{display:flex;align-items:flex-start;gap:8px;min-width:0}.next-plan-item-head .kind-badge{flex:0 0 auto;margin-top:2px;font-size:12px;padding:2px 8px}.next-plan-name{font-size:16px;font-weight:900!important;line-height:1.4;overflow-wrap:anywhere;min-width:0}.next-plan-name a{color:var(--link);font-weight:900!important;text-decoration:underline;text-underline-offset:2px}.next-plan-name a:hover{text-decoration:underline}.next-plan-venue,.next-plan-person{min-width:0;overflow-wrap:anywhere;font-size:14px;line-height:1.45;color:rgba(29,35,41,.92);margin-top:4px}.next-plan-meta-label{font-weight:900;color:#111}.next-plan-meta-value{font-weight:500;text-decoration:underline;text-underline-offset:2px}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{font-size:13px;color:var(--muted);font-weight:800;padding:2px 0}.weekday:first-child{color:#8b0000}.weekday:nth-child(7){color:#003f7f}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none;font-weight:800;font-size:12px}.cal-day.sunday{color:#8b0000}.cal-day.saturday{color:#003f7f}.cal-day.other-month{font-size:9px;font-weight:400;color:#9aa1a8;opacity:.32}.cal-day.other-month.sunday{color:#8b0000}.cal-day.other-month.saturday{color:#003f7f}.cal-day.other-month.has-event,.cal-day.other-month.has-plan,.cal-day.other-month.has-attended{opacity:.22;font-weight:600}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#3f78b6;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today{background:#d32f2f!important;color:#fff!important;font-weight:900}.cal-day.sunday.has-event,.cal-day.sunday.has-plan,.cal-day.sunday.has-attended,.cal-day.sunday.today{color:#8b0000!important;text-shadow:-1px 0 #fff,1px 0 #fff,0 -1px #fff,0 1px #fff}.cal-day.saturday.has-event,.cal-day.saturday.has-plan,.cal-day.saturday.has-attended,.cal-day.saturday.today{color:#003f7f!important;text-shadow:-1px 0 #fff,1px 0 #fff,0 -1px #fff,0 1px #fff}.cal-day.today::after{content:none}.cal-day.clickable:hover{filter:brightness(.92)}
+.calendar-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:10px;align-items:stretch;min-width:0}.calendar-left{display:flex;flex-direction:column;min-width:0}.calendar-left .calendar-jump{margin-bottom:9px}.calendar-months-viewport{overflow:hidden;min-width:0}.calendar-months{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start;min-width:0}#nextPlanHost{display:flex;min-width:0;align-self:stretch}.calendar-months.slide-from-right{animation:calendarSlideFromRight .28s ease}.calendar-months.slide-from-left{animation:calendarSlideFromLeft .28s ease}@keyframes calendarSlideFromRight{from{transform:translateX(12%);opacity:.55}to{transform:translateX(0);opacity:1}}@keyframes calendarSlideFromLeft{from{transform:translateX(-12%);opacity:.55}to{transform:translateX(0);opacity:1}}.month-card,.next-plan-card{position:relative;border:1px solid #e1e3e3;border-radius:7px;padding:7px 8px 8px;min-width:0}.month-card{align-self:start}.next-plan-card{align-self:stretch;flex:1;box-sizing:border-box}.month-nav{position:absolute;top:5px;width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.month-nav.prev{left:5px}.month-nav.next{right:5px}.month-nav:hover{background:#f0f2f4}.nav-symbol{display:block;font-family:Arial,sans-serif;font-size:27px;font-weight:700;line-height:1;transform:translateY(-2px)}.month-name{text-align:center;font-size:16px;font-weight:900;margin-bottom:4px;cursor:pointer;padding:0 34px}.month-name:hover{text-decoration:underline}.next-plan-head{display:grid;grid-template-columns:28px minmax(0,1fr) 28px;align-items:center;gap:6px;margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid #e3e6e8}.next-plan-heading-center{display:flex;align-items:center;justify-content:center;gap:1em;min-width:0;font-size:16px;line-height:1.3;text-align:center}.next-plan-title{font-size:16px;font-weight:900!important;line-height:1.3;white-space:nowrap}.next-plan-date{font-size:15px;font-weight:900;color:#315d87;white-space:nowrap;text-decoration:underline;text-underline-offset:2px}.next-plan-nav{width:28px;height:28px;min-width:28px;padding:0;border:1px solid #aeb7c0;border-radius:3px;background:#fff;color:#333;display:flex;align-items:center;justify-content:center;overflow:hidden}.next-plan-nav:hover{background:#f0f2f4}.next-plan-nav-spacer{width:28px;height:28px}.next-plan-empty{padding:20px 8px;text-align:center;font-size:12px;color:var(--muted)}.next-plan-item{padding:7px 3px}.next-plan-name{font-size:14px;font-weight:900!important;line-height:1.35;overflow-wrap:anywhere}.next-plan-name a{color:var(--link);font-weight:900!important;text-decoration:underline;text-underline-offset:2px}.next-plan-name a:hover{text-decoration:underline}.next-plan-meta{display:grid;grid-template-columns:auto minmax(0,.85fr) minmax(0,1.45fr);gap:6px;align-items:center;margin-top:4px;font-size:12px;line-height:1.35;color:rgba(29,35,41,.9)}.next-plan-meta .kind-badge{align-self:center}.next-plan-person,.next-plan-venue{min-width:0;overflow-wrap:anywhere;font-weight:400}.next-plan-meta-label{font-weight:900;color:#111}.next-plan-meta-value{font-weight:400;text-decoration:underline;text-underline-offset:2px}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:26px;column-gap:2px;row-gap:2px;align-content:start;text-align:center;font-size:11px}.weekday{font-size:13px;color:var(--muted);font-weight:800;padding:2px 0}.weekday:first-child{color:#8b0000}.weekday:nth-child(7){color:#003f7f}.cal-day{position:relative;width:26px;height:26px;justify-self:center;display:flex;align-items:center;justify-content:center;border-radius:50%;user-select:none;font-weight:800;font-size:12px}.cal-day.sunday{color:#8b0000}.cal-day.saturday{color:#003f7f}.cal-day.other-month{font-size:9px;font-weight:400;color:#9aa1a8;opacity:.32}.cal-day.other-month.sunday{color:#8b0000}.cal-day.other-month.saturday{color:#003f7f}.cal-day.other-month.has-event,.cal-day.other-month.has-plan,.cal-day.other-month.has-attended{opacity:.22;font-weight:600}.cal-day.has-event{background:#8d969d;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-plan{background:#3f78b6;color:#fff;font-weight:900;cursor:pointer}.cal-day.has-attended{background:#4f7c6e;color:#fff;font-weight:900;cursor:pointer}.cal-day.today{background:#d32f2f!important;color:#fff!important;font-weight:900}.cal-day.sunday.has-event,.cal-day.sunday.has-plan,.cal-day.sunday.has-attended,.cal-day.sunday.today{color:#8b0000!important;text-shadow:-1px 0 #fff,1px 0 #fff,0 -1px #fff,0 1px #fff}.cal-day.saturday.has-event,.cal-day.saturday.has-plan,.cal-day.saturday.has-attended,.cal-day.saturday.today{color:#003f7f!important;text-shadow:-1px 0 #fff,1px 0 #fff,0 -1px #fff,0 1px #fff}.cal-day.today::after{content:none}.cal-day.clickable:hover{filter:brightness(.92)}
 .calendar-focus td{animation:calFlash 1.2s ease}@keyframes calFlash{0%,100%{background:inherit}35%,70%{background:#fff1b8}}
 .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:auto;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:840px}
@@ -48,7 +48,7 @@ th:last-child,td:last-child{border-right:0}
 .rating{font-weight:900;margin-bottom:3px;color:var(--text)}.rating-high{color:#b91c1c}.report{white-space:pre-wrap}.report-rating-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.report-flag-tools{display:inline-flex;gap:6px;align-items:center;font-size:11px;font-weight:800}.report-flag-tools label{display:inline-flex;align-items:center;gap:3px;border-radius:10px;padding:2px 7px;cursor:pointer}.report-high-label{background:#f5fbf6;color:#356744;border:1px solid #bfd8c6}.report-low-label{background:#f4f5f6;color:#666;border:1px solid #cfd3d6}.report-flag-tools input{appearance:none;-webkit-appearance:none;width:14px;height:14px;min-width:14px;min-height:14px;margin:0;border-radius:3px;background:#fff;position:relative;overflow:hidden}.report-high-toggle{border:1.5px solid #6da27c}.report-low-toggle{border:1.5px solid #cf6b7e}.report-high-toggle:checked{background:#568f66}.report-high-toggle:checked::after,.report-low-toggle:checked::after{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;line-height:1}.report-high-toggle:checked::after{content:"✓";font-size:10px}.report-low-toggle:checked{background:#c65369}.report-low-toggle:checked::after{content:"×";font-size:12px}.report-good td{background:#f5fbf6!important}.report-bad td{background:#f1f2f3!important}.report-bad .event-name a{color:#7b848d!important;text-decoration-color:#aeb4b9!important}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
 .note{font-size:11px;color:var(--muted);margin-top:8px}
-@media(max-width:700px){.wrap{padding:10px}h1{font-size:17px}td,th{padding:6px 8px}.overview-grid{grid-template-columns:1fr}.status{width:auto;margin-left:auto}.calendar-left{min-width:0}.calendar-months{grid-template-columns:repeat(2,minmax(220px,1fr));overflow-x:auto}.calendar-months-viewport{overflow-x:auto}#nextPlanHost{display:block}.next-plan-card{height:auto}}
+@media(max-width:700px){.wrap{padding:10px}h1{font-size:17px}td,th{padding:6px 8px}.status{width:100%;margin-left:0}.calendar-layout{grid-template-columns:1fr}.calendar-left{min-width:0}.calendar-months{grid-template-columns:repeat(2,minmax(220px,1fr));overflow-x:auto}.calendar-months-viewport{overflow-x:auto}#nextPlanHost{display:block}.next-plan-card{height:auto}}
 
 .end-process-row{display:none}
 .end-process-btn{border:1px solid #d76a6a;background:#fff5f5;color:#b91c1c;font-weight:800;padding:7px 11px}
@@ -83,43 +83,41 @@ th:last-child,td:last-child{border-right:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="overview-grid">
-    <div class="overview-left">
-      <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作21</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
-      <div class="controls">
-        <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
-        <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
-        <button data-mode="planned">参加予定 <span class="mode-count" data-mode-count="planned">0件</span></button>
-        <button data-mode="attended">参加済み <span class="mode-count" data-mode-count="attended">0件</span></button>
-        <button id="endProcessBtn" class="end-process-btn" type="button">終了処理 <span id="endProcessCount" class="end-process-count">0</span></button>
-        <span id="status" class="status current-list-status"></span>
-      </div>
-      <div class="subfilters">
-        <button type="button" class="kind-filter active" data-kind-filter="both">両方</button>
-        <button type="button" class="kind-filter" data-kind-filter="exhibition">展示会</button>
-        <button type="button" class="kind-filter" data-kind-filter="gathering">懇親会</button>
-        <label class="hide-ignored-label"><input id="hideIgnoredToggle" type="checkbox">行かないを非表示</label>
-      </div>
-      <div class="legacy-edit-toolbar">
-        <button id="editBtn" type="button">一覧直接編集（旧）</button>
-        <span id="editChangeCount" class="edit-change-count">下書き変更 0件</span>
-        <button id="addBtn" type="button" disabled>＋ 新しいイベント</button>
-        <button id="kindBtn" type="button" disabled>展示会／懇親会</button>
-        <button id="linkBtn" type="button" disabled>リンク設定</button>
-        <button id="delBtn" class="danger" type="button" disabled>選択行を削除</button>
-        <button id="saveHtmlBtn" type="button">編集下書き保存</button>
-        <button id="resetHtmlBtn" type="button">編集下書きを破棄</button>
-      </div>
-      <div class="edit-help">通常の情報修正は各イベント右上の「イベント編集」を使用します。「一覧直接編集（旧）」は複数箇所をまとめて直すための旧方式です。</div>
-      <section class="calendar-panel" aria-label="カレンダー">
-        <div class="calendar-left">
-          <div class="calendar-jump"><span class="calendar-title-inline">カレンダー</span><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div></div>
-          <div id="calendarMonthsViewport" class="calendar-months-viewport"><div id="calendarMonths" class="calendar-months"></div></div>
-        </div>
-      </section>
-    </div>
-    <div id="nextPlanHost"></div>
+  <div class="top"><div><h1>無料食事イベント台帳　見やすさ確認版</h1><div class="version-info">本番基準 v0.32 / UI試作20</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div><div id="loadStatus" class="status">読み込み中</div></div>
+  <div class="controls">
+    <button data-mode="all" class="active">すべてのイベント</button>
+    <button data-mode="upcoming">今後のイベント</button>
+    <button data-mode="planned">参加予定</button>
+    <button data-mode="attended">参加済み</button>
+    <button id="endProcessBtn" class="end-process-btn" type="button">終了処理 <span id="endProcessCount" class="end-process-count">0</span></button>
+    <span id="status" class="status"></span>
   </div>
+  <div class="subfilters">
+    <button type="button" class="kind-filter active" data-kind-filter="both">両方</button>
+    <button type="button" class="kind-filter" data-kind-filter="exhibition">展示会</button>
+    <button type="button" class="kind-filter" data-kind-filter="gathering">懇親会</button>
+    <label class="hide-ignored-label"><input id="hideIgnoredToggle" type="checkbox">行かないを非表示</label>
+  </div>
+  <div class="legacy-edit-toolbar">
+    <button id="editBtn" type="button">一覧直接編集（旧）</button>
+    <button id="addBtn" type="button" disabled>＋ 新しいイベント</button>
+    <button id="kindBtn" type="button" disabled>展示会／懇親会</button>
+    <button id="linkBtn" type="button" disabled>リンク設定</button>
+    <button id="delBtn" class="danger" type="button" disabled>選択行を削除</button>
+    <button id="saveHtmlBtn" type="button">編集下書き保存</button>
+    <button id="resetHtmlBtn" type="button">編集下書きを破棄</button>
+    <span id="editChangeCount" class="edit-change-count">変更 0件</span>
+  </div>
+  <div class="edit-help">通常の情報修正は各イベント右上の「イベント編集」を使用します。「一覧直接編集（旧）」は複数箇所をまとめて直すための旧方式です。</div>
+  <section class="calendar-panel" aria-label="カレンダー">
+    <div class="calendar-layout">
+      <div class="calendar-left">
+        <div class="calendar-jump"><span class="calendar-title-inline">カレンダー</span><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div></div>
+        <div id="calendarMonthsViewport" class="calendar-months-viewport"><div id="calendarMonths" class="calendar-months"></div></div>
+      </div>
+      <div id="nextPlanHost"></div>
+    </div>
+  </section>
 <div class="table-wrap">
     <table id="ledgerTable">
       <colgroup id="ledgerCols"><col class="date"><col class="event"><col class="cond"><col class="detail"></colgroup>
@@ -352,7 +350,7 @@ function eventById(id){return events.find(e=>e.id===id)||null}
 function officialEvent(e){return e?(officialEventsById.get(e.id)||e):null}
 function refreshEditBar(){
   const n=document.getElementById('editChangeCount');
-  if(n)n.textContent='下書き変更 '+dirtyIds.size+'件';
+  if(n)n.textContent='変更 '+dirtyIds.size+'件';
 }
 function markDirty(id){dirtyIds.add(id);refreshEditBar()}
 function emptyEditDraft(){return {patches:{},newEvents:[],deletedIds:[]}}
@@ -1001,20 +999,19 @@ function buildNextPlanNav(dir,enabled){
 function appendNextPlannedItem(card,x,index){
   const e=x.e,item=document.createElement('div');item.className='next-plan-item';
   if(index>0)item.style.borderTop='1px solid #eceeed';
-  const head=document.createElement('div');head.className='next-plan-item-head';
-  const kind=document.createElement('span');kind.className='kind-badge '+e._kind;kind.textContent=e._kind==='exhibition'?'展示会':'懇親会';
   const name=document.createElement('div');name.className='next-plan-name';
   if(e.url){const a=document.createElement('a');a.href=e.url;a.target='_blank';a.rel='noopener';a.textContent=e.name;name.appendChild(a);}else{name.textContent=e.name;}
-  head.appendChild(kind);head.appendChild(name);item.appendChild(head);
-  const venue=document.createElement('div');venue.className='next-plan-venue';
-  const venueLabel=document.createElement('span');venueLabel.className='next-plan-meta-label';venueLabel.textContent='場所：';
-  const venueValue=document.createElement('span');venueValue.className='next-plan-meta-value';venueValue.textContent=e.venue||'—';
-  venue.appendChild(venueLabel);venue.appendChild(venueValue);item.appendChild(venue);
-  const person=document.createElement('div');person.className='next-plan-person';
+  const meta=document.createElement('div');meta.className='next-plan-meta';
+  const kind=document.createElement('span');kind.className='kind-badge '+e._kind;kind.textContent=e._kind==='exhibition'?'展示会':'懇親会';
+  const person=document.createElement('span');person.className='next-plan-person';
   const personLabel=document.createElement('span');personLabel.className='next-plan-meta-label';personLabel.textContent='参加名義：';
   const personValue=document.createElement('span');personValue.className='next-plan-meta-value';personValue.textContent=personLines(e).join(' / ');
-  person.appendChild(personLabel);person.appendChild(personValue);item.appendChild(person);
-  card.appendChild(item);
+  person.appendChild(personLabel);person.appendChild(personValue);
+  const venue=document.createElement('span');venue.className='next-plan-venue';
+  const venueLabel=document.createElement('span');venueLabel.className='next-plan-meta-label';venueLabel.textContent='場所：';
+  const venueValue=document.createElement('span');venueValue.className='next-plan-meta-value';venueValue.textContent=e.venue||'—';
+  venue.appendChild(venueLabel);venue.appendChild(venueValue);
+  meta.appendChild(kind);meta.appendChild(person);meta.appendChild(venue);item.appendChild(name);item.appendChild(meta);card.appendChild(item);
 }
 function buildNextPlannedCard(){
   const card=document.createElement('div');card.className='next-plan-card';
@@ -1107,7 +1104,7 @@ function shiftCalendar(dir){
   calendarBaseYear=d.getFullYear();calendarBaseMonth=d.getMonth()+1;saveUiState();renderCalendar(dir);
 }
 function renderCalendar(slideDir=0){
-  const months=document.getElementById('calendarMonths'),yearSel=document.getElementById('calendarYear'),jump=document.getElementById('monthJump');
+  const months=document.getElementById('calendarMonths'),nextHost=document.getElementById('nextPlanHost'),yearSel=document.getElementById('calendarYear'),jump=document.getElementById('monthJump');
   const map=calendarMap();months.innerHTML='';months.classList.remove('slide-from-right','slide-from-left');
   const ys=availableYears();
   const shownYear=listStartYear||calendarToday.getFullYear();
@@ -1124,7 +1121,7 @@ function renderCalendar(slideDir=0){
     const d=new Date(calendarBaseYear,calendarBaseMonth-1+off,1);
     months.appendChild(buildMonthCard(d.getFullYear(),d.getMonth()+1,map,off===0?'prev':'next'));
   }
-  nextPlanIndex=Math.max(0,nextPlanIndex);renderNextPlannedCard();
+  nextPlanIndex=Math.max(0,nextPlanIndex);nextHost.innerHTML='';nextHost.appendChild(buildNextPlannedCard());
   if(slideDir){
     void months.offsetWidth;
     months.classList.add(slideDir>0?'slide-from-right':'slide-from-left');
@@ -1239,29 +1236,8 @@ function clearLegacyHTML(){
   location.reload();
 }
 
-function updateModeCounts(){
-  const today=todayISO();
-  const allSet=new Set(),upcomingSet=new Set(),plannedSet=new Set(),attendedSet=new Set();
-  for(const e of events){
-    if(!passesCommonFilters(e))continue;
-    if(passesListStart(e.date))allSet.add(e.id);
-    if(String(e.endDate||e.date)>=today&&passesListStart(e.endDate||e.date))upcomingSet.add(e.id);
-    const f=flag(e);
-    if(f.planned||f.interested){
-      const ds=plannedDates(e);
-      if(ds.some(d=>passesListStart(d))||(!ds.length&&e.endDate&&e.endDate!==e.date&&(e.endDate||e.date)>=today&&passesListStart(e.endDate||e.date)))plannedSet.add(e.id);
-    }
-    if(e.attendanceStatus==='attended'){
-      const actual=actualDates(e);
-      if(actual.some(d=>passesListStart(d))||(!actual.length&&passesListStart(e.date)))attendedSet.add(e.id);
-    }
-  }
-  const counts={all:allSet.size,upcoming:upcomingSet.size,planned:plannedSet.size,attended:attendedSet.size};
-  document.querySelectorAll('[data-mode-count]').forEach(el=>{el.textContent=(counts[el.dataset.modeCount]||0)+'件';});
-}
 function render(){
   updateEndProcessButton();
-  updateModeCounts();
   document.body.classList.toggle('planned-view',mode==='planned');
   document.body.classList.toggle('editing',editing);
   refreshEditBar();
