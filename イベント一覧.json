@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-27-web",
+  "dataVersion": "2026-09-27-unconfirmed-restored",
   "year": 2026,
   "events": [
     {
@@ -360,10 +360,7 @@
       ],
       "rating": "",
       "nightTime": "",
-      "nightText": "",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "historySource": "未参加イベント"
+      "nightText": ""
     },
     {
       "id": "hist-no-bc0cbc6d631e",

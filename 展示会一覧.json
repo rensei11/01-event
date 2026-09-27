@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-27-attendance-sync",
+  "dataVersion": "2026-09-27-unconfirmed-restored",
   "year": 2026,
   "events": [
     {
@@ -2326,10 +2326,7 @@
       ],
       "rating": "",
       "nightTime": "",
-      "nightText": "",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "historySource": "未参加イベント"
+      "nightText": ""
     },
     {
       "id": "hist-no-4f257d1c7ee1",
@@ -2363,10 +2360,7 @@
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
-      "nightText": "",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "historySource": "未参加イベント"
+      "nightText": ""
     },
     {
       "id": "hist-no-f36bada5fcd0",
@@ -2379,10 +2373,7 @@
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
-      "nightText": "",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "historySource": "未参加イベント"
+      "nightText": ""
     },
     {
       "id": "hist-no-5f901c8d8f3e",
@@ -2398,10 +2389,7 @@
       ],
       "rating": "",
       "nightTime": "",
-      "nightText": "",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "historySource": "未参加イベント"
+      "nightText": ""
     },
     {
       "id": "hist-no-86d35373468d",

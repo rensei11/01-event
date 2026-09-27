@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-27-web",
+  "dataVersion": "2026-09-27-unconfirmed-restored",
   "year": 2026,
   "events": [
     {
@@ -150,66 +150,6 @@
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": []
-    },
-    {
-      "id": "hist-aff41ec75dfa",
-      "date": "2026-09-08",
-      "endDate": "2026-09-11",
-      "dateText": "9月8日(火)～11日(金)",
-      "name": "サーモテック 2026",
-      "category": "exhibition",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "nameCodes": [
-        "伊藤 聡"
-      ]
-    },
-    {
-      "id": "hist-05942e465f13",
-      "date": "2026-09-08",
-      "endDate": "2026-09-11",
-      "dateText": "9月8日(火)～11日(金)",
-      "name": "第28回自動認識総合展",
-      "category": "exhibition",
-      "attendanceStatus": "not_attended",
-      "visitDates": []
-    },
-    {
-      "id": "hist-f36bada5fcd0",
-      "date": "2026-09-09",
-      "endDate": "2026-09-11",
-      "dateText": "9月9日(水)～11日(金)",
-      "name": "SMART ENERGY WEEK ～スマートエネルギー WEEK～【秋】2026",
-      "category": "exhibition",
-      "attendanceStatus": "not_attended",
-      "visitDates": []
-    },
-    {
-      "id": "hist-5f901c8d8f3e",
-      "date": "2026-09-09",
-      "endDate": "2026-09-11",
-      "dateText": "9月9日(水)～11日(金)",
-      "name": "第5回 ネプコン ジャパン [秋] -エレクトロニクス 開発・実装展-",
-      "category": "exhibition",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "nameCodes": [
-        "村岡 隆",
-        "伊藤 聡"
-      ]
-    },
-    {
-      "id": "hist-156a1794a9f0",
-      "date": "2026-09-10",
-      "endDate": "2026-09-11",
-      "dateText": "9月10日(木)～11日(金)",
-      "name": "Snowflake World Tour Tokyo 2026",
-      "category": "gathering",
-      "attendanceStatus": "not_attended",
-      "visitDates": [],
-      "nameCodes": [
-        "伊藤 聡"
-      ]
     },
     {
       "id": "hist-86d35373468d",
