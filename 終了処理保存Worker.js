@@ -57,7 +57,6 @@ function validate(d){
   }
   if(!['attended','not_attended'].includes(d.status))return '参加／未参加を選んでください';
   if(d.status==='attended'&&(!Array.isArray(d.visitDates)||!d.visitDates.length))return '実際に行った日を選んでください';
-  if(d.status==='attended'&&!String(d.report||'').trim())return '参加したイベントは実地レポートを入力してください';
   return '';
 }
 
