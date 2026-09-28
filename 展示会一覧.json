@@ -808,14 +808,14 @@
       "id": "hist-att-6d60408506d6",
       "date": "2026-04-08",
       "endDate": "2026-04-10",
-      "dateText": "4月8日(水)～10日(金)",
+      "dateText": "4月8日(水)～4月10日(金)",
       "name": "Japan IT Week 春 2026",
       "url": "https://www.japan-it.jp/spring/ja-jp.html",
       "venue": "東京ビッグサイト 東1-3,7,8、西1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
-      "rating": "実地評価：C",
+      "rating": "",
       "nightTime": "",
       "nightText": "",
       "attendanceStatus": "attended",
@@ -823,7 +823,10 @@
         "2026-04-08"
       ],
       "sourceReportId": "rep-6d60408506d6",
-      "historySource": "実地レポート"
+      "historySource": "実地レポート",
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "hist-no-0e9d1038ab0a",

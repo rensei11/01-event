@@ -68,15 +68,18 @@
       "dateText": "4/8(水)",
       "scheduledDate": "2026-04-08",
       "scheduledEndDate": "2026-04-10",
-      "scheduledDateText": "4月8日(水)～10日(金)",
+      "scheduledDateText": "4月8日(水)～4月10日(金)",
       "name": "Japan IT Week 春 2026",
-      "url": "",
-      "venue": "ビックサイト 東1-3,7,8、西1-4",
+      "url": "https://www.japan-it.jp/spring/ja-jp.html",
+      "venue": "東京ビッグサイト 東1-3,7,8、西1-4",
       "rating": "C",
       "category": "exhibition",
       "report": "【総評】配布菓子の量と質なら最高レベルかもしれない。交流会は菓子しかなく、ビールを3本拝借しただけ。\n\n【詳細】配布菓子の量と質なら最高レベルかもしれない。特に東ホールは相当配っていた。\nSNSフォローでバームクーヘンがもらえたのでファッションワールドと合わせて6個ほど拝借。\n最後の交流会はスペースがかなり狭く、しかもケータリングではなく菓子のみ。しかしビールがあったので3本拝借した。\n\n【懇親会レポート】食べ物は菓子しかなく、ビールを持ち帰っただけ。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "ratingFlag": "high"
+      "ratingFlag": "high",
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "rep-640430b86de4",
