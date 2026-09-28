@@ -923,12 +923,10 @@
       "nightText": "",
       "attendanceStatus": "attended",
       "visitDates": [
-        "2026-04-15",
-        "2026-04-16",
-        "2026-04-17"
+        "2026-04-16"
       ],
       "sourceReportId": "rep-1d991c1cc824",
-      "historySource": "実地レポート"
+      "historySource": "終了処理"
     },
     {
       "id": "hist-att-d107ea2b40cc",
