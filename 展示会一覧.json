@@ -2754,11 +2754,13 @@
       "id": "xls-x-9ac65eeeef9e",
       "date": "2026-09-30",
       "endDate": "2026-10-02",
-      "dateText": "9月30日(水)～10月2日\t(金)",
+      "dateText": "9月30日(水)～10月2日(金)",
       "name": "健康博覧会2026 秋",
       "url": "https://www.this.ne.jp/",
       "venue": "東京ビッグサイト 西1ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "BEYOND BEAUTY Tokyo2026も同時開催 / 2026-09-20再調査：東京ビッグサイト公式は健康博覧会［秋］・BEYOND BEAUTY TOKYOとも利用施設を西1ホールと明記。FiNC公式告知ではウェルビーイングゾーン内特設ステージも西1ホール内、ブースW-01。Health & BEAUTY DX TOKYOは18セッションを開催するが、西2利用を示す公開情報は未発見。西2は現時点で公開情報上空白。",
@@ -2771,7 +2773,10 @@
         "visitDates": [
           "2026-09-30"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-5d9bf2acf2f6",
