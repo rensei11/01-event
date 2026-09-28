@@ -2703,11 +2703,13 @@
       "id": "xls-x-4823e36f8db7",
       "date": "2026-09-30",
       "endDate": "2026-10-02",
-      "dateText": "9月30日(水)～10月2日\t(金)",
+      "dateText": "9月30日(水)～10月2日(金)",
       "name": "FOOD STYLE Japan 2026",
       "url": "https://foodstyle.jp/tokyo/",
       "venue": "東京ビッグサイト 東1-3ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "そこそこ試食があるイベント。昼飯にはなる。 / 名刺要求の試食はもらった名刺をいれればいい",
@@ -2720,7 +2722,10 @@
         "visitDates": [
           "2026-09-30"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-2bc585ac2403",
