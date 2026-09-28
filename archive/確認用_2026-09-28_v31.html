@@ -43,7 +43,7 @@ th:last-child,td:last-child{border-right:0}
 .attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
 .planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
 .notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
-.status-band-head,.status-band-cell{width:8px!important;min-width:8px!important;max-width:8px!important;padding:0!important}.status-band-head{border-right:1px solid #59626d}.status-band-cell.status-candidate{background:#3f78b6!important}.status-band-cell.status-attended{background:#c58a1c!important}.status-band-cell.status-off{background:#9aa1a8!important}.status-band-cell.status-high{background:#568f66!important}.status-band-cell.status-low{background:#c65369!important}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.attended-event-content{position:relative;padding-right:78px}.attended-event-content .event-meta-line{min-height:0}.attended-event-content .event-action-stack{position:absolute;top:0;right:0}.attended-event-content .event-head{margin-top:1px}.attended-event-content .participant-line{margin-top:0}.past-event-content{position:relative;padding-right:78px}.past-event-content .event-meta-line{min-height:0}.past-event-content .event-action-stack{position:absolute;top:0;right:0}.past-event-content .event-head{margin-top:1px}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
+.status-band-head,.status-band-cell{width:8px!important;min-width:8px!important;max-width:8px!important;padding:0!important}.status-band-head{border-right:1px solid #59626d}.status-band-cell.status-candidate,.status-band-cell.status-attended{background:#3f78b6!important}.status-band-cell.status-off{background:#9aa1a8!important}.status-band-cell.status-high{background:#568f66!important}.status-band-cell.status-low{background:#c65369!important}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.attended-event-content{position:relative;padding-right:78px}.attended-event-content .event-meta-line{min-height:0}.attended-event-content .event-action-stack{position:absolute;top:0;right:0}.attended-event-content .event-head{margin-top:1px}.attended-event-content .participant-line{margin-top:0}.past-event-content{position:relative;padding-right:78px}.past-event-content .event-meta-line{min-height:0}.past-event-content .event-action-stack{position:absolute;top:0;right:0}.past-event-content .event-head{margin-top:1px}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
 .row-notattended td{color:#777772;background:#f4f4f2!important}.row-notattended .event-name,.row-notattended .event-name a{color:#777772!important}.row-notattended .event-name a{text-decoration-color:#999!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
 .rating{font-weight:900;margin-bottom:3px;color:var(--text)}.rating-high{color:#b91c1c}.report{white-space:pre-wrap}.report-rating-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.report-flag-tools{display:inline-flex;gap:6px;align-items:center;font-size:11px;font-weight:800}.report-flag-tools label{display:inline-flex;align-items:center;gap:3px;border-radius:10px;padding:2px 7px;cursor:pointer}.report-high-label{background:#f5fbf6;color:#356744;border:1px solid #bfd8c6}.report-low-label{background:#f4f5f6;color:#666;border:1px solid #cfd3d6}.report-flag-tools input{appearance:none;-webkit-appearance:none;width:14px;height:14px;min-width:14px;min-height:14px;margin:0;border-radius:3px;background:#fff;position:relative;overflow:hidden}.report-high-toggle{border:1.5px solid #6da27c}.report-low-toggle{border:1.5px solid #cf6b7e}.report-high-toggle:checked{background:#568f66}.report-high-toggle:checked::after,.report-low-toggle:checked::after{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;line-height:1}.report-high-toggle:checked::after{content:"✓";font-size:10px}.report-low-toggle:checked{background:#c65369}.report-low-toggle:checked::after{content:"×";font-size:12px}.report-good td{background:#f5fbf6!important}.report-bad td{background:#f1f2f3!important}.report-bad .event-name a{color:#7b848d!important;text-decoration-color:#aeb4b9!important}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
@@ -85,7 +85,7 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番基準 v0.32 / UI試作32</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番基準 v0.32 / UI試作31</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
@@ -112,8 +112,8 @@ th:last-child,td:last-child{border-right:0}
   </div>
 <div class="table-wrap">
     <table id="ledgerTable">
-      <colgroup id="ledgerCols"><col class="status-col"><col class="date"><col class="event"><col class="cond"><col class="detail"></colgroup>
-      <thead id="ledgerHead"><tr><th class="status-band-head" aria-label="状態"></th><th class="date-head">日付</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容</th></tr></thead>
+      <colgroup id="ledgerCols"><col class="date"><col class="status-col"><col class="event"><col class="cond"><col class="detail"></colgroup>
+      <thead id="ledgerHead"><tr><th class="date-head">日付</th><th class="status-band-head" aria-label="状態"></th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容</th></tr></thead>
       <tbody id="body"><tr><td colspan="5" class="empty">読み込み中です</td></tr></tbody>
     </table>
   </div>
@@ -445,17 +445,14 @@ function directDeleteButton(e){
   return editing?'<button type="button" class="edit-delete-btn" data-direct-delete="'+esc(e.id)+'">削除</button>':'';
 }
 
-function setTableLayout(currentMode){
+function setTableLayout(attendedMode){
   const cols=document.getElementById('ledgerCols'),head=document.getElementById('ledgerHead');
-  if(currentMode==='attended'){
+  if(attendedMode){
     cols.innerHTML='<col class="attended-date-col"><col class="status-col"><col class="attended-event-col"><col class="attended-detail-col">';
-    head.innerHTML='<tr><th class="date-head">日付</th><th class="status-band-head" aria-label="評価"></th><th>イベント / 会場</th><th>条件 / 評価 / 内容・実地レポート</th></tr>';
-  }else if(currentMode==='planned'){
+    head.innerHTML='<tr><th class="date-head">日付</th><th class="status-band-head" aria-label="状態"></th><th>イベント / 会場</th><th>条件 / 評価 / 内容・実地レポート</th></tr>';
+  }else{
     cols.innerHTML='<col class="date"><col class="status-col"><col class="event"><col class="cond"><col class="detail">';
     head.innerHTML='<tr><th class="date-head">日付</th><th class="status-band-head" aria-label="状態"></th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容</th></tr>';
-  }else{
-    cols.innerHTML='<col class="status-col"><col class="date"><col class="event"><col class="cond"><col class="detail">';
-    head.innerHTML='<tr><th class="status-band-head" aria-label="状態"></th><th class="date-head">日付</th><th>イベント / 会場</th><th>参加条件</th><th>評価 / 内容</th></tr>';
   }
 }
 function statusBandCell(e,attendedMode=false,rf=null){
@@ -463,15 +460,13 @@ function statusBandCell(e,attendedMode=false,rf=null){
   if(attendedMode){
     if(rf?.bad){cls='status-low';title='低評価';}
     else if(rf?.good){cls='status-high';title='高評価';}
-    else{cls='status-attended';title='中間・未評価';}
+    else{cls='status-attended';title='参加済み';}
   }else{
     const f=flag(e);
-    if(rf?.bad){cls='status-low';title='低評価';}
-    else if(rf?.good){cls='status-high';title='高評価';}
-    else if(f.ignored||e.attendanceStatus==='not_attended'){cls='status-off';title='行かない／未参加';}
+    if(f.ignored||e.attendanceStatus==='not_attended'){cls='status-off';title='行かない／未参加';}
     else if(f.planned){cls='status-candidate';title='行く';}
     else if(f.interested){cls='status-candidate';title='興味あり';}
-    else if(e.attendanceStatus==='attended'||actualDates(e).length){cls='status-attended';title='参加済み・中間／未評価';}
+    else if(e.attendanceStatus==='attended'||actualDates(e).length){cls='status-attended';title='参加済み';}
   }
   return '<td class="status-band-cell '+cls+'"'+(title?' title="'+esc(title)+'"':'')+'></td>';
 }
@@ -913,8 +908,7 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,planned
   const dateCell=showDate?'<td class="date'+((plannedDate||plannedUnknown)?' planned-date':'')+'" rowspan="'+rowspan+'">'+dateHtml+(plannedDate&&rowspan>1?'<div class="visit-count">'+rowspan+'件</div>':'')+'</td>':'';
   const right=done?'<td colspan="2">'+condHtml+detail+'</td>':'<td>'+condHtml+'</td><td>'+detail+'</td>';
   const statusCell=statusBandCell(e,false,rf);
-  const leadingCells=(mode==='all'||mode==='upcoming')?statusCell+dateCell:dateCell+statusCell;
-  return '<tr class="event-row '+cls+((plannedDate||plannedUnknown)?(isFirstOfDate?' planned-day-start':''):'')+'" data-event-id="'+esc(e.id)+'" data-planned-date="'+esc(plannedDate||'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+leadingCells+'<td>'+eventCell+'</td>'+right+'</tr>';
+  return '<tr class="event-row '+cls+((plannedDate||plannedUnknown)?(isFirstOfDate?' planned-day-start':''):'')+'" data-event-id="'+esc(e.id)+'" data-planned-date="'+esc(plannedDate||'')+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+statusCell+'<td>'+eventCell+'</td>'+right+'</tr>';
 }
 
 function attendedEventInfoBlock(e,schedule=''){
@@ -1367,7 +1361,7 @@ function render(){
   document.body.classList.toggle('planned-view',mode==='planned');
   document.body.classList.toggle('editing',editing);
   refreshEditBar();
-  setTableLayout(mode);
+  setTableLayout(mode==='attended');
 
   if(mode==='attended'){
     const items=[],undated=[];
