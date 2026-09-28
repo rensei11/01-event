@@ -942,11 +942,10 @@
       "nightText": "",
       "attendanceStatus": "attended",
       "visitDates": [
-        "2026-04-16",
-        "2026-04-17"
+        "2026-04-16"
       ],
       "sourceReportId": "rep-d107ea2b40cc",
-      "historySource": "実地レポート"
+      "historySource": "終了処理"
     },
     {
       "id": "hist-no-e75e13fc24fb",
