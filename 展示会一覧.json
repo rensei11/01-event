@@ -1009,14 +1009,14 @@
       "id": "hist-att-adaf23dab82d",
       "date": "2026-04-22",
       "endDate": "2026-04-24",
-      "dateText": "4月22日(水)～24日(金)",
+      "dateText": "4月22日(水)～4月24日(金)",
       "name": "Sea Japan 2026",
       "url": "https://www.seajapan.ne.jp/",
       "venue": "東京ビッグサイト 西1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
-      "rating": "実地評価：D",
+      "rating": "",
       "nightTime": "",
       "nightText": "",
       "attendanceStatus": "attended",
@@ -1024,7 +1024,10 @@
         "2026-04-23"
       ],
       "sourceReportId": "rep-adaf23dab82d",
-      "historySource": "実地レポート"
+      "historySource": "実地レポート",
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "hist-att-f346bf352906",
