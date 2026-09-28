@@ -694,10 +694,10 @@
       "url": "https://stripetour.com/ja-JP/tokyo",
       "venue": "ザ・プリンス パークタワー東京",
       "conditionLines": [
-        "名前コード：伊藤 聡",
         "無料・事前登録",
         "法人メール必要（Gmail・Yahoo!等のフリーメール不可）",
-        "申込締切：9月28日(月) 9:00"
+        "申込締切：9月28日(月) 9:00",
+        "名前コード：伊藤 聡"
       ],
       "rating": "A+。ザ・プリンス パークタワー東京でNetworking Receptionがあり有力。朝食・ランチは記録対象だが評価加点には含めない。",
       "nightTime": "8:30～10:00／12:00～13:30／16:45～17:45",
@@ -708,7 +708,11 @@
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-09-30",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-jmec-social-20260930",
@@ -859,26 +863,6 @@
       }
     },
     {
-      "id": "evt-bengo4-paradigm-20261002",
-      "date": "2026-10-02",
-      "name": "弁護士ドットコム PARADIGM 2026",
-      "url": "https://paradigm.bengo4.com/",
-      "venue": "虎ノ門ヒルズフォーラム",
-      "conditionLines": [
-        "無料・事前登録",
-        "申込締切：10月1日(木) 12:00",
-        "対象：弁護士・税理士・企業法務・総務・DX推進等"
-      ],
-      "rating": "B。19時からの「業界最大級」Networkingは強いが、具体的参加人数と飲食内容は未確認。",
-      "nightTime": "19:00～20:00",
-      "nightText": "懇親会を兼ねたNetworking。料理・ドリンク内容は未確認。",
-      "planning": {
-        "planned": false,
-        "interested": false,
-        "ignored": true
-      }
-    },
-    {
       "id": "evt-jcas-20261002",
       "date": "2026-10-02",
       "dateText": "10月2日(金)",
@@ -894,6 +878,26 @@
       "rating": "B-。国連大学会場＋本編終了後Networkingは魅力。無料だが規模と飲食提供は未確認。",
       "nightTime": "18:00～（本編終了後）",
       "nightText": "名刺交換・Networking。本編の現地参加者のみ参加可能。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
+    },
+    {
+      "id": "evt-bengo4-paradigm-20261002",
+      "date": "2026-10-02",
+      "name": "弁護士ドットコム PARADIGM 2026",
+      "url": "https://paradigm.bengo4.com/",
+      "venue": "虎ノ門ヒルズフォーラム",
+      "conditionLines": [
+        "無料・事前登録",
+        "申込締切：10月1日(木) 12:00",
+        "対象：弁護士・税理士・企業法務・総務・DX推進等"
+      ],
+      "rating": "B。19時からの「業界最大級」Networkingは強いが、具体的参加人数と飲食内容は未確認。",
+      "nightTime": "19:00～20:00",
+      "nightText": "懇親会を兼ねたNetworking。料理・ドリンク内容は未確認。",
       "planning": {
         "planned": false,
         "interested": false,
