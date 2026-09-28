@@ -750,14 +750,14 @@
       "id": "hist-att-a7df8914ab66",
       "date": "2026-04-02",
       "endDate": "2026-04-05",
-      "dateText": "4月2日(木)～5日(日)",
+      "dateText": "4月2日(木)～4月5日(日)",
       "name": "インターペット東京2026",
       "url": "https://interpets.jp/public/",
       "venue": "東京ビッグサイト 東1-3,7,8",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
-      "rating": "実地評価：D",
+      "rating": "",
       "nightTime": "",
       "nightText": "",
       "attendanceStatus": "attended",
@@ -765,7 +765,10 @@
         "2026-04-02"
       ],
       "sourceReportId": "rep-a7df8914ab66",
-      "historySource": "終了処理"
+      "historySource": "終了処理",
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "hist-no-16141a7f5e4f",
