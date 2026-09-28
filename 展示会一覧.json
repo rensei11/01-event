@@ -895,14 +895,14 @@
       "id": "hist-att-f395e95672d1",
       "date": "2026-04-15",
       "endDate": "2026-04-16",
-      "dateText": "4月15日(水)～16日(金)",
+      "dateText": "4月15日(水)～4月16日(木)",
       "name": "Startup JAPAN 2026",
       "url": "https://eight-event.8card.net/lp/startup-japan/2026/",
       "venue": "幕張メッセ 会議場,ホール7-8",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
-      "rating": "実地評価：S",
+      "rating": "",
       "nightTime": "",
       "nightText": "",
       "attendanceStatus": "attended",
@@ -911,7 +911,11 @@
         "2026-04-16"
       ],
       "sourceReportId": "rep-f395e95672d1",
-      "historySource": "実地レポート"
+      "historySource": "実地レポート",
+      "_kinds": [
+        "exhibition",
+        "gathering"
+      ]
     },
     {
       "id": "hist-att-1d991c1cc824",
