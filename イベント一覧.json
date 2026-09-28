@@ -826,6 +826,41 @@
       "nightText": "全体会終了後にNetworking予定。料理・ドリンク提供は未確認。"
     },
     {
+      "name": "Blockchain Summit 2026 Autumn After Party",
+      "id": "evt-blockchain-summit-autumn-afterparty-20261005",
+      "date": "2026-10-05",
+      "endDate": "",
+      "dateText": "10月5日(月)",
+      "url": "https://luma.com/bcs2026autumn-reception",
+      "venue": "大手町サンケイプラザ",
+      "conditionLines": [
+        "無料・事前承認制",
+        "本編Blockchain Summit 2026 Autumnへの登録も必要",
+        "前回2026年2月開催：事前登録1,200名超／実来場約550名"
+      ],
+      "rating": "",
+      "nightTime": "17:30～19:30",
+      "nightText": "公式After Party。立食形式で食事＋ドリンクあり。参加は承認制。"
+    },
+    {
+      "name": "Japanese-Hungarian Biotech Business Seminar",
+      "id": "evt-japan-hungary-biotech-20261005",
+      "date": "2026-10-05",
+      "endDate": "",
+      "dateText": "10月5日(月)",
+      "url": "https://luma.com/zucrmibk",
+      "venue": "Tokyo Innovation Base 2階",
+      "conditionLines": [
+        "無料・事前登録",
+        "駐日ハンガリー大使館主催",
+        "バイオ・製薬・医療・VC/CVC等が主対象",
+        "TIBアプリ登録が必要"
+      ],
+      "rating": "",
+      "nightTime": "18:00～20:00",
+      "nightText": "Networking Reception。伝統的なハンガリー料理とドリンクを公式明記。規模は小さめ。"
+    },
+    {
       "id": "xls-g-e5e424627804",
       "date": "2026-10-06",
       "endDate": "",
@@ -944,11 +979,12 @@
       "venue": "ヒルトン東京お台場",
       "conditionLines": [
         "参加経路確認中",
-        "1,000名以上予定"
+        "1,000名以上予定",
+        "主催者へ問い合わせ済み・2026-09-28時点で返答待ち"
       ],
       "rating": "A※。規模・ホテル・夜内容は非常に強い。参加経路だけが最大の問題。",
       "nightTime": "19:00～20:30",
-      "nightText": "懇親会。海外向け案内では「Gala Dinner」表記あり。 Excelメモ：申請窓口が見つからないのでメールで問い合わせたが可能性は低い。 / 19:00 ～懇親会　立食ではなく卓上で大皿から分けるっぽい",
+      "nightText": "10th Anniversary Gala Dinner。顧客・パートナー・海外ゲスト向け案内。一般向け公開申込窓口は未確認。主催者へ問い合わせ済みで返答待ち。",
       "dateText": "10月9日 (金)",
       "sourceExcel": true
     },
@@ -959,11 +995,13 @@
       "url": "https://carbon-recycling2026.nedo.go.jp/",
       "venue": "ウェスティンホテル東京",
       "conditionLines": [
-        "無料・一般登録可"
+        "無料・一般登録可",
+        "申込済み",
+        "現地参加申込は会議終了まで受付予定"
       ],
       "rating": "A。無料でホテルReceptionに参加でき、Rikkei不成立時の強い代替候補。",
       "nightTime": "18:20～19:30",
-      "nightText": "Networking Reception。2026年9月18日更新の公式プログラムで時刻変更を確認。現地参加締切は9月30日17:00。料理詳細不明。",
+      "nightText": "Networking Reception。2026年9月18日更新の公式プログラムで時刻確認。現地参加は申込済み。料理詳細不明。",
       "dateText": "10月9日 (金)",
       "sourceExcel": true
     },
@@ -993,11 +1031,12 @@
       "conditionLines": [
         "名前コード：久保 直輝",
         "無料・申請済",
-        "多数時抽選"
+        "多数時抽選",
+        "申請済み・2026-09-28時点で返答待ち"
       ],
       "rating": "A+。東京アメリカンクラブという会場価値が大きく、Networkingも有力。",
-      "nightTime": "18:30～19:30",
-      "nightText": "Networking。公式最新日程へ更新済み。料理・酒の詳細は未公表。 Excelメモ：ご参加確定の連絡は9月末までに順次案内。",
+      "nightTime": "18:30～20:00",
+      "nightText": "Networking。公式最新日程は18:30～20:00。料理・酒の詳細は未公表。申請済みだが2026-09-28時点で返答待ち。",
       "dateText": "10月14日(水)",
       "sourceExcel": true
     },
@@ -1053,11 +1092,12 @@
       "conditionLines": [
         "名前コード：久保 直輝",
         "無料・事前申込",
-        "過去1,000名超実績"
+        "過去1,000名超実績",
+        "公式FAQ：イベント来場者はNetworking Partyへ自由参加可"
       ],
       "rating": "A+。ビッグサイトからの移動が楽で、規模・時間・立地が非常に良い。",
       "nightTime": "18:00～19:30",
-      "nightText": "Networking Party。イベント来場者は自由参加可。過去回は軽食＋飲み物あり。 Excelメモ：天王洲アイル駅から徒歩数分。",
+      "nightText": "Networking Party。公式FAQでイベント来場者は自由参加可。2026年の料理・ドリンク詳細は未公表。過去回は軽食＋飲み物あり。",
       "dateText": "10月15日(木)",
       "sourceExcel": true
     },
@@ -1110,6 +1150,23 @@
       "rating": "B。無料で90分の懇親会。五反田で使いやすいが、料理・酒の内容は未確認。",
       "nightTime": "18:00～19:30",
       "nightText": "懇親会。来場者・講演者・NTTデータ数理システムメンバーの交流。飲食内容は未確認。"
+    },
+    {
+      "name": "SUSS Japan Seminar 2026",
+      "id": "evt-suss-japan-seminar-20261016",
+      "date": "2026-10-16",
+      "endDate": "",
+      "dateText": "10月16日(金)",
+      "url": "https://www.suss.com/jp/company/events/suss-japan-private-seminar",
+      "venue": "品川プリンスホテル",
+      "conditionLines": [
+        "無料",
+        "完全招待制",
+        "約100名"
+      ],
+      "rating": "",
+      "nightTime": "18:15～19:15",
+      "nightText": "Networking Reception。ドリンク＋軽食あり。規模・参加条件から優先度は低め。"
     },
     {
       "id": "xls-g-5eb96f25c875",
@@ -1266,12 +1323,15 @@
       "url": "https://adtech-tokyo.com/ja/",
       "venue": "東京ミッドタウン／ザ・リッツ・カールトン東京",
       "conditionLines": [
-        "Visitor無料枠はParty不可",
-        "約16,200人規模"
+        "Visitor無料Early Birdは終了",
+        "現在のVisitor Passは有料",
+        "出展企業・スポンサー・公式スピーカー経由のFree Invitationあり得る",
+        "約16,200人規模",
+        "Visitor PassではNetworking Party参加不可"
       ],
       "rating": "D。規模・会場は最上位だが、無料でPartyに入る現実的経路が弱い。",
       "nightTime": "",
-      "nightText": "Networking Partyあり。Party参加には対象パスまたは特別招待が必要。"
+      "nightText": "Networking Partyあり。Party参加にはFull Conference／One Day等の対象パスまたは特別招待が必要。無料招待経路はスポンサー等から配布される場合あり。"
     },
     {
       "id": "evt-9859fe1a",
