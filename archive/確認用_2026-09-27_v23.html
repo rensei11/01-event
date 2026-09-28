@@ -66,7 +66,7 @@ th:last-child,td:last-child{border-right:0}
 .end-field{margin:0 0 14px}.end-label{display:block;font-size:13px;font-weight:800;margin-bottom:5px}.end-choice,.end-visit-dates{display:flex;gap:10px;flex-wrap:wrap}.end-choice label,.end-visit-dates label{display:inline-flex;align-items:center;gap:4px}
 .end-rating{padding:6px 8px;border:1px solid #aeb7c0;border-radius:6px}.end-report{width:100%;min-height:200px;resize:vertical;border:1px solid #aeb7c0;border-radius:7px;padding:9px;font:inherit;line-height:1.55}
 .end-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}.end-save{background:#20262d;color:#fff;border-color:#20262d;font-weight:800}.end-saved{font-size:12px;color:#18794e;font-weight:700}
-.event-edit-dialog{width:min(760px,96vw)}.event-edit-form{padding:16px}.event-edit-kind{display:inline-block;margin:0 0 12px}.event-edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.event-edit-grid .wide{grid-column:1/-1}.event-edit-form label{display:block;font-size:12px;font-weight:800;color:#444}.event-edit-form input,.event-edit-form textarea{width:100%;margin-top:4px;border:1px solid #aeb7c0;border-radius:6px;padding:7px 8px;font:inherit;font-size:13px;background:#fff}.event-edit-form textarea{min-height:72px;resize:vertical;line-height:1.45}.event-edit-form .event-edit-long{min-height:110px}.event-edit-note{font-size:11px;color:var(--muted);margin:0 0 10px}.event-edit-actions{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.event-edit-actions-main{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-left:auto}.event-delete-btn{border-color:#d9a0a0;background:#fff7f7;color:#a61b1b;font-weight:800}.event-delete-btn:hover{background:#ffecec}.new-event-btn{border-color:#6f99c5;background:#f2f8ff;color:#244f7a;font-weight:900}.new-event-btn:hover{background:#e6f2ff}.event-edit-status{font-size:12px;font-weight:800;color:#18794e}
+.event-edit-dialog{width:min(760px,96vw)}.event-edit-form{padding:16px}.event-edit-kind{display:inline-block;margin:0 0 12px}.event-edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.event-edit-grid .wide{grid-column:1/-1}.event-edit-form label{display:block;font-size:12px;font-weight:800;color:#444}.event-edit-form input,.event-edit-form textarea{width:100%;margin-top:4px;border:1px solid #aeb7c0;border-radius:6px;padding:7px 8px;font:inherit;font-size:13px;background:#fff}.event-edit-form textarea{min-height:72px;resize:vertical;line-height:1.45}.event-edit-form .event-edit-long{min-height:110px}.event-edit-note{font-size:11px;color:var(--muted);margin:0 0 10px}.event-edit-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.event-edit-status{font-size:12px;font-weight:800;color:#18794e}
 @media(max-width:760px){.end-dialog-body{grid-template-columns:1fr}.end-list{border-right:0;border-bottom:1px solid var(--line)}.event-edit-grid{grid-template-columns:1fr}}
 
 .edit-date-pair{display:grid;gap:4px}.edit-date-pair input{width:100%;min-width:0;border:1px solid #aeb7c0;border-radius:5px;padding:3px 4px;font:inherit;font-size:11px;background:#fff}
@@ -85,14 +85,13 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div id="loadStatus" class="status">読み込み中</div></div><div class="version-info">本番基準 v0.32 / UI試作24</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div id="loadStatus" class="status">読み込み中</div></div><div class="version-info">本番基準 v0.32 / UI試作23</div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
         <button data-mode="planned">参加予定 <span class="mode-count" data-mode-count="planned">0件</span></button>
         <button data-mode="attended">参加済み <span class="mode-count" data-mode-count="attended">0件</span></button>
         <button id="endProcessBtn" class="end-process-btn" type="button">終了処理 <span id="endProcessCount" class="end-process-count">0</span></button>
-        <button id="addEventBtn" class="new-event-btn" type="button">＋ 新しいイベント</button>
         <span id="status" class="status current-list-status"></span>
       </div>
       <div class="subfilters">
@@ -101,6 +100,17 @@ th:last-child,td:last-child{border-right:0}
         <button type="button" class="kind-filter" data-kind-filter="gathering">懇親会</button>
         <label class="hide-ignored-label"><input id="hideIgnoredToggle" type="checkbox">行かないを非表示</label>
       </div>
+      <div class="legacy-edit-toolbar">
+        <button id="editBtn" type="button">一覧直接編集（旧）</button>
+        <span id="editChangeCount" class="edit-change-count">下書き変更 0件</span>
+        <button id="addBtn" type="button" disabled>＋ 新しいイベント</button>
+        <button id="kindBtn" type="button" disabled>展示会／懇親会</button>
+        <button id="linkBtn" type="button" disabled>リンク設定</button>
+        <button id="delBtn" class="danger" type="button" disabled>選択行を削除</button>
+        <button id="saveHtmlBtn" type="button">編集下書き保存</button>
+        <button id="resetHtmlBtn" type="button">編集下書きを破棄</button>
+      </div>
+      <div class="edit-help">通常の情報修正は各イベント右上の「イベント編集」を使用します。「一覧直接編集（旧）」は複数箇所をまとめて直すための旧方式です。</div>
       <section class="calendar-panel" aria-label="カレンダー">
         <div class="calendar-left">
           <div class="calendar-jump"><span class="calendar-title-inline">カレンダー</span><span class="calendar-start-label">表の表示開始月</span><select id="calendarYear" class="calendar-year" aria-label="表の年"></select><div id="monthJump" class="month-jump"></div></div>
@@ -117,7 +127,7 @@ th:last-child,td:last-child{border-right:0}
       <tbody id="body"><tr><td colspan="4" class="empty">読み込み中です</td></tr></tbody>
     </table>
   </div>
-  <div class="note">※ イベント編集・新規追加・削除は現在このブラウザの下書きへ反映します。「終了処理 → GitHubへ保存」は正式データへ反映します。</div>
+  <div class="note">※ 「編集開始」で直した内容はこのブラウザの編集下書きです。「終了処理 → GitHubへ保存」は正式データへ反映します。</div>
 </div>
 <button id="backToTop" class="back-to-top" type="button" aria-label="ページ上部へ戻る">↑</button>
 <div id="endProcessModal" class="end-modal" hidden>
@@ -156,7 +166,7 @@ const calendarToday=new Date();
 let calendarBaseYear=calendarToday.getFullYear(),calendarBaseMonth=calendarToday.getMonth()+1;
 let listStartYear=0,listStartMonth=0;
 let nextPlanIndex=0;
-let endDrafts={},endBackups={},eventEditDrafts={},selectedEndEventId='',endProcessSingle=false,selectedEventEditId='',eventEditCreateMode=false,eventEditNewBase=null;
+let endDrafts={},endBackups={},eventEditDrafts={},selectedEndEventId='',endProcessSingle=false,selectedEventEditId='';
 const endProcessBtn=document.getElementById('endProcessBtn');
 const endProcessCount=document.getElementById('endProcessCount');
 const endProcessModal=document.getElementById('endProcessModal');
@@ -636,29 +646,18 @@ function participantDisplay(e,editingValue=''){
 function venueParticipantBlock(e,venueHtml,editingValue=''){
   return '<div class="venue">'+venueHtml+'</div>'+participantDisplay(e,editingValue);
 }
-function openEventEdit(eventId='',createMode=false){
-  eventEditCreateMode=!!createMode;
-  let e=null;
-  if(eventEditCreateMode){
-    const stamp=Date.now();
-    eventEditNewBase={id:'draft-new-'+stamp,date:todayISO(),endDate:'',dateText:'',name:'',url:'',venue:'',conditionLines:[],rating:'',nightTime:'',nightText:'',attendanceStatus:'',visitDates:[],sourceReportId:'',_kind:'exhibition'};
-    selectedEventEditId=eventEditNewBase.id;
-    e=eventEditNewBase;
-  }else{
-    e=events.find(x=>x.id===eventId);
-    if(!e)return;
-    selectedEventEditId=e.id;
-  }
-  const saved=eventEditCreateMode?{}:(eventEditDrafts[e.id]||{});
+function openEventEdit(eventId){
+  const e=events.find(x=>x.id===eventId);
+  if(!e||String(e.id||'').startsWith('draft-new-'))return;
+  selectedEventEditId=e.id;
+  const saved=eventEditDrafts[e.id]||{};
   const people=('personName' in saved)?saved.personName:personLines(e).join(' / ');
   const val=(k,fallback)=>k in saved?saved[k]:fallback;
-  const kind=val('kind',e._kind||'exhibition');
-  eventEditTitle.textContent=eventEditCreateMode?'新しいイベント':'イベント編集';
-  const deleteButton=eventEditCreateMode?'':'<button id="eventEditDelete" class="event-delete-btn" type="button">イベント削除</button>';
+  eventEditTitle.textContent='イベント編集';
   eventEditFormWrap.innerHTML=
-    '<div class="event-edit-note">'+(eventEditCreateMode?'入力後「下書きへ反映」で新しいイベントを作成します。':'入力内容は自動でブラウザ下書き保存されます。')+' 現在Cloudflare Worker更新待ちのため、GitHub確定はまだ行いません。</div>'+
+    '<div class="event-edit-kind kind-badge '+esc(e._kind)+'">'+(e._kind==='exhibition'?'展示会':'懇親会')+'</div>'+
+    '<div class="event-edit-note">入力内容は自動でブラウザ下書き保存されます。現在Cloudflare Worker更新待ちのため、ここから終了処理用保存は行いません。</div>'+
     '<div class="event-edit-grid">'+
-      '<label>区分<select id="eventEditKind"><option value="exhibition" '+(kind==='exhibition'?'selected':'')+'>展示会</option><option value="gathering" '+(kind==='gathering'?'selected':'')+'>懇親会</option></select></label>'+
       '<label class="wide">イベント名<input id="eventEditName" type="text" value="'+esc(val('eventName',e.name||''))+'"></label>'+
       '<label>開始日<input id="eventEditDate" type="date" value="'+esc(val('date',e.date||''))+'"></label>'+
       '<label>終了日<input id="eventEditEndDate" type="date" value="'+esc(val('endDate',(e.endDate&&e.endDate!==e.date)?e.endDate:''))+'" placeholder="1日開催なら空欄"></label>'+
@@ -670,33 +669,26 @@ function openEventEdit(eventId='',createMode=false){
       '<label>時間<input id="eventEditNightTime" type="text" value="'+esc(val('nightTime',e.nightTime||''))+'"></label>'+
       '<label class="wide">内容・根拠<textarea id="eventEditNightText" class="event-edit-long">'+esc(val('nightText',e.nightText||''))+'</textarea></label>'+
     '</div>'+
-    '<div class="event-edit-actions">'+deleteButton+'<div class="event-edit-actions-main"><button id="eventEditSave" class="end-save" type="button">'+(eventEditCreateMode?'下書きへ反映':'下書きを反映')+'</button><span id="eventEditStatus" class="event-edit-status">'+(eventEditCreateMode?'':'GitHub確定はWorker更新後')+'</span></div></div>';
-  const kindSelect=eventEditFormWrap.querySelector('#eventEditKind');
-  if(kindSelect)kindSelect.style.cssText='width:100%;margin-top:4px;border:1px solid #aeb7c0;border-radius:6px;padding:7px 8px;font:inherit;font-size:13px;background:#fff';
+    '<div class="event-edit-actions"><button id="eventEditSave" class="end-save" type="button">下書きを反映</button><span id="eventEditStatus" class="event-edit-status">GitHub確定はWorker更新後</span></div>';
   eventEditModal.hidden=false;
   document.body.style.overflow='hidden';
 }
 function closeEventEdit(){
-  eventEditModal.hidden=true;
-  selectedEventEditId='';
-  eventEditCreateMode=false;
-  eventEditNewBase=null;
+  eventEditModal.hidden=true;selectedEventEditId='';
   if(endProcessModal.hidden)document.body.style.overflow='';
 }
 function saveEventEditDraft(){
-  if(eventEditCreateMode)return;
   const d=collectEventEdit();if(!d)return;
   eventEditDrafts[d.eventId]=d;
   localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
 }
 function collectEventEdit(){
-  const e=eventEditCreateMode?eventEditNewBase:events.find(x=>x.id===selectedEventEditId);
-  if(!e)return null;
-  const o=eventEditCreateMode?e:officialEvent(e);
+  const e=events.find(x=>x.id===selectedEventEditId);if(!e)return null;
+  const o=officialEvent(e);
   return {
     editOnly:true,
-    eventId:e.id,
-    kind:eventEditFormWrap.querySelector('#eventEditKind')?.value||o._kind||'exhibition',
+    eventId:o.id,
+    kind:o._kind,
     eventName:eventEditFormWrap.querySelector('#eventEditName')?.value.trim()||'',
     name:eventEditFormWrap.querySelector('#eventEditName')?.value.trim()||'',
     date:eventEditFormWrap.querySelector('#eventEditDate')?.value||'',
@@ -762,40 +754,23 @@ async function saveEventEditDraftToBrowser(){
   if(!d.eventName){if(status)status.textContent='イベント名を入力してください。';return;}
   if(!d.date){if(status)status.textContent='開始日を入力してください。';return;}
   if(d.endDate&&d.endDate<d.date){if(status)status.textContent='終了日は開始日以降にしてください。';return;}
+  const e=events.find(x=>x.id===d.eventId);if(!e)return;
+  e.name=d.eventName;
+  e.date=d.date;
+  e.endDate=d.endDate||d.date;
+  e.dateText='';
+  e.venue=d.venue;
+  e.url=d.url;
   const cond=splitLines(d.conditionText).filter(x=>!x.startsWith('名前コード：'));
   if(d.personName)cond.unshift('名前コード：'+d.personName);
-
-  if(eventEditCreateMode){
-    const e={id:d.eventId,date:d.date,endDate:d.endDate||d.date,dateText:'',name:d.eventName,url:d.url,venue:d.venue,conditionLines:cond,rating:d.preRating,nightTime:d.nightTime,nightText:d.nightText,attendanceStatus:'',visitDates:[],sourceReportId:'',_kind:d.kind};
-    events.push(e);
-    editDraft.newEvents.push(cloneData(e));
-    dirtyIds.add(e.id);
-    persistStructuredEditDraft('新しいイベントを下書きへ追加しました');
-    officialEventsById.set(e.id,cloneData(e));
-    mode='all';listStartYear=0;listStartMonth=0;syncModeButtons();saveUiState();
-    closeEventEdit();
-    render();
-    return;
-  }
-
-  const e=events.find(x=>x.id===d.eventId);if(!e)return;
-  e._kind=d.kind;e.name=d.eventName;e.date=d.date;e.endDate=d.endDate||d.date;e.dateText='';e.venue=d.venue;e.url=d.url;e.conditionLines=cond;e.rating=d.preRating;e.nightTime=d.nightTime;e.nightText=d.nightText;
-  recordPatch(e,['_kind','name','date','endDate','dateText','venue','url','conditionLines','rating','nightTime','nightText']);
+  e.conditionLines=cond;
+  e.rating=d.preRating;
+  e.nightTime=d.nightTime;
+  e.nightText=d.nightText;
+  recordPatch(e,['name','date','endDate','dateText','venue','url','conditionLines','rating','nightTime','nightText']);
   eventEditDrafts[e.id]=d;
   localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
   if(status)status.textContent='ブラウザ下書きへ反映しました。GitHub確定はWorker更新後です。';
-  render();
-}
-function deleteEventFromEditor(){
-  if(eventEditCreateMode)return;
-  const e=events.find(x=>x.id===selectedEventEditId);if(!e)return;
-  if(!confirm('「'+(e.name||'このイベント')+'」を削除しますか？\n現在はブラウザ下書き上の削除です。'))return;
-  deleteFromDraft(e);
-  events=events.filter(x=>x.id!==e.id);
-  dirtyIds.add(e.id);
-  delete eventEditDrafts[e.id];
-  localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
-  closeEventEdit();
   render();
 }
 function reportRatingHtml(value){
@@ -1466,12 +1441,19 @@ eventEditClose.addEventListener('click',closeEventEdit);
 eventEditModal.addEventListener('click',e=>{if(e.target===eventEditModal)closeEventEdit();});
 eventEditFormWrap.addEventListener('input',()=>saveEventEditDraft());
 eventEditFormWrap.addEventListener('change',()=>saveEventEditDraft());
-eventEditFormWrap.addEventListener('click',async e=>{
-  if(e.target.id==='eventEditSave'){await saveEventEditDraftToBrowser();return;}
-  if(e.target.id==='eventEditDelete'){deleteEventFromEditor();return;}
-});
-document.getElementById('addEventBtn').addEventListener('click',()=>openEventEdit('',true));
+eventEditFormWrap.addEventListener('click',async e=>{if(e.target.id==='eventEditSave')await saveEventEditDraftToBrowser();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!eventEditModal.hidden)closeEventEdit();});
+
+document.getElementById('editBtn').addEventListener('click',()=>setLegacyEditing(!editing));
+
+document.getElementById('body').addEventListener('click',e=>{
+  if(!editing)return;
+  if(e.target.closest('input,button'))return;
+  const row=e.target.closest('tr.event-row');
+  if(!row)return;
+  if(e.target.closest('a'))e.preventDefault();
+  setSelected(row);
+});
 
 document.getElementById('body').addEventListener('change',e=>{
   const good=e.target.closest('.report-high-toggle'),bad=e.target.closest('.report-low-toggle');
@@ -1482,7 +1464,67 @@ document.getElementById('body').addEventListener('change',e=>{
   reportFlags[id]=f;saveReportFlags();render();
 });
 
+document.getElementById('body').addEventListener('input',e=>{
+  if(!editing)return;
+  const el=e.target.closest('[data-direct-id]');
+  if(!el)return;
+  applyDirectEdit(el);
+});
+
+document.getElementById('addBtn').addEventListener('click',()=>{
+  if(!editing)return;
+  const stamp=Date.now(),today=todayISO();
+  const e={id:'draft-new-'+stamp,date:today,endDate:'',dateText:'',name:'新しいイベント',url:'',venue:'',conditionLines:[],rating:'',nightTime:'',nightText:'',attendanceStatus:'',visitDates:[],sourceReportId:'',_kind:'exhibition'};
+  events.push(e);editDraft.newEvents.push(cloneData(e));markDirty(e.id);persistStructuredEditDraft('新しいイベントを下書き追加しました');
+  mode='all';listStartYear=0;listStartMonth=0;syncModeButtons();saveUiState();render();
+  requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(e.id)+'"]');if(row){setSelected(row);row.querySelector('[data-direct-field="name"]')?.focus();}});
+});
+
+document.getElementById('kindBtn').addEventListener('click',()=>{
+  if(!editing||!selected||!selected.classList.contains('event-row'))return;
+  const id=selected.dataset.eventId,e=eventById(id);if(!e)return;
+  e._kind=e._kind==='exhibition'?'gathering':'exhibition';
+  recordPatch(e,['_kind']);
+  render();
+  requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(id)+'"]');if(row)setSelected(row);});
+});
+
+document.getElementById('delBtn').addEventListener('click',()=>{
+  if(!editing||!selected||!selected.classList.contains('event-row'))return;
+  const id=selected.dataset.eventId,e=eventById(id);if(!e)return;
+  if(!confirm('「'+(e.name||'このイベント')+'」を編集下書きから削除しますか？'))return;
+  deleteFromDraft(e);events=events.filter(x=>x.id!==id);dirtyIds.add(id);selected=null;render();
+});
+
+document.getElementById('linkBtn').addEventListener('click',()=>{
+  if(!editing||!selected||!selected.classList.contains('event-row'))return;
+  const id=selected.dataset.eventId,e=eventById(id);if(!e)return;
+  const url=prompt('このイベントのURLを貼り付けてください',e.url||'');
+  if(url===null)return;
+  e.url=url.trim();recordPatch(e,['url']);
+  const rowId=id;render();
+  requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(rowId)+'"]');if(row)setSelected(row);});
+});
+
+document.getElementById('saveHtmlBtn').addEventListener('click',()=>{
+  persistStructuredEditDraft('編集下書きを保存しました');
+});
+
+document.getElementById('resetHtmlBtn').addEventListener('click',()=>{
+  if(confirm('このブラウザの編集下書きをすべて破棄して、GitHubの最新データに戻しますか？'))clearLegacyHTML();
+});
+
 document.getElementById('body').addEventListener('change',async e=>{
+  const ds=e.target.closest('.direct-date-start'),de=e.target.closest('.direct-date-end');
+  if(ds||de){
+    const el=ds||de,eve=eventById(el.dataset.id);if(!eve)return;
+    const rowId=eve.id;
+    if(ds){eve.date=ds.value;if(eve.endDate&&eve.endDate<eve.date)eve.endDate='';recordPatch(eve,['date','endDate']);}
+    else{eve.endDate=de.value;recordPatch(eve,['endDate']);}
+    render();
+    requestAnimationFrame(()=>{const row=document.querySelector('tr[data-event-id="'+CSS.escape(rowId)+'"]');if(row)setSelected(row);});
+    return;
+  }
   const i=e.target.closest('.interest-toggle'),p=e.target.closest('.plan-toggle'),n=e.target.closest('.ignore-toggle'),d=e.target.closest('.plan-day-toggle');
   if(!i&&!p&&!n&&!d)return;
   const id=(i||p||n||d).dataset.id,event=events.find(x=>x.id===id);
