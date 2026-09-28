@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-27-web",
+  "dataVersion": "2026-09-28-web",
   "year": 2026,
   "events": [
     {
@@ -780,6 +780,21 @@
       "nightText": "ランチセッションで弁当提供。コーヒーサービスあり。夜の懇親会は確認できず。"
     },
     {
+      "id": "evt-bengo4-paradigm-20261002",
+      "date": "2026-10-02",
+      "name": "弁護士ドットコム PARADIGM 2026",
+      "url": "https://paradigm.bengo4.com/",
+      "venue": "虎ノ門ヒルズフォーラム",
+      "conditionLines": [
+        "無料・事前登録",
+        "申込締切：10月1日(木) 12:00",
+        "対象：弁護士・税理士・企業法務・総務・DX推進等"
+      ],
+      "rating": "B。19時からの「業界最大級」Networkingは強いが、具体的参加人数と飲食内容は未確認。",
+      "nightTime": "19:00～20:00",
+      "nightText": "懇親会を兼ねたNetworking。料理・ドリンク内容は未確認。"
+    },
+    {
       "id": "evt-jcas-20261002",
       "date": "2026-10-02",
       "dateText": "10月2日(金)",
@@ -795,21 +810,6 @@
       "rating": "B-。国連大学会場＋本編終了後Networkingは魅力。無料だが規模と飲食提供は未確認。",
       "nightTime": "18:00～（本編終了後）",
       "nightText": "名刺交換・Networking。本編の現地参加者のみ参加可能。"
-    },
-    {
-      "id": "evt-bengo4-paradigm-20261002",
-      "date": "2026-10-02",
-      "name": "弁護士ドットコム PARADIGM 2026",
-      "url": "https://paradigm.bengo4.com/",
-      "venue": "虎ノ門ヒルズフォーラム",
-      "conditionLines": [
-        "無料・事前登録",
-        "申込締切：10月1日(木) 12:00",
-        "対象：弁護士・税理士・企業法務・総務・DX推進等"
-      ],
-      "rating": "B。19時からの「業界最大級」Networkingは強いが、具体的参加人数と飲食内容は未確認。",
-      "nightTime": "19:00～20:00",
-      "nightText": "懇親会を兼ねたNetworking。料理・ドリンク内容は未確認。"
     },
     {
       "id": "evt-teachers-day-gathering-20261004",
@@ -1128,6 +1128,25 @@
       "nightText": "ネットワーキング。公式プログラムで確認。飲食内容は未確認。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true
+    },
+    {
+      "id": "evt-treasure-data-connected-world-20261020",
+      "date": "2026-10-20",
+      "endDate": "",
+      "dateText": "10月20日(火)",
+      "name": "Treasure Data Connected World 2026",
+      "url": "https://www.treasure.ai/ja/connected-world/",
+      "venue": "ANAインターコンチネンタルホテル東京",
+      "conditionLines": [
+        "参加費無料・事前登録制",
+        "4,000人規模",
+        "11:50開始の一部セッションは豪華ホテルお弁当付き",
+        "申込フォームに「トレジャーAI紹介者名」欄あり",
+        "紹介者名と招待制パーティー参加権の関係は未確認"
+      ],
+      "rating": "",
+      "nightTime": "18:40～19:40",
+      "nightText": "＜招待制＞ネットワーキングパーティー。通常の無料参加登録とは別扱い。誰が招待対象か、一般登録後に申請できるかは公開情報では未確認。通常登録後は参加セッション登録用マイページが案内されるため、招待制パーティーの表示・選択可否は登録後の確認事項。"
     },
     {
       "id": "evt-2fb53a6ac06b",
@@ -1711,6 +1730,25 @@
       "rating": "A。無料＋大型ホテル＋懇親会の組み合わせ。詳細時刻・料理は今後公表予定。",
       "nightTime": "",
       "nightText": "懇親会を公式プログラムに明記。時刻・飲食内容は未公表。"
+    },
+    {
+      "id": "evt-sepex-yearend-20261209",
+      "date": "2026-12-09",
+      "endDate": "",
+      "dateText": "12月9日(水)",
+      "name": "SEPEX 2026年末イベント",
+      "url": "https://sepex.jp/event/sepex-20261209-206/detail",
+      "venue": "KANDA SQUARE 2階 SQUARE HALL",
+      "conditionLines": [
+        "参加費無料",
+        "1,000名規模",
+        "お酒・軽食・ビンゴ大会で豪華賞品",
+        "SEPEXアプリ登録＋名刺登録が必要",
+        "会場：約450㎡／スタンディング最大1,000名"
+      ],
+      "rating": "",
+      "nightTime": "17:30～19:30",
+      "nightText": "年末交流イベント。2025年回は定員1,000名で開催2日前時点600名エントリー、2024年回は780名エントリー。前年案内では飲食・アルコールは在庫がなくなり次第終了。実来場者数は未確認。"
     },
     {
       "id": "evt-datadog-summit-20261216",
