@@ -969,9 +969,10 @@ function attendedRow(e,visitDate,showDate,rowspan,isFirstOfDate){
   }
 
   const dateCell=showDate?'<td class="date attended-date" rowspan="'+rowspan+'"><strong>'+esc(visitDate.replace(/^\\d{4}-/,'').replace('-','/'))+'</strong><div class="visit-count">'+rowspan+'件</div></td>':'';
-  const rf=(showReport&&r)?reportFlag(r.id):{good:false,bad:false};
+  const rf=r?reportFlag(r.id):{good:false,bad:false};
+  const rowRf=(showReport&&r)?rf:{good:false,bad:false};
   const statusCell=statusBandCell(e,true,rf);
-  return '<tr class="event-row row-attended attended-day-row'+(isFirstOfDate?' attended-day-start':'')+(rf.good?' report-good':'')+(rf.bad?' report-bad':'')+'" data-event-id="'+esc(e.id)+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+statusCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
+  return '<tr class="event-row row-attended attended-day-row'+(isFirstOfDate?' attended-day-start':'')+(rowRf.good?' report-good':'')+(rowRf.bad?' report-bad':'')+'" data-event-id="'+esc(e.id)+'" data-visit-date="'+esc(visitDate)+'" data-start-date="'+esc(e.date)+'" data-end-date="'+esc(e.endDate||e.date)+'">'+dateCell+statusCell+'<td>'+eventCell+'</td><td>'+detail+'</td></tr>';
 }
 
 function isoDate(y,m,d){return y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
@@ -1414,11 +1415,11 @@ function render(){
       const d=e.date,m=d.slice(0,7),w=weekKey(d);
       if(m!==month){
         const [y,mm]=m.split('-');
-        html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="4">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+        html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="5">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
         month=m;week='';
       }
       if(w!==week){
-        html+='<tr class="week"><td colspan="4">'+esc(weekLabel(d))+'</td></tr>';
+        html+='<tr class="week"><td colspan="5">'+esc(weekLabel(d))+'</td></tr>';
         week=w;
       }
       html+=row(e);
@@ -1449,11 +1450,11 @@ function render(){
       const sortDate=items[i].sortDate,m=sortDate.slice(0,7),w=weekKey(sortDate);
       if(m!==month){
         const [y,mm]=m.split('-');
-        html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="4">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+        html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="5">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
         month=m;week='';
       }
       if(w!==week){
-        html+='<tr class="week"><td colspan="4">'+esc(weekLabel(sortDate))+'</td></tr>';
+        html+='<tr class="week"><td colspan="5">'+esc(weekLabel(sortDate))+'</td></tr>';
         week=w;
       }
       if(items[i].unknown){
@@ -1480,11 +1481,11 @@ function render(){
     const d=e.date,m=d.slice(0,7),w=weekKey(d);
     if(m!==month){
       const [y,mm]=m.split('-');
-      html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="4">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
+      html+='<tr class="month" data-month="'+esc(m)+'"><td colspan="5">'+esc(y)+'年'+Number(mm)+'月</td></tr>';
       month=m;week='';
     }
     if(w!==week){
-      html+='<tr class="week"><td colspan="4">'+esc(weekLabel(d))+'</td></tr>';
+      html+='<tr class="week"><td colspan="5">'+esc(weekLabel(d))+'</td></tr>';
       week=w;
     }
     html+=row(e);
