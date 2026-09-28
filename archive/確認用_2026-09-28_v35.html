@@ -85,7 +85,7 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番基準 v0.32 / UI試作36</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番基準 v0.32 / UI試作35</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
@@ -630,64 +630,6 @@ function cleanupSavedEndDrafts(){
   if(endDrafts['evt-b6a0272fd890']){delete endDrafts['evt-b6a0272fd890'];changed=true;}
   if(changed)localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
 }
-function applySavedEndBackupToMemory(d){
-  if(!d||!d.eventId)return;
-  const e=events.find(x=>x.id===d.eventId);
-  if(!e)return;
-  e.name=String(d.eventName||d.name||e.name||'').trim();
-  e.venue=String(d.venue??e.venue??'').trim();
-  e.url=String(d.url??e.url??'').trim();
-  const cond=splitLines(d.conditionText||'').filter(x=>!x.startsWith('名前コード：'));
-  if(d.status!=='not_attended'&&String(d.personName||'').trim())cond.push('名前コード：'+String(d.personName).trim());
-  e.conditionLines=cond;
-  e.rating=String(d.preRating??e.rating??'').trim();
-  e.nightTime=String(d.nightTime??e.nightTime??'').trim();
-  e.nightText=String(d.nightText??e.nightText??'').trim();
-  e.historySource='終了処理';
-  if(d.status==='attended'){
-    e.attendanceStatus='attended';
-    e.visitDates=[...(d.visitDates||[])].sort();
-    const reportId=e.sourceReportId||('rep-web-'+String(e.id).replace(/[^a-zA-Z0-9_-]/g,''));
-    e.sourceReportId=reportId;
-    let r=reports.find(x=>x.id===reportId);
-    if(!r){
-      r={id:reportId};
-      reports.push(r);
-    }
-    r.date=e.visitDates[0]||e.date;
-    r.visitDates=[...e.visitDates];
-    r.dateText=fmtDates(e.visitDates);
-    r.scheduledDate=e.date;
-    r.scheduledEndDate=e.endDate||e.date;
-    r.scheduledDateText=e.dateText||'';
-    r.name=e.name;
-    r.url=e.url||'';
-    r.venue=e.venue||'';
-    r.rating=String(d.rating||'');
-    r.category=d.kind||e._kind;
-    r.report=String(d.report||'').trim();
-    r.source='終了処理';
-  }else if(d.status==='not_attended'){
-    e.attendanceStatus='not_attended';
-    e.visitDates=[];
-    const oldId=e.sourceReportId||'';
-    if(oldId)reports=reports.filter(r=>r.id!==oldId);
-    delete e.sourceReportId;
-  }
-}
-function reconcileSavedEndBackups(){
-  let changed=false;
-  for(const [id,d] of Object.entries(endBackups)){
-    const raw=officialEventsById.get(id);
-    if(raw&&endDraftMatchesGitHub(raw,d)){
-      delete endBackups[id];
-      changed=true;
-      continue;
-    }
-    applySavedEndBackupToMemory(d);
-  }
-  if(changed)localStorage.setItem(END_BACKUPS_KEY,JSON.stringify(endBackups));
-}
 async function saveEndToGitHub(){
   const d=collectEndDraft();if(!d)return;
   if(!d.status){alert('参加した／行っていない のどちらかを選んでください。');return;}
@@ -706,9 +648,7 @@ async function saveEndToGitHub(){
     localStorage.setItem(END_BACKUPS_KEY,JSON.stringify(endBackups));
     delete endDrafts[d.eventId];
     localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
-    applySavedEndBackupToMemory(d);
-    render();
-    if(msg)msg.textContent='GitHubへ保存しました。参加済み一覧にも反映しました。';
+    if(msg)msg.textContent='GitHubへ保存しました。復旧用コピーは別に保持しています。';
   }catch(err){if(msg)msg.textContent=err.message||String(err);}
   finally{if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}}
 }
@@ -1733,7 +1673,6 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
       return r.json();
     }));
     reports=parts.flatMap(x=>x.reports||[]);
-    reconcileSavedEndBackups();
     cleanupSavedEndDrafts();
     localStorage.removeItem(EDIT_DRAFT_KEY);
     localStorage.removeItem(LEGACY_HTML_KEY);
