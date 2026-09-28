@@ -794,14 +794,14 @@
       "id": "hist-att-bcf70271200a",
       "date": "2026-04-08",
       "endDate": "2026-04-10",
-      "dateText": "4月8日(水)～10日(金)",
+      "dateText": "4月8日(水)～4月10日(金)",
       "name": "FaW TOKYO-第13回ファッションワールド春",
       "url": "https://www.fashion-tokyo.jp/spring/ja-jp.html",
       "venue": "東京ビッグサイト 南1-4",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
-      "rating": "実地評価：E",
+      "rating": "",
       "nightTime": "",
       "nightText": "",
       "attendanceStatus": "attended",
@@ -809,7 +809,11 @@
         "2026-04-08"
       ],
       "sourceReportId": "rep-bcf70271200a",
-      "historySource": "実地レポート"
+      "historySource": "実地レポート",
+      "_kinds": [
+        "exhibition",
+        "gathering"
+      ]
     },
     {
       "id": "hist-att-6d60408506d6",
