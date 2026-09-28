@@ -524,7 +524,12 @@
         "2026-09-25"
       ],
       "historySource": "終了処理",
-      "sourceReportId": "rep-web-evt-b6a0272fd890"
+      "sourceReportId": "rep-web-evt-b6a0272fd890",
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     },
     {
       "id": "evt-mendix-community-20260925",
@@ -542,7 +547,12 @@
       "nightText": "FY26 Mendix Japan Community懇親会。MJC未参加者も参加可。飲食内容・終了時刻は未確認。",
       "attendanceStatus": "not_attended",
       "visitDates": [],
-      "historySource": "終了処理"
+      "historySource": "終了処理",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-07714a891599",
@@ -565,7 +575,12 @@
         "2026-09-25"
       ],
       "historySource": "終了処理",
-      "sourceReportId": "rep-web-evt-07714a891599"
+      "sourceReportId": "rep-web-evt-07714a891599",
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     },
     {
       "id": "evt-pagerduty-techhub-20260929",
@@ -580,7 +595,12 @@
       ],
       "rating": "B+。無料300名・18:30からAfter Partyで規模条件は良い。料理提供は未確認。",
       "nightTime": "18:30～",
-      "nightText": "After Party。テーマ別テーブルで交流。飲み物を持つ交流写真は確認済みだが、料理提供は未確認。"
+      "nightText": "After Party。テーマ別テーブルで交流。飲み物を持つ交流写真は確認済みだが、料理提供は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-techtouch-ai-summit-20260929",
@@ -596,7 +616,12 @@
       ],
       "rating": "D。400名・Networkingありだが、すでに定員到達で受付終了。",
       "nightTime": "17:25～18:25",
-      "nightText": "Networking。料理・ドリンク内容は未確認。"
+      "nightText": "Networking。料理・ドリンク内容は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-japan-korea-content-week-20260929",
@@ -613,7 +638,12 @@
       ],
       "rating": "D。会期は9/29～10/2だが、Networking交流会は9/29のみで満員・受付終了。規模も100名。",
       "nightTime": "9/29 17:45～20:00",
-      "nightText": "ネットワーキング交流会。立食スタイル。9/30・10/1は企業ピッチ＋商談、10/2はワークショップ等。"
+      "nightText": "ネットワーキング交流会。立食スタイル。9/30・10/1は企業ピッチ＋商談、10/2はワークショップ等。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-human-ai-transformation-20260930",
@@ -629,7 +659,12 @@
       ],
       "rating": "C。19:50～21:00の懇親会は魅力だが、定員100名でユーザー基準では大幅減点。飲食内容は未確認。",
       "nightTime": "19:50～21:00",
-      "nightText": "懇親会。参加無料。料理・ドリンク内容は未確認。"
+      "nightText": "懇親会。参加無料。料理・ドリンク内容は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-material-matters-20260930",
@@ -645,7 +680,12 @@
       ],
       "rating": "C。無料でドリンク＋軽食付きだが、Networkingが17時までで夜条件に弱く、承認制。",
       "nightTime": "16:00～17:00",
-      "nightText": "Networking。ドリンク＋軽食を公式明記。"
+      "nightText": "Networking。ドリンク＋軽食を公式明記。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-c8cedbcd3fdd",
@@ -663,7 +703,12 @@
       "nightTime": "8:30～10:00／12:00～13:30／16:45～17:45",
       "nightText": "受付・朝食／ネットワーキングランチ／ネットワーキングレセプション。 Excelメモ：ヴィーガン用のメニュー出すとか言ってる。期待できないかも。",
       "dateText": "9月30日(水)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     },
     {
       "id": "evt-jmec-social-20260930",
@@ -679,7 +724,12 @@
       ],
       "rating": "C+。無料でドリンク＋軽食付き。規模は未確認だが、Stripe Tour終了後に追加で寄れる時間帯。",
       "nightTime": "19:30～20:30",
-      "nightText": "Networking。ドリンク＋軽食を公式明記。"
+      "nightText": "Networking。ドリンク＋軽食を公式明記。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-5ca188fdeb8d",
@@ -712,7 +762,12 @@
       ],
       "rating": "C。ドリンク＋軽食付きの2時間Networkingだが、69名規模かつPrivate Event・承認制でユーザー基準では大幅減点。",
       "nightTime": "18:00～20:00",
-      "nightText": "Investor Networking Night。ドリンク＋軽食を明記。"
+      "nightText": "Investor Networking Night。ドリンク＋軽食を明記。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-medigo-20261001",
@@ -728,7 +783,12 @@
       ],
       "rating": "C+。無料で夜開催、Networking中のアルコール提供を確認。ただし交流時間は30分、対象業界が狭く規模未確認。",
       "nightTime": "20:00～20:30",
-      "nightText": "Networking＆スタートアップ展示。アルコール提供あり。"
+      "nightText": "Networking＆スタートアップ展示。アルコール提供あり。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-akamai-ai-summit-20261002",
@@ -744,7 +804,12 @@
       ],
       "rating": "D。現地参加はすでに満席。夜の懇親会・Networkingも確認できず。",
       "nightTime": "13:30～17:30",
-      "nightText": "現地カンファレンス。夜の懇親会・Networkingは確認できず。"
+      "nightText": "現地カンファレンス。夜の懇親会・Networkingは確認できず。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-memoq-day-tokyo-20261002",
@@ -761,7 +826,12 @@
       ],
       "rating": "C+。無料で2時間のNetworking Partyだが、85名程度でユーザー基準では大幅減点。",
       "nightTime": "17:30～19:30",
-      "nightText": "Networking Party。ハンガリーワインを公式明記。"
+      "nightText": "Networking Party。ハンガリーワインを公式明記。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-terraskyday-20261002",
@@ -781,7 +851,12 @@
       ],
       "rating": "C。ANAインターコンチネンタルホテル東京で無料開催だが、夜の懇親会・Networkingは確認できず。ランチ提供は記録対象だが評価加点には含めない。",
       "nightTime": "12:10～12:40（ランチ）",
-      "nightText": "夜の一般向け懇親会は未確認。主催公式は17:15～18:15が最終セッションだが、主催の終了時刻だけでは判断しない。スポンサー／出展者側も再確認し、BeeX、オプロ、ブリッジインターナショナル、ウイングアーク1st、Quemix、スカイ365等の公開案内では18:15または18:20終了表記で、18:20以降の懇親会・Networking・Receptionの記載は現時点で確認できていない。DRINKスポンサー枠は存在するが、日中のコーヒー／スペシャルドリンク提供と整合し、夜懇親会の根拠にはならない。非公開・招待者限定の夜枠は否定できないため未確認扱い。"
+      "nightText": "夜の一般向け懇親会は未確認。主催公式は17:15～18:15が最終セッションだが、主催の終了時刻だけでは判断しない。スポンサー／出展者側も再確認し、BeeX、オプロ、ブリッジインターナショナル、ウイングアーク1st、Quemix、スカイ365等の公開案内では18:15または18:20終了表記で、18:20以降の懇親会・Networking・Receptionの記載は現時点で確認できていない。DRINKスポンサー枠は存在するが、日中のコーヒー／スペシャルドリンク提供と整合し、夜懇親会の根拠にはならない。非公開・招待者限定の夜枠は否定できないため未確認扱い。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-bengo4-paradigm-20261002",
@@ -796,7 +871,12 @@
       ],
       "rating": "B。19時からの「業界最大級」Networkingは強いが、具体的参加人数と飲食内容は未確認。",
       "nightTime": "19:00～20:00",
-      "nightText": "懇親会を兼ねたNetworking。料理・ドリンク内容は未確認。"
+      "nightText": "懇親会を兼ねたNetworking。料理・ドリンク内容は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-jcas-20261002",
@@ -813,7 +893,12 @@
       ],
       "rating": "B-。国連大学会場＋本編終了後Networkingは魅力。無料だが規模と飲食提供は未確認。",
       "nightTime": "18:00～（本編終了後）",
-      "nightText": "名刺交換・Networking。本編の現地参加者のみ参加可能。"
+      "nightText": "名刺交換・Networking。本編の現地参加者のみ参加可能。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-teachers-day-gathering-20261004",
@@ -827,7 +912,12 @@
       ],
       "rating": "B-。無料300名で規模条件は良いが、17時から1時間のNetworkingで飲食提供は未確認。",
       "nightTime": "17:00～18:00",
-      "nightText": "全体会終了後にNetworking予定。料理・ドリンク提供は未確認。"
+      "nightText": "全体会終了後にNetworking予定。料理・ドリンク提供は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "name": "Blockchain Summit 2026 Autumn After Party",
@@ -844,7 +934,12 @@
       ],
       "rating": "",
       "nightTime": "17:30～19:30",
-      "nightText": "公式After Party。立食形式で食事＋ドリンクあり。参加は承認制。"
+      "nightText": "公式After Party。立食形式で食事＋ドリンクあり。参加は承認制。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "name": "Japanese-Hungarian Biotech Business Seminar",
@@ -862,7 +957,12 @@
       ],
       "rating": "",
       "nightTime": "18:00～20:00",
-      "nightText": "Networking Reception。伝統的なハンガリー料理とドリンクを公式明記。規模は小さめ。"
+      "nightText": "Networking Reception。伝統的なハンガリー料理とドリンクを公式明記。規模は小さめ。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-g-e5e424627804",
@@ -877,7 +977,12 @@
       "nightTime": "18:20～19:15",
       "nightText": "ネットワーキング（懇親会）。去年の写真を見る限りフィンガーフードで、優先順位は低そう。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-g-36f7366da2c4",
@@ -892,7 +997,12 @@
       "nightTime": "17:45～19:15",
       "nightText": "Networking Reception。行くならこちら。ただしこの日は展示会がない。紹介者コード取得済。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-g-ada3ade7a85f",
@@ -912,7 +1022,12 @@
       "nightTime": "17:10～18:40",
       "nightText": "5階ホワイエで懇親会。昼食は弁当を用意。懇親会の飲食詳細は未記載。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-a09527fe753f",
@@ -927,7 +1042,12 @@
       ],
       "rating": "B。2時間のReceptionは魅力だが、対象業界がかなり限定的。",
       "nightTime": "17:30～19:30",
-      "nightText": "Networking Reception。12:45～Networking Lunchもあり。料理内容の詳細は未確認。"
+      "nightText": "Networking Reception。12:45～Networking Lunchもあり。料理内容の詳細は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-af4b3b4a0f13",
@@ -941,7 +1061,12 @@
       ],
       "rating": "B+。180名規模なら実用圏。会場・時間も悪くない。",
       "nightTime": "17:10～19:00",
-      "nightText": "懇親会。料理詳細不明。"
+      "nightText": "懇親会。料理詳細不明。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-g-5985e824f941",
@@ -956,7 +1081,12 @@
       "nightTime": "",
       "nightText": "交流会はあるが食事が出るかはわからない / それよりも紹介で相互3000円のQUOカードpayがもらえる　参加は一応審査制",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-g-2d9f335fafdf",
@@ -973,7 +1103,12 @@
       "nightTime": "18:00～19:30",
       "nightText": "懇親会。抽選制で当選可能性は低そう。9月9日までの申込特典グッズは現地先着順。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-8d2f0708c2df",
@@ -990,7 +1125,12 @@
       "nightTime": "19:00～20:30",
       "nightText": "10th Anniversary Gala Dinner。顧客・パートナー・海外ゲスト向け案内。一般向け公開申込窓口は未確認。主催者へ問い合わせ済みで返答待ち。",
       "dateText": "10月9日 (金)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-00aa9ce95f7a",
@@ -1007,7 +1147,12 @@
       "nightTime": "18:20～19:30",
       "nightText": "Networking Reception。2026年9月18日更新の公式プログラムで時刻確認。現地参加は申込済み。料理詳細不明。",
       "dateText": "10月9日 (金)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     },
     {
       "id": "evt-2996f14a8c77",
@@ -1024,7 +1169,12 @@
       "nightTime": "10/13 17:00～18:30 / 10/14 17:00～19:00 / 10/15 17:10～18:30",
       "nightText": "各日Networking Reception。10/13はCBRE Japan本社、10/15はヒルトン東京。",
       "endDate": "2026-10-15",
-      "dateText": "10月13日(火)～15日(木)"
+      "dateText": "10月13日(火)～15日(木)",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-7f91ed050c06",
@@ -1042,7 +1192,12 @@
       "nightTime": "18:30～20:00",
       "nightText": "Networking。公式最新日程は18:30～20:00。料理・酒の詳細は未公表。申請済みだが2026-09-28時点で返答待ち。",
       "dateText": "10月14日(水)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     },
     {
       "id": "xls-g-4d0a5b89f507",
@@ -1071,7 +1226,12 @@
       ],
       "rating": "B。大使公邸は非常に魅力的だが、小規模・対象条件・短時間が減点。",
       "nightTime": "17:35～18:30",
-      "nightText": "Networking Reception。料理詳細不明。"
+      "nightText": "Networking Reception。料理詳細不明。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-f773abc21d4c",
@@ -1103,7 +1263,12 @@
       "nightTime": "18:00～19:30",
       "nightText": "Networking Party。公式FAQでイベント来場者は自由参加可。2026年の料理・ドリンク詳細は未公表。過去回は軽食＋飲み物あり。",
       "dateText": "10月15日(木)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     },
     {
       "id": "evt-4b8f79d7af95",
@@ -1122,7 +1287,12 @@
       "nightTime": "18:00～19:30",
       "nightText": "UNLOCK Networking。AI時代のアイデンティティ・セキュリティを扱うSaviynt主催のグローバルイベント。AWSはグローバルスポンサー。",
       "endDate": "",
-      "dateText": "10月15日(木)"
+      "dateText": "10月15日(木)",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-g-65f210450a5f",
@@ -1233,7 +1403,12 @@
       ],
       "rating": "C。内容自体は強いが、金融機関等向け招待制で実用性が低い。",
       "nightTime": "16:00～19:30",
-      "nightText": "後半はワイン・テイスティングをメインとしたNetworking Party。"
+      "nightText": "後半はワイン・テイスティングをメインとしたNetworking Party。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-07582e9d572a",
@@ -1264,7 +1439,12 @@
       "nightTime": "17:00～18:30",
       "nightText": "ファウンダーラウンジ＋＋ネットワーキング。 Excelメモ：ネットワーキングは招待コードが必要。冒頭に対談時間があるため、飲食開始は後ろにずれる可能性あり。",
       "dateText": "10月21日(水)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     },
     {
       "id": "evt-cd9067a0fb0c",
@@ -1290,7 +1470,12 @@
       ],
       "rating": "C。高輪の立地は良いが、ラウンジ開催で小規模感が強い。",
       "nightTime": "18:30～20:00",
-      "nightText": "懇親会。軽食あり。"
+      "nightText": "懇親会。軽食あり。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-67b9a8e7b93d",
@@ -1304,7 +1489,12 @@
       ],
       "rating": "C。会場・テーマは悪くないが、夜の参加制限が大きい。",
       "nightTime": "18:05～19:40",
-      "nightText": "Networking。隣接会場で開催、招待者限定。一般登録だけでは夜のNetworkingには参加不可。"
+      "nightText": "Networking。隣接会場で開催、招待者限定。一般登録だけでは夜のNetworkingには参加不可。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-autonomy-summit-20261022",
@@ -1318,7 +1508,12 @@
       ],
       "rating": "C※。交流会は軽食＋ドリンクを公式明記。ただし自治体関係者中心で参加条件が厳しそう。",
       "nightTime": "",
-      "nightText": "限定交流会。登壇者・参加者と交流しながら軽食・ドリンクあり。交流会の時刻は公式ページ上で明記を確認できず。"
+      "nightText": "限定交流会。登壇者・参加者と交流しながら軽食・ドリンクあり。交流会の時刻は公式ページ上で明記を確認できず。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-0c37a689eaff",
@@ -1335,7 +1530,12 @@
       ],
       "rating": "D。規模・会場は最上位だが、無料でPartyに入る現実的経路が弱い。",
       "nightTime": "",
-      "nightText": "Networking Partyあり。Party参加にはFull Conference／One Day等の対象パスまたは特別招待が必要。無料招待経路はスポンサー等から配布される場合あり。"
+      "nightText": "Networking Partyあり。Party参加にはFull Conference／One Day等の対象パスまたは特別招待が必要。無料招待経路はスポンサー等から配布される場合あり。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-9859fe1a",
@@ -1349,7 +1549,12 @@
       ],
       "rating": "B-。無料・150名の懇親会だが、主催者が「簡単な軽食のみ」と明記。",
       "nightTime": "17:30～19:00",
-      "nightText": "ネットワーキング（懇親会）。簡単な軽食のみ。"
+      "nightText": "ネットワーキング（懇親会）。簡単な軽食のみ。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-engineering-leaders-day-20261027",
@@ -1364,7 +1569,12 @@
       ],
       "rating": "C+。2時間の懇親会は長いが抽選制かつ対象職位が限定。飲食内容は未確認。",
       "nightTime": "19:00～21:00",
-      "nightText": "懇親会（抽選制）。飲食内容は未確認。"
+      "nightText": "懇親会（抽選制）。飲食内容は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-61ecc365",
@@ -1378,7 +1588,12 @@
       ],
       "rating": "A。ホテル会場＋90分Reception。軽食中心・大型ゆえ混雑は注意。",
       "nightTime": "16:10～17:40",
-      "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。11:30～13:00にはランチもあり。17:40～18:40は持田香織スペシャルライブ。"
+      "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。11:30～13:00にはランチもあり。17:40～18:40は持田香織スペシャルライブ。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-growth-dx-marketing-20261027",
@@ -1392,7 +1607,12 @@
       ],
       "rating": "A。無料・80分で、食事と飲み物を公式明記。品川会場で実用性が高い。",
       "nightTime": "18:40～20:00",
-      "nightText": "特別懇親会。公式に「お食事、お飲み物などもご用意」と明記。"
+      "nightText": "特別懇親会。公式に「お食事、お飲み物などもご用意」と明記。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-satobito-summit-20261027",
@@ -1406,7 +1626,12 @@
       ],
       "rating": "C+。無料で90分の懇親会。京橋で行きやすいが、飲食内容は未確認。",
       "nightTime": "16:30～18:00",
-      "nightText": "懇親会。飲食内容は未確認。"
+      "nightText": "懇親会。飲食内容は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-5eecbeac",
@@ -1420,7 +1645,12 @@
       ],
       "rating": "A-。ホテル会場でReceptionあり。Day 1より1時間と短い。",
       "nightTime": "17:30～18:30",
-      "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。9:00～10:00のモーニングセッション参加者には軽食、11:30～13:00にはランチもあり。"
+      "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。9:00～10:00のモーニングセッション参加者には軽食、11:30～13:00にはランチもあり。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-transcosmos-bpo-20261028",
@@ -1437,7 +1667,12 @@
       "nightTime": "17:30～18:30",
       "nightText": "懇親会。来場特典として「藤巻百貨店」のギフトカタログほかを用意。 Excelメモ：多分ギフトカタログがもらえるので2人分申請するのもあり",
       "dateText": "10月28日(水)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-22950179",
@@ -1470,7 +1705,12 @@
       "nightTime": "",
       "nightText": "懇親会は軽食＋ドリンク。2026公式文言は「ハットをかぶって懇親会を楽しもう！」で、終了時に希望者の記念撮影予定。2025東京では早期来場キーリング、ブーススタンプラリー、ゲーム景品（『赤帽亭』シリーズ等）の実績あり。2026のスタンプラリー・追加景品・物販は現時点で未発表。",
       "dateText": "10月29日(木)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-e00e8470",
@@ -1486,7 +1726,12 @@
       ],
       "rating": "B。規模・90分懇親会は良いが、対象がプライム上場企業の経営・実務層中心。",
       "nightTime": "17:00～18:30",
-      "nightText": "交流会・情報交換。審査制で、参加対象者へ詳細案内。飲食詳細は未確認。"
+      "nightText": "交流会・情報交換。審査制で、参加対象者へ詳細案内。飲食詳細は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-business-lawyers-award-20261104",
@@ -1504,7 +1749,12 @@
       ],
       "rating": "A-。東京會舘ローズで無料・一般申込可能。懇親会は20:00開始。食事・ドリンク内容は未確認。",
       "nightTime": "20:00～21:00",
-      "nightText": "表彰式18:00～20:00の後に懇親会。2025年も表彰式終了後に別時間帯の懇親会という構成だったため、18時からの飲食提供は確認できない。"
+      "nightText": "表彰式18:00～20:00の後に懇親会。2025年も表彰式終了後に別時間帯の懇親会という構成だったため、18時からの飲食提供は確認できない。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-mentorfor-diversity-20261104",
@@ -1522,7 +1772,12 @@
       ],
       "rating": "B。無料2時間の立食懇親会。軽食あり。ただし対象職種が狭く、規模未公表。",
       "nightTime": "16:30～18:30",
-      "nightText": "カンファレンス終了後の立食懇親会。軽食あり。申込フォームで懇親会参加を選択。"
+      "nightText": "カンファレンス終了後の立食懇親会。軽食あり。申込フォームで懇親会参加を選択。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-mento-mss-20261105",
@@ -1538,7 +1793,12 @@
       ],
       "rating": "B+。渋谷のTRUNK BY SHOTO GALLERYで無料の夜懇親会。会場価値は高いが、対象職種限定・規模未公表。",
       "nightTime": "18:00～19:00",
-      "nightText": "懇親会（HR Meet Up）。業界ごとに人事担当者同士が交流。"
+      "nightText": "懇親会（HR Meet Up）。業界ごとに人事担当者同士が交流。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-g-3b210485c510",
@@ -1557,7 +1817,12 @@
       "nightTime": "18:00～19:30",
       "nightText": "第二部 懇親会。立食パーティ形式・ネットワーキング・抽選会あり。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-1a4223fa",
@@ -1571,7 +1836,12 @@
       ],
       "rating": "B。無料400名で2時間の懇親会。料理・ドリンク詳細は現時点で未確認。",
       "nightTime": "18:00～20:00",
-      "nightText": "懇親会・デモ展示。懇親会のみの参加不可。"
+      "nightText": "懇親会・デモ展示。懇親会のみの参加不可。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-space-realty-20261105",
@@ -1606,7 +1876,12 @@
       ],
       "rating": "B+。無料150名で19時から1時間の懇親会。規模は基準下限を満たすが対象層・抽選条件あり。",
       "nightTime": "19:00～20:00",
-      "nightText": "第5部 ネットワーキング（懇親会）。登壇者・事業責任者・スタートアップ経営層が交流。"
+      "nightText": "第5部 ネットワーキング（懇親会）。登壇者・事業責任者・スタートアップ経営層が交流。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-techlead-20261106",
@@ -1625,7 +1900,12 @@
       ],
       "rating": "A-。無料500名で夜の大交流会。公式に酒・食事あり。事前審査制で対象職種は限定。",
       "nightTime": "19:30～20:20",
-      "nightText": "エンジニア大交流会。お酒や食事を楽しみながら交流。"
+      "nightText": "エンジニア大交流会。お酒や食事を楽しみながら交流。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-75da917a",
@@ -1639,7 +1919,12 @@
       ],
       "rating": "A※。無料懇親会・大規模で強いが、参加対象が宿泊施設関係者中心。",
       "nightTime": "18:00～",
-      "nightText": "懇親会。公式に「どなたでも無料で参加」と案内。"
+      "nightText": "懇親会。公式に「どなたでも無料で参加」と案内。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-74da8fe7",
@@ -1670,7 +1955,12 @@
       "nightTime": "14:30～20:00（全体）",
       "nightText": "第6回の交流会時間・飲食は未公表。第5回は18:25～20:30のNetworkingで、飲み物・軽食あり。 Excelメモ：優先申し込み者専用フォーム 10/9(金)まで",
       "dateText": "11月11日(水)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-f95813dd",
@@ -1686,7 +1976,12 @@
       "nightTime": "",
       "nightText": "夜のReception・飲食は未確認。来場＋総合アンケート特典あり。 Excelメモ：イベント参加＆当日総合アンケート回答でAmazonギフトカード1,000円分 / ※上記特典は10/2(金)までの登録者が対象",
       "dateText": "11月13日(金)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-workato-wow-20261118",
@@ -1718,7 +2013,12 @@
       "nightTime": "",
       "nightText": "Main Conference。クロージングでハッカソン表彰式。夜のNetworking・飲食は未確認。 Excelメモ：有料だが招待コードを入れると無料。2日目の19日の最後にネットワーキング。",
       "dateText": "11月19日(木)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     },
     {
       "id": "evt-79cbcbcc",
@@ -1749,7 +2049,12 @@
       "nightTime": "17:30～18:30",
       "nightText": "懇親会。来場特典として「藤巻百貨店」のギフトカタログほかを用意。料理詳細は未確認。",
       "dateText": "11月26日(木)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-databricks-worldtour-20261127",

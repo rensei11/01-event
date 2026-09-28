@@ -2417,7 +2417,15 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-17"
+        ]
+      }
     },
     {
       "id": "hist-no-f277a8663eed",
@@ -2456,7 +2464,15 @@
         "2026-09-17"
       ],
       "historySource": "終了処理",
-      "sourceReportId": "rep-web-xls-x-93be3e338024"
+      "sourceReportId": "rep-web-xls-x-93be3e338024",
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-17"
+        ]
+      }
     },
     {
       "id": "xls-x-8551456ba9df",
@@ -2473,7 +2489,15 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-17"
+        ]
+      }
     },
     {
       "id": "xls-x-fefccafd6719",
@@ -2491,7 +2515,15 @@
       "nightTime": "",
       "nightText": "前回総務特典がすごかった。今回はどうか？ / 今回もエグゼクティブ申し込みあり",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-17"
+        ]
+      }
     },
     {
       "id": "evt-tokyo-nigiwai-20260917",
@@ -2528,7 +2560,12 @@
       "sourceExcel": true,
       "attendanceStatus": "not_attended",
       "visitDates": [],
-      "historySource": "終了処理"
+      "historySource": "終了処理",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-x-9e2834353e18",
@@ -2546,7 +2583,12 @@
       "sourceExcel": true,
       "attendanceStatus": "not_attended",
       "visitDates": [],
-      "historySource": "終了処理"
+      "historySource": "終了処理",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-x-62cd1585dc00",
@@ -2569,7 +2611,15 @@
         "2026-09-25"
       ],
       "historySource": "終了処理",
-      "sourceReportId": "rep-web-xls-x-62cd1585dc00"
+      "sourceReportId": "rep-web-xls-x-62cd1585dc00",
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-25"
+        ]
+      }
     },
     {
       "id": "xls-x-966372f3274e",
@@ -2586,7 +2636,15 @@
       "nightTime": "",
       "nightText": "一見有料だがネットに腐るほどある紹介コードを入れれば無料。というかビジネスはタダのようだ。 / 去年SCAJに行ったときに西館で設営してたやつ / 9/25回収候補: 2N-17 舞鶴市=トートバッグ300名、かまぼこ試食、地酒試飲 / 4P-19 朝日新聞グループ=クイズでエコバッグ、ドラえもんグッズ / 3F-10 西桂町=ミネラルウォーター、アンケート抽選 / 3E-15 GREEN KEWPIE=レシピブック、商品サンプル、試食 / 4N-17 おもてなしセレクション=サンプル配布、テスター / 4J-16 大町商工会議所=地酒試飲、特産品試食 / 3C-07 大曲商工会議所=山ぶどうワイン・ジュース試飲 / 2E-19 神戸セレクション=SNSフォローで無料ガラポン / 2C-03 住友林業=きこりんグッズ、HOTEL VISONペア宿泊券等の抽選 / 2K-29 aub=LINE登録でサンプル、試飲 / 2C-30 キユーピーのたまご=たまご惣菜3品試食 / 2H-11 東京宝島=島酒試飲、景品付きガチャ / 2K-03 KINOTTO=無料ワークショップ参加でコットン体験セット / 2F-25 多賀町大滝地域=パズル・ガラポンでグッズ / 2H-28 静岡県商工会連合会=ノベルティ配布 / 2H-01 周防大島町=ノベルティ配布 / 2G-11 サンゲツ=ノベルティ配布 / 2W-31 兼由=さんまの旨煮試食 / 新規確認(日別記載なし): 1S-05 MONEY DOCTOR=巨大ガラガラ無料抽選、外れでも参加賞 / 3F-02 TAMAワンダー=アンケート回答でガチャ・小さな手土産 / 1E-13 パナソニック サイクルテック=試乗+アンケートでハンドタオル / 2D-36 誠心堂薬局=LINE登録で健康茶1袋 / 1N-03/1P-01 めぐるみらいエリア=水・クラフトビール等の試飲、食べられる食器・きしめん等の試食 / 2B-07 AQ Group=木育体験、完成品プレゼント",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-25"
+        ]
+      }
     },
     {
       "id": "evt-itochu-familyfair-20260925",
@@ -2611,7 +2669,15 @@
         "2026-09-25"
       ],
       "historySource": "終了処理",
-      "sourceReportId": "rep-web-evt-itochu-familyfair-20260925"
+      "sourceReportId": "rep-web-evt-itochu-familyfair-20260925",
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-25"
+        ]
+      }
     },
     {
       "id": "xls-x-2acdbc798c83",
@@ -2626,7 +2692,12 @@
       "nightTime": "",
       "nightText": "名刺をホルダーに入れて１つ１つのブースその場で商談を進めるタイプ / 出展も来場者も少なそうなので避けたほうがいいかも",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-x-4823e36f8db7",
@@ -2641,7 +2712,15 @@
       "nightTime": "",
       "nightText": "そこそこ試食があるイベント。昼飯にはなる。 / 名刺要求の試食はもらった名刺をいれればいい",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-30"
+        ]
+      }
     },
     {
       "id": "xls-x-2bc585ac2403",
@@ -2656,7 +2735,15 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-30"
+        ]
+      }
     },
     {
       "id": "xls-x-9ac65eeeef9e",
@@ -2671,7 +2758,15 @@
       "nightTime": "",
       "nightText": "BEYOND BEAUTY Tokyo2026も同時開催 / 2026-09-20再調査：東京ビッグサイト公式は健康博覧会［秋］・BEYOND BEAUTY TOKYOとも利用施設を西1ホールと明記。FiNC公式告知ではウェルビーイングゾーン内特設ステージも西1ホール内、ブースW-01。Health & BEAUTY DX TOKYOは18セッションを開催するが、西2利用を示す公開情報は未発見。西2は現時点で公開情報上空白。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-30"
+        ]
+      }
     },
     {
       "id": "xls-x-5d9bf2acf2f6",
@@ -2686,7 +2781,15 @@
       "nightTime": "",
       "nightText": "2026年12月25日(金)までにAmazon ギフトカードのギフトコードを送付",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-09-30"
+        ]
+      }
     },
     {
       "id": "evt-model-hobbyshow-20261002",
@@ -2703,7 +2806,12 @@
       ],
       "rating": "対象外。無料食事イベントではないが、西3・4ホール利用状況として重要。",
       "nightTime": "",
-      "nightText": "10/2 9:00～17:00は業者招待日。10/3～4は一般公開。2026年公式サイトには業者向け一般申込ページ・登録フォームを確認できず。2025年の模型店実例では問屋から招待状を受け取って入場。主催者問い合わせ先は日本プラモデル工業協同組合。9/30・10/1の設営・搬入利用は可能性が高いが、公開資料では日程未確認。"
+      "nightText": "10/2 9:00～17:00は業者招待日。10/3～4は一般公開。2026年公式サイトには業者向け一般申込ページ・登録フォームを確認できず。2025年の模型店実例では問屋から招待状を受け取って入場。主催者問い合わせ先は日本プラモデル工業協同組合。9/30・10/1の設営・搬入利用は可能性が高いが、公開資料では日程未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-x-6f171988c4d1",
@@ -2718,7 +2826,15 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-10-09"
+        ]
+      }
     },
     {
       "id": "xls-x-a0061c11d229",
@@ -2733,7 +2849,15 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-10-09"
+        ]
+      }
     },
     {
       "id": "xls-x-63fa2d3e7f51",
@@ -2748,7 +2872,15 @@
       "nightTime": "",
       "nightText": "前回は2日目に推し活EXPOのところで軽食付交流会があったらしい",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-10-09"
+        ]
+      }
     },
     {
       "id": "xls-x-fbdc81131a2d",
@@ -2763,7 +2895,15 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-10-09"
+        ]
+      }
     },
     {
       "id": "xls-x-84c52cf060aa",
@@ -2778,7 +2918,15 @@
       "nightTime": "",
       "nightText": "招待券をどこかで入手しないと入場料は高い / インスタで招待チケットを配布してるコーヒーショップに送料(110円)だけで3枚もらった",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": [
+          "2026-10-14"
+        ]
+      }
     },
     {
       "id": "xls-x-ef921e9748b5",
@@ -2793,7 +2941,15 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": [
+          "2026-10-14"
+        ]
+      }
     },
     {
       "id": "xls-x-c1eb9b51653e",
@@ -2808,7 +2964,15 @@
       "nightTime": "",
       "nightText": "去年は本当に大したことなかった",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": [
+          "2026-10-14"
+        ]
+      }
     },
     {
       "id": "xls-x-69f2ba8f0148",
@@ -2823,7 +2987,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-x-5ddc3414f403",
@@ -2838,7 +3007,15 @@
       "nightTime": "",
       "nightText": "春の時にめっちゃ菓子くれたイベント。ただし今回はビックサイトじゃなくて幕張。 / 幕張からパークタワーまで1時間以上かかるので15時過ぎの電車に乗らないと間に合わない",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-10-21"
+        ]
+      }
     },
     {
       "id": "xls-x-3675c18dea20",
@@ -2855,7 +3032,13 @@
       "nightTime": "",
       "nightText": "多分昔行ったイベント　あの時はほとんどなにももらえなかった（バッグくらい / 招待コードないと入場料かかるらしい　そういえば自分の時も招待券で無料にした気がした",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-23c6d855c96d",
@@ -2870,7 +3053,12 @@
       "nightTime": "",
       "nightText": "規模が小さすぎて多分いかない。そもそも株式会社タクセイがいる可能性がある。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-x-34310cb50c67",
@@ -2885,7 +3073,12 @@
       "nightTime": "",
       "nightText": "アパホテル幕張 4日6900円(クーポンとポイントでさらに-1000円)　5日6900円　で予約　8/11 / 安くなる可能性もあるので近くなったらチェック",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-f9bbf8331bfe",
@@ -2900,7 +3093,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-65646d7ab31a",
@@ -2915,7 +3113,12 @@
       "nightTime": "",
       "nightText": "金曜ビジネスデーだが3000円　招待チケットがあればタダだが",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-a32fa4b93f1f",
@@ -2930,7 +3133,12 @@
       "nightTime": "",
       "nightText": "さすがに2泊3日分の荷物を抱えての参加は厳しいか",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-410e661e626f",
@@ -2945,7 +3153,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-4dd2e9c199cb",
@@ -2960,7 +3173,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-a1f86eafac98",
@@ -2975,7 +3193,12 @@
       "nightTime": "",
       "nightText": "株式会社タクセイを警戒。そもそもサイトもちの名義が無いと厳しくないか",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-e1d02a762201",
@@ -2990,7 +3213,12 @@
       "nightTime": "",
       "nightText": "去年も言うほど食べるものはなかった",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-e40d709b2027",
@@ -3005,7 +3233,13 @@
       "nightTime": "",
       "nightText": "夏に2日行った　期待できそう　交流会があるといいが 7.8ホールのみじゃ期待できない。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-8450fc32cacd",
@@ -3020,7 +3254,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-0ecaee0f21e5",
@@ -3035,7 +3274,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-31aa54f33c22",
@@ -3050,7 +3294,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-ead1201e7c11",
@@ -3065,7 +3314,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-023f60291cd2",
@@ -3080,7 +3334,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-99f8573a5a83",
@@ -3095,7 +3354,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-e2d5333818dc",
@@ -3110,7 +3374,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-8e144b3a470c",
@@ -3125,7 +3394,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-501a42f3ddd3",
@@ -3140,7 +3414,12 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "xls-x-0ba291f4db9b",
@@ -3155,7 +3434,13 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-5febc8bdbd03",
@@ -3170,7 +3455,13 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-a1563d1915b4",
@@ -3185,7 +3476,13 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-29fc998eb149",
@@ -3200,7 +3497,13 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-245acb60cdfc",
@@ -3215,7 +3518,13 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-7066c89a8214",
@@ -3230,7 +3539,13 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-a32b8cf0b2c2",
