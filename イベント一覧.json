@@ -1095,8 +1095,8 @@
     {
       "id": "xls-g-2d9f335fafdf",
       "date": "2026-10-09",
-      "endDate": "",
-      "dateText": "10月9日 (金)",
+      "endDate": "2026-10-09",
+      "dateText": "10月9日(金)",
       "name": "GitLab Epic Tour Japan 2026",
       "url": "https://www.bs-event.jp/gitlab-epic-tour-japan-2026/?r=yoshise",
       "venue": "TODA HALL & CONFERENCE TOKYO　4階",
@@ -1105,14 +1105,17 @@
       ],
       "rating": "",
       "nightTime": "18:00～19:30",
-      "nightText": "懇親会。抽選制で当選可能性は低そう。9月9日までの申込特典グッズは現地先着順。",
+      "nightText": "懇親会。懇親会は抽選制で当選者は10月2日までにメール、当選可能性は低そう。\n本メールを受信された方には、早期申込特典をご用意しております。\n9月9日までの早期申込特典は現地先着順、Tシャツなどのノベルティグッズの中からお一人様おひとつお選びいただけます。\n各ノベルティは数に限りがあり、なくなり次第終了となります。\nお渡しはご来場の先着順となりますので、ぜひお早めにご来場くださいませ。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-8d2f0708c2df",
