@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>イベントスケジュール帳 見やすさ確認版</title>
 <style>
-:root{--bg:#f4f6f8;--paper:#fff;--panel:#fff;--line:#d6dce2;--head:#4b5563;--text:#1d2329;--muted:#606a74;--week:#e8edf2;--link:#0b57d0}
+:root{--bg:#f4f6f8;--paper:#fff;--panel:#fff;--line:#d6dce2;--head:#20262d;--text:#1d2329;--muted:#606a74;--week:#e8edf2;--link:#0b57d0}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI","Meiryo",sans-serif;line-height:1.55}
 .wrap{max-width:1320px;margin:0 auto;padding:18px}
@@ -43,7 +43,7 @@ th:last-child,td:last-child{border-right:0}
 .attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
 .planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
 .notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
-.row-planned td:first-child,.row-attended td:first-child{box-shadow:inset 8px 0 0 #3f78b6}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.attended-event-content{position:relative;padding-right:78px}.attended-event-content .event-meta-line{min-height:0}.attended-event-content .event-action-stack{position:absolute;top:0;right:0}.attended-event-content .event-head{margin-top:1px}.attended-event-content .participant-line{margin-top:0}.past-event-content{position:relative;padding-right:78px}.past-event-content .event-meta-line{min-height:0}.past-event-content .event-action-stack{position:absolute;top:0;right:0}.past-event-content .event-head{margin-top:1px}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
+.row-planned td:first-child{box-shadow:inset 4px 0 0 #b9d2ea}.row-attended td:first-child{box-shadow:inset 4px 0 0 #6f9fc9}.planned-view .month td,.planned-view .week td{box-shadow:inset 4px 0 0 #b9d2ea}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.attended-event-content{position:relative;padding-right:78px}.attended-event-content .event-meta-line{min-height:0}.attended-event-content .event-action-stack{position:absolute;top:0;right:0}.attended-event-content .event-head{margin-top:1px}.attended-event-content .participant-line{margin-top:0}.past-event-content{position:relative;padding-right:78px}.past-event-content .event-meta-line{min-height:0}.past-event-content .event-action-stack{position:absolute;top:0;right:0}.past-event-content .event-head{margin-top:1px}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
 .row-notattended td{color:#777772;background:#f4f4f2!important}.row-notattended .event-name,.row-notattended .event-name a{color:#777772!important}.row-notattended .event-name a{text-decoration-color:#999!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
 .rating{font-weight:900;margin-bottom:3px;color:var(--text)}.rating-high{color:#b91c1c}.report{white-space:pre-wrap}.report-rating-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.report-flag-tools{display:inline-flex;gap:6px;align-items:center;font-size:11px;font-weight:800}.report-flag-tools label{display:inline-flex;align-items:center;gap:3px;border-radius:10px;padding:2px 7px;cursor:pointer}.report-high-label{background:#f5fbf6;color:#356744;border:1px solid #bfd8c6}.report-low-label{background:#f4f5f6;color:#666;border:1px solid #cfd3d6}.report-flag-tools input{appearance:none;-webkit-appearance:none;width:14px;height:14px;min-width:14px;min-height:14px;margin:0;border-radius:3px;background:#fff;position:relative;overflow:hidden}.report-high-toggle{border:1.5px solid #6da27c}.report-low-toggle{border:1.5px solid #cf6b7e}.report-high-toggle:checked{background:#568f66}.report-high-toggle:checked::after,.report-low-toggle:checked::after{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;line-height:1}.report-high-toggle:checked::after{content:"✓";font-size:10px}.report-low-toggle:checked{background:#c65369}.report-low-toggle:checked::after{content:"×";font-size:12px}.report-good td{background:#f5fbf6!important}.report-bad td{background:#f1f2f3!important}.report-bad .event-name a{color:#7b848d!important;text-decoration-color:#aeb4b9!important}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
@@ -76,7 +76,7 @@ th:last-child,td:last-child{border-right:0}
 .attended-undated-row td{background:#fffaf0!important}
 .attended-undated-note{font-size:12px;color:#7c4a03;font-weight:800}
 
-.planned-date{font-size:18px!important;overflow:hidden;vertical-align:middle!important}
+.planned-date{background:#dfefff!important;font-size:18px!important;overflow:hidden;vertical-align:middle!important}
 .planned-day-start td{border-top:2px solid #a9c8e5!important}
 .back-to-top{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:0;background:#20262d;color:#fff;font-size:26px;font-weight:800;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.28);display:none;align-items:center;justify-content:center;z-index:50;padding:0}.back-to-top:hover{background:#111820}.back-to-top.show{display:flex}
 </style>
@@ -85,7 +85,7 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番基準 v0.32 / UI試作28</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番基準 v0.32 / UI試作27</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">本番画面とは別の確認版です。閲覧・参加予定・参加記録・終了処理・編集を、この画面で確認できます。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
