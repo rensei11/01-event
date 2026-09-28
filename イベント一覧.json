@@ -1144,19 +1144,22 @@
       "venue": "ウェスティンホテル東京",
       "conditionLines": [
         "無料・一般登録可",
-        "申込済み",
-        "現地参加申込は会議終了まで受付予定"
+        "名前コード：久保 直輝"
       ],
       "rating": "A。無料でホテルReceptionに参加でき、Rikkei不成立時の強い代替候補。",
       "nightTime": "18:20～19:30",
-      "nightText": "Networking Reception。2026年9月18日更新の公式プログラムで時刻確認。現地参加は申込済み。料理詳細不明。",
-      "dateText": "10月9日 (金)",
+      "nightText": "Networking Reception。2026年9月18日更新の公式プログラムで時刻変更を確認。現地参加締切は9月30日17:00。料理詳細不明。",
+      "dateText": "10月9日(金)",
       "sourceExcel": true,
       "planning": {
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-10-09",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-2996f14a8c77",
