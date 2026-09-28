@@ -909,12 +909,14 @@ function collectEventEdit(){
 }
 function applyEventEditLocally(d,includeDate){
   const e=events.find(x=>x.id===d.eventId);if(!e)return;
-  e._kind=d.kind;e._kinds=[...d.kinds];
+  const kinds=(Array.isArray(d.kinds)&&d.kinds.length)?[...new Set(d.kinds.filter(x=>x==='exhibition'||x==='gathering'))]:eventKinds(e);
+  if(!kinds.length)kinds.push((d.kind==='gathering'||e._kind==='gathering')?'gathering':'exhibition');
+  e._kind=(d.kind==='exhibition'||d.kind==='gathering')?d.kind:(kinds.includes(e._kind)?e._kind:kinds[0]);
+  e._kinds=[...kinds];
   e.name=d.eventName;e.venue=d.venue;e.url=d.url;
   const cond=splitLines(d.conditionText).filter(x=>!x.startsWith('名前コード：'));
   if(d.personName)cond.unshift('名前コード：'+d.personName);
   e.conditionLines=cond;e.rating=d.preRating;e.nightTime=d.nightTime;e.nightText=d.nightText;
-  if(Array.isArray(d.kinds)&&d.kinds.length)e._kinds=[...d.kinds];
   if(includeDate){
     e.date=d.date;
     e.endDate=d.endDate||d.date;
@@ -1766,7 +1768,14 @@ document.getElementById('body').addEventListener('change',async e=>{
 async function savePendingBrowserDataToGitHub(){
   const planningEntries=Object.entries(flags).map(([eventId,planning])=>({eventId,planning}));
   const reportEntries=Object.entries(reportFlags).map(([reportId,f])=>({reportId,ratingFlag:f.bad?'low':f.mid?'mid':f.good?'high':''}));
-  const formDrafts=Object.values(eventEditDrafts).filter(d=>d&&d.eventId);
+  const formDrafts=Object.values(eventEditDrafts).filter(d=>d&&d.eventId).map(d=>{
+    const e=events.find(x=>x.id===d.eventId);
+    const rawKinds=Array.isArray(d.kinds)&&d.kinds.length?d.kinds:(e?eventKinds(e):[(d.kind==='gathering')?'gathering':'exhibition']);
+    const kinds=[...new Set(rawKinds.filter(x=>x==='exhibition'||x==='gathering'))];
+    if(!kinds.length)kinds.push((d.kind==='gathering'||e?._kind==='gathering')?'gathering':'exhibition');
+    const kind=(d.kind==='exhibition'||d.kind==='gathering')?d.kind:(e&&kinds.includes(e._kind)?e._kind:kinds[0]);
+    return {...d,kind,kinds};
+  });
   const formDraftIds=new Set(formDrafts.map(d=>d.eventId));
   const pendingEventIds=[...new Set([...Object.keys(editDraft.patches),...editDraft.newEvents.map(e=>e.id)])].filter(id=>!formDraftIds.has(id));
   const deletedIds=[...editDraft.deletedIds];
