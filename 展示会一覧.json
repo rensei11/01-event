@@ -880,12 +880,10 @@
       "nightText": "",
       "attendanceStatus": "attended",
       "visitDates": [
-        "2026-04-15",
-        "2026-04-16",
-        "2026-04-17"
+        "2026-04-15"
       ],
       "sourceReportId": "rep-c435be2497e4",
-      "historySource": "実地レポート"
+      "historySource": "終了処理"
     },
     {
       "id": "hist-att-f395e95672d1",
