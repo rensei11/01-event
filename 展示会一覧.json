@@ -2312,16 +2312,19 @@
       "id": "hist-no-aff41ec75dfa",
       "date": "2026-09-08",
       "endDate": "2026-09-11",
-      "dateText": "9月8日(火)～11日(金)",
+      "dateText": "9月8日(火)～9月11日(金)",
       "name": "サーモテック 2026",
       "url": "https://thermotec.jp.messefrankfurt.com/tokyo/ja.html",
-      "venue": "東京ビッグサイト 南ホール",
+      "venue": "東京ビッグサイト 南1・2・4ホール",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
       "rating": "",
       "nightTime": "",
-      "nightText": ""
+      "nightText": "",
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "hist-no-4f257d1c7ee1",
