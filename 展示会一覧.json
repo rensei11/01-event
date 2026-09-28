@@ -2731,11 +2731,13 @@
       "id": "xls-x-2bc585ac2403",
       "date": "2026-09-30",
       "endDate": "2026-10-02",
-      "dateText": "9月30日(水)～10月2日\t(金)",
+      "dateText": "9月30日(水)～10月2日(金)",
       "name": "危機管理産業展 (RISCON TOKYO) 2026",
       "url": "https://www.kikikanri.biz/",
       "venue": "東京ビッグサイト 南1-4ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -2748,7 +2750,10 @@
         "visitDates": [
           "2026-09-30"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-9ac65eeeef9e",
