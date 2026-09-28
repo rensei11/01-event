@@ -234,7 +234,7 @@ function isVisitCandidate(e){
   const f=flag(e);
   return !!(f.planned||f.interested);
 }
-function pendingGitHubCount(){return Object.keys(flags).length+Object.keys(reportFlags).length+dirtyIds.size}
+function pendingGitHubCount(){return Object.keys(flags).length+Object.keys(reportFlags).length+dirtyIds.size+Object.keys(eventEditDrafts).length}
 function refreshGitHubSaveButton(){
   if(!githubSaveBtn)return;
   const n=pendingGitHubCount();
@@ -879,6 +879,7 @@ function saveEventEditDraft(){
   const d=collectEventEdit();if(!d)return;
   eventEditDrafts[d.eventId]=d;
   localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
+  refreshGitHubSaveButton();
 }
 function collectEventEdit(){
   const e=eventEditCreateMode?eventEditNewBase:events.find(x=>x.id===selectedEventEditId);
@@ -1765,9 +1766,11 @@ document.getElementById('body').addEventListener('change',async e=>{
 async function savePendingBrowserDataToGitHub(){
   const planningEntries=Object.entries(flags).map(([eventId,planning])=>({eventId,planning}));
   const reportEntries=Object.entries(reportFlags).map(([reportId,f])=>({reportId,ratingFlag:f.bad?'low':f.mid?'mid':f.good?'high':''}));
-  const pendingEventIds=[...new Set([...Object.keys(editDraft.patches),...editDraft.newEvents.map(e=>e.id)])];
+  const formDrafts=Object.values(eventEditDrafts).filter(d=>d&&d.eventId);
+  const formDraftIds=new Set(formDrafts.map(d=>d.eventId));
+  const pendingEventIds=[...new Set([...Object.keys(editDraft.patches),...editDraft.newEvents.map(e=>e.id)])].filter(id=>!formDraftIds.has(id));
   const deletedIds=[...editDraft.deletedIds];
-  if(!planningEntries.length&&!reportEntries.length&&!pendingEventIds.length&&!deletedIds.length){refreshGitHubSaveButton();return;}
+  if(!planningEntries.length&&!reportEntries.length&&!pendingEventIds.length&&!deletedIds.length&&!formDrafts.length){refreshGitHubSaveButton();return;}
   if(githubSaveBtn){githubSaveBtn.disabled=true;githubSaveBtn.textContent='保存中…';}
   setGitHubSaveState('ブラウザ保存をGitHubへ移行中…');
   try{
@@ -1785,6 +1788,13 @@ async function savePendingBrowserDataToGitHub(){
       e._kind=result.kind||e._kind;
       officialEventsById.set(e.id,cloneData(e));
     }
+    for(const d of formDrafts){
+      const result=await apiSave({...d,action:'event_upsert'});
+      const e=events.find(x=>x.id===d.eventId);
+      if(e){applyEventEditLocally({...d,kind:result.kind||d.kind},true);e._kind=result.kind||d.kind;e._kinds=[...d.kinds];}
+      delete eventEditDrafts[d.eventId];
+    }
+    localStorage.setItem(EVENT_EDIT_DRAFTS_KEY,JSON.stringify(eventEditDrafts));
     for(const id of deletedIds)await apiSave({action:'event_delete',eventId:id});
     if(pendingEventIds.length||deletedIds.length){
       editDraft=emptyEditDraft();dirtyIds.clear();localStorage.removeItem(EDIT_PATCH_KEY);refreshEditBar();
