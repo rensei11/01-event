@@ -175,6 +175,7 @@ const eventEditFormWrap=document.getElementById('eventEditFormWrap');
 const githubSaveBtn=document.getElementById('githubSaveBtn');
 const githubSaveState=document.getElementById('githubSaveState');
 let gitHubSaveQueue=Promise.resolve();
+const reportSaveSeq={};
 
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™®【】\[\]（）()‐\-–—'’:"：～〜]/g,'')}
@@ -360,22 +361,26 @@ function passesHighOnly(e,targetMode=mode){
 async function persistReportFlag(id){
   const f=cloneData(reportFlags[id]||{good:false,mid:false,bad:false});
   const value=reportFlagValue(f);
+  const seq=(reportSaveSeq[id]||0)+1;
+  reportSaveSeq[id]=seq;
   try{
     setGitHubSaveState('保存中…');
     await apiSave({action:'report_flag',reportId:id,ratingFlag:value});
-    const current=reportFlags[id];
-    if(current&&reportFlagValue(current)!==value){
+    if(reportSaveSeq[id]!==seq){
       setGitHubSaveState('最新の評価を保存中…');
       refreshGitHubSaveButton();
       return true;
     }
     const r=reports.find(x=>x.id===id);
     if(r){if(value)r.ratingFlag=value;else delete r.ratingFlag;}
-    delete reportFlags[id];saveReportFlags();
+    delete reportFlags[id];
+    delete reportSaveSeq[id];
+    saveReportFlags();
     setGitHubSaveState('GitHubへ保存しました');
     render();
     return true;
   }catch(err){
+    if(reportSaveSeq[id]!==seq)return false;
     setGitHubSaveState(err.message||String(err),true);
     refreshGitHubSaveButton();
     return false;
