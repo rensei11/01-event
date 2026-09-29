@@ -2545,8 +2545,7 @@
       "url": "https://www.office-expo.jp/tokyo/ja-jp.html",
       "venue": "東京ビッグサイト 東7ホール 南1-4ホール",
       "conditionLines": [
-        "名前コード：伊藤 聡",
-        "名前コード：広瀬 隆則"
+        "名前コード：伊藤 聡 / 広瀬 隆則"
       ],
       "rating": "",
       "nightTime": "",
@@ -2560,7 +2559,13 @@
         "visitDates": [
           "2026-09-17"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-17"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-fefccafd6719"
     },
     {
       "id": "evt-tokyo-nigiwai-20260917",
