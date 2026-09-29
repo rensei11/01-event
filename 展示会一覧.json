@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-28-web",
+  "dataVersion": "2026-09-29-web",
   "year": 2026,
   "events": [
     {
@@ -2721,7 +2721,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-4823e36f8db7",

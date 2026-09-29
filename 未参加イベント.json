@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-28-web",
+  "dataVersion": "2026-09-29-web",
   "year": 2026,
   "events": [
     {
@@ -262,6 +262,19 @@
       "url": "https://techplay.jp/event/999286",
       "venue": "シーメンス株式会社 新宿オフィス セミナールーム",
       "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "xls-x-2acdbc798c83",
+      "date": "2026-09-28",
+      "endDate": "",
+      "dateText": "9月28日(月)",
+      "name": "OPEN DAYS JAPAN スペインフード＆ワイン商談会",
+      "url": "https://www.foodswinesfromspain.com/en/upcoming-events/trade-shows-detail-two/open-day-discovery-zone-tokio-2026",
+      "venue": "ホテルニューオータニ東京　「芙蓉の間」",
+      "category": "exhibition",
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "nameCodes": []
