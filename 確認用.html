@@ -85,7 +85,7 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番 v0.34 / UI試作39</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">高評価のみ表示と評価切替修正を確認するUI試作39です。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番 v0.34 / UI試作40</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">イベント編集の保存時ページ遷移防止を確認するUI試作40です。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
@@ -1016,8 +1016,9 @@ async function saveEventEditToGitHub(){
     clearLegacyEventDraft(e.id);
     setGitHubSaveState('GitHubへ保存しました');
     if(status)status.textContent='GitHubへ保存しました';
+    const wasCreate=eventEditCreateMode;
+    closeEventEdit();
     mode='all';syncModeButtons();saveUiState();render();
-    if(eventEditCreateMode){closeEventEdit();}
   }catch(err){
     if(status)status.textContent=err.message||String(err);
     setGitHubSaveState(err.message||String(err),true);
@@ -1764,15 +1765,37 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!endProcessModal.hi
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.end-row-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEndProcess(b.dataset.endEdit||'');});
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.event-edit-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEventEdit(b.dataset.eventEdit||'');});
 eventEditClose.addEventListener('click',closeEventEdit);
-eventEditModal.addEventListener('click',e=>{if(e.target===eventEditModal)closeEventEdit();});
+eventEditModal.addEventListener('click',e=>{
+  if(e.target===eventEditModal){closeEventEdit();return;}
+  e.stopPropagation();
+});
 eventEditFormWrap.addEventListener('input',()=>saveEventEditDraft());
 eventEditFormWrap.addEventListener('change',()=>saveEventEditDraft());
 eventEditFormWrap.addEventListener('click',async e=>{
-  if(e.target.id==='eventEditSave'){await saveEventEditToGitHub();return;}
-  if(e.target.id==='eventEditDelete'){await deleteEventFromEditor();return;}
+  const save=e.target.closest('#eventEditSave');
+  const del=e.target.closest('#eventEditDelete');
+  if(save){
+    e.preventDefault();
+    e.stopPropagation();
+    await saveEventEditToGitHub();
+    return;
+  }
+  if(del){
+    e.preventDefault();
+    e.stopPropagation();
+    await deleteEventFromEditor();
+    return;
+  }
 });
 document.getElementById('addEventBtn').addEventListener('click',()=>openEventEdit('',true));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!eventEditModal.hidden)closeEventEdit();});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&!eventEditModal.hidden){closeEventEdit();return;}
+  if(!eventEditModal.hidden&&e.key==='Enter'&&e.ctrlKey){
+    e.preventDefault();
+    e.stopPropagation();
+    saveEventEditToGitHub();
+  }
+});
 
 document.getElementById('body').addEventListener('change',async e=>{
   const good=e.target.closest('.report-high-toggle'),mid=e.target.closest('.report-mid-toggle'),bad=e.target.closest('.report-low-toggle');
