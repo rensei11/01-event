@@ -2820,11 +2820,13 @@
       "id": "xls-x-5d9bf2acf2f6",
       "date": "2026-09-30",
       "endDate": "2026-10-02",
-      "dateText": "9月30日(水)～10月2日\t(金)",
+      "dateText": "9月30日(水)～10月2日(金)",
       "name": "産業DX 総合展 2026 夏 東京",
       "url": "https://www.bizcrew.jp/expo/industrial-dx-tokyo",
       "venue": "東京ビッグサイト 東7・8ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：白川 直人"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "2026年12月25日(金)までにAmazon ギフトカードのギフトコードを送付",
@@ -2837,7 +2839,10 @@
         "visitDates": [
           "2026-09-30"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "evt-model-hobbyshow-20261002",
