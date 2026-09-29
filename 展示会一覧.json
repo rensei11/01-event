@@ -2379,7 +2379,13 @@
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
-      "nightText": ""
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-09"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-hist-no-05942e465f13"
     },
     {
       "id": "hist-no-f36bada5fcd0",

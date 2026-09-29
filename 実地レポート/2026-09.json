@@ -117,6 +117,24 @@
       "ratingFlag": "low"
     },
     {
+      "id": "rep-web-hist-no-05942e465f13",
+      "date": "2026-09-09",
+      "visitDates": [
+        "2026-09-09"
+      ],
+      "dateText": "09/09",
+      "scheduledDate": "2026-09-08",
+      "scheduledEndDate": "2026-09-11",
+      "scheduledDateText": "9月8日(火)～11日(金)",
+      "name": "第28回自動認識総合展",
+      "url": "https://www.autoid-expo.com/tokyo/",
+      "venue": "東京ビッグサイト 南3ホール",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "南3ホールのみ、国際物流総合展 2026との相互入場が可能（なぜか南ホールのサーモテックとは相互入場できない）\n内容はほぼ何も無いようなもので見る価値はほぼ無かった。",
+      "source": "終了処理"
+    },
+    {
       "id": "rep-web-hist-no-156a1794a9f0",
       "date": "2026-09-10",
       "visitDates": [
