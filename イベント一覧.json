@@ -1264,21 +1264,25 @@
       "url": "https://data-summit.primenumber.com/2026/",
       "venue": "天王洲 キャナルイースト（総合受付：WHAT CAFE）",
       "conditionLines": [
-        "名前コード：久保 直輝",
         "無料・事前申込",
         "過去1,000名超実績",
-        "公式FAQ：イベント来場者はNetworking Partyへ自由参加可"
+        "公式FAQ：イベント来場者はNetworking Partyへ自由参加可",
+        "名前コード：久保 直輝"
       ],
-      "rating": "A+。ビッグサイトからの移動が楽で、規模・時間・立地が非常に良い。",
+      "rating": "A+",
       "nightTime": "18:00～19:30",
-      "nightText": "Networking Party。公式FAQでイベント来場者は自由参加可。2026年の料理・ドリンク詳細は未公表。過去回は軽食＋飲み物あり。",
+      "nightText": "Networking Party。公式FAQでイベント来場者は自由参加可。2026年の料理・ドリンク詳細は未公表。過去回は軽食＋飲み物あり。参加認証メールは来た。",
       "dateText": "10月15日(木)",
       "sourceExcel": true,
       "planning": {
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-10-15",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-4b8f79d7af95",
