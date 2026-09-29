@@ -249,7 +249,8 @@
       "rating": "E",
       "category": "exhibition",
       "report": "過去参加記録。参加経路に制限のあるイベントについては、具体的な入場手順を除いて記録しています。",
-      "source": "2026年 企業展示会簡易レポ.xlsx"
+      "source": "2026年 企業展示会簡易レポ.xlsx",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-8c0e08e5b80a",
