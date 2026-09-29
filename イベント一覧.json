@@ -1128,16 +1128,20 @@
         "1,000名以上予定",
         "主催者へ問い合わせ済み・2026-09-28時点で返答待ち"
       ],
-      "rating": "A※。規模・ホテル・夜内容は非常に強い。参加経路だけが最大の問題。",
+      "rating": "A",
       "nightTime": "19:00～20:30",
-      "nightText": "10th Anniversary Gala Dinner。顧客・パートナー・海外ゲスト向け案内。一般向け公開申込窓口は未確認。主催者へ問い合わせ済みで返答待ち。",
-      "dateText": "10月9日 (金)",
+      "nightText": "10th Anniversary Gala Dinner。顧客・パートナー・海外ゲスト向け案内。一般向け公開申込窓口は未確認。主催者へ問い合わせ済みで返答待ち。7営業日経っても来ない、失礼な企業。",
+      "dateText": "10月9日(金)",
       "sourceExcel": true,
       "planning": {
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "endDate": "2026-10-09",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-00aa9ce95f7a",
