@@ -2345,7 +2345,13 @@
       "nightText": "",
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-10"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-hist-no-aff41ec75dfa"
     },
     {
       "id": "hist-no-4f257d1c7ee1",

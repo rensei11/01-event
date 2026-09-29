@@ -193,6 +193,24 @@
       "ratingFlag": "low"
     },
     {
+      "id": "rep-web-hist-no-aff41ec75dfa",
+      "date": "2026-09-10",
+      "visitDates": [
+        "2026-09-10"
+      ],
+      "dateText": "09/10",
+      "scheduledDate": "2026-09-08",
+      "scheduledEndDate": "2026-09-11",
+      "scheduledDateText": "9月8日(火)～9月11日(金)",
+      "name": "サーモテック 2026",
+      "url": "https://thermotec.jp.messefrankfurt.com/tokyo/ja.html",
+      "venue": "東京ビッグサイト 南1・2・4ホール",
+      "rating": "E",
+      "category": "exhibition",
+      "report": "正直既に2週間も経過してしまって覚えていない。覚えているのは思った以上に何もなかったことだ。",
+      "source": "終了処理"
+    },
+    {
       "id": "rep-web-hist-no-c1fe97adec2b",
       "date": "2026-09-10",
       "visitDates": [
