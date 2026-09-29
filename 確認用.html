@@ -85,7 +85,7 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番 v0.34 採用済み / UI試作38</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">UI試作38は本番v0.34へ採用済みです。次のUI変更を検品するときの確認ページです。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番 v0.34 / UI試作39</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">高評価のみ表示と評価切替修正を確認するUI試作39です。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
@@ -102,6 +102,7 @@ th:last-child,td:last-child{border-right:0}
         <button id="githubSaveBtn" class="github-save-btn" type="button">GitHub保存済み</button>
         <span id="githubSaveState" class="github-save-state"></span>
         <label class="hide-ignored-label"><input id="hideIgnoredToggle" type="checkbox">行かないを非表示</label>
+        <label class="hide-ignored-label"><input id="highOnlyToggle" type="checkbox">高評価のみ表示</label>
       </div>
       <section class="calendar-panel" aria-label="カレンダー">
         <div class="calendar-left">
@@ -149,7 +150,7 @@ const END_BACKUPS_KEY='free_food_event_end_process_saved_backups_v1';
 const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
 const EVENT_EDIT_DRAFTS_KEY='free_food_event_edit_drafts_v1';
 const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
-let events=[],reports=[],flags={},reportFlags={},mode='all',kindFilter='both',hideIgnored=false,editing=false;
+let events=[],reports=[],flags={},reportFlags={},mode='all',kindFilter='both',hideIgnored=false,highOnly=false,editing=false;
 let dirtyIds=new Set();
 let editDraft={patches:{},newEvents:[],deletedIds:[]};
 let officialEventsById=new Map();
@@ -185,6 +186,7 @@ function saveUiState(){
     mode,
     kindFilter,
     hideIgnored,
+    highOnly,
     listStartYear,
     listStartMonth,
     calendarBaseYear,
@@ -198,6 +200,7 @@ function loadUiState(){
     if(['all','upcoming','planned','attended'].includes(v.mode))mode=v.mode;
     if(['both','exhibition','gathering'].includes(v.kindFilter))kindFilter=v.kindFilter;
     if(typeof v.hideIgnored==='boolean')hideIgnored=v.hideIgnored;
+    if(typeof v.highOnly==='boolean')highOnly=v.highOnly;
     if(Number.isInteger(v.listStartYear)&&v.listStartYear>=2000&&v.listStartYear<=2100)listStartYear=v.listStartYear;
     if(Number.isInteger(v.listStartMonth)&&v.listStartMonth>=0&&v.listStartMonth<=12)listStartMonth=v.listStartMonth;
     if(Number.isInteger(v.calendarBaseYear)&&v.calendarBaseYear>=2000&&v.calendarBaseYear<=2100)calendarBaseYear=v.calendarBaseYear;
@@ -210,6 +213,7 @@ function syncModeButtons(){
 function syncFilterControls(){
   document.querySelectorAll('button[data-kind-filter]').forEach(x=>x.classList.toggle('active',x.dataset.kindFilter===kindFilter));
   const h=document.getElementById('hideIgnoredToggle');if(h)h.checked=hideIgnored;
+  const q=document.getElementById('highOnlyToggle');if(q)q.checked=highOnly;
 }
 function eventKinds(e){
   const raw=Array.isArray(e?._kinds)?e._kinds:[e?._kind];
@@ -345,12 +349,26 @@ function reportFlag(id){
   const r=reports.find(x=>x.id===id),v=String(r?.ratingFlag||'');
   return {good:v==='high',mid:v==='mid',bad:v==='low'};
 }
+function reportFlagValue(f){return f?.bad?'low':f?.mid?'mid':f?.good?'high':''}
+function isHighRatedEvent(e){
+  const r=reportFor(e);
+  return !!(r&&reportFlag(r.id).good);
+}
+function passesHighOnly(e,targetMode=mode){
+  return !highOnly||!['all','attended'].includes(targetMode)||isHighRatedEvent(e);
+}
 async function persistReportFlag(id){
   const f=cloneData(reportFlags[id]||{good:false,mid:false,bad:false});
-  const value=f.bad?'low':f.mid?'mid':f.good?'high':'';
+  const value=reportFlagValue(f);
   try{
     setGitHubSaveState('保存中…');
     await apiSave({action:'report_flag',reportId:id,ratingFlag:value});
+    const current=reportFlags[id];
+    if(current&&reportFlagValue(current)!==value){
+      setGitHubSaveState('最新の評価を保存中…');
+      refreshGitHubSaveButton();
+      return true;
+    }
     const r=reports.find(x=>x.id===id);
     if(r){if(value)r.ratingFlag=value;else delete r.ratingFlag;}
     delete reportFlags[id];saveReportFlags();
@@ -1199,7 +1217,7 @@ function calendarMap(){
     else if(f.interested)v.interestedIds.add(e.id);
   };
   for(const e of events){
-    if(!passesCommonFilters(e))continue;
+    if(!passesCommonFilters(e)||!passesHighOnly(e,mode))continue;
     if(mode==='upcoming'&&String(e.endDate||e.date)<today)continue;
     if(mode==='attended'){
       for(const d of actualDates(e)){const v=get(d);v.ids.add(e.id);v.attendedIds.add(e.id);v.attended=true;}
@@ -1542,14 +1560,14 @@ function updateModeCounts(){
   const allSet=new Set(),upcomingSet=new Set(),plannedSet=new Set(),attendedSet=new Set();
   for(const e of events){
     if(!passesCommonFilters(e))continue;
-    if(passesListStart(e.date))allSet.add(e.id);
+    if(passesHighOnly(e,'all')&&passesListStart(e.date))allSet.add(e.id);
     if(String(e.endDate||e.date)>=today&&passesListStart(e.endDate||e.date))upcomingSet.add(e.id);
     const f=flag(e);
     if(f.planned||f.interested){
       const ds=plannedDates(e);
       if(ds.some(d=>passesListStart(d))||(!ds.length&&e.endDate&&e.endDate!==e.date&&(e.endDate||e.date)>=today&&passesListStart(e.endDate||e.date)))plannedSet.add(e.id);
     }
-    if(e.attendanceStatus==='attended'){
+    if(e.attendanceStatus==='attended'&&passesHighOnly(e,'attended')){
       const actual=actualDates(e);
       if(actual.some(d=>passesListStart(d))||(!actual.length&&passesListStart(e.date)))attendedSet.add(e.id);
     }
@@ -1568,7 +1586,7 @@ function render(){
   if(mode==='attended'){
     const items=[],undated=[];
     for(const e of events){
-      if(e.attendanceStatus!=='attended'||!passesCommonFilters(e))continue;
+      if(e.attendanceStatus!=='attended'||!passesCommonFilters(e)||!passesHighOnly(e,'attended'))continue;
       const actual=actualDates(e);
       if(!actual.length){
         if(passesListStart(e.date))undated.push(e);
@@ -1675,7 +1693,7 @@ function render(){
     return;
   }
 
-  let list=events.slice().filter(e=>passesCommonFilters(e)&&passesListStart(e.date));
+  let list=events.slice().filter(e=>passesCommonFilters(e)&&passesHighOnly(e,'all')&&passesListStart(e.date));
   list.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a,b));
 
   let html='',month='',week='';
@@ -1721,6 +1739,11 @@ document.querySelector('.subfilters').addEventListener('click',e=>{
 });
 document.getElementById('hideIgnoredToggle').addEventListener('change',e=>{
   hideIgnored=e.target.checked;
+  saveUiState();
+  render();
+});
+document.getElementById('highOnlyToggle').addEventListener('change',e=>{
+  highOnly=e.target.checked;
   saveUiState();
   render();
 });
@@ -1770,7 +1793,7 @@ document.getElementById('body').addEventListener('change',async e=>{
 
 async function savePendingBrowserDataToGitHub(){
   const planningEntries=Object.entries(flags).map(([eventId,planning])=>({eventId,planning}));
-  const reportEntries=Object.entries(reportFlags).map(([reportId,f])=>({reportId,ratingFlag:f.bad?'low':f.mid?'mid':f.good?'high':''}));
+  const reportEntries=Object.entries(reportFlags).map(([reportId,f])=>({reportId,ratingFlag:reportFlagValue(f)}));
   const formDrafts=Object.values(eventEditDrafts).filter(d=>d&&d.eventId).map(d=>{
     const e=events.find(x=>x.id===d.eventId);
     const rawKinds=Array.isArray(d.kinds)&&d.kinds.length?d.kinds:(e?eventKinds(e):[(d.kind==='gathering')?'gathering':'exhibition']);
