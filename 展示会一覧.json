@@ -2366,7 +2366,8 @@
         "2026-09-09",
         "2026-09-10"
       ],
-      "historySource": "ユーザー実地確認"
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-hist-no-4f257d1c7ee1"
     },
     {
       "id": "hist-no-05942e465f13",

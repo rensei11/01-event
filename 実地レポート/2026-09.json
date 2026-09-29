@@ -117,6 +117,25 @@
       "ratingFlag": "low"
     },
     {
+      "id": "rep-web-hist-no-4f257d1c7ee1",
+      "date": "2026-09-09",
+      "visitDates": [
+        "2026-09-09",
+        "2026-09-10"
+      ],
+      "dateText": "09/09・09/10",
+      "scheduledDate": "2026-09-08",
+      "scheduledEndDate": "2026-09-11",
+      "scheduledDateText": "9月8日(火)～11日(金)",
+      "name": "国際物流総合展 2026",
+      "url": "https://www.logis-tech-tokyo.gr.jp/ltt/",
+      "venue": "東京ビッグサイト 東1～3・7・8ホール、西1～4ホール",
+      "rating": "D",
+      "category": "exhibition",
+      "report": "物流系で規模は大きいが思ったよりも見るものももらえるものもなかった。しかし来場後のアンケート回答で抽選でamazonギフトコード1000円が当たるキャンペーンがあり、4垢で引いて2垢当てた。もし事前に知っていればもっとやったがそもそも当たり本数が500みたいな書かれ方だった気がするからただ運がよかっただけかも。",
+      "source": "終了処理"
+    },
+    {
       "id": "rep-web-hist-no-05942e465f13",
       "date": "2026-09-09",
       "visitDates": [
