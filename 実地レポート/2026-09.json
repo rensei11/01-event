@@ -303,7 +303,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "溶接,接合技術の展示会。\n面白そうなものがあると思ったが一切面白いものが無かった。得るものも無かった。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-xls-x-93be3e338024",
