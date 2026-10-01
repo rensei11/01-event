@@ -99,7 +99,7 @@ th:last-child,td:last-child{border-right:0}
         <button type="button" class="kind-filter active" data-kind-filter="both">両方</button>
         <button type="button" class="kind-filter" data-kind-filter="exhibition">展示会</button>
         <button type="button" class="kind-filter" data-kind-filter="gathering">懇親会</button>
-        <button id="githubSaveBtn" class="github-save-btn" type="button">GitHub保存済み</button>
+        <button id="githubSaveBtn" class="github-save-btn" type="button">未送信なし</button>
         <span id="githubSaveState" class="github-save-state"></span>
         <label class="hide-ignored-label"><input id="hideIgnoredToggle" type="checkbox">行かないを非表示</label>
         <label class="hide-ignored-label"><input id="highOnlyToggle" type="checkbox">高評価のみ表示</label>
@@ -249,7 +249,7 @@ function refreshGitHubSaveButton(){
   if(!githubSaveBtn)return;
   const n=pendingGitHubCount();
   githubSaveBtn.disabled=n===0;
-  githubSaveBtn.textContent=n?'GitHubへ保存（'+n+'）':'GitHub保存済み';
+  githubSaveBtn.textContent=n?'未送信を再保存（'+n+'）':'未送信なし';
 }
 function setGitHubSaveState(message,isError=false){
   if(!githubSaveState)return;
