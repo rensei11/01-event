@@ -291,6 +291,19 @@
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "nameCodes": []
+    },
+    {
+      "id": "evt-material-matters-20260930",
+      "date": "2026-09-30",
+      "endDate": "",
+      "dateText": "9月30日(水)",
+      "name": "Material Matters",
+      "url": "https://lingble.jp/event",
+      "venue": "渋谷PARCO DGビル18階",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
     }
   ]
 }
