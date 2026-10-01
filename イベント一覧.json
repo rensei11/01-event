@@ -396,7 +396,7 @@
       "dateText": "9月10日(木)",
       "name": "トランスコスモスフォーラム 2026｜GLOBAL",
       "url": "https://www.trans-cosmos.co.jp/forum2026/gl_timetable/",
-      "venue": "ザ・プリンス パークタワー東京",
+      "venue": "",
       "conditionLines": [
         "名前コード：伊藤 聡"
       ],
@@ -600,7 +600,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-techtouch-ai-summit-20260929",
@@ -621,7 +624,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-japan-korea-content-week-20260929",
@@ -746,7 +752,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-5ca188fdeb8d",
@@ -762,7 +771,10 @@
       ],
       "rating": "A-。無料・90分・軽食＋ドリンクが公式明記。展示会と同会場で動線も良い。",
       "nightTime": "17:00～18:30",
-      "nightText": "共創交流パーティー。軽食＋ドリンク付き。展示会来場登録とパーティー申込は別々に必要。"
+      "nightText": "共創交流パーティー。軽食＋ドリンク付き。展示会来場登録とパーティー申込は別々に必要。",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-jetro-coolwater-networking-20261001",

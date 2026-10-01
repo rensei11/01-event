@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-29-web",
+  "dataVersion": "2026-10-01-web",
   "year": 2026,
   "events": [
     {
@@ -2416,12 +2416,17 @@
       "url": "https://www.nepconjapan.jp/autumn/ja-jp.html",
       "venue": "幕張メッセ ホール1～3",
       "conditionLines": [
-        "名前コード：村岡 隆",
-        "名前コード：伊藤 聡"
+        "名前コード：村岡 隆 / 伊藤 聡"
       ],
       "rating": "",
       "nightTime": "",
-      "nightText": ""
+      "nightText": "",
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-09"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-hist-no-5f901c8d8f3e"
     },
     {
       "id": "hist-no-86d35373468d",
@@ -2462,7 +2467,13 @@
         "visitDates": [
           "2026-09-17"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-17"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-eb7ebbdd728e"
     },
     {
       "id": "hist-no-f277a8663eed",
