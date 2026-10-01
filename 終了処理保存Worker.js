@@ -76,6 +76,16 @@ function validate(d){
       if(d.reportEntries&&!Array.isArray(d.reportEntries))return '評価状態一覧が不正です';
       return '';
     }
+    if(d.action==='bulk_end_process'){
+      if(!Array.isArray(d.entries)||!d.entries.length)return '終了処理一覧がありません';
+      if(d.entries.length>50)return '一度に保存できる終了処理は50件までです';
+      for(const x of d.entries){
+        if(!x||!x.eventId||!(x.eventName||x.name))return '終了処理のイベント情報がありません';
+        if(!['attended','not_attended'].includes(x.status))return '参加／未参加を選んでください';
+        if(x.status==='attended'&&(!Array.isArray(x.visitDates)||!x.visitDates.length))return '参加したイベントの実際に行った日を選んでください';
+      }
+      return '';
+    }
     return '保存操作が不正です';
   }
   if(!d.eventId||!(d.eventName||d.name))return 'イベント情報がありません';
@@ -280,6 +290,7 @@ async function saveUiOperation(d,token){
   if(d.action==='planning_state')return savePlanningState(d,token);
   if(d.action==='report_flag')return saveReportFlag(d,token);
   if(d.action==='bulk_ui_state')return saveBulkUiState(d,token);
+  if(d.action==='bulk_end_process')return saveBulkEndProcess(d,token);
   const e=new Error('保存操作が不正です');e.status=400;throw e;
 }
 async function saveEventUpsert(d,token){
@@ -440,6 +451,120 @@ async function saveBulkUiState(d,token){
   const saved=await commitJsonMap(changed,'台帳状態をGitHubへ保存',token,ctx);
   return {status:'bulk_saved',planningCount,reportCount,commit:saved.commit};
 }
+
+async function saveBulkEndProcess(d,token){
+  const ctx=await beginWrite(token);
+  const base=await loadBaseFiles(token,ctx.parentSha,true);
+  base.gathering.events=Array.isArray(base.gathering.events)?base.gathering.events:[];
+  base.exhibition.events=Array.isArray(base.exhibition.events)?base.exhibition.events:[];
+  base.unattended.events=Array.isArray(base.unattended.events)?base.unattended.events:[];
+  const manifest=base.manifest||{reportFiles:[]};
+  const paths=Array.isArray(manifest.reportFiles)?[...manifest.reportFiles]:[];
+  const reportFiles=new Map();
+  const touched=new Set();
+  const results=[];
+  const stamp=new Date().toISOString().slice(0,10)+'-web';
+
+  async function getReportFile(path,allowMissing=false){
+    if(reportFiles.has(path))return reportFiles.get(path);
+    const rr=await readJson(path,token,ctx.parentSha,allowMissing);
+    const obj=rr.json||{year:Number(String(path).match(/(\d{4})/)?.[1]||0),month:reportMonthValue(path),reports:[]};
+    obj.reports=Array.isArray(obj.reports)?obj.reports:[];
+    const pack={path,obj};
+    reportFiles.set(path,pack);
+    return pack;
+  }
+  async function findOldReportPath(reportId){
+    if(!reportId)return '';
+    for(const p of paths){
+      const pack=await getReportFile(p);
+      if(pack.obj.reports.some(r=>r.id===reportId))return p;
+    }
+    return '';
+  }
+
+  for(const x of d.entries){
+    const found=findEventInLedgers(base.gathering,base.exhibition,x.eventId);
+    if(!found.event){const er=new Error('対象イベントが年間台帳に見つかりません: '+x.eventId);er.status=409;throw er}
+    const e=found.event,kind=found.kind;
+    e.name=String(x.eventName||x.name||e.name).trim();
+    e.venue=String(x.venue??e.venue??'').trim();
+    e.url=String(x.url??e.url??'').trim();
+    const conditionLines=String(x.conditionText??'').split(/\r?\n/).map(v=>v.trim()).filter(Boolean).filter(v=>!v.startsWith('名前コード：'));
+    const personName=String(x.personName||'').trim();
+    if(personName)conditionLines.push('名前コード：'+personName);
+    e.conditionLines=conditionLines;
+    e.rating=String(x.preRating??e.rating??'').trim();
+    e.nightTime=String(x.nightTime??e.nightTime??'').trim();
+    e.nightText=String(x.nightText??e.nightText??e.detailText??'').trim();
+    if('detailText' in e)delete e.detailText;
+
+    const oldReportId=e.sourceReportId||'';
+    const reportId=oldReportId||('rep-web-'+String(e.id).replace(/[^a-zA-Z0-9_-]/g,''));
+    const oldReportPath=await findOldReportPath(oldReportId);
+
+    if(x.status==='attended'){
+      e.attendanceStatus='attended';
+      e.visitDates=[...x.visitDates].sort();
+      e.historySource='終了処理';
+      e.sourceReportId=reportId;
+      removeUnattended(base.unattended,e);
+
+      const targetPath=reportPathFor(e.visitDates[0]);
+      const target=await getReportFile(targetPath,true);
+      if(oldReportPath&&oldReportPath!==targetPath){
+        const old=await getReportFile(oldReportPath);
+        old.obj.reports=old.obj.reports.filter(r=>r.id!==oldReportId);
+        touched.add(oldReportPath);
+      }
+      const rep=makeReport(e,x,kind,reportId);
+      const ri=target.obj.reports.findIndex(r=>r.id===reportId);
+      if(ri>=0)target.obj.reports[ri]={...target.obj.reports[ri],...rep};else target.obj.reports.push(rep);
+      target.obj.reports.sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.name).localeCompare(String(b.name),'ja'));
+      if(!paths.includes(targetPath))paths.push(targetPath);
+      touched.add(targetPath);
+    }else{
+      e.attendanceStatus='not_attended';
+      e.visitDates=[];
+      e.historySource='終了処理';
+      e.conditionLines=(e.conditionLines||[]).filter(v=>!String(v).startsWith('名前コード：'));
+      delete e.sourceReportId;
+      upsertUnattended(base.unattended,e,kind);
+      if(oldReportPath){
+        const old=await getReportFile(oldReportPath);
+        old.obj.reports=old.obj.reports.filter(r=>r.id!==oldReportId);
+        touched.add(oldReportPath);
+      }
+    }
+
+    if(kind==='gathering')touched.add('イベント一覧.json');else touched.add('展示会一覧.json');
+    results.push({eventId:e.id,status:x.status,name:e.name});
+  }
+
+  base.gathering.dataVersion=stamp;
+  base.exhibition.dataVersion=stamp;
+  base.unattended.dataVersion=stamp;
+  manifest.dataVersion=stamp;
+  manifest.reportFiles=[...new Set(paths)].sort((a,b)=>{
+    const ya=a.match(/(\d{4})-/)?.[1]||'',yb=b.match(/(\d{4})-/)?.[1]||'';
+    return ya.localeCompare(yb)||reportMonthValue(a)-reportMonthValue(b);
+  });
+
+  const changed=new Map();
+  if(touched.has('イベント一覧.json'))changed.set('イベント一覧.json',base.gathering);
+  if(touched.has('展示会一覧.json'))changed.set('展示会一覧.json',base.exhibition);
+  changed.set('未参加イベント.json',base.unattended);
+  changed.set('実地レポート.json',manifest);
+  for(const p of touched){
+    if(p.startsWith('実地レポート/')){
+      const pack=reportFiles.get(p);
+      if(pack)changed.set(p,pack.obj);
+    }
+  }
+  const saved=await commitJsonMap(changed,'終了処理まとめ保存: '+results.length+'件',token,ctx);
+  return {status:'bulk_end_saved',count:results.length,results,commit:saved.commit};
+}
+
 function makeReport(e,d,kind,reportId){
   const visits=[...d.visitDates].sort();
   return {
