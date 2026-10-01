@@ -703,8 +703,8 @@
         "無料・事前登録",
         "法人メール必要（Gmail・Yahoo!等のフリーメール不可）",
         "申込締切：9月28日(月) 9:00",
-        "名前コード：伊藤 聡",
-        "現地確認：先着500名ノベルティはTシャツ"
+        "現地確認：先着500名ノベルティはTシャツ",
+        "名前コード：伊藤 聡"
       ],
       "rating": "A+。ザ・プリンス パークタワー東京でNetworking Receptionがあり有力。朝食・ランチは記録対象だが評価加点には含めない。",
       "nightTime": "8:30～10:00／12:00～13:30／16:45～17:45",
@@ -719,7 +719,13 @@
       "endDate": "2026-09-30",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-30"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-c8cedbcd3fdd"
     },
     {
       "id": "evt-jmec-social-20260930",
