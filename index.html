@@ -56,7 +56,7 @@ th:last-child,td:last-child{border-right:0}
 .end-row-btn{margin-left:6px;padding:2px 3px;font-size:11px;font-weight:800}.end-row-btn.end-pending{border-color:#d76a6a;background:#fff5f5;color:#b91c1c}.end-row-btn.end-correction{border-color:#c4c8cc;background:#f7f8f9;color:#555;font-weight:700}.end-row-btn.end-correction:hover{background:#eef0f2;color:#333}
 .end-modal[hidden]{display:none}.end-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:18px}
 .end-dialog{width:min(900px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
-.end-dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:#20262d;color:#fff}
+.end-dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:#20262d;color:#fff}.end-dialog-head-actions{display:flex;align-items:center;gap:8px}.end-batch-save{border:1px solid #86b89a;background:#166534;color:#fff;font-weight:900;padding:7px 10px}.end-batch-save:hover{background:#125329}.end-batch-save:disabled{background:#59635d;color:#d5ddd8;border-color:#6e7771;cursor:default}.end-batch-state{font-size:11px;color:#d6f0df;font-weight:700;white-space:nowrap}
 .end-dialog-title{font-size:17px;font-weight:800}.end-close{position:relative;width:32px;height:32px;min-width:32px;padding:0;border:0;border-radius:4px;background:transparent;color:#fff;font-size:0}.end-close::before,.end-close::after{content:"";position:absolute;left:50%;top:50%;width:18px;height:2px;background:#fff;transform-origin:center}.end-close::before{transform:translate(-50%,-50%) rotate(45deg)}.end-close::after{transform:translate(-50%,-50%) rotate(-45deg)}.end-close:hover{background:rgba(255,255,255,.12)}
 .end-dialog-body{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:420px}
 .end-list{border-right:1px solid var(--line);padding:12px;background:#f7f8fa}.end-list-note{font-size:12px;color:var(--muted);margin:0 0 8px}
@@ -85,7 +85,7 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳</h1><div class="title-meta-stack"><div class="version-info">v0.34</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">閲覧・参加予定・参加記録・終了処理・編集を、この画面で管理できます。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳</h1><div class="title-meta-stack"><div class="version-info">v0.35</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">イベント情報・参加予定・参加記録を管理します。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
@@ -99,9 +99,10 @@ th:last-child,td:last-child{border-right:0}
         <button type="button" class="kind-filter active" data-kind-filter="both">両方</button>
         <button type="button" class="kind-filter" data-kind-filter="exhibition">展示会</button>
         <button type="button" class="kind-filter" data-kind-filter="gathering">懇親会</button>
-        <button id="githubSaveBtn" class="github-save-btn" type="button">GitHub保存済み</button>
+        <button id="githubSaveBtn" class="github-save-btn" type="button">未送信なし</button>
         <span id="githubSaveState" class="github-save-state"></span>
         <label class="hide-ignored-label"><input id="hideIgnoredToggle" type="checkbox">行かないを非表示</label>
+        <label class="hide-ignored-label"><input id="highOnlyToggle" type="checkbox">高評価のみ表示</label>
       </div>
       <section class="calendar-panel" aria-label="カレンダー">
         <div class="calendar-left">
@@ -124,7 +125,7 @@ th:last-child,td:last-child{border-right:0}
 <button id="backToTop" class="back-to-top" type="button" aria-label="ページ上部へ戻る">↑</button>
 <div id="endProcessModal" class="end-modal" hidden>
   <div class="end-dialog" role="dialog" aria-modal="true" aria-labelledby="endProcessTitle">
-    <div class="end-dialog-head"><div id="endProcessTitle" class="end-dialog-title">終了処理</div><button id="endProcessClose" class="end-close" type="button">×</button></div>
+    <div class="end-dialog-head"><div id="endProcessTitle" class="end-dialog-title">終了処理</div><div class="end-dialog-head-actions"><span id="endBatchState" class="end-batch-state">入力は自動保存</span><button id="endBatchSave" class="end-batch-save" type="button" disabled>まとめてGitHubへ保存</button><button id="endProcessClose" class="end-close" type="button">×</button></div></div>
     <div class="end-dialog-body">
       <div class="end-list"><p id="endProcessNote" class="end-list-note">終了処理待ちのイベントです。</p><div id="endProcessList"></div></div>
       <div id="endProcessFormWrap" class="end-form-wrap"><div class="end-empty">左からイベントを選んでください。</div></div>
@@ -149,7 +150,7 @@ const END_BACKUPS_KEY='free_food_event_end_process_saved_backups_v1';
 const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
 const EVENT_EDIT_DRAFTS_KEY='free_food_event_edit_drafts_v1';
 const END_PROCESS_API_URL='https://dawn-morning-780a.aoigiftmiki.workers.dev';
-let events=[],reports=[],flags={},reportFlags={},mode='all',kindFilter='both',hideIgnored=false,editing=false;
+let events=[],reports=[],flags={},reportFlags={},mode='all',kindFilter='both',hideIgnored=false,highOnly=false,editing=false;
 let dirtyIds=new Set();
 let editDraft={patches:{},newEvents:[],deletedIds:[]};
 let officialEventsById=new Map();
@@ -164,6 +165,8 @@ const endProcessCount=document.getElementById('endProcessCount');
 const endProcessModal=document.getElementById('endProcessModal');
 const endProcessTitle=document.getElementById('endProcessTitle');
 const endProcessClose=document.getElementById('endProcessClose');
+const endBatchSave=document.getElementById('endBatchSave');
+const endBatchState=document.getElementById('endBatchState');
 const endProcessList=document.getElementById('endProcessList');
 const endProcessFormWrap=document.getElementById('endProcessFormWrap');
 const endProcessNote=document.getElementById('endProcessNote');
@@ -174,6 +177,7 @@ const eventEditFormWrap=document.getElementById('eventEditFormWrap');
 const githubSaveBtn=document.getElementById('githubSaveBtn');
 const githubSaveState=document.getElementById('githubSaveState');
 let gitHubSaveQueue=Promise.resolve();
+const reportSaveSeq={};
 
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function norm(s){return String(s||'').toLowerCase().replace(/[\s　・･｜|™®【】\[\]（）()‐\-–—'’:"：～〜]/g,'')}
@@ -185,6 +189,7 @@ function saveUiState(){
     mode,
     kindFilter,
     hideIgnored,
+    highOnly,
     listStartYear,
     listStartMonth,
     calendarBaseYear,
@@ -198,6 +203,7 @@ function loadUiState(){
     if(['all','upcoming','planned','attended'].includes(v.mode))mode=v.mode;
     if(['both','exhibition','gathering'].includes(v.kindFilter))kindFilter=v.kindFilter;
     if(typeof v.hideIgnored==='boolean')hideIgnored=v.hideIgnored;
+    if(typeof v.highOnly==='boolean')highOnly=v.highOnly;
     if(Number.isInteger(v.listStartYear)&&v.listStartYear>=2000&&v.listStartYear<=2100)listStartYear=v.listStartYear;
     if(Number.isInteger(v.listStartMonth)&&v.listStartMonth>=0&&v.listStartMonth<=12)listStartMonth=v.listStartMonth;
     if(Number.isInteger(v.calendarBaseYear)&&v.calendarBaseYear>=2000&&v.calendarBaseYear<=2100)calendarBaseYear=v.calendarBaseYear;
@@ -210,6 +216,7 @@ function syncModeButtons(){
 function syncFilterControls(){
   document.querySelectorAll('button[data-kind-filter]').forEach(x=>x.classList.toggle('active',x.dataset.kindFilter===kindFilter));
   const h=document.getElementById('hideIgnoredToggle');if(h)h.checked=hideIgnored;
+  const q=document.getElementById('highOnlyToggle');if(q)q.checked=highOnly;
 }
 function eventKinds(e){
   const raw=Array.isArray(e?._kinds)?e._kinds:[e?._kind];
@@ -242,7 +249,7 @@ function refreshGitHubSaveButton(){
   if(!githubSaveBtn)return;
   const n=pendingGitHubCount();
   githubSaveBtn.disabled=n===0;
-  githubSaveBtn.textContent=n?'GitHubへ保存（'+n+'）':'GitHub保存済み';
+  githubSaveBtn.textContent=n?'未送信を再保存（'+n+'）':'未送信なし';
 }
 function setGitHubSaveState(message,isError=false){
   if(!githubSaveState)return;
@@ -345,19 +352,37 @@ function reportFlag(id){
   const r=reports.find(x=>x.id===id),v=String(r?.ratingFlag||'');
   return {good:v==='high',mid:v==='mid',bad:v==='low'};
 }
+function reportFlagValue(f){return f?.bad?'low':f?.mid?'mid':f?.good?'high':''}
+function isHighRatedEvent(e){
+  const r=reportFor(e);
+  return !!(r&&reportFlag(r.id).good);
+}
+function passesHighOnly(e,targetMode=mode){
+  return !highOnly||!['all','attended'].includes(targetMode)||isHighRatedEvent(e);
+}
 async function persistReportFlag(id){
   const f=cloneData(reportFlags[id]||{good:false,mid:false,bad:false});
-  const value=f.bad?'low':f.mid?'mid':f.good?'high':'';
+  const value=reportFlagValue(f);
+  const seq=(reportSaveSeq[id]||0)+1;
+  reportSaveSeq[id]=seq;
   try{
     setGitHubSaveState('保存中…');
     await apiSave({action:'report_flag',reportId:id,ratingFlag:value});
+    if(reportSaveSeq[id]!==seq){
+      setGitHubSaveState('最新の評価を保存中…');
+      refreshGitHubSaveButton();
+      return true;
+    }
     const r=reports.find(x=>x.id===id);
     if(r){if(value)r.ratingFlag=value;else delete r.ratingFlag;}
-    delete reportFlags[id];saveReportFlags();
+    delete reportFlags[id];
+    delete reportSaveSeq[id];
+    saveReportFlags();
     setGitHubSaveState('GitHubへ保存しました');
     render();
     return true;
   }catch(err){
+    if(reportSaveSeq[id]!==seq)return false;
     setGitHubSaveState(err.message||String(err),true);
     refreshGitHubSaveButton();
     return false;
@@ -630,6 +655,7 @@ function renderEndProcessList(){
   if(!selectedEndEventId||!list.some(e=>e.id===selectedEndEventId))selectedEndEventId=list[0].id;
   endProcessList.innerHTML=list.map(e=>{const o=officialEvent(e);return '<button type="button" class="end-event-btn '+(e.id===selectedEndEventId?'active':'')+'" data-end-id="'+esc(e.id)+'"><div class="end-event-date">'+esc(endDayLabel(o.endDate||o.date))+'終了・'+kindLabel(o)+'</div><div class="end-event-name">'+esc(o.name)+'</div></button>';}).join('');
   renderEndProcessForm();
+  refreshEndBatchSave();
 }
 function renderEndProcessForm(){
   const e=events.find(x=>x.id===selectedEndEventId);
@@ -641,7 +667,7 @@ function renderEndProcessForm(){
   endProcessFormWrap.innerHTML=
     '<div class="end-form-title">'+esc(o.name)+'</div>'+
     '<div class="end-form-venue">'+esc(o.venue||'会場未入力')+' / '+esc(compactRangeText(o))+'</div>'+
-    (usingSavedBackup?'<div class="end-saved-backup-note">GitHub公開反映待ちのため、保存済みの復旧用コピーを表示しています。</div>':'')+
+    (usingSavedBackup?'<div class="end-saved-backup-note">GitHubには保存済みです。公開ページへの反映待ちのため、保存済み内容を表示しています。再保存は不要です。</div>':'')+
     '<div class="end-field"><span class="end-label">結果</span><div class="end-choice">'+
       '<label><input type="radio" name="endAttendance" value="attended" '+(d.status==='attended'?'checked':'')+'>参加した</label>'+
       '<label><input type="radio" name="endAttendance" value="not_attended" '+(d.status==='not_attended'?'checked':'')+'>行っていない</label>'+
@@ -649,7 +675,7 @@ function renderEndProcessForm(){
     '<div class="end-field"><span class="end-label">実際に行った日</span><div class="end-visit-dates">'+visits+'</div></div>'+
     '<div class="end-field"><label class="end-label" for="endRating">実地評価（参加後）</label><select id="endRating" class="end-rating">'+ratings.map(v=>'<option value="'+v+'" '+(v===d.rating?'selected':'')+'>'+(v||'未選択')+'</option>').join('')+'</select></div>'+
     '<div class="end-field"><label class="end-label" for="endReport">実地レポート</label><textarea id="endReport" class="end-report">'+esc(d.report||'')+'</textarea></div>'+
-    '<div class="end-actions"><button id="endDraftSave" type="button">下書き保存</button><button id="endGitHubSave" class="end-save" type="button">GitHubへ保存</button><span id="endDraftSaved" class="end-saved"></span></div>';
+    '<div class="end-actions"><button id="endGitHubSave" class="end-save" type="button">この1件をGitHubへ保存</button><span id="endDraftSaved" class="end-saved">入力内容は自動保存されます</span></div>';
 }
 function collectEndDraft(){
   const e=events.find(x=>x.id===selectedEndEventId);if(!e)return null;
@@ -674,19 +700,63 @@ function endDraftContentKey(d){
     report:String(d.report||'')
   });
 }
+
+function endDraftReady(d){
+  return !!(d&&['attended','not_attended'].includes(d.status)&&(d.status!=='attended'||(Array.isArray(d.visitDates)&&d.visitDates.length)));
+}
+function pendingEndDraftEntries(){
+  return Object.values(endDrafts).filter(d=>{
+    if(!endDraftReady(d))return false;
+    const e=events.find(x=>x.id===d.eventId);
+    return !e||!endDraftMatchesGitHub(e,d);
+  });
+}
+function refreshEndBatchSave(message=''){
+  if(!endBatchSave)return;
+  const entries=pendingEndDraftEntries();
+  endBatchSave.hidden=!!endProcessSingle;
+  endBatchSave.disabled=!entries.length;
+  endBatchSave.textContent=entries.length?'まとめてGitHubへ保存（'+entries.length+'件）':'まとめてGitHubへ保存';
+  if(endBatchState)endBatchState.textContent=message||'入力は自動保存';
+}
+async function saveEndBatchToGitHub(){
+  saveEndDraftIfNeeded();
+  const entries=pendingEndDraftEntries();
+  if(!entries.length){refreshEndBatchSave('まとめ保存する確定内容はありません');return;}
+  if(endBatchSave){endBatchSave.disabled=true;endBatchSave.textContent='まとめて保存中…';}
+  if(endBatchState)endBatchState.textContent=entries.length+'件を保存中…';
+  try{
+    const result=await apiSave({action:'bulk_end_process',entries});
+    for(const d of entries){
+      endBackups[d.eventId]={...d,savedCommit:result.commit||'',savedAt:new Date().toISOString()};
+      delete endDrafts[d.eventId];
+      applySavedEndBackupToMemory(d);
+    }
+    localStorage.setItem(END_BACKUPS_KEY,JSON.stringify(endBackups));
+    localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+    render();
+    renderEndProcessList();
+    refreshEndBatchSave(entries.length+'件をGitHubへ保存しました');
+  }catch(err){
+    if(endBatchState)endBatchState.textContent=err.message||String(err);
+    refreshEndBatchSave();
+  }
+}
 function saveEndDraft(showMessage){
   const d=collectEndDraft();if(!d)return;
   endDrafts[d.eventId]=d;localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
-  if(showMessage){const el=document.getElementById('endDraftSaved');if(el){el.textContent='下書きを保存しました';setTimeout(()=>{if(el)el.textContent=''},1800);}}
+  refreshEndBatchSave();
 }
 function saveEndDraftIfNeeded(){
   const d=collectEndDraft();if(!d)return;
   const b=endBackups[d.eventId];
   if(b&&endDraftContentKey(b)===endDraftContentKey(d)){
     if(endDrafts[d.eventId]){delete endDrafts[d.eventId];localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));}
+    refreshEndBatchSave();
     return;
   }
   endDrafts[d.eventId]=d;localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+  refreshEndBatchSave();
 }
 function endDraftMatchesGitHub(e,d){
   if(!e||!d)return false;
@@ -784,14 +854,15 @@ async function saveEndToGitHub(){
     localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
     applySavedEndBackupToMemory(d);
     render();
+    refreshEndBatchSave();
     if(msg)msg.textContent='GitHubへ保存しました。参加済み一覧にも反映しました。';
   }catch(err){if(msg)msg.textContent=err.message||String(err);}
-  finally{if(btn){btn.disabled=false;btn.textContent='GitHubへ保存';}}
+  finally{if(btn){btn.disabled=false;btn.textContent='この1件をGitHubへ保存';}}
 }
 function openEndProcess(eventId){
   endProcessSingle=!!eventId;selectedEndEventId=eventId||'';
   endProcessTitle.textContent=endProcessSingle?'記録修正':'終了処理';
-  endProcessModal.hidden=false;document.body.style.overflow='hidden';renderEndProcessList();
+  endProcessModal.hidden=false;document.body.style.overflow='hidden';renderEndProcessList();refreshEndBatchSave();
 }
 function closeEndProcess(){
   saveEndDraftIfNeeded();endProcessModal.hidden=true;document.body.style.overflow='';endProcessSingle=false;selectedEndEventId='';
@@ -993,8 +1064,9 @@ async function saveEventEditToGitHub(){
     clearLegacyEventDraft(e.id);
     setGitHubSaveState('GitHubへ保存しました');
     if(status)status.textContent='GitHubへ保存しました';
+    const wasCreate=eventEditCreateMode;
+    closeEventEdit();
     mode='all';syncModeButtons();saveUiState();render();
-    if(eventEditCreateMode){closeEventEdit();}
   }catch(err){
     if(status)status.textContent=err.message||String(err);
     setGitHubSaveState(err.message||String(err),true);
@@ -1199,7 +1271,7 @@ function calendarMap(){
     else if(f.interested)v.interestedIds.add(e.id);
   };
   for(const e of events){
-    if(!passesCommonFilters(e))continue;
+    if(!passesCommonFilters(e)||!passesHighOnly(e,mode))continue;
     if(mode==='upcoming'&&String(e.endDate||e.date)<today)continue;
     if(mode==='attended'){
       for(const d of actualDates(e)){const v=get(d);v.ids.add(e.id);v.attendedIds.add(e.id);v.attended=true;}
@@ -1542,14 +1614,14 @@ function updateModeCounts(){
   const allSet=new Set(),upcomingSet=new Set(),plannedSet=new Set(),attendedSet=new Set();
   for(const e of events){
     if(!passesCommonFilters(e))continue;
-    if(passesListStart(e.date))allSet.add(e.id);
+    if(passesHighOnly(e,'all')&&passesListStart(e.date))allSet.add(e.id);
     if(String(e.endDate||e.date)>=today&&passesListStart(e.endDate||e.date))upcomingSet.add(e.id);
     const f=flag(e);
     if(f.planned||f.interested){
       const ds=plannedDates(e);
       if(ds.some(d=>passesListStart(d))||(!ds.length&&e.endDate&&e.endDate!==e.date&&(e.endDate||e.date)>=today&&passesListStart(e.endDate||e.date)))plannedSet.add(e.id);
     }
-    if(e.attendanceStatus==='attended'){
+    if(e.attendanceStatus==='attended'&&passesHighOnly(e,'attended')){
       const actual=actualDates(e);
       if(actual.some(d=>passesListStart(d))||(!actual.length&&passesListStart(e.date)))attendedSet.add(e.id);
     }
@@ -1568,7 +1640,7 @@ function render(){
   if(mode==='attended'){
     const items=[],undated=[];
     for(const e of events){
-      if(e.attendanceStatus!=='attended'||!passesCommonFilters(e))continue;
+      if(e.attendanceStatus!=='attended'||!passesCommonFilters(e)||!passesHighOnly(e,'attended'))continue;
       const actual=actualDates(e);
       if(!actual.length){
         if(passesListStart(e.date))undated.push(e);
@@ -1675,7 +1747,7 @@ function render(){
     return;
   }
 
-  let list=events.slice().filter(e=>passesCommonFilters(e)&&passesListStart(e.date));
+  let list=events.slice().filter(e=>passesCommonFilters(e)&&passesHighOnly(e,'all')&&passesListStart(e.date));
   list.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a,b));
 
   let html='',month='',week='';
@@ -1724,6 +1796,11 @@ document.getElementById('hideIgnoredToggle').addEventListener('change',e=>{
   saveUiState();
   render();
 });
+document.getElementById('highOnlyToggle').addEventListener('change',e=>{
+  highOnly=e.target.checked;
+  saveUiState();
+  render();
+});
 
 endProcessBtn.addEventListener('click',()=>openEndProcess(''));
 endProcessClose.addEventListener('click',closeEndProcess);
@@ -1731,20 +1808,43 @@ endProcessModal.addEventListener('click',e=>{if(e.target===endProcessModal)close
 endProcessList.addEventListener('click',e=>{const b=e.target.closest('.end-event-btn');if(!b)return;saveEndDraftIfNeeded();selectedEndEventId=b.dataset.endId;renderEndProcessList();});
 endProcessFormWrap.addEventListener('input',()=>saveEndDraft(false));
 endProcessFormWrap.addEventListener('change',()=>saveEndDraft(false));
-endProcessFormWrap.addEventListener('click',async e=>{if(e.target.id==='endDraftSave'){saveEndDraft(true);return;}if(e.target.id==='endGitHubSave'){await saveEndToGitHub();return;}});
+endProcessFormWrap.addEventListener('click',async e=>{if(e.target.id==='endGitHubSave'){await saveEndToGitHub();return;}});
+endBatchSave.addEventListener('click',saveEndBatchToGitHub);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!endProcessModal.hidden)closeEndProcess();});
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.end-row-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEndProcess(b.dataset.endEdit||'');});
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.event-edit-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEventEdit(b.dataset.eventEdit||'');});
 eventEditClose.addEventListener('click',closeEventEdit);
-eventEditModal.addEventListener('click',e=>{if(e.target===eventEditModal)closeEventEdit();});
+eventEditModal.addEventListener('click',e=>{
+  if(e.target===eventEditModal){closeEventEdit();return;}
+  e.stopPropagation();
+});
 eventEditFormWrap.addEventListener('input',()=>saveEventEditDraft());
 eventEditFormWrap.addEventListener('change',()=>saveEventEditDraft());
 eventEditFormWrap.addEventListener('click',async e=>{
-  if(e.target.id==='eventEditSave'){await saveEventEditToGitHub();return;}
-  if(e.target.id==='eventEditDelete'){await deleteEventFromEditor();return;}
+  const save=e.target.closest('#eventEditSave');
+  const del=e.target.closest('#eventEditDelete');
+  if(save){
+    e.preventDefault();
+    e.stopPropagation();
+    await saveEventEditToGitHub();
+    return;
+  }
+  if(del){
+    e.preventDefault();
+    e.stopPropagation();
+    await deleteEventFromEditor();
+    return;
+  }
 });
 document.getElementById('addEventBtn').addEventListener('click',()=>openEventEdit('',true));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!eventEditModal.hidden)closeEventEdit();});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&!eventEditModal.hidden){closeEventEdit();return;}
+  if(!eventEditModal.hidden&&e.key==='Enter'&&e.ctrlKey){
+    e.preventDefault();
+    e.stopPropagation();
+    saveEventEditToGitHub();
+  }
+});
 
 document.getElementById('body').addEventListener('change',async e=>{
   const good=e.target.closest('.report-high-toggle'),mid=e.target.closest('.report-mid-toggle'),bad=e.target.closest('.report-low-toggle');
@@ -1770,7 +1870,7 @@ document.getElementById('body').addEventListener('change',async e=>{
 
 async function savePendingBrowserDataToGitHub(){
   const planningEntries=Object.entries(flags).map(([eventId,planning])=>({eventId,planning}));
-  const reportEntries=Object.entries(reportFlags).map(([reportId,f])=>({reportId,ratingFlag:f.bad?'low':f.mid?'mid':f.good?'high':''}));
+  const reportEntries=Object.entries(reportFlags).map(([reportId,f])=>({reportId,ratingFlag:reportFlagValue(f)}));
   const formDrafts=Object.values(eventEditDrafts).filter(d=>d&&d.eventId).map(d=>{
     const e=events.find(x=>x.id===d.eventId);
     const rawKinds=Array.isArray(d.kinds)&&d.kinds.length?d.kinds:(e?eventKinds(e):[(d.kind==='gathering')?'gathering':'exhibition']);
