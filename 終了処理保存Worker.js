@@ -5,7 +5,7 @@
 const OWNER='rensei11';
 const REPO='01-event';
 const BRANCH='main';
-const WORKER_VERSION='2026-09-29-ai-free-v1';
+const WORKER_VERSION='2026-10-01-ai-free-v2';
 
 export default {
   async fetch(request, env) {
