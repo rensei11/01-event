@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-09-29-web",
+  "dataVersion": "2026-10-01-web",
   "year": 2026,
   "events": [
     {
@@ -275,6 +275,19 @@
       "url": "https://www.foodswinesfromspain.com/en/upcoming-events/trade-shows-detail-two/open-day-discovery-zone-tokio-2026",
       "venue": "ホテルニューオータニ東京　「芙蓉の間」",
       "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-human-ai-transformation-20260930",
+      "date": "2026-09-30",
+      "endDate": "",
+      "dateText": "",
+      "name": "Human×AI Transformation 2026",
+      "url": "https://hubble-docs.com/event/2026-09-30",
+      "venue": "渋谷ストリームホール",
+      "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "nameCodes": []
