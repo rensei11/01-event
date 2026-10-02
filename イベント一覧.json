@@ -1213,9 +1213,7 @@
         "planned": true,
         "interested": false,
         "ignored": false,
-        "visitDates": [
-          "2026-10-14"
-        ]
+        "visitDates": []
       }
     },
     {
