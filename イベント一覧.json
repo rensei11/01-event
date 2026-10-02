@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-01-web",
+  "dataVersion": "2026-10-02-web",
   "year": 2026,
   "events": [
     {
@@ -1112,8 +1112,8 @@
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false
       }
     },
