@@ -1210,8 +1210,8 @@
       "endDate": "2026-10-15",
       "dateText": "10月13日(火)～15日(木)",
       "planning": {
-        "planned": true,
-        "interested": false,
+        "planned": false,
+        "interested": true,
         "ignored": false,
         "visitDates": []
       }
