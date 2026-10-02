@@ -3029,8 +3029,8 @@
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false,
         "visitDates": [
           "2026-10-14"
