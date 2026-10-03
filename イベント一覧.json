@@ -1539,7 +1539,12 @@
       ],
       "rating": "C。Japan IT Week滞在時の保険候補。規模・料理期待は低め。",
       "nightTime": "17:00～",
-      "nightText": "日韓IT企業交流会。"
+      "nightText": "日韓IT企業交流会。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-6d1db7f4d142",
