@@ -2551,7 +2551,13 @@
         "visitDates": [
           "2026-09-17"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-17"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-8551456ba9df"
     },
     {
       "id": "xls-x-fefccafd6719",
