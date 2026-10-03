@@ -2983,14 +2983,14 @@
       "id": "xls-x-63fa2d3e7f51",
       "date": "2026-10-07",
       "endDate": "2026-10-09",
-      "dateText": "10月7日(水)～9日(金)",
+      "dateText": "10月7日(水)～10月9日(金)",
       "name": "ライフスタイルWeek【秋】",
       "url": "https://www.lifestyle-expo.jp/autumn/ja-jp.html",
       "venue": "東京ビッグサイト 南1・2ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
-      "nightText": "前回は2日目に推し活EXPOのところで軽食付交流会があったらしい",
+      "nightText": "前回は2日目に推し活EXPOのところで軽食付交流会があったらしい。\n以前と同じくフード＆カフェ券1000円分をもらえる。2周すればそれなりのものが喰える\nhttps://prtimes.jp/main/html/rd/p/000000216.000095735.html",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
@@ -3001,7 +3001,10 @@
           "2026-10-08",
           "2026-10-09"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-fbdc81131a2d",
