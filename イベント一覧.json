@@ -1247,21 +1247,25 @@
       "url": "https://boomi-world-tour-tokyo-2026.boomi.co.jp/",
       "venue": "東京アメリカンクラブ B2F",
       "conditionLines": [
-        "名前コード：久保 直輝",
         "無料・申請済",
         "多数時抽選",
-        "申請済み・2026-09-28時点で返答待ち"
+        "申請済み・2026-09-28時点で返答待ち",
+        "名前コード：久保 直輝"
       ],
-      "rating": "A+。東京アメリカンクラブという会場価値が大きく、Networkingも有力。",
+      "rating": "A+",
       "nightTime": "18:30～20:00",
-      "nightText": "Networking。公式最新日程は18:30～20:00。料理・酒の詳細は未公表。申請済みだが2026-09-28時点で返答待ち。",
+      "nightText": "Networking。公式最新日程は18:30～20:00。ドレスコード：ビジネスカジュアル",
       "dateText": "10月14日(水)",
       "sourceExcel": true,
       "planning": {
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-10-14",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "xls-g-4d0a5b89f507",
