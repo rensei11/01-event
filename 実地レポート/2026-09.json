@@ -511,7 +511,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "ほぼ意味なし。多分オレオを1つ貰った程度。同時開催のテロ対策展のほうには大手企業も来ていたが、身分証明が必要なため諦めた。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-xls-x-9ac65eeeef9e",
