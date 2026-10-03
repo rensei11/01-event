@@ -1462,7 +1462,12 @@
       ],
       "rating": "C。品川の立地は良いが、飲食内容が未確認で時間も1時間。",
       "nightTime": "17:00～18:00",
-      "nightText": "Networking。飲食内容未確認。"
+      "nightText": "Networking。飲食内容未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-9a68d1d17f1c",
