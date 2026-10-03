@@ -2889,7 +2889,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-30"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-5d9bf2acf2f6"
     },
     {
       "id": "evt-model-hobbyshow-20261002",
