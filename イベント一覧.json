@@ -1494,7 +1494,12 @@
       ],
       "rating": "B-。竹芝で動線は良いが、過去映像から料理期待値は高くない。",
       "nightTime": "18:15～19:30",
-      "nightText": "Networking Reception Party。"
+      "nightText": "Networking Reception Party。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-c0e2d0d0d58b",
