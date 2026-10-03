@@ -496,6 +496,24 @@
       "ratingFlag": "mid"
     },
     {
+      "id": "rep-web-xls-x-2bc585ac2403",
+      "date": "2026-09-30",
+      "visitDates": [
+        "2026-09-30"
+      ],
+      "dateText": "09/30",
+      "scheduledDate": "2026-09-30",
+      "scheduledEndDate": "2026-10-02",
+      "scheduledDateText": "9月30日(水)～10月2日(金)",
+      "name": "危機管理産業展 (RISCON TOKYO) 2026",
+      "url": "https://www.kikikanri.biz/",
+      "venue": "東京ビッグサイト 南1-4ホール",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "ほぼ意味なし。多分オレオを1つ貰った程度。同時開催のテロ対策展のほうには大手企業も来ていたが、身分証明が必要なため諦めた。",
+      "source": "終了処理"
+    },
+    {
       "id": "rep-web-xls-x-9ac65eeeef9e",
       "date": "2026-09-30",
       "visitDates": [
