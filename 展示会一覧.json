@@ -2855,7 +2855,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-30"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-9ac65eeeef9e"
     },
     {
       "id": "xls-x-5d9bf2acf2f6",
