@@ -2709,7 +2709,13 @@
         "visitDates": [
           "2026-09-25"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-09-25"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-966372f3274e"
     },
     {
       "id": "evt-itochu-familyfair-20260925",
