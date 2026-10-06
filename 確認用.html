@@ -85,7 +85,7 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番 v0.36 採用済み / UI試作42</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">UI試作42は本番v0.36へ採用済みです。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　見やすさ確認版</h1><div class="title-meta-stack"><div class="version-info">本番 v0.37 採用済み / UI試作43</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">UI試作43は本番v0.37へ採用済みです。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
@@ -1063,10 +1063,9 @@ async function saveEventEditToGitHub(){
     officialEventsById.set(e.id,cloneData(e));
     clearLegacyEventDraft(e.id);
     setGitHubSaveState('GitHubへ保存しました');
-    if(status)status.textContent='GitHubへ保存しました。編集画面は右上×またはEscで閉じます。';
-    const wasCreate=eventEditCreateMode;
-    mode='all';syncModeButtons();saveUiState();render();
-    if(wasCreate)closeEventEdit();
+    if(status)status.textContent='GitHubへ保存しました';
+    closeEventEdit();
+    render();
   }catch(err){
     if(status)status.textContent=err.message||String(err);
     setGitHubSaveState(err.message||String(err),true);
