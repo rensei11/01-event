@@ -1124,22 +1124,27 @@
     {
       "id": "xls-g-5985e824f941",
       "date": "2026-10-08",
-      "endDate": "",
-      "dateText": "10月8日 (木)",
+      "endDate": "2026-10-08",
+      "dateText": "10月8日(木)",
       "name": "HR FUTURE CONFERENCE 2026 秋 in 東京",
       "url": "https://event-page.jp/hrfc",
       "venue": "虎ノ門ヒルズフォーラム5階",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：白川 直人"
+      ],
       "rating": "",
       "nightTime": "",
-      "nightText": "交流会はあるが食事が出るかはわからない / それよりも紹介で相互3000円のQUOカードpayがもらえる　参加は一応審査制",
+      "nightText": "交流会はあるが食事が出るかはわからない / それよりも紹介で相互3000円のQUOカードpayがもらえる。登録だけでも1000円、入場でさらに1000円。どんだけ人こないと思ってんだ？12人登録して印刷する。受付はあるが入場方法がどれだけ緩いか次第。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "xls-g-2d9f335fafdf",
