@@ -2059,8 +2059,8 @@
       "dateText": "11月11日(水)",
       "sourceExcel": true,
       "planning": {
-        "planned": true,
-        "interested": false,
+        "planned": false,
+        "interested": true,
         "ignored": false
       }
     },
