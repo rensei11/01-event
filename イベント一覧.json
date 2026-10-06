@@ -1422,7 +1422,12 @@
       ],
       "rating": "",
       "nightTime": "18:15～19:15",
-      "nightText": "Networking Reception。ドリンク＋軽食あり。規模・参加条件から優先度は低め。"
+      "nightText": "Networking Reception。ドリンク＋軽食あり。規模・参加条件から優先度は低め。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "xls-g-5eb96f25c875",
