@@ -1318,7 +1318,12 @@
       ],
       "rating": "C+。無料コードを確保できれば再評価。通常料金のままでは候補外寄り。",
       "nightTime": "18:00～19:30",
-      "nightText": "Networking Party。料理詳細不明。"
+      "nightText": "Networking Party。料理詳細不明。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-fb70e6b32aad",
