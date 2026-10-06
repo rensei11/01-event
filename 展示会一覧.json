@@ -2992,7 +2992,9 @@
       "name": "ライフスタイルWeek【秋】",
       "url": "https://www.lifestyle-expo.jp/autumn/ja-jp.html",
       "venue": "東京ビッグサイト 南1・2ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "前回は2日目に推し活EXPOのところで軽食付交流会があったらしい。\n以前と同じくフード＆カフェ券1000円分をもらえる。2周すればそれなりのものが喰える\nhttps://prtimes.jp/main/html/rd/p/000000216.000095735.html",
