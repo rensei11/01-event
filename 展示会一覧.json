@@ -2935,11 +2935,13 @@
       "id": "xls-x-6f171988c4d1",
       "date": "2026-10-07",
       "endDate": "2026-10-09",
-      "dateText": "10月7日(水)～9日(金)",
+      "dateText": "10月7日(水)～10月9日(金)",
       "name": "FaW TOKYO秋 ファッションワールド秋 2026",
       "url": "https://www.fashion-tokyo.jp/autumn/ja-jp.html",
       "venue": "東京ビッグサイト 西1-4ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -2953,7 +2955,10 @@
           "2026-10-08",
           "2026-10-09"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-a0061c11d229",
