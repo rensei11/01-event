@@ -2959,11 +2959,13 @@
       "id": "xls-x-a0061c11d229",
       "date": "2026-10-07",
       "endDate": "2026-10-09",
-      "dateText": "10月7日(水)～9日(金)",
+      "dateText": "10月7日(水)～10月9日(金)",
       "name": "H.C.R.2026　第53回国際福祉機器展＆フォーラム",
       "url": "https://hcr.or.jp/",
       "venue": "東京ビッグサイト 東1-3・7・8ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -2977,7 +2979,10 @@
           "2026-10-08",
           "2026-10-09"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-63fa2d3e7f51",
