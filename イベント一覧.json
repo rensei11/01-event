@@ -1204,8 +1204,8 @@
       "sourceExcel": true,
       "planning": {
         "planned": false,
-        "interested": true,
-        "ignored": false
+        "interested": false,
+        "ignored": true
       },
       "endDate": "2026-10-09",
       "_kinds": [
