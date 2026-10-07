@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-06-web",
+  "dataVersion": "2026-10-07-web",
   "year": 2026,
   "events": [
     {
@@ -3089,7 +3089,8 @@
         "interested": false,
         "ignored": false,
         "visitDates": [
-          "2026-10-14"
+          "2026-10-14",
+          "2026-10-15"
         ]
       }
     },
