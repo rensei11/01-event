@@ -3054,11 +3054,13 @@
       "id": "xls-x-84c52cf060aa",
       "date": "2026-10-14",
       "endDate": "2026-10-17",
-      "dateText": "10月14日(水)〜17日(土)",
+      "dateText": "10月14日(水)～10月17日(土)",
       "name": "SCAJ2026",
       "url": "https://scajconference.jp/",
       "venue": "東京ビッグサイト 南1-4ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：本名"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "招待券をどこかで入手しないと入場料は高い / インスタで招待チケットを配布してるコーヒーショップに送料(110円)だけで3枚もらった",
@@ -3072,7 +3074,10 @@
           "2026-10-14",
           "2026-10-15"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-ef921e9748b5",
