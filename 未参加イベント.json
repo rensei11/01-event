@@ -473,6 +473,71 @@
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "nameCodes": []
+    },
+    {
+      "id": "evt-teachers-day-gathering-20261004",
+      "date": "2026-10-04",
+      "endDate": "",
+      "dateText": "",
+      "name": "教師の日ギャザリング2026",
+      "url": "https://teachforjapan.org/32639/",
+      "venue": "大手町プレイス ホール＆カンファレンス 2Fホール",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-blockchain-summit-autumn-afterparty-20261005",
+      "date": "2026-10-05",
+      "endDate": "",
+      "dateText": "10月5日(月)",
+      "name": "Blockchain Summit 2026 Autumn After Party",
+      "url": "https://luma.com/bcs2026autumn-reception",
+      "venue": "大手町サンケイプラザ",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-japan-hungary-biotech-20261005",
+      "date": "2026-10-05",
+      "endDate": "",
+      "dateText": "10月5日(月)",
+      "name": "Japanese-Hungarian Biotech Business Seminar",
+      "url": "https://luma.com/zucrmibk",
+      "venue": "Tokyo Innovation Base 2階",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "xls-g-e5e424627804",
+      "date": "2026-10-06",
+      "endDate": "",
+      "dateText": "10月6日 (火)",
+      "name": "Customer-Led Growth Leaders Summit 2026",
+      "url": "https://www.gainsight.co.jp/clg2026",
+      "venue": "JPタワー ホール＆カンファレンス",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "xls-g-36f7366da2c4",
+      "date": "2026-10-06",
+      "endDate": "",
+      "dateText": "10月6日 (火)",
+      "name": "Pure Accelerate 2026 Tokyo",
+      "url": "https://www.everpuredata.com/jp/accelerate/global/tokyo.html",
+      "venue": "ANAインターコンチネンタルホテル東京",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
     }
   ]
 }
