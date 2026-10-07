@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-03-web",
+  "dataVersion": "2026-10-07-web",
   "year": 2026,
   "events": [
     {
@@ -444,6 +444,19 @@
       "url": "https://japanclimate.org/news-topics/jcas2026/",
       "venue": "国連大学 ウ・タント国際会議場",
       "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-model-hobbyshow-20261002",
+      "date": "2026-10-02",
+      "endDate": "2026-10-04",
+      "dateText": "10月2日(金)～4日(日)",
+      "name": "第64回 全日本模型ホビーショー",
+      "url": "https://hobbyshow.co.jp/info",
+      "venue": "東京ビッグサイト 西3・4ホール",
+      "category": "exhibition",
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "nameCodes": []
