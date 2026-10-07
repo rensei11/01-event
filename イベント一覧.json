@@ -1391,8 +1391,8 @@
       "dateText": "10月15日(木)",
       "planning": {
         "planned": false,
-        "interested": true,
-        "ignored": false
+        "interested": false,
+        "ignored": true
       }
     },
     {
