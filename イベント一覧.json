@@ -1095,7 +1095,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-a09527fe753f",
@@ -1115,7 +1118,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-af4b3b4a0f13",
@@ -1134,7 +1140,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-g-5985e824f941",

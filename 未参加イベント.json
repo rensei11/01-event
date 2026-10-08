@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-07-web",
+  "dataVersion": "2026-10-08-web",
   "year": 2026,
   "events": [
     {
@@ -534,6 +534,45 @@
       "name": "Pure Accelerate 2026 Tokyo",
       "url": "https://www.everpuredata.com/jp/accelerate/global/tokyo.html",
       "venue": "ANAインターコンチネンタルホテル東京",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "xls-g-ada3ade7a85f",
+      "date": "2026-10-07",
+      "endDate": "",
+      "dateText": "10月7日 (水)",
+      "name": "ADVENTUREClusterユーザー会 2026",
+      "url": "https://www.scsk.jp/event/2026/20261007.html",
+      "venue": "東京コンファレンスセンター・品川",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-a09527fe753f",
+      "date": "2026-10-07",
+      "endDate": "",
+      "dateText": "",
+      "name": "Cirium 2026 Tokyo Market Briefing",
+      "url": "https://www.cirium.com/jp/2026-tokyo-market-briefing-interest/",
+      "venue": "東京ミッドタウン八重洲カンファレンス",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-af4b3b4a0f13",
+      "date": "2026-10-07",
+      "endDate": "",
+      "dateText": "",
+      "name": "o9 Connect Japan 2026",
+      "url": "https://o9solutions.com/ja/events/o9-connect-japan-2026",
+      "venue": "日本橋三井ホール",
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],
