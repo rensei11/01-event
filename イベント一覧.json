@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-07-web",
+  "dataVersion": "2026-10-08-web",
   "year": 2026,
   "events": [
     {
@@ -2254,7 +2254,12 @@
       "nightTime": "16:30～17:30",
       "nightText": "ネットワーキング。17時以降は30分。料理・ドリンクの記載は現時点で未確認。",
       "dateText": "12月16日(水)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     }
   ]
 }
