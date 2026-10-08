@@ -2248,9 +2248,10 @@
       "venue": "グランド ハイアット 東京",
       "conditionLines": [
         "参加費無料",
-        "登録開始前・通知受付中"
+        "登録開始前・通知受付中",
+        "名前コード：久保 直輝"
       ],
-      "rating": "A-※。グランド ハイアット会場は強い。Networkingは1時間あるが、飲食内容は未確認。",
+      "rating": "A-",
       "nightTime": "16:30～17:30",
       "nightText": "ネットワーキング。17時以降は30分。料理・ドリンクの記載は現時点で未確認。",
       "dateText": "12月16日(水)",
@@ -2259,7 +2260,11 @@
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-12-16",
+      "_kinds": [
+        "gathering"
+      ]
     }
   ]
 }
