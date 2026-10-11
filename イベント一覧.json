@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-08-web",
+  "dataVersion": "2026-10-11-web",
   "year": 2026,
   "events": [
     {
@@ -1714,16 +1714,22 @@
       "venue": "グランドプリンスホテル新高輪",
       "conditionLines": [
         "無料・事前登録",
-        "大型イベント"
+        "大型イベント",
+        "ibentoyou1%V"
       ],
-      "rating": "A。ホテル会場＋90分Reception。軽食中心・大型ゆえ混雑は注意。",
+      "rating": "A",
       "nightTime": "16:10～17:40",
       "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。11:30～13:00にはランチもあり。17:40～18:40は持田香織スペシャルライブ。",
       "planning": {
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "endDate": "2026-10-27",
+      "dateText": "10月27日(火)",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-growth-dx-marketing-20261027",
