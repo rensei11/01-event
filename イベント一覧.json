@@ -1777,16 +1777,22 @@
       "venue": "グランドプリンスホテル新高輪",
       "conditionLines": [
         "無料・事前登録",
-        "大型イベント"
+        "大型イベント",
+        "名前コード：久保 直輝"
       ],
-      "rating": "A-。ホテル会場でReceptionあり。Day 1より1時間と短い。",
+      "rating": "A-",
       "nightTime": "17:30～18:30",
       "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。9:00～10:00のモーニングセッション参加者には軽食、11:30～13:00にはランチもあり。",
       "planning": {
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "endDate": "2026-10-28",
+      "dateText": "10月28日(水)",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-transcosmos-bpo-20261028",
