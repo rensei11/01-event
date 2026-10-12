@@ -3867,6 +3867,27 @@
       "sourceExcel": true
     },
     {
+      "id": "evt-energy-innovation-20261216-13ex",
+      "date": "2026-12-16",
+      "endDate": "2026-12-18",
+      "dateText": "12月16日(水)～18日(金)",
+      "name": "エネルギーイノベーション総合展（13展）",
+      "url": "https://www.low-cf.jp/east/outline.html",
+      "venue": "東京ビッグサイト 西・南展示棟／会議棟（各展のホール位置は要確認）",
+      "conditionLines": [
+        "10:00～17:00",
+        "構成展：ENEX2027、再生可能エネルギー世界展示会、Offshore Tech Japan、InterAqua",
+        "nano techなど全13展示会を同時開催",
+        "ENEX2027は事前登録で入場無料（会場公式）"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "xls-x-40cab0290aa7",
       "date": "2026-12-24",
       "endDate": "2026-12-25",
