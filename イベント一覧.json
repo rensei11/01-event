@@ -1168,7 +1168,13 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-g-5985e824f941"
     },
     {
       "id": "xls-g-2d9f335fafdf",
@@ -1178,9 +1184,7 @@
       "name": "GitLab Epic Tour Japan 2026",
       "url": "https://www.bs-event.jp/gitlab-epic-tour-japan-2026/?r=yoshise",
       "venue": "TODA HALL & CONFERENCE TOKYO　4階",
-      "conditionLines": [
-        "名前コード：久保 直輝"
-      ],
+      "conditionLines": [],
       "rating": "",
       "nightTime": "18:00～19:30",
       "nightText": "懇親会。懇親会は抽選制で落選したので夜に用はない。ノベルティ目的のみ。\n本メールを受信された方には、早期申込特典をご用意しております。\n9月9日までの早期申込特典は現地先着順、Tシャツなどのノベルティグッズの中からお一人様おひとつお選びいただけます。\n各ノベルティは数に限りがあり、なくなり次第終了となります。\nお渡しはご来場の先着順となりますので、ぜひお早めにご来場くださいませ。",
@@ -1193,7 +1197,10 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-8d2f0708c2df",
@@ -1219,7 +1226,10 @@
       "endDate": "2026-10-09",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-00aa9ce95f7a",
@@ -1228,8 +1238,7 @@
       "url": "https://carbon-recycling2026.nedo.go.jp/",
       "venue": "ウェスティンホテル東京",
       "conditionLines": [
-        "無料・一般登録可",
-        "名前コード：久保 直輝"
+        "無料・一般登録可"
       ],
       "rating": "A。無料でホテルReceptionに参加でき、Rikkei不成立時の強い代替候補。",
       "nightTime": "18:20～19:30",
@@ -1244,7 +1253,10 @@
       "endDate": "2026-10-09",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-2996f14a8c77",

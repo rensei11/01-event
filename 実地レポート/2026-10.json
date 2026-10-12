@@ -1,0 +1,96 @@
+{
+  "year": 2026,
+  "month": 10,
+  "reports": [
+    {
+      "id": "rep-web-xls-x-6f171988c4d1",
+      "date": "2026-10-08",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "dateText": "10/08",
+      "scheduledDate": "2026-10-07",
+      "scheduledEndDate": "2026-10-09",
+      "scheduledDateText": "10月7日(水)～10月9日(金)",
+      "name": "FaW TOKYO秋 ファッションワールド秋 2026",
+      "url": "https://www.fashion-tokyo.jp/autumn/ja-jp.html",
+      "venue": "東京ビッグサイト 西1-4ホール",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "アジアのファッション系のバイヤー用展示。サンプルなどを得るところも無くいく意味はほぼない。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-xls-x-a0061c11d229",
+      "date": "2026-10-08",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "dateText": "10/08",
+      "scheduledDate": "2026-10-07",
+      "scheduledEndDate": "2026-10-09",
+      "scheduledDateText": "10月7日(水)～10月9日(金)",
+      "name": "H.C.R.2026　第53回国際福祉機器展＆フォーラム",
+      "url": "https://hcr.or.jp/",
+      "venue": "東京ビッグサイト 東1-3・7・8ホール",
+      "rating": "E",
+      "category": "exhibition",
+      "report": "福祉系イベントの最高峰で一般も参加可能なので多くの車椅子客が多く通路も人で狭い。規模に反してほぼ得るものはなく、タイマーストップで中水筒、あとは柄付き軍手とグミ程度しか覚えてない。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-xls-g-5985e824f941",
+      "date": "2026-10-08",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "dateText": "10/08",
+      "scheduledDate": "2026-10-08",
+      "scheduledEndDate": "2026-10-08",
+      "scheduledDateText": "10月8日(木)",
+      "name": "HR FUTURE CONFERENCE 2026 秋 in 東京",
+      "url": "https://event-page.jp/hrfc",
+      "venue": "虎ノ門ヒルズフォーラム5階",
+      "rating": "F",
+      "category": "gathering",
+      "report": "登録1000円、参加1000円、紹介3000円のQUOPAYという破格の条件を提示していたイベント。そのため16垢用意。朝10時前に虎ノ門ヒルズフォーラムにわざわざ出向いたが受付で長蛇の列。しかしその後衝撃の事実が発覚、なんと当日にすべてのアカウントを削除されており印刷したQRを読み込んでも登録されていないと言われてしまった。前日登録分も削除されており、相当厳しくAIで精査されていたということ。今後を憂いながらビックサイトへBRTで向かった。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-xls-x-63fa2d3e7f51",
+      "date": "2026-10-08",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "dateText": "10/08",
+      "scheduledDate": "2026-10-07",
+      "scheduledEndDate": "2026-10-09",
+      "scheduledDateText": "10月7日(水)～10月9日(金)",
+      "name": "ライフスタイルWeek【秋】",
+      "url": "https://www.lifestyle-expo.jp/autumn/ja-jp.html",
+      "venue": "東京ビッグサイト 南1・2ホール",
+      "rating": "E",
+      "category": "exhibition",
+      "report": "ホールの2/3が推し活EXPOスペース。残りは中華系のブース。\n行った中では比較的見るものはあったがほとんど何も得ていない。\nこの日のRX主催3展すべてにそれぞれ1000円分のランチ券を得る方法があったため乱獲してフードトラックで食いまくっただけだった。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-xls-x-fbdc81131a2d",
+      "date": "2026-10-08",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "dateText": "10/08",
+      "scheduledDate": "2026-10-07",
+      "scheduledEndDate": "2026-10-09",
+      "scheduledDateText": "10月7日(水)～10月9日(金)",
+      "name": "第28回 マーケティングWeek-秋-",
+      "url": "https://www.marketing-week.jp/autumn/ja-jp.html",
+      "venue": "東京ビッグサイト 南3・4ホール",
+      "rating": "E",
+      "category": "exhibition",
+      "report": "いつものしつこい勧誘系だが釣るためのお菓子などがしょぼいところばかり。水すらもらうのに苦労した。",
+      "source": "終了処理"
+    }
+  ]
+}

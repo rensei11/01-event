@@ -2961,7 +2961,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-6f171988c4d1"
     },
     {
       "id": "xls-x-a0061c11d229",
@@ -2990,7 +2996,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-a0061c11d229"
     },
     {
       "id": "xls-x-63fa2d3e7f51",
@@ -3019,7 +3031,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-63fa2d3e7f51"
     },
     {
       "id": "xls-x-fbdc81131a2d",
@@ -3048,7 +3066,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-08"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-fbdc81131a2d"
     },
     {
       "id": "xls-x-84c52cf060aa",

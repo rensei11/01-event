@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-08-web",
+  "dataVersion": "2026-10-12-web",
   "year": 2026,
   "events": [
     {
@@ -573,6 +573,45 @@
       "name": "o9 Connect Japan 2026",
       "url": "https://o9solutions.com/ja/events/o9-connect-japan-2026",
       "venue": "日本橋三井ホール",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "xls-g-2d9f335fafdf",
+      "date": "2026-10-09",
+      "endDate": "2026-10-09",
+      "dateText": "10月9日(金)",
+      "name": "GitLab Epic Tour Japan 2026",
+      "url": "https://www.bs-event.jp/gitlab-epic-tour-japan-2026/?r=yoshise",
+      "venue": "TODA HALL & CONFERENCE TOKYO　4階",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-8d2f0708c2df",
+      "date": "2026-10-09",
+      "endDate": "2026-10-09",
+      "dateText": "10月9日(金)",
+      "name": "Rikkei Global Summit 2026",
+      "url": "https://globalsummit.rikkeisoft.com/",
+      "venue": "ヒルトン東京お台場",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-00aa9ce95f7a",
+      "date": "2026-10-09",
+      "endDate": "2026-10-09",
+      "dateText": "10月9日(金)",
+      "name": "第8回カーボンリサイクル産学官国際会議2026",
+      "url": "https://carbon-recycling2026.nedo.go.jp/",
+      "venue": "ウェスティンホテル東京",
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],
