@@ -3897,7 +3897,13 @@
       "nightTime": "",
       "nightText": "",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-40cab0290aa7",
