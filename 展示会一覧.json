@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-11-web",
+  "dataVersion": "2026-10-12-web",
   "year": 2026,
   "events": [
     {
@@ -3142,11 +3142,13 @@
       "id": "xls-x-c1eb9b51653e",
       "date": "2026-10-14",
       "endDate": "2026-10-16",
-      "dateText": "10月14日(水)〜16日(金)",
+      "dateText": "10月14日(水)～10月16日(金)",
       "name": "食品開発展2026",
       "url": "https://hijapan.info/",
       "venue": "東京ビッグサイト 西1,2,4ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "去年は本当に大したことなかった",
@@ -3160,7 +3162,10 @@
           "2026-10-14",
           "2026-10-15"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-69f2ba8f0148",
@@ -3852,21 +3857,6 @@
       }
     },
     {
-      "id": "xls-x-03eec2719c05",
-      "date": "2026-12-16",
-      "endDate": "2026-12-18",
-      "dateText": "12月16日(水)～18日(金)",
-      "name": "東京ケアウィーク’26",
-      "url": "http://careweek.jp/",
-      "venue": "東京ビッグサイト 東1-3ホール",
-      "conditionLines": [],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "",
-      "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
-    },
-    {
       "id": "evt-energy-innovation-20261216-13ex",
       "date": "2026-12-16",
       "endDate": "2026-12-18",
@@ -3886,6 +3876,21 @@
       "_kinds": [
         "exhibition"
       ]
+    },
+    {
+      "id": "xls-x-03eec2719c05",
+      "date": "2026-12-16",
+      "endDate": "2026-12-18",
+      "dateText": "12月16日(水)～18日(金)",
+      "name": "東京ケアウィーク’26",
+      "url": "http://careweek.jp/",
+      "venue": "東京ビッグサイト 東1-3ホール",
+      "conditionLines": [],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "source": "2026年 企業展示会簡易レポ.xlsx",
+      "sourceExcel": true
     },
     {
       "id": "xls-x-40cab0290aa7",
