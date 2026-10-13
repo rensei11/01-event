@@ -20,13 +20,14 @@
 ## 現在の版
 
 - 本番 `index.html`：**v0.37**
-- 確認用 `確認用.html`：**UI試作44（改行表示修正、未本番反映）**
+- 確認用 `確認用.html`：**本番v0.37基準・改行表示修正あり（未本番反映）**
 - 公開URL：`https://rensei11.github.io/01-event/`
 - 今後のUI改修対象は原則 `確認用.html`
 - 本番 `index.html` はユーザーが明示した場合だけ変更
 - 詳細な履歴・ロールバック先は `バージョン履歴.md` を正本とする
+- 確認用の新しい「UI試作○○」は採番しない。画面にも試作番号を表示せず、本番版・未反映内容・Gitコミットで区別する。過去番号は履歴上の呼称に限る。
 
-## UI試作44で変更（2026-10-13、未本番反映）
+## 改行・空行の表示修正（2026-10-13、未本番反映）
 
 - 「評価／内容」列の `nightText` はGitHub JSONに改行・空行が保存されているのに、表示がHTML既定の `white-space: normal` で潰れていた。
 - `確認用.html` の内容表示に `.event-detail-text{white-space:pre-wrap;overflow-wrap:anywhere}` を適用し、改行・空行を再現する。旧自由記述事前評価の理由 `.pre-reason` も同様。
@@ -40,7 +41,7 @@
 - 原因は `確認用.html` の通常一覧 `row()` にて `<div>` 内へ `esc([e.nightTime,e.nightText].filter(Boolean).join('　'))` を出し、CSS `white-space:normal` のまま改行が折り畳まれること。実地レポート用 `.report{white-space:pre-wrap}` はあっても「評価／内容」の `nightText` には効いていなかった。
 
 ### 2026-10-13 現在の実作業進捗（事実）
-- **GitHub current mainの `確認用.html` にはUI試作44の修正がすでに存在する。** `.event-detail-text{white-space:pre-wrap;overflow-wrap:anywhere}` を追加、`row()` の通常表示（旧1170行近辺）および編集中（旧1163行近辺）の `nightText` 包装 `<div class="event-detail-text">...` に適用。旧事前評価の理由 `.pre-reason` にも `white-space:pre-wrap` を追加。
+- **GitHub current mainの `確認用.html` には2026-10-13の改行表示修正がすでに存在する。** `.event-detail-text{white-space:pre-wrap;overflow-wrap:anywhere}` を追加、`row()` の通常表示（旧1170行近辺）および編集中（旧1163行近辺）の `nightText` 包装 `<div class="event-detail-text">...` に適用。旧事前評価の理由 `.pre-reason` にも `white-space:pre-wrap` を追加。
 - 本番 `index.html` は **v0.37のまま**。本番反映はユーザーの明示許可が必要。
 - `展示会一覧.json`、実地レポート、Workerの保存仕様はこのUI修正目的では変更していない（ユーザー本人の入力内容を消したり書き直したりしない）。
 - **公開URLの実ページ表示の確認は未完了。UI修正コードの存在、局所的なブラウザ再現テスト、公開ページ全体の実動作は区別する。**
@@ -50,7 +51,7 @@
 - 本件は長さ上限によって次チャットへ移行。**未完了なのは実画面表示の再検証と、必要なら確認用のみの追加修正**。本番採用も未実施。
 
 ### 次チャットですぐに行うこと
-1. 中核ルール → `引き継ぎ.md` → 本書 → `現在状況.md` → `現在の仕様.md` → `バージョン履歴.md` → `確認用.html` の対象付近を読み、GitHub current mainがUI試作44であることを確認。
+1. 中核ルール → `引き継ぎ.md` → 本書 → `現在状況.md` → `現在の仕様.md` → `バージョン履歴.md` → `確認用.html` の対象付近を読み、GitHub current mainで改行表示修正の存在を確認。
 2. `確認用.html` で、`イプロスAI 2027 冬` の特典①と②の間の**空行**および各文の**改行**が出るか検証する（データに改行文字9個）。「すべて／今後／参加予定」など、`row()` を使う表示経路と編集中も対象。通常レポート／終了処理が退行していないかも確認。
 3. ブラウザの実表示が失敗していれば、実際の原因を調べて **`確認用.html` だけ**必要最小限修正。試験未実施なら「未検証」と明記。ブラウザ側確認ができない状況を完了と称さない。
 4. ユーザーの明示指示がない限り `index.html` へ反映しない。テスト完了後も必要な差分と現状を短く報告。
