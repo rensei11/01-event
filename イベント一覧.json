@@ -2198,9 +2198,10 @@
       "venue": "ザ・プリンス パークタワー東京 B2 コンベンションホール",
       "conditionLines": [
         "無料・事前登録制",
-        "法人対象／多数時抽選の場合あり"
+        "法人対象／多数時抽選の場合あり",
+        "名前コード：久保 直輝"
       ],
-      "rating": "B+※。ホテル会場・1時間懇親会に加え、藤巻百貨店ギフトカタログ特典あり。",
+      "rating": "B+",
       "nightTime": "17:30～18:30",
       "nightText": "懇親会。来場特典として「藤巻百貨店」のギフトカタログほかを用意。料理詳細は未確認。",
       "dateText": "11月26日(木)",
@@ -2209,7 +2210,11 @@
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "endDate": "2026-11-26",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-databricks-worldtour-20261127",
