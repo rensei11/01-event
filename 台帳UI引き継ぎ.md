@@ -20,11 +20,17 @@
 ## 現在の版
 
 - 本番 `index.html`：**v0.37**
-- 確認用 `確認用.html`：**UI試作43（本番v0.37へ採用済み）**
+- 確認用 `確認用.html`：**UI試作44（改行表示修正、未本番反映）**
 - 公開URL：`https://rensei11.github.io/01-event/`
 - 今後のUI改修対象は原則 `確認用.html`
 - 本番 `index.html` はユーザーが明示した場合だけ変更
 - 詳細な履歴・ロールバック先は `バージョン履歴.md` を正本とする
+
+## UI試作44で変更（2026-10-13、未本番反映）
+
+- 「評価／内容」列の `nightText` はGitHub JSONに改行・空行が保存されているのに、表示がHTML既定の `white-space: normal` で潰れていた。
+- `確認用.html` の内容表示に `.event-detail-text{white-space:pre-wrap;overflow-wrap:anywhere}` を適用し、改行・空行を再現する。旧自由記述事前評価の理由 `.pre-reason` も同様。
+- 保存形式・GitHub Worker・実地レポート表示・イベントJSONは変更しない。本番 `index.html` はv0.37のまま。
 
 ## 本番v0.34 / UI試作38で確定した保存方式
 
