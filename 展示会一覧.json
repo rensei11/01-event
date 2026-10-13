@@ -4056,7 +4056,9 @@
         "planned": true,
         "interested": false,
         "ignored": false,
-        "visitDates": []
+        "visitDates": [
+          "2027-01-27"
+        ]
       }
     }
   ]
