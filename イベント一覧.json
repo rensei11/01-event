@@ -2207,8 +2207,8 @@
       "dateText": "11月26日(木)",
       "sourceExcel": true,
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false
       },
       "endDate": "2026-11-26",
