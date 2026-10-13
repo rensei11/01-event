@@ -3638,6 +3638,25 @@
       }
     },
     {
+      "id": "evt-2026-mfg-six-expos-1118",
+      "date": "2026-11-18",
+      "endDate": "2026-11-20",
+      "dateText": "11月18日(水)～20日(金)",
+      "name": "製造技術系6展合同（スマートファクトリーJapan・洗浄総合展など）",
+      "url": "https://biz.nikkan.co.jp/eve/smart-factory/overview.html",
+      "venue": "東京ビッグサイト 東1～3ホール",
+      "conditionLines": [
+        "事前登録無料（通常1,000円）",
+        "同時開催：スマートファクトリーJapan、洗浄総合展、VACUUM真空展、先端材料技術展、高精度・難加工技術展、表面改質展。相互入場可能"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "xls-x-501a42f3ddd3",
       "date": "2026-11-18",
       "endDate": "2026-11-20",
@@ -3658,25 +3677,6 @@
       }
     },
     {
-      "id": "evt-2026-mfg-six-expos-1118",
-      "date": "2026-11-18",
-      "endDate": "2026-11-20",
-      "dateText": "11月18日(水)～20日(金)",
-      "name": "製造技術系6展合同（スマートファクトリーJapan・洗浄総合展など）",
-      "url": "https://biz.nikkan.co.jp/eve/smart-factory/overview.html",
-      "venue": "東京ビッグサイト 東1～3ホール",
-      "conditionLines": [
-        "事前登録無料（通常1,000円）",
-        "同時開催：スマートファクトリーJapan、洗浄総合展、VACUUM真空展、先端材料技術展、高精度・難加工技術展、表面改質展。相互入場可能"
-      ],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "",
-      "_kinds": [
-        "exhibition"
-      ]
-    },
-    {
       "id": "xls-x-0ba291f4db9b",
       "date": "2026-11-25",
       "endDate": "2026-11-27",
@@ -3684,27 +3684,6 @@
       "name": "POWTEX®2026 第46回国際粉体工業展",
       "url": "https://powtex.com/tokyo/",
       "venue": "東京ビッグサイト 東1-3ホール",
-      "conditionLines": [],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "",
-      "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true,
-      "planning": {
-        "planned": false,
-        "interested": true,
-        "ignored": false,
-        "visitDates": []
-      }
-    },
-    {
-      "id": "xls-x-5febc8bdbd03",
-      "date": "2026-11-25",
-      "endDate": "2026-11-27",
-      "dateText": "11月25日(水)～27日(金)",
-      "name": "レジャー＆アウトドアジャパン2026",
-      "url": "https://leisure-japan.jp/",
-      "venue": "東京ビッグサイト 東7,8ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3736,6 +3715,27 @@
       "_kinds": [
         "exhibition"
       ]
+    },
+    {
+      "id": "xls-x-5febc8bdbd03",
+      "date": "2026-11-25",
+      "endDate": "2026-11-27",
+      "dateText": "11月25日(水)～27日(金)",
+      "name": "レジャー＆アウトドアジャパン2026",
+      "url": "https://leisure-japan.jp/",
+      "venue": "東京ビッグサイト 東7,8ホール",
+      "conditionLines": [],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "source": "2026年 企業展示会簡易レポ.xlsx",
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "evt-2026-chemical-material-japan-1126",
@@ -4037,19 +4037,18 @@
       "id": "evt-iprosai-2027-winter-0127",
       "date": "2027-01-27",
       "endDate": "2027-01-29",
-      "dateText": "1月27日(水)～29日(金)",
+      "dateText": "1月27日(水)～1月29日(金)",
       "name": "イプロスAI 2027 冬",
       "url": "https://ex.ipros.jp/expo/iprosai-2027-01/benefits/",
       "venue": "有明GYM-EX（東京都江東区有明3-11-1）",
       "conditionLines": [
-        "【最重要：来場特典】イベント名リンクは主催者の特典ページ。具体的な特典内容・金額・適用条件は本文未取得のため未確認。",
-        "10:00～17:00／入場無料（事前登録制。来場受付開始時期は未確認）",
-        "AI/DX 経営課題の解決展、AI/DX 営業・マーケティング展／次世代VR・XR、フィジカルAI・ロボット、AI活用デビューの3特別企画ゾーン",
+        "【最重要：来場特典】",
+        "10:00～17:00／入場無料（事前登録制）",
         "来場予定者数10,000人（主催者見込み）"
       ],
       "rating": "",
       "nightTime": "",
-      "nightText": "セミナー・交流会の併設予定あり。交流会の時間、入場条件、飲食提供は未確認。",
+      "nightText": "【①10/13～11/12限定！｜早期来場予約でアマギフ2,000円分進呈】\n★来場登録時、プロモーションコード欄に「IP27W」を記入いただき、\n当日来場いただいた方に【2,000円分のAmazonギフトカード】をプレゼント。\n\n【②お知り合いを1人紹介いただくごとにアマギフ1,000円分進呈】\n★まずはあなたが来場登録をした後、\n「招待したいお知り合いの方」に来場登録をいただく際、\n「招待コード」欄に、「あなたのメールアドレス」を書いてもらうだけでOK！\n来場後、双方に【1,000円分のAmazonギフトカード】をプレゼント。\n2人で2,000円、3人で3,000円、誘った人数に応じて特典がアップします",
       "_kinds": [
         "exhibition"
       ]
