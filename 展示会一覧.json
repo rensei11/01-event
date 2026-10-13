@@ -3644,7 +3644,7 @@
       "dateText": "11月18日(水)～20日(金)",
       "name": "第11回 ドリンク ジャパン（飲料 液状食品 開発・製造展）",
       "url": "https://www.drinkjapan.jp/",
-      "venue": "東京ビッグサイト",
+      "venue": "東京ビッグサイト 東7・8ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
@@ -3656,6 +3656,25 @@
         "interested": true,
         "ignored": false
       }
+    },
+    {
+      "id": "evt-2026-mfg-six-expos-1118",
+      "date": "2026-11-18",
+      "endDate": "2026-11-20",
+      "dateText": "11月18日(水)～20日(金)",
+      "name": "製造技術系6展合同（スマートファクトリーJapan・洗浄総合展など）",
+      "url": "https://biz.nikkan.co.jp/eve/smart-factory/overview.html",
+      "venue": "東京ビッグサイト 東1～3ホール",
+      "conditionLines": [
+        "事前登録無料（通常1,000円）",
+        "同時開催：スマートファクトリーJapan、洗浄総合展、VACUUM真空展、先端材料技術展、高精度・難加工技術展、表面改質展。相互入場可能"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-0ba291f4db9b",
@@ -3698,6 +3717,63 @@
         "ignored": false,
         "visitDates": []
       }
+    },
+    {
+      "id": "evt-2026-business-chance-expo-1125",
+      "date": "2026-11-25",
+      "endDate": "2026-11-26",
+      "dateText": "11月25日(水)～26日(木)",
+      "name": "ビジネスチャンスEXPO in TOKYO",
+      "url": "https://bizchanexpo.tokyo/outline/",
+      "venue": "東京ビッグサイト 南3・4ホール",
+      "conditionLines": [
+        "入場無料（来場登録制）",
+        "ものづくり・フード・サービス／DXのBtoB展示・商談会"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
+      "id": "evt-2026-chemical-material-japan-1126",
+      "date": "2026-11-26",
+      "endDate": "2026-11-27",
+      "dateText": "11月26日(木)～27日(金)",
+      "name": "ケミカルマテリアルJapan2026",
+      "url": "https://www.chemmate.jp/info",
+      "venue": "東京ビッグサイト 南1・2ホール",
+      "conditionLines": [
+        "無料（来場事前登録制）",
+        "併設：先端化学材料・素材総合展、化学物質管理ミーティング、プロセス産業DX展、産業安全フォーラム"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
+      "id": "evt-2026-highway-tech-fair-1126",
+      "date": "2026-11-26",
+      "endDate": "2026-11-27",
+      "dateText": "11月26日(木)～27日(金)",
+      "name": "ハイウェイテクノフェア2026",
+      "url": "https://www.express-highway.or.jp/hwtf/htf2026/",
+      "venue": "東京ビッグサイト 西1・2ホール",
+      "conditionLines": [
+        "入場無料（事前登録・入場受付証が必要）",
+        "高速道路関連の新技術・新工法、資機材、現場支援システム等（出展387者予定）"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-a1563d1915b4",
