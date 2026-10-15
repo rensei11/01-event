@@ -1344,7 +1344,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-f773abc21d4c",

@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-12-web",
+  "dataVersion": "2026-10-15-web",
   "year": 2026,
   "events": [
     {
@@ -612,6 +612,19 @@
       "name": "第8回カーボンリサイクル産学官国際会議2026",
       "url": "https://carbon-recycling2026.nedo.go.jp/",
       "venue": "ウェスティンホテル東京",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-783b62702f22",
+      "date": "2026-10-14",
+      "endDate": "",
+      "dateText": "",
+      "name": "UK as a Gateway to Global Development",
+      "url": "https://prtimes.jp/main/html/rd/p/000000002.000161163.html",
+      "venue": "駐日英国大使公邸",
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],
