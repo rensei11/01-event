@@ -1305,7 +1305,13 @@
       "endDate": "2026-10-14",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-14"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-7f91ed050c06"
     },
     {
       "id": "xls-g-4d0a5b89f507",
@@ -1325,7 +1331,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-783b62702f22",
