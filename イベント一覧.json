@@ -1457,7 +1457,12 @@
       ],
       "rating": "B。無料で90分の懇親会。五反田で使いやすいが、料理・酒の内容は未確認。",
       "nightTime": "18:00～19:30",
-      "nightText": "懇親会。来場者・講演者・NTTデータ数理システムメンバーの交流。飲食内容は未確認。"
+      "nightText": "懇親会。来場者・講演者・NTTデータ数理システムメンバーの交流。飲食内容は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "name": "SUSS Japan Seminar 2026",
