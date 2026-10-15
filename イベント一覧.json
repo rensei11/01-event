@@ -1386,8 +1386,7 @@
       "conditionLines": [
         "無料・事前申込",
         "過去1,000名超実績",
-        "公式FAQ：イベント来場者はNetworking Partyへ自由参加可",
-        "名前コード：久保 直輝"
+        "公式FAQ：イベント来場者はNetworking Partyへ自由参加可"
       ],
       "rating": "A+",
       "nightTime": "18:00～19:30",
@@ -1395,9 +1394,9 @@
       "dateText": "10月15日(木)",
       "sourceExcel": true,
       "planning": {
-        "planned": true,
+        "planned": false,
         "interested": false,
-        "ignored": false
+        "ignored": true
       },
       "endDate": "2026-10-15",
       "_kinds": [
