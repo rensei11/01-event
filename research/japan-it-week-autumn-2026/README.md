@@ -1,21 +1,27 @@
 # Japan IT Week 秋2026：出展者全件CSV
 
-**全件CSV未完成。** Codexによる616カードのブラウザー内取得と、実在する1社の成功ブランチへのGitHub API書込みは確認済み。ブラウザーの値を外へ渡す部分が未解決。
+現在：**出展者616カードは前回Codexブラウザー内で確認。全件CSVは未完成。**
+2026-10-16 のattempt-03では、作業ブランチ `codex-jitw-autumn-2026-data` に実在する1社分の `write-path-check.csv` をGitHub Contents APIで保存・読み戻し成功（commit `0b472aa4404ae34176c831adcf155dbf8cdd2fa1`）。GitHub書込みは成立する。ブラウザーの取得データを外部ファイルへ移す手段が未成立。
 
-## 作業指示の正本
-[GitHub Issue #1：A→Bの異なる転送方法を連続実行](https://github.com/rensei11/01-event/issues/1)
+**正本の実行指示**：[Issue #1 — Microsoft/Playwright/Node.js/GitHub公式のファイル出力・保存手順](https://github.com/rensei11/01-event/issues/1)
 
-- 公式一覧：https://www.japan-it.jp/autumn/ja-jp/search/2026a07/directory.html
-- 成果物専用：`codex-jitw-autumn-2026-data`
-- 失敗記録専用：`record-jitw-autumn-2026-failures`
-- 1社分のGitHub保存成功：`write-path-check.csv`（commit `0b472aa4404ae34176c831adcf155dbf8cdd2fa1`）
-- 過去の616カード、ユニーク609 URL、重複7件はattempt-03の観測値。最新一覧は変動し得る。
+## 公式に確認した解決経路
+1. Microsoft Playwright MCPの `browser_evaluate` に備わる `filename` 引数で、ブラウザーの評価結果をファイルへ直接保存する（**そのツールが現在のCodexで実際に使える場合のみ**）。
+2. 使えなければPlaywrightの `page.evaluate()` でページ内の値を同じPlaywright側のNode.jsプログラムに返し、Node.jsの `fs.writeFile()` で保存する。
+3. 上記が現行環境で利用できない場合は、Web標準のBlobファイル生成とPlaywrightの `download.saveAs()` を使えるか最小確認。
 
-**最終成果物**：`exhibitors_raw.csv`（全件掲載順）、`exhibitors_sorted.csv`（全件小間番号自然順）、`RESULT.md`（件数・検証）。**先頭100件や企業別ノベルティ調査はCodexの仕事ではない**。
+数の多さが失敗原因とは確認されていない。**手動で数百件をAI回答・Windowsクリップボード経由で転送する方式を既定にしない。** 新しいパッケージやMCPの無断追加、認証回避、危険なコード実行はしない。
 
-## 具体的な次工程
-1. A：ブラウザー実データ2～5行を**ツール出力テキスト**として取り出し、GitHub APIへ渡す。可能なら小分けで続けて全件を保存する。
-2. **Aが通らなければBへ**：ブラウザー／Nodeの許可されたファイル書込み、または標準ダウンロードからCodexが読めるファイルを作れるか最小実証。可能なら一括の全件CSVを保存する。
-3. どちらも失敗なら、失敗記録だけでなく、通った操作、保存できた実データ、環境境界、未検証の次経路を明記。通常ChatGPTが次の経路を判断する。
+## 最終成果物（全件のみ）
+- `exhibitors_raw.csv` — 公式カード掲載順の**全件**
+- `exhibitors_sorted.csv` — **全件の小間番号自然順**
+- `RESULT.md` — 実数・重複・欠落・並び替えの検証
 
-データ量が多いことが失敗原因だと断定しない。GmailOTP、台帳JSON、本番main、index.html、確認用.htmlを変更しない。
+先頭100件の派生ファイルやノベルティ調査は今回作成しない。成功成果物は `codex-jitw-autumn-2026-data` の `research/japan-it-week-autumn-2026/` に限定する。失敗記録は別の `record-jitw-autumn-2026-failures` に新規作成し、本番main・台帳・UIは変更禁止。
+
+## 公式資料
+- Microsoft Playwright MCP README: https://github.com/microsoft/playwright-mcp
+- Playwright evaluate: https://playwright.dev/docs/evaluating
+- Node.js ファイル操作: https://nodejs.org/api/fs.html
+- Playwright download: https://playwright.dev/docs/downloads
+- GitHub Contents API（日本語）: https://docs.github.com/ja/rest/repos/contents
