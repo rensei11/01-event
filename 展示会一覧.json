@@ -3101,7 +3101,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-14"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-84c52cf060aa"
     },
     {
       "id": "xls-x-ef921e9748b5",
@@ -3130,7 +3136,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-14"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-ef921e9748b5"
     },
     {
       "id": "evt-label-forum-japan-20261014",
@@ -3161,7 +3173,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-14"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-label-forum-japan-20261014"
     },
     {
       "id": "xls-x-c1eb9b51653e",
@@ -3216,7 +3234,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-5ddc3414f403",
