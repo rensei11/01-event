@@ -613,6 +613,8 @@ function needsEndProcessing(e){
   if(!e||String(e.id||'').startsWith('draft-new-'))return false;
   const o=officialEvent(e);
   if(!isEndProcessAvailable(o))return false;
+  const saved=endBackups[e.id];
+  if(saved&&endDraftReady(saved)&&!endDraftMatchesGitHub(o,saved))return false;
   if(!o.attendanceStatus)return true;
   if(o.attendanceStatus==='attended'){
     if(!actualDates(o).length)return true;
