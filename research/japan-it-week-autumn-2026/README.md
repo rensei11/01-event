@@ -1,21 +1,22 @@
-# Japan IT Week 秋2026：公式出展者名簿（全件取得・全件小間番号順）
+# Japan IT Week 秋2026：公式出展者名簿・全件小間番号順CSV化
 
-**現在：出展者名簿のCSVは未取得。** このブランチは本番台帳から分離した作業領域。
+**状態：Codexによるブラウザー内616カード収集と、成功成果物ブランチへの1社分の書込みは実証済み。全件CSVは未作成。**
 
-- 指示書の唯一の正本：[GitHub Issue #1](https://github.com/rensei11/01-event/issues/1)
-- 公式検索元：https://www.japan-it.jp/autumn/ja-jp/search/2026a07/directory.html
-- 成功候補のブランチ：`codex-jitw-autumn-2026-data`
-- 本番mainの保護基準SHA：`34ebd7d8e13b6ee7035ad0dbb70efd1b43220dc4`
+- **現在の作業指示の唯一の正本：[GitHub Issue #1](https://github.com/rensei11/01-event/issues/1)**（attempt-03を踏まえたデータ小分け転送方式）
+- 公式一覧：https://www.japan-it.jp/autumn/ja-jp/search/2026a07/directory.html
+- 成功候補ブランチ：`codex-jitw-autumn-2026-data`
 - 失敗記録専用ブランチ：`record-jitw-autumn-2026-failures`
+- 実証済みの1社分CSV：`write-path-check.csv`（commit `0b472aa4404ae34176c831adcf155dbf8cdd2fa1`）
+- attempt-03実測：ブラウザー内616カード、ユニーク詳細URL609、重複URL7、複数小間3カード展開済み。しかしブラウザーから全件のCSVファイルへデータを渡す経路で失敗。
 
-## 必要な成果物（全件のみ）
-- `exhibitors_raw.csv`：全件の掲載順。出展社名、小間番号、公式詳細URL、出典、掲載順。
-- `exhibitors_sorted.csv`：**全件を小間番号の自然順に並べ替えたもの**。原データと同じ件数・対応関係。
-- `RESULT.md`：実取得数、重複・未取得数、公式との照合、ソートの方法。
+## 最終的な成果物
+- `exhibitors_raw.csv` — 全件の原掲載順
+- `exhibitors_sorted.csv` — **全件の小間番号自然順**
+- `RESULT.md` — 件数、重複、欠落チェックの結果
 
-**先頭100件のCSVや100件ずつの企業調査は一切不要。** 100社単位のノベルティ調査は、この全件名簿が完成した後に通常ChatGPTが担当する。
+**先頭100件CSVは不要。** 100社ずつのノベルティ調査は、全件データ完成後に通常ChatGPTが担当。
 
-## 過去の確認結果の扱い
-Codexによって実際にGitHubへ保存されたのは**失敗記録用の別ブランチの `blocked.md`**であり、名簿データの保存用ブランチへのCodex自身の書込みはまだ未確認。GitHubでREADMEを作成できたことや一時テストCSVが保存できたことを、名簿全件CSVの保存成功と呼ばない。
+## 今回の転送方法
+ブラウザーREPLで取得した実データを、10～25行・数千文字以下の短いJSONテキストとして出力し、CodexがそのテキストをGitHub Contents API `create_file` の `content` に渡す。出力ごとに `staging/part_XXXX.json` へ新規保存・GitHubから読み戻す。**ローカルGit checkout、GitHub Webへのログイン、Windowsクリップボードは不要**。全件part保存後、結合・ソートして最終CSVとする。途中失敗時は既存partを保護し、続きから再開する。
 
-本番の `main`、`index.html`、`確認用.html`、イベントJSONには触れない。
+`main`、`index.html`、`確認用.html`、台帳JSON、別案件フォルダーは変更しない。
