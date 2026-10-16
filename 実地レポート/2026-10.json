@@ -163,7 +163,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "西3のみの小さいイベント。ラベル系。\n何もないがアンケートに答えてジュースだけもらった。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-xls-x-c1eb9b51653e",
