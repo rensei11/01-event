@@ -608,7 +608,7 @@ function passesListStart(date){
 function todayISO(){
   const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
-function isEndProcessAvailable(e){return String(e.endDate||e.date||'')<todayISO()}
+function isEndProcessAvailable(e){return String(e.date||'')<=todayISO()}
 function needsEndProcessing(e){
   if(!e||String(e.id||'').startsWith('draft-new-'))return false;
   const o=officialEvent(e);
@@ -1151,7 +1151,7 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,planned
   const eventCellInner='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
     '<div class="event-head"><div class="name event-name">'+nameHtml+'</div></div>'+
     venueParticipantBlock(e,venueHtml,personHtml);
-  const eventCell=done?'<div class="past-event-content">'+eventCellInner+'</div>':eventCellInner;
+  const eventCell=(done||endButton)?'<div class="past-event-content">'+eventCellInner+'</div>':eventCellInner;
 
   const condHtml=editing
     ? '<div class="report-cond">'+editableLines(e.id,'conditions',cond)+'</div>'
