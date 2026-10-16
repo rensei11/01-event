@@ -144,7 +144,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "包装系のイベント。規模のわりに驚くほど見どころはない、畑違いすぎる。\nせいぜい小さいチョコを貰った程度。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-evt-label-forum-japan-20261014",
