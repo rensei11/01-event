@@ -181,7 +181,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "食品の原材料を主に扱う展示会。\n去年も行ったがやはりたいしたものはない。\nドレッシング貰って豆乳チーズタルトを1つ食べただけ。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     }
   ]
 }
