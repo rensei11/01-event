@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-15-web",
+  "dataVersion": "2026-10-16-web",
   "year": 2026,
   "events": [
     {
@@ -3558,8 +3558,8 @@
       "nightTime": "18:00～18:50",
       "nightText": "懇親会（ネットワーキング・レセプション）。公式プログラムに掲載。飲食内容・料理量は未確認。",
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false
       },
       "_kinds": [
