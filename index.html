@@ -85,7 +85,7 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳</h1><div class="title-meta-stack"><div class="version-info">v0.39</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">イベント情報・参加予定・参加記録を管理します。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳</h1><div class="title-meta-stack"><div class="version-info">v0.40</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">イベント情報・参加予定・参加記録を管理します。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
@@ -608,11 +608,13 @@ function passesListStart(date){
 function todayISO(){
   const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
-function isEndProcessAvailable(e){return String(e.endDate||e.date||'')<todayISO()}
+function isEndProcessAvailable(e){return String(e.date||'')<=todayISO()}
 function needsEndProcessing(e){
   if(!e||String(e.id||'').startsWith('draft-new-'))return false;
   const o=officialEvent(e);
   if(!isEndProcessAvailable(o))return false;
+  const saved=endBackups[e.id];
+  if(saved&&endDraftReady(saved)&&!endDraftMatchesGitHub(o,saved))return false;
   if(!o.attendanceStatus)return true;
   if(o.attendanceStatus==='attended'){
     if(!actualDates(o).length)return true;
@@ -1151,7 +1153,7 @@ function row(e,plannedDate='',showDate=true,rowspan=1,isFirstOfDate=true,planned
   const eventCellInner='<div class="event-meta-line"><div class="event-badges">'+badges.join('')+'</div>'+rightTop+'</div>'+tools+dayTools+
     '<div class="event-head"><div class="name event-name">'+nameHtml+'</div></div>'+
     venueParticipantBlock(e,venueHtml,personHtml);
-  const eventCell=done?'<div class="past-event-content">'+eventCellInner+'</div>':eventCellInner;
+  const eventCell=(done||endButton)?'<div class="past-event-content">'+eventCellInner+'</div>':eventCellInner;
 
   const condHtml=editing
     ? '<div class="report-cond">'+editableLines(e.id,'conditions',cond)+'</div>'
