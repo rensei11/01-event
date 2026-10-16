@@ -2155,6 +2155,25 @@
       }
     },
     {
+      "id": "evt-voice-to-value-autumn-20261111",
+      "date": "2026-11-11",
+      "endDate": "",
+      "dateText": "11月11日(水)",
+      "name": "Voice to Value 2026 秋",
+      "url": "https://ivry.jp/lp-article/cf/voice-to-value-2026-autumn/",
+      "venue": "ホテル椿山荘東京",
+      "conditionLines": [
+        "無料・公式フォームから事前申込",
+        "定員200名、超過の場合は抽選",
+        "11/4(水)12:00申込締切予定",
+        "名刺2枚必要",
+        "同日、Meets 第6回 経営企画部 戦略サミットに参加予定があるため日程競合"
+      ],
+      "rating": "",
+      "nightTime": "18:40～20:00",
+      "nightText": "懇親会。主催者公式に料理とフリードリンクの提供を明記。途中入退場可。立食か着席か、料理の品数・補充は未確認。"
+    },
+    {
       "id": "evt-f95813dd",
       "date": "2026-11-13",
       "name": "Dell Technologies Forum 2026",
@@ -2174,6 +2193,24 @@
         "interested": false,
         "ignored": false
       }
+    },
+    {
+      "id": "evt-synology-solution-day-20261113",
+      "date": "2026-11-13",
+      "endDate": "",
+      "dateText": "11月13日(金)",
+      "name": "Synology Solution Day 2026",
+      "url": "https://event.synology.com/ja-jp/synology-solution-day-2026/japan",
+      "venue": "東京ポートシティ竹芝 オフィスタワー1F ポートホール",
+      "conditionLines": [
+        "無料・事前登録、申込多数時は抽選の場合あり",
+        "対象：企業ユーザー・SI・ソリューション事業者。個人メールや対象外の申込は断られる可能性",
+        "公式申込で招待コードが無い場合は1111、取扱企業アスクは1askを公開",
+        "同日Omnissa ONE Tokyo・Dell Technologies Forumあり"
+      ],
+      "rating": "",
+      "nightTime": "17:50～18:30",
+      "nightText": "懇親会・デモ体験。軽食・ドリンク提供（軽食は数量限定）。Synology製品セットの抽選（アンケート回答者から3名）、全員にオリジナルグッズ、ガシャポン特典あり。軽食中心で短時間。立食形式は未確認。"
     },
     {
       "id": "evt-workato-wow-20261118",
@@ -2211,6 +2248,26 @@
         "interested": false,
         "ignored": false
       }
+    },
+    {
+      "id": "evt-global-management-leaders-summit-20261119",
+      "date": "2026-11-19",
+      "endDate": "",
+      "dateText": "11月19日(木)",
+      "name": "グローバル経営 LEADERS Summit 2026",
+      "url": "https://www.b-forum.net/event/jp2191aaai/",
+      "venue": "ANAインターコンチネンタルホテル東京",
+      "conditionLines": [
+        "無料・事前登録、定員500名、申込多数時は抽選",
+        "経営層・財務経理・経営企画・DX・情報システム等の関係者が対象。対象外は断られる可能性",
+        "勤務先メール必須（Gmailなどフリーメール不可）",
+        "通常の講演参加者は申込フォームでレセプション「参加する」を選べる。招待は不要だが参加確約ではない",
+        "レセプションのみ参加はWolters Kluwer CCH Tagetik社からの招待者限定",
+        "同日World of Workato Tokyo 2026（2）も登録済み"
+      ],
+      "rating": "",
+      "nightTime": "17:45～19:30",
+      "nightText": "ネットワーキングレセプション。公式にドリンクと軽食あり。立食・ビュッフェの形式、料理の品数・補充は未確認。申込者から抽選で100名に書籍の来場特典。"
     },
     {
       "id": "evt-79cbcbcc",
