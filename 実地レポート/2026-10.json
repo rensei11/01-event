@@ -94,7 +94,8 @@
       "rating": "E",
       "category": "exhibition",
       "report": "いつものしつこい勧誘系だが釣るためのお菓子などがしょぼいところばかり。水すらもらうのに苦労した。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "mid"
     },
     {
       "id": "rep-web-evt-7f91ed050c06",
