@@ -1,0 +1,3 @@
+range,measured_research_seconds,measured_record_save_seconds,measured_other_seconds,total_elapsed_seconds,overall_start_jst,overall_end_jst,measurement_status,notes
+"101-200","","","","494","2026-10-17T21:36:27+09:00","2026-10-17T21:44:41+09:00","total_only","旧報告の8分14秒は全体経過時間。Web調査・記載保存を別々に計測していないため内訳は不明。100社個別の実調査完了は未立証"
+"201-400","","","","577","2026-10-17T22:38:10+09:00","2026-10-17T22:47:47+09:00","total_only","旧報告の9分37秒は全体経過時間。Web調査・記載保存を別々に計測していないため内訳は不明。200社個別の実調査完了は未立証"
