@@ -1527,7 +1527,12 @@
       "nightTime": "17:00～18:30",
       "nightText": "ネットワーキング。公式プログラムで確認。飲食内容は未確認。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-treasure-data-connected-world-20261020",
