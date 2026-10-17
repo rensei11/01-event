@@ -115,10 +115,10 @@ GitHub更新：
 
 ## 出展者全社名簿（2026-10-17・取得完了）
 
-- 公式11区分 https://jimtof.org/jp/exhi_search_pronoun から **1,146行を取得し、`research/jimtof2026/exhibitors.csv` に保存済み**。GitHub実行成功 https://github.com/rensei11/01-event/actions/runs/39027743188 、確定commit `49e98b473cf3d31d583eda0370f47109432dbf73`。
+- 公式11区分から **1,146行取得済**：`research/jimtof2026/exhibitors.csv`。実行成功 https://github.com/rensei11/01-event/actions/runs/39027743188 。
 - 内訳：ア162、カ115、サ123、タ112、ナ90、ハ97、マ67、ヤ29、ラ19、ワ6、海外326。小間番号順・全行5列正常・完全同一重複0・同一小間の複数社75小間を保持。既存54行全件保全。
 - **企業ごとのノベルティ調査は別作業で、未完了。** 既存`novelty-master.csv`36行は変更なし。取得スクリプトは`research/jimtof2026/extract_exhibitors.py`。ワークフローは一度限りで定期実行なし。
-- 次は **E1001から小間番号順**に企業公式サイト・ニュース・公式SNSを実際に確認。具体的景品・条件・一次ソース・SNSリンクを発見した行だけ既存ノベルティマスターへ追加する。
+- **初回調査100/1,146行**：E1001～E2010を小間順に社名＋2026年告知・特典語で検索し、`research/jimtof2026/survey-progress.csv` に100行を保存（うち参照先URL48件）。限定検索であり公式SNSの全投稿監査は未実施。既存特典2行、追加確定0行。次はE2011以降。
 
 ## 現在の有力特典
 
