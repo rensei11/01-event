@@ -113,13 +113,12 @@ GitHub更新：
 - 更新後のマスターは36行。新しい金券・高額家電の特典は今回確認できず。全出展者の網羅チェック完了を意味しない。
 - 更新コミット：S3062・共同抽選・YouTube `8e5b2f65`、正式法人名訂正 `4b58fa72`、キリコミ条件 `4c2ac6f4`。
 
-## JIMTOF出展者全社名簿（2026-10-17・取得完了）
+## 出展者全社名簿（2026-10-17・取得完了）
 
-- 公式「出展社名50音検索」 https://jimtof.org/jp/exhi_search_pronoun 全11区分（ア〜ワ10区分＋海外）を **GitHub Actionsで実際に取得**し、`research/jimtof2026/exhibitors.csv` に **1,146掲載行**をGitHub mainへ保存済み。成功実行 https://github.com/rensei11/01-event/actions/runs/39027743188 、CSV確定 commit `49e98b473cf3d31d583eda0370f47109432dbf73`。
-- 区分別：ア162、カ115、サ123、タ112、ナ90、ハ97、マ67、ヤ29、ラ19、ワ6、海外326。合計1,146行。小間番号順・5列すべて正常・完全同一行の重複0、同一小間に複数社の例75小間は保持。既存54行も全件保持を検証。
-- 個々の出展社公式告知はまだ全社分を調べていない。出展者名簿の完成＝ノベルティ全社調査完了ではない。既存`novelty-master.csv`36行は変更なし（blob `1df67dc67f9dc09d25a61edff3b445b7af790829`）。
-- 取得スクリプト `research/jimtof2026/extract_exhibitors.py` は一度限りの安全条件つき。再実行には修正が必要。実行用 `.github/workflows/jimtof-exhibitors.yml` はスケジュールなし・同ファイルへのpush時のみ起動。
-- 次の主作業：`exhibitors.csv` の **E1001から小間番号順に企業公式ニュース・SNSを確認**。景品の具体名・条件・出典・フォローURLが確認できた出展者だけ `novelty-master.csv` に追加。単なるキーワード検索に戻さず、どこまで企業別調査したか記録する。既存36件と照合する。
+- 公式11区分 https://jimtof.org/jp/exhi_search_pronoun から **1,146行を取得し、`research/jimtof2026/exhibitors.csv` に保存済み**。GitHub実行成功 https://github.com/rensei11/01-event/actions/runs/39027743188 、確定commit `49e98b473cf3d31d583eda0370f47109432dbf73`。
+- 内訳：ア162、カ115、サ123、タ112、ナ90、ハ97、マ67、ヤ29、ラ19、ワ6、海外326。小間番号順・全行5列正常・完全同一重複0・同一小間の複数社75小間を保持。既存54行全件保全。
+- **企業ごとのノベルティ調査は別作業で、未完了。** 既存`novelty-master.csv`36行は変更なし。取得スクリプトは`research/jimtof2026/extract_exhibitors.py`。ワークフローは一度限りで定期実行なし。
+- 次は **E1001から小間番号順**に企業公式サイト・ニュース・公式SNSを実際に確認。具体的景品・条件・一次ソース・SNSリンクを発見した行だけ既存ノベルティマスターへ追加する。
 
 ## 現在の有力特典
 
