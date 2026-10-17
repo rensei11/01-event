@@ -1,0 +1,29 @@
+name: JIMTOF 2026 Exhibitor Import (one-time)
+on:
+  push:
+    paths:
+      - ".github/workflows/jimtof-exhibitors.yml"
+permissions:
+  contents: write
+jobs:
+  import:
+    if: github.repository == 'rensei11/01-event' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install HTML parser
+        run: python3 -m pip install beautifulsoup4
+      - name: Import and validate all 11 official sections
+        run: python3 research/jimtof2026/extract_exhibitors.py
+      - name: Commit verified CSV only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/jimtof2026/exhibitors.csv
+          if ! git diff --cached --quiet; then
+            git commit -m 'JIMTOF2026: complete exhibitor register from all official sections'
+            git push origin HEAD:main
+          fi
