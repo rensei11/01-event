@@ -2200,8 +2200,8 @@
       "nightTime": "17:30～18:30",
       "nightText": "公式Day2プログラム：展示・体験エリアは11:30～17:30、同じB2階STARで17:30～18:30ネットワーキング。立食スタイルで軽食・飲料あり、参加費無料。展示終了直後の実施で、料理の品数・補充・酒の有無、展示ブース撤収状況は未確認。",
       "planning": {
-        "planned": true,
-        "interested": false,
+        "planned": false,
+        "interested": true,
         "ignored": false
       },
       "_kinds": [
