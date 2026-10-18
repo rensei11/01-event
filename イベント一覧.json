@@ -1743,8 +1743,8 @@
       "nightText": "Networking Partyあり。Party参加にはFull Conference／One Day等の対象パスまたは特別招待が必要。無料招待経路はスポンサー等から配布される場合あり。",
       "planning": {
         "planned": false,
-        "interested": true,
-        "ignored": false
+        "interested": false,
+        "ignored": true
       }
     },
     {
