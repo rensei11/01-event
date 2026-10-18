@@ -1909,7 +1909,12 @@
       ],
       "rating": "B+。600名・90分の懇親交流会で時間条件は強い。飲食詳細は未確認。",
       "nightTime": "19:15～20:45",
-      "nightText": "懇親・交流会（ホワイエ）。料理・ドリンク詳細は未確認。"
+      "nightText": "懇親・交流会（ホワイエ）。料理・ドリンク詳細は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-dcee2ac9",
