@@ -43,7 +43,7 @@ th:last-child,td:last-child{border-right:0}
 .attended{border-color:#8eb8ac;color:#246355;background:#f1f8f5}
 .planned{border-color:#b8cbe2;color:#315d87;background:#f7fbff}
 .notattended{border-color:#c9c9c5;color:#73736e;background:#f6f6f4}
-.status-band-head,.status-band-cell{width:8px!important;min-width:8px!important;max-width:8px!important;padding:0!important}.status-band-head{border-right:1px solid #59626d}.status-band-cell.status-candidate{background:#3f78b6!important}.status-band-cell.status-off{background:#9aa1a8!important}.status-band-cell.status-high{background:#568f66!important}.status-band-cell.status-mid{background:#d6b767!important}.status-band-cell.status-low{background:#c65369!important}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.attended-event-content{position:relative;padding-right:78px}.attended-event-content .event-meta-line{min-height:0}.attended-event-content .event-action-stack{position:absolute;top:0;right:0}.attended-event-content .event-head{margin-top:1px}.attended-event-content .participant-line{margin-top:0}.past-event-content{position:relative;padding-right:78px}.past-event-content .event-meta-line{min-height:0}.past-event-content .event-action-stack{position:absolute;top:0;right:0}.past-event-content .event-head{margin-top:1px}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
+.status-band-head,.status-band-cell{width:8px!important;min-width:8px!important;max-width:8px!important;padding:0!important}.status-band-head{border-right:1px solid #59626d}.status-band-cell.status-candidate{background:#3f78b6!important}.status-band-cell.status-candidate-gathering{background:#7b3fb6!important}.status-band-cell.status-off{background:#9aa1a8!important}.status-band-cell.status-high{background:#568f66!important}.status-band-cell.status-mid{background:#d6b767!important}.status-band-cell.status-low{background:#c65369!important}.attended-date{background:#f2f6f3!important;font-size:18px;overflow:hidden}.visit-count{margin-top:4px;font-size:12px;font-weight:900;color:#4f6b60}.attended-day-row td{border-top-color:#d8ddda}.attended-day-start td{border-top:2px solid #bfc7c2!important}.attended-event-content{position:relative;padding-right:78px}.attended-event-content .event-meta-line{min-height:0}.attended-event-content .event-action-stack{position:absolute;top:0;right:0}.attended-event-content .event-head{margin-top:1px}.attended-event-content .participant-line{margin-top:0}.past-event-content{position:relative;padding-right:78px}.past-event-content .event-meta-line{min-height:0}.past-event-content .event-action-stack{position:absolute;top:0;right:0}.past-event-content .event-head{margin-top:1px}.report-days{font-size:12px;font-weight:800;color:#5f6a64;margin:0 0 5px}.report-reference{font-size:12px;color:#7a7a74;padding:4px 0}
 .row-notattended td{color:#777772;background:#f4f4f2!important}.row-notattended .event-name,.row-notattended .event-name a{color:#777772!important}.row-notattended .event-name a{text-decoration-color:#999!important}.row-ignored td{background:#ececea!important}.row-ignored td,.row-ignored td *:not(.kind-badge):not(.tag){color:#858581!important}.row-ignored .kind-badge,.row-ignored .tag{filter:none!important}
 .rating{font-weight:900;margin-bottom:3px;color:var(--text)}.rating-high{color:#b91c1c}.report{white-space:pre-wrap}.event-detail-text{white-space:pre-wrap;overflow-wrap:anywhere}.report-rating-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}.report-flag-tools{display:inline-flex;gap:6px;align-items:center;font-size:11px;font-weight:800}.report-flag-tools label{display:inline-flex;align-items:center;gap:3px;border-radius:10px;padding:2px 7px;cursor:pointer}.report-high-label{background:#f5fbf6;color:#356744;border:1px solid #bfd8c6}.report-mid-label{background:#fffaf0;color:#725b28;border:1px solid #e4cf9b}.report-low-label{background:#f4f5f6;color:#666;border:1px solid #cfd3d6}.report-flag-tools input{appearance:none;-webkit-appearance:none;width:14px;height:14px;min-width:14px;min-height:14px;margin:0;border-radius:3px;background:#fff;position:relative;overflow:hidden}.report-high-toggle{border:1.5px solid #6da27c}.report-mid-toggle{border:1.5px solid #d6b767}.report-low-toggle{border:1.5px solid #cf6b7e}.report-high-toggle:checked{background:#568f66}.report-mid-toggle:checked{background:#d6b767}.report-high-toggle:checked::after,.report-mid-toggle:checked::after,.report-low-toggle:checked::after{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;line-height:1}.report-high-toggle:checked::after,.report-mid-toggle:checked::after{content:"✓";font-size:10px}.report-low-toggle:checked{background:#c65369}.report-low-toggle:checked::after{content:"×";font-size:12px}.report-good td{background:#f5fbf6!important}.report-bad td{background:#f1f2f3!important}.report-bad .event-name a{color:#7b848d!important;text-decoration-color:#aeb4b9!important}.pre{color:#555;margin-bottom:5px}.pre strong{font-weight:900;color:#30363c}.pre-reason{font-weight:400;margin-top:1px;white-space:pre-wrap}
 .empty{padding:28px;text-align:center;color:var(--muted)}
@@ -85,7 +85,7 @@ th:last-child,td:last-child{border-right:0}
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳</h1><div class="title-meta-stack"><div class="version-info">v0.40</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">イベント情報・参加予定・参加記録を管理します。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳</h1><div class="title-meta-stack"><div class="version-info">v0.41</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">イベント情報・参加予定・参加記録を管理します。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
@@ -295,22 +295,59 @@ function apiSave(payload){
   return p;
 }
 function planningHasData(f){return !!(f&&(f.planned||f.interested||f.ignored||(Array.isArray(f.visitDates)&&f.visitDates.length)))}
-async function persistPlanning(e){
-  const f=cloneData(flags[e.id]||{});
-  try{
-    setGitHubSaveState('保存中…');
-    await apiSave({action:'planning_state',eventId:e.id,planning:f});
-    if(planningHasData(f))e.planning=cloneData(f);else delete e.planning;
-    if(f.ignored)e.conditionLines=conditionLines(e);
-    delete flags[e.id];saveFlags();
-    setGitHubSaveState('GitHubへ保存しました');
-    render();
-    return true;
-  }catch(err){
-    setGitHubSaveState(err.message||String(err),true);
-    refreshGitHubSaveButton();
-    return false;
+// 予定の操作は即座に画面へ反映する。表全体の描き直しは必要な場合に限る。
+let planningUiRefreshScheduled=false,planningFullRenderNeeded=false;
+function refreshPlanningUi(e){
+  if((mode==='all'||mode==='upcoming')&&!(hideIgnored&&flag(e).ignored)){
+    const rows=[...document.querySelectorAll('#body tr.event-row')].filter(tr=>tr.dataset.eventId===e.id);
+    if(rows.length)rows.forEach(tr=>{tr.outerHTML=row(e);});
+    else planningFullRenderNeeded=true;
+  }else{
+    planningFullRenderNeeded=true;
   }
+  if(planningUiRefreshScheduled)return;
+  planningUiRefreshScheduled=true;
+  requestAnimationFrame(()=>setTimeout(()=>{
+    planningUiRefreshScheduled=false;
+    if(planningFullRenderNeeded){
+      planningFullRenderNeeded=false;
+      render();
+    }else{
+      updateModeCounts();
+      renderCalendar();
+    }
+  },0));
+}
+// 同一イベントの連打は最新の予定だけを最終保存し、古い応答で新しい操作を消さない。
+const planningSavesInFlight=new Map();
+function persistPlanning(e){
+  const id=e.id;
+  if(planningSavesInFlight.has(id))return planningSavesInFlight.get(id);
+  const task=(async()=>{
+    try{
+      while(Object.prototype.hasOwnProperty.call(flags,id)){
+        const f=cloneData(flags[id]);
+        const snapshot=JSON.stringify(f);
+        setGitHubSaveState('保存中…');
+        await apiSave({action:'planning_state',eventId:id,planning:f});
+        if(JSON.stringify(flags[id]||{})!==snapshot)continue;
+        if(planningHasData(f))e.planning=cloneData(f);else delete e.planning;
+        if(f.ignored)e.conditionLines=conditionLines(e);
+        delete flags[id];saveFlags();
+        setGitHubSaveState('GitHubへ保存しました');
+      }
+      return true;
+    }catch(err){
+      setGitHubSaveState(err.message||String(err),true);
+      refreshGitHubSaveButton();
+      return false;
+    }
+  })();
+  planningSavesInFlight.set(id,task);
+  void task.finally(()=>{
+    if(planningSavesInFlight.get(id)===task)planningSavesInFlight.delete(id);
+  });
+  return task;
 }
 async function setInterested(e,checked){
   const f=cloneData(flag(e));
@@ -320,7 +357,7 @@ async function setInterested(e,checked){
   }else{
     f.interested=false;if(!f.planned&&Array.isArray(f.visitDates))delete f.visitDates;
   }
-  flags[e.id]=f;saveFlags();render();return persistPlanning(e);
+  flags[e.id]=f;saveFlags();refreshPlanningUi(e);return persistPlanning(e);
 }
 async function setPlan(e,checked){
   const f=cloneData(flag(e));
@@ -330,7 +367,7 @@ async function setPlan(e,checked){
   }else{
     f.planned=false;if(!f.interested&&Array.isArray(f.visitDates))delete f.visitDates;
   }
-  flags[e.id]=f;saveFlags();render();return persistPlanning(e);
+  flags[e.id]=f;saveFlags();refreshPlanningUi(e);return persistPlanning(e);
 }
 async function setPlanDay(e,date,checked){
   const f=cloneData(flag(e));
@@ -338,13 +375,13 @@ async function setPlanDay(e,date,checked){
   if(checked)set.add(date);else set.delete(date);
   f.visitDates=[...set].filter(d=>inRange(e,d)).sort();
   if(!f.planned&&!f.interested)f.planned=true;
-  f.ignored=false;flags[e.id]=f;saveFlags();render();return persistPlanning(e);
+  f.ignored=false;flags[e.id]=f;saveFlags();refreshPlanningUi(e);return persistPlanning(e);
 }
 async function setIgnore(e,checked){
   const f=cloneData(flag(e));
   f.ignored=checked;
   if(checked){f.planned=false;f.interested=false;if(Array.isArray(f.visitDates))delete f.visitDates;}
-  flags[e.id]=f;saveFlags();render();return persistPlanning(e);
+  flags[e.id]=f;saveFlags();refreshPlanningUi(e);return persistPlanning(e);
 }
 function actualDates(e){return Array.isArray(e.visitDates)?e.visitDates:[]}
 function reportFlag(id){
@@ -586,8 +623,8 @@ function statusBandCell(e,attendedMode=false,rf=null){
     else if(rf?.mid){cls='status-mid';title='中評価';}
     else if(rf?.good){cls='status-high';title='高評価';}
     else if(f.ignored||e.attendanceStatus==='not_attended'){cls='status-off';title='行かない／未参加';}
-    else if(f.planned){cls='status-candidate';title='行く';}
-    else if(f.interested){cls='status-candidate';title='興味あり';}
+    else if(f.planned){cls='status-candidate'+(eventKinds(e).includes('gathering')?' status-candidate-gathering':'');title='行く';}
+    else if(f.interested){cls='status-candidate'+(eventKinds(e).includes('gathering')?' status-candidate-gathering':'');title='興味あり';}
   }
   return '<td class="status-band-cell '+cls+'"'+(title?' title="'+esc(title)+'"':'')+'></td>';
 }
@@ -1892,7 +1929,10 @@ async function savePendingBrowserDataToGitHub(){
         const e=events.find(x=>x.id===eventId);if(e){if(planningHasData(planning))e.planning=cloneData(planning);else delete e.planning;if(planning.ignored)e.conditionLines=conditionLines(e);}
       }
       for(const {reportId,ratingFlag} of reportEntries){const r=reports.find(x=>x.id===reportId);if(r){if(ratingFlag)r.ratingFlag=ratingFlag;else delete r.ratingFlag;}}
-      flags={};reportFlags={};saveFlags();saveReportFlags();
+      for(const {eventId,planning} of planningEntries){
+        if(JSON.stringify(flags[eventId]||{})===JSON.stringify(planning))delete flags[eventId];
+      }
+      reportFlags={};saveFlags();saveReportFlags();
     }
     for(const id of pendingEventIds){
       const e=events.find(x=>x.id===id);if(!e)continue;
