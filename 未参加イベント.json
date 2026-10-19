@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-16-web",
+  "dataVersion": "2026-10-19-web",
   "year": 2026,
   "events": [
     {
@@ -742,6 +742,19 @@
       "name": "SUSS Japan Seminar 2026",
       "url": "https://www.suss.com/jp/company/events/suss-japan-private-seminar",
       "venue": "品川プリンスホテル",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-gixo-data-informed-summit-20261020",
+      "date": "2026-10-20",
+      "endDate": "",
+      "dateText": "10月20日(火)",
+      "name": "ギックス データインフォームド・サミット2026",
+      "url": "https://event.gixo.jp/",
+      "venue": "品川ザ・グランドホール（品川グランドセントラルタワー3階）",
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],

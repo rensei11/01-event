@@ -1572,7 +1572,10 @@
       ],
       "rating": "",
       "nightTime": "18:00～19:30",
-      "nightText": "ネットワーキング。主催者公式に軽食・飲み物の提供を明記。立食形式か、料理量、アルコールの有無は未確認。"
+      "nightText": "ネットワーキング。主催者公式に軽食・飲み物の提供を明記。立食形式か、料理量、アルコールの有無は未確認。",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-2fb53a6ac06b",
