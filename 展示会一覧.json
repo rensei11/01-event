@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-18-web",
+  "dataVersion": "2026-10-19-web",
   "year": 2026,
   "events": [
     {
@@ -3314,26 +3314,6 @@
       }
     },
     {
-      "id": "xls-x-23c6d855c96d",
-      "date": "2026-10-28",
-      "endDate": "2026-10-29",
-      "dateText": "10月28日(水)～29日(木)",
-      "name": "通販食品展示商談会2026",
-      "url": "https://tsuhanexpo.com/",
-      "venue": "東京交通会館",
-      "conditionLines": [],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "規模が小さすぎて多分いかない。そもそも株式会社タクセイがいる可能性がある。",
-      "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true,
-      "planning": {
-        "planned": false,
-        "interested": false,
-        "ignored": true
-      }
-    },
-    {
       "id": "evt-kumiai-matsuri-20261028",
       "date": "2026-10-28",
       "endDate": "2026-10-29",
@@ -3354,6 +3334,26 @@
         "interested": true,
         "ignored": false,
         "visitDates": []
+      }
+    },
+    {
+      "id": "xls-x-23c6d855c96d",
+      "date": "2026-10-28",
+      "endDate": "2026-10-29",
+      "dateText": "10月28日(水)～29日(木)",
+      "name": "通販食品展示商談会2026",
+      "url": "https://tsuhanexpo.com/",
+      "venue": "東京交通会館",
+      "conditionLines": [],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "規模が小さすぎて多分いかない。そもそも株式会社タクセイがいる可能性がある。",
+      "source": "2026年 企業展示会簡易レポ.xlsx",
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
       }
     },
     {

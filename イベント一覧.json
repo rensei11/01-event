@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-18-web",
+  "dataVersion": "2026-10-19-web",
   "year": 2026,
   "events": [
     {
@@ -1882,20 +1882,24 @@
       "url": "https://www.trans-cosmos.co.jp/forum2026/bpo_timetable/",
       "venue": "ザ・プリンス パークタワー東京 B2 コンベンションホール",
       "conditionLines": [
-        "名前コード：久保 直輝",
         "無料・事前登録制",
-        "法人対象／多数時抽選の場合あり"
+        "法人対象／多数時抽選の場合あり",
+        "名前コード：久保 直輝"
       ],
-      "rating": "B※。円卓形式の懇親会で食事面は厳しめ。ただし藤巻百貨店のギフトカタログ特典があるため掲載。",
+      "rating": "B",
       "nightTime": "17:30～18:30",
-      "nightText": "懇親会。来場特典として「藤巻百貨店」のギフトカタログほかを用意。 Excelメモ：多分ギフトカタログがもらえるので2人分申請するのもあり",
+      "nightText": "懇親会。来場特典として「藤巻百貨店」のギフトカタログほかを用意。 \n登録メールにQRがあるので案対価と思ったら、1週間前に落選と言われ登録メール(久保)も消された。",
       "dateText": "10月28日(水)",
       "sourceExcel": true,
       "planning": {
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-10-28",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-22950179",
@@ -2090,6 +2094,32 @@
       "nightText": "公式アフターパーティー「Gravity Night」開催予定。2025年はカンファレンス・アフターパーティーとも無料で誰でも参加可能だったが、2026年のGravity Night条件は未発表。"
     },
     {
+      "id": "evt-3dexperience-conf-day2-networking-20261106",
+      "date": "2026-11-06",
+      "endDate": "",
+      "dateText": "11月6日(金)",
+      "name": "3DEXPERIENCE CONFERENCE JAPAN 2026（Day2 ネットワーキング）",
+      "url": "https://myevents.3ds.com/ja/3dexperience-conference-japan-2026",
+      "venue": "ウェスティンホテル東京 B2階 STAR（スタールーム）",
+      "conditionLines": [
+        "無料・事前来場登録制",
+        "11月6日のネットワーキング参加希望者は、来場登録時に「Day2 ネットワーキング」を選択",
+        "対象：参加者・登壇者・ダッソー・システムズの専門家・社員（公式Day2プログラム）",
+        "宴会場STARの立食収容目安280人は、今回の募集人数ではない"
+      ],
+      "rating": "",
+      "nightTime": "17:30～18:30",
+      "nightText": "公式Day2プログラム：展示・体験エリアは11:30～17:30、同じB2階STARで17:30～18:30ネットワーキング。立食スタイルで軽食・飲料あり、参加費無料。展示終了直後の実施で、料理の品数・補充・酒の有無、展示ブース撤収状況は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "gathering"
+      ]
+    },
+    {
       "id": "evt-libcon-mobility-energy-20261106",
       "date": "2026-11-06",
       "endDate": "",
@@ -2110,6 +2140,32 @@
         "interested": false,
         "ignored": true
       }
+    },
+    {
+      "id": "evt-bentley-regional-seminar-tokyo-20261106",
+      "date": "2026-11-06",
+      "endDate": "",
+      "dateText": "11月6日(金)",
+      "name": "Bentley Systems Regional Seminar 2026 Tokyo（ベントレー・システムズ懇親会）",
+      "url": "https://events.bentley.com/regionalseminar2026tokyo?prFlag=true",
+      "venue": "ホテル椿山荘東京 ホテル棟4階 ギンコウルーム",
+      "conditionLines": [
+        "主催者の企業公式告知では参加費無料・事前登録受付",
+        "13:00受付、14:00セミナー開始、17:00講演終了予定",
+        "建設・土木・測量・プラント関連の顧客・パートナー企業等を想定",
+        "懇親会のみの参加可否・登録審査・人数・懇親会の追加料金有無は未確認"
+      ],
+      "rating": "",
+      "nightTime": "17:15～（終了時刻未確認）",
+      "nightText": "主催者の2026年参加登録ページで17:15開始、ホテル棟4階ギンコウルームと案内。セミナー会場アンフィシアターと懇親会場は別室。ギンコウルームは約251㎡、ホテル公表の立食形式目安130人（実際の募集人数ではない）。料理・ドリンク・アルコールと補充量は未確認。企業公式告知：https://pr.www.ipros.com/ja_bentley/news/detail/178674/",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-techlead-20261106",
@@ -2152,58 +2208,6 @@
       "rating": "",
       "nightTime": "17:00～18:30",
       "nightText": "懇親会。13:00～16:15のセミナーと16:20～の個別相談会に続いて実施。Amazon、au PAY マーケット、Qoo10の登壇企業やEC事業者と交流。料理・酒の種類や提供量は公式公開情報では未確認。通常3,000円だが、GoQSystem未利用のEC事業者なら無料。",
-      "planning": {
-        "planned": false,
-        "interested": true,
-        "ignored": false
-      },
-      "_kinds": [
-        "gathering"
-      ]
-    },
-    {
-      "id": "evt-bentley-regional-seminar-tokyo-20261106",
-      "date": "2026-11-06",
-      "endDate": "",
-      "dateText": "11月6日(金)",
-      "name": "Bentley Systems Regional Seminar 2026 Tokyo（ベントレー・システムズ懇親会）",
-      "url": "https://events.bentley.com/regionalseminar2026tokyo?prFlag=true",
-      "venue": "ホテル椿山荘東京 ホテル棟4階 ギンコウルーム",
-      "conditionLines": [
-        "主催者の企業公式告知では参加費無料・事前登録受付",
-        "13:00受付、14:00セミナー開始、17:00講演終了予定",
-        "建設・土木・測量・プラント関連の顧客・パートナー企業等を想定",
-        "懇親会のみの参加可否・登録審査・人数・懇親会の追加料金有無は未確認"
-      ],
-      "rating": "",
-      "nightTime": "17:15～（終了時刻未確認）",
-      "nightText": "主催者の2026年参加登録ページで17:15開始、ホテル棟4階ギンコウルームと案内。セミナー会場アンフィシアターと懇親会場は別室。ギンコウルームは約251㎡、ホテル公表の立食形式目安130人（実際の募集人数ではない）。料理・ドリンク・アルコールと補充量は未確認。企業公式告知：https://pr.www.ipros.com/ja_bentley/news/detail/178674/",
-      "planning": {
-        "planned": false,
-        "interested": true,
-        "ignored": false
-      },
-      "_kinds": [
-        "gathering"
-      ]
-    },
-    {
-      "id": "evt-3dexperience-conf-day2-networking-20261106",
-      "date": "2026-11-06",
-      "endDate": "",
-      "dateText": "11月6日(金)",
-      "name": "3DEXPERIENCE CONFERENCE JAPAN 2026（Day2 ネットワーキング）",
-      "url": "https://myevents.3ds.com/ja/3dexperience-conference-japan-2026",
-      "venue": "ウェスティンホテル東京 B2階 STAR（スタールーム）",
-      "conditionLines": [
-        "無料・事前来場登録制",
-        "11月6日のネットワーキング参加希望者は、来場登録時に「Day2 ネットワーキング」を選択",
-        "対象：参加者・登壇者・ダッソー・システムズの専門家・社員（公式Day2プログラム）",
-        "宴会場STARの立食収容目安280人は、今回の募集人数ではない"
-      ],
-      "rating": "",
-      "nightTime": "17:30～18:30",
-      "nightText": "公式Day2プログラム：展示・体験エリアは11:30～17:30、同じB2階STARで17:30～18:30ネットワーキング。立食スタイルで軽食・飲料あり、参加費無料。展示終了直後の実施で、料理の品数・補充・酒の有無、展示ブース撤収状況は未確認。",
       "planning": {
         "planned": false,
         "interested": true,
