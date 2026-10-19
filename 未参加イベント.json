@@ -748,6 +748,32 @@
       "nameCodes": []
     },
     {
+      "id": "xls-g-5eb96f25c875",
+      "date": "2026-10-20",
+      "endDate": "",
+      "dateText": "10月20日(火)",
+      "name": "Docusign Japan Summit 2026",
+      "url": "https://events.docusign.com/docusign-japan-summit",
+      "venue": "虎ノ門ヒルズフォーラム",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-treasure-data-connected-world-20261020",
+      "date": "2026-10-20",
+      "endDate": "",
+      "dateText": "10月20日(火)",
+      "name": "Treasure Data Connected World 2026",
+      "url": "https://www.treasure.ai/ja/connected-world/",
+      "venue": "ANAインターコンチネンタルホテル東京",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
       "id": "evt-gixo-data-informed-summit-20261020",
       "date": "2026-10-20",
       "endDate": "",
