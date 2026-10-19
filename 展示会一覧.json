@@ -280,7 +280,7 @@
       "date": "2026-02-12",
       "endDate": "2026-02-13",
       "dateText": "2月12日(木）～13日(金）",
-      "name": "WOODコレクション（モクコレ）2026",
+      "name": "WOODコレクション(モクコレ)2026",
       "url": "https://www.mokucolle.com/",
       "venue": "東京ビッグサイト 西1,2",
       "conditionLines": [
@@ -951,7 +951,7 @@
       "date": "2026-04-16",
       "endDate": "2026-04-17",
       "dateText": "4月16日(木)～17日(金)",
-      "name": "エクステリア×ガーデンエキシビション（EXG）2026",
+      "name": "エクステリア×ガーデンエキシビション(EXG)2026",
       "url": "http://www.ex-exhibition.jp/",
       "venue": "幕張メッセ ホール4-6",
       "conditionLines": [],
@@ -1073,7 +1073,7 @@
       "date": "2026-05-13",
       "endDate": "2026-05-15",
       "dateText": "5月13日(水)～15日(金)",
-      "name": "EDIX（教育総合展）東京 2026",
+      "name": "EDIX(教育総合展)東京 2026",
       "url": "https://www.edix-expo.jp/tokyo/ja-jp.html",
       "venue": "東京ビッグサイト 東1-3・8",
       "conditionLines": [
@@ -3292,7 +3292,7 @@
       "date": "2026-10-28",
       "endDate": "",
       "dateText": "10月28日(水)",
-      "name": "CONX 2026（Connect to Transform Conference）",
+      "name": "CONX 2026(Connect to Transform Conference)",
       "url": "https://diggle.jp/conx/2026/",
       "venue": "TODA HALL & CONFERENCE TOKYO（京橋／TODA BUILDING 4階）",
       "conditionLines": [
@@ -3591,7 +3591,7 @@
       "date": "2026-11-12",
       "endDate": "2026-11-13",
       "dateText": "11月12日(木)～13日(金)",
-      "name": "60th FISMA TOKYO（第60回 東京ファッション産業機器展）",
+      "name": "60th FISMA TOKYO(第60回 東京ファッション産業機器展)",
       "url": "https://www.fisma.tokyo/",
       "venue": "東京ビッグサイト 西3ホール",
       "conditionLines": [],
@@ -3724,28 +3724,12 @@
       "dateText": "11月18日(水)～20日(金)",
       "name": "ジャパンホームショー＆ビルディングショー 2026",
       "url": "https://www.jma.or.jp/homeshow/tokyo/",
-      "venue": "西ホール",
-      "conditionLines": [],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "",
-      "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true,
-      "planning": {
-        "planned": false,
-        "interested": true,
-        "ignored": false
-      }
-    },
-    {
-      "id": "xls-x-8e144b3a470c",
-      "date": "2026-11-18",
-      "endDate": "2026-11-20",
-      "dateText": "11月18日(水)～20日(金)",
-      "name": "ビルメンヒューマンフェア&クリーンEXPO2026",
-      "url": "https://bmcl.jma.or.jp/",
-      "venue": "南ホール",
-      "conditionLines": [],
+      "venue": "東京ビッグサイト 西1～4・南1～4ホール",
+      "conditionLines": [
+        "3展合同「建築＋インテリアWEEK」（ジャパンホームショー＆ビルディングショー、JAPANTEX、アジア・ファニシング・フェア）と、同時開催のビルメンヒューマンフェア＆クリーンEXPO、HOSPEX Japanを1件として管理",
+        "5展のいずれか1つで来場登録すれば全展に相互入場可能（入場無料・事前登録制）",
+        "開催時間：本展・JAPANTEX・HOSPEXは9:30～17:00／ビルメンの西2は9:30～17:00、南1・2は10:00～17:00／アジア・ファニシングは18・19日10:00～18:30、20日10:00～17:00"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -3762,7 +3746,7 @@
       "date": "2026-11-18",
       "endDate": "2026-11-20",
       "dateText": "11月18日(水)～20日(金)",
-      "name": "製造技術系6展合同（スマートファクトリーJapan・洗浄総合展など）",
+      "name": "製造技術系6展合同(スマートファクトリーJapan・洗浄総合展など)",
       "url": "https://biz.nikkan.co.jp/eve/smart-factory/overview.html",
       "venue": "東京ビッグサイト 東1～3ホール",
       "conditionLines": [
@@ -3781,7 +3765,7 @@
       "date": "2026-11-18",
       "endDate": "2026-11-20",
       "dateText": "11月18日(水)～20日(金)",
-      "name": "第11回 ドリンク ジャパン（飲料 液状食品 開発・製造展）",
+      "name": "第11回 ドリンク ジャパン(飲料 液状食品 開発・製造展)",
       "url": "https://www.drinkjapan.jp/",
       "venue": "東京ビッグサイト 東7・8ホール",
       "conditionLines": [],
@@ -4095,7 +4079,7 @@
       "date": "2026-12-16",
       "endDate": "2026-12-18",
       "dateText": "12月16日(水)～18日(金)",
-      "name": "エネルギーイノベーション総合展（ENEX2027 13展）",
+      "name": "エネルギーイノベーション総合展(ENEX2027 13展)",
       "url": "https://www.low-cf.jp/east/outline.html",
       "venue": "東京ビッグサイト 西・南展示棟／会議棟（各展のホール位置は要確認）",
       "conditionLines": [
@@ -4158,7 +4142,7 @@
       "date": "2027-01-20",
       "endDate": "2027-01-21",
       "dateText": "1月20日(水)～21日(木)",
-      "name": "外食ソリューションEXPO 2027 東京（焼肉ビジネスフェア／居酒屋JAPAN）",
+      "name": "外食ソリューションEXPO 2027 東京(焼肉ビジネスフェア／居酒屋JAPAN)",
       "url": "https://gaisyokusolutionexpo.com/outline",
       "venue": "池袋サンシャインシティ 文化会館",
       "conditionLines": [
@@ -4206,7 +4190,7 @@
       "date": "2027-02-17",
       "endDate": "2027-02-19",
       "dateText": "2月17日(水)～19日(金)",
-      "name": "第61回 スーパーマーケット・トレードショー2027（SMTS2027）",
+      "name": "第61回 スーパーマーケット・トレードショー2027(SMTS2027)",
       "url": "https://www.smts.jp/outline/",
       "venue": "幕張メッセ 全館",
       "conditionLines": [
@@ -4223,7 +4207,7 @@
       "date": "2027-03-02",
       "endDate": "2027-03-05",
       "dateText": "3月2日(火)～5日(金)",
-      "name": "2027モバックショウ（第30回国際製パン製菓関連産業展）",
+      "name": "2027モバックショウ(第30回国際製パン製菓関連産業展)",
       "url": "https://www.mobacshow.com/",
       "venue": "幕張メッセ 国際展示場4～8ホール",
       "conditionLines": [
@@ -4239,7 +4223,7 @@
       "date": "2027-03-09",
       "endDate": "2027-03-12",
       "dateText": "3月9日(火)～12日(金)",
-      "name": "FOODEX JAPAN 2027（第52回 国際食品・飲料展）",
+      "name": "FOODEX JAPAN 2027(第52回 国際食品・飲料展)",
       "url": "https://foodex.jma.or.jp/about/",
       "venue": "東京ビッグサイト 東1～8・西1～4ホール",
       "conditionLines": [
