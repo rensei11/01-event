@@ -1883,8 +1883,7 @@
       "venue": "ザ・プリンス パークタワー東京 B2 コンベンションホール",
       "conditionLines": [
         "無料・事前登録制",
-        "法人対象／多数時抽選の場合あり",
-        "名前コード：久保 直輝"
+        "法人対象／多数時抽選の場合あり"
       ],
       "rating": "B",
       "nightTime": "17:30～18:30",
@@ -1892,9 +1891,9 @@
       "dateText": "10月28日(水)",
       "sourceExcel": true,
       "planning": {
-        "planned": true,
+        "planned": false,
         "interested": false,
-        "ignored": false
+        "ignored": true
       },
       "endDate": "2026-10-28",
       "_kinds": [
