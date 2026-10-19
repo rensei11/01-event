@@ -2209,8 +2209,8 @@
       "nightText": "懇親会。13:00～16:15のセミナーと16:20～の個別相談会に続いて実施。Amazon、au PAY マーケット、Qoo10の登壇企業やEC事業者と交流。料理・酒の種類や提供量は公式公開情報では未確認。通常3,000円だが、GoQSystem未利用のEC事業者なら無料。",
       "planning": {
         "planned": false,
-        "interested": true,
-        "ignored": false
+        "interested": false,
+        "ignored": true
       },
       "_kinds": [
         "gathering"
