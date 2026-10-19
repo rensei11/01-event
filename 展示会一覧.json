@@ -4203,6 +4203,31 @@
       "nightText": "食品流通業界の大型商談展示会。公式開催概要にレセプションパーティーの併催あり。ただし実施日・時間・無料参加可否・飲食の詳細は未公表。"
     },
     {
+      "id": "evt-gourmetshow-spring-20270224",
+      "date": "2027-02-24",
+      "endDate": "2027-02-26",
+      "dateText": "2月24日(水)～26日(金)",
+      "name": "第41回 グルメショー春2027",
+      "url": "https://www.gourmetshow.jp/41gs/gaiyou/outline.html",
+      "venue": "東京ビッグサイト（使用ホール未公表）",
+      "conditionLines": [
+        "2027/2/24～26、10:00～18:00（最終日17:00）",
+        "プレミアムフードの商談展。第39回春の来場実績36,129名（今回の予定人数ではない）",
+        "2027年の無料招待券の配布条件・来場登録方法は未確認"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "ユーザー評価：グルメショー／ギフトショー系は以前の印象が良くない。開催日を記録するが期待度は高く設定しない。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "evt-mobac-show-20270302",
       "date": "2027-03-02",
       "endDate": "2027-03-05",
@@ -4237,6 +4262,58 @@
       "nightText": "第52回国際食品・飲料展。公式情報では2027年3月9日(火)～12日(金)開催。2026年実績3,238社出展。無料参加には招待券が必要で、公式に試飲・試食のみを目的とする入場は禁止。"
     },
     {
+      "id": "evt-hcj-tokyo-20270316",
+      "date": "2027-03-16",
+      "endDate": "2027-03-19",
+      "dateText": "3月16日(火)～19日(金)",
+      "name": "HCJ2027（国際ホテル・レストラン・ショー／フード・ケータリングショー／厨房設備機器展）",
+      "url": "https://hcj.jma.or.jp/visitor/",
+      "venue": "東京ビッグサイト 東1～6ホール",
+      "conditionLines": [
+        "2027/3/16～19、10:00～17:00（最終日16:30）",
+        "公式：入場無料・来場事前登録必須",
+        "2027年の事前登録開始は2026年11月下旬予定",
+        "ホテル・外食・給食・厨房機器等の複合商談展"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "展示会内での食品提供・飲食試食・閉場後レセプションの内容は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
+      "id": "evt-health-care-show-tokyo-20270317",
+      "date": "2027-03-17",
+      "endDate": "2027-03-19",
+      "dateText": "3月17日(水)～19日(金)",
+      "name": "健康博覧会2027 春＋Care Show Japan 2027（同時開催）",
+      "url": "https://www.this.ne.jp/",
+      "venue": "東京ビッグサイト 西ホール",
+      "conditionLines": [
+        "2027/3/17～19、10:00～17:00。Care Show Japanと同時開催",
+        "公式：Web事前登録者無料／通常入場料5,500円（税込）",
+        "企業間の商談専用。一般・学生の入場は不可（主催者明記）",
+        "健康食品・サプリ・オーガニック製品、介護食・医療福祉関連等"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "健康博覧会・Care Showを同じ期間と施設の同時開催グループとして登録。飲食・交流会の開催は未確認。参加資格に注意。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "evt-toho-tradeshow-tokyo-20270331",
       "date": "2027-03-31",
       "endDate": "",
@@ -4251,6 +4328,137 @@
       "rating": "",
       "nightTime": "",
       "nightText": "全国14会場のうち東京開催。業務用食品を中心とした展示商談会。試食の提供内容は未確認。"
+    },
+    {
+      "id": "evt-fabex-tokyo-20270413",
+      "date": "2027-04-13",
+      "endDate": "2027-04-15",
+      "dateText": "4月13日(火)～15日(木)",
+      "name": "FABEX東京2027（ファベックス／デザート・スイーツ＆ベーカリー展／お米未来展など）",
+      "url": "https://www.fabex.jp/outline/event_overview_tokyo.html",
+      "venue": "東京ビッグサイト 東3～6ホール",
+      "conditionLines": [
+        "2027/4/13～15、10:00～17:00",
+        "業界関係者のみ／招待券持参または事前来場登録は無料、通常入場5,000円（税込）",
+        "合同開催展含む来場者数60,000人を計画（予定人数であり実績ではない）",
+        "総合展・構成展は一つの訪問候補として扱う"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "惣菜・弁当・菓子・ベーカリー・飲料など。出展者ごとの試食・飲料の具体的提供や閉場後交流会は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
+      "id": "evt-world-of-coffee-tokyo-20270428",
+      "date": "2027-04-28",
+      "endDate": "2027-05-01",
+      "dateText": "4月28日(水)～5月1日(土)",
+      "name": "World of Coffee Tokyo 2027（世界バリスタ選手権併催／SCAJ2027の代替開催）",
+      "url": "https://asia.worldofcoffee.org/visitor",
+      "venue": "東京ビッグサイト（詳細使用ホール未公表）",
+      "conditionLines": [
+        "重要：2027年は通常のSCAJ展示会を開催せず、SCA主催・Exporum運営のWorld of Coffee Tokyoに代替",
+        "主催公式：2027/4/28～5/1、世界バリスタ選手権併催",
+        "公式有料料金：2/28まで早割1日3,000円・4日6,000円／3/1以降1日5,000円・4日10,000円",
+        "【無料招待券・招待コードを最優先調査】2027年の無料入場経路は未発見。2026年SCAJ招待券の適用可否も不明、同一条件とはみなさない",
+        "公式参加情報：https://asia.worldofcoffee.org/visitor ／ SCAJ主催変更発表：https://scaj.org/wp-content/uploads/2025/11/%E5%8A%A0%E8%97%A4%E4%BC%9A%E9%95%B7WOC-TOKYOWBC2027-TOKYO%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6SCAJ%E4%BC%9A%E5%93%A1-.pdf"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "最優先課題：2027年の無料招待券または正規の無料参加手段の獲得。2026年SCAJは会員・出展者の取引先等に無料招待コードを配布したが、WOC2027では適用未確認。発行主体SCA／Exporum／SCAJ／出展者の案内を継続追跡。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
+      "id": "evt-jfex-summer-tokyo-20270630",
+      "date": "2027-06-30",
+      "endDate": "2027-07-02",
+      "dateText": "6月30日(水)～7月2日(金)",
+      "name": "JFEX SUMMER 2027 第10回 国際 食品・飲料 商談Week",
+      "url": "https://www.jfex.jp/jfex/ja-jp/about.html",
+      "venue": "東京ビッグサイト（使用ホール未公表）",
+      "conditionLines": [
+        "2027/6/30～7/2、10:00～17:00（公式開催概要）",
+        "加工食品・ワイン酒・プレミアム食品・生鮮食品の4専門展",
+        "同時開催：第14回「日本の食品」輸出EXPO、第4回 国際 食品物流EXPO",
+        "2027年分の来場登録開始・無料期間・料金は未公表（2026年冬展の期限と混同しない）"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "食品・酒類商談展。出展者試飲試食や閉場後懇親会の2027年情報は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
+      "id": "evt-caferes-japan-tokyo-20270707",
+      "date": "2027-07-07",
+      "endDate": "2027-07-09",
+      "dateText": "7月7日(水)～9日(金)",
+      "name": "CAFERES JAPAN 2027（カフェ・ベーカリー・スイーツ専門展）",
+      "url": "https://caferes.jp/",
+      "venue": "東京ビッグサイト 東展示棟（ホール番号未発表）",
+      "conditionLines": [
+        "2027/7/7～9、東京ビッグサイト東展示棟（公式）",
+        "事前来場登録必須・無料。2027年5月頃に申込開始予定",
+        "カフェ・ベーカリー・スイーツ、コーヒー・紅茶・食材・機器等",
+        "前年2026年の実地評価はD（実地レポート/2026-08.json 参照）"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "2026年実地報告では『ミニSCAJ』との印象、懇親会なし。2027年は会場が東展示棟に変更されるが出展内容は未確定。前年評価を2027年の確定評価と混同しない。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
+      "id": "evt-foodstyle-japan-tokyo-20271012",
+      "date": "2027-10-12",
+      "endDate": "2027-10-14",
+      "dateText": "10月12日(火)～14日(木)",
+      "name": "FOOD STYLE JAPAN 2027 東京（ラーメン産業展等を含む）",
+      "url": "https://foodstyle.jp/tokyo/outline/",
+      "venue": "東京ビッグサイト（使用ホール未発表）",
+      "conditionLines": [
+        "2027/10/12～14、10:00～17:00（最終日16:00）予定",
+        "外食・中食・小売の食品・飲料・設備等の商談展示会",
+        "公式：事前登録制・業界関係者向け。2027年の無料招待券／料金条件は未確認",
+        "ラーメン産業展・食品包装資材＆機械展等の同時開催構成は別件として水増ししない"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "食品・飲料系の出展もあるが、試食や懇親会の2027年内容は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     }
   ]
 }
