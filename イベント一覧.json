@@ -1983,8 +1983,8 @@
       "nightText": "表彰式18:00～20:00の後に懇親会。2025年も表彰式終了後に別時間帯の懇親会という構成だったため、18時からの飲食提供は確認できない。",
       "planning": {
         "planned": false,
-        "interested": true,
-        "ignored": false
+        "interested": false,
+        "ignored": true
       }
     },
     {
