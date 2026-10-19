@@ -2459,6 +2459,33 @@
       "nightText": "懇親会。11/30公式ページでは料理・ドリンク詳細未記載。"
     },
     {
+      "id": "evt-intersystems-japan-forum-20261204",
+      "date": "2026-12-04",
+      "endDate": "",
+      "dateText": "12月4日(金)",
+      "name": "InterSystems Japan Forum 2026（インターシステムズ・ジャパンフォーラム）",
+      "url": "https://www.intersystems.com/jp/events/intersystems-japan-forum-2026/",
+      "venue": "KABUTO ONE HALL & CONFERENCE（日本橋兜町・茅場町駅直結、4階）",
+      "conditionLines": [
+        "公式：参加費無料・事前登録制",
+        "対象：ビジネスパートナー・既存顧客・導入検討者のほか、AI・データ活用／データプラットフォームに関心のある方",
+        "セミナー13:00～17:45（受付12:30）／懇親会17:45～20:00",
+        "使用する具体的なホール・ルーム、懇親会参加人数・料理・飲料・アルコール提供は未確認",
+        "クローク運営用設備（ハンガーラック・クローク札）は会場側にあり。ただし主催者が当日クロークを設けるかは未確認"
+      ],
+      "rating": "",
+      "nightTime": "17:45～20:00",
+      "nightText": "主催者公式の開催概要で無料の懇親会を17:45～20:00に実施と明記。会場のホール全体は459㎡・天井高8mだが、実際の利用区画は未公表。飲食の具体的提供内容は未確認。施設はクローク札とハンガーラックを有料備品として用意しているが、主催者による参加者向け預かり実施は未確認。会場備品：https://kabutoone.tokyo/h_and_c/eq/",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "gathering"
+      ]
+    },
+    {
       "id": "evt-6ed32ae9",
       "date": "2026-12-08",
       "name": "JSUG Conference 2026",
