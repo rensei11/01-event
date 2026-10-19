@@ -2434,12 +2434,13 @@
       "url": "https://www.databricks.com/dataaisummit/worldtour?region=apac",
       "venue": "ザ・プリンス パークタワー東京",
       "conditionLines": [
-        "無料・要登録",
-        "東京開催確定／詳細近日公開"
+        "無料・要事前登録",
+        "データブリックス主催公式：11/27（金）、ザ・プリンス パークタワー東京で開催",
+        "出展企業コムチュア・NTTインテグレーションの公式プログラムで18:20～19:30ネットワーキング確認"
       ],
-      "rating": "B+※。無料の大型World Tourで有力だが、会場・夜の懇親会・飲食はまだ未公表。",
-      "nightTime": "",
-      "nightText": "東京開催は11/27で公式確定。夜のNetworking・飲食内容は未公表。",
+      "rating": "B+※。無料の大型World Tourで18:20～19:30のネットワーキング開催を確認。料理・ドリンク・立食形式は未確認。",
+      "nightTime": "18:20～19:30",
+      "nightText": "出展企業の公式プログラム2社で18:20～19:30ネットワーキングを確認。12:00～13:15はランチ時間だが、昼食の無料提供は未確認。夜の料理・飲料・アルコール提供およびネットワーキングの参加条件は未確認。出典：https://www.comture.com/seminar/databricks_2611.html ／ https://www.niandc.co.jp/seminar/20261019_77995/",
       "dateText": "11月27日(金)",
       "sourceExcel": true
     },
