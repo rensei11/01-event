@@ -3252,15 +3252,7 @@
       "nightTime": "",
       "nightText": "春の時にめっちゃ菓子くれたイベント。ただし今回はビックサイトじゃなくて幕張。 / 幕張からパークタワーまで1時間以上かかるので15時過ぎの電車に乗らないと間に合わない",
       "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true,
-      "planning": {
-        "planned": true,
-        "interested": false,
-        "ignored": false,
-        "visitDates": [
-          "2026-10-21"
-        ]
-      }
+      "sourceExcel": true
     },
     {
       "id": "xls-x-3675c18dea20",
