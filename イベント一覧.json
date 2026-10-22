@@ -1609,18 +1609,23 @@
       "date": "2026-10-21",
       "name": "Natixis CIB Japan Forum 2026",
       "url": "https://www.fsa.go.jp/internationalfinancialcenter/lp/japanweeks2026/index_en.html",
-      "venue": "会場情報は台帳上未確定",
+      "venue": "東京會舘",
       "conditionLines": [
         "招待制"
       ],
-      "rating": "C。内容自体は強いが、金融機関等向け招待制で実用性が低い。",
+      "rating": "C",
       "nightTime": "16:00～19:30",
       "nightText": "後半はワイン・テイスティングをメインとしたNetworking Party。",
       "planning": {
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "endDate": "2026-10-21",
+      "dateText": "10月21日(水)",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-07582e9d572a",
