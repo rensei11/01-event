@@ -1958,8 +1958,8 @@
       "nightTime": "19:15～20:45",
       "nightText": "懇親・交流会（ホワイエ）。料理・ドリンク詳細は未確認。",
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false
       }
     },
