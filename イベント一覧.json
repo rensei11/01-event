@@ -1625,7 +1625,10 @@
       "dateText": "10月21日(水)",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-07582e9d572a",

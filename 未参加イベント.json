@@ -800,6 +800,19 @@
       "nameCodes": []
     },
     {
+      "id": "evt-9a68d1d17f1c",
+      "date": "2026-10-21",
+      "endDate": "2026-10-21",
+      "dateText": "10月21日(水)",
+      "name": "Natixis CIB Japan Forum 2026",
+      "url": "https://www.fsa.go.jp/internationalfinancialcenter/lp/japanweeks2026/index_en.html",
+      "venue": "東京會舘",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
       "id": "evt-cd9067a0fb0c",
       "date": "2026-10-22",
       "endDate": "",
