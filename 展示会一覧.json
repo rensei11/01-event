@@ -3758,7 +3758,13 @@
       "nightText": "",
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-501a42f3ddd3",
