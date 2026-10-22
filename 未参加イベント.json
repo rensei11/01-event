@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-19-web",
+  "dataVersion": "2026-10-22-web",
   "year": 2026,
   "events": [
     {
@@ -781,6 +781,71 @@
       "name": "ギックス データインフォームド・サミット2026",
       "url": "https://event.gixo.jp/",
       "venue": "品川ザ・グランドホール（品川グランドセントラルタワー3階）",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-2fb53a6ac06b",
+      "date": "2026-10-21",
+      "endDate": "",
+      "dateText": "",
+      "name": "BRIDGE FORUM 2026",
+      "url": "https://bridge-g.com/corporate-news/bridge-forum-2026-event/",
+      "venue": "品川ザ・グランドホール",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-cd9067a0fb0c",
+      "date": "2026-10-22",
+      "endDate": "",
+      "dateText": "",
+      "name": "DISCOVER KOREA",
+      "url": "https://www.japan-it.jp/hub/ja-jp/visit/feature/autumn/korea.html",
+      "venue": "幕張メッセ 2ホール",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-6d1db7f4d142",
+      "date": "2026-10-22",
+      "endDate": "",
+      "dateText": "",
+      "name": "NEDO Europe Immersion Program 国内ピッチイベント",
+      "url": "https://www.nedo.go.jp/events/CA_100293.html",
+      "venue": "LINK Lounge 01（高輪ゲートウェイ）",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-67b9a8e7b93d",
+      "date": "2026-10-22",
+      "endDate": "",
+      "dateText": "",
+      "name": "Tokyo Sustainable Finance Forum 2026",
+      "url": "https://tsfw.tokyo/2026/en/tsfw_forum/",
+      "venue": "大手町プレイス ホール＆カンファレンス",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-autonomy-summit-20261022",
+      "date": "2026-10-22",
+      "endDate": "",
+      "dateText": "",
+      "name": "第6回 自治体サミット -副市長&DX推進担当者会議-",
+      "url": "https://eight-event.8card.net/local-government-summit/",
+      "venue": "会場詳細は公式ページ参照",
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],

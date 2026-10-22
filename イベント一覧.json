@@ -1599,7 +1599,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-9a68d1d17f1c",
@@ -1636,7 +1639,13 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-21"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-07582e9d572a"
     },
     {
       "id": "evt-c0e2d0d0d58b",
@@ -1645,9 +1654,9 @@
       "url": "https://www.wingarc.com/updata/2026/?__CAMCID=INIMfQhNyH-133&__CAMI=3.3.0.0.CDQhGhDeDHC.HP04sb7I0Zy5Tdaa-43&__CAMSID=HP04sb7I0Zy5Tdaa-43&__CAMVID=CDQhGhDeDHC&_c_d=1&_ct=1788683754080&ss_ad_code=s_bluememe",
       "venue": "ザ・プリンス パークタワー東京",
       "conditionLines": [
-        "名前コード：久保 直輝",
         "招待コード取得済",
-        "Networking申請済"
+        "Networking申請済",
+        "名前コード：久保 直輝"
       ],
       "rating": "A。参加経路を確保済みで、ホテル会場・90分Networkingとも有力。",
       "nightTime": "17:00～18:30",
@@ -1658,7 +1667,13 @@
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-21"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-c0e2d0d0d58b"
     },
     {
       "id": "evt-cd9067a0fb0c",
@@ -1676,7 +1691,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-6d1db7f4d142",
@@ -1694,7 +1712,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-67b9a8e7b93d",
@@ -1713,7 +1734,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-autonomy-summit-20261022",
@@ -1732,7 +1756,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-0c37a689eaff",

@@ -191,6 +191,42 @@
       "report": "食品の原材料を主に扱う展示会。\n去年も行ったがやはりたいしたものはない。\nドレッシング貰って豆乳チーズタルトを1つ食べただけ。",
       "source": "終了処理",
       "ratingFlag": "low"
+    },
+    {
+      "id": "rep-web-evt-07582e9d572a",
+      "date": "2026-10-21",
+      "visitDates": [
+        "2026-10-21"
+      ],
+      "dateText": "10/21",
+      "scheduledDate": "2026-10-21",
+      "scheduledEndDate": "2026-10-21",
+      "scheduledDateText": "",
+      "name": "Tokyo Sustainable Seafood Summit 2026",
+      "url": "https://sustainableseafoodnow.com/2026/en/",
+      "venue": "竹芝ポートホール",
+      "rating": "",
+      "category": "gathering",
+      "report": "ギリギリで気づいたて登録したが、登録できたのかどうかもわからず、そもそも受付時間の18時を過ぎてしまったので門前払いを喰らった。皿にのせたものを食べてる外国人がいたので食事自体は出ていたっぽいが確認は出来ず。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-c0e2d0d0d58b",
+      "date": "2026-10-21",
+      "visitDates": [
+        "2026-10-21"
+      ],
+      "dateText": "10/21",
+      "scheduledDate": "2026-10-21",
+      "scheduledEndDate": "2026-10-21",
+      "scheduledDateText": "10月21日(水)",
+      "name": "UpdataNOW26",
+      "url": "https://www.wingarc.com/updata/2026/?__CAMCID=INIMfQhNyH-133&__CAMI=3.3.0.0.CDQhGhDeDHC.HP04sb7I0Zy5Tdaa-43&__CAMSID=HP04sb7I0Zy5Tdaa-43&__CAMVID=CDQhGhDeDHC&_c_d=1&_ct=1788683754080&ss_ad_code=s_bluememe",
+      "venue": "ザ・プリンス パークタワー東京",
+      "rating": "E",
+      "category": "gathering",
+      "report": "16時10分着。クロークあり。荷物が多すぎて片づけるのに手間取った。\nまずスタンプラリーを確認、QRでキーワードを集める式。5カ所集めて2回分。ブース訪問はシール1つ、5枚集めると1回分。シールを取れるところを探したがチャンスは1回以外なかった。2回引いて1回目はハズレ、2回目はTシャツが当たった。あとはTOSHIBAがアンケートに答えるとワイヤレスイヤホンをくれた。4枚分のしっかりしたアンケートで5分くらいかかった。\n懇親会は招待制だったが、HTMLを解析して無理やり通した。しかし実態は社長2名のトークショーで、ウィスキーやワインはあったものの食べ物が本当の軽食（唐揚げ、フライドポテト、ナッツ、そしてなぜかまい泉のカツサンド おそらくだがランチの分のあまりでは？？）しかも最初に乾杯したのに食べ物を開放するタイミングを完全に失ったのか40分経過後に聞いたらもう食べても大丈夫と言われて食べただけ。トークもずっと続いていたので1時間経過した段階でもう帰宅することにした（枠自体が1時間半でトークが終わっても交流タイムになるだけでいる意味がない）",
+      "source": "終了処理"
     }
   ]
 }
