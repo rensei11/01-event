@@ -3870,7 +3870,13 @@
       "nightText": "",
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "evt-2026-highway-tech-fair-1126",
