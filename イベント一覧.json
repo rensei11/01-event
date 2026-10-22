@@ -2510,7 +2510,12 @@
       ],
       "rating": "A。無料＋大型ホテル＋懇親会の組み合わせ。詳細時刻・料理は今後公表予定。",
       "nightTime": "",
-      "nightText": "懇親会を公式プログラムに明記。時刻・飲食内容は未公表。"
+      "nightText": "懇親会を公式プログラムに明記。時刻・飲食内容は未公表。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-sepex-yearend-20261209",
