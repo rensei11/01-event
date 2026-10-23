@@ -3331,8 +3331,8 @@
       "nightTime": "",
       "nightText": "試食・試飲は2024～2025年に実績あり。2026年は139小間、9種類のスタンプを集める景品交換企画あり。",
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false,
         "visitDates": [
           "2026-10-29"
