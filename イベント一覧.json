@@ -1867,16 +1867,22 @@
       "venue": "品川ザ・グランドホール",
       "conditionLines": [
         "無料",
-        "オフラインイベント申込"
+        "オフラインイベント申込",
+        "名前コード：久保 直輝"
       ],
-      "rating": "A。無料・80分で、食事と飲み物を公式明記。品川会場で実用性が高い。",
+      "rating": "A",
       "nightTime": "18:40～20:00",
       "nightText": "特別懇親会。公式に「お食事、お飲み物などもご用意」と明記。",
       "planning": {
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-10-27",
+      "dateText": "10月27日(火)",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-satobito-summit-20261027",
