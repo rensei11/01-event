@@ -2355,9 +2355,10 @@
       "venue": "ザ・プリンス パークタワー東京",
       "conditionLines": [
         "参加登録制",
-        "オンライン併催"
+        "オンライン併催",
+        "名前コード：久保 直輝"
       ],
-      "rating": "C※。ホテル会場は魅力だが、夜の懇親会・飲食は現時点で確認できず。",
+      "rating": "C",
       "nightTime": "",
       "nightText": "夜のReception・飲食は未確認。来場＋総合アンケート特典あり。 Excelメモ：イベント参加＆当日総合アンケート回答でAmazonギフトカード1,000円分 / ※上記特典は10/2(金)までの登録者が対象",
       "dateText": "11月13日(金)",
@@ -2366,7 +2367,11 @@
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-11-13",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-synology-solution-day-20261113",
