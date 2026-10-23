@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-22-web",
+  "dataVersion": "2026-10-23-web",
   "year": 2026,
   "events": [
     {
@@ -1789,7 +1789,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-9859fe1a",

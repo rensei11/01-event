@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-22-web",
+  "dataVersion": "2026-10-23-web",
   "year": 2026,
   "events": [
     {
@@ -859,6 +859,19 @@
       "name": "第6回 自治体サミット -副市長&DX推進担当者会議-",
       "url": "https://eight-event.8card.net/local-government-summit/",
       "venue": "会場詳細は公式ページ参照",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-0c37a689eaff",
+      "date": "2026-10-23",
+      "endDate": "",
+      "dateText": "",
+      "name": "ad:tech Tokyo 2026",
+      "url": "https://adtech-tokyo.com/ja/",
+      "venue": "東京ミッドタウン／ザ・リッツ・カールトン東京",
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],
