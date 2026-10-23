@@ -2304,7 +2304,12 @@
       ],
       "rating": "A※。Day 2も18時から無料懇親会。参加対象条件は要確認。",
       "nightTime": "18:00～",
-      "nightText": "懇親会。公式に両日18時から無料開催と明記。"
+      "nightText": "懇親会。公式に両日18時から無料開催と明記。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-meets-keiei-20261111",
