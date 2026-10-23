@@ -1873,8 +1873,8 @@
       "nightTime": "18:40～20:00",
       "nightText": "特別懇親会。公式に「お食事、お飲み物などもご用意」と明記。",
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false
       }
     },
