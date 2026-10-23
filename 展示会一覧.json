@@ -3308,9 +3308,9 @@
         "exhibition"
       ],
       "planning": {
-        "planned": true,
+        "planned": false,
         "interested": false,
-        "ignored": false
+        "ignored": true
       }
     },
     {
