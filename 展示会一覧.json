@@ -4403,6 +4403,32 @@
       ]
     },
     {
+      "id": "evt-microsoft-ai-tour-tokyo-20270415",
+      "date": "2027-04-15",
+      "endDate": "",
+      "dateText": "4月15日(木)",
+      "name": "Microsoft AI Tour Tokyo 2027 (開催予定)",
+      "url": "https://aitour.microsoft.com/",
+      "venue": "東京都内 (詳細会場未発表)",
+      "conditionLines": [
+        "日程は協賛企業SoftwareOneの2026～2027年ツアー一覧に掲載された東京開催予定日。Microsoft主催者からの2027年東京開催日・会場の確定発表は未確認",
+        "2026/10/23時点：東京開催分の一般参加登録開始は未確認。申込受付、正式開催日、会場、参加条件、料金を要再確認",
+        "日程出典（協賛企業）：https://www.softwareone.com/en/now/softwareone-at-the-microsoft-ai-tour",
+        "イベントURLはMicrosoft公式ツアー入口。現在は世界各都市の案内ページへのリンクで、2027年東京専用の申込ページではない"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "後日、Microsoft公式の東京開催ページと募集開始状況を確認するための仮登録。2026年3月24日の開催済みMicrosoft AI Tour Tokyoとは別イベント。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "evt-world-of-coffee-tokyo-20270428",
       "date": "2027-04-28",
       "endDate": "2027-05-01",
