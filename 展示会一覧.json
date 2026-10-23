@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-22-web",
+  "dataVersion": "2026-10-23-web",
   "year": 2026,
   "events": [
     {
@@ -3308,9 +3308,9 @@
         "exhibition"
       ],
       "planning": {
-        "planned": false,
+        "planned": true,
         "interested": false,
-        "ignored": true
+        "ignored": false
       }
     },
     {
