@@ -3593,11 +3593,13 @@
       "id": "xls-x-4dd2e9c199cb",
       "date": "2026-11-10",
       "endDate": "2026-11-13",
-      "dateText": "11月10日(火)～13日(金)",
+      "dateText": "11月10日(火)～11月13日(金)",
       "name": "アグリビジネス創出フェア2026",
       "url": "https://agribiz.maff.go.jp/",
       "venue": "東京ビッグサイト 西4ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -3610,7 +3612,10 @@
         "visitDates": [
           "2026-11-11"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-a1f86eafac98",
