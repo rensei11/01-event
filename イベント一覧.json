@@ -2370,7 +2370,12 @@
       ],
       "rating": "",
       "nightTime": "18:40～20:00",
-      "nightText": "懇親会。主催者公式に料理とフリードリンクの提供を明記。途中入退場可。立食か着席か、料理の品数・補充は未確認。"
+      "nightText": "懇親会。主催者公式に料理とフリードリンクの提供を明記。途中入退場可。立食か着席か、料理の品数・補充は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-f95813dd",
