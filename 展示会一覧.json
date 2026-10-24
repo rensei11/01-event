@@ -3478,11 +3478,13 @@
       "id": "xls-x-f9bbf8331bfe",
       "date": "2026-11-05",
       "endDate": "2026-11-06",
-      "dateText": "11月5日(木)～6日(金)",
+      "dateText": "11月5日(木)～11月6日(金)",
       "name": "レジャー＆サービス産業展",
       "url": "https://www.sogo-unicom.co.jp/lsi/",
       "venue": "東京ビッグサイト 東3ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -3495,7 +3497,10 @@
         "visitDates": [
           "2026-11-06"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-65646d7ab31a",
