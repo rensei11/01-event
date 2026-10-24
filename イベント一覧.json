@@ -2441,20 +2441,24 @@
       "url": "https://workatowowconference.cventevents.com/event/tokyo/world-of-workato",
       "venue": "東京マリオットホテル",
       "conditionLines": [
-        "名前コード：久保 直輝",
         "通常有料（一般59,000円～）",
-        "無料招待コードあり／1,000名以上"
+        "無料招待コードあり／1,000名以上",
+        "名前コード：久保 直輝"
       ],
-      "rating": "A※。Main Conference。ホテル・大型・無料招待経路ありで強いが、夜Networking・飲食は未確認。",
+      "rating": "A",
       "nightTime": "",
-      "nightText": "Main Conference。クロージングでハッカソン表彰式。夜のNetworking・飲食は未確認。 Excelメモ：有料だが招待コードを入れると無料。2日目の19日の最後にネットワーキング。",
+      "nightText": "Main Conference。クロージングでハッカソン表彰式。。2日目の19日18:00-19:30 ネットワーキング\n有料だが招待コードを入れると無料",
       "dateText": "11月19日(木)",
       "sourceExcel": true,
       "planning": {
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-11-19",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-global-management-leaders-summit-20261119",
