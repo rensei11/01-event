@@ -1961,16 +1961,22 @@
       "venue": "TODA HALL & CONFERENCE TOKYO",
       "conditionLines": [
         "無料・事前登録制",
-        "定員600名／多数時抽選"
+        "定員600名／多数時抽選",
+        "名前コード：久保 直輝"
       ],
-      "rating": "B+。600名・90分の懇親交流会で時間条件は強い。飲食詳細は未確認。",
+      "rating": "B+",
       "nightTime": "19:15～20:45",
       "nightText": "懇親・交流会（ホワイエ）。料理・ドリンク詳細は未確認。",
       "planning": {
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-10-29",
+      "dateText": "10月29日(木)",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-dcee2ac9",
