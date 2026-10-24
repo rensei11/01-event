@@ -2549,6 +2549,33 @@
       "nightText": "懇親会。11/30公式ページでは料理・ドリンク詳細未記載。"
     },
     {
+      "id": "evt-retail-commerce-standard-20261203",
+      "date": "2026-12-03",
+      "endDate": "",
+      "dateText": "12月3日(木)",
+      "name": "Retail & Commerce Standard 2026（リテール＆コマース・スタンダード）懇親会",
+      "url": "https://event.shoeisha.jp/mzday/rcs2026/session/7238",
+      "venue": "JPタワー ホール＆カンファレンス（KITTE 4階・東京駅）",
+      "conditionLines": [
+        "本体・懇親会とも参加無料。懇親会は別途事前申込・抽選制",
+        "2026/10/24 本人申込済み・抽選結果待ち。参加確定ではない",
+        "懇親会申込締切：11/25(水)17:00／当落案内：12/1(火)予定",
+        "懇親会のみの参加不可。本体にも参加し17:50までに受付を済ませる必要あり",
+        "公式案内は飲食だけを主目的とする参加を禁止。料理・飲料の具体的内容は未確認"
+      ],
+      "rating": "",
+      "nightTime": "18:30～19:30",
+      "nightText": "12/3(木) 18:30～19:30懇親会（無料・抽選制）。10/24申込済み、当落待ち。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "gathering"
+      ]
+    },
+    {
       "id": "evt-intersystems-japan-forum-20261204",
       "date": "2026-12-04",
       "endDate": "",
