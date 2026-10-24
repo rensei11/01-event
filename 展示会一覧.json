@@ -2335,32 +2335,6 @@
       "historySource": "実地レポート"
     },
     {
-      "id": "evt-hitachi-social-innovation-forum-20260903",
-      "date": "2026-09-03",
-      "endDate": "2026-09-04",
-      "dateText": "9月3日(木)～4日(金)",
-      "name": "Hitachi Social Innovation Forum 2026 JAPAN",
-      "url": "https://www.hitachi.com/ja-jp/press/articles/2026/07/0721a/",
-      "venue": "東京国際フォーラム",
-      "conditionLines": [
-        "2026年9月3～4日に開催済み。入場無料・事前登録制だった（日立公式発表）",
-        "日立グループ最大規模のイベント。AI、フィジカルAI、社会インフラ、データ・セキュリティ等の講演・実機展示",
-        "2026年分の開催情報。2027年開催日や募集情報は未確認",
-        "会期後にも内容を参照できる日立公式プレスリリースをURLに登録"
-      ],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "【開催済み・参加記録なし】無料の展示・講演イベント。懇親会や料理・ノベルティは未確認。",
-      "planning": {
-        "planned": false,
-        "interested": false,
-        "ignored": false
-      },
-      "_kinds": [
-        "exhibition"
-      ]
-    },
-    {
       "id": "hist-att-2b345db1fb3b",
       "date": "2026-09-08",
       "endDate": "2026-09-09",
@@ -3576,8 +3550,13 @@
       "dateText": "11月6日(金)～7日(土)",
       "name": "東京みらい市2026",
       "url": "https://mirai-ichi.jp/tokyo/",
-      "venue": "東京ビッグサイト",
-      "conditionLines": [],
+      "venue": "東京ビッグサイト 東7・8ホール",
+      "conditionLines": [
+        "2026年11月6日(金)～7日(土)、入場無料・Web事前登録制。2026年10月8日から受付開始（主催者関連の公式告知）",
+        "会場受付では登録後のQRコードと名刺を提示。案内：https://www.setsubi-it.jp/topic/index.php/event/tokyo-mirai-2026/",
+        "【本人の2025年実地経験】2025年は東京ビッグサイト現地で当日に催事を知り、その場で参加登録して通常入場できた。事前に招待を受けていなくても入れたという経験談",
+        "【2026年要確認】2025年のように会期当日も新規登録できるか、招待コードなしで登録できるかは未確認。公開利用可能な招待コードは見つかっていない"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
