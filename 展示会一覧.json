@@ -3359,8 +3359,9 @@
       "nightText": "17時以降の懇親会、無料飲食やノベルティの確定情報は未確認。",
       "planning": {
         "planned": false,
-        "interested": false,
-        "ignored": false
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
       },
       "_kinds": [
         "exhibition"
