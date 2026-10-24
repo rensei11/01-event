@@ -3515,9 +3515,7 @@
         "planned": false,
         "interested": true,
         "ignored": false,
-        "visitDates": [
-          "2026-11-06"
-        ]
+        "visitDates": []
       }
     },
     {
