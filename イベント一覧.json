@@ -2324,18 +2324,23 @@
       "conditionLines": [
         "無料・事前審査制",
         "定員240名",
-        "10/9までの申請は優先扱い（案内メール）"
+        "10/9までの申請は優先扱い（案内メール）",
+        "名前コード：増田 慎一"
       ],
-      "rating": "A-※。本来は審査制で参加可否に不確実性があるが、今回は期限内申請の優先案内あり。前回は飲み物・軽食付き大交流会あり。",
+      "rating": "A-",
       "nightTime": "14:30～20:00（全体）",
-      "nightText": "第6回の交流会時間・飲食は未公表。第5回は18:25～20:30のNetworkingで、飲み物・軽食あり。 Excelメモ：優先申し込み者専用フォーム 10/9(金)まで",
+      "nightText": "優先申し込み者専用フォーム 10/9(金)まで。\n増田で既に登録完了でメールにQRも来ている。",
       "dateText": "11月11日(水)",
       "sourceExcel": true,
       "planning": {
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "endDate": "2026-11-11",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-voice-to-value-autumn-20261111",
