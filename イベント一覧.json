@@ -2151,7 +2151,13 @@
       "nightText": "公式アフターパーティー「Gravity Night」開催予定。2025年はカンファレンス・アフターパーティーとも無料で誰でも参加可能だったが、2026年のGravity Night条件は未発表。",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "evt-3dexperience-conf-day2-networking-20261106",
