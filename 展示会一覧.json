@@ -947,6 +947,32 @@
       "historySource": "終了処理"
     },
     {
+      "id": "evt-oracle-ai-world-tour-tokyo-20260416",
+      "date": "2026-04-16",
+      "endDate": "",
+      "dateText": "4月16日(木)",
+      "name": "Oracle AI World Tour Tokyo 2026",
+      "url": "https://blogs.oracle.com/oracle4engineer/seminar-20260416",
+      "venue": "ザ・プリンス パークタワー東京",
+      "conditionLines": [
+        "2026年4月16日に開催済み。参加無料・事前申込制だった（Oracle公式ブログ）",
+        "クラウド・データベース・AIアプリケーションの講演、企業事例、展示、ネットワーキングを実施",
+        "2026年分の記録。2027年の会場や申込条件は未発表",
+        "会期後に旧イベントトップページが2027年案内へ切り替わったため、2026年の日付と会場が確認できるOracle公式記事をURLに登録"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "【開催済み・参加記録なし】交流実績はOracle報告で確認。飲食の種類や量は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "hist-att-d107ea2b40cc",
       "date": "2026-04-16",
       "endDate": "2026-04-17",
@@ -980,32 +1006,6 @@
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "historySource": "未参加イベント"
-    },
-    {
-      "id": "evt-oracle-ai-world-tour-tokyo-20260416",
-      "date": "2026-04-16",
-      "endDate": "",
-      "dateText": "4月16日(木)",
-      "name": "Oracle AI World Tour Tokyo 2026",
-      "url": "https://blogs.oracle.com/oracle4engineer/seminar-20260416",
-      "venue": "ザ・プリンス パークタワー東京",
-      "conditionLines": [
-        "2026年4月16日に開催済み。参加無料・事前申込制だった（Oracle公式ブログ）",
-        "クラウド・データベース・AIアプリケーションの講演、企業事例、展示、ネットワーキングを実施",
-        "2026年分の記録。2027年の会場や申込条件は未発表",
-        "会期後に旧イベントトップページが2027年案内へ切り替わったため、2026年の日付と会場が確認できるOracle公式記事をURLに登録"
-      ],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "【開催済み・参加記録なし】交流実績はOracle報告で確認。飲食の種類や量は未確認。",
-      "planning": {
-        "planned": false,
-        "interested": false,
-        "ignored": false
-      },
-      "_kinds": [
-        "exhibition"
-      ]
     },
     {
       "id": "hist-att-b1d4f7365196",
@@ -3471,6 +3471,36 @@
       ]
     },
     {
+      "id": "evt-intramart-live-20261105",
+      "date": "2026-11-05",
+      "endDate": "2026-11-06",
+      "dateText": "11月5日(木)～11月6日(金)",
+      "name": "intra-mart LIVE 2026 Realize",
+      "url": "https://www.intra-mart.jp/event/live2026/index.html",
+      "venue": "ザ・プリンス パークタワー東京（11/5現地開催／11/6オンライン）",
+      "conditionLines": [
+        "参加無料・事前申込制。両日10:00～18:00（11/5受付9:30）",
+        "11月5日(木)は会場開催、11月6日(金)はオンラインのみ。11/6にホテル展示はない",
+        "54セッション、47展示ブース（公式発表）",
+        "会場の対象ブースを巡るスタンプラリーで豪華ノベルティが当たる企画あり。景品の詳細・数量は未確認",
+        "名前コード：久保 直輝"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "展示ブースのスタンプラリー特典あり。閉場後の無料懇親会・飲食は未確認。",
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-11-06"
+        ]
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "xls-x-f9bbf8331bfe",
       "date": "2026-11-05",
       "endDate": "2026-11-06",
@@ -3492,35 +3522,6 @@
           "2026-11-06"
         ]
       }
-    },
-    {
-      "id": "evt-intramart-live-20261105",
-      "date": "2026-11-05",
-      "endDate": "2026-11-06",
-      "dateText": "11月5日(木)～6日(金)",
-      "name": "intra-mart LIVE 2026 Realize",
-      "url": "https://www.intra-mart.jp/event/live2026/index.html",
-      "venue": "ザ・プリンス パークタワー東京（11/5現地開催／11/6オンライン）",
-      "conditionLines": [
-        "参加無料・事前申込制。両日10:00～18:00（11/5受付9:30）",
-        "11月5日(木)は会場開催、11月6日(金)はオンラインのみ。11/6にホテル展示はない",
-        "54セッション、47展示ブース（公式発表）",
-        "会場の対象ブースを巡るスタンプラリーで豪華ノベルティが当たる企画あり。景品の詳細・数量は未確認"
-      ],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "展示ブースのスタンプラリー特典あり。閉場後の無料懇親会・飲食は未確認。",
-      "planning": {
-        "planned": true,
-        "interested": false,
-        "ignored": false,
-        "visitDates": [
-          "2026-11-06"
-        ]
-      },
-      "_kinds": [
-        "exhibition"
-      ]
     },
     {
       "id": "xls-x-65646d7ab31a",
@@ -3834,6 +3835,33 @@
       }
     },
     {
+      "id": "evt-salesforce-world-tour-tokyo-20261118",
+      "date": "2026-11-18",
+      "endDate": "2026-11-19",
+      "dateText": "11月18日(水)～19日(木)",
+      "name": "Salesforce World Tour Tokyo 2026",
+      "url": "https://www.salesforce.com/jp/events/world-tour/tokyo/",
+      "venue": "ザ・プリンス パークタワー東京",
+      "conditionLines": [
+        "参加無料・事前登録制（主催者公式FAQ）",
+        "展示エリア（Campground／Trailblazer Forest）、基調講演、ブレイクアウトセッション、ハンズオンなど",
+        "11月18日18:00～19:00に展示エリアでネットワーキング。公式にドリンクと軽食の提供を明記",
+        "11月19日は12:00から展示エリアで軽食提供と案内",
+        "2026年6月開催のAgentforce World Tour Tokyo（参加済み記録あり）とは別日程"
+      ],
+      "rating": "",
+      "nightTime": "11/18 18:00～19:00",
+      "nightText": "【無料ネットワーキング・ドリンク／軽食】11月18日18:00～19:00、展示エリア。公式に飲み物と軽食を用意すると明記。料理量・種類は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "xls-x-e2d5333818dc",
       "date": "2026-11-18",
       "endDate": "2026-11-20",
@@ -3901,33 +3929,6 @@
         "interested": true,
         "ignored": false
       }
-    },
-    {
-      "id": "evt-salesforce-world-tour-tokyo-20261118",
-      "date": "2026-11-18",
-      "endDate": "2026-11-19",
-      "dateText": "11月18日(水)～19日(木)",
-      "name": "Salesforce World Tour Tokyo 2026",
-      "url": "https://www.salesforce.com/jp/events/world-tour/tokyo/",
-      "venue": "ザ・プリンス パークタワー東京",
-      "conditionLines": [
-        "参加無料・事前登録制（主催者公式FAQ）",
-        "展示エリア（Campground／Trailblazer Forest）、基調講演、ブレイクアウトセッション、ハンズオンなど",
-        "11月18日18:00～19:00に展示エリアでネットワーキング。公式にドリンクと軽食の提供を明記",
-        "11月19日は12:00から展示エリアで軽食提供と案内",
-        "2026年6月開催のAgentforce World Tour Tokyo（参加済み記録あり）とは別日程"
-      ],
-      "rating": "",
-      "nightTime": "11/18 18:00～19:00",
-      "nightText": "【無料ネットワーキング・ドリンク／軽食】11月18日18:00～19:00、展示エリア。公式に飲み物と軽食を用意すると明記。料理量・種類は未確認。",
-      "planning": {
-        "planned": false,
-        "interested": false,
-        "ignored": false
-      },
-      "_kinds": [
-        "exhibition"
-      ]
     },
     {
       "id": "xls-x-0ba291f4db9b",
