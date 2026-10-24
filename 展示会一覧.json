@@ -3333,8 +3333,8 @@
       "nightTime": "",
       "nightText": "17時以降の懇親会、無料飲食やノベルティの確定情報は未確認。",
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false,
         "visitDates": []
       },
