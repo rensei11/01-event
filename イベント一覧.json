@@ -2457,7 +2457,10 @@
       "planning": {
         "planned": true,
         "interested": false,
-        "ignored": false
+        "ignored": false,
+        "visitDates": [
+          "2026-11-18"
+        ]
       },
       "_kinds": [
         "gathering"
