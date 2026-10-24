@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-23-web",
+  "dataVersion": "2026-10-24-web",
   "year": 2026,
   "events": [
     {
@@ -31,6 +31,19 @@
       "category": "exhibition",
       "attendanceStatus": "not_attended",
       "visitDates": []
+    },
+    {
+      "id": "evt-oracle-ai-world-tour-tokyo-20260416",
+      "date": "2026-04-16",
+      "endDate": "",
+      "dateText": "4月16日(木)",
+      "name": "Oracle AI World Tour Tokyo 2026",
+      "url": "https://blogs.oracle.com/oracle4engineer/seminar-20260416",
+      "venue": "ザ・プリンス パークタワー東京",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
     },
     {
       "id": "hist-e75e13fc24fb",

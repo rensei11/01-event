@@ -970,7 +970,10 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "hist-att-d107ea2b40cc",
@@ -3286,7 +3289,13 @@
         "visitDates": [
           "2026-10-21"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-21"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-5ddc3414f403"
     },
     {
       "id": "xls-x-3675c18dea20",
