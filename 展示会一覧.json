@@ -3511,9 +3511,12 @@
       "nightTime": "",
       "nightText": "展示ブースのスタンプラリー特典あり。閉場後の無料懇親会・飲食は未確認。",
       "planning": {
-        "planned": false,
+        "planned": true,
         "interested": false,
-        "ignored": false
+        "ignored": false,
+        "visitDates": [
+          "2026-11-06"
+        ]
       },
       "_kinds": [
         "exhibition"
