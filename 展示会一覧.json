@@ -3658,11 +3658,13 @@
       "id": "xls-x-e40d709b2027",
       "date": "2026-11-11",
       "endDate": "2026-11-13",
-      "dateText": "11月11日(水)～13日(金)",
+      "dateText": "11月11日(水)～11月13日(金)",
       "name": "JFEX WINTER 第9回 [国際] 食品・飲料 商談Week",
       "url": "https://www.jfex.jp/jfex/ja-jp.html",
       "venue": "東京ビッグサイト 東7,8ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "夏に2日行った　期待できそう　交流会があるといいが 7.8ホールのみじゃ期待できない。",
@@ -3676,7 +3678,10 @@
           "2026-11-11",
           "2026-11-13"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-8450fc32cacd",
