@@ -3336,7 +3336,10 @@
         "planned": true,
         "interested": false,
         "ignored": false,
-        "visitDates": []
+        "visitDates": [
+          "2026-10-27",
+          "2026-10-28"
+        ]
       },
       "_kinds": [
         "exhibition"
