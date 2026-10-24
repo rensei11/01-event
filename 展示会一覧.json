@@ -3626,11 +3626,13 @@
       "id": "xls-x-e1d02a762201",
       "date": "2026-11-11",
       "endDate": "2026-11-13",
-      "dateText": "11月11日(水)～13日(金)",
+      "dateText": "11月11日(水)～11月13日(金)",
       "name": "FOOD展2026",
       "url": "https://www.food-exhibition.info/",
       "venue": "東京ビッグサイト 東2,3ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "去年も言うほど食べるものはなかった",
@@ -3643,7 +3645,10 @@
         "visitDates": [
           "2026-11-11"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-e40d709b2027",
