@@ -760,7 +760,7 @@ function renderBigSightTrialGrid(){
       seenGroup=h.group;
     }
     html+='<th class="bs-hall">'+h.label+'</th>';
-    for(const date of BIGSIGHT_TRIAL_DATES)html+=bigsightCellHtml(h.code,date);
+    for(const date of bigsightActiveDates())html+=bigsightCellHtml(h.code,date);
     html+='</tr>';
   }
   html+='</tbody></table>';
