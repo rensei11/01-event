@@ -851,6 +851,7 @@ function bindBigSightTrialHover(){
   });
 }
 function openBigSightTrial(){
+  bigsightWeekTitle.textContent='東京ビッグサイト使用状況　'+weekLabel(activeBigSightWeekKey);
   renderBigSightTrialGrid();
   bigsightWeekModal.hidden=false;
 }
