@@ -946,13 +946,74 @@ const BIGSIGHT_WEEK_1123_BLOCKS=[
     event:['2026-11-29']
   }
 ];
-const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START,BIGSIGHT_FOLLOWING_WEEK_START,BIGSIGHT_WEEK_1123_START];
+const BIGSIGHT_WEEK_1130_START='2026-11-30';
+const BIGSIGHT_WEEK_1130_DATES=['2026-11-30','2026-12-01','2026-12-02','2026-12-03','2026-12-04','2026-12-05','2026-12-06'];
+const BIGSIGHT_WEEK_1130_BLOCKS=[
+  {
+    id:'beyond-sdgs-ecopro-2026',
+    name:'BEYOND SDGs エコプロ2026',
+    url:'https://messe.nikkei.co.jp/es/',
+    halls:['E1','E2','E3'],
+    prep:['2026-11-30','2026-12-01'],
+    event:['2026-12-02','2026-12-03','2026-12-04']
+  },
+  {
+    id:'nikkei-health-longevity-2026',
+    name:'日経健康経営・ロンジェビティEXPO 2026',
+    url:'https://messe.nikkei.co.jp/kl/',
+    halls:['E7'],
+    prep:[],
+    event:['2026-12-02','2026-12-03','2026-12-04']
+  },
+  {
+    id:'comnext-2026',
+    name:'COMNEXT 第4回［次世代］通信技術＆ソリューション展',
+    url:'https://www.cbw-expo.jp/ja-jp.html',
+    halls:['W3','W4'],
+    prep:[],
+    event:['2026-12-02','2026-12-03','2026-12-04']
+  },
+  {
+    id:'japan-build-2026',
+    name:'第11回 JAPAN BUILD TOKYO',
+    url:'https://www.japan-build.jp/tokyo/ja-jp.html',
+    halls:['W1','W2','S1','S2','S3','S4'],
+    prep:[],
+    event:['2026-12-02','2026-12-03','2026-12-04']
+  },
+  {
+    id:'idoll-78',
+    name:'I・Doll VOL.78',
+    url:'https://i-doll.jp/event/overview/?event_id=ide-13',
+    halls:['W1','W2'],
+    prep:[],
+    event:['2026-12-05']
+  },
+  {
+    id:'sakurazaka-real-meet-20261205',
+    name:'櫻坂46 16th Single「愛MUST BE」リアルミート＆グリート／リアルサイン会',
+    url:'https://sakurazaka46.com/s/s46/media/list?dy=20261206&ima=0000',
+    halls:[],
+    prep:[],
+    event:['2026-12-05']
+  },
+  {
+    id:'stu48-handshake-20261206',
+    name:'STU48 14thシングル 個別握手会＆2ショット写真会orサイン会',
+    url:'https://sp.stu48.com/schedule/detail/23114',
+    halls:[],
+    prep:[],
+    event:['2026-12-06']
+  }
+];
+const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START,BIGSIGHT_FOLLOWING_WEEK_START,BIGSIGHT_WEEK_1123_START,BIGSIGHT_WEEK_1130_START];
 let activeBigSightWeekKey=BIGSIGHT_TRIAL_WEEK_START;
 function bigsightActiveDates(){
   if(activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START)return BIGSIGHT_PREV_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_NEXT_WEEK_START)return BIGSIGHT_NEXT_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_FOLLOWING_WEEK_START)return BIGSIGHT_FOLLOWING_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1123_START)return BIGSIGHT_WEEK_1123_DATES;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1130_START)return BIGSIGHT_WEEK_1130_DATES;
   return BIGSIGHT_TRIAL_DATES;
 }
 function bigsightActiveBlocks(){
@@ -960,6 +1021,7 @@ function bigsightActiveBlocks(){
   if(activeBigSightWeekKey===BIGSIGHT_NEXT_WEEK_START)return BIGSIGHT_NEXT_BLOCKS;
   if(activeBigSightWeekKey===BIGSIGHT_FOLLOWING_WEEK_START)return BIGSIGHT_FOLLOWING_BLOCKS;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1123_START)return BIGSIGHT_WEEK_1123_BLOCKS;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1130_START)return BIGSIGHT_WEEK_1130_BLOCKS;
   return BIGSIGHT_TRIAL_BLOCKS;
 }
 function bigsightActiveHolidays(){
@@ -1054,11 +1116,12 @@ function bigsightTrialHallLabel(block){
     if(!g){g={group:h.group,labels:[]};groups.push(g)}
     g.labels.push(Number(h.label));
   }
-  return groups.map(g=>{
+  const label=groups.map(g=>{
     const a=g.labels.slice().sort((x,y)=>x-y);
     if(a.length>=3&&a.every((v,i)=>i===0||v===a[i-1]+1))return g.group+a[0]+'～'+a[a.length-1];
     return g.group+a.join('・');
   }).join('／');
+  return label||'位置未確認';
 }
 function renderBigSightTrialEventList(){
   let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト '+esc(weekLabel(activeBigSightWeekKey))+'のイベント一覧"><colgroup><col class="bs-event-date-col"><col class="bs-event-info-col"></colgroup><thead><tr><th class="bs-event-date">日付</th><th>イベント名／開催ホール</th></tr></thead><tbody>';
