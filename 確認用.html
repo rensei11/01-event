@@ -85,13 +85,24 @@ th:last-child,td:last-child{border-right:0}
 .week-cell-wrap>span{min-width:0}
 .bigsight-week-btn{flex:0 0 auto;padding:4px 9px;font-size:11px;font-weight:900;border-color:#708090;background:#fff;color:#2e3b46}
 .bigsight-week-btn:hover{background:#f5f7f9}
-.bigsight-dialog{width:min(860px,96vw);max-height:94vh;overflow:hidden}
+.bigsight-dialog{width:min(1180px,96vw);max-height:94vh;overflow:hidden}
 .bigsight-dialog .end-dialog-head{position:static}
 .bigsight-body{padding:14px 16px 18px;overflow:auto;max-height:calc(94vh - 58px);background:#fff}
 .bigsight-legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 10px;font-size:12px;font-weight:800;color:#41484f}
 .bigsight-legend-item{display:inline-flex;align-items:center;gap:5px}
 .bigsight-legend-swatch{width:15px;height:15px;border:1px solid #7f8790;display:inline-block}
 .bigsight-legend-swatch.event{background:#00b050}.bigsight-legend-swatch.prep{background:#c6e0b4}.bigsight-legend-swatch.closed{background:#bfbfbf}.bigsight-legend-swatch.unknown{background:#fff}
+.bigsight-main{display:flex;gap:18px;align-items:flex-start;justify-content:center}
+.bigsight-grid-wrap{flex:0 0 auto}
+.bigsight-event-list-wrap{flex:1 1 500px;min-width:420px;max-width:620px}
+.bigsight-event-list{width:100%;border-collapse:collapse;table-layout:fixed;border:2px solid #555;font-size:12px}
+.bigsight-event-list th,.bigsight-event-list td{border:1px solid #9aa1a8;padding:7px 8px;vertical-align:middle}
+.bigsight-event-list th{background:#f4f5f6;font-weight:900;text-align:center}
+.bigsight-event-list .bs-event-date{width:92px;text-align:center;white-space:nowrap;font-weight:800}
+.bigsight-event-list .bs-event-hall{width:104px;text-align:center;white-space:nowrap;font-weight:800}
+.bigsight-event-list .bs-event-name{line-height:1.45;overflow-wrap:anywhere}
+.bigsight-event-row{cursor:pointer}
+.bigsight-event-row.bs-linked-highlight td{background:#eaf3ff!important;box-shadow:inset 0 0 0 1px #8bb8f0}
 .bigsight-grid{width:auto!important;min-width:0!important;table-layout:fixed!important;border-collapse:collapse!important;margin:0 auto;border:2px solid #555}
 .bigsight-grid th,.bigsight-grid td{padding:0!important;border:1px solid #9aa1a8!important;text-align:center!important;vertical-align:middle!important}
 .bigsight-grid th{position:static!important;background:#f4f5f6;color:#20262d;font-size:11px;font-weight:900;height:42px}
@@ -103,14 +114,16 @@ th:last-child,td:last-child{border-right:0}
 .bigsight-grid .bs-group{width:30px;min-width:30px;background:#f7f7f5!important;font-size:14px;font-weight:900}
 .bigsight-grid .bs-hall{width:44px;min-width:44px;height:21px;background:#fff!important;font-size:11px;font-weight:900;line-height:21px}
 .bigsight-grid .bs-cell{position:relative;width:42px;min-width:42px;height:21px;background:#fff!important;cursor:default}
-.bigsight-grid .bs-cell.bs-status-event{background:#00b050!important;cursor:help}
-.bigsight-grid .bs-cell.bs-status-prep{background:#c6e0b4!important;cursor:help}
+.bigsight-grid .bs-cell.bs-status-event{background:#00b050!important;cursor:pointer}
+.bigsight-grid .bs-cell.bs-status-prep{background:#c6e0b4!important;cursor:pointer}
 .bigsight-grid .bs-cell.bs-status-closed{background:#bfbfbf!important;cursor:help}
+.bigsight-grid .bs-cell.bs-linked-highlight::after{content:"";position:absolute;inset:0;background:rgba(72,149,239,.30);box-shadow:inset 0 0 0 2px rgba(35,96,180,.92);pointer-events:none;z-index:2}
 .bigsight-grid .bs-cell.bs-block-top{border-top:3px solid #20262d!important}
 .bigsight-grid .bs-cell.bs-block-bottom{border-bottom:3px solid #20262d!important}
 .bigsight-grid .bs-cell.bs-block-left{border-left:3px solid #20262d!important}
 .bigsight-grid .bs-cell.bs-block-right{border-right:3px solid #20262d!important}
 .bigsight-note{margin-top:10px;font-size:11px;line-height:1.55;color:#68727c}
+@media(max-width:980px){.bigsight-main{flex-direction:column;align-items:stretch}.bigsight-event-list-wrap{min-width:0;max-width:none;width:100%}}
 
 </style>
 </head>
@@ -185,8 +198,11 @@ th:last-child,td:last-child{border-right:0}
         <span class="bigsight-legend-item"><span class="bigsight-legend-swatch closed"></span>使用不可</span>
         <span class="bigsight-legend-item"><span class="bigsight-legend-swatch unknown"></span>使用確認できず</span>
       </div>
-      <div id="bigsightGridHost"></div>
-      <div class="bigsight-note">白は「空き確定」ではなく、公開情報で使用を確認できていない状態です。準備日は公式資料等で確認できた日だけ表示します。</div>
+      <div class="bigsight-main">
+        <div class="bigsight-grid-wrap"><div id="bigsightGridHost"></div></div>
+        <div class="bigsight-event-list-wrap"><div id="bigsightEventListHost"></div></div>
+      </div>
+      <div class="bigsight-note">白は「空き確定」ではなく、公開情報で使用を確認できていない状態です。準備日は公式資料等で確認できた日だけ表示します。色付きセルまたは右側イベント一覧にカーソルを合わせると、同じイベントの該当箇所を薄い青で重ねて強調します。</div>
     </div>
   </div>
 </div>
@@ -231,6 +247,7 @@ const eventEditFormWrap=document.getElementById('eventEditFormWrap');
 const bigsightWeekModal=document.getElementById('bigsightWeekModal');
 const bigsightWeekClose=document.getElementById('bigsightWeekClose');
 const bigsightGridHost=document.getElementById('bigsightGridHost');
+const bigsightEventListHost=document.getElementById('bigsightEventListHost');
 const githubSaveBtn=document.getElementById('githubSaveBtn');
 const githubSaveState=document.getElementById('githubSaveState');
 let gitHubSaveQueue=Promise.resolve();
@@ -637,8 +654,7 @@ function bigsightCellHtml(hall,date){
   if(!nextHall||!bigsightSameBlock(block.id,nextHall,date))cls.push('bs-block-bottom');
   if(!prevDate||!bigsightSameBlock(block.id,hall,prevDate))cls.push('bs-block-left');
   if(!nextDate||!bigsightSameBlock(block.id,hall,nextDate))cls.push('bs-block-right');
-  const suffix=hit.status==='prep'?'（準備・搬入日）':'';
-  return '<td class="'+cls.join(' ')+'" title="'+esc(block.name+suffix)+'"></td>';
+  return '<td class="'+cls.join(' ')+'" data-bs-event="'+esc(block.id)+'"></td>';
 }
 function renderBigSightTrialGrid(){
   const days=['日','月','火','水','木','金','土'];
@@ -663,6 +679,51 @@ function renderBigSightTrialGrid(){
   }
   html+='</tbody></table>';
   bigsightGridHost.innerHTML=html;
+  renderBigSightTrialEventList();
+  bindBigSightTrialHover();
+}
+function bigsightTrialDateLabel(block){
+  const xs=block.event||[];
+  if(!xs.length)return '';
+  const fmt=x=>{const d=new Date(x+'T00:00:00');return (d.getMonth()+1)+'/'+d.getDate()};
+  return xs.length===1?fmt(xs[0]):fmt(xs[0])+'～'+fmt(xs[xs.length-1]);
+}
+function bigsightTrialHallLabel(block){
+  const groups=[];
+  for(const code of block.halls){
+    const h=BIGSIGHT_TRIAL_HALLS.find(x=>x.code===code);
+    if(!h)continue;
+    let g=groups.find(x=>x.group===h.group);
+    if(!g){g={group:h.group,labels:[]};groups.push(g)}
+    g.labels.push(Number(h.label));
+  }
+  return groups.map(g=>{
+    const a=g.labels.slice().sort((x,y)=>x-y);
+    if(a.length>=3&&a.every((v,i)=>i===0||v===a[i-1]+1))return g.group+a[0]+'～'+a[a.length-1];
+    return g.group+a.join('・');
+  }).join('／');
+}
+function renderBigSightTrialEventList(){
+  let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト 11月2日から11月8日のイベント一覧"><thead><tr><th class="bs-event-date">開催日</th><th>イベント名</th><th class="bs-event-hall">開催ホール</th></tr></thead><tbody>';
+  for(const block of BIGSIGHT_TRIAL_BLOCKS){
+    html+='<tr class="bs-event-row" data-bs-event="'+esc(block.id)+'"><td class="bs-event-date">'+esc(bigsightTrialDateLabel(block))+'</td><td class="bs-event-name">'+esc(block.name)+'</td><td class="bs-event-hall">'+esc(bigsightTrialHallLabel(block))+'</td></tr>';
+  }
+  html+='</tbody></table>';
+  bigsightEventListHost.innerHTML=html;
+}
+function setBigSightTrialHighlight(blockId){
+  document.querySelectorAll('#bigsightWeekModal [data-bs-event]').forEach(el=>el.classList.toggle('bs-linked-highlight',el.dataset.bsEvent===blockId));
+}
+function clearBigSightTrialHighlight(){
+  document.querySelectorAll('#bigsightWeekModal .bs-linked-highlight').forEach(el=>el.classList.remove('bs-linked-highlight'));
+}
+function bindBigSightTrialHover(){
+  document.querySelectorAll('#bigsightWeekModal [data-bs-event]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>setBigSightTrialHighlight(el.dataset.bsEvent));
+    el.addEventListener('mouseleave',clearBigSightTrialHighlight);
+    el.addEventListener('focus',()=>setBigSightTrialHighlight(el.dataset.bsEvent));
+    el.addEventListener('blur',clearBigSightTrialHighlight);
+  });
 }
 function openBigSightTrial(){
   renderBigSightTrialGrid();
