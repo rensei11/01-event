@@ -705,7 +705,7 @@ function upcomingWeekHeaderHtml(iso){
   return '<tr class="week"><td colspan="5"><div class="week-cell-wrap"><span>'+esc(weekLabel(iso))+'</span>'+button+'</div></td></tr>';
 }
 function bigsightTrialBlockAt(hall,date){
-  for(const block of BIGSIGHT_TRIAL_BLOCKS){
+  for(const block of bigsightActiveBlocks()){
     if(!block.halls.includes(hall))continue;
     if(block.event.includes(date))return {block,status:'event'};
     if((block.moveout||[]).includes(date))return {block,status:'moveout'};
