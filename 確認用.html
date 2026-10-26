@@ -862,21 +862,103 @@ const BIGSIGHT_FOLLOWING_BLOCKS=[
     event:['2026-11-22']
   }
 ];
-const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START,BIGSIGHT_FOLLOWING_WEEK_START];
+const BIGSIGHT_WEEK_1123_START='2026-11-23';
+const BIGSIGHT_WEEK_1123_DATES=['2026-11-23','2026-11-24','2026-11-25','2026-11-26','2026-11-27','2026-11-28','2026-11-29'];
+const BIGSIGHT_WEEK_1123_BLOCKS=[
+  {
+    id:'healing-fair-20261123',
+    name:'癒しフェア2026 in TOKYO',
+    url:'https://www.a-advice.com/tokyo_2026/',
+    halls:['W4'],
+    prep:[],
+    event:['2026-11-23']
+  },
+  {
+    id:'powtex-2026',
+    name:'POWTEX®2026 第46回国際粉体工業展',
+    url:'https://www.powtex.com/tokyo/',
+    halls:['E1','E2','E3'],
+    prep:['2026-11-23','2026-11-24'],
+    event:['2026-11-25','2026-11-26','2026-11-27']
+  },
+  {
+    id:'leisure-trailer-2026',
+    name:'レジャー＆アウトドアジャパン2026／第5回 東京トレーラーハウスショー',
+    url:'https://leisure-japan.jp/',
+    halls:['E7'],
+    prep:[],
+    event:['2026-11-25','2026-11-26','2026-11-27']
+  },
+  {
+    id:'event-japan-2026',
+    name:'イベントJAPAN2026',
+    url:'https://intercross-com.co.jp/event-japan/',
+    halls:['E8'],
+    prep:[],
+    event:['2026-11-25','2026-11-26','2026-11-27']
+  },
+  {
+    id:'business-chance-expo-2026',
+    name:'ビジネスチャンスEXPO in TOKYO',
+    url:'https://bizchanexpo.tokyo/',
+    halls:['S3','S4'],
+    prep:['2026-11-24'],
+    event:['2026-11-25','2026-11-26']
+  },
+  {
+    id:'chemical-material-japan-2026',
+    name:'ケミカルマテリアルJapan2026',
+    url:'https://www.chemmate.jp/',
+    halls:['S1','S2'],
+    prep:[],
+    event:['2026-11-26','2026-11-27']
+  },
+  {
+    id:'highway-tech-fair-2026',
+    name:'ハイウェイテクノフェア2026',
+    url:'https://www.express-highway.or.jp/hwtf/htf2026/',
+    halls:['W1','W2'],
+    prep:['2026-11-24','2026-11-25'],
+    event:['2026-11-26','2026-11-27']
+  },
+  {
+    id:'all-japan-care-contest-2026',
+    name:'第16回オールジャパンケアコンテスト',
+    url:'https://www.ajcc.info/',
+    halls:['W3'],
+    prep:[],
+    event:['2026-11-28']
+  },
+  {
+    id:'comic-city-tokyo153',
+    name:'COMIC CITY 東京153',
+    url:'https://www.akaboo.jp/event/item/20205432.html',
+    halls:['W1','W2','W3','W4'],
+    prep:[],
+    event:['2026-11-29']
+  }
+];
+const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START,BIGSIGHT_FOLLOWING_WEEK_START,BIGSIGHT_WEEK_1123_START];
 let activeBigSightWeekKey=BIGSIGHT_TRIAL_WEEK_START;
 function bigsightActiveDates(){
   if(activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START)return BIGSIGHT_PREV_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_NEXT_WEEK_START)return BIGSIGHT_NEXT_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_FOLLOWING_WEEK_START)return BIGSIGHT_FOLLOWING_DATES;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1123_START)return BIGSIGHT_WEEK_1123_DATES;
   return BIGSIGHT_TRIAL_DATES;
 }
 function bigsightActiveBlocks(){
   if(activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START)return BIGSIGHT_PREV_BLOCKS;
   if(activeBigSightWeekKey===BIGSIGHT_NEXT_WEEK_START)return BIGSIGHT_NEXT_BLOCKS;
   if(activeBigSightWeekKey===BIGSIGHT_FOLLOWING_WEEK_START)return BIGSIGHT_FOLLOWING_BLOCKS;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1123_START)return BIGSIGHT_WEEK_1123_BLOCKS;
   return BIGSIGHT_TRIAL_BLOCKS;
 }
-function bigsightActiveHolidays(){return activeBigSightWeekKey===BIGSIGHT_TRIAL_WEEK_START?['2026-11-03']:[]}
+function bigsightActiveHolidays(){
+  if(activeBigSightWeekKey===BIGSIGHT_TRIAL_WEEK_START)return ['2026-11-03'];
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1123_START)return ['2026-11-23'];
+  return [];
+}
 
 function upcomingWeekHeaderHtml(iso){
   const key=weekKey(iso);
