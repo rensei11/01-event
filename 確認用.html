@@ -1006,7 +1006,113 @@ const BIGSIGHT_WEEK_1130_BLOCKS=[
     event:['2026-12-06']
   }
 ];
-const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START,BIGSIGHT_FOLLOWING_WEEK_START,BIGSIGHT_WEEK_1123_START,BIGSIGHT_WEEK_1130_START];
+const BIGSIGHT_WEEK_1207_START='2026-12-07';
+const BIGSIGHT_WEEK_1207_DATES=['2026-12-07','2026-12-08','2026-12-09','2026-12-10','2026-12-11','2026-12-12','2026-12-13'];
+const BIGSIGHT_WEEK_1207_BLOCKS=[
+  {
+    id:'semicon-japan-2026',
+    name:'SEMICON Japan 2026',
+    url:'https://www.semiconjapan.org/jp',
+    halls:['E1','E2','E3','E7','E8','W1','W2','W3','W4'],
+    prep:['2026-12-07','2026-12-08'],
+    event:['2026-12-09','2026-12-10','2026-12-11']
+  },
+  {
+    id:'yoishigoto-2026',
+    name:'2026“よい仕事おこし”フェア',
+    url:'https://yoishigotookoshifair.jp/',
+    halls:['S3','S4'],
+    prep:[],
+    event:['2026-12-08','2026-12-09']
+  },
+  {
+    id:'mynavi-career-20261212',
+    name:'インターンシップ＆キャリア発見EXPO／体験型！インターンシップ＆キャリアフェスタ',
+    url:'https://job.mynavi.jp/conts/event/2028/10783/index.html',
+    halls:['S1','S2','S3','S4'],
+    prep:[],
+    event:['2026-12-12']
+  },
+  {
+    id:'comitia158',
+    name:'COMITIA158',
+    url:'https://www.comitia.co.jp/html/158.html',
+    halls:['E1','E2','E3','E7','E8'],
+    prep:[],
+    event:['2026-12-13']
+  },
+  {
+    id:'dolpa56',
+    name:'ドールズ パーティー56',
+    url:'https://dollfie.volks.co.jp/event/dolpa56/',
+    halls:['S1','S2'],
+    prep:[],
+    event:['2026-12-13']
+  }
+];
+
+const BIGSIGHT_WEEK_1214_START='2026-12-14';
+const BIGSIGHT_WEEK_1214_DATES=['2026-12-14','2026-12-15','2026-12-16','2026-12-17','2026-12-18','2026-12-19','2026-12-20'];
+const BIGSIGHT_WEEK_1214_BLOCKS=[
+  {
+    id:'careweek-winter-2026',
+    name:'東京ケアウィーク’26',
+    url:'https://caretex.jp/',
+    halls:['E1','E2','E3'],
+    prep:[],
+    event:['2026-12-16','2026-12-17','2026-12-18']
+  },
+  {
+    id:'eight-expo-winter-2026',
+    name:'Eight EXPO 2026 冬',
+    url:'https://eight-event.8card.net/eightexpo/',
+    halls:['E7','E8'],
+    prep:[],
+    event:['2026-12-16','2026-12-17']
+  },
+  {
+    id:'energy-innovation-2026dec',
+    name:'ENEX／再生可能エネルギー／InterAqua／Offshore Tech Japan',
+    url:'https://www.low-cf.jp/east/outline.html',
+    halls:['W1','W2'],
+    prep:['2026-12-14','2026-12-15'],
+    event:['2026-12-16','2026-12-17','2026-12-18']
+  },
+  {
+    id:'converting-tech-2026dec',
+    name:'CONVERTECH／新機能性材料展／グリーンマテリアル／3DECOtech',
+    url:'https://www.mfg.cj-exhibition.com/',
+    halls:['W3','W4'],
+    prep:['2026-12-14','2026-12-15'],
+    event:['2026-12-16','2026-12-17','2026-12-18']
+  },
+  {
+    id:'surface-wellbeing-2026dec',
+    name:'SURTECH／MEMS／WELL-BEING TECHNOLOGY／TCT Japan',
+    url:'https://www.nanotechexpo.jp/outline2026dec.html',
+    halls:['S1','S2'],
+    prep:['2026-12-14','2026-12-15'],
+    event:['2026-12-16','2026-12-17','2026-12-18']
+  },
+  {
+    id:'nanotech-2026dec',
+    name:'nano tech 第26回 国際ナノテクノロジー総合展・技術会議',
+    url:'https://www.nanotechexpo.jp/',
+    halls:['S3','S4'],
+    prep:['2026-12-14','2026-12-15'],
+    event:['2026-12-16','2026-12-17','2026-12-18']
+  },
+  {
+    id:'dozen-rose-fes-2026',
+    name:'DOZEN ROSE FES 2026',
+    url:'https://www.akaboo.jp/guide/item/p0084.html#03',
+    halls:['E1','E2','E3','E7','E8','W1','W2'],
+    prep:[],
+    event:['2026-12-20']
+  }
+];
+
+const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START,BIGSIGHT_FOLLOWING_WEEK_START,BIGSIGHT_WEEK_1123_START,BIGSIGHT_WEEK_1130_START,BIGSIGHT_WEEK_1207_START,BIGSIGHT_WEEK_1214_START];
 let activeBigSightWeekKey=BIGSIGHT_TRIAL_WEEK_START;
 function bigsightActiveDates(){
   if(activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START)return BIGSIGHT_PREV_DATES;
@@ -1014,6 +1120,8 @@ function bigsightActiveDates(){
   if(activeBigSightWeekKey===BIGSIGHT_FOLLOWING_WEEK_START)return BIGSIGHT_FOLLOWING_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1123_START)return BIGSIGHT_WEEK_1123_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1130_START)return BIGSIGHT_WEEK_1130_DATES;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1207_START)return BIGSIGHT_WEEK_1207_DATES;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1214_START)return BIGSIGHT_WEEK_1214_DATES;
   return BIGSIGHT_TRIAL_DATES;
 }
 function bigsightActiveBlocks(){
@@ -1022,6 +1130,8 @@ function bigsightActiveBlocks(){
   if(activeBigSightWeekKey===BIGSIGHT_FOLLOWING_WEEK_START)return BIGSIGHT_FOLLOWING_BLOCKS;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1123_START)return BIGSIGHT_WEEK_1123_BLOCKS;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1130_START)return BIGSIGHT_WEEK_1130_BLOCKS;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1207_START)return BIGSIGHT_WEEK_1207_BLOCKS;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1214_START)return BIGSIGHT_WEEK_1214_BLOCKS;
   return BIGSIGHT_TRIAL_BLOCKS;
 }
 function bigsightActiveHolidays(){
