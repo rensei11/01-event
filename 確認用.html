@@ -94,12 +94,14 @@ th:last-child,td:last-child{border-right:0}
 .bigsight-legend-swatch.event{background:#00b050}.bigsight-legend-swatch.prep{background:#c6e0b4}.bigsight-legend-swatch.closed{background:#bfbfbf}.bigsight-legend-swatch.unknown{background:#fff}
 .bigsight-main{display:flex;gap:18px;align-items:flex-start;justify-content:center}
 .bigsight-grid-wrap{flex:0 0 auto}
-.bigsight-event-list-wrap{flex:0 0 auto;min-width:0;max-width:none}
-.bigsight-event-list{width:auto;border-collapse:collapse;table-layout:fixed;border:2px solid #555;font-size:12px}
-.bigsight-event-list th,.bigsight-event-list td{border:1px solid #9aa1a8;padding:7px 8px;vertical-align:middle}
+.bigsight-event-list-wrap{flex:0 0 297px;width:297px;min-width:297px;max-width:297px}
+.bigsight-event-list{width:297px!important;min-width:297px!important;max-width:297px!important;border-collapse:collapse;table-layout:fixed;border:2px solid #555;font-size:12px}
+.bigsight-event-list col.bs-event-date-col{width:92px}
+.bigsight-event-list col.bs-event-info-col{width:205px}
+.bigsight-event-list th,.bigsight-event-list td{box-sizing:border-box;border:1px solid #9aa1a8;padding:7px 8px;vertical-align:middle}
 .bigsight-event-list th{position:static!important;background:#f4f5f6!important;color:#20262d!important;font-weight:900;text-align:center}
-.bigsight-event-list .bs-event-date{width:92px;min-width:92px;max-width:92px;text-align:center;white-space:nowrap;font-weight:800}
-.bigsight-event-list .bs-event-info{width:205px;min-width:205px;max-width:205px;overflow:hidden}
+.bigsight-event-list .bs-event-date{text-align:center;white-space:nowrap;font-weight:800}
+.bigsight-event-list .bs-event-info{min-width:0;overflow:hidden}
 .bigsight-event-list .bs-event-name{display:block;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.45}
 .bigsight-event-list .bs-event-name a{display:block;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:900;color:#0b57d0;text-decoration:underline;text-underline-offset:2px}
 .bigsight-event-list .bs-event-hall-line{margin-top:3px;font-weight:400;color:#59636d;line-height:1.35;white-space:nowrap}
@@ -133,7 +135,7 @@ th:last-child,td:last-child{border-right:0}
 .bigsight-grid .bs-cell.bs-linked-highlight.bs-block-left{border-left-color:#2360b4!important}
 .bigsight-grid .bs-cell.bs-linked-highlight.bs-block-right{border-right-color:#2360b4!important}
 .bigsight-note{margin-top:10px;font-size:11px;line-height:1.55;color:#68727c}
-@media(max-width:980px){.bigsight-main{flex-direction:column;align-items:flex-start}.bigsight-event-list-wrap{min-width:0;max-width:100%}}
+@media(max-width:980px){.bigsight-main{flex-direction:column;align-items:flex-start}}
 
 </style>
 </head>
@@ -719,7 +721,7 @@ function bigsightTrialHallLabel(block){
   }).join('／');
 }
 function renderBigSightTrialEventList(){
-  let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト 11月2日から11月8日のイベント一覧"><thead><tr><th class="bs-event-date">開催日</th><th>イベント名／開催ホール</th></tr></thead><tbody>';
+  let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト 11月2日から11月8日のイベント一覧"><colgroup><col class="bs-event-date-col"><col class="bs-event-info-col"></colgroup><thead><tr><th class="bs-event-date">開催日</th><th>イベント名／開催ホール</th></tr></thead><tbody>';
   for(const block of BIGSIGHT_TRIAL_BLOCKS){
     const nameHtml=block.url?'<a href="'+esc(block.url)+'" target="_blank" rel="noopener">'+esc(block.name)+'</a>':esc(block.name);
     html+='<tr class="bs-event-row" data-bs-event="'+esc(block.id)+'"><td class="bs-event-date">'+esc(bigsightTrialDateLabel(block))+'</td><td class="bs-event-info"><div class="bs-event-name">'+nameHtml+'</div><div class="bs-event-hall-line">'+esc(bigsightTrialHallLabel(block))+'</div></td></tr>';
