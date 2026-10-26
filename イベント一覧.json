@@ -2220,8 +2220,8 @@
       "nightText": "主催者の2026年参加登録ページで17:15開始、ホテル棟4階ギンコウルームと案内。セミナー会場アンフィシアターと懇親会場は別室。ギンコウルームは約251㎡、ホテル公表の立食形式目安130人（実際の募集人数ではない）。料理・ドリンク・アルコールと補充量は未確認。企業公式告知：https://pr.www.ipros.com/ja_bentley/news/detail/178674/",
       "planning": {
         "planned": false,
-        "interested": true,
-        "ignored": false
+        "interested": false,
+        "ignored": true
       },
       "_kinds": [
         "gathering"
