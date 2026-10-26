@@ -718,9 +718,8 @@ function bigsightCellHtml(hall,date){
   if(!nextHall||!bigsightSameBlock(block.id,nextHall,date))cls.push('bs-block-bottom');
   if(!prevDate||!bigsightSameBlock(block.id,hall,prevDate))cls.push('bs-block-left');
   if(!nextDate||!bigsightSameBlock(block.id,hall,nextDate))cls.push('bs-block-right');
-  const cellText=hit.status==='moveout'?'搬出':'';
-  const cellTitle=hit.status==='moveout'?'JIMTOF2026 搬出期間（個別出展者は原状回復完了時点で使用終了）':'';
-  return '<td class="'+cls.join(' ')+'" data-bs-event="'+esc(block.id)+'"'+(cellTitle?' title="'+esc(cellTitle)+'"':'')+'>'+cellText+'</td>';
+  const cellTitle=hit.status==='moveout'?'JIMTOF2026（搬出）':'';
+  return '<td class="'+cls.join(' ')+'" data-bs-event="'+esc(block.id)+'"'+(cellTitle?' title="'+esc(cellTitle)+'"':'')+'></td>';
 }
 function renderBigSightTrialGrid(){
   const days=['日','月','火','水','木','金','土'];
