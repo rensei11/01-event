@@ -772,7 +772,7 @@ function bigsightTrialHallLabel(block){
   }).join('／');
 }
 function renderBigSightTrialEventList(){
-  let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト 11月2日から11月8日のイベント一覧"><colgroup><col class="bs-event-date-col"><col class="bs-event-info-col"></colgroup><thead><tr><th class="bs-event-date">開催日</th><th>イベント名／開催ホール</th></tr></thead><tbody>';
+  let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト 11月2日から11月8日のイベント一覧"><colgroup><col class="bs-event-date-col"><col class="bs-event-info-col"></colgroup><thead><tr><th class="bs-event-date">日付</th><th>イベント名／開催ホール</th></tr></thead><tbody>';
   for(const block of BIGSIGHT_TRIAL_BLOCKS){
     const nameHtml=block.url?'<a href="'+esc(block.url)+'" target="_blank" rel="noopener">'+esc(block.name)+'</a>':esc(block.name);
     html+='<tr class="bigsight-event-row" data-bs-event="'+esc(block.id)+'"><td class="bs-event-combined" colspan="2"><div class="bigsight-event-row-inner"><div class="bs-event-date">'+esc(bigsightTrialDateLabel(block))+'</div><div class="bs-event-info"><div class="bs-event-name">'+nameHtml+'</div><div class="bs-event-hall-line">'+esc(bigsightTrialHallLabel(block))+'</div></div></div></td></tr>';
