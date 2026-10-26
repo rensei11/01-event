@@ -97,12 +97,14 @@ th:last-child,td:last-child{border-right:0}
 .bigsight-event-list-wrap{flex:1 1 500px;min-width:420px;max-width:620px}
 .bigsight-event-list{width:100%;border-collapse:collapse;table-layout:fixed;border:2px solid #555;font-size:12px}
 .bigsight-event-list th,.bigsight-event-list td{border:1px solid #9aa1a8;padding:7px 8px;vertical-align:middle}
-.bigsight-event-list th{background:#f4f5f6;font-weight:900;text-align:center}
-.bigsight-event-list .bs-event-date{width:92px;text-align:center;white-space:nowrap;font-weight:800}
-.bigsight-event-list .bs-event-hall{width:104px;text-align:center;white-space:nowrap;font-weight:800}
+.bigsight-event-list th{position:static!important;background:#f4f5f6!important;color:#20262d!important;font-weight:900;text-align:center}
+.bigsight-event-list .bs-event-when{width:132px;text-align:left}
+.bigsight-event-list .bs-event-date-line{font-weight:800;white-space:nowrap}
+.bigsight-event-list .bs-event-hall-line{margin-top:4px;font-weight:400;color:#59636d;line-height:1.35}
 .bigsight-event-list .bs-event-name{line-height:1.45;overflow-wrap:anywhere}
+.bigsight-event-list .bs-event-name a{font-weight:900;color:#0b57d0;text-decoration:underline;text-underline-offset:2px}
 .bigsight-event-row{cursor:pointer}
-.bigsight-event-row.bs-linked-highlight td{background:#eaf3ff!important;box-shadow:inset 0 0 0 1px #8bb8f0}
+#bigsightWeekModal .bigsight-event-row.bs-linked-highlight>td{background:#dcecff!important;box-shadow:inset 0 0 0 1px #79a9e6!important}
 .bigsight-grid{width:auto!important;min-width:0!important;table-layout:fixed!important;border-collapse:collapse!important;margin:0 auto;border:2px solid #555}
 .bigsight-grid th,.bigsight-grid td{padding:0!important;border:1px solid #9aa1a8!important;text-align:center!important;vertical-align:middle!important}
 .bigsight-grid th{position:static!important;background:#f4f5f6;color:#20262d;font-size:11px;font-weight:900;height:42px}
@@ -117,7 +119,11 @@ th:last-child,td:last-child{border-right:0}
 .bigsight-grid .bs-cell.bs-status-event{background:#00b050!important;cursor:pointer}
 .bigsight-grid .bs-cell.bs-status-prep{background:#c6e0b4!important;cursor:pointer}
 .bigsight-grid .bs-cell.bs-status-closed{background:#bfbfbf!important;cursor:help}
-.bigsight-grid .bs-cell.bs-linked-highlight::after{content:"";position:absolute;inset:0;background:rgba(72,149,239,.30);box-shadow:inset 0 0 0 2px rgba(35,96,180,.92);pointer-events:none;z-index:2}
+.bigsight-grid .bs-cell.bs-linked-highlight::after{content:"";position:absolute;inset:-1px;background:rgba(72,149,239,.30);pointer-events:none;z-index:2}
+.bigsight-grid .bs-cell.bs-linked-highlight.bs-block-top::after{border-top:2px solid rgba(35,96,180,.95)}
+.bigsight-grid .bs-cell.bs-linked-highlight.bs-block-bottom::after{border-bottom:2px solid rgba(35,96,180,.95)}
+.bigsight-grid .bs-cell.bs-linked-highlight.bs-block-left::after{border-left:2px solid rgba(35,96,180,.95)}
+.bigsight-grid .bs-cell.bs-linked-highlight.bs-block-right::after{border-right:2px solid rgba(35,96,180,.95)}
 .bigsight-grid .bs-cell.bs-block-top{border-top:3px solid #20262d!important}
 .bigsight-grid .bs-cell.bs-block-bottom{border-bottom:3px solid #20262d!important}
 .bigsight-grid .bs-cell.bs-block-left{border-left:3px solid #20262d!important}
@@ -582,6 +588,7 @@ const BIGSIGHT_TRIAL_BLOCKS=[
   {
     id:'leisure',
     name:'レジャー＆サービス産業展2026／レジャーホテルフェア2026',
+    url:'https://www.sogo-unicom.co.jp/lsi/',
     halls:['E3'],
     prep:['2026-11-04'],
     event:['2026-11-05','2026-11-06']
@@ -589,6 +596,7 @@ const BIGSIGHT_TRIAL_BLOCKS=[
   {
     id:'mirai',
     name:'東京みらい市2026',
+    url:'https://mirai-ichi.jp/tokyo/',
     halls:['E7','E8'],
     prep:[],
     event:['2026-11-06','2026-11-07']
@@ -596,6 +604,7 @@ const BIGSIGHT_TRIAL_BLOCKS=[
   {
     id:'amusement',
     name:'アミューズメントエキスポ2026',
+    url:'https://amusementexpo.jp/',
     halls:['S1','S2','S3','S4'],
     prep:['2026-11-05'],
     event:['2026-11-06','2026-11-07']
@@ -603,6 +612,7 @@ const BIGSIGHT_TRIAL_BLOCKS=[
   {
     id:'winter',
     name:'冬スポ!! WINTER SPORTS FESTA season26',
+    url:'https://www.fuyusupo.jp/event/04_tokyo1/',
     halls:['E3'],
     prep:[],
     event:['2026-11-07','2026-11-08']
@@ -610,6 +620,7 @@ const BIGSIGHT_TRIAL_BLOCKS=[
   {
     id:'bunfree',
     name:'文学フリマ東京43',
+    url:'https://bunfree.net/event/tokyo43/',
     halls:['S1','S2','S3','S4'],
     prep:[],
     event:['2026-11-08']
@@ -704,9 +715,10 @@ function bigsightTrialHallLabel(block){
   }).join('／');
 }
 function renderBigSightTrialEventList(){
-  let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト 11月2日から11月8日のイベント一覧"><thead><tr><th class="bs-event-date">開催日</th><th>イベント名</th><th class="bs-event-hall">開催ホール</th></tr></thead><tbody>';
+  let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト 11月2日から11月8日のイベント一覧"><thead><tr><th class="bs-event-when">開催日／開催ホール</th><th>イベント名</th></tr></thead><tbody>';
   for(const block of BIGSIGHT_TRIAL_BLOCKS){
-    html+='<tr class="bs-event-row" data-bs-event="'+esc(block.id)+'"><td class="bs-event-date">'+esc(bigsightTrialDateLabel(block))+'</td><td class="bs-event-name">'+esc(block.name)+'</td><td class="bs-event-hall">'+esc(bigsightTrialHallLabel(block))+'</td></tr>';
+    const nameHtml=block.url?'<a href="'+esc(block.url)+'" target="_blank" rel="noopener">'+esc(block.name)+'</a>':esc(block.name);
+    html+='<tr class="bs-event-row" data-bs-event="'+esc(block.id)+'"><td class="bs-event-when"><div class="bs-event-date-line">'+esc(bigsightTrialDateLabel(block))+'</div><div class="bs-event-hall-line">'+esc(bigsightTrialHallLabel(block))+'</div></td><td class="bs-event-name">'+nameHtml+'</td></tr>';
   }
   html+='</tbody></table>';
   bigsightEventListHost.innerHTML=html;
