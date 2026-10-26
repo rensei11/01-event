@@ -692,6 +692,10 @@ const BIGSIGHT_PREV_BLOCKS=[
     event:['2026-10-26','2026-10-27','2026-10-28','2026-10-29','2026-10-30','2026-10-31']
   }
 ];
+let activeBigSightWeekKey=BIGSIGHT_TRIAL_WEEK_START;
+function bigsightActiveDates(){return activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START?BIGSIGHT_PREV_DATES:BIGSIGHT_TRIAL_DATES}
+function bigsightActiveBlocks(){return activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START?BIGSIGHT_PREV_BLOCKS:BIGSIGHT_TRIAL_BLOCKS}
+function bigsightActiveHolidays(){return activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START?[]:['2026-11-03']}
 
 function upcomingWeekHeaderHtml(iso){
   const key=weekKey(iso);
