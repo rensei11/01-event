@@ -201,7 +201,7 @@ th:last-child,td:last-child{border-right:0}
 <div id="bigsightWeekModal" class="end-modal" hidden>
   <div class="end-dialog bigsight-dialog" role="dialog" aria-modal="true" aria-labelledby="bigsightWeekTitle">
     <div class="end-dialog-head">
-      <div id="bigsightWeekTitle" class="end-dialog-title">東京ビッグサイト使用状況　11/2～11/8 <span class="bigsight-trial-rev">試作 r6</span></div>
+      <div id="bigsightWeekTitle" class="end-dialog-title">東京ビッグサイト使用状況　11/2～11/8 <span class="bigsight-trial-rev">試作 r7</span></div>
       <button id="bigsightWeekClose" class="end-close" type="button">×</button>
     </div>
     <div class="bigsight-body">
@@ -725,7 +725,7 @@ function renderBigSightTrialEventList(){
   let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト 11月2日から11月8日のイベント一覧"><colgroup><col class="bs-event-date-col"><col class="bs-event-info-col"></colgroup><thead><tr><th class="bs-event-date">開催日</th><th>イベント名／開催ホール</th></tr></thead><tbody>';
   for(const block of BIGSIGHT_TRIAL_BLOCKS){
     const nameHtml=block.url?'<a href="'+esc(block.url)+'" target="_blank" rel="noopener">'+esc(block.name)+'</a>':esc(block.name);
-    html+='<tr class="bs-event-row" data-bs-event="'+esc(block.id)+'"><td class="bs-event-date">'+esc(bigsightTrialDateLabel(block))+'</td><td class="bs-event-info"><div class="bs-event-name">'+nameHtml+'</div><div class="bs-event-hall-line">'+esc(bigsightTrialHallLabel(block))+'</div></td></tr>';
+    html+='<tr class="bigsight-event-row" data-bs-event="'+esc(block.id)+'"><td class="bs-event-date">'+esc(bigsightTrialDateLabel(block))+'</td><td class="bs-event-info"><div class="bs-event-name">'+nameHtml+'</div><div class="bs-event-hall-line">'+esc(bigsightTrialHallLabel(block))+'</div></td></tr>';
   }
   html+='</tbody></table>';
   bigsightEventListHost.innerHTML=html;
