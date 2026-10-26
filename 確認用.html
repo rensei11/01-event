@@ -741,7 +741,7 @@ function bigsightCellHtml(hall,date){
 }
 function renderBigSightTrialGrid(){
   const days=['日','月','火','水','木','金','土'];
-  const holidays=new Set(['2026-11-03']);
+  const holidays=new Set(bigsightActiveHolidays());
   let html='<table class="bigsight-grid" aria-label="東京ビッグサイト 11月2日から11月8日の使用状況"><thead><tr><th class="bs-corner" colspan="2">ホール</th>';
   for(const date of BIGSIGHT_TRIAL_DATES){
     const d=new Date(date+'T00:00:00');
