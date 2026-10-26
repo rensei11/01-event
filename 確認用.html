@@ -132,6 +132,7 @@ th:last-child,td:last-child{border-right:0}
 .bigsight-grid .bs-cell{position:relative;width:42px;min-width:42px;height:21px;background:#fff!important;cursor:default}
 .bigsight-grid .bs-cell.bs-status-event{background:#00b050!important;cursor:pointer}
 .bigsight-grid .bs-cell.bs-status-prep{background:#c6e0b4!important;cursor:pointer}
+.bigsight-grid .bs-cell.bs-status-moveout{background:#c6e0b4!important;cursor:pointer;font-size:9px;font-weight:900;color:#314638;line-height:21px}
 .bigsight-grid .bs-cell.bs-status-closed{background:#bfbfbf!important;cursor:help}
 .bigsight-grid .bs-cell.bs-block-top{border-top:3px solid #20262d!important}
 .bigsight-grid .bs-cell.bs-block-bottom{border-bottom:3px solid #20262d!important}
@@ -218,7 +219,7 @@ th:last-child,td:last-child{border-right:0}
     <div class="bigsight-body">
       <div class="bigsight-legend" aria-label="凡例">
         <span class="bigsight-legend-item"><span class="bigsight-legend-swatch event"></span>開催中</span>
-        <span class="bigsight-legend-item"><span class="bigsight-legend-swatch prep"></span>準備日</span>
+        <span class="bigsight-legend-item"><span class="bigsight-legend-swatch prep"></span>準備・搬入・搬出</span>
         <span class="bigsight-legend-item"><span class="bigsight-legend-swatch closed"></span>使用不可</span>
         <span class="bigsight-legend-item"><span class="bigsight-legend-swatch unknown"></span>使用確認できず</span>
       </div>
@@ -226,7 +227,7 @@ th:last-child,td:last-child{border-right:0}
         <div class="bigsight-grid-wrap"><div id="bigsightGridHost"></div></div>
         <div class="bigsight-event-list-wrap"><div id="bigsightEventListHost"></div></div>
       </div>
-      <div class="bigsight-note">白は「空き確定」ではなく、公開情報で使用を確認できていない状態です。準備日は公式資料等で確認できた日だけ表示します。色付きセルまたは右側イベント一覧にカーソルを合わせると、同じイベントの該当箇所を薄い青で重ねて強調します。</div>
+      <div class="bigsight-note">白は「空き確定」ではなく、公開情報で使用を確認できていない状態です。準備・搬入・搬出は公開資料等で確認できた期間だけ表示します。色付きセルまたは右側イベント一覧にカーソルを合わせると、同じイベントの該当箇所を薄い青で重ねて強調します。</div>
     </div>
   </div>
 </div>
@@ -604,6 +605,15 @@ const BIGSIGHT_TRIAL_HALLS=[
 ];
 const BIGSIGHT_TRIAL_BLOCKS=[
   {
+    id:'jimtof-moveout',
+    name:'JIMTOF2026（搬出）',
+    url:'https://www.jimtof.org/jp/outline.html',
+    halls:['E1','E2','E3','E7','E8','W1','W2','W3','W4','S1','S2','S3','S4'],
+    prep:[],
+    moveout:['2026-11-02','2026-11-03'],
+    event:[]
+  },
+  {
     id:'leisure',
     name:'レジャー＆サービス産業展2026／レジャーホテルフェア2026',
     url:'https://www.sogo-unicom.co.jp/lsi/',
@@ -681,6 +691,7 @@ function bigsightTrialBlockAt(hall,date){
   for(const block of BIGSIGHT_TRIAL_BLOCKS){
     if(!block.halls.includes(hall))continue;
     if(block.event.includes(date))return {block,status:'event'};
+    if((block.moveout||[]).includes(date))return {block,status:'moveout'};
     if(block.prep.includes(date))return {block,status:'prep'};
   }
   return null;
@@ -702,20 +713,25 @@ function bigsightCellHtml(hall,date){
   const nextHall=hi<BIGSIGHT_TRIAL_HALLS.length-1?BIGSIGHT_TRIAL_HALLS[hi+1].code:'';
   const prevDate=di>0?BIGSIGHT_TRIAL_DATES[di-1]:'';
   const nextDate=di<BIGSIGHT_TRIAL_DATES.length-1?BIGSIGHT_TRIAL_DATES[di+1]:'';
-  const cls=['bs-cell',hit.status==='event'?'bs-status-event':'bs-status-prep'];
+  const cls=['bs-cell',hit.status==='event'?'bs-status-event':hit.status==='moveout'?'bs-status-moveout':'bs-status-prep'];
   if(!prevHall||!bigsightSameBlock(block.id,prevHall,date))cls.push('bs-block-top');
   if(!nextHall||!bigsightSameBlock(block.id,nextHall,date))cls.push('bs-block-bottom');
   if(!prevDate||!bigsightSameBlock(block.id,hall,prevDate))cls.push('bs-block-left');
   if(!nextDate||!bigsightSameBlock(block.id,hall,nextDate))cls.push('bs-block-right');
-  return '<td class="'+cls.join(' ')+'" data-bs-event="'+esc(block.id)+'"></td>';
+  const cellText=hit.status==='moveout'?'搬出':'';
+  const cellTitle=hit.status==='moveout'?'JIMTOF2026 搬出期間（個別出展者は原状回復完了時点で使用終了）':'';
+  return '<td class="'+cls.join(' ')+'" data-bs-event="'+esc(block.id)+'"'+(cellTitle?' title="'+esc(cellTitle)+'"':'')+'>'+cellText+'</td>';
 }
 function renderBigSightTrialGrid(){
   const days=['日','月','火','水','木','金','土'];
+  const holidays=new Set(['2026-11-03']);
   let html='<table class="bigsight-grid" aria-label="東京ビッグサイト 11月2日から11月8日の使用状況"><thead><tr><th class="bs-corner" colspan="2">ホール</th>';
   for(const date of BIGSIGHT_TRIAL_DATES){
     const d=new Date(date+'T00:00:00');
+    const holiday=holidays.has(date);
     const weekend=d.getDay()===0||d.getDay()===6;
-    html+='<th class="bs-date-head'+(weekend?' bs-weekend':'')+'"><span class="bs-date">'+(d.getMonth()+1)+'/'+d.getDate()+'</span><span class="bs-day">'+days[d.getDay()]+'</span></th>';
+    const dayLabel=days[d.getDay()]+(holiday?'・祝':'');
+    html+='<th class="bs-date-head'+((weekend||holiday)?' bs-weekend':'')+'"><span class="bs-date">'+(d.getMonth()+1)+'/'+d.getDate()+'</span><span class="bs-day">'+dayLabel+'</span></th>';
   }
   html+='</tr></thead><tbody>';
   const groupSizes={東:8,西:4,南:4};
@@ -736,7 +752,7 @@ function renderBigSightTrialGrid(){
   bindBigSightTrialHover();
 }
 function bigsightTrialDateLabel(block){
-  const xs=block.event||[];
+  const xs=(block.event&&block.event.length)?block.event:((block.moveout&&block.moveout.length)?block.moveout:(block.prep||[]));
   if(!xs.length)return '';
   const fmt=x=>{const d=new Date(x+'T00:00:00');return (d.getMonth()+1)+'/'+d.getDate()};
   return xs.length===1?fmt(xs[0]):fmt(xs[0])+'～'+fmt(xs[xs.length-1]);
