@@ -1901,11 +1901,6 @@
       "rating": "A-",
       "nightTime": "17:30～18:30",
       "nightText": "Networking Reception & Expo。ドリンク＋軽食を公式明記。9:00～10:00のモーニングセッション参加者には軽食、11:30～13:00にはランチもあり。",
-      "planning": {
-        "planned": true,
-        "interested": false,
-        "ignored": false
-      },
       "endDate": "2026-10-28",
       "dateText": "10月28日(水)",
       "_kinds": [
