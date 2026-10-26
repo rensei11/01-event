@@ -2572,6 +2572,32 @@
       ]
     },
     {
+      "id": "evt-tokyo-systems-engineering-summit-20261127",
+      "date": "2026-11-27",
+      "endDate": "",
+      "dateText": "11月27日(金)",
+      "name": "Tokyo Systems Engineering Summit 2026（東京システムズ・エンジニアリング・サミット）",
+      "url": "https://www.prostep.org/en/events/events/tokyo-systems-engineering-summit-2026",
+      "venue": "丸の内ホール＆コンファレンス（丸ビル）",
+      "conditionLines": [
+        "無料・事前登録制",
+        "対象：自動車・航空宇宙・造船・医療技術などの設計・開発技術者、技術責任者、研究者等。専門性が高い",
+        "2025年は300人超の登録。2026年の定員・参加人数は未確認",
+        "日英の同時通訳あり"
+      ],
+      "rating": "",
+      "nightTime": "18:00～20:00",
+      "nightText": "主催者公式：18:00～20:00に軽食付き交流会。終日無料の飲食提供あり。料理の具体的な内容・量は未公表。ホテル開催ではない。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": false
+      },
+      "_kinds": [
+        "gathering"
+      ]
+    },
+    {
       "id": "evt-cd75bfbe",
       "date": "2026-11-30",
       "name": "BtoB Growth EXPO for IT・情シス",
