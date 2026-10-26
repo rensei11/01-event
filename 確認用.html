@@ -91,7 +91,7 @@ th:last-child,td:last-child{border-right:0}
 .bigsight-nav-btn{width:34px;height:30px;min-width:34px;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:4px;background:transparent;color:#fff;font-size:18px;font-weight:900;line-height:1}
 .bigsight-nav-btn:hover:not(:disabled){background:rgba(255,255,255,.12)}
 .bigsight-nav-btn:disabled{opacity:.28;cursor:default}
-.bigsight-body{padding:14px 16px 18px;overflow-x:auto;overflow-y:scroll;scrollbar-gutter:stable;max-height:none;min-height:0;flex:1 1 auto;background:#fff}
+.bigsight-body{padding:14px 16px 18px;overflow-x:auto;overflow-y:scroll;scrollbar-gutter:stable;overscroll-behavior:contain;max-height:none;min-height:0;flex:1 1 auto;background:#fff}
 .bigsight-legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 10px;font-size:12px;font-weight:800;color:#41484f}
 .bigsight-legend-item{display:inline-flex;align-items:center;gap:5px}
 .bigsight-legend-swatch{width:15px;height:15px;border:1px solid #7f8790;display:inline-block}
@@ -702,15 +702,107 @@ const BIGSIGHT_PREV_BLOCKS=[
     event:['2026-10-26','2026-10-27','2026-10-28','2026-10-29','2026-10-30','2026-10-31']
   }
 ];
-const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START];
+const BIGSIGHT_NEXT_WEEK_START='2026-11-09';
+const BIGSIGHT_NEXT_DATES=['2026-11-09','2026-11-10','2026-11-11','2026-11-12','2026-11-13','2026-11-14','2026-11-15'];
+const BIGSIGHT_NEXT_BLOCKS=[
+  {
+    id:'industry-exchange-2026',
+    name:'産業交流展2026',
+    url:'https://www.sangyo-koryuten.tokyo/',
+    halls:['W1','W2'],
+    prep:['2026-11-10'],
+    event:['2026-11-11','2026-11-12','2026-11-13']
+  },
+  {
+    id:'agribiz-2026',
+    name:'アグリビジネス創出フェア2026',
+    url:'https://agribiz.maff.go.jp/',
+    halls:['W4'],
+    prep:[],
+    event:['2026-11-11','2026-11-12','2026-11-13']
+  },
+  {
+    id:'fisma-2026',
+    name:'60th FISMA TOKYO',
+    url:'https://www.fisma.tokyo/',
+    halls:['W3'],
+    prep:[],
+    event:['2026-11-12','2026-11-13']
+  },
+  {
+    id:'food-nplus-2026',
+    name:'FOOD展2026／N-Plus2026',
+    url:'https://www.food-exhibition.info/',
+    halls:['E2','E3'],
+    prep:[],
+    event:['2026-11-11','2026-11-12','2026-11-13']
+  },
+  {
+    id:'jfex-winter-2026',
+    name:'JFEX WINTER／日本の食品 輸出EXPO WINTER',
+    url:'https://www.jfex.jp/',
+    halls:['E7','E8'],
+    prep:[],
+    event:['2026-11-11','2026-11-12','2026-11-13']
+  },
+  {
+    id:'career-expo-20261114',
+    name:'インターンシップ＆キャリア発見EXPO',
+    url:'https://job.mynavi.jp/conts/event/2028/10782/index.html',
+    halls:['E2','E3'],
+    prep:[],
+    event:['2026-11-14']
+  },
+  {
+    id:'join-furusato-2026',
+    name:'JOIN-FURUSATO 移住・交流＆地域おこしフェア2026',
+    url:'https://www.iju-join.jp/feature_cont/joinfair/',
+    halls:['E7'],
+    prep:[],
+    event:['2026-11-14','2026-11-15']
+  },
+  {
+    id:'shin-nougyoujin-20261115',
+    name:'新・農業人フェア',
+    url:'https://agri.mynavi.jp/shin-nogyojin/',
+    halls:['E8'],
+    prep:[],
+    event:['2026-11-15']
+  },
+  {
+    id:'designfesta64',
+    name:'デザインフェスタvol.64',
+    url:'https://designfesta.com/',
+    halls:['W1','W2','W3','W4','S1','S2','S3','S4'],
+    prep:[],
+    event:['2026-11-14','2026-11-15']
+  },
+  {
+    id:'furugi-fes-20261115',
+    name:'古着フェス® with ZOZOUSED',
+    url:'https://furugi-fes.com/',
+    halls:['E1','E2'],
+    prep:[],
+    event:['2026-11-15']
+  }
+];
+const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START];
 let activeBigSightWeekKey=BIGSIGHT_TRIAL_WEEK_START;
-function bigsightActiveDates(){return activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START?BIGSIGHT_PREV_DATES:BIGSIGHT_TRIAL_DATES}
-function bigsightActiveBlocks(){return activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START?BIGSIGHT_PREV_BLOCKS:BIGSIGHT_TRIAL_BLOCKS}
-function bigsightActiveHolidays(){return activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START?[]:['2026-11-03']}
+function bigsightActiveDates(){
+  if(activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START)return BIGSIGHT_PREV_DATES;
+  if(activeBigSightWeekKey===BIGSIGHT_NEXT_WEEK_START)return BIGSIGHT_NEXT_DATES;
+  return BIGSIGHT_TRIAL_DATES;
+}
+function bigsightActiveBlocks(){
+  if(activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START)return BIGSIGHT_PREV_BLOCKS;
+  if(activeBigSightWeekKey===BIGSIGHT_NEXT_WEEK_START)return BIGSIGHT_NEXT_BLOCKS;
+  return BIGSIGHT_TRIAL_BLOCKS;
+}
+function bigsightActiveHolidays(){return activeBigSightWeekKey===BIGSIGHT_TRIAL_WEEK_START?['2026-11-03']:[]}
 
 function upcomingWeekHeaderHtml(iso){
   const key=weekKey(iso);
-  const button=(key===BIGSIGHT_TRIAL_WEEK_START||key===BIGSIGHT_PREV_WEEK_START)
+  const button=BIGSIGHT_WEEK_KEYS.includes(key)
     ?'<button class="bigsight-week-btn" type="button" data-bigsight-week="'+esc(key)+'">ビッグサイト使用状況</button>'
     :'';
   return '<tr class="week"><td colspan="5"><div class="week-cell-wrap"><span>'+esc(weekLabel(iso))+'</span>'+button+'</div></td></tr>';
@@ -753,7 +845,7 @@ function bigsightCellHtml(hall,date){
 function renderBigSightTrialGrid(){
   const days=['日','月','火','水','木','金','土'];
   const holidays=new Set(bigsightActiveHolidays());
-  let html='<table class="bigsight-grid" aria-label="東京ビッグサイト 11月2日から11月8日の使用状況"><thead><tr><th class="bs-corner" colspan="2">ホール</th>';
+  let html='<table class="bigsight-grid" aria-label="東京ビッグサイト '+esc(weekLabel(activeBigSightWeekKey))+'の使用状況"><thead><tr><th class="bs-corner" colspan="2">ホール</th>';
   for(const date of bigsightActiveDates()){
     const d=new Date(date+'T00:00:00');
     const holiday=holidays.has(date);
@@ -801,7 +893,7 @@ function bigsightTrialHallLabel(block){
   }).join('／');
 }
 function renderBigSightTrialEventList(){
-  let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト 11月2日から11月8日のイベント一覧"><colgroup><col class="bs-event-date-col"><col class="bs-event-info-col"></colgroup><thead><tr><th class="bs-event-date">日付</th><th>イベント名／開催ホール</th></tr></thead><tbody>';
+  let html='<table class="bigsight-event-list" aria-label="東京ビッグサイト '+esc(weekLabel(activeBigSightWeekKey))+'のイベント一覧"><colgroup><col class="bs-event-date-col"><col class="bs-event-info-col"></colgroup><thead><tr><th class="bs-event-date">日付</th><th>イベント名／開催ホール</th></tr></thead><tbody>';
   for(const block of bigsightActiveBlocks()){
     const nameHtml=block.url?'<a href="'+esc(block.url)+'" target="_blank" rel="noopener">'+esc(block.name)+'</a>':esc(block.name);
     html+='<tr class="bigsight-event-row" data-bs-event="'+esc(block.id)+'"><td class="bs-event-combined" colspan="2"><div class="bigsight-event-row-inner"><div class="bs-event-date">'+esc(bigsightTrialDateLabel(block))+'</div><div class="bs-event-info"><div class="bs-event-name">'+nameHtml+'</div><div class="bs-event-hall-line">'+esc(bigsightTrialHallLabel(block))+'</div></div></div></td></tr>';
@@ -873,14 +965,32 @@ function navigateBigSightWeek(delta){
   activeBigSightWeekKey=BIGSIGHT_WEEK_KEYS[next];
   openBigSightTrial();
 }
+let bigSightPageScrollLock=null;
+function lockBigSightPageScroll(){
+  if(bigSightPageScrollLock)return;
+  bigSightPageScrollLock={
+    html:document.documentElement.style.overflow,
+    body:document.body.style.overflow
+  };
+  document.documentElement.style.overflow='hidden';
+  document.body.style.overflow='hidden';
+}
+function unlockBigSightPageScroll(){
+  if(!bigSightPageScrollLock)return;
+  document.documentElement.style.overflow=bigSightPageScrollLock.html;
+  document.body.style.overflow=bigSightPageScrollLock.body;
+  bigSightPageScrollLock=null;
+}
 function openBigSightTrial(){
   bigsightWeekTitle.textContent='東京ビッグサイト使用状況　'+weekLabel(activeBigSightWeekKey);
   renderBigSightTrialGrid();
   updateBigSightWeekNav();
+  lockBigSightPageScroll();
   bigsightWeekModal.hidden=false;
 }
 function closeBigSightTrial(){
   bigsightWeekModal.hidden=true;
+  unlockBigSightPageScroll();
 }
 
 
