@@ -699,7 +699,7 @@ function bigsightActiveHolidays(){return activeBigSightWeekKey===BIGSIGHT_PREV_W
 
 function upcomingWeekHeaderHtml(iso){
   const key=weekKey(iso);
-  const button=key===BIGSIGHT_TRIAL_WEEK_START
+  const button=(key===BIGSIGHT_TRIAL_WEEK_START||key===BIGSIGHT_PREV_WEEK_START)
     ?'<button class="bigsight-week-btn" type="button" data-bigsight-week="'+esc(key)+'">ビッグサイト使用状況</button>'
     :'';
   return '<tr class="week"><td colspan="5"><div class="week-cell-wrap"><span>'+esc(weekLabel(iso))+'</span>'+button+'</div></td></tr>';
