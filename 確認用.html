@@ -794,16 +794,86 @@ const BIGSIGHT_NEXT_BLOCKS=[
     event:['2026-11-15']
   }
 ];
-const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START];
+const BIGSIGHT_FOLLOWING_WEEK_START='2026-11-16';
+const BIGSIGHT_FOLLOWING_DATES=['2026-11-16','2026-11-17','2026-11-18','2026-11-19','2026-11-20','2026-11-21','2026-11-22'];
+const BIGSIGHT_FOLLOWING_BLOCKS=[
+  {
+    id:'mfg-six-20261118',
+    name:'製造技術系6展合同（スマートファクトリーJapan・洗浄総合展など）',
+    url:'https://biz.nikkan.co.jp/eve/smart-factory/overview.html',
+    halls:['E1','E2','E3'],
+    prep:['2026-11-16','2026-11-17'],
+    event:['2026-11-18','2026-11-19','2026-11-20']
+  },
+  {
+    id:'drink-food-factory-20261118',
+    name:'ドリンク ジャパン／食品工場Week 東京',
+    url:'https://www.drinkjapan.jp/',
+    halls:['E7','E8'],
+    prep:[],
+    event:['2026-11-18','2026-11-19','2026-11-20']
+  },
+  {
+    id:'home-hospex-20261118',
+    name:'Japan Home Show & Building Show 2026／HOSPEX Japan 2026',
+    url:'https://www.jma.or.jp/homeshow/tokyo/',
+    halls:['W1','W2','W3'],
+    prep:['2026-11-16','2026-11-17'],
+    event:['2026-11-18','2026-11-19','2026-11-20']
+  },
+  {
+    id:'japantex-2026',
+    name:'第45回 JAPANTEX 2026',
+    url:'https://japantex.jp/',
+    halls:['W4'],
+    prep:['2026-11-16','2026-11-17'],
+    event:['2026-11-18','2026-11-19','2026-11-20']
+  },
+  {
+    id:'building-maintenance-2026',
+    name:'ビルメンヒューマンフェア＆クリーンEXPO 2026',
+    url:'https://bmcl.jma.or.jp/',
+    halls:['S1','S2'],
+    prep:['2026-11-16','2026-11-17'],
+    event:['2026-11-18','2026-11-19','2026-11-20']
+  },
+  {
+    id:'asia-furnishing-2026',
+    name:'第11回 アジア・ファニシング・フェア2026',
+    url:'https://www.aff-fair.com/',
+    halls:['S3','S4'],
+    prep:[],
+    event:['2026-11-18','2026-11-19','2026-11-20']
+  },
+  {
+    id:'healing-fair-2026',
+    name:'癒しフェア2026 in TOKYO',
+    url:'https://www.a-advice.com/tokyo_2026/',
+    halls:['W4'],
+    prep:['2026-11-21'],
+    event:['2026-11-22']
+  },
+  {
+    id:'tokyo-nail-expo-2026',
+    name:'東京ネイルエキスポ 2026',
+    url:'https://www.nail.or.jp/nailevent/nailexpo26/index.html',
+    halls:['W1','W2'],
+    prep:[],
+    event:['2026-11-22']
+  }
+];
+const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START,BIGSIGHT_FOLLOWING_WEEK_START];
 let activeBigSightWeekKey=BIGSIGHT_TRIAL_WEEK_START;
 function bigsightActiveDates(){
   if(activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START)return BIGSIGHT_PREV_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_NEXT_WEEK_START)return BIGSIGHT_NEXT_DATES;
+  if(activeBigSightWeekKey===BIGSIGHT_FOLLOWING_WEEK_START)return BIGSIGHT_FOLLOWING_DATES;
   return BIGSIGHT_TRIAL_DATES;
 }
 function bigsightActiveBlocks(){
   if(activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START)return BIGSIGHT_PREV_BLOCKS;
   if(activeBigSightWeekKey===BIGSIGHT_NEXT_WEEK_START)return BIGSIGHT_NEXT_BLOCKS;
+  if(activeBigSightWeekKey===BIGSIGHT_FOLLOWING_WEEK_START)return BIGSIGHT_FOLLOWING_BLOCKS;
   return BIGSIGHT_TRIAL_BLOCKS;
 }
 function bigsightActiveHolidays(){return activeBigSightWeekKey===BIGSIGHT_TRIAL_WEEK_START?['2026-11-03']:[]}
