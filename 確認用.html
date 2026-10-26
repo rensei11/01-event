@@ -711,11 +711,13 @@ function bigsightCellHtml(hall,date){
   const di=BIGSIGHT_TRIAL_DATES.indexOf(date);
   const prevHall=hi>0?BIGSIGHT_TRIAL_HALLS[hi-1].code:'';
   const nextHall=hi<BIGSIGHT_TRIAL_HALLS.length-1?BIGSIGHT_TRIAL_HALLS[hi+1].code:'';
+  const prevSameGroup=hi>0&&BIGSIGHT_TRIAL_HALLS[hi-1].group===BIGSIGHT_TRIAL_HALLS[hi].group;
+  const nextSameGroup=hi<BIGSIGHT_TRIAL_HALLS.length-1&&BIGSIGHT_TRIAL_HALLS[hi+1].group===BIGSIGHT_TRIAL_HALLS[hi].group;
   const prevDate=di>0?BIGSIGHT_TRIAL_DATES[di-1]:'';
   const nextDate=di<BIGSIGHT_TRIAL_DATES.length-1?BIGSIGHT_TRIAL_DATES[di+1]:'';
   const cls=['bs-cell',hit.status==='event'?'bs-status-event':hit.status==='moveout'?'bs-status-moveout':'bs-status-prep'];
-  if(!prevHall||!bigsightSameBlock(block.id,prevHall,date))cls.push('bs-block-top');
-  if(!nextHall||!bigsightSameBlock(block.id,nextHall,date))cls.push('bs-block-bottom');
+  if(!prevSameGroup||!prevHall||!bigsightSameBlock(block.id,prevHall,date))cls.push('bs-block-top');
+  if(!nextSameGroup||!nextHall||!bigsightSameBlock(block.id,nextHall,date))cls.push('bs-block-bottom');
   if(!prevDate||!bigsightSameBlock(block.id,hall,prevDate))cls.push('bs-block-left');
   if(!nextDate||!bigsightSameBlock(block.id,hall,nextDate))cls.push('bs-block-right');
   const cellText=hit.status==='moveout'?'搬出':'';
