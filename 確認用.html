@@ -79,6 +79,39 @@ th:last-child,td:last-child{border-right:0}
 .planned-date{font-size:18px!important;overflow:hidden;vertical-align:middle!important}
 .planned-day-start td{border-top:2px solid #a9c8e5!important}
 .back-to-top{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:0;background:#20262d;color:#fff;font-size:26px;font-weight:800;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.28);display:none;align-items:center;justify-content:center;z-index:50;padding:0}.back-to-top:hover{background:#111820}.back-to-top.show{display:flex}
+
+/* 東京ビッグサイト使用状況（11/2〜11/8 試作） */
+.week-cell-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+.week-cell-wrap>span{min-width:0}
+.bigsight-week-btn{flex:0 0 auto;padding:4px 9px;font-size:11px;font-weight:900;border-color:#708090;background:#fff;color:#2e3b46}
+.bigsight-week-btn:hover{background:#f5f7f9}
+.bigsight-dialog{width:min(860px,96vw);max-height:94vh;overflow:hidden}
+.bigsight-dialog .end-dialog-head{position:static}
+.bigsight-body{padding:14px 16px 18px;overflow:auto;max-height:calc(94vh - 58px);background:#fff}
+.bigsight-legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 10px;font-size:12px;font-weight:800;color:#41484f}
+.bigsight-legend-item{display:inline-flex;align-items:center;gap:5px}
+.bigsight-legend-swatch{width:15px;height:15px;border:1px solid #7f8790;display:inline-block}
+.bigsight-legend-swatch.event{background:#00b050}.bigsight-legend-swatch.prep{background:#c6e0b4}.bigsight-legend-swatch.closed{background:#bfbfbf}.bigsight-legend-swatch.unknown{background:#fff}
+.bigsight-grid{width:auto!important;min-width:0!important;table-layout:fixed!important;border-collapse:collapse!important;margin:0 auto;border:2px solid #555}
+.bigsight-grid th,.bigsight-grid td{padding:0!important;border:1px solid #9aa1a8!important;text-align:center!important;vertical-align:middle!important}
+.bigsight-grid th{position:static!important;background:#f4f5f6;color:#20262d;font-size:11px;font-weight:900;height:42px}
+.bigsight-grid .bs-corner{width:74px;min-width:74px}
+.bigsight-grid .bs-date-head{width:42px;min-width:42px;height:44px;line-height:1.15}
+.bigsight-grid .bs-date-head .bs-date{display:block;font-size:12px}
+.bigsight-grid .bs-date-head .bs-day{display:block;font-size:11px;margin-top:3px}
+.bigsight-grid .bs-date-head.bs-weekend{background:#e95420!important;color:#fff!important}
+.bigsight-grid .bs-group{width:30px;min-width:30px;background:#f7f7f5!important;font-size:14px;font-weight:900}
+.bigsight-grid .bs-hall{width:44px;min-width:44px;background:#fff!important;font-size:12px;font-weight:900}
+.bigsight-grid .bs-cell{position:relative;width:42px;min-width:42px;height:42px;background:#fff!important;cursor:default}
+.bigsight-grid .bs-cell.bs-status-event{background:#00b050!important;cursor:help}
+.bigsight-grid .bs-cell.bs-status-prep{background:#c6e0b4!important;cursor:help}
+.bigsight-grid .bs-cell.bs-status-closed{background:#bfbfbf!important;cursor:help}
+.bigsight-grid .bs-cell.bs-block-top{border-top:3px solid #20262d!important}
+.bigsight-grid .bs-cell.bs-block-bottom{border-bottom:3px solid #20262d!important}
+.bigsight-grid .bs-cell.bs-block-left{border-left:3px solid #20262d!important}
+.bigsight-grid .bs-cell.bs-block-right{border-right:3px solid #20262d!important}
+.bigsight-note{margin-top:10px;font-size:11px;line-height:1.55;color:#68727c}
+
 </style>
 </head>
 <body>
@@ -138,6 +171,26 @@ th:last-child,td:last-child{border-right:0}
     <div id="eventEditFormWrap" class="event-edit-form"></div>
   </div>
 </div>
+
+<div id="bigsightWeekModal" class="end-modal" hidden>
+  <div class="end-dialog bigsight-dialog" role="dialog" aria-modal="true" aria-labelledby="bigsightWeekTitle">
+    <div class="end-dialog-head">
+      <div id="bigsightWeekTitle" class="end-dialog-title">東京ビッグサイト使用状況　11/2～11/8</div>
+      <button id="bigsightWeekClose" class="end-close" type="button">×</button>
+    </div>
+    <div class="bigsight-body">
+      <div class="bigsight-legend" aria-label="凡例">
+        <span class="bigsight-legend-item"><span class="bigsight-legend-swatch event"></span>開催中</span>
+        <span class="bigsight-legend-item"><span class="bigsight-legend-swatch prep"></span>準備日</span>
+        <span class="bigsight-legend-item"><span class="bigsight-legend-swatch closed"></span>使用不可</span>
+        <span class="bigsight-legend-item"><span class="bigsight-legend-swatch unknown"></span>使用確認できず</span>
+      </div>
+      <div id="bigsightGridHost"></div>
+      <div class="bigsight-note">白は「空き確定」ではなく、公開情報で使用を確認できていない状態です。準備日は公式資料等で確認できた日だけ表示します。</div>
+    </div>
+  </div>
+</div>
+
 <script>
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
 const REPORT_FLAGS_KEY='free_food_event_report_flags_v1';
@@ -174,6 +227,10 @@ const eventEditModal=document.getElementById('eventEditModal');
 const eventEditTitle=document.getElementById('eventEditTitle');
 const eventEditClose=document.getElementById('eventEditClose');
 const eventEditFormWrap=document.getElementById('eventEditFormWrap');
+
+const bigsightWeekModal=document.getElementById('bigsightWeekModal');
+const bigsightWeekClose=document.getElementById('bigsightWeekClose');
+const bigsightGridHost=document.getElementById('bigsightGridHost');
 const githubSaveBtn=document.getElementById('githubSaveBtn');
 const githubSaveState=document.getElementById('githubSaveState');
 let gitHubSaveQueue=Promise.resolve();
@@ -493,6 +550,127 @@ function fmtDates(xs){return xs.map(x=>{const d=new Date(x+'T00:00:00');return (
 function weekKey(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;d.setDate(d.getDate()-n);return localYmd(d)}
 function weekLabel(iso){const d=new Date(iso+'T00:00:00'),n=(d.getDay()+6)%7;const m=new Date(d);m.setDate(d.getDate()-n);const su=new Date(m);su.setDate(m.getDate()+6);return (m.getMonth()+1)+'/'+m.getDate()+'～'+(su.getMonth()+1)+'/'+su.getDate()}
 
+
+
+
+const BIGSIGHT_TRIAL_WEEK_START='2026-11-02';
+const BIGSIGHT_TRIAL_DATES=['2026-11-02','2026-11-03','2026-11-04','2026-11-05','2026-11-06','2026-11-07','2026-11-08'];
+const BIGSIGHT_TRIAL_HALLS=[
+  {code:'E1',group:'東',label:'1'},{code:'E2',group:'東',label:'2'},{code:'E3',group:'東',label:'3'},{code:'E4',group:'東',label:'4'},
+  {code:'E5',group:'東',label:'5'},{code:'E6',group:'東',label:'6'},{code:'E7',group:'東',label:'7'},{code:'E8',group:'東',label:'8'},
+  {code:'W1',group:'西',label:'1'},{code:'W2',group:'西',label:'2'},{code:'W3',group:'西',label:'3'},{code:'W4',group:'西',label:'4'},
+  {code:'S1',group:'南',label:'1'},{code:'S2',group:'南',label:'2'},{code:'S3',group:'南',label:'3'},{code:'S4',group:'南',label:'4'}
+];
+const BIGSIGHT_TRIAL_BLOCKS=[
+  {
+    id:'leisure',
+    name:'レジャー＆サービス産業展2026／レジャーホテルフェア2026',
+    halls:['E3'],
+    prep:['2026-11-04'],
+    event:['2026-11-05','2026-11-06']
+  },
+  {
+    id:'mirai',
+    name:'東京みらい市2026',
+    halls:['E7','E8'],
+    prep:[],
+    event:['2026-11-06','2026-11-07']
+  },
+  {
+    id:'amusement',
+    name:'アミューズメントエキスポ2026',
+    halls:['S1','S2','S3','S4'],
+    prep:['2026-11-05'],
+    event:['2026-11-06','2026-11-07']
+  },
+  {
+    id:'winter',
+    name:'冬スポ!! WINTER SPORTS FESTA season26',
+    halls:['E3'],
+    prep:[],
+    event:['2026-11-07','2026-11-08']
+  },
+  {
+    id:'bunfree',
+    name:'文学フリマ東京43',
+    halls:['S1','S2','S3','S4'],
+    prep:[],
+    event:['2026-11-08']
+  }
+];
+const BIGSIGHT_TRIAL_CLOSED_HALLS=new Set(['E4','E5','E6']);
+
+function upcomingWeekHeaderHtml(iso){
+  const key=weekKey(iso);
+  const button=key===BIGSIGHT_TRIAL_WEEK_START
+    ?'<button class="bigsight-week-btn" type="button" data-bigsight-week="'+esc(key)+'">ビッグサイト使用状況</button>'
+    :'';
+  return '<tr class="week"><td colspan="5"><div class="week-cell-wrap"><span>'+esc(weekLabel(iso))+'</span>'+button+'</div></td></tr>';
+}
+function bigsightTrialBlockAt(hall,date){
+  for(const block of BIGSIGHT_TRIAL_BLOCKS){
+    if(!block.halls.includes(hall))continue;
+    if(block.event.includes(date))return {block,status:'event'};
+    if(block.prep.includes(date))return {block,status:'prep'};
+  }
+  return null;
+}
+function bigsightSameBlock(blockId,hall,date){
+  const x=bigsightTrialBlockAt(hall,date);
+  return !!x&&x.block.id===blockId;
+}
+function bigsightCellHtml(hall,date){
+  if(BIGSIGHT_TRIAL_CLOSED_HALLS.has(hall)){
+    return '<td class="bs-cell bs-status-closed" title="東4～6ホール：大規模改修工事のため休館（2026年4月～12月末予定）"></td>';
+  }
+  const hit=bigsightTrialBlockAt(hall,date);
+  if(!hit)return '<td class="bs-cell"></td>';
+  const block=hit.block;
+  const hi=BIGSIGHT_TRIAL_HALLS.findIndex(x=>x.code===hall);
+  const di=BIGSIGHT_TRIAL_DATES.indexOf(date);
+  const prevHall=hi>0?BIGSIGHT_TRIAL_HALLS[hi-1].code:'';
+  const nextHall=hi<BIGSIGHT_TRIAL_HALLS.length-1?BIGSIGHT_TRIAL_HALLS[hi+1].code:'';
+  const prevDate=di>0?BIGSIGHT_TRIAL_DATES[di-1]:'';
+  const nextDate=di<BIGSIGHT_TRIAL_DATES.length-1?BIGSIGHT_TRIAL_DATES[di+1]:'';
+  const cls=['bs-cell',hit.status==='event'?'bs-status-event':'bs-status-prep'];
+  if(!prevHall||!bigsightSameBlock(block.id,prevHall,date))cls.push('bs-block-top');
+  if(!nextHall||!bigsightSameBlock(block.id,nextHall,date))cls.push('bs-block-bottom');
+  if(!prevDate||!bigsightSameBlock(block.id,hall,prevDate))cls.push('bs-block-left');
+  if(!nextDate||!bigsightSameBlock(block.id,hall,nextDate))cls.push('bs-block-right');
+  const suffix=hit.status==='prep'?'（準備・搬入日）':'';
+  return '<td class="'+cls.join(' ')+'" title="'+esc(block.name+suffix)+'"></td>';
+}
+function renderBigSightTrialGrid(){
+  const days=['日','月','火','水','木','金','土'];
+  let html='<table class="bigsight-grid" aria-label="東京ビッグサイト 11月2日から11月8日の使用状況"><thead><tr><th class="bs-corner" colspan="2">ホール</th>';
+  for(const date of BIGSIGHT_TRIAL_DATES){
+    const d=new Date(date+'T00:00:00');
+    const weekend=d.getDay()===0||d.getDay()===6;
+    html+='<th class="bs-date-head'+(weekend?' bs-weekend':'')+'"><span class="bs-date">'+(d.getMonth()+1)+'/'+d.getDate()+'</span><span class="bs-day">'+days[d.getDay()]+'</span></th>';
+  }
+  html+='</tr></thead><tbody>';
+  const groupSizes={東:8,西:4,南:4};
+  let seenGroup='';
+  for(const h of BIGSIGHT_TRIAL_HALLS){
+    html+='<tr>';
+    if(h.group!==seenGroup){
+      html+='<th class="bs-group" rowspan="'+groupSizes[h.group]+'">'+h.group+'</th>';
+      seenGroup=h.group;
+    }
+    html+='<th class="bs-hall">'+h.label+'</th>';
+    for(const date of BIGSIGHT_TRIAL_DATES)html+=bigsightCellHtml(h.code,date);
+    html+='</tr>';
+  }
+  html+='</tbody></table>';
+  bigsightGridHost.innerHTML=html;
+}
+function openBigSightTrial(){
+  renderBigSightTrialGrid();
+  bigsightWeekModal.hidden=false;
+}
+function closeBigSightTrial(){
+  bigsightWeekModal.hidden=true;
+}
 
 
 function cloneData(v){return JSON.parse(JSON.stringify(v))}
@@ -1731,7 +1909,7 @@ function render(){
         month=m;week='';
       }
       if(w!==week){
-        html+='<tr class="week"><td colspan="5">'+esc(weekLabel(d))+'</td></tr>';
+        html+=upcomingWeekHeaderHtml(d);
         week=w;
       }
       html+=row(e);
@@ -1849,6 +2027,13 @@ endProcessFormWrap.addEventListener('change',()=>saveEndDraft(false));
 endProcessFormWrap.addEventListener('click',async e=>{if(e.target.id==='endGitHubSave'){await saveEndToGitHub();return;}});
 endBatchSave.addEventListener('click',saveEndBatchToGitHub);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!endProcessModal.hidden)closeEndProcess();});
+document.getElementById('body').addEventListener('click',e=>{
+  const b=e.target.closest('.bigsight-week-btn');if(!b)return;
+  e.preventDefault();e.stopPropagation();
+  if(b.dataset.bigsightWeek===BIGSIGHT_TRIAL_WEEK_START)openBigSightTrial();
+});
+bigsightWeekClose.addEventListener('click',closeBigSightTrial);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!bigsightWeekModal.hidden)closeBigSightTrial();});
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.end-row-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEndProcess(b.dataset.endEdit||'');});
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.event-edit-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEventEdit(b.dataset.eventEdit||'');});
 eventEditClose.addEventListener('click',closeEventEdit);
