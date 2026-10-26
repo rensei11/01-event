@@ -88,6 +88,10 @@ th:last-child,td:last-child{border-right:0}
 .bigsight-dialog{width:min(1180px,96vw);max-height:94vh;overflow:hidden}
 .bigsight-trial-rev{margin-left:8px;padding:1px 6px;border:1px solid rgba(255,255,255,.55);border-radius:10px;font-size:10px;font-weight:900;color:#fff;vertical-align:2px}
 .bigsight-dialog .end-dialog-head{position:static}
+.bigsight-head-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+.bigsight-nav-btn{width:34px;height:30px;min-width:34px;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:4px;background:transparent;color:#fff;font-size:18px;font-weight:900;line-height:1}
+.bigsight-nav-btn:hover:not(:disabled){background:rgba(255,255,255,.12)}
+.bigsight-nav-btn:disabled{opacity:.28;cursor:default}
 .bigsight-body{padding:14px 16px 18px;overflow:auto;max-height:calc(94vh - 58px);background:#fff}
 .bigsight-legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 10px;font-size:12px;font-weight:800;color:#41484f}
 .bigsight-legend-item{display:inline-flex;align-items:center;gap:5px}
@@ -214,7 +218,11 @@ th:last-child,td:last-child{border-right:0}
   <div class="end-dialog bigsight-dialog" role="dialog" aria-modal="true" aria-labelledby="bigsightWeekTitle">
     <div class="end-dialog-head">
       <div id="bigsightWeekTitle" class="end-dialog-title">東京ビッグサイト使用状況　11/2～11/8 <span class="bigsight-trial-rev">試作 r7</span></div>
-      <button id="bigsightWeekClose" class="end-close" type="button">×</button>
+      <div class="bigsight-head-actions">
+        <button id="bigsightWeekPrev" class="bigsight-nav-btn" type="button" aria-label="前の週" title="前の週">←</button>
+        <button id="bigsightWeekNext" class="bigsight-nav-btn" type="button" aria-label="次の週" title="次の週">→</button>
+        <button id="bigsightWeekClose" class="end-close" type="button">×</button>
+      </div>
     </div>
     <div class="bigsight-body">
       <div class="bigsight-legend" aria-label="凡例">
@@ -270,6 +278,9 @@ const eventEditClose=document.getElementById('eventEditClose');
 const eventEditFormWrap=document.getElementById('eventEditFormWrap');
 
 const bigsightWeekModal=document.getElementById('bigsightWeekModal');
+const bigsightWeekTitle=document.getElementById('bigsightWeekTitle');
+const bigsightWeekPrev=document.getElementById('bigsightWeekPrev');
+const bigsightWeekNext=document.getElementById('bigsightWeekNext');
 const bigsightWeekClose=document.getElementById('bigsightWeekClose');
 const bigsightGridHost=document.getElementById('bigsightGridHost');
 const bigsightEventListHost=document.getElementById('bigsightEventListHost');
@@ -692,6 +703,7 @@ const BIGSIGHT_PREV_BLOCKS=[
     event:['2026-10-26','2026-10-27','2026-10-28','2026-10-29','2026-10-30','2026-10-31']
   }
 ];
+const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START];
 let activeBigSightWeekKey=BIGSIGHT_TRIAL_WEEK_START;
 function bigsightActiveDates(){return activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START?BIGSIGHT_PREV_DATES:BIGSIGHT_TRIAL_DATES}
 function bigsightActiveBlocks(){return activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START?BIGSIGHT_PREV_BLOCKS:BIGSIGHT_TRIAL_BLOCKS}
@@ -850,9 +862,22 @@ function bindBigSightTrialHover(){
     else clearBigSightTrialHighlight();
   });
 }
+function updateBigSightWeekNav(){
+  const i=BIGSIGHT_WEEK_KEYS.indexOf(activeBigSightWeekKey);
+  bigsightWeekPrev.disabled=i<=0;
+  bigsightWeekNext.disabled=i<0||i>=BIGSIGHT_WEEK_KEYS.length-1;
+}
+function navigateBigSightWeek(delta){
+  const i=BIGSIGHT_WEEK_KEYS.indexOf(activeBigSightWeekKey);
+  const next=i+delta;
+  if(i<0||next<0||next>=BIGSIGHT_WEEK_KEYS.length)return;
+  activeBigSightWeekKey=BIGSIGHT_WEEK_KEYS[next];
+  openBigSightTrial();
+}
 function openBigSightTrial(){
-  bigsightWeekTitle.textContent='東京ビッグサイト使用状況　'+weekLabel(activeBigSightWeekKey)+'　試作 r8';
+  bigsightWeekTitle.textContent='東京ビッグサイト使用状況　'+weekLabel(activeBigSightWeekKey)+'　試作 r9';
   renderBigSightTrialGrid();
+  updateBigSightWeekNav();
   bigsightWeekModal.hidden=false;
 }
 function closeBigSightTrial(){
@@ -2220,6 +2245,8 @@ document.getElementById('body').addEventListener('click',e=>{
   activeBigSightWeekKey=b.dataset.bigsightWeek||BIGSIGHT_TRIAL_WEEK_START;
   openBigSightTrial();
 });
+bigsightWeekPrev.addEventListener('click',()=>navigateBigSightWeek(-1));
+bigsightWeekNext.addEventListener('click',()=>navigateBigSightWeek(1));
 bigsightWeekClose.addEventListener('click',closeBigSightTrial);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!bigsightWeekModal.hidden)closeBigSightTrial();});
 document.getElementById('body').addEventListener('click',e=>{const b=e.target.closest('.end-row-btn');if(!b)return;e.preventDefault();e.stopPropagation();openEndProcess(b.dataset.endEdit||'');});
