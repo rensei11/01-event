@@ -3621,14 +3621,14 @@
       "id": "xls-x-a1f86eafac98",
       "date": "2026-11-10",
       "endDate": "2026-11-11",
-      "dateText": "11月10日(火)～11日\t(水)",
+      "dateText": "11月10日(火)～11月11日(水)",
       "name": "地方銀行フードセレクション2026",
       "url": "https://food-selection.com/",
       "venue": "東京ビッグサイト 南1-4ホール",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
-      "nightText": "株式会社タクセイを警戒。そもそもサイトもちの名義が無いと厳しくないか",
+      "nightText": "株式会社タクセイを警戒。そもそもサイトもちの名義が無いと厳しくないか\n申請メールを送ったが返信がまったく来ない。サイトもちじゃないと無理か？",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
@@ -3638,7 +3638,10 @@
         "visitDates": [
           "2026-11-11"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-e1d02a762201",
