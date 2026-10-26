@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-24-web",
+  "dataVersion": "2026-10-26-web",
   "year": 2026,
   "events": [
     {
@@ -2420,25 +2420,6 @@
       }
     },
     {
-      "id": "evt-workato-wow-20261118",
-      "date": "2026-11-18",
-      "name": "World of Workato Tokyo 2026（1）",
-      "url": "https://workatowowconference.cventevents.com/event/tokyo/world-of-workato",
-      "venue": "東京マリオットホテル",
-      "conditionLines": [
-        "通常有料（一般59,000円～）",
-        "無料招待コードあり／1,000名以上"
-      ],
-      "rating": "A※。ホテル・1,000名超の大型イベント。無料招待経路あり。Day 1の夜の飲食は未確認。",
-      "nightTime": "16:30～18:30",
-      "nightText": "Developer Conference内でAgentic AI Hackathon最終プレゼン。懇親会・飲食は未確認。",
-      "planning": {
-        "planned": false,
-        "interested": false,
-        "ignored": true
-      }
-    },
-    {
       "id": "evt-cloudnative-days-winter-20261118",
       "date": "2026-11-18",
       "endDate": "2026-11-19",
@@ -2466,6 +2447,25 @@
       "_kinds": [
         "gathering"
       ]
+    },
+    {
+      "id": "evt-workato-wow-20261118",
+      "date": "2026-11-18",
+      "name": "World of Workato Tokyo 2026（1）",
+      "url": "https://workatowowconference.cventevents.com/event/tokyo/world-of-workato",
+      "venue": "東京マリオットホテル",
+      "conditionLines": [
+        "通常有料（一般59,000円～）",
+        "無料招待コードあり／1,000名以上"
+      ],
+      "rating": "A※。ホテル・1,000名超の大型イベント。無料招待経路あり。Day 1の夜の飲食は未確認。",
+      "nightTime": "16:30～18:30",
+      "nightText": "Developer Conference内でAgentic AI Hackathon最終プレゼン。懇親会・飲食は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-workato-wow-20261119",
