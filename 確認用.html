@@ -1112,7 +1112,28 @@ const BIGSIGHT_WEEK_1214_BLOCKS=[
   }
 ];
 
-const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START,BIGSIGHT_FOLLOWING_WEEK_START,BIGSIGHT_WEEK_1123_START,BIGSIGHT_WEEK_1130_START,BIGSIGHT_WEEK_1207_START,BIGSIGHT_WEEK_1214_START];
+const BIGSIGHT_WEEK_1221_START='2026-12-21';
+const BIGSIGHT_WEEK_1221_DATES=['2026-12-21','2026-12-22','2026-12-23','2026-12-24','2026-12-25','2026-12-26','2026-12-27'];
+const BIGSIGHT_WEEK_1221_BLOCKS=[
+  {
+    id:'mokucolle-2026plus',
+    name:'WOODコレクション（モクコレ）2026Plus',
+    url:'https://www.mokucolle.com/',
+    halls:['W1','W2'],
+    prep:['2026-12-23'],
+    event:['2026-12-24','2026-12-25']
+  },
+  {
+    id:'granblue-fes-2026',
+    name:'グラブルフェス2026',
+    url:'https://fes.granbluefantasy.jp/',
+    halls:[],
+    prep:[],
+    event:['2026-12-26','2026-12-27']
+  }
+];
+
+const BIGSIGHT_WEEK_KEYS=[BIGSIGHT_PREV_WEEK_START,BIGSIGHT_TRIAL_WEEK_START,BIGSIGHT_NEXT_WEEK_START,BIGSIGHT_FOLLOWING_WEEK_START,BIGSIGHT_WEEK_1123_START,BIGSIGHT_WEEK_1130_START,BIGSIGHT_WEEK_1207_START,BIGSIGHT_WEEK_1214_START,BIGSIGHT_WEEK_1221_START];
 let activeBigSightWeekKey=BIGSIGHT_TRIAL_WEEK_START;
 function bigsightActiveDates(){
   if(activeBigSightWeekKey===BIGSIGHT_PREV_WEEK_START)return BIGSIGHT_PREV_DATES;
@@ -1122,6 +1143,7 @@ function bigsightActiveDates(){
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1130_START)return BIGSIGHT_WEEK_1130_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1207_START)return BIGSIGHT_WEEK_1207_DATES;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1214_START)return BIGSIGHT_WEEK_1214_DATES;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1221_START)return BIGSIGHT_WEEK_1221_DATES;
   return BIGSIGHT_TRIAL_DATES;
 }
 function bigsightActiveBlocks(){
@@ -1132,6 +1154,7 @@ function bigsightActiveBlocks(){
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1130_START)return BIGSIGHT_WEEK_1130_BLOCKS;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1207_START)return BIGSIGHT_WEEK_1207_BLOCKS;
   if(activeBigSightWeekKey===BIGSIGHT_WEEK_1214_START)return BIGSIGHT_WEEK_1214_BLOCKS;
+  if(activeBigSightWeekKey===BIGSIGHT_WEEK_1221_START)return BIGSIGHT_WEEK_1221_BLOCKS;
   return BIGSIGHT_TRIAL_BLOCKS;
 }
 function bigsightActiveHolidays(){
