@@ -246,6 +246,7 @@ const EDIT_DRAFT_KEY='free_food_event_ledger_2026_design_edit_v1';
 const EDIT_PATCH_KEY='free_food_event_ledger_2026_structured_edit_v2';
 const LEGACY_HTML_KEY='free_food_event_ledger_2026_legacy_html_v1';
 const END_DRAFTS_KEY='free_food_event_end_process_drafts_v1';
+const END_DRAFT_SEEDED_KEY='free_food_event_end_process_imported_seeds_v1';
 const END_BACKUPS_KEY='free_food_event_end_process_saved_backups_v1';
 const END_EDIT_KEY_KEY='free_food_event_end_process_edit_key_v1';
 const EVENT_EDIT_DRAFTS_KEY='free_food_event_edit_drafts_v1';
@@ -2924,34 +2925,37 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
     loadStructuredEditDraft();
     refreshEditBar();
     render();
-    // Restore this event's prepared report to a browser-local draft when missing.
-    const draftUrl=new URL(location.href);
-    const draftRequested=draftUrl.searchParams.get('endDraftImport')==='servicenow-20261027';
-    const targetId='evt-61ecc365';
-    if(draftRequested||(events.some(e=>e.id===targetId)&&!String(endDrafts[targetId]?.report||'').trim())){
-      try{
-        if(events.some(e=>e.id===targetId)&&!String(endDrafts[targetId]?.report||'').trim()){
-          const sourceFile='実地レポート/下書き/2026-10-27-ServiceNow-World-Forum-Tokyo-2026-1.md';
-          const response=await fetch(sourceFile+'?v='+Date.now(),{cache:'no-store'});
-          if(!response.ok)throw new Error('下書き本文を取得できません（'+response.status+'）');
-          const markdown=await response.text();
-          const start=markdown.indexOf('## 料理・デザート');
-          const finish=markdown.indexOf('\n---',start);
-          if(start<0||finish<0)throw new Error('下書き本文の形式が正しくありません');
-          const report=markdown.slice(start,finish).trim();
-          endDrafts[targetId]={...(endDrafts[targetId]||{}),eventId:targetId,report,updatedAt:new Date().toISOString()};
-          localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
-        }
-        if(draftRequested){
-          openEndProcess(targetId);
-          draftUrl.searchParams.delete('endDraftImport');
-          history.replaceState(null,'',draftUrl.pathname+draftUrl.search+draftUrl.hash);
-        }
-      }catch(importErr){
-        console.error('下書きの取込失敗',importErr);
-        const status=document.getElementById('loadStatus');
-        if(status){status.textContent='下書きの取込失敗：'+importErr.message;status.className='status save-warn';}
+    // Restore memo drafts through the ordinary public URL, preserving local edits.
+    try{
+      const response=await fetch('実地レポート/下書き/自動取り込み.json?v='+Date.now(),{cache:'no-store'});
+      if(!response.ok)throw new Error('下書き一覧を取得できません（'+response.status+'）');
+      const manifest=await response.json();
+      let imported={};
+      try{imported=JSON.parse(localStorage.getItem(END_DRAFT_SEEDED_KEY)||'{}')}catch(_){}
+      if(!imported||typeof imported!=='object'||Array.isArray(imported))imported={};
+      let changed=false;
+      for(const seed of Array.isArray(manifest.drafts)?manifest.drafts:[]){
+        const e=events.find(item=>item.id===seed.eventId);
+        const revision=String(seed.revision||'1');
+        if(!e||e.name!==seed.eventName||String(e.date||'')!==String(seed.date||'')
+          ||e.attendanceStatus==='attended'||e.attendanceStatus==='not_attended'
+          ||imported[e.id]===revision||!String(seed.report||'').trim()
+          ||String(endDrafts[e.id]?.report||'').trim()||String(reportFor(e)?.report||'').trim())continue;
+        endDrafts[e.id]={...(endDrafts[e.id]||{}),eventId:e.id,report:String(seed.report).trim(),updatedAt:new Date().toISOString()};
+        imported[e.id]=revision;
+        changed=true;
       }
+      if(changed){
+        localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
+        localStorage.setItem(END_DRAFT_SEEDED_KEY,JSON.stringify(imported));
+      }
+    }catch(seedError){console.error('下書きの自動取込に失敗',seedError);}
+    // Preserve the earlier one-time link for backward compatibility.
+    const draftUrl=new URL(location.href);
+    if(draftUrl.searchParams.get('endDraftImport')==='servicenow-20261027'){
+      openEndProcess('evt-61ecc365');
+      draftUrl.searchParams.delete('endDraftImport');
+      history.replaceState(null,'',draftUrl.pathname+draftUrl.search+draftUrl.hash);
     }
     refreshGitHubSaveButton();
     const loadStatus=document.getElementById('loadStatus');
