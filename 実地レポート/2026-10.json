@@ -264,7 +264,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "ただのKDDIの発表の場にセッションを付けただけ。以前見たリコーとやってることは変わらない。ただアンケート回答で粗品くじを引いて外してナッツを貰っただけで帰った、懇親会もないし。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-evt-growth-dx-marketing-20261027",
