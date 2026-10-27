@@ -249,6 +249,24 @@
       "ratingFlag": "mid"
     },
     {
+      "id": "rep-web-evt-kddi-summit-20261027",
+      "date": "2026-10-27",
+      "visitDates": [
+        "2026-10-27"
+      ],
+      "dateText": "10/27",
+      "scheduledDate": "2026-10-27",
+      "scheduledEndDate": "2026-10-28",
+      "scheduledDateText": "10月27日(火)～28日(水)",
+      "name": "KDDI SUMMIT 2026",
+      "url": "https://www.kddi.com/summit/",
+      "venue": "TAKANAWA GATEWAY Convention Center（THE LINKPILLAR 1 SOUTH 地下1・2階）",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "ただのKDDIの発表の場にセッションを付けただけ。以前見たリコーとやってることは変わらない。ただアンケート回答で粗品くじを引いて外してナッツを貰っただけで帰った、懇親会もないし。",
+      "source": "終了処理"
+    },
+    {
       "id": "rep-web-evt-growth-dx-marketing-20261027",
       "date": "2026-10-27",
       "visitDates": [
