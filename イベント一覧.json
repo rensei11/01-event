@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-26-web",
+  "dataVersion": "2026-10-27-web",
   "year": 2026,
   "events": [
     {
@@ -1866,7 +1866,13 @@
       "dateText": "10月27日(火)",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-27"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-growth-dx-marketing-20261027"
     },
     {
       "id": "evt-satobito-summit-20261027",
