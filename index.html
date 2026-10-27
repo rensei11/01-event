@@ -2924,10 +2924,11 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
     loadStructuredEditDraft();
     refreshEditBar();
     render();
-    // Import one prepared report into the browser-local end-process draft only when requested.
+    // Restore this event's prepared report to a browser-local draft when missing.
     const draftUrl=new URL(location.href);
-    if(draftUrl.searchParams.get('endDraftImport')==='servicenow-20261027'){
-      const targetId='evt-61ecc365';
+    const draftRequested=draftUrl.searchParams.get('endDraftImport')==='servicenow-20261027';
+    const targetId='evt-61ecc365';
+    if(draftRequested||(events.some(e=>e.id===targetId)&&!String(endDrafts[targetId]?.report||'').trim())){
       try{
         if(events.some(e=>e.id===targetId)&&!String(endDrafts[targetId]?.report||'').trim()){
           const sourceFile='実地レポート/下書き/2026-10-27-ServiceNow-World-Forum-Tokyo-2026-1.md';
@@ -2941,9 +2942,11 @@ document.getElementById('calendarYear').addEventListener('change',e=>{
           endDrafts[targetId]={...(endDrafts[targetId]||{}),eventId:targetId,report,updatedAt:new Date().toISOString()};
           localStorage.setItem(END_DRAFTS_KEY,JSON.stringify(endDrafts));
         }
-        openEndProcess(targetId);
-        draftUrl.searchParams.delete('endDraftImport');
-        history.replaceState(null,'',draftUrl.pathname+draftUrl.search+draftUrl.hash);
+        if(draftRequested){
+          openEndProcess(targetId);
+          draftUrl.searchParams.delete('endDraftImport');
+          history.replaceState(null,'',draftUrl.pathname+draftUrl.search+draftUrl.hash);
+        }
       }catch(importErr){
         console.error('下書きの取込失敗',importErr);
         const status=document.getElementById('loadStatus');
