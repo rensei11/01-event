@@ -1,0 +1,99 @@
+name: Verify production v0.43 timetable and 20:00 next event
+on:
+  push:
+    paths:
+      - .github/workflows/production-v043-check.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Browser setup
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Verify production page at PC and mobile widths
+        run: |
+          cat > /tmp/verify-production.cjs <<'JS'
+          const {chromium}=require(process.cwd()+'/node_modules/playwright');
+          const assert=require('node:assert/strict');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            for(const viewport of [{width:390,height:844},{width:1280,height:900}]){
+              const page=await browser.newPage({viewport,locale:'ja-JP'});
+              const live='https://rensei11.github.io/01-event/';
+              let updated=false;
+              for(let i=0;i<25;i++){
+                await page.goto(live+'?check=v043-'+i,{waitUntil:'domcontentloaded',timeout:60000});
+                const version=await page.locator('.version-info').innerText().catch(()=>'');
+                if(version.includes('v0.43') && await page.locator('#timetableOpen').count()){updated=true;break;}
+                await page.waitForTimeout(3000);
+              }
+              assert(updated,'v0.43 production not deployed');
+              const eventsCheck=await page.evaluate(()=>{
+                const d1=nextPlanDateWindow(new Date('2026-10-28T19:59:59+09:00'));
+                const d2=nextPlanDateWindow(new Date('2026-10-28T20:00:00+09:00'));
+                const d3=nextPlanDateWindow(new Date('2026-10-29T00:00:00+09:00'));
+                const backup=nextPlanDateWindow;
+                const e={id:'__20h-test__',date:'2026-10-28',endDate:'2026-10-28',visitDates:['2026-10-28'],planning:{planned:true}};
+                nextPlanDateWindow=()=>d1;
+                const before=nextCardDates(e,d1.start,d1.end);
+                nextPlanDateWindow=()=>d2;
+                const after=nextCardDates(e,d2.start,d2.end);
+                nextPlanDateWindow=backup;
+                const sameDay=events.filter(x=>x.date==='2026-10-28').map(x=>({name:x.name,planned:!!flag(x).planned,visitDates:flag(x).visitDates||[],done:x.visitDates||[]}));
+                return {d1,d2,d3,before,after,sameDay,memoImportInSource:typeof seedEndDrafts==='function'};
+              });
+              assert.equal(eventsCheck.d1.start,'2026-10-28');
+              assert.equal(eventsCheck.d2.start,'2026-10-29');
+              assert.equal(eventsCheck.d3.start,'2026-10-29');
+              assert.deepEqual(eventsCheck.before,['2026-10-28']);
+              assert.deepEqual(eventsCheck.after,[]);
+              console.log('DATE PASS',viewport.width,JSON.stringify(eventsCheck));
+              await page.locator('#timetableOpen').click();
+              await page.getByRole('button',{name:'東京BRT'}).click();
+              const routes=[
+                ['国際展示場発','brt-bigsight-marked.png'],
+                ['新橋発（虎ノ門ヒルズ方面）','brt-shimbashi-toranomon-map.png'],
+                ['虎ノ門ヒルズ発','brt-toranomon.png'],
+                ['新橋発（国際展示場方面）','brt-shimbashi-bigsight.png']
+              ];
+              const buttons=await page.locator('#timetableStops button').allTextContents();
+              assert.deepEqual(buttons,routes.map(x=>x[0]));
+              for(const [stop,filename] of routes){
+                await page.locator('#timetableStops').getByRole('button',{name:stop,exact:true}).click();
+                const img=page.locator('#timetableDisplay img');
+                await img.waitFor({state:'visible'});
+                await img.evaluate(el=>el.decode());
+                const d=await img.evaluate(el=>({src:el.currentSrc,width:el.naturalWidth,height:el.naturalHeight}));
+                assert(d.src.includes(filename));
+                assert(d.width>=900&&d.height>2000);
+                const x=await page.locator('.timetable-close').evaluate(el=>({before:getComputedStyle(el,'::before').transform,after:getComputedStyle(el,'::after').transform}));
+                assert(x.before!==x.after&&x.before!=='none');
+                console.log('ROUTE PASS',viewport.width,stop,d.width,d.height);
+              }
+              await page.locator('.timetable-close').click();
+              await page.locator('#timetableOpen').click();
+              assert((await page.locator('.timetable-display-title').innerText()).includes('新橋発（国際展示場方面）'));
+              await page.reload({waitUntil:'domcontentloaded'});
+              await page.locator('#timetableOpen').click();
+              assert((await page.locator('.timetable-display-title').innerText()).includes('新橋発（国際展示場方面）'));
+              await page.locator('.timetable-close').click();
+              if(viewport.width===390){
+                const h=await page.locator('.title-status-row h1').boundingBox();
+                const meta=await page.locator('.title-meta-stack').boundingBox();
+                const button=await page.locator('#timetableOpen').boundingBox();
+                assert(h.height<40&&meta.y>h.y&&button.y>meta.y,'Mobile header is not stacked');
+              }
+              console.log('COMPLETE PASS',viewport.width);
+              await page.close();
+            }
+            await browser.close();
+          })().catch(error=>{console.error(error);process.exit(1)});
+          JS
+          node /tmp/verify-production.cjs
