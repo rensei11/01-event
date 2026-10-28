@@ -168,7 +168,7 @@ th:last-child,td:last-child{border-right:0}
 .timetable-menu button.active{color:#fff;background:#315d87;border-color:#315d87}
 .timetable-section-label{font-size:13px;font-weight:800;color:#53616e}
 .timetable-display{border:1px solid #cad4df;border-radius:7px;padding:12px;margin-top:10px;background:#fafcfe}
-.timetable-display-title{font-size:15px;font-weight:900;margin-bottom:6px}
+.timetable-display-title{font-size:15px;font-weight:900;margin-bottom:6px}.timetable-duration{font-size:14px;font-weight:700;color:#334b62;white-space:normal}
 .timetable-image-missing{display:flex;align-items:center;justify-content:center;min-height:120px;background:#edf2f6;color:#596977;border:1px dashed #aab6c3;border-radius:6px;text-align:center;padding:16px;font-size:14px}
 .timetable-image-link{display:block}
 .timetable-image{display:block;width:100%;max-width:100%;height:auto;max-height:none;object-fit:contain;margin:0 auto}
@@ -287,16 +287,16 @@ th:last-child,td:last-child{border-right:0}
 /* 時刻表画像は後から各 route.image に相対パスを設定できる。未登録時は公式ページへ案内 */
 const TIMETABLE_CATALOG=[
   {id:'brt',title:'東京BRT',stops:[
-    {id:'kokusai',title:'国際展示場発',routes:[
+    {id:'kokusai',title:'国際展示場発',duration:'新橋まで約15分',routes:[
       {id:'timetable',title:'時刻表',image:'assets/timetables/brt-bigsight.png?v=vertical-20261028',official:'https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo'}
     ]},
-    {id:'shimbashi-toranomon',title:'新橋発・虎ノ門ヒルズ方面',routes:[
+    {id:'shimbashi-toranomon',title:'新橋発（虎ノ門ヒルズ方面）',routes:[
       {id:'timetable',title:'時刻表',image:'assets/timetables/brt-shimbashi-toranomon.png?v=vertical-20261028',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'}
     ]},
     {id:'toranomon',title:'虎ノ門ヒルズ発',routes:[
       {id:'timetable',title:'時刻表',image:'assets/timetables/brt-toranomon.png?v=vertical-20261028',official:'https://tokyo-brt.co.jp/bus-stops/b11-toranomon-hills'}
     ]},
-    {id:'shimbashi-kokusai',title:'新橋発・国際展示場方面',routes:[
+    {id:'shimbashi-kokusai',title:'新橋発（国際展示場方面）',duration:'国際展示場まで約15～17分',routes:[
       {id:'timetable',title:'時刻表',image:'assets/timetables/brt-shimbashi-bigsight.png?v=vertical-20261028',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'}
     ]}
   ]}
@@ -310,7 +310,25 @@ const timetableRoutes=document.getElementById('timetableRoutes');
 const timetableDisplay=document.getElementById('timetableDisplay');
 const timetableStopsWrap=document.getElementById('timetableStopsWrap');
 const timetableRoutesWrap=document.getElementById('timetableRoutesWrap');
-let timetableSelection={group:'',stop:'',route:''};
+// 最後に表示した時刻表の停留所だけ保存。イベントデータとは独立させる。
+const TIMETABLE_LAST_STOP_KEY='event_timetable_last_stop_v1';
+function timetableRestoreChoice(){
+  try{
+    const stored=JSON.parse(localStorage.getItem(TIMETABLE_LAST_STOP_KEY)||'null');
+    if(stored&&typeof stored.group==='string'&&typeof stored.stop==='string'){
+      const group=TIMETABLE_CATALOG.find(g=>g.id===stored.group);
+      const stop=group?.stops.find(t=>t.id===stored.stop);
+      if(stop)return {group:group.id,stop:stop.id,route:stop.routes.some(r=>r.id===stored.route)?stored.route:''};
+    }
+  }catch(_){}
+  return {group:'',stop:'',route:''};
+}
+function timetableSaveChoice(){
+  if(!timetableSelection.stop)return;
+  try{localStorage.setItem(TIMETABLE_LAST_STOP_KEY,JSON.stringify(timetableSelection));}catch(_){}
+}
+let timetableSelection=timetableRestoreChoice();
+let timetableInitialized=false;
 let timetableOriginalOverflow='';
 function timetableCreateButton(label,active,onClick){
   const button=document.createElement('button');
@@ -331,7 +349,8 @@ function renderTimetable(){
   timetableStops.replaceChildren();
   if(group)for(const stop of group.stops){
     timetableStops.appendChild(timetableCreateButton(stop.title,timetableSelection.stop===stop.id,()=>{
-      timetableSelection.stop=stop.id;timetableSelection.route='';renderTimetable();
+      timetableSelection.stop=stop.id;timetableSelection.route='';timetableSaveChoice();renderTimetable();
+      document.querySelector('.timetable-body').scrollTop=0;
     }));
   }
   const stop=group?.stops.find(s=>s.id===timetableSelection.stop);
@@ -339,7 +358,8 @@ function renderTimetable(){
   timetableRoutes.replaceChildren();
   if(stop&&stop.routes.length>1)for(const route of stop.routes){
     timetableRoutes.appendChild(timetableCreateButton(route.title,timetableSelection.route===route.id,()=>{
-      timetableSelection.route=route.id;renderTimetable();
+      timetableSelection.route=route.id;timetableSaveChoice();renderTimetable();
+      document.querySelector('.timetable-body').scrollTop=0;
     }));
   }
   const route=stop?.routes.length===1?stop.routes[0]:stop?.routes.find(r=>r.id===timetableSelection.route);
@@ -347,13 +367,15 @@ function renderTimetable(){
   timetableDisplay.replaceChildren();
   if(!route)return;
   const heading=document.createElement('div');heading.className='timetable-display-title';
-  heading.textContent=stop.title;timetableDisplay.appendChild(heading);
+  heading.textContent=stop.title;
+  if(stop.duration){const time=document.createElement('span');time.className='timetable-duration';time.textContent='（'+stop.duration+'）';heading.appendChild(time);}
+  timetableDisplay.appendChild(heading);
 
   if(route.image){
     const a=document.createElement('a');a.className='timetable-image-link';
     a.href=route.image;a.target='_blank';a.rel='noopener';a.title='時刻表画像を拡大';
     const img=document.createElement('img');img.className='timetable-image';
-    img.src=route.image;img.alt=heading.textContent+'の時刻表';img.loading='eager';
+    img.src=route.image;img.alt=heading.textContent+'の時刻表';img.loading='eager';img.decoding='async';img.fetchPriority='high';
     img.addEventListener('error',()=>{img.alt='時刻表画像の読込に失敗。下の公式時刻表を開いてください。';});
     a.appendChild(img);timetableDisplay.appendChild(a);
   }else{
@@ -367,7 +389,8 @@ function renderTimetable(){
 
 }
 function openTimetable(){
-  timetableSelection={group:'',stop:'',route:''};renderTimetable();
+  // 同一ページでは画像のDOMを再利用。2回目以降のネット再取得・描画を省く。
+  if(!timetableInitialized){renderTimetable();timetableInitialized=true;}
   timetableOriginalOverflow=document.body.style.overflow;
   document.body.style.overflow='hidden';
   timetableModal.hidden=false;timetableClose.focus();
