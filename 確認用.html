@@ -173,7 +173,7 @@ th:last-child,td:last-child{border-right:0}
 .timetable-image-link{display:block}
 .timetable-image{display:block;width:100%;max-width:100%;height:auto;max-height:none;object-fit:contain;margin:0 auto}
 .timetable-official{display:inline-block;margin-top:10px;font-size:14px;font-weight:800}
-.timetable-note{font-size:14px;color:#253e57;font-weight:750;margin:6px 0 12px;padding:9px;background:#eef5fb;border-left:3px solid #6f9dbd;line-height:1.55}
+.timetable-note{font-size:13px;color:#9a1d13;font-weight:750;margin:6px 0 12px;padding:9px;background:#fff8f7;border-left:3px solid #d52b1e;line-height:1.55}
 @media(max-width:700px){.title-status-row .title-meta-stack{order:1;flex:0 0 100%;margin-left:0;justify-content:flex-start;white-space:normal;flex-wrap:wrap}.title-status-row .timetable-entry{order:2;margin:1px 0 5px;align-self:flex-start}.timetable-overlay{padding:5px}.timetable-dialog{height:96vh;height:96dvh}.timetable-body{padding:10px}.timetable-menu button{font-size:14px;min-height:40px;padding:8px 10px}}
 
 </style>
@@ -288,10 +288,10 @@ th:last-child,td:last-child{border-right:0}
 const TIMETABLE_CATALOG=[
   {id:'brt',title:'東京BRT',stops:[
     {id:'kokusai',title:'国際展示場発',duration:'新橋まで約15分',routes:[
-      {id:'timetable',title:'時刻表',image:'assets/timetables/brt-bigsight.png?v=vertical-20261028',official:'https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo'}
+      {id:'timetable',title:'時刻表',image:'assets/timetables/brt-bigsight-marked.png?v=red-circles-20261028',note:'赤丸＝12～17時台、新橋で虎ノ門ヒルズ方面へ乗り継ぎやすい出発便の目安。道路状況により接続は変わります。',official:'https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo'}
     ]},
     {id:'shimbashi-toranomon',title:'新橋発（虎ノ門ヒルズ方面）',routes:[
-      {id:'timetable',title:'時刻表',image:'assets/timetables/brt-shimbashi-toranomon.png?v=vertical-20261028',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'}
+      {id:'timetable',title:'時刻表',image:'assets/timetables/brt-shimbashi-toranomon-map.png?v=map-20261028',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'}
     ]},
     {id:'toranomon',title:'虎ノ門ヒルズ発',routes:[
       {id:'timetable',title:'時刻表',image:'assets/timetables/brt-toranomon.png?v=vertical-20261028',official:'https://tokyo-brt.co.jp/bus-stops/b11-toranomon-hills'}
@@ -370,6 +370,7 @@ function renderTimetable(){
   heading.textContent=stop.title;
   if(stop.duration){const time=document.createElement('span');time.className='timetable-duration';time.textContent='（'+stop.duration+'）';heading.appendChild(time);}
   timetableDisplay.appendChild(heading);
+  if(route.note){const note=document.createElement('div');note.className='timetable-note';note.textContent=route.note;timetableDisplay.appendChild(note);}
 
   if(route.image){
     const a=document.createElement('a');a.className='timetable-image-link';
