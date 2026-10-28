@@ -1,5 +1,14 @@
 # イベント台帳・UI編集 引き継ぎ
 
+## 2026-10-28 本番v0.43反映済み／当日予定の表示修正
+- **本番GitHub編集は通常ChatGPTから実行可能。** 過去の「GitHubが編集できない」は誤回答。Work/Codex不要。ユーザーの本番反映指示に従って `index.html` を直接更新。
+- v0.43本番の更新コミット `eab34492169067b5a28c866fa62eb0d2245b68b1`、旧版バックアップ `archive/index_2026-10-28_before_BRT_v0.42.html`。承認済みのBRT画像4件・国際展示場発赤丸、新橋発地図、×中央、スマホタイトル修正、前回表示記憶を確認用から移植。
+- 20時切替は**確認用にも既にあった**。ただし `nextPlannedGroups()` が旧 `plannedDates()` を通るため当日の参加済み判定等で消える可能性が残っていた。確認用コミット `31694c3b` で `nextCardDates()` に独立化し、日本時間20:00まで当日の「行く」予定を維持。同じ仕様を本番v0.43へ反映。開始日判定をJST固定、深夜0時・20時・画面復帰に再判定。
+- **本番独自の `END_DRAFT_SEEDED_KEY` と下書きの自動取込コードを失わないため `確認用.html` 全体は上書きせず差分移植**。イベントJSON、Cloudflare Workerは未変更。
+- 公開URL `https://rensei11.github.io/01-event/`の自動ブラウザ試験 run `40654910030` PASS。390pxスマホ・1280pxPCで4画像の読み込み、メニュー、×、前回選択再表示、JST19:59と20:00の境界、当日の参加済み予定保持を確認。
+- 2026/10/28の公式データでは「ServiceNow World Forum Tokyo 2026（2）」が`planning.planned`なし、「組合まつり in TOKYO 2026」は`planning.visitDates`が10/29だけ。よって28日の予定が実データで次回欄に無い可能性は「20時切替未実装」以外に**その日の『行く』未設定**がある。ユーザーのローカル保存状態は検査できない。未承認の参加状態変更は禁止。
+
+
 ## 2026-10-28 BRT赤丸・新橋のりば地図・×中央化（確認用、公開済み）
 - ユーザーが見せた2枚の仕上がりをもとに、GitHub`確認用.html`内の画像2か所を差し替え。**ユーザー添付の画像ファイルをそのまま転送したわけではない**。公式元表を保持し、国際展示場発は平日12～17時台の候補18便を赤丸で囲み、新橋発（虎ノ門ヒルズ方面）は休日表の下に東京BRT公式の新橋乗り場図を追加した同等構成。元の4方向と最後の選択記憶は維持。
 - 追加画像：`assets/timetables/brt-bigsight-marked.png`（945x2674、18円）、`assets/timetables/brt-shimbashi-toranomon-map.png`（945x2694、公式`https://tokyo-brt.co.jp/img/home/img-shinbashi-noriba.jpg`を縦追記）。生成と配置`.github/workflows/brt-special-images.yml`で実行。公式の元時刻表の数字と行先記号を組み直さない。
