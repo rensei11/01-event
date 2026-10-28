@@ -42,7 +42,7 @@ jobs:
                 const all=[...document.querySelectorAll('table')].filter(t=>t.querySelectorAll('tr').length>=8);
                 const target=part==='last'?all.slice(-2):all.slice(0,2);
                 const escape=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                const tidy=s=>String(s).replace(/\\s+/g,' ').trim();
+                const tidy=s=>String(s).replace(/\s+/g,' ').trim();
                 const tables=target.map(t=>'<table>'+[...t.querySelectorAll('tr')].map((tr,i)=>{
                   const cells=[...tr.querySelectorAll(':scope > th, :scope > td')];
                   if(cells.length<2)return '';
