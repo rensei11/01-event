@@ -288,14 +288,14 @@ th:last-child,td:last-child{border-right:0}
 const TIMETABLE_CATALOG=[
   {id:'brt',title:'東京BRT',stops:[
     {id:'bigsight',title:'ビッグサイト（国際展示場）発',routes:[
-      {id:'to-shimbashi',title:'新橋・虎ノ門方面',image:'',official:'https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo'}
+      {id:'to-shimbashi',title:'新橋・虎ノ門方面',image:'assets/timetables/brt-bigsight.png',official:'https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo',note:'「虎」の印がある便は虎ノ門ヒルズ直通。無印は新橋止まり。'}
     ]},
     {id:'shimbashi',title:'新橋発',routes:[
-      {id:'to-bigsight',title:'国際展示場方面',image:'',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'},
-      {id:'to-toranomon',title:'虎ノ門ヒルズ方面',image:'',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'}
+      {id:'to-bigsight',title:'国際展示場方面',image:'assets/timetables/brt-shimbashi-bigsight.png',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi',note:'「テ」の印がある便は東京テレポート行き。国際展示場へ行く場合は無印の便を選ぶ。'},
+      {id:'to-toranomon',title:'虎ノ門ヒルズ方面',image:'assets/timetables/brt-shimbashi-toranomon.png',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'}
     ]},
     {id:'toranomon',title:'虎ノ門ヒルズ発',routes:[
-      {id:'to-shimbashi',title:'新橋方面',image:'',official:'https://tokyo-brt.co.jp/bus-stops/b11-toranomon-hills'}
+      {id:'to-shimbashi',title:'新橋方面',image:'assets/timetables/brt-toranomon.png',official:'https://tokyo-brt.co.jp/bus-stops/b11-toranomon-hills',note:'午前の「国」印は国際展示場まで直通。その他も新橋で乗り換えられる。'}
     ]}
   ]}
 ];
@@ -350,7 +350,8 @@ function renderTimetable(){
     const a=document.createElement('a');a.className='timetable-image-link';
     a.href=route.image;a.target='_blank';a.rel='noopener';a.title='時刻表画像を拡大';
     const img=document.createElement('img');img.className='timetable-image';
-    img.src=route.image;img.alt=heading.textContent+'の時刻表';
+    img.src=route.image;img.alt=heading.textContent+'の時刻表';img.loading='eager';
+    img.addEventListener('error',()=>{img.alt='時刻表画像の読込に失敗。下の公式時刻表を開いてください。';});
     a.appendChild(img);timetableDisplay.appendChild(a);
   }else{
     const empty=document.createElement('div');empty.className='timetable-image-missing';
@@ -361,7 +362,7 @@ function renderTimetable(){
   official.href=route.official;official.target='_blank';official.rel='noopener';
   official.textContent='東京BRT公式時刻表を開く';timetableDisplay.appendChild(official);
   const note=document.createElement('div');note.className='timetable-note';
-  note.textContent='運行日・行先・時刻表改正に注意してください。乗継先への到着は道路状況によって変わります。';
+  note.textContent=(route.note?route.note+'　':'')+'時刻表：2026年9月16日改正。乗継先への到着は道路状況によって変わります。';
   timetableDisplay.appendChild(note);
 }
 function openTimetable(){
