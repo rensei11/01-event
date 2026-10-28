@@ -46,17 +46,25 @@ jobs:
                 if(!tabs.some(t=>t.id===id))throw Error('Tab missing: '+id);
                 for(const el of tabs)el.style.display=el.id===id?'block':'none';
               },tabId);
+
               const tab=page.locator('#'+tabId);
-              const check=await tab.evaluate(el=>({
-                count:el.querySelectorAll('table.table-tt').length,
-                text:el.innerText.slice(-220),
-                width:el.getBoundingClientRect().width,
-                height:el.getBoundingClientRect().height
-              }));
-              console.log('ORIGINAL',slug,JSON.stringify(check));
-              if(check.count!==2||check.width<1000||check.height<500)throw Error('Incomplete official table: '+slug);
-              await tab.screenshot({path:'assets/timetables/brt-'+slug+'.png',animations:'disabled'});
-              console.log('IMAGE',slug,fs.statSync('assets/timetables/brt-'+slug+'.png').size);
+              const weekday=tab.locator('table.table-tt.weekday');
+              const holiday=tab.locator('table.table-tt.holiday');
+              const [tb,wb,hb]=await Promise.all([tab.boundingBox(),weekday.boundingBox(),holiday.boundingBox()]);
+              if(!tb||!wb||!hb||wb.width<400||hb.width<400)throw Error('Original table not visible '+slug);
+              const [w,h,full]=await Promise.all([weekday.screenshot(),holiday.screenshot(),tab.screenshot()]);
+              const [wm,hm,fm]=await Promise.all([sharp(w).metadata(),sharp(h).metadata(),sharp(full).metadata()]);
+              const ratio=fm.width/tb.width;
+              const top=Math.min(fm.height-1,Math.round((Math.max(wb.y+wb.height,hb.y+hb.height)-tb.y)*ratio));
+              const foot=await sharp(full).extract({left:0,top,width:Math.min(fm.width,wm.width),height:fm.height-top}).png().toBuffer();
+              const fh=(await sharp(foot).metadata()).height, gap=18;
+              const width=Math.max(wm.width,hm.width),height=wm.height+hm.height+fh+gap*2;
+              const file='assets/timetables/brt-'+slug+'.png';
+              await sharp({create:{width,height,channels:4,background:'#ffffff'}})
+                .composite([{input:w,left:0,top:0},{input:h,left:0,top:wm.height+gap},{input:foot,left:0,top:wm.height+gap+hm.height+gap}])
+                .png().toFile(file);
+              console.log('STACKED',slug,JSON.stringify({width,height,bytes:fs.statSync(file).size}));
+              if(fs.statSync(file).size<12000||fh<30)throw Error('Incomplete timetable '+slug);
               await page.close();
             }
             await browser.close();
