@@ -1,0 +1,67 @@
+name: Verify BRT timetable preview
+on:
+  push:
+    paths:
+      - .github/workflows/brt-preview-check.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Test published page and all four routes
+        run: |
+          cat > /tmp/brt-check.cjs <<'JS'
+          const {chromium}=require(process.cwd()+'/node_modules/playwright');
+          const assert=require('node:assert/strict');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            for(const size of [{width:390,height:844},{width:1280,height:900}]){
+              const page=await browser.newPage({viewport:size,locale:'ja-JP'});
+              await page.goto('https://rensei11.github.io/01-event/%E7%A2%BA%E8%AA%8D%E7%94%A8.html',{waitUntil:'domcontentloaded',timeout:60000});
+              await page.locator('#timetableOpen').click();
+              const box1=await page.locator('.timetable-dialog').boundingBox();
+              assert(box1 && box1.height>300,'initial window too small');
+              if(size.width===390){
+                const header=await page.locator('.title-status-row h1').boundingBox();
+                const version=await page.locator('.version-info').boundingBox();
+                const trigger=await page.locator('#timetableOpen').boundingBox();
+                assert(header.height<36,'title wrapped into vertical lines');
+                assert(version.y>header.y && trigger.y>version.y,'mobile control placement incorrect');
+              }
+              await page.getByRole('button',{name:'東京BRT'}).click();
+              const routes=[
+                ['ビッグサイト（国際展示場）発',null,'brt-bigsight.png'],
+                ['新橋発','国際展示場方面','brt-shimbashi-bigsight.png'],
+                ['新橋発','虎ノ門ヒルズ方面','brt-shimbashi-toranomon.png'],
+                ['虎ノ門ヒルズ発',null,'brt-toranomon.png']
+              ];
+              for(const [stop,destination,filename] of routes){
+                await page.locator('#timetableStops').getByRole('button',{name:stop,exact:true}).click();
+                if(destination) await page.locator('#timetableRoutes').getByRole('button',{name:destination,exact:true}).click();
+                const img=page.locator('#timetableDisplay img');
+                await img.waitFor({state:'visible'});
+                await img.evaluate(image=>image.decode());
+                const dimensions=await img.evaluate(image=>({width:image.naturalWidth,height:image.naturalHeight,src:image.currentSrc}));
+                assert(dimensions.src.includes(filename),'wrong image '+stop);
+                assert(dimensions.width>600&&dimensions.height>600,'bad image '+stop+' '+JSON.stringify(dimensions));
+                const box=await page.locator('.timetable-dialog').boundingBox();
+                assert(Math.abs(box.height-box1.height)<2,'dialog size changed after selection '+stop+' '+box.height+' vs '+box1.height);
+                console.log('PASS',size.width,stop,destination||'',dimensions.width,dimensions.height);
+              }
+              await page.locator('.timetable-close').click();
+              assert(await page.locator('#timetableModal').isHidden());
+              await page.close();
+            }
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/brt-check.cjs
