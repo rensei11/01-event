@@ -39,23 +39,25 @@ jobs:
               }
               await page.getByRole('button',{name:'東京BRT'}).click();
               const routes=[
-                ['ビッグサイト（国際展示場）発',null,'brt-bigsight.png'],
-                ['新橋発','国際展示場方面','brt-shimbashi-bigsight.png'],
-                ['新橋発','虎ノ門ヒルズ方面','brt-shimbashi-toranomon.png'],
-                ['虎ノ門ヒルズ発',null,'brt-toranomon.png']
+                ['国際展示場発','brt-bigsight.png'],
+                ['新橋発・虎ノ門ヒルズ方面','brt-shimbashi-toranomon.png'],
+                ['虎ノ門ヒルズ発','brt-toranomon.png'],
+                ['新橋発・国際展示場方面','brt-shimbashi-bigsight.png']
               ];
-              for(const [stop,destination,filename] of routes){
+              const labels=await page.locator('#timetableStops button').allTextContents();
+              assert.deepEqual(labels, routes.map(r=>r[0]), 'Incorrect stop button order');
+              for(const [stop,filename] of routes){
                 await page.locator('#timetableStops').getByRole('button',{name:stop,exact:true}).click();
-                if(destination) await page.locator('#timetableRoutes').getByRole('button',{name:destination,exact:true}).click();
                 const img=page.locator('#timetableDisplay img');
                 await img.waitFor({state:'visible'});
                 await img.evaluate(image=>image.decode());
-                const dimensions=await img.evaluate(image=>({width:image.naturalWidth,height:image.naturalHeight,src:image.currentSrc}));
-                assert(dimensions.src.includes(filename),'wrong image '+stop);
-                assert(dimensions.width>600&&dimensions.height>600,'bad image '+stop+' '+JSON.stringify(dimensions));
+                const d=await img.evaluate(image=>({w:image.naturalWidth,h:image.naturalHeight,src:image.currentSrc,maxHeight:getComputedStyle(image).maxHeight}));
+                assert(d.src.includes(filename),'Wrong image for '+stop);
+                assert(d.w>=900 && d.h>=2000,'Expected original tables stacked vertically '+stop+' '+JSON.stringify(d));
+                assert(d.maxHeight==='none','Image still constrained by max-height');
                 const box=await page.locator('.timetable-dialog').boundingBox();
-                assert(Math.abs(box.height-box1.height)<2,'dialog size changed after selection '+stop+' '+box.height+' vs '+box1.height);
-                console.log('PASS',size.width,stop,destination||'',dimensions.width,dimensions.height);
+                assert(Math.abs(box.height-box1.height)<2,'Dialog size changed after selection '+stop);
+                console.log('PASS',size.width,stop,d.w,d.h);
               }
               await page.locator('.timetable-close').click();
               assert(await page.locator('#timetableModal').isHidden());
