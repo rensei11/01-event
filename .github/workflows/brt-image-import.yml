@@ -1,0 +1,72 @@
+name: Build BRT timetable images once
+on:
+  push:
+    paths:
+      - .github/workflows/brt-image-import.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Render four current official route timetables
+        run: |
+          mkdir -p assets/timetables
+          cat > /tmp/brt-capture.cjs <<'JS'
+          const {chromium}=require(process.cwd()+'/node_modules/playwright');
+          const fs=require('fs');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const jobs=[
+              ['toranomon','https://tokyo-brt.co.jp/bus-stops/b11-toranomon-hills','虎ノ門ヒルズ発', 'first'],
+              ['bigsight','https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo','国際展示場発','first'],
+              ['shimbashi-bigsight','https://tokyo-brt.co.jp/bus-stops/b01-shimbashi','新橋発 → 国際展示場','first'],
+              ['shimbashi-toranomon','https://tokyo-brt.co.jp/bus-stops/b01-shimbashi','新橋発 → 虎ノ門ヒルズ','last']
+            ];
+            for(const [slug,url,title,part] of jobs){
+              const page=await browser.newPage({viewport:{width:1320,height:1800},deviceScaleFactor:1.5,locale:'ja-JP'});
+              await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
+              await page.waitForTimeout(1000);
+              const result=await page.evaluate((part)=>{
+                const all=[...document.querySelectorAll('table')].filter(t=>t.querySelectorAll('tr').length>=8);
+                const target=part==='last'?all.slice(-2):all.slice(0,2);
+                return {count:all.length,tables:target.map(t=>t.outerHTML),texts:target.map(t=>t.innerText.slice(0,300))};
+              },part);
+              console.log('EXTRACT',slug,JSON.stringify({tables:result.count,chosen:result.texts}));
+              if(result.tables.length!==2)throw Error('Missing weekday/holiday tables for '+slug+'; found '+result.count);
+              const preview=await browser.newPage({viewport:{width:1320,height:1500},deviceScaleFactor:1.5,locale:'ja-JP'});
+              const html='<!doctype html><html lang="ja"><head><meta charset="UTF-8"><style>body{margin:0;padding:20px;background:#fff;color:#17191c;font-family:"Noto Sans CJK JP","Noto Sans JP","Meiryo",sans-serif}h1{font-size:27px;margin:8px 0 7px;font-weight:900}.date{font-size:14px;color:#4b5563;margin-bottom:17px}.tables{display:grid;grid-template-columns:1fr 1fr;gap:13px;align-items:start}table{width:100%;border-collapse:collapse;table-layout:auto;font-size:19px}th,td{border:1px solid #58616c;padding:7px 5px;vertical-align:top}th{background:#52606d;color:white;font-size:18px}td:first-child{background:#f4a34b;font-weight:800;text-align:center;min-width:34px;width:42px}table:nth-child(2) th{background:#af1e36}tbody tr:nth-child(even) td:not(:first-child){background:#f2f5f7}.foot{margin-top:16px;font-size:15px;color:#59636f;line-height:1.5}*{box-sizing:border-box}</style></head><body><h1>東京BRT　'+title+'</h1><div class="date">公式時刻表 ／ 2026年9月16日改正</div><div id="capture"><div class="tables">'+result.tables.join('')+'</div><p class="foot">時刻表の注記・各便の行先を確認してください。印字の無い便の行先は元の公式時刻表に従います。<br>公式: '+url+'</p></div></body></html>';
+              await preview.setContent(html,{waitUntil:'domcontentloaded'});
+              const el=preview.locator('body');
+              await el.screenshot({path:'assets/timetables/brt-'+slug+'.png',animations:'disabled'});
+              const buf=fs.readFileSync('assets/timetables/brt-'+slug+'.png');
+              console.log('CREATED',slug,buf.length,'bytes');
+              if(buf.length<3000)throw Error('Image too small');
+              await preview.close();await page.close();
+            }
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/brt-capture.cjs
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/timetables/brt-*.png
+          if git diff --cached --quiet; then
+            echo 'No image changes'
+          else
+            git commit -m "Add four BRT timetable images from official tables"
+            git push origin HEAD:main
+          fi
