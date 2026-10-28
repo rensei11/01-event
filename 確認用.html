@@ -161,7 +161,10 @@ th:last-child,td:last-child{border-right:0}
 .timetable-overlay{position:fixed;inset:0;z-index:120;background:rgba(16,26,38,.62);display:flex;align-items:center;justify-content:center;padding:12px}
 .timetable-dialog{background:#fff;border-radius:9px;border:1px solid #aab6c3;width:min(760px,100%);height:min(780px,94vh);height:min(780px,94dvh);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.25)}
 .timetable-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:52px;padding:0 12px 0 14px;background:#354452;color:#fff;font-weight:900;font-size:17px}
-.timetable-close{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;padding:0;border:1px solid #c9d2dc;color:#fff;background:transparent;border-radius:5px;font-family:Arial,sans-serif;font-size:25px;line-height:1;cursor:pointer}
+.timetable-close{position:relative;display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;padding:0;border:1px solid #c9d2dc;color:#fff;background:transparent;border-radius:5px;font-size:0;line-height:1;cursor:pointer}
+.timetable-close::before,.timetable-close::after{content:"";position:absolute;left:50%;top:50%;width:19px;height:2px;border-radius:1px;background:#fff;transform-origin:center}
+.timetable-close::before{transform:translate(-50%,-50%) rotate(45deg)}
+.timetable-close::after{transform:translate(-50%,-50%) rotate(-45deg)}
 .timetable-body{overflow:auto;overscroll-behavior:contain;padding:14px}
 .timetable-menu{display:flex;flex-wrap:wrap;gap:8px;margin:7px 0 14px}
 .timetable-menu button{font:inherit;font-size:14px;font-weight:800;padding:9px 13px;background:#fff;border:1px solid #9facba;border-radius:6px;cursor:pointer}
