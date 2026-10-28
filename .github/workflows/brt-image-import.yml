@@ -75,12 +75,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p /tmp/brt-generated
+          cp assets/timetables/brt-*.png /tmp/brt-generated/
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/brt-generated/brt-*.png assets/timetables/
           git add assets/timetables/brt-*.png
           if git diff --cached --quiet; then
-            echo 'No image changes'
+            echo 'Images already identical'
           else
-            git commit -m "Restore BRT official timetable images"
-            git fetch origin main
-            git rebase origin/main
+            git commit -m "Stack original weekday and holiday timetable images"
             git push origin HEAD:main
           fi
