@@ -153,13 +153,36 @@ th:last-child,td:last-child{border-right:0}
 .bigsight-note{margin-top:10px;font-size:11px;line-height:1.55;color:#68727c}
 @media(max-width:980px){.bigsight-main{flex-direction:column;align-items:flex-start}}
 
+
+/* 時刻表案内：独立した画面。スマホではタイトル・版情報の下へ配置 */
+.timetable-entry{flex:0 0 auto;padding:5px 12px;border:1px solid #7d9cb7;border-radius:5px;background:#eff7ff;color:#244d75;font-weight:900;font-size:13px;white-space:nowrap;cursor:pointer}
+.timetable-entry:hover{background:#dfefff}
+.timetable-overlay[hidden]{display:none!important}
+.timetable-overlay{position:fixed;inset:0;z-index:120;background:rgba(16,26,38,.62);display:flex;align-items:center;justify-content:center;padding:12px}
+.timetable-dialog{background:#fff;border-radius:9px;border:1px solid #aab6c3;width:min(760px,100%);max-height:94vh;max-height:94dvh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.25)}
+.timetable-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:#354452;color:#fff;font-weight:900;font-size:17px}
+.timetable-close{border:1px solid #c9d2dc;color:#fff;background:transparent;border-radius:5px;font-size:22px;line-height:1;padding:2px 10px;cursor:pointer}
+.timetable-body{overflow:auto;overscroll-behavior:contain;padding:14px}
+.timetable-menu{display:flex;flex-wrap:wrap;gap:8px;margin:7px 0 14px}
+.timetable-menu button{font:inherit;font-size:14px;font-weight:800;padding:9px 13px;background:#fff;border:1px solid #9facba;border-radius:6px;cursor:pointer}
+.timetable-menu button.active{color:#fff;background:#315d87;border-color:#315d87}
+.timetable-section-label{font-size:13px;font-weight:800;color:#53616e}
+.timetable-display{border:1px solid #cad4df;border-radius:7px;padding:12px;margin-top:10px;background:#fafcfe}
+.timetable-display-title{font-size:15px;font-weight:900;margin-bottom:6px}
+.timetable-image-missing{display:flex;align-items:center;justify-content:center;min-height:120px;background:#edf2f6;color:#596977;border:1px dashed #aab6c3;border-radius:6px;text-align:center;padding:16px;font-size:14px}
+.timetable-image-link{display:block}
+.timetable-image{max-width:100%;max-height:60vh;object-fit:contain;display:block;margin:auto}
+.timetable-official{display:inline-block;margin-top:10px;font-size:14px;font-weight:800}
+.timetable-note{font-size:12px;color:#5e6874;margin-top:8px}
+@media(max-width:700px){.title-status-row .title-meta-stack{order:1;flex:0 0 100%;margin-left:0;justify-content:flex-start;white-space:normal;flex-wrap:wrap}.title-status-row .timetable-entry{order:2;margin:1px 0 5px;align-self:flex-start}.timetable-overlay{padding:5px}.timetable-dialog{max-height:96vh;max-height:96dvh}.timetable-body{padding:10px}.timetable-menu button{font-size:14px;min-height:40px;padding:8px 10px}}
+
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="overview-grid">
     <div class="overview-left">
-      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　確認用</h1><div class="title-meta-stack"><div class="version-info">本番 v0.42 基準</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">本番v0.42の機能・東京ビッグサイト週次使用状況を基準に、今後のUI変更を検品します。</div></div>
+      <div class="top"><div class="title-status-row"><h1>イベントスケジュール帳　確認用</h1><button id="timetableOpen" class="timetable-entry" type="button">時刻表</button><div class="title-meta-stack"><div class="version-info">本番 v0.42 基準</div><div id="loadStatus" class="status">読み込み中</div></div></div><div class="sub">本番v0.42の機能・東京ビッグサイト週次使用状況を基準に、今後のUI変更を検品します。</div></div>
       <div class="controls">
         <button data-mode="all" class="active">すべてのイベント <span class="mode-count" data-mode-count="all">0件</span></button>
         <button data-mode="upcoming">今後のイベント <span class="mode-count" data-mode-count="upcoming">0件</span></button>
@@ -239,7 +262,125 @@ th:last-child,td:last-child{border-right:0}
   </div>
 </div>
 
+
+<div id="timetableModal" class="timetable-overlay" hidden>
+  <div class="timetable-dialog" role="dialog" aria-modal="true" aria-labelledby="timetableTitle">
+    <div class="timetable-head"><span id="timetableTitle">時刻表</span><button id="timetableClose" class="timetable-close" type="button" aria-label="時刻表を閉じる">×</button></div>
+    <div class="timetable-body">
+      <div class="timetable-section-label">交通機関</div>
+      <div id="timetableGroups" class="timetable-menu"></div>
+      <div id="timetableStopsWrap" hidden>
+        <div class="timetable-section-label">出発停留所</div>
+        <div id="timetableStops" class="timetable-menu"></div>
+      </div>
+      <div id="timetableRoutesWrap" hidden>
+        <div class="timetable-section-label">行先</div>
+        <div id="timetableRoutes" class="timetable-menu"></div>
+      </div>
+      <div id="timetableDisplay" class="timetable-display" hidden></div>
+    </div>
+  </div>
+</div>
+
 <script>
+
+/* 時刻表画像は後から各 route.image に相対パスを設定できる。未登録時は公式ページへ案内 */
+const TIMETABLE_CATALOG=[
+  {id:'brt',title:'東京BRT',stops:[
+    {id:'bigsight',title:'国際展示場発',routes:[
+      {id:'to-shimbashi',title:'新橋・虎ノ門方面',image:'',official:'https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo'}
+    ]},
+    {id:'shimbashi',title:'新橋発',routes:[
+      {id:'to-bigsight',title:'国際展示場方面',image:'',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'},
+      {id:'to-toranomon',title:'虎ノ門ヒルズ方面',image:'',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'}
+    ]},
+    {id:'toranomon',title:'虎ノ門ヒルズ発',routes:[
+      {id:'to-shimbashi',title:'新橋方面',image:'',official:'https://tokyo-brt.co.jp/bus-stops/b11-toranomon-hills'}
+    ]}
+  ]}
+];
+const timetableModal=document.getElementById('timetableModal');
+const timetableTrigger=document.getElementById('timetableOpen');
+const timetableClose=document.getElementById('timetableClose');
+const timetableGroups=document.getElementById('timetableGroups');
+const timetableStops=document.getElementById('timetableStops');
+const timetableRoutes=document.getElementById('timetableRoutes');
+const timetableDisplay=document.getElementById('timetableDisplay');
+const timetableStopsWrap=document.getElementById('timetableStopsWrap');
+const timetableRoutesWrap=document.getElementById('timetableRoutesWrap');
+let timetableSelection={group:'',stop:'',route:''};
+let timetableOriginalOverflow='';
+function timetableCreateButton(label,active,onClick){
+  const button=document.createElement('button');
+  button.type='button';button.textContent=label;
+  if(active)button.className='active';
+  button.addEventListener('click',onClick);
+  return button;
+}
+function renderTimetable(){
+  timetableGroups.replaceChildren();
+  for(const group of TIMETABLE_CATALOG){
+    timetableGroups.appendChild(timetableCreateButton(group.title,timetableSelection.group===group.id,()=>{
+      timetableSelection={group:group.id,stop:'',route:''};renderTimetable();
+    }));
+  }
+  const group=TIMETABLE_CATALOG.find(g=>g.id===timetableSelection.group);
+  timetableStopsWrap.hidden=!group;
+  timetableStops.replaceChildren();
+  if(group)for(const stop of group.stops){
+    timetableStops.appendChild(timetableCreateButton(stop.title,timetableSelection.stop===stop.id,()=>{
+      timetableSelection.stop=stop.id;timetableSelection.route='';renderTimetable();
+    }));
+  }
+  const stop=group?.stops.find(s=>s.id===timetableSelection.stop);
+  timetableRoutesWrap.hidden=!stop||stop.routes.length<2;
+  timetableRoutes.replaceChildren();
+  if(stop&&stop.routes.length>1)for(const route of stop.routes){
+    timetableRoutes.appendChild(timetableCreateButton(route.title,timetableSelection.route===route.id,()=>{
+      timetableSelection.route=route.id;renderTimetable();
+    }));
+  }
+  const route=stop?.routes.length===1?stop.routes[0]:stop?.routes.find(r=>r.id===timetableSelection.route);
+  timetableDisplay.hidden=!route;
+  timetableDisplay.replaceChildren();
+  if(!route)return;
+  const heading=document.createElement('div');heading.className='timetable-display-title';
+  heading.textContent=stop.title+' ／ '+route.title;timetableDisplay.appendChild(heading);
+  if(route.image){
+    const a=document.createElement('a');a.className='timetable-image-link';
+    a.href=route.image;a.target='_blank';a.rel='noopener';a.title='時刻表画像を拡大';
+    const img=document.createElement('img');img.className='timetable-image';
+    img.src=route.image;img.alt=heading.textContent+'の時刻表';
+    a.appendChild(img);timetableDisplay.appendChild(a);
+  }else{
+    const empty=document.createElement('div');empty.className='timetable-image-missing';
+    empty.textContent='時刻表画像は未登録です。下の公式時刻表を確認してください。';
+    timetableDisplay.appendChild(empty);
+  }
+  const official=document.createElement('a');official.className='timetable-official';
+  official.href=route.official;official.target='_blank';official.rel='noopener';
+  official.textContent='東京BRT公式時刻表を開く';timetableDisplay.appendChild(official);
+  const note=document.createElement('div');note.className='timetable-note';
+  note.textContent='運行日・行先・時刻表改正に注意してください。乗継先への到着は道路状況によって変わります。';
+  timetableDisplay.appendChild(note);
+}
+function openTimetable(){
+  timetableSelection={group:'',stop:'',route:''};renderTimetable();
+  timetableOriginalOverflow=document.body.style.overflow;
+  document.body.style.overflow='hidden';
+  timetableModal.hidden=false;timetableClose.focus();
+}
+function closeTimetable(){
+  timetableModal.hidden=true;
+  document.body.style.overflow=timetableOriginalOverflow;
+  timetableTrigger.focus();
+}
+timetableTrigger.addEventListener('click',openTimetable);
+timetableClose.addEventListener('click',closeTimetable);
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&!timetableModal.hidden){event.preventDefault();closeTimetable();}
+});
+
 const FLAGS_KEY='free_food_event_ledger_2026_flags_v2';
 const REPORT_FLAGS_KEY='free_food_event_report_flags_v1';
 const UI_STATE_KEY='free_food_event_ledger_2026_ui_state_v1';
@@ -2236,15 +2377,42 @@ function availableYears(){
   }
   return [...ys].filter(Number.isFinite).sort((a,b)=>a-b);
 }
+
+/* 次回参加予定のみに使用する日本時間20時切替（一覧・終了処理は従来どおり） */
+function nextPlanDateWindow(now=new Date()){
+  const jst=new Date(now.getTime()+9*60*60*1000);
+  const year=jst.getUTCFullYear(),month=jst.getUTCMonth(),day=jst.getUTCDate();
+  const start=new Date(Date.UTC(year,month,day+(jst.getUTCHours()>=20?1:0)));
+  const end=new Date(Date.UTC(year,month+2,0));
+  const fmt=d=>d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0');
+  return {start:fmt(start),end:fmt(end)};
+}
+let nextPlanDateWindowKey='';
+function nextPlanWindowKey(){
+  const window=nextPlanDateWindow();
+  return window.start+'|'+window.end;
+}
+function refreshNextPlanIfDayChanged(){
+  if(nextPlanDateWindowKey!==nextPlanWindowKey()){
+    nextPlanIndex=0;renderNextPlannedCard();
+  }
+}
+function scheduleNextPlanCutover(){
+  const now=Date.now(),jst=new Date(now+9*60*60*1000);
+  const nextDay=jst.getUTCHours()>=20?1:0;
+  const twentyOclock=Date.UTC(jst.getUTCFullYear(),jst.getUTCMonth(),jst.getUTCDate()+nextDay,20)-9*60*60*1000;
+  setTimeout(()=>{refreshNextPlanIfDayChanged();scheduleNextPlanCutover();},Math.max(1000,twentyOclock-now+200));
+}
+window.addEventListener('focus',refreshNextPlanIfDayChanged);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshNextPlanIfDayChanged();});
+scheduleNextPlanCutover();
+
 function nextPlannedGroups(){
-  const today=todayISO(),items=[];
-  const rangeStart=isoDate(calendarToday.getFullYear(),calendarToday.getMonth()+1,1);
-  const rangeEndDate=new Date(calendarToday.getFullYear(),calendarToday.getMonth()+2,0);
-  const rangeEnd=localYmd(rangeEndDate);
+  const {start,end}=nextPlanDateWindow(),items=[];
   for(const e of events){
     const f=flag(e);
     if(!f.planned)continue;
-    const ds=plannedDates(e).filter(d=>d>today&&d>=rangeStart&&d<=rangeEnd);
+    const ds=plannedDates(e).filter(d=>d>=start&&d<=end);
     for(const d of ds)items.push({e,date:d});
   }
   items.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a.e,b.e)||String(a.e.name||'').localeCompare(String(b.e.name||''),'ja'));
@@ -2258,6 +2426,7 @@ function nextPlannedGroups(){
 }
 function renderNextPlannedCard(){
   const host=document.getElementById('nextPlanHost');if(!host)return;
+  nextPlanDateWindowKey=nextPlanWindowKey();
   host.innerHTML='';host.appendChild(buildNextPlannedCard());
 }
 function buildNextPlanNav(dir,enabled){
