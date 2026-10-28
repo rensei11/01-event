@@ -2414,7 +2414,7 @@ function nextPlanDateWindow(now=new Date()){
   const start=new Date(Date.UTC(year,month,day+(jst.getUTCHours()>=20?1:0)));
   const end=new Date(Date.UTC(year,month+2,0));
   const fmt=d=>d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0');
-  return {start:fmt(start),end:fmt(end)};
+  return {today:fmt(new Date(Date.UTC(year,month,day))),start:fmt(start),end:fmt(end)};
 }
 let nextPlanDateWindowKey='';
 function nextPlanWindowKey(){
@@ -2436,13 +2436,23 @@ window.addEventListener('focus',refreshNextPlanIfDayChanged);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshNextPlanIfDayChanged();});
 scheduleNextPlanCutover();
 
+function nextCardDates(e,start,end){
+  const f=flag(e);
+  if(!f.planned)return [];
+  const multiDay=!!(e.endDate&&e.endDate!==e.date);
+  const choices=multiDay
+    ? (Array.isArray(f.visitDates)?[...new Set(f.visitDates)].filter(d=>inRange(e,d)):[])
+    : [e.date];
+  const done=new Set(actualDates(e));
+  // 当日の参加予定は20時まで残す。ほかの参加済みの日付は従来どおり除外。
+  const jstToday=nextPlanDateWindow().today;
+  const keepToday=start===jstToday;
+  return choices.filter(d=>d>=start&&d<=end&&(!done.has(d)||(keepToday&&d===jstToday))).sort();
+}
 function nextPlannedGroups(){
   const {start,end}=nextPlanDateWindow(),items=[];
   for(const e of events){
-    const f=flag(e);
-    if(!f.planned)continue;
-    const ds=plannedDates(e).filter(d=>d>=start&&d<=end);
-    for(const d of ds)items.push({e,date:d});
+    for(const d of nextCardDates(e,start,end))items.push({e,date:d});
   }
   items.sort((a,b)=>a.date.localeCompare(b.date)||compareVenue(a.e,b.e)||String(a.e.name||'').localeCompare(String(b.e.name||''),'ja'));
   const groups=[];
