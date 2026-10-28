@@ -173,7 +173,7 @@ th:last-child,td:last-child{border-right:0}
 .timetable-image-link{display:block}
 .timetable-image{max-width:100%;max-height:60vh;object-fit:contain;display:block;margin:auto}
 .timetable-official{display:inline-block;margin-top:10px;font-size:14px;font-weight:800}
-.timetable-note{font-size:12px;color:#5e6874;margin-top:8px}
+.timetable-note{font-size:14px;color:#253e57;font-weight:750;margin:6px 0 12px;padding:9px;background:#eef5fb;border-left:3px solid #6f9dbd;line-height:1.55}
 @media(max-width:700px){.title-status-row .title-meta-stack{order:1;flex:0 0 100%;margin-left:0;justify-content:flex-start;white-space:normal;flex-wrap:wrap}.title-status-row .timetable-entry{order:2;margin:1px 0 5px;align-self:flex-start}.timetable-overlay{padding:5px}.timetable-dialog{height:96vh;height:96dvh}.timetable-body{padding:10px}.timetable-menu button{font-size:14px;min-height:40px;padding:8px 10px}}
 
 </style>
@@ -288,14 +288,14 @@ th:last-child,td:last-child{border-right:0}
 const TIMETABLE_CATALOG=[
   {id:'brt',title:'東京BRT',stops:[
     {id:'bigsight',title:'ビッグサイト（国際展示場）発',routes:[
-      {id:'to-shimbashi',title:'新橋・虎ノ門方面',image:'assets/timetables/brt-bigsight.png',official:'https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo',note:'「虎」の印がある便は虎ノ門ヒルズ直通。無印は新橋止まり。'}
+      {id:'to-shimbashi',title:'新橋・虎ノ門方面',image:'assets/timetables/brt-bigsight.png',official:'https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo',note:'「虎ノ門」の印＝虎ノ門ヒルズ直通。印なし＝新橋行き。'}
     ]},
     {id:'shimbashi',title:'新橋発',routes:[
-      {id:'to-bigsight',title:'国際展示場方面',image:'assets/timetables/brt-shimbashi-bigsight.png',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi',note:'「テ」の印がある便は東京テレポート行き。国際展示場へ行く場合は無印の便を選ぶ。'},
-      {id:'to-toranomon',title:'虎ノ門ヒルズ方面',image:'assets/timetables/brt-shimbashi-toranomon.png',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi'}
+      {id:'to-bigsight',title:'国際展示場方面',image:'assets/timetables/brt-shimbashi-bigsight.png',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi',note:'印なし＝国際展示場行き。「テレ」の印＝東京テレポート行き（国際展示場にも停車）。'},
+      {id:'to-toranomon',title:'虎ノ門ヒルズ方面',image:'assets/timetables/brt-shimbashi-toranomon.png',official:'https://tokyo-brt.co.jp/bus-stops/b01-shimbashi',note:'この時刻表はすべて虎ノ門ヒルズ行き。'}
     ]},
     {id:'toranomon',title:'虎ノ門ヒルズ発',routes:[
-      {id:'to-shimbashi',title:'新橋方面',image:'assets/timetables/brt-toranomon.png',official:'https://tokyo-brt.co.jp/bus-stops/b11-toranomon-hills',note:'午前の「国」印は国際展示場まで直通。その他も新橋で乗り換えられる。'}
+      {id:'to-shimbashi',title:'新橋方面',image:'assets/timetables/brt-toranomon.png',official:'https://tokyo-brt.co.jp/bus-stops/b11-toranomon-hills',note:'「国展」＝国際展示場／「豊洲」＝豊洲／「ミチ」＝ミチノテラス豊洲／「晴海」＝晴海BRTターミナル。'}
     ]}
   ]}
 ];
@@ -346,6 +346,9 @@ function renderTimetable(){
   if(!route)return;
   const heading=document.createElement('div');heading.className='timetable-display-title';
   heading.textContent=stop.title+' ／ '+route.title;timetableDisplay.appendChild(heading);
+  const note=document.createElement('div');note.className='timetable-note';
+  note.textContent=(route.note||'')+'　時刻表：2026年9月16日改正。画像をタップすると拡大できます。';
+  timetableDisplay.appendChild(note);
   if(route.image){
     const a=document.createElement('a');a.className='timetable-image-link';
     a.href=route.image;a.target='_blank';a.rel='noopener';a.title='時刻表画像を拡大';
@@ -361,9 +364,7 @@ function renderTimetable(){
   const official=document.createElement('a');official.className='timetable-official';
   official.href=route.official;official.target='_blank';official.rel='noopener';
   official.textContent='東京BRT公式時刻表を開く';timetableDisplay.appendChild(official);
-  const note=document.createElement('div');note.className='timetable-note';
-  note.textContent=(route.note?route.note+'　':'')+'時刻表：2026年9月16日改正。乗継先への到着は道路状況によって変わります。';
-  timetableDisplay.appendChild(note);
+
 }
 function openTimetable(){
   timetableSelection={group:'',stop:'',route:''};renderTimetable();
