@@ -39,8 +39,8 @@ jobs:
               }
               await page.getByRole('button',{name:'東京BRT'}).click();
               const routes=[
-                ['国際展示場発','brt-bigsight.png'],
-                ['新橋発（虎ノ門ヒルズ方面）','brt-shimbashi-toranomon.png'],
+                ['国際展示場発','brt-bigsight-marked.png'],
+                ['新橋発（虎ノ門ヒルズ方面）','brt-shimbashi-toranomon-map.png'],
                 ['虎ノ門ヒルズ発','brt-toranomon.png'],
                 ['新橋発（国際展示場方面）','brt-shimbashi-bigsight.png']
               ];
@@ -55,6 +55,10 @@ jobs:
                 assert(d.src.includes(filename),'Wrong image for '+stop);
                 assert(d.w>=900 && d.h>=2000,'Expected original tables stacked vertically '+stop+' '+JSON.stringify(d));
                 assert(d.maxHeight==='none','Image still constrained by max-height');
+                if(stop==='国際展示場発')assert((await page.locator('.timetable-note').innerText()).includes('赤丸'), 'Missing red-circle explanation');
+                if(stop==='新橋発（虎ノ門ヒルズ方面）')assert(d.h>2600,'Station map missing under holiday timetable');
+                const closeStyle=await page.locator('.timetable-close').evaluate(el=>({display:getComputedStyle(el).display,placeItems:getComputedStyle(el).placeItems,flexBasis:getComputedStyle(el).flexBasis,rect:el.getBoundingClientRect().toJSON()}));
+                assert(closeStyle.display==='grid'&&closeStyle.placeItems.includes('center'), 'Close button not centered');
                 const heading=await page.locator('.timetable-display-title').innerText();
                 if(stop==='国際展示場発')assert(heading.includes('（新橋まで約15分）'),'Missing official 15min');
                 if(stop==='新橋発（国際展示場方面）')assert(heading.includes('（国際展示場まで約15～17分）'),'Missing official 15-17min');
