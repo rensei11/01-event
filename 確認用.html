@@ -287,7 +287,7 @@ th:last-child,td:last-child{border-right:0}
 /* 時刻表画像は後から各 route.image に相対パスを設定できる。未登録時は公式ページへ案内 */
 const TIMETABLE_CATALOG=[
   {id:'brt',title:'東京BRT',stops:[
-    {id:'bigsight',title:'国際展示場発',routes:[
+    {id:'bigsight',title:'ビッグサイト（国際展示場）発',routes:[
       {id:'to-shimbashi',title:'新橋・虎ノ門方面',image:'',official:'https://tokyo-brt.co.jp/bus-stops/b05-kokusaitenjijo'}
     ]},
     {id:'shimbashi',title:'新橋発',routes:[
@@ -2399,9 +2399,9 @@ function refreshNextPlanIfDayChanged(){
 }
 function scheduleNextPlanCutover(){
   const now=Date.now(),jst=new Date(now+9*60*60*1000);
-  const nextDay=jst.getUTCHours()>=20?1:0;
-  const twentyOclock=Date.UTC(jst.getUTCFullYear(),jst.getUTCMonth(),jst.getUTCDate()+nextDay,20)-9*60*60*1000;
-  setTimeout(()=>{refreshNextPlanIfDayChanged();scheduleNextPlanCutover();},Math.max(1000,twentyOclock-now+200));
+  const after20=jst.getUTCHours()>=20;
+  const nextBoundary=Date.UTC(jst.getUTCFullYear(),jst.getUTCMonth(),jst.getUTCDate()+(after20?1:0),after20?0:20)-9*60*60*1000;
+  setTimeout(()=>{refreshNextPlanIfDayChanged();scheduleNextPlanCutover();},Math.max(1000,nextBoundary-now+200));
 }
 window.addEventListener('focus',refreshNextPlanIfDayChanged);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshNextPlanIfDayChanged();});
