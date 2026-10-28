@@ -59,6 +59,13 @@ jobs:
                 if(stop==='新橋発（虎ノ門ヒルズ方面）')assert(d.h>2600,'Station map missing under holiday timetable');
                 const closeStyle=await page.locator('.timetable-close').evaluate(el=>({display:getComputedStyle(el).display,placeItems:getComputedStyle(el).placeItems,flexBasis:getComputedStyle(el).flexBasis,rect:el.getBoundingClientRect().toJSON()}));
                 assert(closeStyle.display==='grid'&&closeStyle.placeItems.includes('center'), 'Close button not centered');
+                const cross=await page.locator('.timetable-close').evaluate(el=>({
+                  before:getComputedStyle(el,'::before').transform,
+                  after:getComputedStyle(el,'::after').transform,
+                  aria:el.getAttribute('aria-label')
+                }));
+                assert(cross.before!=='none'&&cross.after!=='none'&&cross.before!==cross.after,'Close cross not drawn centered');
+                assert(cross.aria==='時刻表を閉じる','Close button lost accessible name');
                 const heading=await page.locator('.timetable-display-title').innerText();
                 if(stop==='国際展示場発')assert(heading.includes('（新橋まで約15分）'),'Missing official 15min');
                 if(stop==='新橋発（国際展示場方面）')assert(heading.includes('（国際展示場まで約15～17分）'),'Missing official 15-17min');
