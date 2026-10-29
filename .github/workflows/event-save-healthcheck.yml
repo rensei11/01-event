@@ -27,7 +27,7 @@ jobs:
                   print(name,'HTTP',e.code,'cors',e.headers.get('Access-Control-Allow-Origin',''),'BODY',body[:300])
               except Exception as e:
                   print(name,'ERROR',type(e).__name__,str(e)[:400])
-          check('VERSION',urllib.request.Request(base+'/version',headers={'Origin':'https://rensei11.github.io'}))
-          check('OPTIONS',urllib.request.Request(base+'/save-v2',method='OPTIONS',headers={'Origin':'https://rensei11.github.io','Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'Content-Type,X-Edit-Key'}))
-          check('INVALID-KEY',urllib.request.Request(base+'/save-v2',data=b'{"action":"bulk_end_process","entries":[]}',method='POST',headers={'Origin':'https://rensei11.github.io','Content-Type':'application/json','X-Edit-Key':'healthcheck-invalid-key'}))
+          check('VERSION',urllib.request.Request(base+'/version',headers={'Origin':'https://rensei11.github.io','User-Agent':'EventLedgerHealthCheck/1.0'}))
+          check('OPTIONS',urllib.request.Request(base+'/save-v2',method='OPTIONS',headers={'Origin':'https://rensei11.github.io','Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'Content-Type,X-Edit-Key','User-Agent':'EventLedgerHealthCheck/1.0'}))
+          check('INVALID-KEY',urllib.request.Request(base+'/save-v2',data=b'{"action":"bulk_end_process","entries":[]}',method='POST',headers={'Origin':'https://rensei11.github.io','Content-Type':'application/json','X-Edit-Key':'healthcheck-invalid-key','User-Agent':'EventLedgerHealthCheck/1.0'}))
           PY
