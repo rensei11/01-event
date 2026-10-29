@@ -2214,7 +2214,7 @@
       "endDate": "",
       "dateText": "11月6日(金)",
       "name": "Bentley Systems Regional Seminar 2026 Tokyo(ベントレー・システムズ懇親会)",
-      "url": "https://events.bentley.com/regionalseminar2026tokyo?prFlag=true",
+      "url": "https://events.bentley.com/regionalseminar2026tokyo",
       "venue": "ホテル椿山荘東京 ホテル棟4階 ギンコウルーム",
       "conditionLines": [
         "主催者の企業公式告知では参加費無料・事前登録受付",
@@ -2565,7 +2565,7 @@
       "id": "evt-databricks-worldtour-20261127",
       "date": "2026-11-27",
       "name": "Databricks Data + AI World Tour Tokyo 2026",
-      "url": "https://dataaisummit.databricks.com/flow/db/wt26nrt/reg/page/landing",
+      "url": "https://www.databricks.com/jp/dataaisummit/worldtour",
       "venue": "ザ・プリンス パークタワー東京",
       "conditionLines": [
         "無料・要事前登録",
@@ -2629,7 +2629,7 @@
       "endDate": "",
       "dateText": "12月3日(木)",
       "name": "Retail & Commerce Standard 2026（リテール＆コマース・スタンダード）懇親会",
-      "url": "https://event.shoeisha.jp/mzday/rcs2026/session/7238",
+      "url": "https://event.shoeisha.jp/mzday/rcs2026",
       "venue": "JPタワー ホール＆カンファレンス（KITTE 4階・東京駅）",
       "conditionLines": [
         "本体・懇親会とも参加無料。懇親会は別途事前申込・抽選制",
