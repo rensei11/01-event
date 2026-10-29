@@ -1981,7 +1981,13 @@
       "dateText": "10月29日(木)",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-29"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-22950179"
     },
     {
       "id": "evt-dcee2ac9",
