@@ -3771,6 +3771,34 @@
       }
     },
     {
+      "id": "evt-braze-cityxcity-tokyo-20261112",
+      "date": "2026-11-12",
+      "endDate": "2026-11-12",
+      "dateText": "11月12日(木)",
+      "name": "Braze City x City Tokyo 2026",
+      "url": "https://events.braze.com/cityxcity-tokyo-2026",
+      "venue": "ウェスティンホテル東京",
+      "conditionLines": [
+        "無料招待コード待ち（2026-10-30、招待メールへ返信済み）",
+        "招待メールに「本メールにご返信いただけましたら無料招待コードをお送りいたします」と記載",
+        "招待メール記載：10:30～19:45（受付10:00）",
+        "公開公式案内は12:15～19:30（受付11:30）・招待制（一部有償）"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "ネットワーキングパーティーあり。飲食内容・料理量は未確認。",
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      },
+      "_kinds": [
+        "exhibition",
+        "gathering"
+      ]
+    },
+    {
       "id": "xls-x-31aa54f33c22",
       "date": "2026-11-12",
       "endDate": "2026-11-13",
