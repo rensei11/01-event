@@ -14,7 +14,9 @@
 - 確認用修正コミット：`3620dc81ea0f89718bf99b5110f39103c7e4a513`。
 - GitHub読み戻しでhelper/保存関数が各1個、旧エラー上書きコードが消えていることを確認。HTML内JavaScript全体を `new Function` で構文解析しPASS。
 - **本番 `index.html` は未変更。** プロジェクトルール通り、ユーザーが明示的に本番反映を指示した場合だけ同じ差分を本番へ移植する。
-- 実稼働Cloudflare Workerの `/version` は今回のWeb取得環境からアクセスできず、2026-10-30時点の実稼働版を外部から再確認できていない。GitHub正本のWorkerソースは `2026-10-01-ai-free-v2` で `bulk_end_process` を実装済み。
+- 2026-10-30再調査でGitHub Actionsの一時ヘルスチェックを実行し、**実稼働Workerを直接検証**した。アプリ識別User-Agentを付けた GET `/version` → HTTP 200 / `2026-10-01-ai-free-v2`、ブラウザ事前通信 `OPTIONS /save-v2` → HTTP 204・許可Origin正常、無効な編集キーでの保存送信 → HTTP 401・「編集キーが違います」。診断結果はrun `40923685825`、実行後に一時workflowは削除（コミット `084bdba1233bb164715e6a22eabe10b7f69832fe`）。初回Python urllib既定User-Agentによる403・1010はCloudflareのブラウザ識別遮断であり、通常Chrome利用者の遮断と同一視しない。
+- **編集キーを使った実保存の可否は依然未確認**。GitHubのWorkerコードは10/1以降、終了処理本番JSの一括保存関数は10/24の最後の一括成功時から変更なし。GitHubには10/24の一括保存成功、10/28の個別保存成功履歴がある。現在の故障を「旧下書きが原因」と断定しない。ユーザー端末のブラウザ保存状態、Cloudflare Secret、実際の保存APIエラーは未確認。
+- 当面は**同じブラウザ**から `https://rensei11.github.io/01-event/確認用.html` の終了処理を開けば、通常URLと同じオリジンlocalStorageおよび同じ保存Workerを使う。修正した確認用の「まとめてGitHubへ保存」を1度試せば、GitHub保存の成否とエラーが確認できる（本人の編集キーをチャットへ送らない）。本番へのソース反映は明示指示後のみ。
 
 ## 2026-10-28 本番v0.43反映済み／当日予定の表示修正
 - **本番GitHub編集は通常ChatGPTから実行可能。** 過去の「GitHubが編集できない」は誤回答。Work/Codex不要。ユーザーの本番反映指示に従って `index.html` を直接更新。
