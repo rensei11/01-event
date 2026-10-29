@@ -250,6 +250,25 @@
       "ratingFlag": "mid"
     },
     {
+      "id": "rep-web-xls-x-3675c18dea20",
+      "date": "2026-10-27",
+      "visitDates": [
+        "2026-10-27",
+        "2026-10-29"
+      ],
+      "dateText": "10/27・10/29",
+      "scheduledDate": "2026-10-26",
+      "scheduledEndDate": "2026-10-31",
+      "scheduledDateText": "10月26日(月)〜31日(土)",
+      "name": "JIMTOF2026",
+      "url": "https://www.jimtof.org/jp/index.html",
+      "venue": "東京ビッグサイト",
+      "rating": "C",
+      "category": "exhibition",
+      "report": "日本最大の国際工作機械見本市。隔年開催、昔勤めてた時に行ったやつ。\n結構な混雑、タンガロイのマジンガーコラボ(アクスタ3 ノート1)と無料サンプル配布の潤滑油420mlが特にお得(4個もらった、もっと貰えないこともないが荷物としてきつい)。マザックの1個400円で販売してるガチャも無料で引けた（5周した）]\n結局1日だけのつもりが2日間行った。",
+      "source": "終了処理"
+    },
+    {
       "id": "rep-web-evt-kddi-summit-20261027",
       "date": "2026-10-27",
       "visitDates": [
