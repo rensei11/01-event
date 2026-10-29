@@ -1810,8 +1810,32 @@ function pendingEndDraftEntries(){
   return Object.values(endDrafts).filter(d=>{
     if(!endDraftReady(d))return false;
     const e=events.find(x=>x.id===d.eventId);
-    return !e||!endDraftMatchesGitHub(e,d);
+    return !!e&&!endDraftMatchesGitHub(e,d);
   });
+}
+function endDraftSavePayload(d){
+  const e=events.find(x=>x.id===d.eventId);if(!e)return null;
+  const o=officialEvent(e),status=String(d.status||'');
+  return {
+    ...d,
+    eventId:o.id,
+    name:o.name,
+    eventName:o.name,
+    kind:o._kind,
+    status,
+    visitDates:[...(d.visitDates||[])].sort(),
+    venue:o.venue||'',
+    url:o.url||'',
+    conditionText:conditionLines(o).join('\n'),
+    personName:status==='not_attended'?'':personLines(o).join(' / '),
+    preRating:o.rating||'',
+    nightTime:o.nightTime||'',
+    nightText:o.nightText||'',
+    rating:String(d.rating||''),
+    report:String(d.report||''),
+    schemaVersion:2,
+    updatedAt:d.updatedAt||new Date().toISOString()
+  };
 }
 function refreshEndBatchSave(message=''){
   if(!endBatchSave)return;
@@ -1823,7 +1847,7 @@ function refreshEndBatchSave(message=''){
 }
 async function saveEndBatchToGitHub(){
   saveEndDraftIfNeeded();
-  const entries=pendingEndDraftEntries();
+  const entries=pendingEndDraftEntries().map(endDraftSavePayload).filter(Boolean);
   if(!entries.length){refreshEndBatchSave('まとめ保存する確定内容はありません');return;}
   if(endBatchSave){endBatchSave.disabled=true;endBatchSave.textContent='まとめて保存中…';}
   if(endBatchState)endBatchState.textContent=entries.length+'件を保存中…';
@@ -1840,8 +1864,7 @@ async function saveEndBatchToGitHub(){
     renderEndProcessList();
     refreshEndBatchSave(entries.length+'件をGitHubへ保存しました');
   }catch(err){
-    if(endBatchState)endBatchState.textContent=err.message||String(err);
-    refreshEndBatchSave();
+    refreshEndBatchSave(err.message||String(err));
   }
 }
 function saveEndDraft(showMessage){
