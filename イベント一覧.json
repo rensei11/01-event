@@ -1795,7 +1795,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-engineering-leaders-day-20261027",
@@ -1815,7 +1818,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-61ecc365",
@@ -1897,7 +1903,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-5eecbeac",
@@ -1907,8 +1916,7 @@
       "venue": "グランドプリンスホテル新高輪",
       "conditionLines": [
         "無料・事前登録",
-        "大型イベント",
-        "名前コード：久保 直輝"
+        "大型イベント"
       ],
       "rating": "A-",
       "nightTime": "17:30～18:30",
@@ -1917,7 +1925,10 @@
       "dateText": "10月28日(水)",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-transcosmos-bpo-20261028",
@@ -1942,7 +1953,10 @@
       "endDate": "2026-10-28",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-22950179",
@@ -1996,7 +2010,13 @@
       "endDate": "2026-10-29",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-10-29"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-dcee2ac9"
     },
     {
       "id": "evt-e00e8470",
@@ -2017,7 +2037,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-business-lawyers-award-20261104",

@@ -3382,7 +3382,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-kumiai-matsuri-20261028",
@@ -3395,8 +3398,7 @@
       "conditionLines": [
         "一般入場無料・来場登録案内あり",
         "28日10:00～19:00、29日10:00～17:00",
-        "食品・全国物産エリアに試食・試飲実績あり（今年の具体的配布内容は未確認）",
-        "名前コード：久保 直輝"
+        "食品・全国物産エリアに試食・試飲実績あり（今年の具体的配布内容は未確認）"
       ],
       "rating": "",
       "nightTime": "",
@@ -3411,7 +3413,10 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-23c6d855c96d",
@@ -3431,7 +3436,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-34310cb50c67",
