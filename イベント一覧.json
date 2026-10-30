@@ -2581,7 +2581,12 @@
       "endDate": "2026-11-27",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false
+      }
     },
     {
       "id": "evt-tokyo-systems-engineering-summit-20261127",
