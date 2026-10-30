@@ -2472,12 +2472,9 @@
       "nightTime": "11/18(水)18:30～20:30",
       "nightText": "11/18(水)に懇親会。公式タイムテーブルで時刻を確認。一般参加費3,000円が告知されたので行く意味がない",
       "planning": {
-        "planned": true,
+        "planned": false,
         "interested": false,
-        "ignored": false,
-        "visitDates": [
-          "2026-11-18"
-        ]
+        "ignored": true
       },
       "_kinds": [
         "gathering"
