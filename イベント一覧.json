@@ -2381,7 +2381,7 @@
     {
       "id": "evt-voice-to-value-autumn-20261111",
       "date": "2026-11-11",
-      "endDate": "",
+      "endDate": "2026-11-11",
       "dateText": "11月11日(水)",
       "name": "Voice to Value 2026 秋",
       "url": "https://ivry.jp/lp-article/cf/voice-to-value-2026-autumn/",
@@ -2389,6 +2389,7 @@
       "conditionLines": [
         "無料・公式フォームから事前申込",
         "定員200名、超過の場合は抽選",
+        "抽選結果は、11/4（水）〜11/6（金）頃を目処にメールにてご連絡",
         "11/4(水)12:00申込締切予定",
         "名刺2枚必要",
         "同日、Meets 第6回 経営企画部 戦略サミットに参加予定があるため日程競合"
@@ -2400,7 +2401,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-f95813dd",
