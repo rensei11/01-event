@@ -2118,7 +2118,7 @@
     {
       "id": "xls-g-3b210485c510",
       "date": "2026-11-05",
-      "endDate": "",
+      "endDate": "2026-11-05",
       "dateText": "11月5日(木)",
       "name": "NETSHOP EXPO 2026",
       "url": "https://pay.amazon.co.jp/event/expo2026",
@@ -2128,16 +2128,19 @@
         "定員300名・申込多数時は抽選",
         "対象：ECサイト運営責任者、オンライン／デジタルマーケティング担当者"
       ],
-      "rating": "A-。無料300名で90分の立食パーティ形式懇親会。抽選制だが条件は強い。",
+      "rating": "A-",
       "nightTime": "18:00～19:30",
-      "nightText": "第二部 懇親会。立食パーティ形式・ネットワーキング・抽選会あり。",
+      "nightText": "第二部 懇親会。立食パーティ形式・ネットワーキング・抽選会あり。\nECサイトのURLを求められるので無理。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-1a4223fa",
