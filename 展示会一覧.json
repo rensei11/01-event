@@ -3549,7 +3549,13 @@
       "sourceExcel": true,
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-a32fa4b93f1f",
