@@ -2604,7 +2604,12 @@
       ],
       "rating": "B+。1時間の懇親会あり。同シリーズは軽食実績があるが、11/30回の飲食詳細は未確認。",
       "nightTime": "18:40～19:40",
-      "nightText": "懇親会。11/30公式ページでは料理・ドリンク詳細未記載。"
+      "nightText": "懇親会。11/30公式ページでは料理・ドリンク詳細未記載。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-retail-commerce-standard-20261203",
