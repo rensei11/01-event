@@ -2456,34 +2456,6 @@
       }
     },
     {
-      "id": "evt-cloudnative-days-winter-20261118",
-      "date": "2026-11-18",
-      "endDate": "2026-11-19",
-      "dateText": "11月18日(水)～11月19日(木)",
-      "name": "CloudNative Days Winter 2026（クラウドネイティブ・デイズ）",
-      "url": "https://cloudnativedays.jp/",
-      "venue": "有明セントラルタワー ホール＆カンファレンス（3F・4F）",
-      "conditionLines": [
-        "カンファレンス本体は無料・事前登録制。ユーザーが2026/10/24に一般参加登録済み。",
-        "11/18(水)の懇親会は18:30～20:30。一般参加者の懇親会料金・参加手続は未確認。",
-        "学生向けスカラシップ採択者には懇親会参加費を無料提供。一般参加者全員が無料という意味ではない。"
-      ],
-      "rating": "",
-      "nightTime": "11/18(水)18:30～20:30",
-      "nightText": "11/18(水)に懇親会。公式タイムテーブルで時刻を確認。一般参加費3,000円が告知されたので行く意味がない",
-      "planning": {
-        "planned": true,
-        "interested": false,
-        "ignored": false,
-        "visitDates": [
-          "2026-11-18"
-        ]
-      },
-      "_kinds": [
-        "gathering"
-      ]
-    },
-    {
       "id": "evt-workato-wow-20261118",
       "date": "2026-11-18",
       "name": "World of Workato Tokyo 2026（1）",
