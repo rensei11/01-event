@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-29-web",
+  "dataVersion": "2026-10-30-web",
   "year": 2026,
   "events": [
     {
@@ -3628,34 +3628,6 @@
       ]
     },
     {
-      "id": "xls-x-4dd2e9c199cb",
-      "date": "2026-11-11",
-      "endDate": "2026-11-13",
-      "dateText": "11月11日(水)～11月13日(金)",
-      "name": "アグリビジネス創出フェア2026",
-      "url": "https://agribiz.maff.go.jp/",
-      "venue": "東京ビッグサイト 西4ホール",
-      "conditionLines": [
-        "名前コード：久保 直輝"
-      ],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "",
-      "source": "2026年 企業展示会簡易レポ.xlsx",
-      "sourceExcel": true,
-      "planning": {
-        "planned": true,
-        "interested": false,
-        "ignored": false,
-        "visitDates": [
-          "2026-11-11"
-        ]
-      },
-      "_kinds": [
-        "exhibition"
-      ]
-    },
-    {
       "id": "xls-x-a1f86eafac98",
       "date": "2026-11-10",
       "endDate": "2026-11-11",
@@ -3732,6 +3704,34 @@
         "visitDates": [
           "2026-11-11",
           "2026-11-13"
+        ]
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
+      "id": "xls-x-4dd2e9c199cb",
+      "date": "2026-11-11",
+      "endDate": "2026-11-13",
+      "dateText": "11月11日(水)～11月13日(金)",
+      "name": "アグリビジネス創出フェア2026",
+      "url": "https://agribiz.maff.go.jp/",
+      "venue": "東京ビッグサイト 西4ホール",
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "source": "2026年 企業展示会簡易レポ.xlsx",
+      "sourceExcel": true,
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false,
+        "visitDates": [
+          "2026-11-11"
         ]
       },
       "_kinds": [
