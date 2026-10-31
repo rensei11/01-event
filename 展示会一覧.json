@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-30-web",
+  "dataVersion": "2026-10-31-web",
   "year": 2026,
   "events": [
     {
@@ -3806,10 +3806,9 @@
       "nightTime": "",
       "nightText": "ネットワーキングパーティー  18:00 - 19:30",
       "planning": {
-        "planned": false,
-        "interested": true,
-        "ignored": false,
-        "visitDates": []
+        "planned": true,
+        "interested": false,
+        "ignored": false
       },
       "_kinds": [
         "exhibition",
