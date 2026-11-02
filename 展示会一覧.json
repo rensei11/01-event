@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-10-31-web",
+  "dataVersion": "2026-11-02-web",
   "year": 2026,
   "events": [
     {
@@ -3598,7 +3598,13 @@
       "nightText": "東京ビッグサイト公式一覧だけでは拾いにくいファミリーセール。西1・2ホール。平日11/6を含むため本体イベント一覧へ登録。",
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "planning": {
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
+      }
     },
     {
       "id": "xls-x-410e661e626f",
