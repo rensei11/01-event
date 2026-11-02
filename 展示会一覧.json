@@ -3600,10 +3600,12 @@
         "exhibition"
       ],
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false,
-        "visitDates": []
+        "visitDates": [
+          "2026-11-06"
+        ]
       }
     },
     {
