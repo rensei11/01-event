@@ -2152,14 +2152,19 @@
         "無料・抽選",
         "会場400名"
       ],
-      "rating": "B。無料400名で2時間の懇親会。料理・ドリンク詳細は現時点で未確認。",
+      "rating": "B",
       "nightTime": "18:00～20:00",
-      "nightText": "懇親会・デモ展示。懇親会のみの参加不可。",
+      "nightText": "懇親会・デモ展示。懇親会のみの参加不可。\n他に行ける懇親会が無いため、申し込んでおけばよかった。",
       "planning": {
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "endDate": "2026-11-05",
+      "dateText": "11月5日(木)",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "evt-space-realty-20261105",
