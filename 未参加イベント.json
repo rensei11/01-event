@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-02-web",
+  "dataVersion": "2026-11-04-web",
   "year": 2026,
   "events": [
     {
@@ -1002,6 +1002,32 @@
       "name": "企業価値経営サミット2026",
       "url": "https://booost-ai.com/261029summit",
       "venue": "室町三井ホール＆カンファレンス",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-business-lawyers-award-20261104",
+      "date": "2026-11-04",
+      "endDate": "",
+      "dateText": "11月4日(水)",
+      "name": "BUSINESS LAWYERS AWARD 2026 表彰式・懇親会",
+      "url": "https://www.businesslawyers.jp/seminars/619",
+      "venue": "東京會舘 3階 ローズ",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-mentorfor-diversity-20261104",
+      "date": "2026-11-04",
+      "endDate": "",
+      "dateText": "11月4日(水)",
+      "name": "Mentor For ダイバーシティカンファレンス 2026 懇親会",
+      "url": "https://mentorfor.jp/seminar_event/mentor-for-diversity-conference-2026/",
+      "venue": "学研ビル 13階（五反田）",
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],
