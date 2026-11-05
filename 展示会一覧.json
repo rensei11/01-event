@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-04-web",
+  "dataVersion": "2026-11-05-web",
   "year": 2026,
   "events": [
     {
@@ -3473,7 +3473,14 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-04",
+        "2026-11-05"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-34310cb50c67"
     },
     {
       "id": "evt-intramart-live-20261105",
