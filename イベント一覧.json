@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-04-web",
+  "dataVersion": "2026-11-05-web",
   "year": 2026,
   "events": [
     {
@@ -2413,8 +2413,8 @@
       "nightTime": "18:40～20:00",
       "nightText": "懇親会。主催者公式に料理とフリードリンクの提供を明記。途中入退場可。立食か着席か、料理の品数・補充は未確認。",
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false
       },
       "_kinds": [
