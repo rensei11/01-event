@@ -3997,7 +3997,7 @@
       "id": "evt-salesforce-world-tour-tokyo-20261118",
       "date": "2026-11-18",
       "endDate": "2026-11-19",
-      "dateText": "11月18日(水)～19日(木)",
+      "dateText": "11月18日(水)～11月19日(木)",
       "name": "Salesforce World Tour Tokyo 2026",
       "url": "https://www.salesforce.com/jp/events/world-tour/tokyo/",
       "venue": "ザ・プリンス パークタワー東京",
@@ -4006,11 +4006,12 @@
         "展示エリア（Campground／Trailblazer Forest）、基調講演、ブレイクアウトセッション、ハンズオンなど",
         "11月18日18:00～19:00に展示エリアでネットワーキング。公式にドリンクと軽食の提供を明記",
         "11月19日は12:00から展示エリアで軽食提供と案内",
-        "2026年6月開催のAgentforce World Tour Tokyo（参加済み記録あり）とは別日程"
+        "2026年6月開催のAgentforce World Tour Tokyo（参加済み記録あり）とは別日程",
+        "名前コード：伊藤 聡"
       ],
-      "rating": "",
+      "rating": "D",
       "nightTime": "11/18 18:00～19:00",
-      "nightText": "【無料ネットワーキング・ドリンク／軽食】11月18日18:00～19:00、展示エリア。公式に飲み物と軽食を用意すると明記。料理量・種類は未確認。",
+      "nightText": "11月18日(水)18:00～19:00、展示エリア。公式に飲み物と軽食を用意すると明記。\n去年は結構しょぼかった。1人1つとか言い出し始めてたしケチ。ただループは出来るから気にせず食べればいい。",
       "planning": {
         "planned": true,
         "interested": false,
