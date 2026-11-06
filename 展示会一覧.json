@@ -4012,8 +4012,8 @@
       "nightTime": "11/18 18:00～19:00",
       "nightText": "【無料ネットワーキング・ドリンク／軽食】11月18日18:00～19:00、展示エリア。公式に飲み物と軽食を用意すると明記。料理量・種類は未確認。",
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false,
         "visitDates": []
       },
