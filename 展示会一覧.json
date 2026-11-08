@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-06-web",
+  "dataVersion": "2026-11-08-web",
   "year": 2026,
   "events": [
     {
@@ -4386,14 +4386,14 @@
       "id": "xls-x-0283ca63ae18",
       "date": "2026-12-09",
       "endDate": "2026-12-10",
-      "dateText": "12月9日(水)～10日(木)",
+      "dateText": "12月9日(水)～12月10日(木)",
       "name": "イプロスAI 産業World",
       "url": "https://ex.ipros.jp/expo/iprosai-2026-12/",
       "venue": "東京国際フォーラム",
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
-      "nightText": "相互1000円のアマギフ",
+      "nightText": "トラスト9名\n\nプロモーションコード入力で来場するだけでアマギフ1000円分\n招待コード入力で来場するだけで相互にアマギフ1000円分",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
@@ -4404,7 +4404,10 @@
           "2026-12-09",
           "2026-12-10"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "evt-cisco-connect-japan-20261210",
