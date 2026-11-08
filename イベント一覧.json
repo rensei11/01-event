@@ -2119,7 +2119,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-g-3b210485c510",
@@ -2171,7 +2174,10 @@
       "dateText": "11月5日(木)",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-space-realty-20261105",
@@ -2185,8 +2191,7 @@
         "無料・事前登録制",
         "11/5～6の2日間・ハイブリッド開催",
         "2026年リアル会場：東京大学 大講堂（安田講堂）",
-        "2025年は時事通信ホール開催・申込1,350名",
-        "名前コード：久保 直輝"
+        "2025年は時事通信ホール開催・申込1,350名"
       ],
       "rating": "B+",
       "nightTime": "11/5(木)19:00交流会／11/6(金)18:00交流会予定・17:00グラビティナイト開場／18:30開始",
@@ -2202,7 +2207,10 @@
           "2026-11-05",
           "2026-11-06"
         ]
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-3dexperience-conf-day2-networking-20261106",
@@ -2228,7 +2236,10 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-libcon-mobility-energy-20261106",
@@ -2250,7 +2261,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-bentley-regional-seminar-tokyo-20261106",
@@ -2276,7 +2290,10 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-techlead-20261106",
@@ -2300,7 +2317,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-goqsystem-10th-gokukai-20261106",
@@ -2326,7 +2346,10 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-75da917a",

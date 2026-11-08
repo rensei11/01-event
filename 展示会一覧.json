@@ -3520,9 +3520,7 @@
       "name": "レジャー＆サービス産業展",
       "url": "https://www.sogo-unicom.co.jp/lsi/",
       "venue": "東京ビッグサイト 東3ホール",
-      "conditionLines": [
-        "名前コード：久保 直輝"
-      ],
+      "conditionLines": [],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -3538,7 +3536,10 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-65646d7ab31a",
@@ -3564,7 +3565,10 @@
         "visitDates": [
           "2026-11-06"
         ]
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-a32fa4b93f1f",
@@ -3587,7 +3591,10 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-itochu-familyfair-20261106",
@@ -3615,7 +3622,10 @@
         "visitDates": [
           "2026-11-06"
         ]
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-410e661e626f",
@@ -3627,8 +3637,7 @@
       "venue": "東京ビッグサイト 東7,8ホール",
       "conditionLines": [
         "プレミアム引換券で先着でなんかもらえるから早めに行け。去年のゴルフボールは嬉しかった。",
-        "先着で野菜ももらえる。午前午後で分けてなくなったら終了。",
-        "名前コード：久保 直輝"
+        "先着で野菜ももらえる。午前午後で分けてなくなったら終了。"
       ],
       "rating": "",
       "nightTime": "",
@@ -3645,7 +3654,10 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-a1f86eafac98",
