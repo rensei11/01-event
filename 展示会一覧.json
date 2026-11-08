@@ -3510,7 +3510,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-05"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-intramart-live-20261105"
     },
     {
       "id": "xls-x-f9bbf8331bfe",

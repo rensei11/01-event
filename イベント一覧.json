@@ -2150,7 +2150,13 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-05"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-g-3b210485c510"
     },
     {
       "id": "evt-1a4223fa",
