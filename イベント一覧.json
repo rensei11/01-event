@@ -2451,6 +2451,31 @@
       ]
     },
     {
+      "id": "evt-braze-cityxcity-tokyo-20261112",
+      "date": "2026-11-12",
+      "endDate": "2026-11-12",
+      "dateText": "11月12日(木)",
+      "name": "Braze City x City Tokyo 2026",
+      "url": "https://events.braze.com/cityxcity-tokyo-2026",
+      "venue": "ウェスティンホテル東京",
+      "conditionLines": [
+        "なぜか伊藤宛に無料招待コードのメールが来た。2026-10-30に返信、翌日にコードが送られてきた）",
+        "招待メールに「本メールにご返信いただけましたら無料招待コードをお送りいたします」と記載",
+        "名前コード：久保 直輝"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "ネットワーキングパーティー  18:00 - 19:30\n16時52分のりんかい線の川越行に乗って恵比寿に行くのが良い。",
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      },
+      "_kinds": [
+        "gathering"
+      ]
+    },
+    {
       "id": "evt-synology-solution-day-20261113",
       "date": "2026-11-13",
       "endDate": "2026-11-13",
