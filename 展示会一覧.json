@@ -4204,31 +4204,6 @@
       }
     },
     {
-      "id": "evt-amd-advancing-ai-world-tour-japan-2026",
-      "date": "2026-12-01",
-      "endDate": "",
-      "dateText": "12月1日(火)",
-      "name": "ADVANCING AI WORLD TOUR JAPAN 2026",
-      "url": "https://amd-advancing-ai.jp/",
-      "venue": "パレスホテル東京",
-      "conditionLines": [
-        "無料・事前登録制。対象者には会期約1週間前に入場証案内。個人フリーアドレスでの申し込みは断られる場合あり",
-        "12:05開始の2セッションに「軽食付き」の公式表示あり。料理内容・配布方法は未確認",
-        "ユーザーメモ（11/4）：12月1日（火）は現状ほかの予定なし。ほかに用事がなければ参加検討、可能性は低い。"
-      ],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "併催「ai& Build Day」公式ページに、本編で500人以上が集うレセプションを開催する旨の記載あり。一般参加者の参加資格、時刻、料理内容は未確認。参考：https://amd-advancing-ai.jp/buildday/",
-      "planning": {
-        "planned": false,
-        "interested": true,
-        "ignored": false
-      },
-      "_kinds": [
-        "exhibition"
-      ]
-    },
-    {
       "id": "xls-x-a1563d1915b4",
       "date": "2026-12-02",
       "endDate": "2026-12-04",
