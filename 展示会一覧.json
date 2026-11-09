@@ -3801,6 +3801,33 @@
       }
     },
     {
+      "id": "evt-claris-conference-20261111",
+      "date": "2026-11-11",
+      "endDate": "2026-11-13",
+      "dateText": "11月11日(水)～13日(金)",
+      "name": "Claris カンファレンス 2026",
+      "url": "https://www.claris.com/ja/conference/2026/",
+      "venue": "虎ノ門ヒルズフォーラム",
+      "conditionLines": [
+        "無料・事前登録制。3日間で60以上のプログラム。",
+        "ランチョンセッションとスイーツセッションは個別の事前申込が必要。弁当・お菓子は入室時先着順、数量限定。",
+        "来場者全員にキャンバストートバッグ。公式SNSフォローと会場での投稿画面提示で、1日目ミニタオル／別日2回目Tシャツ／別日3回目タンブラー。",
+        "公式LINE友だち登録＋会場で画面提示でフォールディングファン。展示ブースのスタンプラリーで抽選・参加賞。",
+        "クロージングセッションのみ招待制。"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "xls-x-0ecaee0f21e5",
       "date": "2026-11-12",
       "endDate": "2026-11-13",
