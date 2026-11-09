@@ -3820,8 +3820,9 @@
       "nightText": "",
       "planning": {
         "planned": false,
-        "interested": false,
-        "ignored": false
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
       },
       "_kinds": [
         "exhibition"
