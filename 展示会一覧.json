@@ -3819,10 +3819,13 @@
       "nightTime": "",
       "nightText": "",
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false,
-        "visitDates": []
+        "visitDates": [
+          "2026-11-12",
+          "2026-11-13"
+        ]
       },
       "_kinds": [
         "exhibition"
