@@ -4393,7 +4393,11 @@
       "name": "SEMICON Japan 2026",
       "url": "https://www.semiconjapan.org/jp",
       "venue": "東京ビッグサイト 東1-3・7・8ホール、西1-4ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "12/10(木)17:00～19:00「半導体＆eスポーツ」（会議棟6階 TechSTAGE SAKURA）：SEMICON限定コラボカードを先着300名に配布（なくなり次第終了）",
+        "上記企画は参加無料。SEMICON Japan 2026の事前来場登録とA4印刷済み入場バッジが必要。詳細：https://www.semiconjapan.org/jp/e-sports",
+        "12/10(木)16:00～17:00 出展ブースのハッピーアワー。主催者公式に「招待制」と明記、一般来場者が各ブースで飲食できる条件・招待方法は詳細未公表。案内：https://www.semiconjapan.org/jp/networking-events"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
