@@ -2783,8 +2783,8 @@
       "nightTime": "18:30～19:30",
       "nightText": "12/3(木) 18:30～19:30懇親会（無料・抽選制）。10/24申込済み、当落待ち。\n抽選／当落案内：12月1日（火）夕方ごろ予定",
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false
       },
       "_kinds": [
