@@ -3984,11 +3984,13 @@
       "id": "xls-x-99f8573a5a83",
       "date": "2026-11-18",
       "endDate": "2026-11-20",
-      "dateText": "11月18日(水)～20日(金)",
+      "dateText": "11月18日(水)～11月20日(金)",
       "name": "Inter BEE 2026",
       "url": "https://www.inter-bee.com/ja/",
       "venue": "幕張メッセ",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -3998,7 +4000,10 @@
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-e2d5333818dc",
