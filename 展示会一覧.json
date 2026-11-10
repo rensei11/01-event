@@ -3760,22 +3760,16 @@
       "name": "JFEX WINTER 第9回 [国際] 食品・飲料 商談Week",
       "url": "https://www.jfex.jp/jfex/ja-jp.html",
       "venue": "東京ビッグサイト 東7ホール",
-      "conditionLines": [
-        "名前コード：久保 直輝"
-      ],
+      "conditionLines": [],
       "rating": "",
       "nightTime": "",
       "nightText": "夏に2日行ったが、7.8ホールのみじゃ規模的に期待できない。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
-        "planned": true,
+        "planned": false,
         "interested": false,
-        "ignored": false,
-        "visitDates": [
-          "2026-11-11",
-          "2026-11-13"
-        ]
+        "ignored": true
       },
       "_kinds": [
         "exhibition"
