@@ -3802,7 +3802,8 @@
         "interested": false,
         "ignored": false,
         "visitDates": [
-          "2026-11-11"
+          "2026-11-11",
+          "2026-11-12"
         ]
       },
       "_kinds": [
