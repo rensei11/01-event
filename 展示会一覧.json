@@ -4056,11 +4056,13 @@
       "id": "xls-x-501a42f3ddd3",
       "date": "2026-11-18",
       "endDate": "2026-11-20",
-      "dateText": "11月18日(水)～20日(金)",
+      "dateText": "11月18日(水)～11月20日(金)",
       "name": "第11回 ドリンク ジャパン(飲料 液状食品 開発・製造展)",
       "url": "https://www.drinkjapan.jp/",
       "venue": "東京ビッグサイト 東7・8ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -4070,7 +4072,10 @@
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-0ba291f4db9b",
