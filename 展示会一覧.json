@@ -4148,10 +4148,9 @@
         "gathering"
       ],
       "planning": {
-        "planned": false,
+        "planned": true,
         "interested": false,
-        "ignored": false,
-        "visitDates": []
+        "ignored": false
       }
     },
     {
