@@ -3841,11 +3841,13 @@
       "id": "xls-x-0ecaee0f21e5",
       "date": "2026-11-12",
       "endDate": "2026-11-13",
-      "dateText": "11月12日(木)～13日(金)",
+      "dateText": "11月12日(木)～11月13日(金)",
       "name": "60th FISMA TOKYO(第60回 東京ファッション産業機器展)",
       "url": "https://www.fisma.tokyo/",
       "venue": "東京ビッグサイト 西3ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -3859,7 +3861,10 @@
           "2026-11-12",
           "2026-11-13"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-31aa54f33c22",
