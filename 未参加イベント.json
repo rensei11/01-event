@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-08-web",
+  "dataVersion": "2026-11-11-web",
   "year": 2026,
   "events": [
     {
@@ -1198,6 +1198,32 @@
       "url": "https://www.mirai-ichi.jp/tokyo/",
       "venue": "東京ビッグサイト 東7,8ホール",
       "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-75da917a",
+      "date": "2026-11-10",
+      "endDate": "",
+      "dateText": "",
+      "name": "Hotel Marketing Conference 2026（1）",
+      "url": "https://hmc.micado.jp/",
+      "venue": "KABUTO ONE",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-74da8fe7",
+      "date": "2026-11-11",
+      "endDate": "",
+      "dateText": "",
+      "name": "Hotel Marketing Conference 2026（2）",
+      "url": "https://hmc.micado.jp/",
+      "venue": "KABUTO ONE",
+      "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "nameCodes": []

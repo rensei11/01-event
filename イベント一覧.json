@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-10-web",
+  "dataVersion": "2026-11-11-web",
   "year": 2026,
   "events": [
     {
@@ -2374,7 +2374,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-74da8fe7",
@@ -2393,7 +2396,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-meets-keiei-20261111",
@@ -2448,7 +2454,13 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-11"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-voice-to-value-autumn-20261111"
     },
     {
       "id": "evt-braze-cityxcity-tokyo-20261112",
