@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-12-web",
+  "dataVersion": "2026-11-14-web",
   "year": 2026,
   "events": [
     {
@@ -2410,8 +2410,7 @@
       "conditionLines": [
         "無料・事前審査制",
         "定員240名",
-        "10/9までの申請は優先扱い（案内メール）",
-        "名前コード：増田 慎一"
+        "10/9までの申請は優先扱い（案内メール）"
       ],
       "rating": "A-",
       "nightTime": "14:30～20:00（全体）",
@@ -2426,7 +2425,10 @@
       "endDate": "2026-11-11",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-voice-to-value-autumn-20261111",
@@ -2472,8 +2474,7 @@
       "venue": "ウェスティンホテル東京",
       "conditionLines": [
         "なぜか伊藤宛に無料招待コードのメールが来た。2026-10-30に返信、翌日にコードが送られてきた）",
-        "招待メールに「本メールにご返信いただけましたら無料招待コードをお送りいたします」と記載",
-        "名前コード：久保 直輝"
+        "招待メールに「本メールにご返信いただけましたら無料招待コードをお送りいたします」と記載"
       ],
       "rating": "",
       "nightTime": "",
@@ -2485,7 +2486,10 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-omnissa-one-tokyo-20261113",
@@ -2512,7 +2516,13 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-omnissa-one-tokyo-20261113"
     },
     {
       "id": "evt-synology-solution-day-20261113",
@@ -2539,7 +2549,13 @@
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-synology-solution-day-20261113"
     },
     {
       "id": "evt-salesforce-world-tour-tokyo-20261118",

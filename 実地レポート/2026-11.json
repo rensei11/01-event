@@ -61,6 +61,25 @@
       "ratingFlag": "mid"
     },
     {
+      "id": "rep-web-xls-x-e1d02a762201",
+      "date": "2026-11-11",
+      "visitDates": [
+        "2026-11-11",
+        "2026-11-13"
+      ],
+      "dateText": "11/11・11/13",
+      "scheduledDate": "2026-11-11",
+      "scheduledEndDate": "2026-11-13",
+      "scheduledDateText": "11月11日(水)～11月13日(金)",
+      "name": "FOOD展2026",
+      "url": "https://www.food-exhibition.info/",
+      "venue": "東京ビッグサイト 東2,3ホール",
+      "rating": "D",
+      "category": "exhibition",
+      "report": "去年に引き続き2度目の参加。ミニFOOMAJAPANと言ったところ。いつものデカいところの試食＋α程度の出展。去年よりも開催ホールが1つ減ってるあたり存在価値が薄まっているのかもしれない。 NAKANISHIの激落ちくんと、どっかの企業の消臭スプレーをもらったくらい。アンケートでもバヤリースの缶をくれただけ。",
+      "source": "終了処理"
+    },
+    {
       "id": "rep-web-evt-voice-to-value-autumn-20261111",
       "date": "2026-11-11",
       "visitDates": [
@@ -78,6 +97,152 @@
       "report": "クロークあり。ホール自体は狭い。そしてホテル自体が江戸川橋駅から遠すぎる。セッションのみ、ブース無し。吉野家の偉い人が来ており、アンケート回答の謝礼も吉野家1000円分のギフトコードらしい。4Fの会場、終了が18:25。パーティーは1F、開始は18:45。パーティー会場自体が狭く、さらにテーブル指定、テーブル以外のスペースがほとんどない為、ほかのところで食べると浮く。パレスホテルのように落ち着いて食べられない。交流自体は相当好評のようで乞食のような人間は自分以外には2名ほどしかいなかった。料理もテーブルが2カ所に分かれていたが混むようなことはほぼ無く手前側は無くなった料理も奥側では余っており民度自体はやはり高いようだ。料理は良いが落ち着いて食べることが出来ずメンタルをやられた。\n\n【ドリンク】　\nウイスキー(ネヴィス デュー)、オレンジジュース、ウーロン茶、麦焼酎、芋焼酎、赤白ワイン、ビール\n\n【料理】\n寿司、牛肉炒飯、ステーキ、豚バラデミグラス、葱鮪汁、 タイのカルパッチョ。牛肉のサラダ、タコのマリネ、フライドポテト、オニオンリング、 グリーンカレー、白米、鶏肉のホワイト煮込み、ケーキ5種。",
       "source": "終了処理",
       "ratingFlag": "mid"
+    },
+    {
+      "id": "rep-web-xls-x-4dd2e9c199cb",
+      "date": "2026-11-11",
+      "visitDates": [
+        "2026-11-11",
+        "2026-11-13"
+      ],
+      "dateText": "11/11・11/13",
+      "scheduledDate": "2026-11-11",
+      "scheduledEndDate": "2026-11-13",
+      "scheduledDateText": "11月11日(水)～11月13日(金)",
+      "name": "アグリビジネス創出フェア2026",
+      "url": "https://agribiz.maff.go.jp/",
+      "venue": "東京ビッグサイト 西4ホール",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "去年に引き続き除いたが得るものはなし。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-xls-x-8450fc32cacd",
+      "date": "2026-11-11",
+      "visitDates": [
+        "2026-11-11",
+        "2026-11-13"
+      ],
+      "dateText": "11/11・11/13",
+      "scheduledDate": "2026-11-11",
+      "scheduledEndDate": "2026-11-13",
+      "scheduledDateText": "11月11日(水)～13日(金)",
+      "name": "産業交流展2026",
+      "url": "https://www.sangyo-koryuten.tokyo/",
+      "venue": "東京ビッグサイト 西1・2ホール",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "去年に引き続き除いたが得るものはない。一応来場アンケートで福引が引けたがハズレはフード50円引き券なので無意味。しかし１等を当てて工芸品ということで陶器を貰ったが何焼なのかもどこの物なのかもわからないのでどうしようもない。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-xls-x-a1f86eafac98",
+      "date": "2026-11-11",
+      "visitDates": [
+        "2026-11-11"
+      ],
+      "dateText": "11/11",
+      "scheduledDate": "2026-11-10",
+      "scheduledEndDate": "2026-11-11",
+      "scheduledDateText": "11月10日(火)～11月11日(水)",
+      "name": "地方銀行フードセレクション2026",
+      "url": "https://food-selection.com/",
+      "venue": "東京ビッグサイト 南1-4ホール",
+      "rating": "E",
+      "category": "exhibition",
+      "report": "事前登録には失敗したが当日登録は出来たので入れた。しかしトークメンタルをやられている自分にはサンプル要求する力は残っておらずほとんど何も得られないまま終わってしまった。2日目は16時終了だったことにも直前まで気づかなかった。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-xls-x-0ecaee0f21e5",
+      "date": "2026-11-13",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "dateText": "11/13",
+      "scheduledDate": "2026-11-12",
+      "scheduledEndDate": "2026-11-13",
+      "scheduledDateText": "11月12日(木)～11月13日(金)",
+      "name": "60th FISMA TOKYO(第60回 東京ファッション産業機器展)",
+      "url": "https://www.fisma.tokyo/",
+      "venue": "東京ビッグサイト 西3ホール",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "裁縫マシンやミシンなどの展示会。入場に必ず紙の印刷が必要だが家に忘れたので印刷屋で10円で印刷して入った。予想通り得るものはなかった。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-claris-conference-20261111",
+      "date": "2026-11-13",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "dateText": "11/13",
+      "scheduledDate": "2026-11-11",
+      "scheduledEndDate": "2026-11-13",
+      "scheduledDateText": "11月11日(水)～11月13日(金)",
+      "name": "Claris カンファレンス 2026",
+      "url": "https://www.claris.com/ja/conference/2026/",
+      "venue": "虎ノ門ヒルズフォーラム",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "セッションと展示ブースがあるいつものイベント。SNSを投稿すると2日でTシャツ3日でステンレスタンブラーがもらえるが、事前に仕込みをしたもののやはりQRの打刻でバレてるのでハンカチしかもらえなかった。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-f95813dd",
+      "date": "2026-11-13",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "dateText": "11/13",
+      "scheduledDate": "2026-11-13",
+      "scheduledEndDate": "2026-11-13",
+      "scheduledDateText": "11月13日(金)",
+      "name": "Dell Technologies Forum 2026",
+      "url": "https://events.dell.com/event/forum-jp-2026/summary",
+      "venue": "ザ・プリンス パークタワー東京",
+      "rating": "D",
+      "category": "exhibition",
+      "report": "Dellのパーティー感を出している展示イベント。来場アンケートでamazonギフト500円プレゼントの告知。おしゃれ感を前面に出している。クロークスペースは使われており多分預けられなかった。15時に到着でレッドブルと菓子を出していたので回収。無料のモクテルとジェラートあり。AWS展示がいつものようにamazonギフト500円を配っていた。夜も軽食が出る交流会があったが行かなかった。スタンプで出来る福引は確率が低すぎてスタンプを集めて間でやるものじゃない。当日に行った中では良いイベント。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-omnissa-one-tokyo-20261113",
+      "date": "2026-11-13",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "dateText": "11/13",
+      "scheduledDate": "2026-11-13",
+      "scheduledEndDate": "2026-11-13",
+      "scheduledDateText": "11月13日(金)",
+      "name": "Omnissa ONE Tokyo 2026",
+      "url": "https://omnissa-one.jp/",
+      "venue": "ANAインターコンチネンタルホテル東京",
+      "rating": "D",
+      "category": "gathering",
+      "report": "手本のようないつものANAでの開催イベント。設置スタンプラリーのくじ引きは終わっており参加証のメモパッドだけ。クローズセミナーには参加したがあまりに話が詰まらな過ぎて寝かけた。交流会は補充が1回ずつ程度で人の少なさの割には15分程度ですぐ無くなった、まあ時間自体が50分だし。シェフもいない。仔羊のローストが美味しいくらい、デザートは比較的30分くらい残ってた。盛った皿を持ったまま反対側の列に並んだらスタッフに注意された、いや反対側の料理はまだ取れてないんだよ・・・",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-synology-solution-day-20261113",
+      "date": "2026-11-13",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "dateText": "11/13",
+      "scheduledDate": "2026-11-13",
+      "scheduledEndDate": "2026-11-13",
+      "scheduledDateText": "11月13日(金)",
+      "name": "Synology Solution Day 2026",
+      "url": "https://event.synology.com/ja-jp/synology-solution-day-2026/japan",
+      "venue": "東京ポートシティ竹芝 オフィスタワー1F ポートホール",
+      "rating": "E",
+      "category": "gathering",
+      "report": "以前行きそびれたポートホールにやっと入れた。ホワイエは狭い。\n来場特典で折りたたみボックス、無料ガチャでノート。軽食が用意されておりホットドックとポテトがあったが腹が減っておらずに食べなかった。他にやることもないのでさっさと去った。上の階でオーガニックEXPOがやっていたことに気づかず事前に登録をしておらず当日登録1000円かかるので諦めた。",
+      "source": "終了処理"
     }
   ]
 }

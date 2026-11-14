@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-11-web",
+  "dataVersion": "2026-11-14-web",
   "year": 2026,
   "events": [
     {
@@ -1224,6 +1224,45 @@
       "url": "https://hmc.micado.jp/",
       "venue": "KABUTO ONE",
       "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-meets-keiei-20261111",
+      "date": "2026-11-11",
+      "endDate": "2026-11-11",
+      "dateText": "11月11日(水)",
+      "name": "Meets 第6回 経営企画部 戦略サミット",
+      "url": "https://eight-event.8card.net/meets/summit_cp/",
+      "venue": "東京ミッドタウンホール（六本木）",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-braze-cityxcity-tokyo-20261112",
+      "date": "2026-11-12",
+      "endDate": "2026-11-12",
+      "dateText": "11月12日(木)",
+      "name": "Braze City x City Tokyo 2026",
+      "url": "https://events.braze.com/cityxcity-tokyo-2026",
+      "venue": "ウェスティンホテル東京",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "xls-x-31aa54f33c22",
+      "date": "2026-11-12",
+      "endDate": "2026-11-13",
+      "dateText": "11月12日(木)～13日(金)",
+      "name": "コールセンター/CRM デモ&コンファレンス 2026 in 東京 (第27回)",
+      "url": "https://www.callcenter-japan.com/tokyo/",
+      "venue": "サンシャインシティ・文化会館ビル",
+      "category": "exhibition",
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "nameCodes": []

@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-12-web",
+  "dataVersion": "2026-11-14-web",
   "year": 2026,
   "events": [
     {
@@ -3689,7 +3689,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-11"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-a1f86eafac98"
     },
     {
       "id": "evt-claris-conference-20261111",
@@ -3721,7 +3727,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-claris-conference-20261111"
     },
     {
       "id": "xls-x-e1d02a762201",
@@ -3750,7 +3762,14 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-11",
+        "2026-11-13"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-e1d02a762201"
     },
     {
       "id": "xls-x-e40d709b2027",
@@ -3806,7 +3825,14 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-11",
+        "2026-11-13"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-4dd2e9c199cb"
     },
     {
       "id": "xls-x-8450fc32cacd",
@@ -3830,7 +3856,14 @@
           "2026-11-11",
           "2026-11-13"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-11",
+        "2026-11-13"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-8450fc32cacd"
     },
     {
       "id": "xls-x-0ecaee0f21e5",
@@ -3858,7 +3891,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-0ecaee0f21e5"
     },
     {
       "id": "xls-x-31aa54f33c22",
@@ -3878,7 +3917,10 @@
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-f95813dd",
@@ -3904,7 +3946,13 @@
       "endDate": "2026-11-13",
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-13"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-f95813dd"
     },
     {
       "id": "xls-x-ead1201e7c11",
