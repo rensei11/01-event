@@ -4186,11 +4186,13 @@
       "id": "xls-x-5febc8bdbd03",
       "date": "2026-11-25",
       "endDate": "2026-11-27",
-      "dateText": "11月25日(水)～27日(金)",
+      "dateText": "11月25日(水)～11月27日(金)",
       "name": "レジャー＆アウトドアジャパン2026",
       "url": "https://leisure-japan.jp/",
       "venue": "東京ビッグサイト 東7,8ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -4201,7 +4203,10 @@
         "interested": true,
         "ignored": false,
         "visitDates": []
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "evt-sakura-dekiru-cloud-ai-day-20261126",
