@@ -4163,13 +4163,14 @@
       "id": "evt-2026-business-chance-expo-1125",
       "date": "2026-11-25",
       "endDate": "2026-11-26",
-      "dateText": "11月25日(水)～26日(木)",
+      "dateText": "11月25日(水)～11月26日(木)",
       "name": "ビジネスチャンスEXPO in TOKYO",
       "url": "https://bizchanexpo.tokyo/",
       "venue": "東京ビッグサイト 南3・4ホール",
       "conditionLines": [
         "入場無料（来場登録制）",
-        "ものづくり・フード・サービス／DXのBtoB展示・商談会"
+        "ものづくり・フード・サービス／DXのBtoB展示・商談会",
+        "名前コード：久保 直輝"
       ],
       "rating": "",
       "nightTime": "",
