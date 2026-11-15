@@ -3978,11 +3978,13 @@
       "id": "xls-x-023f60291cd2",
       "date": "2026-11-17",
       "endDate": "2026-11-20",
-      "dateText": "11月17日(火)～20日(金)",
+      "dateText": "11月17日(火)～11月20日(金)",
       "name": "DXPO東京'26【秋】",
       "url": "https://dxpo.jp",
       "venue": "有明GYM-EX",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -3995,7 +3997,10 @@
         "visitDates": [
           "2026-11-19"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "evt-cloudnative-days-winter-20261118",
