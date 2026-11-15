@@ -4202,7 +4202,9 @@
         "planned": false,
         "interested": true,
         "ignored": false,
-        "visitDates": []
+        "visitDates": [
+          "2026-11-26"
+        ]
       },
       "_kinds": [
         "exhibition"
