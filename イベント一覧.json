@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-14-web",
+  "dataVersion": "2026-11-15-web",
   "year": 2026,
   "events": [
     {
@@ -2666,7 +2666,12 @@
       "nightTime": "16:20～17:30",
       "nightText": "懇親会。ドリンク＋軽食を公式明記。抽選会は17:00開始予定。 Excelメモ：定員埋まるまでは速そう。来場でAmazon 500円＋アンケートで500円。",
       "dateText": "11月26日(木)",
-      "sourceExcel": true
+      "sourceExcel": true,
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": true
+      }
     },
     {
       "id": "evt-transcosmos-cx-20261126",
