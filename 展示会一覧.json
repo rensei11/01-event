@@ -4140,11 +4140,13 @@
       "id": "xls-x-0ba291f4db9b",
       "date": "2026-11-25",
       "endDate": "2026-11-27",
-      "dateText": "11月25日(水)～27日(金)",
+      "dateText": "11月25日(水)～11月27日(金)",
       "name": "POWTEX®2026 第46回国際粉体工業展",
       "url": "https://powtex.com/tokyo/",
       "venue": "東京ビッグサイト 東1-3ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -4157,7 +4159,10 @@
         "visitDates": [
           "2026-11-26"
         ]
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "evt-2026-business-chance-expo-1125",
