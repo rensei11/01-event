@@ -4355,7 +4355,7 @@
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
-      "nightText": "",
+      "nightText": "・去年の感想\n建築土木関係、あるいはいつものEXPOお菓子釣り勧誘。来場者が多いため乱獲が可能だった。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
@@ -4363,7 +4363,10 @@
         "interested": true,
         "ignored": false,
         "visitDates": []
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-7066c89a8214",
