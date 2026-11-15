@@ -4313,7 +4313,7 @@
       "conditionLines": [],
       "rating": "",
       "nightTime": "",
-      "nightText": "",
+      "nightText": "・去年の感想\n小中高生の引率参加がかなりいた(社会科見学？) そのため子供向けのブースも多め。",
       "source": "2026年 企業展示会簡易レポ.xlsx",
       "sourceExcel": true,
       "planning": {
@@ -4321,7 +4321,10 @@
         "interested": true,
         "ignored": false,
         "visitDates": []
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-29fc998eb149",
