@@ -4230,33 +4230,6 @@
       ]
     },
     {
-      "id": "evt-sakura-dekiru-cloud-ai-day-20261126",
-      "date": "2026-11-26",
-      "endDate": "2026-11-26",
-      "dateText": "11月26日(木)",
-      "name": "SAKURA DEKIRU Conference 2026｜CLOUD/AI DAY",
-      "url": "https://www.sakura.ad.jp/conference/dekiru-conference-2026/cloud-ai/",
-      "venue": "ベルサール渋谷ファースト（B1・2F）",
-      "conditionLines": [
-        "参加費無料・事前登録制（先着500名）",
-        "申込期限：11/25(水)15:00",
-        "13:00開場・14:00講演開始",
-        "名前コード：久保 直輝"
-      ],
-      "rating": "",
-      "nightTime": "18:20～20:00",
-      "nightText": "クローク無しネットワーキング（懇親会）をSTAGE Aで開催。\n18:20～だが17:40～同じホールでクロージングが行われるためそのまま懇親会になると予想\n2026年の飲食提供は公式未記載。前年12月の別会場「SAKURA AI Conference 2025」では食事付き交流会を公式案内。",
-      "_kinds": [
-        "exhibition",
-        "gathering"
-      ],
-      "planning": {
-        "planned": true,
-        "interested": false,
-        "ignored": false
-      }
-    },
-    {
       "id": "evt-2026-chemical-material-japan-1126",
       "date": "2026-11-26",
       "endDate": "2026-11-27",
