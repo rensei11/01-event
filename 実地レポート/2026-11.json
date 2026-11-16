@@ -174,7 +174,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "裁縫マシンやミシンなどの展示会。入場に必ず紙の印刷が必要だが家に忘れたので印刷屋で10円で印刷して入った。予想通り得るものはなかった。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-evt-claris-conference-20261111",
