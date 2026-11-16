@@ -115,7 +115,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "去年に引き続き除いたが得るものはなし。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-xls-x-8450fc32cacd",
