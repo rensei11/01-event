@@ -1266,6 +1266,19 @@
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "nameCodes": []
+    },
+    {
+      "id": "xls-x-ead1201e7c11",
+      "date": "2026-11-16",
+      "endDate": "2026-11-17",
+      "dateText": "11月16日(月)～17日(火)",
+      "name": "第15回イタリア料理専門展 ACCI Gusto 2026",
+      "url": "https://www.a-c-c-i.com/gusto/",
+      "venue": "都立産業貿易センター 浜松町館 4F 5F",
+      "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
     }
   ]
 }

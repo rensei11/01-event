@@ -3979,7 +3979,10 @@
         "planned": false,
         "interested": true,
         "ignored": false
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "xls-x-023f60291cd2",
