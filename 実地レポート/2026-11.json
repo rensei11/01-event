@@ -188,7 +188,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "セッションと展示ブースがあるいつものイベント。SNSを投稿すると2日でTシャツ3日でステンレスタンブラーがもらえるが、事前に仕込みをしたもののやはりQRの打刻でバレてるのでハンカチしかもらえなかった。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-evt-f95813dd",
