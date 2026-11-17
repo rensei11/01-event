@@ -2776,7 +2776,7 @@
       "nightTime": "18:00～20:00",
       "nightText": "主催者公式：18:00～20:00に軽食付き交流会。終日無料の飲食提供あり。料理の具体的な内容・量は未公表。ホテル開催ではない。",
       "planning": {
-        "planned": false,
+        "planned": true,
         "interested": false,
         "ignored": false
       },
