@@ -2752,8 +2752,8 @@
         "gathering"
       ],
       "planning": {
-        "planned": false,
-        "interested": true,
+        "planned": true,
+        "interested": false,
         "ignored": false
       }
     },
