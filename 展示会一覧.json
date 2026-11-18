@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-17-web",
+  "dataVersion": "2026-11-18-web",
   "year": 2026,
   "events": [
     {
@@ -4066,7 +4066,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-18"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-99f8573a5a83"
     },
     {
       "id": "xls-x-e2d5333818dc",
