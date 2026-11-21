@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-17-web",
+  "dataVersion": "2026-11-21-web",
   "year": 2026,
   "events": [
     {
@@ -2739,8 +2739,7 @@
       "conditionLines": [
         "無料・要事前登録",
         "データブリックス主催公式：11/27（金）、ザ・プリンス パークタワー東京で開催",
-        "出展企業コムチュア・NTTインテグレーションの公式プログラムで18:20～19:30ネットワーキング確認",
-        "名前コード：久保 直輝"
+        "出展企業コムチュア・NTTインテグレーションの公式プログラムで18:20～19:30ネットワーキング確認"
       ],
       "rating": "B+",
       "nightTime": "18:20～19:30",
@@ -2752,9 +2751,9 @@
         "gathering"
       ],
       "planning": {
-        "planned": true,
+        "planned": false,
         "interested": false,
-        "ignored": false
+        "ignored": true
       }
     },
     {
