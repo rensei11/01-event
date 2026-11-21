@@ -4335,7 +4335,9 @@
       "name": "COMNEXT 2026",
       "url": "https://www.cbw-expo.jp/",
       "venue": "東京ビッグサイト 西3・4ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "",
@@ -4346,7 +4348,10 @@
         "interested": false,
         "ignored": false,
         "visitDates": []
-      }
+      },
+      "_kinds": [
+        "exhibition"
+      ]
     },
     {
       "id": "xls-x-245acb60cdfc",
