@@ -4309,7 +4309,9 @@
       "name": "BEYOND SDGs エコプロ(旧SDGs Week EXPO)",
       "url": "https://messe.nikkei.co.jp/sdgs/",
       "venue": "東京ビックサイト 東1-3,7ホール",
-      "conditionLines": [],
+      "conditionLines": [
+        "名前コード：久保 直輝"
+      ],
       "rating": "",
       "nightTime": "",
       "nightText": "・去年の感想\n小中高生の引率参加がかなりいた(社会科見学？) そのため子供向けのブースも多め。",
