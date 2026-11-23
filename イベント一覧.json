@@ -2956,7 +2956,7 @@
       "nightText": "16:35にセッションが終了し、その後デモ展示がなぜか18:00まであるので軽食が用意される可能性がある、あくまで可能性。",
       "planning": {
         "planned": false,
-        "interested": false,
+        "interested": true,
         "ignored": false
       },
       "_kinds": [
