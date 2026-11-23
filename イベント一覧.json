@@ -2937,6 +2937,33 @@
       "nightText": "年末交流イベント。2025年回は定員1,000名で開催2日前時点600名エントリー、2024年回は780名エントリー。前年案内では飲食・アルコールは在庫がなくなり次第終了。実来場者数は未確認。"
     },
     {
+      "id": "evt-cisco-connect-japan-20261210",
+      "date": "2026-12-10",
+      "endDate": "2026-12-10",
+      "dateText": "12月10日(木)",
+      "name": "Cisco Connect 2026 Japan",
+      "url": "https://www.cisco.com/site/jp/ja/learn/events/cisco-connect/index.html",
+      "venue": "東京ミッドタウン・ホール（六本木）",
+      "conditionLines": [
+        "10:00～18:00（受付9:00～）、参加無料・事前登録制／主催者による承認制",
+        "登録締切：2026/12/7（月）。申込後に参加可否を案内、競合企業は断られる場合あり",
+        "デモ展示12:00～18:00。AI・ネットワーク・セキュリティ・データセンター等の機器や技術体験",
+        "デモ展示エリア内にコーヒー等の飲み物と軽食を用意（公式掲載）",
+        "一部テクニカルハンズオンは別途申込が必要"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "16:35にセッションが終了し、その後デモ展示がなぜか18:00まであるので軽食が用意される可能性がある、あくまで可能性。",
+      "planning": {
+        "planned": false,
+        "interested": false,
+        "ignored": false
+      },
+      "_kinds": [
+        "gathering"
+      ]
+    },
+    {
       "id": "evt-datadog-summit-20261216",
       "date": "2026-12-16",
       "name": "Datadog Summit Tokyo 2026",

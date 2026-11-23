@@ -4525,33 +4525,6 @@
       ]
     },
     {
-      "id": "evt-cisco-connect-japan-20261210",
-      "date": "2026-12-10",
-      "endDate": "",
-      "dateText": "12月10日(木)",
-      "name": "Cisco Connect 2026 Japan",
-      "url": "https://www.cisco.com/site/jp/ja/learn/events/cisco-connect/index.html",
-      "venue": "東京ミッドタウン・ホール（六本木）",
-      "conditionLines": [
-        "10:00～18:00（受付9:00～）、参加無料・事前登録制／主催者による承認制",
-        "登録締切：2026/12/7（月）。申込後に参加可否を案内、競合企業は断られる場合あり",
-        "デモ展示12:00～18:00。AI・ネットワーク・セキュリティ・データセンター等の機器や技術体験",
-        "デモ展示エリア内にコーヒー等の飲み物と軽食を用意（公式掲載）",
-        "一部テクニカルハンズオンは別途申込が必要"
-      ],
-      "rating": "",
-      "nightTime": "",
-      "nightText": "デモ展示12:00～18:00にドリンク・軽食あり。夜の懇親会は未確認。",
-      "planning": {
-        "planned": false,
-        "interested": false,
-        "ignored": false
-      },
-      "_kinds": [
-        "exhibition"
-      ]
-    },
-    {
       "id": "xls-x-b0b131020cd0",
       "date": "2026-12-16",
       "endDate": "2026-12-17",
