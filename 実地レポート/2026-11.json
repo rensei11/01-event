@@ -327,7 +327,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "ついでの寄っておいた去年と同じやつ。9時半開場。\nお菓子数個貰ってさっさと撤退。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-evt-workato-wow-20261119",
