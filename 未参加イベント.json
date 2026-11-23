@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-18-web",
+  "dataVersion": "2026-11-23-web",
   "year": 2026,
   "events": [
     {
@@ -1276,6 +1276,45 @@
       "url": "https://www.a-c-c-i.com/gusto/",
       "venue": "都立産業貿易センター 浜松町館 4F 5F",
       "category": "exhibition",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-salesforce-world-tour-tokyo-20261118",
+      "date": "2026-11-18",
+      "endDate": "2026-11-19",
+      "dateText": "11月18日(水)～11月19日(木)",
+      "name": "Salesforce World Tour Tokyo 2026",
+      "url": "https://www.salesforce.com/jp/events/world-tour/tokyo/",
+      "venue": "ザ・プリンス パークタワー東京",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-workato-wow-20261118",
+      "date": "2026-11-18",
+      "endDate": "",
+      "dateText": "",
+      "name": "World of Workato Tokyo 2026（1）",
+      "url": "https://workatowowconference.cventevents.com/event/tokyo/world-of-workato",
+      "venue": "東京マリオットホテル",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-global-management-leaders-summit-20261119",
+      "date": "2026-11-19",
+      "endDate": "",
+      "dateText": "11月19日(木)",
+      "name": "グローバル経営 LEADERS Summit 2026",
+      "url": "https://www.b-forum.net/event/jp2191aaai/",
+      "venue": "ANAインターコンチネンタルホテル東京",
+      "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],
       "nameCodes": []

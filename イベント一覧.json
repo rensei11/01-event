@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-21-web",
+  "dataVersion": "2026-11-23-web",
   "year": 2026,
   "events": [
     {
@@ -2570,8 +2570,7 @@
         "展示エリア（Campground／Trailblazer Forest）、基調講演、ブレイクアウトセッション、ハンズオンなど",
         "11月18日18:00～19:00に展示エリアでネットワーキング。公式にドリンクと軽食の提供を明記",
         "11月19日は12:00から展示エリアで軽食提供と案内",
-        "2026年6月開催のAgentforce World Tour Tokyo（参加済み記録あり）とは別日程",
-        "名前コード：伊藤 聡"
+        "2026年6月開催のAgentforce World Tour Tokyo（参加済み記録あり）とは別日程"
       ],
       "rating": "D",
       "nightTime": "11/18 18:00～19:00",
@@ -2586,7 +2585,10 @@
       },
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-workato-wow-20261118",
@@ -2605,7 +2607,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-workato-wow-20261119",
@@ -2631,7 +2636,13 @@
       "endDate": "2026-11-19",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-19"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-workato-wow-20261119"
     },
     {
       "id": "evt-global-management-leaders-summit-20261119",
@@ -2656,7 +2667,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-79cbcbcc",

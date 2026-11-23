@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-21-web",
+  "dataVersion": "2026-11-23-web",
   "year": 2026,
   "events": [
     {
@@ -4010,7 +4010,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-19"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-023f60291cd2"
     },
     {
       "id": "evt-cloudnative-days-winter-20261118",
@@ -4038,7 +4044,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-19"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-cloudnative-days-winter-20261118"
     },
     {
       "id": "xls-x-99f8573a5a83",
@@ -4102,7 +4114,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-19"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-e2d5333818dc"
     },
     {
       "id": "evt-2026-mfg-six-expos-1118",
@@ -4115,8 +4133,8 @@
       "conditionLines": [
         "事前登録無料（通常1,000円）",
         "同時開催：スマートファクトリーJapan、洗浄総合展、VACUUM真空展、先端材料技術展、高精度・難加工技術展、表面改質展。相互入場可能",
-        "名前コード：久保 直輝",
-        "【11/18(水)ノベルティメモ／東2ホール V-47・メトロール】通常価格6,000～8,000円相当の工業用センサー試供品とミックスナッツ。以前の調査で確認した情報。"
+        "【11/18(水)ノベルティメモ／東2ホール V-47・メトロール】通常価格6,000～8,000円相当の工業用センサー試供品とミックスナッツ。以前の調査で確認した情報。",
+        "名前コード：久保 直輝"
       ],
       "rating": "",
       "nightTime": "",
@@ -4131,7 +4149,13 @@
         "visitDates": [
           "2026-11-19"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-19"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-2026-mfg-six-expos-1118"
     },
     {
       "id": "xls-x-501a42f3ddd3",
@@ -4159,7 +4183,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-19"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-501a42f3ddd3"
     },
     {
       "id": "xls-x-0ba291f4db9b",
