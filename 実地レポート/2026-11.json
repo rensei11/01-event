@@ -402,7 +402,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "期待していなかったが案の定微妙。なにもない。\n試飲もわずかで(ビールはそこそこあった)試食は無し。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     }
   ]
 }
