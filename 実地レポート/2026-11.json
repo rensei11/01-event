@@ -384,7 +384,8 @@
       "rating": "E",
       "category": "exhibition",
       "report": "ほぼ見るものはない。いくつかのブースでお菓子を貰った程度。\nセンサーのサンプルを貰ったがおそらく売れない。\n一応溶接などの企業もいて内容は多少わかる。前会長らしき人を見た。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-xls-x-501a42f3ddd3",
