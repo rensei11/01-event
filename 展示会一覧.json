@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-23-web",
+  "dataVersion": "2026-11-24-web",
   "year": 2026,
   "events": [
     {
@@ -4823,7 +4823,12 @@
       ],
       "rating": "",
       "nightTime": "",
-      "nightText": "全国14会場のうち東京開催。業務用食品を中心とした展示商談会。試食の提供内容は未確認。"
+      "nightText": "全国14会場のうち東京開催。業務用食品を中心とした展示商談会。試食の提供内容は未確認。",
+      "planning": {
+        "planned": true,
+        "interested": false,
+        "ignored": false
+      }
     },
     {
       "id": "evt-fabex-tokyo-20270413",
@@ -4982,6 +4987,31 @@
       "planning": {
         "planned": false,
         "interested": true,
+        "ignored": false
+      },
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
+      "id": "evt-japanaccess-spring-fc-east-20270113",
+      "date": "2027-01-13",
+      "endDate": "2027-01-14",
+      "dateText": "1月13日(水)～14日(木)",
+      "name": "春季フードコンベンション2027（東日本）",
+      "url": "https://www.nippon-access.co.jp/exhibition/",
+      "venue": "パシフィコ横浜",
+      "conditionLines": [
+        "2027年1月13日(水)・14日(木)／パシフィコ横浜（東日本会場）",
+        "開催日・会場は業界専門紙2026年11月13日付で確認。主催者公式の詳細発表は12月予定",
+        "開催時間・入場登録方法・無料自己登録の可否は未確認。前年同様のQRコード発行導線があるか継続確認"
+      ],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "日本アクセス主催の大規模食品展示商談会。2026年11月13日付の日本食糧新聞が2027年東日本会場の日程・会場を報道。主催者公式の展示会案内：https://www.nippon-access.co.jp/exhibition/ 。詳細は12月公表予定。",
+      "planning": {
+        "planned": true,
+        "interested": false,
         "ignored": false
       },
       "_kinds": [
