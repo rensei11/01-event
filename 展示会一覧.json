@@ -5010,9 +5010,10 @@
       "nightTime": "",
       "nightText": "日本アクセス主催の大規模食品展示商談会。2026年11月13日付の日本食糧新聞が2027年東日本会場の日程・会場を報道。主催者公式の展示会案内：https://www.nippon-access.co.jp/exhibition/ 。詳細は12月公表予定。",
       "planning": {
-        "planned": true,
-        "interested": false,
-        "ignored": false
+        "planned": false,
+        "interested": true,
+        "ignored": false,
+        "visitDates": []
       },
       "_kinds": [
         "exhibition"
