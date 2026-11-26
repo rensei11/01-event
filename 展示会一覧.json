@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-25-web",
+  "dataVersion": "2026-11-26-web",
   "year": 2026,
   "events": [
     {
@@ -4742,8 +4742,8 @@
       "nightText": "ユーザー評価：グルメショー／ギフトショー系は以前の印象が良くない。開催日を記録するが期待度は高く設定しない。",
       "planning": {
         "planned": false,
-        "interested": true,
-        "ignored": false
+        "interested": false,
+        "ignored": true
       },
       "_kinds": [
         "exhibition"
