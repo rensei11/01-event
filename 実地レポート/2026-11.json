@@ -405,6 +405,132 @@
       "report": "期待していなかったが案の定微妙。なにもない。\n試飲もわずかで(ビールはそこそこあった)試食は無し。",
       "source": "終了処理",
       "ratingFlag": "low"
+    },
+    {
+      "id": "rep-web-xls-x-0ba291f4db9b",
+      "date": "2026-11-26",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "dateText": "11/26",
+      "scheduledDate": "2026-11-25",
+      "scheduledEndDate": "2026-11-27",
+      "scheduledDateText": "11月25日(水)～11月27日(金)",
+      "name": "POWTEX®2026 第46回国際粉体工業展",
+      "url": "https://powtex.com/tokyo/",
+      "venue": "東京ビッグサイト 東1-3ホール",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "隔年開催らしいが、ほぼ見るものも無し。\n無条件で何かを配っている企業もほぼ無く、粉体のこともよくわからない、行く意味はない。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-sakura-dekiru-cloud-ai-day-20261126",
+      "date": "2026-11-26",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "dateText": "11/26",
+      "scheduledDate": "2026-11-26",
+      "scheduledEndDate": "2026-11-26",
+      "scheduledDateText": "11月26日(木)",
+      "name": "SAKURA DEKIRU Conference 2026｜CLOUD/AI DAY",
+      "url": "https://www.sakura.ad.jp/conference/dekiru-conference-2026/cloud-ai/",
+      "venue": "ベルサール渋谷ファースト（B1・2F）",
+      "rating": "D",
+      "category": "gathering",
+      "report": "クローク無し。16時半過ぎ頃に到着。アンケート粗品はコーヒー。\n受けたセッションが2つともオフライン限定で、どちらもAIの話の観点でなかなか面白かった。特にクロージングセッションにいたハゲ（楠木 建 一橋大学 特任教授）の話術には舌を巻いた、調べるとそこそこ有名人っぽい。\n\nクロージングセッションは立ち見だったが端の椅子に座れたので疲れずに済んだ。そのまま交流会に入り座って食べれた。料理自体はそこそこのフィンガーフードだが出席者も交流重視で治安が良くそこまで料理も多くないのに30分経過しても多少残っていた。\n\n料理　\nエビのパリパリ揚げ　チーズとテリーヌのオードブルとクラッカー　クリームチーズ生ハム巻　サンドイッチ　他フィンガー2種くらい\n\nドリンク\nトロピカーナアップル　烏龍茶　サントリー角　ビール　赤白ワイン",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-2026-chemical-material-japan-1126",
+      "date": "2026-11-26",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "dateText": "11/26",
+      "scheduledDate": "2026-11-26",
+      "scheduledEndDate": "2026-11-27",
+      "scheduledDateText": "11月26日(木)～11月27日(金)",
+      "name": "ケミカルマテリアルJapan2026",
+      "url": "https://www.chemmate.jp/",
+      "venue": "東京ビッグサイト 南1・2ホール",
+      "rating": "F",
+      "category": "exhibition",
+      "report": "去年と比べるとわずかに配布している企業もあったが、だからといってやはり行く意味はない。ただしやたら人は多い。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-transcosmos-cx-20261126",
+      "date": "2026-11-26",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "dateText": "11/26",
+      "scheduledDate": "2026-11-26",
+      "scheduledEndDate": "2026-11-26",
+      "scheduledDateText": "11月26日(木)",
+      "name": "トランスコスモスフォーラム 2026｜CX（東京）",
+      "url": "https://www.trans-cosmos.co.jp/forum2026/",
+      "venue": "ザ・プリンス パークタワー東京 B2 コンベンションホール",
+      "rating": "D",
+      "category": "gathering",
+      "report": "クロークあり。15時過ぎ頃着。前回と同じ雰囲気。ちょうど休憩時間の入ったっぽくて人が廊下に増えたのでそのまま出た（受け付けた後にすぐ出ると違和感が強い雰囲気）\n\n粗品はカタログギフト 冊子 巨大メモ帳 ブランケット\nブランケットは前回なかった、11月末だからだろうか。\n懇親会は円卓形式なのだが今回は特に説明もなく数字が名札に書いてあるだけだった。当然危険なので行かずにSAKURAへ向かった。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-2026-highway-tech-fair-1126",
+      "date": "2026-11-26",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "dateText": "11/26",
+      "scheduledDate": "2026-11-26",
+      "scheduledEndDate": "2026-11-27",
+      "scheduledDateText": "11月26日(木)～11月27日(金)",
+      "name": "ハイウェイテクノフェア2026",
+      "url": "https://www.express-highway.or.jp/hwtf/htf2026/",
+      "venue": "東京ビッグサイト 西1・2ホール",
+      "rating": "E",
+      "category": "exhibition",
+      "report": "高速道路関連の展示会。言うほど見るものはないが去年の白いバッグをまた配っており新しいものを新調できた。あとはカレーと米程度。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-evt-2026-business-chance-expo-1125",
+      "date": "2026-11-26",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "dateText": "11/26",
+      "scheduledDate": "2026-11-25",
+      "scheduledEndDate": "2026-11-26",
+      "scheduledDateText": "11月25日(水)～11月26日(木)",
+      "name": "ビジネスチャンスEXPO in TOKYO",
+      "url": "https://bizchanexpo.tokyo/",
+      "venue": "東京ビッグサイト 南3・4ホール",
+      "rating": "D",
+      "category": "exhibition",
+      "report": "去年もそこそこの感じだったんで優先して足を運んだが、驚くほど人が閑散としていた（ケミカルやハイウェイが混んでたのも対比として強く感じた）\n空いているため試食はしづらくあんまりできず、スタンプラリーは午前と午後で2回やったがあたりは出なかった。アンケートに答えると横浜国際園芸博覧会のペアチケットがもらえたので2回貰った。もし売れればうれしい。",
+      "source": "終了処理"
+    },
+    {
+      "id": "rep-web-xls-x-5febc8bdbd03",
+      "date": "2026-11-26",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "dateText": "11/26",
+      "scheduledDate": "2026-11-25",
+      "scheduledEndDate": "2026-11-27",
+      "scheduledDateText": "11月25日(水)～11月27日(金)",
+      "name": "レジャー＆アウトドアジャパン2026",
+      "url": "https://leisure-japan.jp/",
+      "venue": "東京ビッグサイト 東7,8ホール",
+      "rating": "E",
+      "category": "exhibition",
+      "report": "去年とほぼ同じ。中華企業の移動式？宿泊箱の企業がインスタ投稿で車の模型をくれた程度。いくつかのアトラクションで遊べた。",
+      "source": "終了処理"
     }
   ]
 }

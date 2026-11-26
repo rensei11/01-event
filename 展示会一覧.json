@@ -4217,7 +4217,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-0ba291f4db9b"
     },
     {
       "id": "evt-2026-business-chance-expo-1125",
@@ -4245,7 +4251,13 @@
         "visitDates": [
           "2026-11-26"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-2026-business-chance-expo-1125"
     },
     {
       "id": "xls-x-5febc8bdbd03",
@@ -4273,7 +4285,13 @@
       },
       "_kinds": [
         "exhibition"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-xls-x-5febc8bdbd03"
     },
     {
       "id": "evt-2026-chemical-material-japan-1126",
@@ -4301,7 +4319,13 @@
         "visitDates": [
           "2026-11-26"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-2026-chemical-material-japan-1126"
     },
     {
       "id": "evt-2026-highway-tech-fair-1126",
@@ -4329,7 +4353,13 @@
         "visitDates": [
           "2026-11-26"
         ]
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-2026-highway-tech-fair-1126"
     },
     {
       "id": "xls-x-a1563d1915b4",

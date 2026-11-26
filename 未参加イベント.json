@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-23-web",
+  "dataVersion": "2026-11-26-web",
   "year": 2026,
   "events": [
     {
@@ -1314,6 +1314,32 @@
       "name": "グローバル経営 LEADERS Summit 2026",
       "url": "https://www.b-forum.net/event/jp2191aaai/",
       "venue": "ANAインターコンチネンタルホテル東京",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-79cbcbcc",
+      "date": "2026-11-26",
+      "endDate": "",
+      "dateText": "11月26日(木)",
+      "name": "Hinemos World 2026",
+      "url": "https://www.hinemos.info/seminar/HinemosWorld2026",
+      "venue": "品川ザ・グランドホール",
+      "category": "gathering",
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "nameCodes": []
+    },
+    {
+      "id": "evt-databricks-worldtour-20261127",
+      "date": "2026-11-27",
+      "endDate": "2026-11-27",
+      "dateText": "11月27日(金)",
+      "name": "Databricks Data + AI World Tour Tokyo 2026",
+      "url": "https://www.databricks.com/jp/dataaisummit/worldtour",
+      "venue": "ザ・プリンス パークタワー東京",
       "category": "gathering",
       "attendanceStatus": "not_attended",
       "visitDates": [],

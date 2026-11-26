@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-25-web",
+  "dataVersion": "2026-11-26-web",
   "year": 2026,
   "events": [
     {
@@ -2690,7 +2690,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-sakura-dekiru-cloud-ai-day-20261126",
@@ -2716,7 +2719,13 @@
         "planned": true,
         "interested": false,
         "ignored": false
-      }
+      },
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-sakura-dekiru-cloud-ai-day-20261126"
     },
     {
       "id": "evt-transcosmos-cx-20261126",
@@ -2742,7 +2751,13 @@
       "endDate": "2026-11-26",
       "_kinds": [
         "gathering"
-      ]
+      ],
+      "attendanceStatus": "attended",
+      "visitDates": [
+        "2026-11-26"
+      ],
+      "historySource": "終了処理",
+      "sourceReportId": "rep-web-evt-transcosmos-cx-20261126"
     },
     {
       "id": "evt-databricks-worldtour-20261127",
@@ -2753,8 +2768,7 @@
       "conditionLines": [
         "無料・要事前登録",
         "データブリックス主催公式：11/27（金）、ザ・プリンス パークタワー東京で開催",
-        "出展企業コムチュア・NTTインテグレーションの公式プログラムで18:20～19:30ネットワーキング確認",
-        "名前コード：久保 直輝"
+        "出展企業コムチュア・NTTインテグレーションの公式プログラムで18:20～19:30ネットワーキング確認"
       ],
       "rating": "B+",
       "nightTime": "18:20～19:30",
@@ -2769,7 +2783,10 @@
         "planned": false,
         "interested": false,
         "ignored": true
-      }
+      },
+      "attendanceStatus": "not_attended",
+      "visitDates": [],
+      "historySource": "終了処理"
     },
     {
       "id": "evt-tokyo-systems-engineering-summit-20261127",
