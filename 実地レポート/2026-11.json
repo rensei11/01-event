@@ -459,7 +459,8 @@
       "rating": "F",
       "category": "exhibition",
       "report": "去年と比べるとわずかに配布している企業もあったが、だからといってやはり行く意味はない。ただしやたら人は多い。",
-      "source": "終了処理"
+      "source": "終了処理",
+      "ratingFlag": "low"
     },
     {
       "id": "rep-web-evt-transcosmos-cx-20261126",
