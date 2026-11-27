@@ -262,12 +262,15 @@
       "scheduledDateText": "9月10日(木)",
       "name": "トランスコスモスフォーラム 2026｜GLOBAL",
       "url": "https://www.trans-cosmos.co.jp/forum2026/gl_timetable/",
-      "venue": "",
+      "venue": "ザ・プリンスパークタワー東京 B2",
       "rating": "",
       "category": "gathering",
       "report": "",
       "source": "終了処理",
-      "ratingFlag": "mid"
+      "ratingFlag": "mid",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "rep-web-evt-tokyo-nigiwai-20260917",

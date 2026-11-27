@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-11-26-web",
+  "dataVersion": "2026-11-27-web",
   "year": 2026,
   "events": [
     {
@@ -376,23 +376,27 @@
     {
       "id": "hist-no-c1fe97adec2b",
       "date": "2026-09-10",
-      "endDate": "",
+      "endDate": "2026-09-10",
       "dateText": "9月10日(木)",
       "name": "トランスコスモスフォーラム 2026｜GLOBAL",
       "url": "https://www.trans-cosmos.co.jp/forum2026/gl_timetable/",
-      "venue": "",
+      "venue": "ザ・プリンスパークタワー東京 B2",
       "conditionLines": [
+        "参加者が多い場合は抽選。イベント日が近くなると締め切るため直前の登録は不可。",
         "名前コード：伊藤 聡"
       ],
       "rating": "",
       "nightTime": "",
-      "nightText": "",
+      "nightText": "EC系のセミナーイベント。来場の御土産としてトランスコスモスが提供しているギフトカタログ3000円分を貰える。分厚い巨大なメモ用紙とECハンドブックも付く（重い）\n会場はテーブル付きで席は入場時に詰めて割り振られてそこを1日使う形。受付から会場は一本道でトランスコスモスの社員が挨拶のために総出で迎えており異様な雰囲気。懇親会は立食ではなく事前に割り振られたテーブルに座る関係上、交流必須で行くべきではないと判断しそのまま出て別のイベントに向かった。",
       "attendanceStatus": "attended",
       "visitDates": [
         "2026-09-10"
       ],
       "historySource": "終了処理",
-      "sourceReportId": "rep-web-hist-no-c1fe97adec2b"
+      "sourceReportId": "rep-web-hist-no-c1fe97adec2b",
+      "_kinds": [
+        "gathering"
+      ]
     },
     {
       "id": "hist-no-1e828e37c37b",
