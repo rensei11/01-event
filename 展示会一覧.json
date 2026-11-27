@@ -5024,6 +5024,24 @@
       ]
     },
     {
+      "id": "evt-web-mwyme218-oyvcy8",
+      "attendanceStatus": "",
+      "visitDates": [],
+      "date": "2027-07-13",
+      "endDate": "2027-07-15",
+      "dateText": "7月13日(火)～7月15日(木)",
+      "name": "イプロスAI【2027 夏】",
+      "url": "",
+      "venue": "東京ビッグサイト　南3~4ホール",
+      "conditionLines": [],
+      "rating": "",
+      "nightTime": "",
+      "nightText": "",
+      "_kinds": [
+        "exhibition"
+      ]
+    },
+    {
       "id": "evt-foodstyle-japan-tokyo-20271012",
       "date": "2027-10-12",
       "endDate": "2027-10-14",
